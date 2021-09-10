@@ -1,0 +1,34 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '13.0'
+
+target 'YourName' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # ⚛️ Reactive X 
+  pod 'RxSwift'
+  pod 'RxCocoa'
+  pod 'RxGesture'
+  pod 'RxOptional'
+  pod 'RxDataSources'
+
+  # 🖼 Image Cache
+  pod 'Kingfisher'
+
+  # 📐 Layout
+  pod 'SnapKit'
+
+
+  # 🐝 Syntax Sugar
+  pod 'Then'
+
+  target 'YourNameTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'YourNameUITests' do
+    # Pods for testing
+  end
+
+end
