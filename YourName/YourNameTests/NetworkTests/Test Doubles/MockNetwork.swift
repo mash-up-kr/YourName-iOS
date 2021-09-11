@@ -14,7 +14,7 @@ enum StubResponse {
     case error(Error)
 }
 
-final class MockNetwork: Network {
+final class MockNetwork: Networking {
     
     var calledRequest = false
     var stubbedApiResponse: StubResponse?

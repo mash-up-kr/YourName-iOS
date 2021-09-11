@@ -18,5 +18,5 @@ UIApplicationMain(
 )
 
 private func setupEnviorment() {
-    Enviorment.current.network = HTTPClient.shared
+    Enviorment.current.network = Network.shared
 }

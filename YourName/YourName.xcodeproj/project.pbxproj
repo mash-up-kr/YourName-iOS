@@ -16,7 +16,7 @@
 		CEB6586826EB2C3700C11F33 /* SchemeNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6586726EB2C3700C11F33 /* SchemeNavigator.swift */; };
 		CEB6586C26EB2C7600C11F33 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6586B26EB2C7600C11F33 /* RootViewController.swift */; };
 		CEB6586F26EB2C9400C11F33 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6586E26EB2C9400C11F33 /* Auth.swift */; };
-		CEB6587226EB2CAB00C11F33 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6587126EB2CAB00C11F33 /* Network.swift */; };
+		CEB6587226EB2CAB00C11F33 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6587126EB2CAB00C11F33 /* Networking.swift */; };
 		CEB6587726EB2CFE00C11F33 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6587626EB2CFE00C11F33 /* RootViewModel.swift */; };
 		CEB6587926EC806F00C11F33 /* Connectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6587826EC806F00C11F33 /* Connectable.swift */; };
 		CEB6587B26EC809800C11F33 /* URLRequestConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6587A26EC809800C11F33 /* URLRequestConvertible.swift */; };
@@ -27,10 +27,10 @@
 		CEB6588726EC817A00C11F33 /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6588626EC817A00C11F33 /* HTTP.swift */; };
 		CEB6588926EC818900C11F33 /* HTTPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6588826EC818900C11F33 /* HTTPError.swift */; };
 		CEB6588B26EC81B200C11F33 /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6588A26EC81B200C11F33 /* Decoder.swift */; };
-		CEB6588E26EC821300C11F33 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6588D26EC821300C11F33 /* HTTPClient.swift */; };
+		CEB6588E26EC821300C11F33 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6588D26EC821300C11F33 /* Network.swift */; };
 		CEB6589126EC826300C11F33 /* Enviorment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6589026EC826300C11F33 /* Enviorment.swift */; };
 		CEB6589326EC834900C11F33 /* Foundation+Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6589226EC834900C11F33 /* Foundation+Decoder.swift */; };
-		CEB6589526EC838000C11F33 /* RemoteDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6589426EC838000C11F33 /* RemoteDataLoader.swift */; };
+		CEB6589526EC838000C11F33 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6589426EC838000C11F33 /* HTTPClient.swift */; };
 		CEB6589726EC844D00C11F33 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6589626EC844D00C11F33 /* main.swift */; };
 		CEB6589C26EC988F00C11F33 /* ObserverType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6589B26EC988F00C11F33 /* ObserverType+.swift */; };
 		CEB658AB26EC9A3B00C11F33 /* MockError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB658A226EC9A3B00C11F33 /* MockError.swift */; };
@@ -40,9 +40,10 @@
 		CEB658AF26EC9A3B00C11F33 /* MockDecodingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB658A626EC9A3B00C11F33 /* MockDecodingService.swift */; };
 		CEB658B026EC9A3B00C11F33 /* MockSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB658A726EC9A3B00C11F33 /* MockSession.swift */; };
 		CEB658B126EC9A3B00C11F33 /* MockDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB658A826EC9A3B00C11F33 /* MockDataTask.swift */; };
-		CEB658B426EC9E8B00C11F33 /* DataLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB658B226EC9E8A00C11F33 /* DataLoaderTests.swift */; };
-		CEB658B526EC9E8B00C11F33 /* HTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB658B326EC9E8B00C11F33 /* HTTPClientTests.swift */; };
+		CEB658B426EC9E8B00C11F33 /* HTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB658B226EC9E8A00C11F33 /* HTTPClientTests.swift */; };
+		CEB658B526EC9E8B00C11F33 /* NetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB658B326EC9E8B00C11F33 /* NetworkTests.swift */; };
 		CEB658B826ECACAD00C11F33 /* FakeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB658B726ECACAD00C11F33 /* FakeData.swift */; };
+		CEB658BA26ECC42800C11F33 /* TestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB658B926ECC42800C11F33 /* TestResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,7 +76,7 @@
 		CEB6586726EB2C3700C11F33 /* SchemeNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemeNavigator.swift; sourceTree = "<group>"; };
 		CEB6586B26EB2C7600C11F33 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		CEB6586E26EB2C9400C11F33 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
-		CEB6587126EB2CAB00C11F33 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		CEB6587126EB2CAB00C11F33 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		CEB6587626EB2CFE00C11F33 /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		CEB6587826EC806F00C11F33 /* Connectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connectable.swift; sourceTree = "<group>"; };
 		CEB6587A26EC809800C11F33 /* URLRequestConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestConvertible.swift; sourceTree = "<group>"; };
@@ -86,10 +87,10 @@
 		CEB6588626EC817A00C11F33 /* HTTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
 		CEB6588826EC818900C11F33 /* HTTPError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPError.swift; sourceTree = "<group>"; };
 		CEB6588A26EC81B200C11F33 /* Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
-		CEB6588D26EC821300C11F33 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		CEB6588D26EC821300C11F33 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		CEB6589026EC826300C11F33 /* Enviorment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enviorment.swift; sourceTree = "<group>"; };
 		CEB6589226EC834900C11F33 /* Foundation+Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Foundation+Decoder.swift"; sourceTree = "<group>"; };
-		CEB6589426EC838000C11F33 /* RemoteDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataLoader.swift; sourceTree = "<group>"; };
+		CEB6589426EC838000C11F33 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		CEB6589626EC844D00C11F33 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		CEB6589B26EC988F00C11F33 /* ObserverType+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObserverType+.swift"; sourceTree = "<group>"; };
 		CEB658A226EC9A3B00C11F33 /* MockError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockError.swift; sourceTree = "<group>"; };
@@ -99,9 +100,10 @@
 		CEB658A626EC9A3B00C11F33 /* MockDecodingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockDecodingService.swift; sourceTree = "<group>"; };
 		CEB658A726EC9A3B00C11F33 /* MockSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockSession.swift; sourceTree = "<group>"; };
 		CEB658A826EC9A3B00C11F33 /* MockDataTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockDataTask.swift; sourceTree = "<group>"; };
-		CEB658B226EC9E8A00C11F33 /* DataLoaderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataLoaderTests.swift; sourceTree = "<group>"; };
-		CEB658B326EC9E8B00C11F33 /* HTTPClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClientTests.swift; sourceTree = "<group>"; };
+		CEB658B226EC9E8A00C11F33 /* HTTPClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClientTests.swift; sourceTree = "<group>"; };
+		CEB658B326EC9E8B00C11F33 /* NetworkTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkTests.swift; sourceTree = "<group>"; };
 		CEB658B726ECACAD00C11F33 /* FakeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeData.swift; sourceTree = "<group>"; };
+		CEB658B926ECC42800C11F33 /* TestResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResponse.swift; sourceTree = "<group>"; };
 		F42CD2B99E49494D26EBB9F2 /* Pods_YourNameTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YourNameTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -301,7 +303,7 @@
 				CEB6587C26EC80BF00C11F33 /* DataTask.swift */,
 				CEB6588126EC811E00C11F33 /* DataLoading.swift */,
 				CEB6588A26EC81B200C11F33 /* Decoder.swift */,
-				CEB6587126EB2CAB00C11F33 /* Network.swift */,
+				CEB6587126EB2CAB00C11F33 /* Networking.swift */,
 				CEB6587A26EC809800C11F33 /* URLRequestConvertible.swift */,
 			);
 			path = Protocols;
@@ -347,8 +349,8 @@
 				CEB6587E26EC80D700C11F33 /* Extensions */,
 				CEB6588526EC816600C11F33 /* HTTP */,
 				CEB6587026EB2C9F00C11F33 /* Protocols */,
-				CEB6588D26EC821300C11F33 /* HTTPClient.swift */,
-				CEB6589426EC838000C11F33 /* RemoteDataLoader.swift */,
+				CEB6588D26EC821300C11F33 /* Network.swift */,
+				CEB6589426EC838000C11F33 /* HTTPClient.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -380,6 +382,7 @@
 				CEB658A726EC9A3B00C11F33 /* MockSession.swift */,
 				CEB658A826EC9A3B00C11F33 /* MockDataTask.swift */,
 				CEB658B726ECACAD00C11F33 /* FakeData.swift */,
+				CEB658B926ECC42800C11F33 /* TestResponse.swift */,
 			);
 			path = "Test Doubles";
 			sourceTree = "<group>";
@@ -388,8 +391,8 @@
 			isa = PBXGroup;
 			children = (
 				CEB6589F26EC9A3B00C11F33 /* Test Doubles */,
-				CEB658B226EC9E8A00C11F33 /* DataLoaderTests.swift */,
-				CEB658B326EC9E8B00C11F33 /* HTTPClientTests.swift */,
+				CEB658B226EC9E8A00C11F33 /* HTTPClientTests.swift */,
+				CEB658B326EC9E8B00C11F33 /* NetworkTests.swift */,
 			);
 			path = NetworkTests;
 			sourceTree = "<group>";
@@ -578,16 +581,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEB6589526EC838000C11F33 /* RemoteDataLoader.swift in Sources */,
+				CEB6589526EC838000C11F33 /* HTTPClient.swift in Sources */,
 				CEB6588226EC811E00C11F33 /* DataLoading.swift in Sources */,
 				CEB6586F26EB2C9400C11F33 /* Auth.swift in Sources */,
-				CEB6588E26EC821300C11F33 /* HTTPClient.swift in Sources */,
+				CEB6588E26EC821300C11F33 /* Network.swift in Sources */,
 				CEB6583026EB15A600C11F33 /* ViewController.swift in Sources */,
 				CEB6589126EC826300C11F33 /* Enviorment.swift in Sources */,
 				CEB6589326EC834900C11F33 /* Foundation+Decoder.swift in Sources */,
 				CEB6587926EC806F00C11F33 /* Connectable.swift in Sources */,
 				CEB6589726EC844D00C11F33 /* main.swift in Sources */,
-				CEB6587226EB2CAB00C11F33 /* Network.swift in Sources */,
+				CEB6587226EB2CAB00C11F33 /* Networking.swift in Sources */,
 				CEB6587B26EC809800C11F33 /* URLRequestConvertible.swift in Sources */,
 				CEB6587726EB2CFE00C11F33 /* RootViewModel.swift in Sources */,
 				CEB6587D26EC80BF00C11F33 /* DataTask.swift in Sources */,
@@ -609,11 +612,12 @@
 			files = (
 				CEB658AC26EC9A3B00C11F33 /* MockNetwork.swift in Sources */,
 				CEB658B126EC9A3B00C11F33 /* MockDataTask.swift in Sources */,
-				CEB658B526EC9E8B00C11F33 /* HTTPClientTests.swift in Sources */,
+				CEB658B526EC9E8B00C11F33 /* NetworkTests.swift in Sources */,
 				CEB658B026EC9A3B00C11F33 /* MockSession.swift in Sources */,
 				CEB658B826ECACAD00C11F33 /* FakeData.swift in Sources */,
+				CEB658BA26ECC42800C11F33 /* TestResponse.swift in Sources */,
 				CEB658AF26EC9A3B00C11F33 /* MockDecodingService.swift in Sources */,
-				CEB658B426EC9E8B00C11F33 /* DataLoaderTests.swift in Sources */,
+				CEB658B426EC9E8B00C11F33 /* HTTPClientTests.swift in Sources */,
 				CEB658AD26EC9A3B00C11F33 /* MockDataLoader.swift in Sources */,
 				CEB658AB26EC9A3B00C11F33 /* MockError.swift in Sources */,
 				CEB658AE26EC9A3B00C11F33 /* MockAPI.swift in Sources */,

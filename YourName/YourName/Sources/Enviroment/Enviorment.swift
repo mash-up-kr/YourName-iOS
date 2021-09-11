@@ -8,9 +8,9 @@
 import Foundation
 
 struct Enviorment {
-    var network: Network
+    var network: Networking
 }
 
 extension Enviorment {
-    static var current = Enviorment(network: HTTPClient.shared)
+    static var current = Enviorment(network: Network.shared)
 }

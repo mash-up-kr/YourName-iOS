@@ -1,45 +1,52 @@
 //
-//  HTTPClient.swift
+//  DataLoader.swift
 //  YourName
 //
 //  Created by Booung on 2021/09/11.
 //
 
 import Foundation
-import RxSwift
 
-final class HTTPClient: Network {
+final class HTTPClient: DataLoader {
     
-    private let dataLoader: DataLoader
-    private let decodingService: Decoder
+    private let session: Connectable
     
-    init(
-        dataLoader: DataLoader = RemoteDataLoader(),
-        decodingService: Decoder = JSONDecoder()
-    ) {
-        self.dataLoader = dataLoader
-        self.decodingService = decodingService
+    init(session: Connectable = URLSession.shared) {
+        self.session = session
     }
     
-    func response<Api: API> (of api: Api) -> Observable<Api.Response> {
-        return Observable.create { observer in
-            self.dataLoader.loadData(with: api) { [weak self] result in
-                guard let self = self else { return }
-                switch result {
-                case .success(let data):
-                    let decoded = Result {  try self.decodingService.decode(to: Api.Response.self, of: data) }
-                    
-                    observer.onSingleResult(decoded)
-                    
-                case .failure(let error):
-                    observer.onError(error)
-                }
+    @discardableResult
+    func loadData(
+        with urlRequestConvertible: URLRequestConvertible,
+        completionHandler: @escaping (Result<Data, Error>) -> Void = { _ in }
+    ) -> Cancellable {
+        let task = session.dataTask(with: urlRequestConvertible) { data, response, error in
+            if let error = error {
+                completionHandler(.failure(error))
+                return
             }
-            return Disposables.create()
+            if let httpResponse = response as? HTTPURLResponse,
+               400..<500 ~= httpResponse.statusCode {
+                completionHandler(.failure(HTTPError.client))
+                return
+            }
+            if let httpResponse = response as? HTTPURLResponse,
+               500..<600 ~= httpResponse.statusCode {
+                completionHandler(.failure(HTTPError.server))
+                return
+            }
+            guard let data = data else {
+                completionHandler(.failure(HTTPError.noData))
+                return
+            }
+            completionHandler(.success(data))
         }
+        
+        task.resume()
+        
+        return task
     }
 }
 
-extension HTTPClient {
-    static let shared = HTTPClient()
-}
+
+

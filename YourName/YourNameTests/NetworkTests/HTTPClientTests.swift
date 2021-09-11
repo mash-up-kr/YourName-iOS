@@ -1,78 +1,104 @@
 //
-//  HTTPClientTests.swift
+//  RouterImplTests.swift
 //  AppStoreTests
 //
-//  Created by dongyoung.lee on 2021/03/19.
+//  Created by dongyoung.lee on 2021/03/21.
 //
-
 @testable import YourName
 import XCTest
-import RxTest
-import RxBlocking
 
-final class HTTPClientTests: XCTestCase {
+final class RemoteDataLoaderTests: XCTestCase {
+  
+  // 🥸 Mock
+  var mockURL: URL!
+  var mockURLRequest: URLRequest!
+  var mockURLSession: MockSession!
+  
+  // 🧪 System Under Test
+  var httpClient: HTTPClient!
+  
+  override func setUp() {
+    super.setUp()
     
-    // 🥸 Mock
-    var mockAPI: MockAPI!
-    var mockDataLoader: MockDataLoader!
-    var mockDecodingService: MockDecodingService!
+    mockURL = URL(string: "https://itunes.apple.com/search?term=kakaobank&media=software&country=KR&lang=ko_KR")!
+    mockURLRequest = URLRequest(url: mockURL)
+    mockURLSession = MockSession()
+    httpClient = HTTPClient(session: mockURLSession)
+  }
+  
+  override func tearDown() {
+    mockURL = nil
+    mockURLRequest = nil
+    mockURLSession = nil
+    httpClient = nil
     
-    // 🧪 System Under Test
-    private var httpClient: HTTPClient!
+    super.tearDown()
+  }
+  
+  func test_load_with_URL를_호출하면_주입된_Session_task메소드가_호출된_상태여야한다() {
+    httpClient.loadData(with: mockURL)
+    XCTAssertTrue(mockURLSession.calledDataTask)
+  }
+  
+  func test_load_with_URLRequest를_호출하면_주입된_Session_task메소드가_호출된_상태여야한다() {
+    httpClient.loadData(with: mockURLRequest)
+    XCTAssertTrue(mockURLSession.calledDataTask)
+  }
+  
+  func test_load_with_URL의_결과로_반환된_Task는_resume이_호출된_상태여야한다() {
+    let task = httpClient.loadData(with: mockURL) as! MockDataTask
+    XCTAssertTrue(task.calledResume)
+  }
+  
+  func test_load_with_URLRequest의_결과로_반환된_Task는_resume이_호출된_상태여야한다() {
+    let task = httpClient.loadData(with: mockURLRequest) as! MockDataTask
+    XCTAssertTrue(task.calledResume)
+  }
+  
+  func test_load_with_URL의_결과로_반환된_Task는_의도한_URL을_가르켜야한다() {
+    let task = httpClient.loadData(with: mockURL) as! MockDataTask
+    XCTAssertEqual(task.url, mockURL)
+  }
+  
+  func test_load_with_URLRequest의_결과로_반환된_Task는_의도한_URL을_가르켜야한다() {
+    let task = httpClient.loadData(with: mockURLRequest) as! MockDataTask
+    XCTAssertEqual(task.url, mockURL)
+  }
+  
+  func test_load의_응답의_HTTPStatusCode가_500이면_Error를_뱉어야한다() {
+    let expectation = XCTestExpectation()
+    defer { wait(for: [expectation], timeout: 1) }
     
-    override func setUp() {
-        super.setUp()
+    let task = httpClient.loadData(with: mockURLRequest) { result in
+      expectation.fulfill()
+      switch result {
+      case .success:
+        XCTFail()
         
-        mockAPI = MockAPI()
-        mockDataLoader = MockDataLoader()
-        mockDecodingService = MockDecodingService()
+      case .failure(let error):
+        XCTAssertNotNil(error)
+      }
+    } as! MockDataTask
+    
+    task.whenCompletion(statusCode: 500)
+  }
+  
+  func test_load의_응답의_HTTPStatusCode가_200이면_성공해야한다() {
+    let expectation = XCTestExpectation()
+    defer { wait(for: [expectation], timeout: 1) }
+    
+    let task = httpClient.loadData(with: mockURLRequest) { result in
+      expectation.fulfill()
+      switch result {
+      case .success(let data):
+        XCTAssertNotNil(data)
         
-        httpClient = HTTPClient(
-            dataLoader: mockDataLoader,
-            decodingService: mockDecodingService
-        )
-    }
+      case .failure:
+        XCTFail()
+      }
+    } as! MockDataTask
     
-    override func tearDown() {
-        mockAPI = nil
-        mockDataLoader = nil
-        mockDecodingService = nil
-        httpClient = nil
-        super.tearDown()
-    }
-    
-    private func setupStub() {
-        mockDataLoader.stubedData = .testFake
-        mockDecodingService.stubedResponse = TestResponse.stub
-    }
-    
-    func test_request를_호출하면_router의_route가_호출되어야한다() {
-        setupStub()
-        do {
-            _ = try httpClient.response(of: mockAPI).toBlocking(timeout: 1).toArray()
-            XCTAssertTrue(mockDataLoader.calledLoadData)
-        } catch {
-            XCTFail("\(error.localizedDescription) occur")
-        }
-    }
-    
-    func test_request의_API의_Response타입이_decodingService가_decode를_호출해야한다() {
-        setupStub()
-        do {
-            _ = try httpClient.response(of: mockAPI).toBlocking(timeout: 1).toArray()
-            XCTAssertTrue(mockDecodingService.calledDecode)
-        } catch {
-            XCTFail("\(error.localizedDescription) error occur")
-        }
-    }
-    
-    func test_request의_API의_Response타입이_decodingService에게_전달되어야한다() {
-        setupStub()
-        do {
-            _ = try httpClient.response(of: mockAPI).toBlocking(timeout: 1).toArray()
-            XCTAssertEqual(mockDecodingService.passedTypeName, "\(TestResponse.self)")
-        } catch {
-            XCTFail("\(error.localizedDescription) error occur")
-        }
-    }
+    task.whenCompletion(data: Data(), statusCode: 200)
+  }
+  
 }
