@@ -21,7 +21,6 @@ final class HTTPClient: Network {
         self.decodingService = decodingService
     }
     
-    
     func response<Api: API> (of api: Api) -> Observable<Api.Response> {
         return Observable.create { observer in
             self.dataLoader.loadData(with: api) { [weak self] result in
@@ -29,6 +28,7 @@ final class HTTPClient: Network {
                 switch result {
                 case .success(let data):
                     let decoded = Result {  try self.decodingService.decode(to: Api.Response.self, of: data) }
+                    
                     observer.onSingleResult(decoded)
                     
                 case .failure(let error):

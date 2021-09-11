@@ -8,10 +8,8 @@
 import Foundation
 
 extension Data {
-    static var testFake = 
+    static var testFake =
         """
-        {
-            test: 0
-        }
+        {"test": 0}
         """.data(using: .utf8)
 }

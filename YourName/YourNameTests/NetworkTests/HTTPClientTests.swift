@@ -26,7 +26,6 @@ final class HTTPClientTests: XCTestCase {
         mockAPI = MockAPI()
         mockDataLoader = MockDataLoader()
         mockDecodingService = MockDecodingService()
-        mockDataLoader.stubedData = .testFake
         
         httpClient = HTTPClient(
             dataLoader: mockDataLoader,
@@ -42,30 +41,38 @@ final class HTTPClientTests: XCTestCase {
         super.tearDown()
     }
     
+    private func setupStub() {
+        mockDataLoader.stubedData = .testFake
+        mockDecodingService.stubedResponse = TestResponse.stub
+    }
+    
     func test_request를_호출하면_router의_route가_호출되어야한다() {
+        setupStub()
         do {
-            _ = try httpClient.response(of: mockAPI).toBlocking(timeout: 1)
+            _ = try httpClient.response(of: mockAPI).toBlocking(timeout: 1).toArray()
             XCTAssertTrue(mockDataLoader.calledLoadData)
         } catch {
-            XCTFail("error occur")
+            XCTFail("\(error.localizedDescription) occur")
         }
     }
     
     func test_request의_API의_Response타입이_decodingService가_decode를_호출해야한다() {
+        setupStub()
         do {
-            _ = try httpClient.response(of: mockAPI).toBlocking(timeout: 1)
+            _ = try httpClient.response(of: mockAPI).toBlocking(timeout: 1).toArray()
             XCTAssertTrue(mockDecodingService.calledDecode)
         } catch {
-            XCTFail("error occur")
+            XCTFail("\(error.localizedDescription) error occur")
         }
     }
     
     func test_request의_API의_Response타입이_decodingService에게_전달되어야한다() {
+        setupStub()
         do {
-            _ = try httpClient.response(of: mockAPI).toBlocking(timeout: 1)
-            XCTAssertEqual(mockDecodingService.passedTypeName, "\(MockAPI.Response.self)")
+            _ = try httpClient.response(of: mockAPI).toBlocking(timeout: 1).toArray()
+            XCTAssertEqual(mockDecodingService.passedTypeName, "\(TestResponse.self)")
         } catch {
-            XCTFail("error occur")
+            XCTFail("\(error.localizedDescription) error occur")
         }
     }
 }
