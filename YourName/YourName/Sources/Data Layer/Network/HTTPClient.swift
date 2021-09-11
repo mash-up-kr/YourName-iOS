@@ -35,11 +35,8 @@ final class HTTPClient: DataLoader {
                 completionHandler(.failure(HTTPError.server))
                 return
             }
-            guard let data = data else {
-                completionHandler(.failure(HTTPError.noData))
-                return
-            }
-            completionHandler(.success(data))
+            completionHandler(.success(data ?? .emptyData))
+            return
         }
         
         task.resume()

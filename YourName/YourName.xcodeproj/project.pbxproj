@@ -44,6 +44,7 @@
 		CEB658B526EC9E8B00C11F33 /* NetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB658B326EC9E8B00C11F33 /* NetworkTests.swift */; };
 		CEB658B826ECACAD00C11F33 /* FakeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB658B726ECACAD00C11F33 /* FakeData.swift */; };
 		CEB658BA26ECC42800C11F33 /* TestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB658B926ECC42800C11F33 /* TestResponse.swift */; };
+		CEB658BC26ECC90600C11F33 /* NoContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB658BB26ECC90600C11F33 /* NoContent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +105,7 @@
 		CEB658B326EC9E8B00C11F33 /* NetworkTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkTests.swift; sourceTree = "<group>"; };
 		CEB658B726ECACAD00C11F33 /* FakeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeData.swift; sourceTree = "<group>"; };
 		CEB658B926ECC42800C11F33 /* TestResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResponse.swift; sourceTree = "<group>"; };
+		CEB658BB26ECC90600C11F33 /* NoContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoContent.swift; sourceTree = "<group>"; };
 		F42CD2B99E49494D26EBB9F2 /* Pods_YourNameTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YourNameTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -351,6 +353,7 @@
 				CEB6587026EB2C9F00C11F33 /* Protocols */,
 				CEB6588D26EC821300C11F33 /* Network.swift */,
 				CEB6589426EC838000C11F33 /* HTTPClient.swift */,
+				CEB658BB26ECC90600C11F33 /* NoContent.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -582,6 +585,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEB6589526EC838000C11F33 /* HTTPClient.swift in Sources */,
+				CEB658BC26ECC90600C11F33 /* NoContent.swift in Sources */,
 				CEB6588226EC811E00C11F33 /* DataLoading.swift in Sources */,
 				CEB6586F26EB2C9400C11F33 /* Auth.swift in Sources */,
 				CEB6588E26EC821300C11F33 /* Network.swift in Sources */,
