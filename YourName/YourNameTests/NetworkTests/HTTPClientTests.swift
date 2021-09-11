@@ -7,6 +7,7 @@
 
 @testable import YourName
 import XCTest
+import RxTest
 import RxBlocking
 
 final class HTTPClientTests: XCTestCase {
@@ -25,6 +26,8 @@ final class HTTPClientTests: XCTestCase {
         mockAPI = MockAPI()
         mockDataLoader = MockDataLoader()
         mockDecodingService = MockDecodingService()
+        mockDataLoader.stubedData = .testFake
+        
         httpClient = HTTPClient(
             dataLoader: mockDataLoader,
             decodingService: mockDecodingService
@@ -36,7 +39,6 @@ final class HTTPClientTests: XCTestCase {
         mockDataLoader = nil
         mockDecodingService = nil
         httpClient = nil
-        
         super.tearDown()
     }
     

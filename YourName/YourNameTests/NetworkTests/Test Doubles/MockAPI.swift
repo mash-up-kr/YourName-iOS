@@ -9,7 +9,9 @@
 import Foundation
 
 final class MockAPI: API {
-  struct Response: Decodable {}
+  struct Response: Decodable {
+    var test: Int
+  }
   
   func asURLRequest() -> URLRequest {
     return URLRequest(url: URL(string: "https://www.naver.com")!)
