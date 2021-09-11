@@ -195,12 +195,12 @@
 		CEB6585B26EB296100C11F33 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				CEB6588F26EC824B00C11F33 /* Enviroment */,
+				CEB6585E26EB297F00C11F33 /* App */,
 				CEB6586026EB29B000C11F33 /* Common */,
 				CEB6586326EB2BB500C11F33 /* Data Layer */,
 				CEB6586426EB2BC100C11F33 /* Domain Layer */,
+				CEB6588F26EC824B00C11F33 /* Enviroment */,
 				CEB6586226EB2BB000C11F33 /* UI Layer */,
-				CEB6585E26EB297F00C11F33 /* App */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -283,8 +283,8 @@
 		CEB6586A26EB2C6400C11F33 /* Root */ = {
 			isa = PBXGroup;
 			children = (
-				CEB6587526EB2CF100C11F33 /* ViewModels */,
 				CEB6587426EB2CEC00C11F33 /* ViewControllers */,
+				CEB6587526EB2CF100C11F33 /* ViewModels */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -351,8 +351,8 @@
 				CEB6587E26EC80D700C11F33 /* Extensions */,
 				CEB6588526EC816600C11F33 /* HTTP */,
 				CEB6587026EB2C9F00C11F33 /* Protocols */,
-				CEB6588D26EC821300C11F33 /* Network.swift */,
 				CEB6589426EC838000C11F33 /* HTTPClient.swift */,
+				CEB6588D26EC821300C11F33 /* Network.swift */,
 				CEB658BB26ECC90600C11F33 /* NoContent.swift */,
 			);
 			path = Network;
@@ -377,14 +377,14 @@
 		CEB6589F26EC9A3B00C11F33 /* Test Doubles */ = {
 			isa = PBXGroup;
 			children = (
+				CEB658B726ECACAD00C11F33 /* FakeData.swift */,
+				CEB658A526EC9A3B00C11F33 /* MockAPI.swift */,
+				CEB658A826EC9A3B00C11F33 /* MockDataTask.swift */,
+				CEB658A426EC9A3B00C11F33 /* MockDataLoader.swift */,
+				CEB658A626EC9A3B00C11F33 /* MockDecodingService.swift */,
 				CEB658A226EC9A3B00C11F33 /* MockError.swift */,
 				CEB658A326EC9A3B00C11F33 /* MockNetwork.swift */,
-				CEB658A426EC9A3B00C11F33 /* MockDataLoader.swift */,
-				CEB658A526EC9A3B00C11F33 /* MockAPI.swift */,
-				CEB658A626EC9A3B00C11F33 /* MockDecodingService.swift */,
 				CEB658A726EC9A3B00C11F33 /* MockSession.swift */,
-				CEB658A826EC9A3B00C11F33 /* MockDataTask.swift */,
-				CEB658B726ECACAD00C11F33 /* FakeData.swift */,
 				CEB658B926ECC42800C11F33 /* TestResponse.swift */,
 			);
 			path = "Test Doubles";
