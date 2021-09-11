@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol URLRequestConvertible {
+public protocol URLRequestConvertible {
     func asURLRequest() -> URLRequest
 }

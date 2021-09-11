@@ -8,13 +8,13 @@
 import Foundation
 
 extension URLRequest: URLRequestConvertible {
-    func asURLRequest() -> URLRequest {
+    public func asURLRequest() -> URLRequest {
         return self
     }
 }
 
 extension URL: URLRequestConvertible {
-    func asURLRequest() -> URLRequest {
+    public func asURLRequest() -> URLRequest {
         return URLRequest(url: self)
     }
 }

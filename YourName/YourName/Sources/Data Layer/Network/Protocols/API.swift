@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol API: URLRequestConvertible {
+public protocol API: URLRequestConvertible {
     associatedtype Response: Decodable
 }

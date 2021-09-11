@@ -8,6 +8,6 @@
 import Foundation
 import RxSwift
 
-protocol Networking {
+public protocol Networking {
     func response<Api: API>(of api: Api) -> Observable<Api.Response>
 }

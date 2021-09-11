@@ -8,7 +8,7 @@
 import Foundation
 import RxSwift
 
-final class Network: Networking {
+public final class Network: Networking {
     
     private let dataLoader: DataLoader
     private let decodingService: Decoder
@@ -21,7 +21,7 @@ final class Network: Networking {
         self.decodingService = decodingService
     }
     
-    func response<Api: API> (of api: Api) -> Observable<Api.Response> {
+    public func response<Api: API> (of api: Api) -> Observable<Api.Response> {
         return Observable.create { observer in
             self.dataLoader.loadData(with: api) { [weak self] result in
                 guard let self = self else { return }
