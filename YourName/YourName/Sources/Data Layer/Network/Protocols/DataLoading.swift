@@ -8,9 +8,9 @@
 import Foundation
 
 protocol DataLoader {
-  @discardableResult
-  func loadData(
-    with urlRequestConvertible: URLRequestConvertible,
-    completionHandler: @escaping (Result<Data, Error>) -> Void
-  ) -> Cancellable
+    @discardableResult
+    func loadData(
+        with urlRequestConvertible: URLRequestConvertible,
+        completionHandler: @escaping (Result<Data, Error>) -> Void
+    ) -> Cancellable
 }

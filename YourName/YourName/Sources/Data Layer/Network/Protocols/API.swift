@@ -8,5 +8,5 @@
 import Foundation
 
 protocol API: URLRequestConvertible {
-  associatedtype Response: Decodable
+    associatedtype Response: Decodable
 }

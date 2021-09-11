@@ -8,21 +8,21 @@
 import Foundation
 
 enum HTTP {
-  typealias Headers = [String: String]
-  typealias Parameters = [String: String]
-  
-  struct Method: RawRepresentable, Equatable {
-    static let get = HTTP.Method(rawValue: "GET")!
-    static let post = HTTP.Method(rawValue: "POST")!
-    static let put = HTTP.Method(rawValue: "PUT")!
-    static let delete = HTTP.Method(rawValue: "DELETE")!
-    static let patch = HTTP.Method(rawValue: "PATCH")!
+    typealias Headers = [String: String]
+    typealias Parameters = [String: String]
     
-    typealias RawValue = String
-    var rawValue: String
-    
-    init?(rawValue: String) {
-      self.rawValue = rawValue
+    struct Method: RawRepresentable, Equatable {
+        static let get = HTTP.Method(rawValue: "GET")!
+        static let post = HTTP.Method(rawValue: "POST")!
+        static let put = HTTP.Method(rawValue: "PUT")!
+        static let delete = HTTP.Method(rawValue: "DELETE")!
+        static let patch = HTTP.Method(rawValue: "PATCH")!
+        
+        typealias RawValue = String
+        var rawValue: String
+        
+        init?(rawValue: String) {
+            self.rawValue = rawValue
+        }
     }
-  }
 }

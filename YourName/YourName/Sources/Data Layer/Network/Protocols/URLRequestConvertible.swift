@@ -8,5 +8,5 @@
 import Foundation
 
 protocol URLRequestConvertible {
-  func asURLRequest() -> URLRequest
+    func asURLRequest() -> URLRequest
 }

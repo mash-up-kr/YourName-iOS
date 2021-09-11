@@ -8,8 +8,8 @@
 import Foundation
 
 enum HTTPError: Error {
-  case noData
-  case client
-  case server
-  case unknown
+    case noData
+    case client
+    case server
+    case unknown
 }

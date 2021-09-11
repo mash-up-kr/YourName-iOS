@@ -35,6 +35,15 @@
 		CEB6589526EC838000C11F33 /* RemoteDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6589426EC838000C11F33 /* RemoteDataLoader.swift */; };
 		CEB6589726EC844D00C11F33 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6589626EC844D00C11F33 /* main.swift */; };
 		CEB6589C26EC988F00C11F33 /* ObserverType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6589B26EC988F00C11F33 /* ObserverType+.swift */; };
+		CEB658AB26EC9A3B00C11F33 /* MockError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB658A226EC9A3B00C11F33 /* MockError.swift */; };
+		CEB658AC26EC9A3B00C11F33 /* MockNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB658A326EC9A3B00C11F33 /* MockNetwork.swift */; };
+		CEB658AD26EC9A3B00C11F33 /* MockDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB658A426EC9A3B00C11F33 /* MockDataLoader.swift */; };
+		CEB658AE26EC9A3B00C11F33 /* MockAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB658A526EC9A3B00C11F33 /* MockAPI.swift */; };
+		CEB658AF26EC9A3B00C11F33 /* MockDecodingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB658A626EC9A3B00C11F33 /* MockDecodingService.swift */; };
+		CEB658B026EC9A3B00C11F33 /* MockSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB658A726EC9A3B00C11F33 /* MockSession.swift */; };
+		CEB658B126EC9A3B00C11F33 /* MockDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB658A826EC9A3B00C11F33 /* MockDataTask.swift */; };
+		CEB658B426EC9E8B00C11F33 /* DataLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB658B226EC9E8A00C11F33 /* DataLoaderTests.swift */; };
+		CEB658B526EC9E8B00C11F33 /* HTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB658B326EC9E8B00C11F33 /* HTTPClientTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +103,15 @@
 		CEB6589426EC838000C11F33 /* RemoteDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataLoader.swift; sourceTree = "<group>"; };
 		CEB6589626EC844D00C11F33 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		CEB6589B26EC988F00C11F33 /* ObserverType+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObserverType+.swift"; sourceTree = "<group>"; };
+		CEB658A226EC9A3B00C11F33 /* MockError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockError.swift; sourceTree = "<group>"; };
+		CEB658A326EC9A3B00C11F33 /* MockNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockNetwork.swift; sourceTree = "<group>"; };
+		CEB658A426EC9A3B00C11F33 /* MockDataLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockDataLoader.swift; sourceTree = "<group>"; };
+		CEB658A526EC9A3B00C11F33 /* MockAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockAPI.swift; sourceTree = "<group>"; };
+		CEB658A626EC9A3B00C11F33 /* MockDecodingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockDecodingService.swift; sourceTree = "<group>"; };
+		CEB658A726EC9A3B00C11F33 /* MockSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockSession.swift; sourceTree = "<group>"; };
+		CEB658A826EC9A3B00C11F33 /* MockDataTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockDataTask.swift; sourceTree = "<group>"; };
+		CEB658B226EC9E8A00C11F33 /* DataLoaderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataLoaderTests.swift; sourceTree = "<group>"; };
+		CEB658B326EC9E8B00C11F33 /* HTTPClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClientTests.swift; sourceTree = "<group>"; };
 		F42CD2B99E49494D26EBB9F2 /* Pods_YourNameTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YourNameTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -184,6 +202,7 @@
 		CEB6584126EB15AD00C11F33 /* YourNameTests */ = {
 			isa = PBXGroup;
 			children = (
+				CEB658B626EC9E8E00C11F33 /* NetworkTests */,
 				CEB6584426EB15AD00C11F33 /* Info.plist */,
 			);
 			path = YourNameTests;
@@ -230,8 +249,8 @@
 		CEB6585E26EB297F00C11F33 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				CEB6589626EC844D00C11F33 /* main.swift */,
 				CEB6582B26EB15A600C11F33 /* AppDelegate.swift */,
+				CEB6589626EC844D00C11F33 /* main.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -354,8 +373,8 @@
 		CEB6588C26EC81F700C11F33 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				CEB6588526EC816600C11F33 /* HTTP */,
 				CEB6587E26EC80D700C11F33 /* Extensions */,
+				CEB6588526EC816600C11F33 /* HTTP */,
 				CEB6587026EB2C9F00C11F33 /* Protocols */,
 				CEB6588D26EC821300C11F33 /* HTTPClient.swift */,
 				CEB6589426EC838000C11F33 /* RemoteDataLoader.swift */,
@@ -377,6 +396,30 @@
 				CEB6589B26EC988F00C11F33 /* ObserverType+.swift */,
 			);
 			path = "Rx+";
+			sourceTree = "<group>";
+		};
+		CEB6589F26EC9A3B00C11F33 /* Test Doubles */ = {
+			isa = PBXGroup;
+			children = (
+				CEB658A226EC9A3B00C11F33 /* MockError.swift */,
+				CEB658A326EC9A3B00C11F33 /* MockNetwork.swift */,
+				CEB658A426EC9A3B00C11F33 /* MockDataLoader.swift */,
+				CEB658A526EC9A3B00C11F33 /* MockAPI.swift */,
+				CEB658A626EC9A3B00C11F33 /* MockDecodingService.swift */,
+				CEB658A726EC9A3B00C11F33 /* MockSession.swift */,
+				CEB658A826EC9A3B00C11F33 /* MockDataTask.swift */,
+			);
+			path = "Test Doubles";
+			sourceTree = "<group>";
+		};
+		CEB658B626EC9E8E00C11F33 /* NetworkTests */ = {
+			isa = PBXGroup;
+			children = (
+				CEB6589F26EC9A3B00C11F33 /* Test Doubles */,
+				CEB658B226EC9E8A00C11F33 /* DataLoaderTests.swift */,
+				CEB658B326EC9E8B00C11F33 /* HTTPClientTests.swift */,
+			);
+			path = NetworkTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -409,6 +452,7 @@
 				CEB6583A26EB15AD00C11F33 /* Sources */,
 				CEB6583B26EB15AD00C11F33 /* Frameworks */,
 				CEB6583C26EB15AD00C11F33 /* Resources */,
+				F800C300BDA6D423A21ECAAA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -609,6 +653,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F800C300BDA6D423A21ECAAA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-YourNameTests/Pods-YourNameTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-YourNameTests/Pods-YourNameTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YourNameTests/Pods-YourNameTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -645,6 +706,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEB658AC26EC9A3B00C11F33 /* MockNetwork.swift in Sources */,
+				CEB658B126EC9A3B00C11F33 /* MockDataTask.swift in Sources */,
+				CEB658B526EC9E8B00C11F33 /* HTTPClientTests.swift in Sources */,
+				CEB658B026EC9A3B00C11F33 /* MockSession.swift in Sources */,
+				CEB658AF26EC9A3B00C11F33 /* MockDecodingService.swift in Sources */,
+				CEB658B426EC9E8B00C11F33 /* DataLoaderTests.swift in Sources */,
+				CEB658AD26EC9A3B00C11F33 /* MockDataLoader.swift in Sources */,
+				CEB658AB26EC9A3B00C11F33 /* MockError.swift in Sources */,
+				CEB658AE26EC9A3B00C11F33 /* MockAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

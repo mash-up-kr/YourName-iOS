@@ -9,7 +9,7 @@ import Foundation
 
 protocol Connectable {
     func dataTask(
-      with urlRequestConvertible: URLRequestConvertible,
-      completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void
+        with urlRequestConvertible: URLRequestConvertible,
+        completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void
     ) -> DataTask
-  }
+}

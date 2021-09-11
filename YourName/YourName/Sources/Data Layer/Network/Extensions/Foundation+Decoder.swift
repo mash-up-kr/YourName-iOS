@@ -8,7 +8,7 @@
 import Foundation
 
 extension JSONDecoder: Decoder {
-  func decode<T: Decodable>(to type: T.Type, of data: Data) throws -> T {
-    try self.decode(type, from: data)
-  }
+    func decode<T: Decodable>(to type: T.Type, of data: Data) throws -> T {
+        try self.decode(type, from: data)
+    }
 }

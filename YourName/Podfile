@@ -24,7 +24,10 @@ target 'YourName' do
 
   target 'YourNameTests' do
     inherit! :search_paths
-    # Pods for testing
+    pod 'RxTest'
+    pod 'RxBlocking'
+    pod 'Quick'
+    pod 'Nimble'
   end
 
   target 'YourNameUITests' do

@@ -8,11 +8,11 @@
 import Foundation
 
 protocol Resumable {
-  func resume()
+    func resume()
 }
 
 protocol Cancellable {
-  func cancel()
+    func cancel()
 }
 
 typealias DataTask = Resumable & Cancellable
