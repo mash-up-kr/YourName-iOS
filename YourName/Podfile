@@ -18,9 +18,11 @@ target 'YourName' do
   # 📐 Layout
   pod 'SnapKit'
 
-
   # 🐝 Syntax Sugar
   pod 'Then'
+  
+  # 🐛 Debug Tool
+  pod 'FLEX', :configurations => ['Debug']
 
   target 'YourNameTests' do
     inherit! :search_paths
