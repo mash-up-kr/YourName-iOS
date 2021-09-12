@@ -30,8 +30,4 @@ target 'YourName' do
     pod 'Nimble'
   end
 
-  target 'YourNameUITests' do
-    # Pods for testing
-  end
-
 end
