@@ -47,8 +47,8 @@
 		CEB658BC26ECC90600C11F33 /* NoContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB658BB26ECC90600C11F33 /* NoContent.swift */; };
 		CEF8C55326EDF8D5009BA9C2 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF8C55226EDF8D5009BA9C2 /* UIView+.swift */; };
 		CEF8C55726EDFB6F009BA9C2 /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF8C55626EDFB6F009BA9C2 /* UIStackView+.swift */; };
-		CEFA037D26EFBACE00D12AAB /* QRGenerater.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFA037C26EFBACE00D12AAB /* QRGenerater.swift */; };
 		CEFA037A26EFB76D00D12AAB /* SnapshotService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFA037926EFB76D00D12AAB /* SnapshotService.swift */; };
+		CEFA037D26EFBACE00D12AAB /* QRGenerater.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFA037C26EFBACE00D12AAB /* QRGenerater.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,8 +112,8 @@
 		CEB658BB26ECC90600C11F33 /* NoContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoContent.swift; sourceTree = "<group>"; };
 		CEF8C55226EDF8D5009BA9C2 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		CEF8C55626EDFB6F009BA9C2 /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
-		CEFA037C26EFBACE00D12AAB /* QRGenerater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRGenerater.swift; sourceTree = "<group>"; };
 		CEFA037926EFB76D00D12AAB /* SnapshotService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotService.swift; sourceTree = "<group>"; };
+		CEFA037C26EFBACE00D12AAB /* QRGenerater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRGenerater.swift; sourceTree = "<group>"; };
 		F42CD2B99E49494D26EBB9F2 /* Pods_YourNameTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YourNameTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -265,10 +265,10 @@
 		CEB6586426EB2BC100C11F33 /* Domain Layer */ = {
 			isa = PBXGroup;
 			children = (
-				CEFA037B26EFBAC100D12AAB /* QR */,
-				CEFA037826EFB75D00D12AAB /* Snapshot */,
 				CEB6586D26EB2C8800C11F33 /* Auth */,
 				CEB6586626EB2C0700C11F33 /* Scheme */,
+				CEFA037826EFB75D00D12AAB /* Snapshot */,
+				CEFA037B26EFBAC100D12AAB /* QR */,
 			);
 			path = "Domain Layer";
 			sourceTree = "<group>";
@@ -420,20 +420,20 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		CEFA037B26EFBAC100D12AAB /* QR */ = {
-			isa = PBXGroup;
-			children = (
-				CEFA037C26EFBACE00D12AAB /* QRGenerater.swift */,
-			);
-			path = QR;
-			sourceTree = "<group>";
-		};
 		CEFA037826EFB75D00D12AAB /* Snapshot */ = {
 			isa = PBXGroup;
 			children = (
 				CEFA037926EFB76D00D12AAB /* SnapshotService.swift */,
 			);
 			path = Snapshot;
+			sourceTree = "<group>";
+		};
+		CEFA037B26EFBAC100D12AAB /* QR */ = {
+			isa = PBXGroup;
+			children = (
+				CEFA037C26EFBACE00D12AAB /* QRGenerater.swift */,
+			);
+			path = QR;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
