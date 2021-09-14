@@ -16,28 +16,25 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         setupAttribute()
+        setupLayout()
         #if DEBUG
         setupFLEX()
         #endif
     }
     
-    override func updateViewConstraints() {
-        super.updateViewConstraints()
-        
-        setupLayout()
-    }
     
     /// set up attribute(property) of subviews
     ///
     ///     textLabel.text = "Hello, world"
     ///     textLabel.textColor = .systemBlue
-    ///     view.addSubview(textLabel)
     func setupAttribute() {
         fatalError("attribute() has not been implemented")
     }
     
     /// set up layout of subviews
     ///
+    ///
+    ///       view.addSubview(textLabel)
     ///       textLabel.translatesAutoresizingMaskIntoConstraints = false
     ///       NSLayoutConstraint.activate([
     ///           textLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
