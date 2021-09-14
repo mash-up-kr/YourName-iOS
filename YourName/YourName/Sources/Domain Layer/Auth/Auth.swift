@@ -6,3 +6,8 @@
 //
 
 import Foundation
+import RxSwift
+
+protocol OAuth {
+    func authorize() -> Single<OAuthResponse>
+}
