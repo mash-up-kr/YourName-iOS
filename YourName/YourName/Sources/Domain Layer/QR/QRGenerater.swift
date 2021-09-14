@@ -10,11 +10,11 @@ import UIKit
 typealias QRCode = UIImage
 
 protocol QRGeneratable {
-    func generateQR(from url: URL) -> QRCode?
+    static func generateQR(from url: URL) -> QRCode?
 }
 
-struct QRGenerater: QRGeneratable {
-    func generateQR(from url: URL) -> QRCode? {
+enum QRGenerater: QRGeneratable {
+    static func generateQR(from url: URL) -> QRCode? {
         let data = url.absoluteString.data(using: .ascii)
         let filter = CIFilter.qrCode
         filter.setValue(data, forKey: "inputMessage")
