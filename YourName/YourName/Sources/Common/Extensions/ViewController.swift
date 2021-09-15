@@ -22,6 +22,10 @@ class ViewController: UIViewController {
         #endif
     }
     
+    deinit {
+        print("\(String(describing: self)) deinit")
+    }
+    
     
     /// set up attribute(property) of subviews
     ///
