@@ -48,6 +48,10 @@
 		CEB658BC26ECC90600C11F33 /* NoContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB658BB26ECC90600C11F33 /* NoContent.swift */; };
 		CED16DE926F39F700076565F /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED16DE826F39F700076565F /* Tab.swift */; };
 		CED16DEB26F39FB50076565F /* RootContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED16DEA26F39FB50076565F /* RootContainer.swift */; };
+		CED16DF526F3A5480076565F /* QuestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED16DF426F3A5480076565F /* QuestViewController.swift */; };
+		CED16DF726F3A5540076565F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED16DF626F3A5540076565F /* ProfileViewController.swift */; };
+		CED16DF926F3A55D0076565F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED16DF826F3A55D0076565F /* HomeViewController.swift */; };
+		CED16DFB26F3A5690076565F /* CardBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED16DFA26F3A5690076565F /* CardBookViewController.swift */; };
 		CEF8C55326EDF8D5009BA9C2 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF8C55226EDF8D5009BA9C2 /* UIView+.swift */; };
 		CEF8C55726EDFB6F009BA9C2 /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF8C55626EDFB6F009BA9C2 /* UIStackView+.swift */; };
 		CEFA037A26EFB76D00D12AAB /* SnapshotService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFA037926EFB76D00D12AAB /* SnapshotService.swift */; };
@@ -116,6 +120,10 @@
 		CEB658BB26ECC90600C11F33 /* NoContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoContent.swift; sourceTree = "<group>"; };
 		CED16DE826F39F700076565F /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
 		CED16DEA26F39FB50076565F /* RootContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootContainer.swift; sourceTree = "<group>"; };
+		CED16DF426F3A5480076565F /* QuestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestViewController.swift; sourceTree = "<group>"; };
+		CED16DF626F3A5540076565F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		CED16DF826F3A55D0076565F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		CED16DFA26F3A5690076565F /* CardBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBookViewController.swift; sourceTree = "<group>"; };
 		CEF8C55226EDF8D5009BA9C2 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		CEF8C55626EDFB6F009BA9C2 /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 		CEFA037926EFB76D00D12AAB /* SnapshotService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotService.swift; sourceTree = "<group>"; };
@@ -290,6 +298,10 @@
 		CEB6586926EB2C5F00C11F33 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				CED16DED26F3A4F70076565F /* CardBook */,
+				CED16DEC26F3A4C30076565F /* Home */,
+				CED16DEF26F3A5050076565F /* Profile */,
+				CED16DEE26F3A5000076565F /* Quest */,
 				CEB6586A26EB2C6400C11F33 /* Root */,
 			);
 			path = Screens;
@@ -300,8 +312,8 @@
 			children = (
 				CEB6587426EB2CEC00C11F33 /* ViewControllers */,
 				CEB6587526EB2CF100C11F33 /* ViewModels */,
-				CED16DE826F39F700076565F /* Tab.swift */,
 				CED16DEA26F39FB50076565F /* RootContainer.swift */,
+				CED16DE826F39F700076565F /* Tab.swift */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -416,6 +428,70 @@
 				CEB658B326EC9E8B00C11F33 /* NetworkTests.swift */,
 			);
 			path = NetworkTests;
+			sourceTree = "<group>";
+		};
+		CED16DEC26F3A4C30076565F /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				CED16DF026F3A5230076565F /* ViewControllers */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		CED16DED26F3A4F70076565F /* CardBook */ = {
+			isa = PBXGroup;
+			children = (
+				CED16DF126F3A52A0076565F /* ViewControllers */,
+			);
+			path = CardBook;
+			sourceTree = "<group>";
+		};
+		CED16DEE26F3A5000076565F /* Quest */ = {
+			isa = PBXGroup;
+			children = (
+				CED16DF326F3A53D0076565F /* ViewControllers */,
+			);
+			path = Quest;
+			sourceTree = "<group>";
+		};
+		CED16DEF26F3A5050076565F /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				CED16DF226F3A5340076565F /* ViewControllers */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		CED16DF026F3A5230076565F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				CED16DF826F3A55D0076565F /* HomeViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		CED16DF126F3A52A0076565F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				CED16DFA26F3A5690076565F /* CardBookViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		CED16DF226F3A5340076565F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				CED16DF626F3A5540076565F /* ProfileViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		CED16DF326F3A53D0076565F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				CED16DF426F3A5480076565F /* QuestViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		CEF8C55526EDF8F7009BA9C2 /* Extensions */ = {
@@ -635,6 +711,7 @@
 				CEB6588226EC811E00C11F33 /* DataLoading.swift in Sources */,
 				CEB6586F26EB2C9400C11F33 /* Auth.swift in Sources */,
 				CEB6588E26EC821300C11F33 /* Network.swift in Sources */,
+				CED16DF726F3A5540076565F /* ProfileViewController.swift in Sources */,
 				CEB6583026EB15A600C11F33 /* ViewController.swift in Sources */,
 				CED16DEB26F39FB50076565F /* RootContainer.swift in Sources */,
 				CEB6589126EC826300C11F33 /* Enviorment.swift in Sources */,
@@ -651,12 +728,15 @@
 				CEFA037A26EFB76D00D12AAB /* SnapshotService.swift in Sources */,
 				CEB6587D26EC80BF00C11F33 /* DataTask.swift in Sources */,
 				CEB6589C26EC988F00C11F33 /* ObserverType+.swift in Sources */,
+				CED16DFB26F3A5690076565F /* CardBookViewController.swift in Sources */,
 				CEB6588426EC814C00C11F33 /* API.swift in Sources */,
 				CEB6588726EC817A00C11F33 /* HTTP.swift in Sources */,
 				CEB6586826EB2C3700C11F33 /* SchemeNavigator.swift in Sources */,
 				CEB6588B26EC81B200C11F33 /* Decoder.swift in Sources */,
 				CEB6586C26EB2C7600C11F33 /* RootViewController.swift in Sources */,
 				CEB6582C26EB15A600C11F33 /* AppDelegate.swift in Sources */,
+				CED16DF926F3A55D0076565F /* HomeViewController.swift in Sources */,
+				CED16DF526F3A5480076565F /* QuestViewController.swift in Sources */,
 				CEB6588926EC818900C11F33 /* HTTPError.swift in Sources */,
 				CEB6588026EC80F500C11F33 /* Foundation+Network.swift in Sources */,
 			);

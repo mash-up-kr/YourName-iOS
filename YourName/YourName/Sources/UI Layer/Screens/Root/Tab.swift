@@ -8,7 +8,7 @@
 import Foundation
 
 enum Tab: Int, CaseIterable {
-    case myCards
+    case home
     case cardBook
     case quest
     case profile
@@ -16,7 +16,7 @@ enum Tab: Int, CaseIterable {
 extension Tab: CustomStringConvertible {
     var description: String {
         switch self {
-        case .myCards: return "리스트"
+        case .home: return "리스트"
         case .cardBook: return "도감"
         case .quest: return "퀘스트"
         case .profile: return "프로필"
