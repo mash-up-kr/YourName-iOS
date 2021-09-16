@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     }
     
     deinit {
-        print("\(String(describing: self)) deinit")
+        print(" 💀 \(String(describing: self)) deinit")
     }
     
     
