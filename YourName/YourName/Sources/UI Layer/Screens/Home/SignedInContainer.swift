@@ -7,30 +7,30 @@
 
 import Foundation
 
-final class RootContainer {
+final class SignedInContainer {
     
-    func rootViewController() -> RootViewController {
-        return RootViewController(
-            viewModel: rootViewModel(),
+    func homeViewController() -> HomeTabBarController {
+        return HomeTabBarController(
+            viewModel: homeViewModel(),
             viewControllerFactory: viewController(of:)
         )
     }
     
-    private func rootViewModel() -> RootViewModel {
-        return RootViewModel()
+    private func homeViewModel() -> HomeViewModel {
+        return HomeViewModel()
     }
     
     private func viewController(of tab: Tab) -> ViewController {
         switch tab {
-        case .home: return homeViewController()
+        case .myCardList: return homeViewController()
         case .cardBook: return cardBookViewController()
         case .quest: return questViewContorller()
         case .profile: return profileViewController()
         }
     }
     
-    private func homeViewController() -> HomeViewController {
-        return HomeViewController()
+    private func homeViewController() -> MyCardListViewController {
+        return MyCardListViewController()
     }
     
     private func cardBookViewController() -> CardBookViewController {

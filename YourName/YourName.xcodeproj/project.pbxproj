@@ -15,10 +15,10 @@
 		CEB6583526EB15AC00C11F33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEB6583426EB15AC00C11F33 /* Assets.xcassets */; };
 		CEB6583826EB15AC00C11F33 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEB6583626EB15AC00C11F33 /* LaunchScreen.storyboard */; };
 		CEB6586826EB2C3700C11F33 /* SchemeNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6586726EB2C3700C11F33 /* SchemeNavigator.swift */; };
-		CEB6586C26EB2C7600C11F33 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6586B26EB2C7600C11F33 /* RootViewController.swift */; };
+		CEB6586C26EB2C7600C11F33 /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6586B26EB2C7600C11F33 /* HomeTabBarController.swift */; };
 		CEB6586F26EB2C9400C11F33 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6586E26EB2C9400C11F33 /* Auth.swift */; };
 		CEB6587226EB2CAB00C11F33 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6587126EB2CAB00C11F33 /* Networking.swift */; };
-		CEB6587726EB2CFE00C11F33 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6587626EB2CFE00C11F33 /* RootViewModel.swift */; };
+		CEB6587726EB2CFE00C11F33 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6587626EB2CFE00C11F33 /* HomeViewModel.swift */; };
 		CEB6587926EC806F00C11F33 /* Connectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6587826EC806F00C11F33 /* Connectable.swift */; };
 		CEB6587B26EC809800C11F33 /* URLRequestConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6587A26EC809800C11F33 /* URLRequestConvertible.swift */; };
 		CEB6587D26EC80BF00C11F33 /* DataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6587C26EC80BF00C11F33 /* DataTask.swift */; };
@@ -47,10 +47,10 @@
 		CEB658BA26ECC42800C11F33 /* TestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB658B926ECC42800C11F33 /* TestResponse.swift */; };
 		CEB658BC26ECC90600C11F33 /* NoContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB658BB26ECC90600C11F33 /* NoContent.swift */; };
 		CED16DE926F39F700076565F /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED16DE826F39F700076565F /* Tab.swift */; };
-		CED16DEB26F39FB50076565F /* RootContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED16DEA26F39FB50076565F /* RootContainer.swift */; };
+		CED16DEB26F39FB50076565F /* SignedInContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED16DEA26F39FB50076565F /* SignedInContainer.swift */; };
 		CED16DF526F3A5480076565F /* QuestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED16DF426F3A5480076565F /* QuestViewController.swift */; };
 		CED16DF726F3A5540076565F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED16DF626F3A5540076565F /* ProfileViewController.swift */; };
-		CED16DF926F3A55D0076565F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED16DF826F3A55D0076565F /* HomeViewController.swift */; };
+		CED16DF926F3A55D0076565F /* MyCardListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED16DF826F3A55D0076565F /* MyCardListViewController.swift */; };
 		CED16DFB26F3A5690076565F /* CardBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED16DFA26F3A5690076565F /* CardBookViewController.swift */; };
 		CEF8C55326EDF8D5009BA9C2 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF8C55226EDF8D5009BA9C2 /* UIView+.swift */; };
 		CEF8C55726EDFB6F009BA9C2 /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF8C55626EDFB6F009BA9C2 /* UIStackView+.swift */; };
@@ -87,10 +87,10 @@
 		CEB6583E26EB15AD00C11F33 /* YourNameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YourNameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB6584426EB15AD00C11F33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEB6586726EB2C3700C11F33 /* SchemeNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemeNavigator.swift; sourceTree = "<group>"; };
-		CEB6586B26EB2C7600C11F33 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		CEB6586B26EB2C7600C11F33 /* HomeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
 		CEB6586E26EB2C9400C11F33 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		CEB6587126EB2CAB00C11F33 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
-		CEB6587626EB2CFE00C11F33 /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
+		CEB6587626EB2CFE00C11F33 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		CEB6587826EC806F00C11F33 /* Connectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connectable.swift; sourceTree = "<group>"; };
 		CEB6587A26EC809800C11F33 /* URLRequestConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestConvertible.swift; sourceTree = "<group>"; };
 		CEB6587C26EC80BF00C11F33 /* DataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTask.swift; sourceTree = "<group>"; };
@@ -119,10 +119,10 @@
 		CEB658B926ECC42800C11F33 /* TestResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResponse.swift; sourceTree = "<group>"; };
 		CEB658BB26ECC90600C11F33 /* NoContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoContent.swift; sourceTree = "<group>"; };
 		CED16DE826F39F700076565F /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
-		CED16DEA26F39FB50076565F /* RootContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootContainer.swift; sourceTree = "<group>"; };
+		CED16DEA26F39FB50076565F /* SignedInContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignedInContainer.swift; sourceTree = "<group>"; };
 		CED16DF426F3A5480076565F /* QuestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestViewController.swift; sourceTree = "<group>"; };
 		CED16DF626F3A5540076565F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		CED16DF826F3A55D0076565F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		CED16DF826F3A55D0076565F /* MyCardListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardListViewController.swift; sourceTree = "<group>"; };
 		CED16DFA26F3A5690076565F /* CardBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBookViewController.swift; sourceTree = "<group>"; };
 		CEF8C55226EDF8D5009BA9C2 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		CEF8C55626EDFB6F009BA9C2 /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
@@ -299,23 +299,23 @@
 			isa = PBXGroup;
 			children = (
 				CED16DED26F3A4F70076565F /* CardBook */,
-				CED16DEC26F3A4C30076565F /* Home */,
+				CEB6586A26EB2C6400C11F33 /* Home */,
+				CED16DEC26F3A4C30076565F /* MyCardList */,
 				CED16DEF26F3A5050076565F /* Profile */,
 				CED16DEE26F3A5000076565F /* Quest */,
-				CEB6586A26EB2C6400C11F33 /* Root */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
 		};
-		CEB6586A26EB2C6400C11F33 /* Root */ = {
+		CEB6586A26EB2C6400C11F33 /* Home */ = {
 			isa = PBXGroup;
 			children = (
 				CEB6587426EB2CEC00C11F33 /* ViewControllers */,
 				CEB6587526EB2CF100C11F33 /* ViewModels */,
-				CED16DEA26F39FB50076565F /* RootContainer.swift */,
+				CED16DEA26F39FB50076565F /* SignedInContainer.swift */,
 				CED16DE826F39F700076565F /* Tab.swift */,
 			);
-			path = Root;
+			path = Home;
 			sourceTree = "<group>";
 		};
 		CEB6586D26EB2C8800C11F33 /* Auth */ = {
@@ -344,7 +344,7 @@
 		CEB6587426EB2CEC00C11F33 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				CEB6586B26EB2C7600C11F33 /* RootViewController.swift */,
+				CEB6586B26EB2C7600C11F33 /* HomeTabBarController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -352,7 +352,7 @@
 		CEB6587526EB2CF100C11F33 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				CEB6587626EB2CFE00C11F33 /* RootViewModel.swift */,
+				CEB6587626EB2CFE00C11F33 /* HomeViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -430,12 +430,12 @@
 			path = NetworkTests;
 			sourceTree = "<group>";
 		};
-		CED16DEC26F3A4C30076565F /* Home */ = {
+		CED16DEC26F3A4C30076565F /* MyCardList */ = {
 			isa = PBXGroup;
 			children = (
 				CED16DF026F3A5230076565F /* ViewControllers */,
 			);
-			path = Home;
+			path = MyCardList;
 			sourceTree = "<group>";
 		};
 		CED16DED26F3A4F70076565F /* CardBook */ = {
@@ -465,7 +465,7 @@
 		CED16DF026F3A5230076565F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				CED16DF826F3A55D0076565F /* HomeViewController.swift */,
+				CED16DF826F3A55D0076565F /* MyCardListViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -713,7 +713,7 @@
 				CEB6588E26EC821300C11F33 /* Network.swift in Sources */,
 				CED16DF726F3A5540076565F /* ProfileViewController.swift in Sources */,
 				CEB6583026EB15A600C11F33 /* ViewController.swift in Sources */,
-				CED16DEB26F39FB50076565F /* RootContainer.swift in Sources */,
+				CED16DEB26F39FB50076565F /* SignedInContainer.swift in Sources */,
 				CEB6589126EC826300C11F33 /* Enviorment.swift in Sources */,
 				CEB6589326EC834900C11F33 /* Foundation+Decoder.swift in Sources */,
 				CEB6587926EC806F00C11F33 /* Connectable.swift in Sources */,
@@ -724,7 +724,7 @@
 				A2D875DF26EE295C00ED5949 /* AuthResponse.swift in Sources */,
 				CEF8C55326EDF8D5009BA9C2 /* UIView+.swift in Sources */,
 				CED16DE926F39F700076565F /* Tab.swift in Sources */,
-				CEB6587726EB2CFE00C11F33 /* RootViewModel.swift in Sources */,
+				CEB6587726EB2CFE00C11F33 /* HomeViewModel.swift in Sources */,
 				CEFA037A26EFB76D00D12AAB /* SnapshotService.swift in Sources */,
 				CEB6587D26EC80BF00C11F33 /* DataTask.swift in Sources */,
 				CEB6589C26EC988F00C11F33 /* ObserverType+.swift in Sources */,
@@ -733,9 +733,9 @@
 				CEB6588726EC817A00C11F33 /* HTTP.swift in Sources */,
 				CEB6586826EB2C3700C11F33 /* SchemeNavigator.swift in Sources */,
 				CEB6588B26EC81B200C11F33 /* Decoder.swift in Sources */,
-				CEB6586C26EB2C7600C11F33 /* RootViewController.swift in Sources */,
+				CEB6586C26EB2C7600C11F33 /* HomeTabBarController.swift in Sources */,
 				CEB6582C26EB15A600C11F33 /* AppDelegate.swift in Sources */,
-				CED16DF926F3A55D0076565F /* HomeViewController.swift in Sources */,
+				CED16DF926F3A55D0076565F /* MyCardListViewController.swift in Sources */,
 				CED16DF526F3A5480076565F /* QuestViewController.swift in Sources */,
 				CEB6588926EC818900C11F33 /* HTTPError.swift in Sources */,
 				CEB6588026EC80F500C11F33 /* Foundation+Network.swift in Sources */,

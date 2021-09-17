@@ -10,15 +10,14 @@ import UIKit
 final class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    let rootContainer: RootContainer = RootContainer()
+    let signedInContainer: SignedInContainer = SignedInContainer()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let rootViewController = rootContainer.rootViewController()
+        let homeViewController = signedInContainer.homeViewController()
         let window = UIWindow()
-        window.rootViewController = rootViewController
+        window.rootViewController = homeViewController
         window.makeKeyAndVisible()
         self.window = window
         return true
     }
 }
-

@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-final class HomeViewController: ViewController {
+final class MyCardListViewController: ViewController {
     
     override func setupLayout() {
         self.view.addSubview(titleLabel)
@@ -18,7 +18,7 @@ final class HomeViewController: ViewController {
     }
     
     override func setupAttribute() {
-        let tab = Tab.home
+        let tab = Tab.myCardList
         self.tabBarItem = UITabBarItem(
             title: tab.description,
             image: nil,
@@ -26,7 +26,7 @@ final class HomeViewController: ViewController {
         )
         
         self.view.backgroundColor = .systemBlue
-        titleLabel.text = "HOME"
+        titleLabel.text = "MyCardList"
         
     }
     

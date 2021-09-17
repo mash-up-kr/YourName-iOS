@@ -9,10 +9,10 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-final class RootViewController: UITabBarController {
+final class HomeTabBarController: UITabBarController {
     
     init(
-        viewModel: RootViewModel,
+        viewModel: HomeViewModel,
         viewControllerFactory: @escaping (Tab) -> ViewController
     ) {
         self.viewModel = viewModel
@@ -51,7 +51,7 @@ final class RootViewController: UITabBarController {
             .disposed(by: disposeBag)
     }
     
-    private let viewModel: RootViewModel
+    private let viewModel: HomeViewModel
     private let viewControllerFactory: (Tab) -> ViewController
     private let disposeBag = DisposeBag()
 }
