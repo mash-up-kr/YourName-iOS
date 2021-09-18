@@ -14,6 +14,12 @@
 		CE63123D26F59D6D00B2E69B /* RootDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63123C26F59D6D00B2E69B /* RootDependencyContainer.swift */; };
 		CE63124026F59E6700B2E69B /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63123F26F59E6700B2E69B /* RootViewModel.swift */; };
 		CE63124926F5A30200B2E69B /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63124826F5A30200B2E69B /* Navigation.swift */; };
+		CE63124C26F5DDC000B2E69B /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63124B26F5DDC000B2E69B /* SignInViewController.swift */; };
+		CE63124E26F5DDFA00B2E69B /* SignedOutDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63124D26F5DDFA00B2E69B /* SignedOutDependencyContainer.swift */; };
+		CE63125026F5DE6800B2E69B /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63124F26F5DE6800B2E69B /* SignInViewModel.swift */; };
+		CE63125226F5E19700B2E69B /* AccessTokenRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63125126F5E19700B2E69B /* AccessTokenRepository.swift */; };
+		CE63125526F5E25200B2E69B /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63125426F5E25200B2E69B /* String+.swift */; };
+		CE63125726F5E2A100B2E69B /* MockAccessTokenRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63125626F5E2A100B2E69B /* MockAccessTokenRepository.swift */; };
 		CEB6582C26EB15A600C11F33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6582B26EB15A600C11F33 /* AppDelegate.swift */; };
 		CEB6583026EB15A600C11F33 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6582F26EB15A600C11F33 /* ViewController.swift */; };
 		CEB6583526EB15AC00C11F33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEB6583426EB15AC00C11F33 /* Assets.xcassets */; };
@@ -86,6 +92,12 @@
 		CE63123C26F59D6D00B2E69B /* RootDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootDependencyContainer.swift; sourceTree = "<group>"; };
 		CE63123F26F59E6700B2E69B /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		CE63124826F5A30200B2E69B /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
+		CE63124B26F5DDC000B2E69B /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		CE63124D26F5DDFA00B2E69B /* SignedOutDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignedOutDependencyContainer.swift; sourceTree = "<group>"; };
+		CE63124F26F5DE6800B2E69B /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		CE63125126F5E19700B2E69B /* AccessTokenRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenRepository.swift; sourceTree = "<group>"; };
+		CE63125426F5E25200B2E69B /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		CE63125626F5E2A100B2E69B /* MockAccessTokenRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAccessTokenRepository.swift; sourceTree = "<group>"; };
 		CEB6582826EB15A600C11F33 /* YourName.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YourName.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB6582B26EB15A600C11F33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEB6582F26EB15A600C11F33 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -196,8 +208,33 @@
 			children = (
 				CE63123C26F59D6D00B2E69B /* RootDependencyContainer.swift */,
 				CED16DEA26F39FB50076565F /* SignedInDependencyContainer.swift */,
+				CE63124D26F5DDFA00B2E69B /* SignedOutDependencyContainer.swift */,
 			);
 			path = DIContainer;
+			sourceTree = "<group>";
+		};
+		CE63124A26F5DD5D00B2E69B /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				CE63124B26F5DDC000B2E69B /* SignInViewController.swift */,
+				CE63124F26F5DE6800B2E69B /* SignInViewModel.swift */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		CE63125326F5E1B600B2E69B /* Local */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Local;
+			sourceTree = "<group>";
+		};
+		CE63125826F5E34500B2E69B /* TestDouble */ = {
+			isa = PBXGroup;
+			children = (
+				CE63125626F5E2A100B2E69B /* MockAccessTokenRepository.swift */,
+			);
+			path = TestDouble;
 			sourceTree = "<group>";
 		};
 		CEB6581F26EB15A600C11F33 = {
@@ -299,6 +336,7 @@
 		CEB6586326EB2BB500C11F33 /* Data Layer */ = {
 			isa = PBXGroup;
 			children = (
+				CE63125326F5E1B600B2E69B /* Local */,
 				CEB6588C26EC81F700C11F33 /* Network */,
 			);
 			path = "Data Layer";
@@ -326,6 +364,7 @@
 		CEB6586926EB2C5F00C11F33 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				CE63124A26F5DD5D00B2E69B /* SignIn */,
 				CED16DED26F3A4F70076565F /* CardBook */,
 				CEB6586A26EB2C6400C11F33 /* Home */,
 				CED16DEC26F3A4C30076565F /* MyCardList */,
@@ -349,8 +388,10 @@
 		CEB6586D26EB2C8800C11F33 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				CE63125826F5E34500B2E69B /* TestDouble */,
 				CEB6586E26EB2C9400C11F33 /* Auth.swift */,
 				A2D875DE26EE295C00ED5949 /* AuthResponse.swift */,
+				CE63125126F5E19700B2E69B /* AccessTokenRepository.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -478,6 +519,7 @@
 			isa = PBXGroup;
 			children = (
 				CEB6589A26EC987800C11F33 /* Rx */,
+				CE63125426F5E25200B2E69B /* String+.swift */,
 				CEF8C55626EDFB6F009BA9C2 /* UIStackView+.swift */,
 				CEF8C55226EDF8D5009BA9C2 /* UIView+.swift */,
 				CEB6582F26EB15A600C11F33 /* ViewController.swift */,
@@ -686,17 +728,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEF8C55726EDFB6F009BA9C2 /* UIStackView+.swift in Sources */,
+				CE63125526F5E25200B2E69B /* String+.swift in Sources */,
 				CE63124026F59E6700B2E69B /* RootViewModel.swift in Sources */,
 				CEB6589526EC838000C11F33 /* HTTPClient.swift in Sources */,
 				CEB658BC26ECC90600C11F33 /* NoContent.swift in Sources */,
 				CEB6588226EC811E00C11F33 /* DataLoading.swift in Sources */,
+				CE63124C26F5DDC000B2E69B /* SignInViewController.swift in Sources */,
+				CE63125026F5DE6800B2E69B /* SignInViewModel.swift in Sources */,
 				CEB6586F26EB2C9400C11F33 /* Auth.swift in Sources */,
 				CEB6588E26EC821300C11F33 /* Network.swift in Sources */,
 				CED16DF726F3A5540076565F /* ProfileViewController.swift in Sources */,
 				CEB6583026EB15A600C11F33 /* ViewController.swift in Sources */,
 				CED16DEB26F39FB50076565F /* SignedInDependencyContainer.swift in Sources */,
+				CE63125726F5E2A100B2E69B /* MockAccessTokenRepository.swift in Sources */,
 				CEB6589126EC826300C11F33 /* Enviorment.swift in Sources */,
 				CE63123A26F59C7800B2E69B /* RootViewController.swift in Sources */,
+				CE63125226F5E19700B2E69B /* AccessTokenRepository.swift in Sources */,
 				CEB6589326EC834900C11F33 /* Foundation+Decoder.swift in Sources */,
 				CEB6587926EC806F00C11F33 /* Connectable.swift in Sources */,
 				CEFA037D26EFBACE00D12AAB /* QRGenerater.swift in Sources */,
@@ -721,6 +768,7 @@
 				CEB6582C26EB15A600C11F33 /* AppDelegate.swift in Sources */,
 				CED16DF926F3A55D0076565F /* MyCardListViewController.swift in Sources */,
 				CED16DF526F3A5480076565F /* QuestViewController.swift in Sources */,
+				CE63124E26F5DDFA00B2E69B /* SignedOutDependencyContainer.swift in Sources */,
 				CEB6588926EC818900C11F33 /* HTTPError.swift in Sources */,
 				CEB6588026EC80F500C11F33 /* Foundation+Network.swift in Sources */,
 			);

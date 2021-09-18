@@ -17,4 +17,5 @@ typealias RootNavigation = Navigation<RootPath>
 
 struct RootViewModel {
     let navigation = PublishSubject<RootNavigation>()
+    
 }
