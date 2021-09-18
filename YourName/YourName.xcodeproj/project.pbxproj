@@ -10,6 +10,10 @@
 		8CE2A8B5191C919CFE08E6BD /* Pods_YourName.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A104CCC69AFB71F0412B7A45 /* Pods_YourName.framework */; };
 		A2D875DF26EE295C00ED5949 /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D875DE26EE295C00ED5949 /* AuthResponse.swift */; };
 		B8ABDDD72D874CE6CD7C427A /* Pods_YourNameTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F42CD2B99E49494D26EBB9F2 /* Pods_YourNameTests.framework */; };
+		CE63123A26F59C7800B2E69B /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63123926F59C7800B2E69B /* RootViewController.swift */; };
+		CE63123D26F59D6D00B2E69B /* RootDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63123C26F59D6D00B2E69B /* RootDependencyContainer.swift */; };
+		CE63124026F59E6700B2E69B /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63123F26F59E6700B2E69B /* RootViewModel.swift */; };
+		CE63124926F5A30200B2E69B /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63124826F5A30200B2E69B /* Navigation.swift */; };
 		CEB6582C26EB15A600C11F33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6582B26EB15A600C11F33 /* AppDelegate.swift */; };
 		CEB6583026EB15A600C11F33 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6582F26EB15A600C11F33 /* ViewController.swift */; };
 		CEB6583526EB15AC00C11F33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEB6583426EB15AC00C11F33 /* Assets.xcassets */; };
@@ -47,7 +51,7 @@
 		CEB658BA26ECC42800C11F33 /* TestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB658B926ECC42800C11F33 /* TestResponse.swift */; };
 		CEB658BC26ECC90600C11F33 /* NoContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB658BB26ECC90600C11F33 /* NoContent.swift */; };
 		CED16DE926F39F700076565F /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED16DE826F39F700076565F /* Tab.swift */; };
-		CED16DEB26F39FB50076565F /* SignedInContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED16DEA26F39FB50076565F /* SignedInContainer.swift */; };
+		CED16DEB26F39FB50076565F /* SignedInDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED16DEA26F39FB50076565F /* SignedInDependencyContainer.swift */; };
 		CED16DF526F3A5480076565F /* QuestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED16DF426F3A5480076565F /* QuestViewController.swift */; };
 		CED16DF726F3A5540076565F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED16DF626F3A5540076565F /* ProfileViewController.swift */; };
 		CED16DF926F3A55D0076565F /* MyCardListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED16DF826F3A55D0076565F /* MyCardListViewController.swift */; };
@@ -78,6 +82,10 @@
 		A10969B73C6F2B6D2B45B54A /* Pods-YourName-YourNameUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourName-YourNameUITests.debug.xcconfig"; path = "Target Support Files/Pods-YourName-YourNameUITests/Pods-YourName-YourNameUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A1AC0CE1DA2C5DDF40338B84 /* Pods-YourNameTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourNameTests.debug.xcconfig"; path = "Target Support Files/Pods-YourNameTests/Pods-YourNameTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A2D875DE26EE295C00ED5949 /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
+		CE63123926F59C7800B2E69B /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		CE63123C26F59D6D00B2E69B /* RootDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootDependencyContainer.swift; sourceTree = "<group>"; };
+		CE63123F26F59E6700B2E69B /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
+		CE63124826F5A30200B2E69B /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
 		CEB6582826EB15A600C11F33 /* YourName.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YourName.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB6582B26EB15A600C11F33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEB6582F26EB15A600C11F33 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -119,7 +127,7 @@
 		CEB658B926ECC42800C11F33 /* TestResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResponse.swift; sourceTree = "<group>"; };
 		CEB658BB26ECC90600C11F33 /* NoContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoContent.swift; sourceTree = "<group>"; };
 		CED16DE826F39F700076565F /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
-		CED16DEA26F39FB50076565F /* SignedInContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignedInContainer.swift; sourceTree = "<group>"; };
+		CED16DEA26F39FB50076565F /* SignedInDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignedInDependencyContainer.swift; sourceTree = "<group>"; };
 		CED16DF426F3A5480076565F /* QuestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestViewController.swift; sourceTree = "<group>"; };
 		CED16DF626F3A5540076565F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		CED16DF826F3A55D0076565F /* MyCardListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardListViewController.swift; sourceTree = "<group>"; };
@@ -172,6 +180,24 @@
 				F42CD2B99E49494D26EBB9F2 /* Pods_YourNameTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CE63123826F59C6B00B2E69B /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				CE63123926F59C7800B2E69B /* RootViewController.swift */,
+				CE63123F26F59E6700B2E69B /* RootViewModel.swift */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		CE63123E26F59E4500B2E69B /* DIContainer */ = {
+			isa = PBXGroup;
+			children = (
+				CE63123C26F59D6D00B2E69B /* RootDependencyContainer.swift */,
+				CED16DEA26F39FB50076565F /* SignedInDependencyContainer.swift */,
+			);
+			path = DIContainer;
 			sourceTree = "<group>";
 		};
 		CEB6581F26EB15A600C11F33 = {
@@ -263,7 +289,9 @@
 		CEB6586226EB2BB000C11F33 /* UI Layer */ = {
 			isa = PBXGroup;
 			children = (
+				CE63123E26F59E4500B2E69B /* DIContainer */,
 				CEB6586926EB2C5F00C11F33 /* Screens */,
+				CE63124826F5A30200B2E69B /* Navigation.swift */,
 			);
 			path = "UI Layer";
 			sourceTree = "<group>";
@@ -303,6 +331,7 @@
 				CED16DEC26F3A4C30076565F /* MyCardList */,
 				CED16DEF26F3A5050076565F /* Profile */,
 				CED16DEE26F3A5000076565F /* Quest */,
+				CE63123826F59C6B00B2E69B /* Root */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -310,9 +339,8 @@
 		CEB6586A26EB2C6400C11F33 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				CEB6587426EB2CEC00C11F33 /* ViewControllers */,
-				CEB6587526EB2CF100C11F33 /* ViewModels */,
-				CED16DEA26F39FB50076565F /* SignedInContainer.swift */,
+				CEB6586B26EB2C7600C11F33 /* HomeTabBarController.swift */,
+				CEB6587626EB2CFE00C11F33 /* HomeViewModel.swift */,
 				CED16DE826F39F700076565F /* Tab.swift */,
 			);
 			path = Home;
@@ -339,22 +367,6 @@
 				CEB6587A26EC809800C11F33 /* URLRequestConvertible.swift */,
 			);
 			path = Protocols;
-			sourceTree = "<group>";
-		};
-		CEB6587426EB2CEC00C11F33 /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				CEB6586B26EB2C7600C11F33 /* HomeTabBarController.swift */,
-			);
-			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		CEB6587526EB2CF100C11F33 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				CEB6587626EB2CFE00C11F33 /* HomeViewModel.swift */,
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		CEB6587E26EC80D700C11F33 /* Extensions */ = {
@@ -433,7 +445,7 @@
 		CED16DEC26F3A4C30076565F /* MyCardList */ = {
 			isa = PBXGroup;
 			children = (
-				CED16DF026F3A5230076565F /* ViewControllers */,
+				CED16DF826F3A55D0076565F /* MyCardListViewController.swift */,
 			);
 			path = MyCardList;
 			sourceTree = "<group>";
@@ -441,7 +453,7 @@
 		CED16DED26F3A4F70076565F /* CardBook */ = {
 			isa = PBXGroup;
 			children = (
-				CED16DF126F3A52A0076565F /* ViewControllers */,
+				CED16DFA26F3A5690076565F /* CardBookViewController.swift */,
 			);
 			path = CardBook;
 			sourceTree = "<group>";
@@ -449,7 +461,7 @@
 		CED16DEE26F3A5000076565F /* Quest */ = {
 			isa = PBXGroup;
 			children = (
-				CED16DF326F3A53D0076565F /* ViewControllers */,
+				CED16DF426F3A5480076565F /* QuestViewController.swift */,
 			);
 			path = Quest;
 			sourceTree = "<group>";
@@ -457,41 +469,9 @@
 		CED16DEF26F3A5050076565F /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				CED16DF226F3A5340076565F /* ViewControllers */,
-			);
-			path = Profile;
-			sourceTree = "<group>";
-		};
-		CED16DF026F3A5230076565F /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				CED16DF826F3A55D0076565F /* MyCardListViewController.swift */,
-			);
-			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		CED16DF126F3A52A0076565F /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				CED16DFA26F3A5690076565F /* CardBookViewController.swift */,
-			);
-			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		CED16DF226F3A5340076565F /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
 				CED16DF626F3A5540076565F /* ProfileViewController.swift */,
 			);
-			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		CED16DF326F3A53D0076565F /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				CED16DF426F3A5480076565F /* QuestViewController.swift */,
-			);
-			path = ViewControllers;
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		CEF8C55526EDF8F7009BA9C2 /* Extensions */ = {
@@ -706,6 +686,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEF8C55726EDFB6F009BA9C2 /* UIStackView+.swift in Sources */,
+				CE63124026F59E6700B2E69B /* RootViewModel.swift in Sources */,
 				CEB6589526EC838000C11F33 /* HTTPClient.swift in Sources */,
 				CEB658BC26ECC90600C11F33 /* NoContent.swift in Sources */,
 				CEB6588226EC811E00C11F33 /* DataLoading.swift in Sources */,
@@ -713,8 +694,9 @@
 				CEB6588E26EC821300C11F33 /* Network.swift in Sources */,
 				CED16DF726F3A5540076565F /* ProfileViewController.swift in Sources */,
 				CEB6583026EB15A600C11F33 /* ViewController.swift in Sources */,
-				CED16DEB26F39FB50076565F /* SignedInContainer.swift in Sources */,
+				CED16DEB26F39FB50076565F /* SignedInDependencyContainer.swift in Sources */,
 				CEB6589126EC826300C11F33 /* Enviorment.swift in Sources */,
+				CE63123A26F59C7800B2E69B /* RootViewController.swift in Sources */,
 				CEB6589326EC834900C11F33 /* Foundation+Decoder.swift in Sources */,
 				CEB6587926EC806F00C11F33 /* Connectable.swift in Sources */,
 				CEFA037D26EFBACE00D12AAB /* QRGenerater.swift in Sources */,
@@ -724,6 +706,7 @@
 				A2D875DF26EE295C00ED5949 /* AuthResponse.swift in Sources */,
 				CEF8C55326EDF8D5009BA9C2 /* UIView+.swift in Sources */,
 				CED16DE926F39F700076565F /* Tab.swift in Sources */,
+				CE63124926F5A30200B2E69B /* Navigation.swift in Sources */,
 				CEB6587726EB2CFE00C11F33 /* HomeViewModel.swift in Sources */,
 				CEFA037A26EFB76D00D12AAB /* SnapshotService.swift in Sources */,
 				CEB6587D26EC80BF00C11F33 /* DataTask.swift in Sources */,
@@ -733,6 +716,7 @@
 				CEB6588726EC817A00C11F33 /* HTTP.swift in Sources */,
 				CEB6586826EB2C3700C11F33 /* SchemeNavigator.swift in Sources */,
 				CEB6588B26EC81B200C11F33 /* Decoder.swift in Sources */,
+				CE63123D26F59D6D00B2E69B /* RootDependencyContainer.swift in Sources */,
 				CEB6586C26EB2C7600C11F33 /* HomeTabBarController.swift in Sources */,
 				CEB6582C26EB15A600C11F33 /* AppDelegate.swift in Sources */,
 				CED16DF926F3A55D0076565F /* MyCardListViewController.swift in Sources */,
