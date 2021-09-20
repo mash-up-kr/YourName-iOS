@@ -5,8 +5,8 @@
 //  Created by Booung on 2021/09/18.
 //
 
-import Foundation
 import RxSwift
+import RxViewController
 
 final class RootViewController: ViewController {
     
@@ -20,7 +20,7 @@ final class RootViewController: ViewController {
         self.splashViewControllerFactory = splashViewControllerFactory
         self.signInViewControllerFactory = signInViewControllerFactory
         self.homeTabBarControllerFactory = homeTabBarControllerFactory
-        super.init(nibName: nil, bundle: nil)
+        super.init()
     }
     
     required init?(coder: NSCoder) {
@@ -31,18 +31,6 @@ final class RootViewController: ViewController {
         super.viewDidLoad()
         
         bind()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        viewModel.navigation
-            .debug("root navigation: ")
-            .subscribe(onNext: { [weak self] action in
-                guard let self = self else { return }
-                guard case .present(let nextPath) = action else { return }
-                self.present(next: nextPath)
-            }).disposed(by: disposeBag)
     }
     
     override func setupAttribute() {
@@ -58,7 +46,14 @@ final class RootViewController: ViewController {
         }
     }
     
-    private func bind() {}
+    private func bind() {
+        self.rx.viewDidAppear.flatMapFirst { _ in self.viewModel.navigation }
+            .subscribe(onNext: { [weak self] action in
+                guard let self = self else { return }
+                guard case .present(let nextPath) = action else { return }
+                self.present(next: nextPath)
+            }).disposed(by: disposeBag)
+    }
     
     private func present(next: RootPath) {
         if let presentedViewController = self.presentedViewController {
@@ -74,8 +69,6 @@ final class RootViewController: ViewController {
             viewController = homeTabBarControllerFactory(accessToken)
         }
         viewController.modalPresentationStyle = .fullScreen
-//        let navigationController = UINavigationController(rootViewController: viewController)
-//        navigationController.navigationBar.isHidden = true
         self.present(viewController, animated: true, completion: nil)
     }
     

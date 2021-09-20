@@ -12,7 +12,7 @@ final class SignInViewController: ViewController {
     init(viewModel: SignInViewModel) {
         self.viewModel = viewModel
         
-        super.init(nibName: nil, bundle: nil)
+        super.init()
     }
     
     required init?(coder: NSCoder) {

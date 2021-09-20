@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Navigation<Path> {
+enum Navigation<Path: Equatable>: Equatable {
     case present(Path)
     case push(Path)
 }

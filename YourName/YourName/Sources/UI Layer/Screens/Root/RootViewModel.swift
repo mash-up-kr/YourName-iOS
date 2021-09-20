@@ -8,7 +8,7 @@
 import Foundation
 import RxSwift
 
-enum RootPath {
+enum RootPath: Equatable {
     case splash
     case signedOut
     case signedIn(with: AccessToken)

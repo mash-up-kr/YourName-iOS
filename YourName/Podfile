@@ -5,12 +5,13 @@ target 'YourName' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  # ⚛️ Reactive X 
-  pod 'RxSwift'
+  # ⚛️ Reactive X
   pod 'RxCocoa'
+  pod 'RxDataSources'
   pod 'RxGesture'
   pod 'RxOptional'
-  pod 'RxDataSources'
+  pod 'RxSwift'
+  pod 'RxViewController'
 
   # 🖼 Image Cache
   pod 'Kingfisher'
@@ -28,7 +29,6 @@ target 'YourName' do
   # pod "Cuckoo"
 
   target 'YourNameTests' do
-    inherit! :search_paths
     pod 'RxTest'
     pod 'RxBlocking'
     pod 'Quick'

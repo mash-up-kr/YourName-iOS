@@ -12,7 +12,7 @@ final class SplashViewController: ViewController {
     init(viewModel: SplashViewModel) {
         self.viewModel = viewModel
         
-        super.init(nibName: nil, bundle: nil)
+        super.init()
     }
     
     required init?(coder: NSCoder) {
@@ -26,7 +26,7 @@ final class SplashViewController: ViewController {
     }
     
     override func setupAttribute() {
-        self.view.backgroundColor = .red
+        self.view.backgroundColor = .systemOrange
         titleLabel.text = "Splash"
         titleLabel.textColor = .white
     }
