@@ -19,6 +19,7 @@ final class SplashViewModel {
     }
     
     func loadAccessToken() {
+        #warning("⚠️ TODO: Delay Code 삭제") // Booung
         accessTokenRepository.fetchAccessToken()
             .delay(.seconds(1), scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] accessToken in
@@ -30,7 +31,6 @@ final class SplashViewModel {
                 }
             })
             .disposed(by: disposeBag)
-        
     }
     
     private let accessTokenRepository: AccessTokenRepository

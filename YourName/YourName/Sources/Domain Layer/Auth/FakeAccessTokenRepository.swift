@@ -10,11 +10,13 @@ import RxSwift
 
 final class FakeAccessTokenRepository: AccessTokenRepository {
     
+    let dummyAccessToken = "I'm dummy token."
     var hasAccessToken: Bool = true
+    var calledFetchAccessToken = false
     
     func fetchAccessToken() -> Observable<AccessToken?> {
+        calledFetchAccessToken = true
         return .just(hasAccessToken ? dummyAccessToken : nil)
     }
     
-    private let dummyAccessToken = "I'm dummy token."
 }

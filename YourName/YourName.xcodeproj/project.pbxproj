@@ -24,6 +24,7 @@
 		CE6312A926F8CB2F00B2E69B /* SignedOutDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6312A626F8CB2F00B2E69B /* SignedOutDependencyContainer.swift */; };
 		CE6312AA26F8CB2F00B2E69B /* RootDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6312A726F8CB2F00B2E69B /* RootDependencyContainer.swift */; };
 		CE6312AF26F8CC0A00B2E69B /* RootViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6312AE26F8CC0A00B2E69B /* RootViewModelTests.swift */; };
+		CE6312B226F8F27600B2E69B /* SplashViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6312B126F8F27600B2E69B /* SplashViewModelTests.swift */; };
 		CEB6582C26EB15A600C11F33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6582B26EB15A600C11F33 /* AppDelegate.swift */; };
 		CEB6583026EB15A600C11F33 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6582F26EB15A600C11F33 /* ViewController.swift */; };
 		CEB6583526EB15AC00C11F33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEB6583426EB15AC00C11F33 /* Assets.xcassets */; };
@@ -109,6 +110,7 @@
 		CE6312A626F8CB2F00B2E69B /* SignedOutDependencyContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignedOutDependencyContainer.swift; sourceTree = "<group>"; };
 		CE6312A726F8CB2F00B2E69B /* RootDependencyContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootDependencyContainer.swift; sourceTree = "<group>"; };
 		CE6312AE26F8CC0A00B2E69B /* RootViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModelTests.swift; sourceTree = "<group>"; };
+		CE6312B126F8F27600B2E69B /* SplashViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModelTests.swift; sourceTree = "<group>"; };
 		CEB6582826EB15A600C11F33 /* YourName.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YourName.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB6582B26EB15A600C11F33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEB6582F26EB15A600C11F33 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -282,6 +284,14 @@
 			path = RootTests;
 			sourceTree = "<group>";
 		};
+		CE6312B026F8F24F00B2E69B /* SplashTests */ = {
+			isa = PBXGroup;
+			children = (
+				CE6312B126F8F27600B2E69B /* SplashViewModelTests.swift */,
+			);
+			path = SplashTests;
+			sourceTree = "<group>";
+		};
 		CEB6581F26EB15A600C11F33 = {
 			isa = PBXGroup;
 			children = (
@@ -316,8 +326,9 @@
 		CEB6584126EB15AD00C11F33 /* YourNameTests */ = {
 			isa = PBXGroup;
 			children = (
-				CE6312AB26F8CBAD00B2E69B /* RootTests */,
 				CEB658B626EC9E8E00C11F33 /* NetworkTests */,
+				CE6312AB26F8CBAD00B2E69B /* RootTests */,
+				CE6312B026F8F24F00B2E69B /* SplashTests */,
 				CEB6584426EB15AD00C11F33 /* Info.plist */,
 			);
 			path = YourNameTests;
@@ -831,6 +842,7 @@
 			files = (
 				CEB658AC26EC9A3B00C11F33 /* MockNetwork.swift in Sources */,
 				CEB658B126EC9A3B00C11F33 /* MockDataTask.swift in Sources */,
+				CE6312B226F8F27600B2E69B /* SplashViewModelTests.swift in Sources */,
 				CE6312AF26F8CC0A00B2E69B /* RootViewModelTests.swift in Sources */,
 				CEB658B526EC9E8B00C11F33 /* NetworkTests.swift in Sources */,
 				CEB658B026EC9A3B00C11F33 /* MockSession.swift in Sources */,

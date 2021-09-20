@@ -17,14 +17,14 @@ final class RootViewModelTests: XCTestCase {
     // 🧪 System Under Test
     var sut: RootViewModel!
     
-    override func setUp() {
-        super.setUp()
+    override func setUpWithError() throws {
+        try super.setUpWithError()
         sut = RootViewModel()
     }
     
-    override func tearDown() {
+    override func tearDownWithError() throws {
         sut = nil
-        super.tearDown()
+        try super.tearDownWithError()
     }
     
     
