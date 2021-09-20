@@ -18,4 +18,3 @@ final class FakeAccessTokenRepository: AccessTokenRepository {
     
     private let dummyAccessToken = "I'm dummy token."
 }
-
