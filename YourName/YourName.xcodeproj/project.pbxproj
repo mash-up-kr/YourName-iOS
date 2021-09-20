@@ -274,12 +274,12 @@
 			path = SignedOut;
 			sourceTree = "<group>";
 		};
-		CE6312AB26F8CBAD00B2E69B /* ViewModelTests */ = {
+		CE6312AB26F8CBAD00B2E69B /* RootTests */ = {
 			isa = PBXGroup;
 			children = (
 				CE6312AE26F8CC0A00B2E69B /* RootViewModelTests.swift */,
 			);
-			path = ViewModelTests;
+			path = RootTests;
 			sourceTree = "<group>";
 		};
 		CEB6581F26EB15A600C11F33 = {
@@ -316,7 +316,7 @@
 		CEB6584126EB15AD00C11F33 /* YourNameTests */ = {
 			isa = PBXGroup;
 			children = (
-				CE6312AB26F8CBAD00B2E69B /* ViewModelTests */,
+				CE6312AB26F8CBAD00B2E69B /* RootTests */,
 				CEB658B626EC9E8E00C11F33 /* NetworkTests */,
 				CEB6584426EB15AD00C11F33 /* Info.plist */,
 			);
