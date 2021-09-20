@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RxSwift
 
 final class RootViewController: ViewController {
     
@@ -20,6 +21,7 @@ final class RootViewController: ViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         bind()
     }
     
@@ -32,8 +34,12 @@ final class RootViewController: ViewController {
     }
     
     private func bind() {
-        
+        viewModel.navigation
+            .subscribe(onNext: { _ in
+               
+            }).disposed(by: disposeBag)
     }
     
     private let viewModel: RootViewModel
+    private let disposeBag = DisposeBag()
 }

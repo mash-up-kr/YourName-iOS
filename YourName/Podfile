@@ -23,6 +23,9 @@ target 'YourName' do
   
   # 🐛 Debug Tool
   pod 'FLEX', :configurations => ['Debug']
+  
+  # 🥸 Mock
+  # pod "Cuckoo"
 
   target 'YourNameTests' do
     inherit! :search_paths

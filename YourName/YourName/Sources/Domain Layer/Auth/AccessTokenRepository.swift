@@ -11,12 +11,12 @@ import RxSwift
 typealias AccessToken = String
 
 protocol AccessTokenRepository {
-    func accessToken() -> Observable<AccessToken>
+    func fetchAccessToken() -> Observable<AccessToken?>
 }
 
-final class YNAccessTokenRepository: AccessTokenRepository {
-    func accessToken() -> Observable<AccessToken> {
-        #warning("⚠️ TODO Booung: 로직 구현 해야함")
+final class YourNameAccessTokenRepository: AccessTokenRepository {
+    func fetchAccessToken() -> Observable<AccessToken?> {
+        #warning("⚠️ TODO: 로직 구현 해야함") // Booung
         fatalError()
     }
 }

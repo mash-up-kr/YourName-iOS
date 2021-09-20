@@ -9,6 +9,7 @@ import Foundation
 import RxSwift
 
 enum RootPath {
+    case splash
     case signedOut
     case signedIn
 }
@@ -16,6 +17,5 @@ enum RootPath {
 typealias RootNavigation = Navigation<RootPath>
 
 struct RootViewModel {
-    let navigation = PublishSubject<RootNavigation>()
-    
+    let navigation = BehaviorSubject<RootNavigation>(value: .present(.splash))
 }

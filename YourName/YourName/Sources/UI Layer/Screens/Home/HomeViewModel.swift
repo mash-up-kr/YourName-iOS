@@ -13,9 +13,6 @@ struct HomeViewModel {
     let tabItems = BehaviorRelay<[Tab]>(value: Tab.allCases)
     let currentTab = PublishRelay<Tab>()
     
-    let showSplash = PublishRelay<Void>()
-    let showWelcome = PublishRelay<Void>()
-    
     func selectTab(index: Int) {
         guard let selectedTab = Tab(rawValue: index) else { return }
         currentTab.accept(selectedTab)
