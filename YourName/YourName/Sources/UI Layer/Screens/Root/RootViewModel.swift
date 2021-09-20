@@ -11,11 +11,20 @@ import RxSwift
 enum RootPath {
     case splash
     case signedOut
-    case signedIn
+    case signedIn(with: AccessToken)
 }
 
 typealias RootNavigation = Navigation<RootPath>
 
-struct RootViewModel {
+final class RootViewModel: AuthenticationDelegate {
+    
     let navigation = BehaviorSubject<RootNavigation>(value: .present(.splash))
+    
+    func signIn(withAccessToken accessToken: AccessToken) {
+        navigation.onNext(.present(.signedIn(with: accessToken)))
+    }
+    
+    func notSignIn() {
+        navigation.onNext(.present(.signedOut))
+    }
 }

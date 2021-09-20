@@ -9,9 +9,15 @@ import Foundation
 
 final class SignedInDependencyContainer {
     
-    init(rootDependencyContainer: RootDependencyContainer) {
+    let accessToken: AccessToken
+    
+    init(
+        rootDependencyContainer: RootDependencyContainer,
+        accessToken: AccessToken
+    ) {
         // do something
         // get state of rootContainer
+        self.accessToken = accessToken
     }
     
     func createHomeViewController() -> HomeTabBarController {

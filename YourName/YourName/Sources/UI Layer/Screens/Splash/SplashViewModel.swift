@@ -8,20 +8,33 @@
 import Foundation
 import RxSwift
 
-struct SplashViewModel {
+final class SplashViewModel {
     
-    let accessToken = PublishSubject<AccessToken?>()
-    
-    init(accessTokenRepository: AccessTokenRepository) {
+    init(
+        accessTokenRepository: AccessTokenRepository,
+        authenticationDelegate: AuthenticationDelegate
+        ) {
         self.accessTokenRepository = accessTokenRepository
+        self.authenticationDelegate = authenticationDelegate
     }
     
-    private func loadAccessToken() {
+    func loadAccessToken() {
         accessTokenRepository.fetchAccessToken()
-            .bind(to: accessToken)
+            .delay(.seconds(1), scheduler: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] accessToken in
+                guard let self = self else { return }
+                if let accessToken = accessToken {
+                    self.authenticationDelegate.signIn(withAccessToken: accessToken)
+                } else {
+                    self.authenticationDelegate.notSignIn()
+                }
+            })
             .disposed(by: disposeBag)
+        
     }
     
     private let accessTokenRepository: AccessTokenRepository
+    private let authenticationDelegate: AuthenticationDelegate
+    
     private let disposeBag = DisposeBag()
 }

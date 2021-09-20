@@ -21,11 +21,24 @@ final class SplashViewController: ViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        viewModel.loadAccessToken()
     }
     
-    override func setupAttribute() {}
+    override func setupAttribute() {
+        self.view.backgroundColor = .red
+        titleLabel.text = "Splash"
+        titleLabel.textColor = .white
+    }
     
-    override func setupLayout() {}
+    override func setupLayout() {
+        self.view.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints {
+            $0.center.equalTo(self.view)
+        }
+    }
     
     private let viewModel: SplashViewModel
+    
+    private let titleLabel = UILabel()
 }
