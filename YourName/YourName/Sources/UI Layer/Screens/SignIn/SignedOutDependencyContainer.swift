@@ -11,7 +11,7 @@ final class SignedOutDependencyContainer {
     
     init(rootDependencyContainer: RootDependencyContainer) {
         // do something
-        // get state of rootContainer
+        // get state of rootDependencyContainer
     }
     
     func createSignInViewController() -> SignInViewController {

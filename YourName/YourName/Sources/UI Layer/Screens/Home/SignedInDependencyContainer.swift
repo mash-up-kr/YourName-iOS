@@ -16,7 +16,7 @@ final class SignedInDependencyContainer {
         rootDependencyContainer: RootDependencyContainer
     ) {
         // do something
-        // get state of rootContainer
+        // get state of rootDependencyContainer
         self.accessToken = accessToken
     }
     
@@ -42,6 +42,7 @@ final class SignedInDependencyContainer {
         }
     }
     
+    // Child Dependency Container Factory
     private func createMyCardListDependencyContainer() -> MyCardListDependencyContainer {
         return MyCardListDependencyContainer(signedInDependencyContainer: self)
     }

@@ -31,6 +31,10 @@
 		CE6312BC26F9A04800B2E69B /* MyCardListDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6312BB26F9A04800B2E69B /* MyCardListDependencyContainer.swift */; };
 		CE6312BE26F9A4C700B2E69B /* CardDetailDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6312BD26F9A4C700B2E69B /* CardDetailDependencyContainer.swift */; };
 		CE6312C026F9AB4A00B2E69B /* MyCardListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6312BF26F9AB4A00B2E69B /* MyCardListViewModel.swift */; };
+		CE6312C526F9B05700B2E69B /* MyCardListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6312C426F9B05700B2E69B /* MyCardListViewModelTests.swift */; };
+		CE6312C826F9B3B000B2E69B /* MyCardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6312C726F9B3B000B2E69B /* MyCardRepository.swift */; };
+		CE6312CC26F9B4FC00B2E69B /* MockMyCardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6312CA26F9B4BD00B2E69B /* MockMyCardRepository.swift */; };
+		CE6312CF26F9B82600B2E69B /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6312CE26F9B82600B2E69B /* Card.swift */; };
 		CEB6582C26EB15A600C11F33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6582B26EB15A600C11F33 /* AppDelegate.swift */; };
 		CEB6583026EB15A600C11F33 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6582F26EB15A600C11F33 /* ViewController.swift */; };
 		CEB6583526EB15AC00C11F33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEB6583426EB15AC00C11F33 /* Assets.xcassets */; };
@@ -123,6 +127,10 @@
 		CE6312BB26F9A04800B2E69B /* MyCardListDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardListDependencyContainer.swift; sourceTree = "<group>"; };
 		CE6312BD26F9A4C700B2E69B /* CardDetailDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailDependencyContainer.swift; sourceTree = "<group>"; };
 		CE6312BF26F9AB4A00B2E69B /* MyCardListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardListViewModel.swift; sourceTree = "<group>"; };
+		CE6312C426F9B05700B2E69B /* MyCardListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardListViewModelTests.swift; sourceTree = "<group>"; };
+		CE6312C726F9B3B000B2E69B /* MyCardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardRepository.swift; sourceTree = "<group>"; };
+		CE6312CA26F9B4BD00B2E69B /* MockMyCardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMyCardRepository.swift; sourceTree = "<group>"; };
+		CE6312CE26F9B82600B2E69B /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		CEB6582826EB15A600C11F33 /* YourName.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YourName.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB6582B26EB15A600C11F33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEB6582F26EB15A600C11F33 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -274,8 +282,8 @@
 		CE6312B026F8F24F00B2E69B /* SplashTests */ = {
 			isa = PBXGroup;
 			children = (
+				CE6312CD26F9B5CB00B2E69B /* Test Doubles */,
 				CE6312B126F8F27600B2E69B /* SplashViewModelTests.swift */,
-				CE6312B326F98DF000B2E69B /* MockAuthenticationDelegate.swift */,
 			);
 			path = SplashTests;
 			sourceTree = "<group>";
@@ -283,11 +291,37 @@
 		CE6312B526F99F6200B2E69B /* CardDetail */ = {
 			isa = PBXGroup;
 			children = (
+				CE6312BD26F9A4C700B2E69B /* CardDetailDependencyContainer.swift */,
 				CE6312B626F99F6F00B2E69B /* CardDetailViewController.swift */,
 				CE6312B826F99F7A00B2E69B /* CardDetailViewModel.swift */,
-				CE6312BD26F9A4C700B2E69B /* CardDetailDependencyContainer.swift */,
 			);
 			path = CardDetail;
+			sourceTree = "<group>";
+		};
+		CE6312C126F9B02300B2E69B /* MyCardListTests */ = {
+			isa = PBXGroup;
+			children = (
+				CE6312C426F9B05700B2E69B /* MyCardListViewModelTests.swift */,
+			);
+			path = MyCardListTests;
+			sourceTree = "<group>";
+		};
+		CE6312C626F9B38A00B2E69B /* MyCard */ = {
+			isa = PBXGroup;
+			children = (
+				CE6312C726F9B3B000B2E69B /* MyCardRepository.swift */,
+				CE6312CA26F9B4BD00B2E69B /* MockMyCardRepository.swift */,
+				CE6312CE26F9B82600B2E69B /* Card.swift */,
+			);
+			path = MyCard;
+			sourceTree = "<group>";
+		};
+		CE6312CD26F9B5CB00B2E69B /* Test Doubles */ = {
+			isa = PBXGroup;
+			children = (
+				CE6312B326F98DF000B2E69B /* MockAuthenticationDelegate.swift */,
+			);
+			path = "Test Doubles";
 			sourceTree = "<group>";
 		};
 		CEB6581F26EB15A600C11F33 = {
@@ -324,6 +358,7 @@
 		CEB6584126EB15AD00C11F33 /* YourNameTests */ = {
 			isa = PBXGroup;
 			children = (
+				CE6312C126F9B02300B2E69B /* MyCardListTests */,
 				CEB658B626EC9E8E00C11F33 /* NetworkTests */,
 				CE6312AB26F8CBAD00B2E69B /* RootTests */,
 				CE6312B026F8F24F00B2E69B /* SplashTests */,
@@ -401,6 +436,7 @@
 			isa = PBXGroup;
 			children = (
 				CEB6586D26EB2C8800C11F33 /* Auth */,
+				CE6312C626F9B38A00B2E69B /* MyCard */,
 				CEB6586626EB2C0700C11F33 /* Scheme */,
 				CEFA037826EFB75D00D12AAB /* Snapshot */,
 				CEFA037B26EFBAC100D12AAB /* QR */,
@@ -801,6 +837,7 @@
 				CE6312B926F99F7A00B2E69B /* CardDetailViewModel.swift in Sources */,
 				CEB6588E26EC821300C11F33 /* Network.swift in Sources */,
 				CED16DF726F3A5540076565F /* ProfileViewController.swift in Sources */,
+				CE6312CF26F9B82600B2E69B /* Card.swift in Sources */,
 				CEB6583026EB15A600C11F33 /* ViewController.swift in Sources */,
 				CE63125726F5E2A100B2E69B /* FakeAccessTokenRepository.swift in Sources */,
 				CE6312A926F8CB2F00B2E69B /* SignedOutDependencyContainer.swift in Sources */,
@@ -812,6 +849,7 @@
 				CEB6589326EC834900C11F33 /* Foundation+Decoder.swift in Sources */,
 				CEB6587926EC806F00C11F33 /* Connectable.swift in Sources */,
 				CEFA037D26EFBACE00D12AAB /* QRGenerater.swift in Sources */,
+				CE6312C826F9B3B000B2E69B /* MyCardRepository.swift in Sources */,
 				CEB6589726EC844D00C11F33 /* main.swift in Sources */,
 				CE63126026F6281800B2E69B /* SplashViewModel.swift in Sources */,
 				CEB6587226EB2CAB00C11F33 /* Networking.swift in Sources */,
@@ -822,6 +860,7 @@
 				CE63124926F5A30200B2E69B /* Navigation.swift in Sources */,
 				CEB6587726EB2CFE00C11F33 /* HomeViewModel.swift in Sources */,
 				CEFA037A26EFB76D00D12AAB /* SnapshotService.swift in Sources */,
+				CE6312CC26F9B4FC00B2E69B /* MockMyCardRepository.swift in Sources */,
 				CEB6587D26EC80BF00C11F33 /* DataTask.swift in Sources */,
 				CE6312BC26F9A04800B2E69B /* MyCardListDependencyContainer.swift in Sources */,
 				CEB6589C26EC988F00C11F33 /* ObserverType+.swift in Sources */,
@@ -850,6 +889,7 @@
 				CEB658AC26EC9A3B00C11F33 /* MockNetwork.swift in Sources */,
 				CEB658B126EC9A3B00C11F33 /* MockDataTask.swift in Sources */,
 				CE6312B226F8F27600B2E69B /* SplashViewModelTests.swift in Sources */,
+				CE6312C526F9B05700B2E69B /* MyCardListViewModelTests.swift in Sources */,
 				CE6312AF26F8CC0A00B2E69B /* RootViewModelTests.swift in Sources */,
 				CEB658B526EC9E8B00C11F33 /* NetworkTests.swift in Sources */,
 				CEB658B026EC9A3B00C11F33 /* MockSession.swift in Sources */,

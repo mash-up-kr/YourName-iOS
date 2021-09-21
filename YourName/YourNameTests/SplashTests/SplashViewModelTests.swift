@@ -15,7 +15,7 @@ final class SplashViewModelTests: XCTestCase {
     // 🧪 System Under Test
     var sut: SplashViewModel!
     
-    // 🥸 Mock
+    // 🥸 Test Double
     var fakeAccessTokenRepository: FakeAccessTokenRepository!
     var mockAuthenticationDelegate: MockAuthenticationDelegate!
     
@@ -35,7 +35,7 @@ final class SplashViewModelTests: XCTestCase {
         try super.tearDownWithError()
     }
     
-    func test_스플래시가_떠있는_동안_accessToken을_로드해온다() {
+    func test_스플래시가_랜딩되어있는_동안_accessToken을_로드해옵니다() {
         // when
         sut.loadAccessToken()
         
@@ -43,17 +43,16 @@ final class SplashViewModelTests: XCTestCase {
         expect(self.fakeAccessTokenRepository.calledFetchAccessToken).to(beTrue())
     }
     
-    func test_accessToken의_로드를_성공하면_delegate에게_accessToken을_전달하며_sign_in을_요청한다() {
+    func test_accessToken의_로드를_성공하면_delegate에게_accessToken을_전달하며_sign_in을_요청합니다() {
         // given
         let testScheduler = TestScheduler(initialClock: 0)
         let signInObserver = testScheduler.createObserver(Bool.self)
         let passedAccessTokenObserver = testScheduler.createObserver(AccessToken?.self)
+        _ = mockAuthenticationDelegate.calledSignIn.subscribe(signInObserver)
+        _ = mockAuthenticationDelegate.passedAccessToken.subscribe(passedAccessTokenObserver)
         fakeAccessTokenRepository.hasAccessToken = true
 
         // when
-        _ = mockAuthenticationDelegate.calledSignIn.subscribe(signInObserver)
-        _ = mockAuthenticationDelegate.passedAccessToken.subscribe(passedAccessTokenObserver)
-
         _ = testScheduler.createHotObservable([
             .next(100, sut.loadAccessToken()),
             .completed(3000)
@@ -68,25 +67,22 @@ final class SplashViewModelTests: XCTestCase {
         expect(passedAccessTokens).to(equal([nil, fakeAccessTokenRepository.dummyAccessToken]))
     }
     
-    func test_accessToken의_로드를_성공하면_delegate에게_not_sign_in을_요청한다() {
+    func test_accessToken의_로드를_성공하면_delegate에게_not_sign_in을_요청합니다() {
         // given
         let testScheduler = TestScheduler(initialClock: 0)
         let notSignInObserver = testScheduler.createObserver(Bool.self)
+        _ = mockAuthenticationDelegate.calledNotSignIn.subscribe(notSignInObserver)
         fakeAccessTokenRepository.hasAccessToken = false
 
         // when
-        _ = mockAuthenticationDelegate.calledNotSignIn.subscribe(notSignInObserver)
-
         _ = testScheduler.createHotObservable([
             .next(100, sut.loadAccessToken()),
             .completed(3000)
         ])
-
         testScheduler.start()
 
         // then
         let calledSignIns = notSignInObserver.events.compactMap(\.value.element)
-
         expect(calledSignIns).to(equal([false, true]))
     }
 }

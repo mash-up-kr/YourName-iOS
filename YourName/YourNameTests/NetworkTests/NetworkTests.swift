@@ -12,7 +12,7 @@ import RxBlocking
 
 final class HTTPClientTests: XCTestCase {
     
-    // 🥸 Mock
+    // 🥸 Test Double
     var mockAPI: MockAPI!
     var mockDataLoader: MockDataLoader!
     var mockDecodingService: MockDecodingService!

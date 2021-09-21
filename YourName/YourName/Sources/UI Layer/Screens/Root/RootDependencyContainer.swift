@@ -52,12 +52,11 @@ final class RootDependencyContainer {
         return SplashViewController(viewModel: viewModel)
     }
     
-    // SignedInDependencyContainer Factory
+    // Child Dependency Container Factory
     private func createSignedInDependencyContainer(accessToken: AccessToken) -> SignedInDependencyContainer {
         return SignedInDependencyContainer(accessToken: accessToken, rootDependencyContainer: self)
     }
     
-    // SignedOutDependencyContainer Factory
     private func createSignedOutDependencyContainer() -> SignedOutDependencyContainer {
         return SignedOutDependencyContainer(rootDependencyContainer: self)
     }
