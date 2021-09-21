@@ -6,13 +6,15 @@
 //
 
 import RxSwift
+import RxRelay
+
 
 final class MockMyCardRepository: MyCardRepository {
-    var calledFetchList = BehaviorSubject<Bool>(value: false)
+    var calledFetchList = BehaviorRelay<Bool>(value: false)
     var stubedList: [Card] = []
     
     func fetchList() -> Observable<[Card]> {
-        calledFetchList.onNext(true)
+        calledFetchList.accept(true)
         return .just(stubedList)
     }
 }

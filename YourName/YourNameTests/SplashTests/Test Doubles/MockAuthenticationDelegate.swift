@@ -5,20 +5,21 @@
 //  Created by Booung on 2021/09/21.
 //
 
+import RxRelay
 import RxSwift
 @testable import YourName
 
 final class MockAuthenticationDelegate: AuthenticationDelegate {
-    var calledSignIn = BehaviorSubject<Bool>(value: false)
-    var calledNotSignIn = BehaviorSubject<Bool>(value: false)
-    var passedAccessToken = BehaviorSubject<AccessToken?>(value: nil)
+    var calledSignIn = BehaviorRelay<Bool>(value: false)
+    var calledNotSignIn = BehaviorRelay<Bool>(value: false)
+    var passedAccessToken = BehaviorRelay<AccessToken?>(value: nil)
     
     func signIn(withAccessToken accessToken: AccessToken) {
-        calledSignIn.onNext(true)
-        passedAccessToken.onNext(accessToken)
+        calledSignIn.accept(true)
+        passedAccessToken.accept(accessToken)
     }
     
     func notSignIn() {
-        calledNotSignIn.onNext(true)
+        calledNotSignIn.accept(true)
     }
 }

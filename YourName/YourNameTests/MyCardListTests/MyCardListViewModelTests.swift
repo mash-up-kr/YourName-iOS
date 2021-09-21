@@ -49,7 +49,7 @@ final class MyCardListViewModelTests: XCTestCase {
         expect(calledFetchList).to(equal([false, true]))
     }
     
-    func test_0번째_카드를_클릭하면_해당_카드_상세화면으로_네비게이션_합니다() {
+    func test_로드_완료후_0번째_카드를_클릭하면_해당_카드_상세화면으로_네비게이션_합니다() {
         // given
         let testScheduler = TestScheduler(initialClock: 0)
         let navigationObserver = testScheduler.createObserver(MyCardListNavigation.self)
@@ -59,6 +59,7 @@ final class MyCardListViewModelTests: XCTestCase {
         
         // when
         _ = testScheduler.createHotObservable([
+            .next(100, sut.load()),
             .next(300, sut.tapCard(at: 0)),
             .completed(400)
         ])
@@ -69,7 +70,7 @@ final class MyCardListViewModelTests: XCTestCase {
         expect(navigations).to(equal([.push(.cardDetail(cardID: "test-0"))]))
     }
     
-    func test_4번째_카드를_클릭하면_해당_카드_상세화면으로_네비게이션_합니다() {
+    func test_로드_완료후__4번째_카드를_클릭하면_해당_카드_상세화면으로_네비게이션_합니다() {
         // given
         let testScheduler = TestScheduler(initialClock: 0)
         let navigationObserver = testScheduler.createObserver(MyCardListNavigation.self)
@@ -79,6 +80,7 @@ final class MyCardListViewModelTests: XCTestCase {
         
         // when
         _ = testScheduler.createHotObservable([
+            .next(100, sut.load()),
             .next(300, sut.tapCard(at: 4)),
             .completed(400)
         ])
