@@ -8,13 +8,13 @@
 import RxRelay
 import RxSwift
 
-enum RootPath: Equatable {
+enum RootDestination: Equatable {
     case splash
     case signedOut
     case signedIn(with: AccessToken)
 }
 
-typealias RootNavigation = Navigation<RootPath>
+typealias RootNavigation = Navigation<RootDestination>
 
 final class RootViewModel: AuthenticationDelegate {
     

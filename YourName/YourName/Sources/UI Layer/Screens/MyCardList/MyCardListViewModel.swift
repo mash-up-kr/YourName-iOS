@@ -8,11 +8,11 @@
 import RxRelay
 import RxSwift
 
-enum MyCardPath: Equatable {
+enum MyCardListDesitination: Equatable {
     case cardDetail(cardID: String)
 }
 
-typealias MyCardListNavigation = Navigation<MyCardPath>
+typealias MyCardListNavigation = Navigation<MyCardListDesitination>
 
 final class MyCardListViewModel {
     

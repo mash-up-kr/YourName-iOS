@@ -51,58 +51,41 @@ final class RootViewController: ViewController {
         self.rx.viewDidAppear.flatMapFirst { _ in self.viewModel.navigation }
             .subscribe(onNext: { [weak self] action in
                 guard let self = self else { return }
-                guard case .present(let nextPath) = action else { return }
-                self.present(next: nextPath)
+                self.navigate(action)
             }).disposed(by: disposeBag)
     }
     
-    private func present(next: RootPath) {
-        switch next {
-        case .splash:
-            presentSplash()
-            
-        case .signedOut:
-            if let presentedViewController = self.presentedViewController {
-                presentedViewController.dismiss(animated: true, completion: {
-                    self.presentSignIn()
+    private func navigate(_ action: RootNavigation) {
+        let viewController = createViewController(action.destination)
+        switch action.action {
+        case .present:
+            if let presentingViewController = presentingViewController {
+                presentingViewController.dismiss(animated: false, completion: { [weak self] in
+                    viewController.modalPresentationStyle = .fullScreen
+                    self?.present(viewController, animated: true, completion: nil)
                 })
             } else {
-                self.presentSignIn()
+                viewController.modalPresentationStyle = .fullScreen
+                self.present(viewController, animated: true, completion: nil)
             }
             
-        case .signedIn(let accessToken):
-            if let presentedViewController = self.presentedViewController {
-                presentedViewController.dismiss(animated: true, completion: {
-                    self.presentHome(with: accessToken)
+        case .push:
+            if let presentingViewController = presentingViewController {
+                presentingViewController.dismiss(animated: false, completion: { [weak self] in
+                    self?.navigationController?.pushViewController(viewController, animated: true)
                 })
             } else {
-                self.presentHome(with: accessToken)
+                navigationController?.pushViewController(viewController, animated: true)
             }
         }
     }
     
-    private func presentSplash() {
-        let viewController = splashViewControllerFactory()
-        let naviController = UINavigationController(rootViewController: viewController)
-        naviController.navigationBar.isHidden = true
-        naviController.modalPresentationStyle = .fullScreen
-        self.present(naviController, animated: false, completion: nil)
-    }
-    
-    private func presentSignIn() {
-        let viewController = signInViewControllerFactory()
-        let naviController = UINavigationController(rootViewController: viewController)
-        naviController.navigationBar.isHidden = true
-        naviController.modalPresentationStyle = .fullScreen
-        self.present(naviController, animated: true, completion: nil)
-    }
-    
-    private func presentHome(with accessToken: AccessToken) {
-        let viewController = homeTabBarControllerFactory(accessToken)
-        let naviController = UINavigationController(rootViewController: viewController)
-        naviController.navigationBar.isHidden = true
-        naviController.modalPresentationStyle = .fullScreen
-        self.present(naviController, animated: true, completion: nil)
+    private func createViewController(_ next: RootDestination) -> UIViewController {
+        switch next {
+        case .splash: return splashViewControllerFactory()
+        case .signedOut: return signInViewControllerFactory()
+        case .signedIn(let accessToken): return homeTabBarControllerFactory(accessToken)
+        }
     }
     
     private let viewModel: RootViewModel

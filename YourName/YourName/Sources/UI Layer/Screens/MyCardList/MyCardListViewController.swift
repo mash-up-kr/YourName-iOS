@@ -41,6 +41,7 @@ final class MyCardListViewController: ViewController {
             $0.center.equalTo(self.view)
         }
     }
+    
     override func setupAttribute() {
         let tab = Tab.myCardList
         self.tabBarItem = UITabBarItem(
@@ -62,19 +63,32 @@ final class MyCardListViewController: ViewController {
     }
     
     private func navigate(_ action: MyCardListNavigation) {
-        switch action {
-        case .present(let destination):
-            let viewController = createViewController(of: destination)
-            viewController.modalPresentationStyle = .fullScreen
-            self.present(viewController, animated: true, completion: nil)
-        case .push(let destination):
-            let viewController = createViewController(of: destination)
-            self.navigationController?.pushViewController(viewController, animated: true)
+        let viewController = createViewController(action.destination)
+        switch action.action {
+        case .present:
+            if let presentingViewController = presentingViewController {
+                presentingViewController.dismiss(animated: false, completion: { [weak self] in
+                    viewController.modalPresentationStyle = .fullScreen
+                    self?.present(viewController, animated: true, completion: nil)
+                })
+            } else {
+                viewController.modalPresentationStyle = .fullScreen
+                self.present(viewController, animated: true, completion: nil)
+            }
+            
+        case .push:
+            if let presentingViewController = presentingViewController {
+                presentingViewController.dismiss(animated: false, completion: { [weak self] in
+                    self?.navigationController?.pushViewController(viewController, animated: true)
+                })
+            } else {
+                navigationController?.pushViewController(viewController, animated: true)
+            }
         }
     }
     
-    private func createViewController(of path: MyCardPath) -> ViewController {
-        switch path {
+    private func createViewController(_ next: MyCardListDesitination) -> UIViewController {
+        switch next {
         case .cardDetail(let cardID):
             return cardDetailViewControllerFactory(cardID)
         }
