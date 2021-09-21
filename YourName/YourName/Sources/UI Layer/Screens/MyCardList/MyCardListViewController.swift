@@ -10,6 +10,15 @@ import SnapKit
 
 final class MyCardListViewController: ViewController {
     
+    init(viewModel: MyCardListViewModel) {
+        self.viewModel = viewModel
+        super.init()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func setupLayout() {
         self.view.addSubview(titleLabel)
         titleLabel.snp.makeConstraints {
@@ -29,6 +38,8 @@ final class MyCardListViewController: ViewController {
         titleLabel.text = "MyCardList"
         
     }
+    
+    private let viewModel: MyCardListViewModel
     
     private let titleLabel = UILabel()
 }

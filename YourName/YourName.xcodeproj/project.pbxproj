@@ -30,6 +30,7 @@
 		CE6312B926F99F7A00B2E69B /* CardDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6312B826F99F7A00B2E69B /* CardDetailViewModel.swift */; };
 		CE6312BC26F9A04800B2E69B /* MyCardListDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6312BB26F9A04800B2E69B /* MyCardListDependencyContainer.swift */; };
 		CE6312BE26F9A4C700B2E69B /* CardDetailDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6312BD26F9A4C700B2E69B /* CardDetailDependencyContainer.swift */; };
+		CE6312C026F9AB4A00B2E69B /* MyCardListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6312BF26F9AB4A00B2E69B /* MyCardListViewModel.swift */; };
 		CEB6582C26EB15A600C11F33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6582B26EB15A600C11F33 /* AppDelegate.swift */; };
 		CEB6583026EB15A600C11F33 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6582F26EB15A600C11F33 /* ViewController.swift */; };
 		CEB6583526EB15AC00C11F33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEB6583426EB15AC00C11F33 /* Assets.xcassets */; };
@@ -121,6 +122,7 @@
 		CE6312B826F99F7A00B2E69B /* CardDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailViewModel.swift; sourceTree = "<group>"; };
 		CE6312BB26F9A04800B2E69B /* MyCardListDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardListDependencyContainer.swift; sourceTree = "<group>"; };
 		CE6312BD26F9A4C700B2E69B /* CardDetailDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailDependencyContainer.swift; sourceTree = "<group>"; };
+		CE6312BF26F9AB4A00B2E69B /* MyCardListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardListViewModel.swift; sourceTree = "<group>"; };
 		CEB6582826EB15A600C11F33 /* YourName.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YourName.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB6582B26EB15A600C11F33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEB6582F26EB15A600C11F33 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -545,6 +547,7 @@
 			children = (
 				CE6312BB26F9A04800B2E69B /* MyCardListDependencyContainer.swift */,
 				CED16DF826F3A55D0076565F /* MyCardListViewController.swift */,
+				CE6312BF26F9AB4A00B2E69B /* MyCardListViewModel.swift */,
 			);
 			path = MyCardList;
 			sourceTree = "<group>";
@@ -785,6 +788,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE6312C026F9AB4A00B2E69B /* MyCardListViewModel.swift in Sources */,
 				CEF8C55726EDFB6F009BA9C2 /* UIStackView+.swift in Sources */,
 				CE63125526F5E25200B2E69B /* String+.swift in Sources */,
 				CE63124026F59E6700B2E69B /* RootViewModel.swift in Sources */,

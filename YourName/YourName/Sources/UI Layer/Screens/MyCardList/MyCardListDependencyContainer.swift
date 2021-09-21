@@ -14,7 +14,11 @@ final class MyCardListDependencyContainer {
     }
     
     func createMyCardListViewController() -> MyCardListViewController {
-        return MyCardListViewController()
+        let viewModel = createMyCardListViewModel()
+        return MyCardListViewController(viewModel: viewModel)
     }
     
+    private func createMyCardListViewModel() -> MyCardListViewModel {
+        return MyCardListViewModel()
+    }
 }
