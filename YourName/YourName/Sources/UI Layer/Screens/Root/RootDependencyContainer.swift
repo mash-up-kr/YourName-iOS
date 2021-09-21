@@ -23,45 +23,40 @@ final class RootDependencyContainer {
     
     // Root Factory
     func createRootViewController() -> RootViewController {
+        let splashViewControllerFactory: () -> SplashViewController = {
+            self.createSplashViewController()
+        }
+        let signInViewControllerFactory: () -> SignInViewController = {
+            let dependencyContainer = self.createSignedOutDependencyContainer()
+            return dependencyContainer.createSignInViewController()
+        }
+        let homeTabBarControllerFactory: (AccessToken) -> HomeTabBarController = { accessToken in
+            let dependencyContainer = self.createSignedInDependencyContainer(accessToken: accessToken)
+            return dependencyContainer.createHomeViewController()
+        }
+        
         return RootViewController(
             viewModel: rootViewModel,
-            splashViewControllerFactory: createSplashViewController,
-            signInViewControllerFactory: createSignInViewController,
-            homeTabBarControllerFactory: createHomeTabBarController(accessToken:)
+            splashViewControllerFactory: splashViewControllerFactory,
+            signInViewControllerFactory: signInViewControllerFactory,
+            homeTabBarControllerFactory: homeTabBarControllerFactory
         )
     }
     
     // Splash Factory
     private func createSplashViewController() -> SplashViewController {
-        let viewModel = createSplashViewModel()
+        let viewModel = SplashViewModel(
+            accessTokenRepository: accessTokenRepository,
+            authenticationDelegate: rootViewModel
+        )
         return SplashViewController(viewModel: viewModel)
     }
     
-    private func createSplashViewModel() -> SplashViewModel {
-        return SplashViewModel(
-            accessTokenRepository: accessTokenRepository,
-            authenticationDelegate: rootViewModel)
-    }
-    
-    // SignIn Factory
-    private func createSignInViewController() -> SignInViewController {
-        let signInViewModel = createSignInViewModel()
-        return SignInViewController(viewModel: signInViewModel)
-    }
-    
-    private func createSignInViewModel() -> SignInViewModel {
-        return SignInViewModel()
-    }
-    
     // SignedInDependencyContainer Factory
-    private func createSignedInDependencyContainer(with accessToken: AccessToken) -> SignedInDependencyContainer {
-        return SignedInDependencyContainer(rootDependencyContainer: self, accessToken: accessToken)
+    private func createSignedInDependencyContainer(accessToken: AccessToken) -> SignedInDependencyContainer {
+        return SignedInDependencyContainer(accessToken: accessToken, rootDependencyContainer: self)
     }
     
-    private func createHomeTabBarController(accessToken: AccessToken) -> HomeTabBarController {
-        return createSignedInDependencyContainer(with: accessToken).createHomeViewController()
-    }
-     
     // SignedOutDependencyContainer Factory
     private func createSignedOutDependencyContainer() -> SignedOutDependencyContainer {
         return SignedOutDependencyContainer(rootDependencyContainer: self)

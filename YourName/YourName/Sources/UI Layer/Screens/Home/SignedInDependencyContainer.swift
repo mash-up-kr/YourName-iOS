@@ -12,8 +12,8 @@ final class SignedInDependencyContainer {
     let accessToken: AccessToken
     
     init(
-        rootDependencyContainer: RootDependencyContainer,
-        accessToken: AccessToken
+        accessToken: AccessToken,
+        rootDependencyContainer: RootDependencyContainer
     ) {
         // do something
         // get state of rootContainer
@@ -33,15 +33,17 @@ final class SignedInDependencyContainer {
     
     private func createViewController(of tab: Tab) -> ViewController {
         switch tab {
-        case .myCardList: return createMyCardListViewController()
+        case .myCardList:
+            let dependencyContainer = createMyCardListDependencyContainer()
+            return dependencyContainer.createMyCardListViewController()
         case .cardBook: return createCardBookViewController()
         case .quest: return createQuestViewContorller()
         case .profile: return createProfileViewController()
         }
     }
     
-    private func createMyCardListViewController() -> MyCardListViewController {
-        return MyCardListViewController()
+    private func createMyCardListDependencyContainer() -> MyCardListDependencyContainer {
+        return MyCardListDependencyContainer(signedInDependencyContainer: self)
     }
     
     private func createCardBookViewController() -> CardBookViewController {
