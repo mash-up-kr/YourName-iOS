@@ -49,4 +49,55 @@ final class MyCardListViewModelTests: XCTestCase {
         expect(calledFetchList).to(equal([false, true]))
     }
     
+    func test_0번째_카드를_클릭하면_해당_카드_상세화면으로_네비게이션_합니다() {
+        // given
+        let testScheduler = TestScheduler(initialClock: 0)
+        let navigationObserver = testScheduler.createObserver(MyCardListNavigation.self)
+        let dummyCardList = createDummyCardList()
+        self.mockMyCardRepository.stubedList = dummyCardList
+        _ = sut.navigation.subscribe(navigationObserver)
+        
+        // when
+        _ = testScheduler.createHotObservable([
+            .next(300, sut.tapCard(at: 0)),
+            .completed(400)
+        ])
+        testScheduler.start()
+        
+        // then
+        let navigations = navigationObserver.events.compactMap(\.value.element)
+        expect(navigations).to(equal([.push(.cardDetail(cardID: "test-0"))]))
+    }
+    
+    func test_4번째_카드를_클릭하면_해당_카드_상세화면으로_네비게이션_합니다() {
+        // given
+        let testScheduler = TestScheduler(initialClock: 0)
+        let navigationObserver = testScheduler.createObserver(MyCardListNavigation.self)
+        let dummyCardList = createDummyCardList()
+        self.mockMyCardRepository.stubedList = dummyCardList
+        _ = sut.navigation.subscribe(navigationObserver)
+        
+        // when
+        _ = testScheduler.createHotObservable([
+            .next(300, sut.tapCard(at: 4)),
+            .completed(400)
+        ])
+        testScheduler.start()
+        
+        // then
+        let navigations = navigationObserver.events.compactMap(\.value.element)
+        expect(navigations).to(equal([.push(.cardDetail(cardID: "test-4"))]))
+    }
+    
+    private func createDummyCardList() -> [Card] {
+        return [
+            Card(id: "test-0"),
+            Card(id: "test-1"),
+            Card(id: "test-2"),
+            Card(id: "test-3"),
+            Card(id: "test-4"),
+            Card(id: "test-5"),
+            Card(id: "test-6")
+        ]
+    }
 }
