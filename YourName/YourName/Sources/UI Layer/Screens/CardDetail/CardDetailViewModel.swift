@@ -8,5 +8,9 @@
 import Foundation
 
 final class CardDetailViewModel {
+    init(cardID: String) {
+        self.cardID = cardID
+    }
     
+    private let cardID: String
 }

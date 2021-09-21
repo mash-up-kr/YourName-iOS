@@ -53,7 +53,7 @@ final class MyCardListViewModelTests: XCTestCase {
         // given
         let testScheduler = TestScheduler(initialClock: 0)
         let navigationObserver = testScheduler.createObserver(MyCardListNavigation.self)
-        let dummyCardList = createDummyCardList()
+        let dummyCardList = Card.dummyList
         self.mockMyCardRepository.stubedList = dummyCardList
         _ = sut.navigation.subscribe(navigationObserver)
         
@@ -74,7 +74,7 @@ final class MyCardListViewModelTests: XCTestCase {
         // given
         let testScheduler = TestScheduler(initialClock: 0)
         let navigationObserver = testScheduler.createObserver(MyCardListNavigation.self)
-        let dummyCardList = createDummyCardList()
+        let dummyCardList = Card.dummyList
         self.mockMyCardRepository.stubedList = dummyCardList
         _ = sut.navigation.subscribe(navigationObserver)
         
@@ -89,17 +89,5 @@ final class MyCardListViewModelTests: XCTestCase {
         // then
         let navigations = navigationObserver.events.compactMap(\.value.element)
         expect(navigations).to(equal([.push(.cardDetail(cardID: "test-4"))]))
-    }
-    
-    private func createDummyCardList() -> [Card] {
-        return [
-            Card(id: "test-0"),
-            Card(id: "test-1"),
-            Card(id: "test-2"),
-            Card(id: "test-3"),
-            Card(id: "test-4"),
-            Card(id: "test-5"),
-            Card(id: "test-6")
-        ]
     }
 }

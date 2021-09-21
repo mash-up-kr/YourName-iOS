@@ -16,17 +16,25 @@ final class MyCardListDependencyContainer {
     
     func createMyCardListViewController() -> MyCardListViewController {
         let viewModel = createMyCardListViewModel()
-        return MyCardListViewController(viewModel: viewModel)
+        let cardDetailViewControllerFactory: (String) -> CardDetailViewController = { cardID in
+            let dependencyContainer = self.createCardDetailDependencyContainer(cardID: cardID)
+            return dependencyContainer.createCardDetailViewController()
+        }
+        return MyCardListViewController(
+            viewModel: viewModel,
+            cardDetailViewControllerFactory: cardDetailViewControllerFactory
+        )
     }
     
     private func createMyCardListViewModel() -> MyCardListViewModel {
         #warning("⚠️ TODO: Mock객체를 추후에 구현 객체로 변경해야합니다") // Booung
         let myCardRepository = MockMyCardRepository()
+        myCardRepository.stubedList = Card.dummyList
         return MyCardListViewModel(myCardRepository: myCardRepository)
     }
     
     // Child Dependency Container Factory
-    private func createCardDetailDependencyContainer() -> CardDetailDependencyContainer {
-        return CardDetailDependencyContainer(myCardListDependencyContainer: self)
+    private func createCardDetailDependencyContainer(cardID: String) -> CardDetailDependencyContainer {
+        return CardDetailDependencyContainer(cardID: cardID, myCardListDependencyContainer: self)
     }
 }

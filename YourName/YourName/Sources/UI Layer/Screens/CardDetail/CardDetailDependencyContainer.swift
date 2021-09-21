@@ -9,9 +9,15 @@ import Foundation
 
 final class CardDetailDependencyContainer {
     
-    init(myCardListDependencyContainer: MyCardListDependencyContainer) {
+    let cardID: String
+    
+    init(
+        cardID: String,
+        myCardListDependencyContainer: MyCardListDependencyContainer
+    ) {
         // do something
         // get state of myCardListDependencyContainer
+        self.cardID = cardID
     }
     
     func createCardDetailViewController() -> CardDetailViewController {
@@ -20,7 +26,6 @@ final class CardDetailDependencyContainer {
     }
     
     private func createCardViewModel() -> CardDetailViewModel {
-        return CardDetailViewModel()
+        return CardDetailViewModel(cardID: cardID)
     }
-    
 }
