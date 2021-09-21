@@ -21,8 +21,15 @@ final class SplashViewController: ViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
-        viewModel.loadAccessToken()
+        let splashDuration: DispatchTimeInterval = .seconds(1)
+        DispatchQueue.main.asyncAfter(deadline: .now() + splashDuration) { [weak self] in
+            self?.viewModel.loadAccessToken()
+        }
     }
     
     override func setupAttribute() {

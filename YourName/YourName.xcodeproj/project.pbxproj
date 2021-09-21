@@ -25,6 +25,7 @@
 		CE6312AA26F8CB2F00B2E69B /* RootDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6312A726F8CB2F00B2E69B /* RootDependencyContainer.swift */; };
 		CE6312AF26F8CC0A00B2E69B /* RootViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6312AE26F8CC0A00B2E69B /* RootViewModelTests.swift */; };
 		CE6312B226F8F27600B2E69B /* SplashViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6312B126F8F27600B2E69B /* SplashViewModelTests.swift */; };
+		CE6312B426F98DF000B2E69B /* MockAuthenticationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6312B326F98DF000B2E69B /* MockAuthenticationDelegate.swift */; };
 		CEB6582C26EB15A600C11F33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6582B26EB15A600C11F33 /* AppDelegate.swift */; };
 		CEB6583026EB15A600C11F33 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6582F26EB15A600C11F33 /* ViewController.swift */; };
 		CEB6583526EB15AC00C11F33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEB6583426EB15AC00C11F33 /* Assets.xcassets */; };
@@ -111,6 +112,7 @@
 		CE6312A726F8CB2F00B2E69B /* RootDependencyContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootDependencyContainer.swift; sourceTree = "<group>"; };
 		CE6312AE26F8CC0A00B2E69B /* RootViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModelTests.swift; sourceTree = "<group>"; };
 		CE6312B126F8F27600B2E69B /* SplashViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModelTests.swift; sourceTree = "<group>"; };
+		CE6312B326F98DF000B2E69B /* MockAuthenticationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAuthenticationDelegate.swift; sourceTree = "<group>"; };
 		CEB6582826EB15A600C11F33 /* YourName.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YourName.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB6582B26EB15A600C11F33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEB6582F26EB15A600C11F33 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 			isa = PBXGroup;
 			children = (
 				CE6312B126F8F27600B2E69B /* SplashViewModelTests.swift */,
+				CE6312B326F98DF000B2E69B /* MockAuthenticationDelegate.swift */,
 			);
 			path = SplashTests;
 			sourceTree = "<group>";
@@ -848,6 +851,7 @@
 				CEB658B026EC9A3B00C11F33 /* MockSession.swift in Sources */,
 				CEB658B826ECACAD00C11F33 /* FakeData.swift in Sources */,
 				CEB658BA26ECC42800C11F33 /* TestResponse.swift in Sources */,
+				CE6312B426F98DF000B2E69B /* MockAuthenticationDelegate.swift in Sources */,
 				CEB658AF26EC9A3B00C11F33 /* MockDecodingService.swift in Sources */,
 				CEB658B426EC9E8B00C11F33 /* HTTPClientTests.swift in Sources */,
 				CEB658AD26EC9A3B00C11F33 /* MockDataLoader.swift in Sources */,

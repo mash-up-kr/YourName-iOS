@@ -56,22 +56,53 @@ final class RootViewController: ViewController {
     }
     
     private func present(next: RootPath) {
-        if let presentedViewController = self.presentedViewController {
-            presentedViewController.dismiss(animated: true, completion: nil)
-        }
-        let viewController: UIViewController
         switch next {
         case .splash:
-            viewController = splashViewControllerFactory()
+            presentSplash()
+            
         case .signedOut:
-            viewController = signInViewControllerFactory()
+            if let presentedViewController = self.presentedViewController {
+                presentedViewController.dismiss(animated: true, completion: {
+                    self.presentSignIn()
+                })
+            } else {
+                self.presentSignIn()
+            }
+            
         case .signedIn(let accessToken):
-            viewController = homeTabBarControllerFactory(accessToken)
+            if let presentedViewController = self.presentedViewController {
+                presentedViewController.dismiss(animated: true, completion: {
+                    self.presentHome(with: accessToken)
+                })
+            } else {
+                self.presentHome(with: accessToken)
+            }
         }
-        viewController.modalPresentationStyle = .fullScreen
-        self.present(viewController, animated: true, completion: nil)
     }
     
+    private func presentSplash() {
+        let viewController = splashViewControllerFactory()
+        let naviController = UINavigationController(rootViewController: viewController)
+        naviController.navigationBar.isHidden = true
+        naviController.modalPresentationStyle = .fullScreen
+        self.present(naviController, animated: false, completion: nil)
+    }
+    
+    private func presentSignIn() {
+        let viewController = signInViewControllerFactory()
+        let naviController = UINavigationController(rootViewController: viewController)
+        naviController.navigationBar.isHidden = true
+        naviController.modalPresentationStyle = .fullScreen
+        self.present(naviController, animated: true, completion: nil)
+    }
+    
+    private func presentHome(with accessToken: AccessToken) {
+        let viewController = homeTabBarControllerFactory(accessToken)
+        let naviController = UINavigationController(rootViewController: viewController)
+        naviController.navigationBar.isHidden = true
+        naviController.modalPresentationStyle = .fullScreen
+        self.present(naviController, animated: true, completion: nil)
+    }
     
     private let viewModel: RootViewModel
     private let splashViewControllerFactory: () -> SplashViewController

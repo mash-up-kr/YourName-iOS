@@ -33,7 +33,7 @@ final class RootViewModelTests: XCTestCase {
         let testScheduler = TestScheduler(initialClock: 0)
         
         let observer = testScheduler.createObserver(RootNavigation.self)
-        sut.navigation.subscribe(observer)
+        _ = sut.navigation.subscribe(observer)
         
         _ = testScheduler.createHotObservable([
             .next(1, sut.signIn(withAccessToken: expectedAccessToken)),
@@ -50,7 +50,7 @@ final class RootViewModelTests: XCTestCase {
         let testScheduler = TestScheduler(initialClock: 0)
         
         let observer = testScheduler.createObserver(RootNavigation.self)
-        sut.navigation.subscribe(observer)
+        _ = sut.navigation.subscribe(observer)
         
         _ = testScheduler.createHotObservable([
             .next(1, sut.notSignIn()),
