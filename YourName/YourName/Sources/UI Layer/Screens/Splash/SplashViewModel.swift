@@ -20,7 +20,7 @@ final class SplashViewModel {
     
     func loadAccessToken() {
         accessTokenRepository.fetchAccessToken()
-            .subscribe(onSuccess: { [weak self] accessToken in
+            .subscribe(onNext: { [weak self] accessToken in
                 guard let self = self else { return }
                 if let accessToken = accessToken {
                     self.authenticationDelegate.signIn(withAccessToken: accessToken)

@@ -13,7 +13,7 @@ final class RootDependencyContainer {
     let accessTokenRepository: AccessTokenRepository
     
     init() {
-//        #warning("⚠️ TODO: FakeAccessTokenRepository를 나중에 실제 오브젝트로 대체해야합니다.") // Booung
+        #warning("⚠️ TODO: FakeAccessTokenRepository를 나중에 실제 오브젝트로 대체해야합니다.") // Booung
         self.rootViewModel = RootViewModel()
         let fakeAccessTokenRepository = FakeAccessTokenRepository()
         // fakeAccessTokenRepository.hasAccessToken = false
