@@ -7,13 +7,13 @@
 
 import Foundation
 
-enum Tab: Int, CaseIterable {
+enum HomeTab: Int, CaseIterable {
     case myCardList
     case cardBook
     case quest
     case profile
 }
-extension Tab: CustomStringConvertible {
+extension HomeTab: CustomStringConvertible {
     var description: String {
         switch self {
         case .myCardList: return "리스트"

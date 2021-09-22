@@ -44,7 +44,7 @@ final class MyCardListViewController: ViewController {
     }
     
     override func setupAttribute() {
-        let tab = Tab.myCardList
+        let tab = HomeTab.myCardList
         self.tabBarItem = UITabBarItem(
             title: tab.description,
             image: nil,

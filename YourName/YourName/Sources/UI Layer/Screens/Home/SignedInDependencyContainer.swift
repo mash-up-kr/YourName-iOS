@@ -31,7 +31,7 @@ final class SignedInDependencyContainer {
         return HomeViewModel()
     }
     
-    private func createViewController(of tab: Tab) -> ViewController {
+    private func createViewController(of tab: HomeTab) -> ViewController {
         switch tab {
         case .myCardList:
             let dependencyContainer = createMyCardListDependencyContainer()

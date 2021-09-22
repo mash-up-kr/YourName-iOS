@@ -14,7 +14,7 @@ final class HomeTabBarController: UITabBarController {
     
     init(
         viewModel: HomeViewModel,
-        viewControllerFactory: @escaping (Tab) -> ViewController
+        viewControllerFactory: @escaping (HomeTab) -> ViewController
     ) {
         self.viewModel = viewModel
         self.viewControllerFactory = viewControllerFactory
@@ -59,12 +59,13 @@ final class HomeTabBarController: UITabBarController {
                 let isVaildTab = currentTab < self?.viewControllers?.count ?? 0
                 let isNotSameTab = currentTab != self?.selectedIndex
                 return isVaildTab && isNotSameTab
-            }
-            .bind(to: self.rx.selectedIndex)
+            }.subscribe(onNext: { [weak self] selectedIndex in
+                self?.selectedIndex = selectedIndex
+            })
             .disposed(by: disposeBag)
     }
     
     private let viewModel: HomeViewModel
-    private let viewControllerFactory: (Tab) -> ViewController
+    private let viewControllerFactory: (HomeTab) -> ViewController
     private let disposeBag = DisposeBag()
 }

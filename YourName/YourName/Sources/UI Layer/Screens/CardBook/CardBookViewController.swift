@@ -13,7 +13,7 @@ final class CardBookViewController: ViewController {
     override func setupAttribute() {
         self.navigationController?.navigationBar.isHidden = true
         
-        let tab = Tab.cardBook
+        let tab = HomeTab.cardBook
         self.tabBarItem = UITabBarItem(
             title: tab.description,
             image: nil,

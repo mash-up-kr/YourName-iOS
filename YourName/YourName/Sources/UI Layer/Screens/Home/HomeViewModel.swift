@@ -10,11 +10,11 @@ import RxRelay
 import RxSwift
 
 struct HomeViewModel {
-    let tabItems = BehaviorRelay<[Tab]>(value: Tab.allCases)
-    let currentTab = PublishRelay<Tab>()
+    let tabItems = BehaviorRelay<[HomeTab]>(value: HomeTab.allCases)
+    let currentTab = PublishRelay<HomeTab>()
     
     func selectTab(index: Int) {
-        guard let selectedTab = Tab(rawValue: index) else { return }
+        guard let selectedTab = HomeTab(rawValue: index) else { return }
         currentTab.accept(selectedTab)
     }
 }
