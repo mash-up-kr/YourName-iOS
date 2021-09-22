@@ -62,11 +62,11 @@ final class RootViewController: ViewController {
             if let presentedViewController = self.presentedViewController {
                 presentedViewController.dismiss(animated: false, completion: { [weak self] in
                     viewController.modalPresentationStyle = .fullScreen
-                    self?.present(viewController, animated: true, completion: nil)
+                    self?.present(viewController, animated: false, completion: nil)
                 })
             } else {
                 viewController.modalPresentationStyle = .fullScreen
-                self.present(viewController, animated: true, completion: nil)
+                self.present(viewController, animated: false, completion: nil)
             }
             
         case .push:
