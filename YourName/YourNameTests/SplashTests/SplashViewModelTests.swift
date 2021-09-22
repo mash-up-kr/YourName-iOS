@@ -67,7 +67,7 @@ final class SplashViewModelTests: XCTestCase {
         expect(passedAccessTokens).to(equal([nil, fakeAccessTokenRepository.dummyAccessToken]))
     }
     
-    func test_accessToken의_로드를_성공하면_delegate에게_not_sign_in을_요청합니다() {
+    func test_accessToken의_로드를_실패하면_delegate에게_not_sign_in을_요청합니다() {
         // given
         let testScheduler = TestScheduler(initialClock: 0)
         let notSignInObserver = testScheduler.createObserver(Bool.self)

@@ -10,14 +10,9 @@ import SnapKit
 
 final class CardBookViewController: ViewController {
     
-    override func setupLayout() {
-        self.view.addSubview(titleLabel)
-        titleLabel.snp.makeConstraints {
-            $0.center.equalTo(self.view)
-        }
-    }
-    
     override func setupAttribute() {
+        self.navigationController?.navigationBar.isHidden = true
+        
         let tab = Tab.cardBook
         self.tabBarItem = UITabBarItem(
             title: tab.description,
@@ -28,6 +23,13 @@ final class CardBookViewController: ViewController {
         self.view.backgroundColor = .systemGreen
         titleLabel.text = "Card Book"
         titleLabel.textColor = .black
+    }
+    
+    override func setupLayout() {
+        self.view.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints {
+            $0.center.equalTo(self.view)
+        }
     }
     
     private let titleLabel = UILabel()

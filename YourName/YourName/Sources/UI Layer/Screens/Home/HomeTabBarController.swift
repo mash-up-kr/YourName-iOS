@@ -7,6 +7,7 @@
 
 import UIKit
 import RxCocoa
+import RxOptional
 import RxSwift
 
 final class HomeTabBarController: UITabBarController {
@@ -32,21 +33,33 @@ final class HomeTabBarController: UITabBarController {
     }
     
     private func setupAttributes() {
-        
     }
     
     private func bind() {
+        self.rx.didSelect.distinctUntilChanged()
+            .map { [weak self] selected in self?.viewControllers?.firstIndex(where: { selected === $0 }) }
+            .filterNil()
+            .subscribe(onNext: { [weak self] in
+                self?.viewModel.selectTab(index: $0)
+            })
+            .disposed(by: disposeBag)
+        
         viewModel.tabItems.distinctUntilChanged()
             .subscribe( onNext: { [weak self] tabItems in
                 guard let self = self else { return }
                 let viewControllers = tabItems.map(self.viewControllerFactory)
+                    .map { UINavigationController(rootViewController: $0) }
                 self.setViewControllers(viewControllers, animated: false)
             })
             .disposed(by: disposeBag)
         
         viewModel.currentTab.distinctUntilChanged()
             .map { $0.rawValue }
-            .filter { [weak self] in $0 < self?.viewControllers?.count ?? 0 }
+            .filter { [weak self] currentTab in
+                let isVaildTab = currentTab < self?.viewControllers?.count ?? 0
+                let isNotSameTab = currentTab != self?.selectedIndex
+                return isVaildTab && isNotSameTab
+            }
             .bind(to: self.rx.selectedIndex)
             .disposed(by: disposeBag)
     }
