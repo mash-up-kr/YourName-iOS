@@ -74,7 +74,7 @@
 		CEB658B826ECACAD00C11F33 /* FakeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB658B726ECACAD00C11F33 /* FakeData.swift */; };
 		CEB658BA26ECC42800C11F33 /* TestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB658B926ECC42800C11F33 /* TestResponse.swift */; };
 		CEB658BC26ECC90600C11F33 /* NoContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB658BB26ECC90600C11F33 /* NoContent.swift */; };
-		CED16DE926F39F700076565F /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED16DE826F39F700076565F /* Tab.swift */; };
+		CED16DE926F39F700076565F /* HomeTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED16DE826F39F700076565F /* HomeTab.swift */; };
 		CED16DF526F3A5480076565F /* QuestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED16DF426F3A5480076565F /* QuestViewController.swift */; };
 		CED16DF726F3A5540076565F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED16DF626F3A5540076565F /* ProfileViewController.swift */; };
 		CED16DF926F3A55D0076565F /* MyCardListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED16DF826F3A55D0076565F /* MyCardListViewController.swift */; };
@@ -177,7 +177,7 @@
 		CEB658B726ECACAD00C11F33 /* FakeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeData.swift; sourceTree = "<group>"; };
 		CEB658B926ECC42800C11F33 /* TestResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResponse.swift; sourceTree = "<group>"; };
 		CEB658BB26ECC90600C11F33 /* NoContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoContent.swift; sourceTree = "<group>"; };
-		CED16DE826F39F700076565F /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
+		CED16DE826F39F700076565F /* HomeTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTab.swift; sourceTree = "<group>"; };
 		CED16DF426F3A5480076565F /* QuestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestViewController.swift; sourceTree = "<group>"; };
 		CED16DF626F3A5540076565F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		CED16DF826F3A55D0076565F /* MyCardListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardListViewController.swift; sourceTree = "<group>"; };
@@ -416,7 +416,6 @@
 		CEB6586226EB2BB000C11F33 /* UI Layer */ = {
 			isa = PBXGroup;
 			children = (
-				CE63123E26F59E4500B2E69B /* DIContainer */,
 				CEB6586926EB2C5F00C11F33 /* Screens */,
 				CE63124826F5A30200B2E69B /* Navigation.swift */,
 			);
@@ -474,7 +473,7 @@
 				CE6312A426F8CB2F00B2E69B /* SignedInDependencyContainer.swift */,
 				CEB6586B26EB2C7600C11F33 /* HomeTabBarController.swift */,
 				CEB6587626EB2CFE00C11F33 /* HomeViewModel.swift */,
-				CED16DE826F39F700076565F /* Tab.swift */,
+				CED16DE826F39F700076565F /* HomeTab.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -859,7 +858,7 @@
 				CEB6587B26EC809800C11F33 /* URLRequestConvertible.swift in Sources */,
 				A2D875DF26EE295C00ED5949 /* AuthResponse.swift in Sources */,
 				CEF8C55326EDF8D5009BA9C2 /* UIView+.swift in Sources */,
-				CED16DE926F39F700076565F /* Tab.swift in Sources */,
+				CED16DE926F39F700076565F /* HomeTab.swift in Sources */,
 				CE63124926F5A30200B2E69B /* Navigation.swift in Sources */,
 				CEB6587726EB2CFE00C11F33 /* HomeViewModel.swift in Sources */,
 				CEFA037A26EFB76D00D12AAB /* SnapshotService.swift in Sources */,

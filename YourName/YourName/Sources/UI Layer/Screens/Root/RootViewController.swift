@@ -59,19 +59,19 @@ final class RootViewController: ViewController {
         let viewController = createViewController(action.destination)
         switch action.action {
         case .present:
-            if let presentingViewController = presentingViewController {
-                presentingViewController.dismiss(animated: false, completion: { [weak self] in
+            if let presentedViewController = self.presentedViewController {
+                presentedViewController.dismiss(animated: false, completion: { [weak self] in
                     viewController.modalPresentationStyle = .fullScreen
-                    self?.present(viewController, animated: true, completion: nil)
+                    self?.present(viewController, animated: false, completion: nil)
                 })
             } else {
                 viewController.modalPresentationStyle = .fullScreen
-                self.present(viewController, animated: true, completion: nil)
+                self.present(viewController, animated: false, completion: nil)
             }
             
         case .push:
-            if let presentingViewController = presentingViewController {
-                presentingViewController.dismiss(animated: false, completion: { [weak self] in
+            if let presentedViewController = self.presentedViewController {
+                presentedViewController.dismiss(animated: false, completion: { [weak self] in
                     self?.navigationController?.pushViewController(viewController, animated: true)
                 })
             } else {

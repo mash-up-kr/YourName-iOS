@@ -11,7 +11,9 @@ import SnapKit
 final class QuestViewController: ViewController {
     
     override func setupAttribute() {
-        let tab = Tab.quest
+        self.navigationController?.navigationBar.isHidden = true
+        
+        let tab = HomeTab.quest
         self.tabBarItem = UITabBarItem(
             title: tab.description,
             image: nil,

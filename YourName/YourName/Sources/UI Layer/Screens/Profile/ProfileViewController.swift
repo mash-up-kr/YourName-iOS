@@ -18,7 +18,9 @@ final class ProfileViewController: ViewController {
     }
     
     override func setupAttribute() {
-        let tab = Tab.profile
+        self.navigationController?.navigationBar.isHidden = true
+        
+        let tab = HomeTab.profile
         self.tabBarItem = UITabBarItem(
             title: tab.description,
             image: nil,

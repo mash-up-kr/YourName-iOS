@@ -26,6 +26,7 @@ final class MyCardListViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.navigationBar.isHidden = true
         viewModel.load()
         bind()
         
@@ -43,7 +44,7 @@ final class MyCardListViewController: ViewController {
     }
     
     override func setupAttribute() {
-        let tab = Tab.myCardList
+        let tab = HomeTab.myCardList
         self.tabBarItem = UITabBarItem(
             title: tab.description,
             image: nil,
@@ -66,8 +67,8 @@ final class MyCardListViewController: ViewController {
         let viewController = createViewController(action.destination)
         switch action.action {
         case .present:
-            if let presentingViewController = presentingViewController {
-                presentingViewController.dismiss(animated: false, completion: { [weak self] in
+            if let presentedViewController = self.presentedViewController {
+                presentedViewController.dismiss(animated: false, completion: { [weak self] in
                     viewController.modalPresentationStyle = .fullScreen
                     self?.present(viewController, animated: true, completion: nil)
                 })
@@ -77,8 +78,8 @@ final class MyCardListViewController: ViewController {
             }
             
         case .push:
-            if let presentingViewController = presentingViewController {
-                presentingViewController.dismiss(animated: false, completion: { [weak self] in
+            if let presentedViewController = self.presentedViewController {
+                presentedViewController.dismiss(animated: false, completion: { [weak self] in
                     self?.navigationController?.pushViewController(viewController, animated: true)
                 })
             } else {
