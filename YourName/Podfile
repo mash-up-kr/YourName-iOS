@@ -6,12 +6,12 @@ target 'YourName' do
   use_frameworks!
 
   # ⚛️ Reactive X
-  pod 'RxCocoa'
-  pod 'RxDataSources'
-  pod 'RxGesture'
-  pod 'RxOptional'
-  pod 'RxSwift'
-  pod 'RxViewController'
+  pod 'RxCocoa','~>5.0'
+  pod 'RxDataSources','~>4.0'
+  pod 'RxGesture','~>3.0'
+  pod 'RxOptional','~>4.0'
+  pod 'RxSwift','~>5.0'
+  pod 'RxViewController','~>1.0'
 
   # 🖼 Image Cache
   pod 'Kingfisher'
@@ -28,9 +28,12 @@ target 'YourName' do
   # 🥸 Mock
   # pod "Cuckoo"
 
+  # 💛 KaKao
+  pod 'RxKakaoSDKUser'
+  
   target 'YourNameTests' do
-    pod 'RxTest'
-    pod 'RxBlocking'
+    pod 'RxTest','~>5.0'
+    pod 'RxBlocking','~>5.0'
     pod 'Quick'
     pod 'Nimble'
   end
