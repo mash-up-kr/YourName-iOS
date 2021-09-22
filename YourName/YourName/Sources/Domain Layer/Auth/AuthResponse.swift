@@ -9,7 +9,7 @@ import Foundation
 
 enum Provider: String {
     case apple
-    case kaKao
+    case kakao
 }
 
 struct OAuthResponse {
