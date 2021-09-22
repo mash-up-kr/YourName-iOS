@@ -411,6 +411,7 @@
 		CEB6586226EB2BB000C11F33 /* UI Layer */ = {
 			isa = PBXGroup;
 			children = (
+				CE63123E26F59E4500B2E69B /* DIContainer */,
 				CEB6586926EB2C5F00C11F33 /* Screens */,
 				CE63124826F5A30200B2E69B /* Navigation.swift */,
 			);
