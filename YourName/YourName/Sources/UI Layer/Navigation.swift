@@ -7,7 +7,23 @@
 
 import Foundation
 
-enum Navigation<Path: Equatable>: Equatable {
-    case present(Path)
-    case push(Path)
+
+enum NavigationAction: Equatable {
+    case present
+    case push
+}
+
+struct Navigation<Destination: Equatable>: Equatable {
+    let action: NavigationAction
+    let destination: Destination
+}
+
+extension Navigation {
+    static func present(_ destination: Destination) -> Self {
+        return Navigation(action: .present, destination: destination)
+    }
+    
+    static func push(_ destination: Destination) -> Self {
+        return Navigation(action: .push, destination: destination)
+    }
 }
