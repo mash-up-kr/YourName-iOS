@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import KakaoSDKCommon
+import KakaoSDKAuth
 
 final class AppDelegate: UIResponder, UIApplicationDelegate {
     
@@ -18,6 +20,22 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         window.rootViewController = rootViewController
         window.makeKeyAndVisible()
         self.window = window
+        
+        kakaoSDKInit()
+        
         return true
+    }
+    
+    func application(_ app: UIApplication,
+                     open url: URL,
+                     options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        if AuthApi.isKakaoTalkLoginUrl(url) {
+            return AuthController.handleOpenUrl(url: url)
+        }
+        return false
+    }
+    
+    private func kakaoSDKInit() {
+        KakaoSDKCommon.initSDK(appKey: KakaoAppKey.nativeAppKey)
     }
 }

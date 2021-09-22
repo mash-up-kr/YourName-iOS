@@ -13,12 +13,12 @@ final class RootDependencyContainer {
     let accessTokenRepository: AccessTokenRepository
     
     init() {
-        #warning("⚠️ TODO: FakeAccessTokenRepository를 나중에 실제 오브젝트로 대체해야합니다.") // Booung
+//        #warning("⚠️ TODO: FakeAccessTokenRepository를 나중에 실제 오브젝트로 대체해야합니다.") // Booung
         self.rootViewModel = RootViewModel()
-        let fakeAccessTokenRepository = FakeAccessTokenRepository()
+        let kakaoAccessTokenRepository = KakaoAccessTokenRepository()
         // fakeAccessTokenRepository.hasAccessToken = false
         // hasAccessToken - 신규로그인의 경우에는 true, 자동로그인의 경우에는 false로 테스트할 수 있습니다.
-        self.accessTokenRepository = fakeAccessTokenRepository
+        self.accessTokenRepository = kakaoAccessTokenRepository
     }
     
     // Root Factory

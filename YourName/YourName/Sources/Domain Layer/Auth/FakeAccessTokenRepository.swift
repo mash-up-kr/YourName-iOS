@@ -15,7 +15,7 @@ final class FakeAccessTokenRepository: AccessTokenRepository {
     let dummyAccessToken = "I'm dummy token."
     var hasAccessToken: Bool = true
     
-    func fetchAccessToken() -> Observable<AccessToken?> {
+    func fetchAccessToken() -> Single<AccessToken?> {
         calledFetchAccessToken = true
         return .just(hasAccessToken ? dummyAccessToken : nil)
     }

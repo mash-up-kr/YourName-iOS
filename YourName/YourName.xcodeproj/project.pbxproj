@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		8CE2A8B5191C919CFE08E6BD /* Pods_YourName.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A104CCC69AFB71F0412B7A45 /* Pods_YourName.framework */; };
+		A2A5C83826FB17D0005D2849 /* KakaoAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A5C83726FB17D0005D2849 /* KakaoAuth.swift */; };
+		A2A5C83A26FB1A3D005D2849 /* AppKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A5C83926FB1A3D005D2849 /* AppKey.swift */; };
 		A2D875DF26EE295C00ED5949 /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D875DE26EE295C00ED5949 /* AuthResponse.swift */; };
 		CE63123A26F59C7800B2E69B /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63123926F59C7800B2E69B /* RootViewController.swift */; };
 		CE63124026F59E6700B2E69B /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63123F26F59E6700B2E69B /* RootViewModel.swift */; };
@@ -104,6 +106,8 @@
 		A104CCC69AFB71F0412B7A45 /* Pods_YourName.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YourName.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A10969B73C6F2B6D2B45B54A /* Pods-YourName-YourNameUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourName-YourNameUITests.debug.xcconfig"; path = "Target Support Files/Pods-YourName-YourNameUITests/Pods-YourName-YourNameUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A1AC0CE1DA2C5DDF40338B84 /* Pods-YourNameTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourNameTests.debug.xcconfig"; path = "Target Support Files/Pods-YourNameTests/Pods-YourNameTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A2A5C83726FB17D0005D2849 /* KakaoAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoAuth.swift; sourceTree = "<group>"; };
+		A2A5C83926FB1A3D005D2849 /* AppKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppKey.swift; sourceTree = "<group>"; };
 		A2D875DE26EE295C00ED5949 /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
 		A3E561B79C6998E82DB447DF /* Pods-YourName-YourNameTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourName-YourNameTests.debug.xcconfig"; path = "Target Support Files/Pods-YourName-YourNameTests/Pods-YourName-YourNameTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CE63123926F59C7800B2E69B /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -396,6 +400,7 @@
 			children = (
 				CEB6582B26EB15A600C11F33 /* AppDelegate.swift */,
 				CEB6589626EC844D00C11F33 /* main.swift */,
+				A2A5C83926FB1A3D005D2849 /* AppKey.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -481,6 +486,7 @@
 				CE63129D26F8618000B2E69B /* AuthenticationDelegate.swift */,
 				A2D875DE26EE295C00ED5949 /* AuthResponse.swift */,
 				CE63125626F5E2A100B2E69B /* FakeAccessTokenRepository.swift */,
+				A2A5C83726FB17D0005D2849 /* KakaoAuth.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -844,6 +850,7 @@
 				CEB6589326EC834900C11F33 /* Foundation+Decoder.swift in Sources */,
 				CEB6587926EC806F00C11F33 /* Connectable.swift in Sources */,
 				CEFA037D26EFBACE00D12AAB /* QRGenerater.swift in Sources */,
+				A2A5C83A26FB1A3D005D2849 /* AppKey.swift in Sources */,
 				CE6312C826F9B3B000B2E69B /* MyCardRepository.swift in Sources */,
 				CEB6589726EC844D00C11F33 /* main.swift in Sources */,
 				CE63126026F6281800B2E69B /* SplashViewModel.swift in Sources */,
@@ -863,6 +870,7 @@
 				CE6312D126F9BD6B00B2E69B /* Array+.swift in Sources */,
 				CEB6588426EC814C00C11F33 /* API.swift in Sources */,
 				CEB6588726EC817A00C11F33 /* HTTP.swift in Sources */,
+				A2A5C83826FB17D0005D2849 /* KakaoAuth.swift in Sources */,
 				CE6312B726F99F7000B2E69B /* CardDetailViewController.swift in Sources */,
 				CEB6586826EB2C3700C11F33 /* SchemeNavigator.swift in Sources */,
 				CEB6588B26EC81B200C11F33 /* Decoder.swift in Sources */,
