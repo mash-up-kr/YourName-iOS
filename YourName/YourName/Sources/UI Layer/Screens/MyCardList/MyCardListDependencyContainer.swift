@@ -5,7 +5,7 @@
 //  Created by Booung on 2021/09/21.
 //
 
-import Foundation
+import UIKit
 
 final class MyCardListDependencyContainer {
     
@@ -14,16 +14,18 @@ final class MyCardListDependencyContainer {
         // get state of signedInDependencyContainer
     }
     
-    func createMyCardListViewController() -> MyCardListViewController {
+    func createMyCardListViewController() -> UIViewController {
         let viewModel = createMyCardListViewModel()
         let cardDetailViewControllerFactory: (String) -> CardDetailViewController = { cardID in
             let dependencyContainer = self.createCardDetailDependencyContainer(cardID: cardID)
             return dependencyContainer.createCardDetailViewController()
         }
-        return MyCardListViewController(
+        let viewController = MyCardListViewController(
             viewModel: viewModel,
             cardDetailViewControllerFactory: cardDetailViewControllerFactory
         )
+        let naviController = UINavigationController(rootViewController: viewController)
+        return naviController
     }
     
     private func createMyCardListViewModel() -> MyCardListViewModel {

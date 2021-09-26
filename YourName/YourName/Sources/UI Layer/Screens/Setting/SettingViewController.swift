@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-final class ProfileViewController: ViewController {
+final class SettingViewController: ViewController {
     
     override func setupLayout() {
         self.view.addSubview(titleLabel)
@@ -20,15 +20,8 @@ final class ProfileViewController: ViewController {
     override func setupAttribute() {
         self.navigationController?.navigationBar.isHidden = true
         
-        let tab = HomeTab.profile
-        self.tabBarItem = UITabBarItem(
-            title: tab.description,
-            image: nil,
-            selectedImage: nil
-        )
-        
         self.view.backgroundColor = .systemPink
-        titleLabel.text = "Profile"
+        titleLabel.text = "Setting"
     }
     
     private let titleLabel = UILabel()

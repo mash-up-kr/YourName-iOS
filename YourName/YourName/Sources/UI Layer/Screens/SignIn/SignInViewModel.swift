@@ -9,4 +9,7 @@ import Foundation
 
 struct SignInViewModel {
     
+    func signIn(with provider: Provider) {
+        
+    }
 }

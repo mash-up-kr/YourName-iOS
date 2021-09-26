@@ -30,10 +30,10 @@ final class MyCardListViewController: ViewController {
         viewModel.load()
         bind()
         
-        #warning("카드 탭 액션 트리거 가구현, 실구현 후 제거해야합니다.") // Booung
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
-            self.viewModel.tapCard(at: 3)
-        })
+//        #warning("카드 탭 액션 트리거 가구현, 실구현 후 제거해야합니다.") // Booung
+//        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+//            self.viewModel.tapCard(at: 3)
+//        })
     }
     
     override func setupLayout() {
@@ -44,13 +44,6 @@ final class MyCardListViewController: ViewController {
     }
     
     override func setupAttribute() {
-        let tab = HomeTab.myCardList
-        self.tabBarItem = UITabBarItem(
-            title: tab.description,
-            image: nil,
-            selectedImage: nil
-        )
-        
         self.view.backgroundColor = .systemBlue
         titleLabel.text = "MyCardList"
     }
