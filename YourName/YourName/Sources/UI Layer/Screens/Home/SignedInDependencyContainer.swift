@@ -54,13 +54,13 @@ final class SignedInDependencyContainer {
     }
     
     private func createCardBookViewController() -> UIViewController {
-        let viewController = CardBookViewController()
+        let viewController = CardBookViewController.instantiate()
         let naviController = UINavigationController(rootViewController: viewController)
         return naviController
     }
     
     private func createSettingViewController() -> UIViewController {
-        let viewController = SettingViewController()
+        let viewController = SettingViewController.instantiate()
         let naviController = UINavigationController(rootViewController: viewController)
         return naviController
     }

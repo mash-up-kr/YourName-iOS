@@ -34,19 +34,6 @@ final class RootViewController: ViewController {
         bind()
     }
     
-    override func setupAttribute() {
-        self.view.backgroundColor = .cyan
-        titleLabel.text = "Root"
-        titleLabel.textColor = .black
-    }
-    
-    override func setupLayout() {
-        self.view.addSubview(titleLabel)
-        titleLabel.snp.makeConstraints {
-            $0.center.equalTo(self.view)
-        }
-    }
-    
     private func bind() {
         self.rx.viewDidAppear.flatMapFirst { _ in self.viewModel.navigation }
             .subscribe(onNext: { [weak self] action in

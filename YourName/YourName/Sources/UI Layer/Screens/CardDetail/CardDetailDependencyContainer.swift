@@ -22,7 +22,9 @@ final class CardDetailDependencyContainer {
     
     func createCardDetailViewController() -> CardDetailViewController {
         let viewModel = createCardViewModel()
-        return CardDetailViewController(viewModel: viewModel)
+        let viewController = CardDetailViewController.instantiate()
+        viewController.viewModel = viewModel
+        return viewController
     }
     
     private func createCardViewModel() -> CardDetailViewModel {

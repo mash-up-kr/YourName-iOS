@@ -15,15 +15,15 @@ final class MyCardListDependencyContainer {
     }
     
     func createMyCardListViewController() -> UIViewController {
+        let viewController = MyCardListViewController.instantiate()
         let viewModel = createMyCardListViewModel()
         let cardDetailViewControllerFactory: (String) -> CardDetailViewController = { cardID in
             let dependencyContainer = self.createCardDetailDependencyContainer(cardID: cardID)
             return dependencyContainer.createCardDetailViewController()
         }
-        let viewController = MyCardListViewController(
-            viewModel: viewModel,
-            cardDetailViewControllerFactory: cardDetailViewControllerFactory
-        )
+        viewController.viewModel = viewModel
+        viewController.cardDetailViewControllerFactory = cardDetailViewControllerFactory
+        
         let naviController = UINavigationController(rootViewController: viewController)
         return naviController
     }

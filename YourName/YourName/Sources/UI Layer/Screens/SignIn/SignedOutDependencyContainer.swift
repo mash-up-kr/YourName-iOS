@@ -16,7 +16,9 @@ final class SignedOutDependencyContainer {
     
     func createSignInViewController() -> SignInViewController {
         let signInViewModel = createSignInViewModel()
-        return SignInViewController(viewModel: signInViewModel)
+        let viewController = SignInViewController.instantiate()
+        viewController.viewModel = signInViewModel
+        return viewController
     }
     
     private func createSignInViewModel() -> SignInViewModel {

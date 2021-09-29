@@ -18,15 +18,14 @@ class ViewController: UIViewController {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
+        print(" 🐣 \(String(describing: self)) init")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print(" 🐳 \(String(describing: self)) view did load")
         
-        setupAttribute()
-        setupLayout()
         #if DEBUG
         setupFLEX()
         #endif
@@ -36,26 +35,6 @@ class ViewController: UIViewController {
         print(" 💀 \(String(describing: self)) deinit")
     }
     
-    /// set up attribute(property) of subviews
-    ///
-    ///     textLabel.text = "Hello, world"
-    ///     textLabel.textColor = .systemBlue
-    func setupAttribute() {
-        fatalError("attribute() has not been implemented")
-    }
-    
-    /// set up layout of subviews
-    ///
-    ///
-    ///       view.addSubview(textLabel)
-    ///       textLabel.translatesAutoresizingMaskIntoConstraints = false
-    ///       NSLayoutConstraint.activate([
-    ///           textLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-    ///           textLabel.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
-    ///       ])
-    func setupLayout() {
-        fatalError("layout() has not been implemented")
-    }
 }
 // MARK: - FLEX Tool
 #if DEBUG

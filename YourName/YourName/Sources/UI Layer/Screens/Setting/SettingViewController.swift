@@ -8,22 +8,7 @@
 import UIKit
 import SnapKit
 
-final class SettingViewController: ViewController {
+final class SettingViewController: ViewController, Storyboarded {
     
-    override func setupLayout() {
-        self.view.addSubview(titleLabel)
-        titleLabel.snp.makeConstraints {
-            $0.center.equalTo(self.view)
-        }
-    }
-    
-    override func setupAttribute() {
-        self.navigationController?.navigationBar.isHidden = true
-        
-        self.view.backgroundColor = .systemPink
-        titleLabel.text = "Setting"
-    }
-    
-    private let titleLabel = UILabel()
 }
 

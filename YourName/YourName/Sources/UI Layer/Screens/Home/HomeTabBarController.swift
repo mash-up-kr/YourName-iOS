@@ -69,15 +69,9 @@ final class HomeTabBarController: UITabBarController {
     }
     
     private let disposeBag = DisposeBag()
-    private let viewModel: HomeViewModel
-    private let viewControllerFactory: (HomeTab) -> UIViewController
+    var viewModel: HomeViewModel
+    var viewControllerFactory: (HomeTab) -> UIViewController
 }
 
 final class CreateViewController: ViewController {
-    override func setupAttribute() {
-        
-    }
-    override func setupLayout() {
-        
-    }
 }

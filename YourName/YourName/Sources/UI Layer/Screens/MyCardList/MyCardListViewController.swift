@@ -8,20 +8,10 @@
 import RxSwift
 import UIKit
 
-final class MyCardListViewController: ViewController {
+final class MyCardListViewController: ViewController, Storyboarded {
     
-    init(
-        viewModel: MyCardListViewModel,
-        cardDetailViewControllerFactory: @escaping (String) -> CardDetailViewController
-    ) {
-        self.viewModel = viewModel
-        self.cardDetailViewControllerFactory = cardDetailViewControllerFactory
-        super.init()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    var viewModel: MyCardListViewModel!
+    var cardDetailViewControllerFactory: ((String) -> CardDetailViewController)!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,18 +24,6 @@ final class MyCardListViewController: ViewController {
 //        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
 //            self.viewModel.tapCard(at: 3)
 //        })
-    }
-    
-    override func setupLayout() {
-        self.view.addSubview(titleLabel)
-        titleLabel.snp.makeConstraints {
-            $0.center.equalTo(self.view)
-        }
-    }
-    
-    override func setupAttribute() {
-        self.view.backgroundColor = .systemBlue
-        titleLabel.text = "MyCardList"
     }
     
     private func bind() {
@@ -88,9 +66,5 @@ final class MyCardListViewController: ViewController {
         }
     }
     
-    private let viewModel: MyCardListViewModel
-    private let cardDetailViewControllerFactory: (String) -> CardDetailViewController
     private let disposeBag = DisposeBag()
-    
-    private let titleLabel = UILabel()
 }
