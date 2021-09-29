@@ -21,9 +21,13 @@ final class MyCardListDependencyContainer {
             let dependencyContainer = self.createCardDetailDependencyContainer(cardID: cardID)
             return dependencyContainer.createCardDetailViewController()
         }
+        let createCardViewControllerFactory: () -> CardCreationViewController = {
+            let dependencyContainer = self.createCardCreationDependencyContainer()
+            return dependencyContainer.createCardCreationViewController()
+        }
         viewController.viewModel = viewModel
         viewController.cardDetailViewControllerFactory = cardDetailViewControllerFactory
-        
+        viewController.cardCreationViewControllerFactory = createCardViewControllerFactory
         let naviController = UINavigationController(rootViewController: viewController)
         return naviController
     }
@@ -38,5 +42,9 @@ final class MyCardListDependencyContainer {
     // Child Dependency Container Factory
     private func createCardDetailDependencyContainer(cardID: String) -> CardDetailDependencyContainer {
         return CardDetailDependencyContainer(cardID: cardID, myCardListDependencyContainer: self)
+    }
+    
+    private func createCardCreationDependencyContainer() -> CardCreationDependencyContainer {
+        return CardCreationDependencyContainer(myCardListDependencyContainer: self)
     }
 }

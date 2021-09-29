@@ -12,6 +12,7 @@ final class MyCardListViewController: ViewController, Storyboarded {
     
     var viewModel: MyCardListViewModel!
     var cardDetailViewControllerFactory: ((String) -> CardDetailViewController)!
+    var cardCreationViewControllerFactory: (() -> CardCreationViewController)!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,10 +21,10 @@ final class MyCardListViewController: ViewController, Storyboarded {
         viewModel.load()
         bind()
         
-//        #warning("카드 탭 액션 트리거 가구현, 실구현 후 제거해야합니다.") // Booung
-//        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
-//            self.viewModel.tapCard(at: 3)
-//        })
+        #warning("카드 탭 액션 트리거 가구현, 실구현 후 제거해야합니다.") // Booung
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+            self.viewModel.tapCard(at: 3)
+        })
     }
     
     private func bind() {
