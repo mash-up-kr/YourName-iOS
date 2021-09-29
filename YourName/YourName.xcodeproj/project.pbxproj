@@ -38,6 +38,7 @@
 		CE6312CC26F9B4FC00B2E69B /* MockMyCardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6312CA26F9B4BD00B2E69B /* MockMyCardRepository.swift */; };
 		CE6312CF26F9B82600B2E69B /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6312CE26F9B82600B2E69B /* Card.swift */; };
 		CE6312D126F9BD6B00B2E69B /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6312D026F9BD6B00B2E69B /* Array+.swift */; };
+		CE6BAB942704D0990006D26B /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6BAB932704D0990006D26B /* Storyboarded.swift */; };
 		CEB6582C26EB15A600C11F33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6582B26EB15A600C11F33 /* AppDelegate.swift */; };
 		CEB6583026EB15A600C11F33 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6582F26EB15A600C11F33 /* ViewController.swift */; };
 		CEB6583526EB15AC00C11F33 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEB6583426EB15AC00C11F33 /* Images.xcassets */; };
@@ -137,6 +138,7 @@
 		CE6312CA26F9B4BD00B2E69B /* MockMyCardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMyCardRepository.swift; sourceTree = "<group>"; };
 		CE6312CE26F9B82600B2E69B /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		CE6312D026F9BD6B00B2E69B /* Array+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+.swift"; sourceTree = "<group>"; };
+		CE6BAB932704D0990006D26B /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
 		CEB6582826EB15A600C11F33 /* YourName.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YourName.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB6582B26EB15A600C11F33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEB6582F26EB15A600C11F33 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -323,6 +325,14 @@
 			path = "Test Doubles";
 			sourceTree = "<group>";
 		};
+		CE6BAB922704D08D0006D26B /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				CE6BAB932704D0990006D26B /* Storyboarded.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		CEB6581F26EB15A600C11F33 = {
 			isa = PBXGroup;
 			children = (
@@ -408,6 +418,7 @@
 		CEB6586026EB29B000C11F33 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				CE6BAB922704D08D0006D26B /* Protocols */,
 				CEF8C55526EDF8F7009BA9C2 /* Extensions */,
 			);
 			path = Common;
@@ -881,6 +892,7 @@
 				CED16DF926F3A55D0076565F /* MyCardListViewController.swift in Sources */,
 				CED16DF526F3A5480076565F /* QuestViewController.swift in Sources */,
 				CEB6588926EC818900C11F33 /* HTTPError.swift in Sources */,
+				CE6BAB942704D0990006D26B /* Storyboarded.swift in Sources */,
 				CE6312BE26F9A4C700B2E69B /* CardDetailDependencyContainer.swift in Sources */,
 				CEB6588026EC80F500C11F33 /* Foundation+Network.swift in Sources */,
 			);
