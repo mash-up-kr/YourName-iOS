@@ -11,4 +11,8 @@ final class CardDetailViewController: ViewController, Storyboarded {
     
     var viewModel: CardDetailViewModel!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
 }

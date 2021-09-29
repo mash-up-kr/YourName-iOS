@@ -21,9 +21,10 @@ final class MyCardListViewController: ViewController, Storyboarded {
         viewModel.load()
         bind()
         
-        #warning("카드 탭 액션 트리거 가구현, 실구현 후 제거해야합니다.") // Booung
+//        #warning("카드 탭 액션 트리거 가구현, 실구현 후 제거해야합니다.") // Booung
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
-            self.viewModel.tapCard(at: 3)
+//            self.viewModel.tapCard(at: 3)
+            self.viewModel.tapCardCreation()
         })
     }
     
@@ -35,35 +36,17 @@ final class MyCardListViewController: ViewController, Storyboarded {
             }).disposed(by: disposeBag)
     }
     
-    private func navigate(_ action: MyCardListNavigation) {
-        let viewController = createViewController(action.destination)
-        switch action.action {
-        case .present:
-            if let presentedViewController = self.presentedViewController {
-                presentedViewController.dismiss(animated: false, completion: { [weak self] in
-                    viewController.modalPresentationStyle = .fullScreen
-                    self?.present(viewController, animated: true, completion: nil)
-                })
-            } else {
-                viewController.modalPresentationStyle = .fullScreen
-                self.present(viewController, animated: true, completion: nil)
-            }
-            
-        case .push:
-            if let presentedViewController = self.presentedViewController {
-                presentedViewController.dismiss(animated: false, completion: { [weak self] in
-                    self?.navigationController?.pushViewController(viewController, animated: true)
-                })
-            } else {
-                navigationController?.pushViewController(viewController, animated: true)
-            }
-        }
+    private func navigate(_ navigation: MyCardListNavigation) {
+        let viewController = createViewController(navigation.destination)
+        navigate(viewController, action: navigation.action)
     }
     
     private func createViewController(_ next: MyCardListDesitination) -> UIViewController {
         switch next {
         case .cardDetail(let cardID):
             return cardDetailViewControllerFactory(cardID)
+        case .cardCreation:
+            return cardCreationViewControllerFactory()
         }
     }
     
