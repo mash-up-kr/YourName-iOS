@@ -41,8 +41,6 @@ final class SignedInDependencyContainer {
             viewController = createCardBookViewController()
         case .setting:
             viewController = createSettingViewController()
-        case .create:
-            viewController = createCreateViewController()
         }
         viewController.tabBarItem = tab.asTabBarItem()
         return viewController

@@ -12,7 +12,6 @@ enum HomeTab: Int, CaseIterable {
     case myCardList
     case cardBook
     case setting
-    case create
 }
 extension HomeTab: CustomStringConvertible {
     var description: String {
@@ -20,7 +19,6 @@ extension HomeTab: CustomStringConvertible {
         case .myCardList: return "내 명함"
         case .cardBook: return "도감"
         case .setting: return "기타 설정"
-        case .create: return ""
         }
     }
 }
@@ -30,7 +28,6 @@ extension HomeTab {
         case .myCardList: return UIImage(named: "icon_mycard_active")
         case .cardBook: return UIImage(named: "icon_cardbook_active")
         case .setting: return UIImage(named: "icon_hamburger_active")
-        case .create: return nil
         }
     }
     
@@ -39,7 +36,6 @@ extension HomeTab {
         case .myCardList: return UIImage(named: "icon_mycard")
         case .cardBook: return UIImage(named: "icon_cardbook")
         case .setting: return UIImage(named: "icon_hamburger")
-        case .create: return nil
         }
     }
 }
