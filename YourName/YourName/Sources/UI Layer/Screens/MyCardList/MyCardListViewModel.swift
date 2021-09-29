@@ -31,7 +31,7 @@ final class MyCardListViewModel {
     }
     
     func tapCardCreation() {
-        navigation.accept(.push(.cardCreation))
+        navigation.accept(.present(.cardCreation))
     }
     
     func tapCard(at index: Int) {

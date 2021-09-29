@@ -106,7 +106,7 @@ final class MyCardListViewModelTests: XCTestCase {
         
         // then
         let navigations = navigationObserver.events.compactMap(\.value.element)
-        expect(navigations).to(equal([.push(.cardCreation)]))
+        expect(navigations).to(equal([.present(.cardCreation)]))
     }
     
 }
