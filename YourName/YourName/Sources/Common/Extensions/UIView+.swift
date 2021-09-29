@@ -11,4 +11,10 @@ extension UIView {
     func addSubviews(_ views: UIView...) {
         views.forEach(addSubview(_:))
     }
+    
+    class func fromNib() -> Self? {
+        let nibName = String(describing: self)
+        let views = Bundle.main.loadNibNamed(nibName, owner: nil, options: nil)
+        return views?.first as? Self
+    }
 }
