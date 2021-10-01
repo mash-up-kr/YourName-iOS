@@ -34,19 +34,6 @@ final class RootViewController: ViewController {
         bind()
     }
     
-    override func setupAttribute() {
-        self.view.backgroundColor = .cyan
-        titleLabel.text = "Root"
-        titleLabel.textColor = .black
-    }
-    
-    override func setupLayout() {
-        self.view.addSubview(titleLabel)
-        titleLabel.snp.makeConstraints {
-            $0.center.equalTo(self.view)
-        }
-    }
-    
     private func bind() {
         self.rx.viewDidAppear.flatMapFirst { _ in self.viewModel.navigation }
             .subscribe(onNext: { [weak self] action in
@@ -55,29 +42,9 @@ final class RootViewController: ViewController {
             }).disposed(by: disposeBag)
     }
     
-    private func navigate(_ action: RootNavigation) {
-        let viewController = createViewController(action.destination)
-        switch action.action {
-        case .present:
-            if let presentedViewController = self.presentedViewController {
-                presentedViewController.dismiss(animated: false, completion: { [weak self] in
-                    viewController.modalPresentationStyle = .fullScreen
-                    self?.present(viewController, animated: false, completion: nil)
-                })
-            } else {
-                viewController.modalPresentationStyle = .fullScreen
-                self.present(viewController, animated: false, completion: nil)
-            }
-            
-        case .push:
-            if let presentedViewController = self.presentedViewController {
-                presentedViewController.dismiss(animated: false, completion: { [weak self] in
-                    self?.navigationController?.pushViewController(viewController, animated: true)
-                })
-            } else {
-                navigationController?.pushViewController(viewController, animated: true)
-            }
-        }
+    private func navigate(_ navigation: RootNavigation) {
+        let viewController = createViewController(navigation.destination)
+        self.navigate(viewController, action: navigation.action)
     }
     
     private func createViewController(_ next: RootDestination) -> UIViewController {

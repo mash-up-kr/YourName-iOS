@@ -49,7 +49,9 @@ final class RootDependencyContainer {
             accessTokenRepository: accessTokenRepository,
             authenticationDelegate: rootViewModel
         )
-        return SplashViewController(viewModel: viewModel)
+        let viewController = SplashViewController.instantiate()
+        viewController.viewModel = viewModel
+        return viewController
     }
     
     // Child Dependency Container Factory

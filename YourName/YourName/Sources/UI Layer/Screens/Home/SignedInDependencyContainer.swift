@@ -5,7 +5,7 @@
 //  Created by Booung on 2021/09/17.
 //
 
-import Foundation
+import UIKit
 
 final class SignedInDependencyContainer {
     
@@ -31,31 +31,42 @@ final class SignedInDependencyContainer {
         return HomeViewModel()
     }
     
-    private func createViewController(of tab: HomeTab) -> ViewController {
+    private func createViewController(of tab: HomeTab) -> UIViewController {
+        let viewController: UIViewController
         switch tab {
         case .myCardList:
             let dependencyContainer = createMyCardListDependencyContainer()
-            return dependencyContainer.createMyCardListViewController()
-        case .cardBook: return createCardBookViewController()
-        case .quest: return createQuestViewContorller()
-        case .profile: return createProfileViewController()
+            viewController = dependencyContainer.createMyCardListViewController()
+        case .cardBook:
+            viewController = createCardBookViewController()
+        case .setting:
+            viewController = createSettingViewController()
         }
+        viewController.tabBarItem = tab.asTabBarItem()
+        return viewController
     }
-    
+
     // Child Dependency Container Factory
     private func createMyCardListDependencyContainer() -> MyCardListDependencyContainer {
         return MyCardListDependencyContainer(signedInDependencyContainer: self)
     }
     
-    private func createCardBookViewController() -> CardBookViewController {
-        return CardBookViewController()
+    private func createCardBookViewController() -> UIViewController {
+        let viewController = CardBookViewController.instantiate()
+        let naviController = UINavigationController(rootViewController: viewController)
+        return naviController
     }
     
-    private func createQuestViewContorller() -> QuestViewController {
-        return QuestViewController()
+    private func createSettingViewController() -> UIViewController {
+        let viewController = SettingViewController.instantiate()
+        let naviController = UINavigationController(rootViewController: viewController)
+        return naviController
     }
     
-    private func createProfileViewController() -> ProfileViewController {
-        return ProfileViewController()
+    private func createCreateViewController() -> UIViewController {
+        let viewController = CreateViewController()
+        viewController.view.backgroundColor = .brown
+        let naviController = UINavigationController(rootViewController: viewController)
+        return naviController
     }
 }

@@ -8,20 +8,11 @@
 import RxSwift
 import UIKit
 
-final class MyCardListViewController: ViewController {
+final class MyCardListViewController: ViewController, Storyboarded {
     
-    init(
-        viewModel: MyCardListViewModel,
-        cardDetailViewControllerFactory: @escaping (String) -> CardDetailViewController
-    ) {
-        self.viewModel = viewModel
-        self.cardDetailViewControllerFactory = cardDetailViewControllerFactory
-        super.init()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    var viewModel: MyCardListViewModel!
+    var cardDetailViewControllerFactory: ((String) -> CardDetailViewController)!
+    var cardCreationViewControllerFactory: (() -> CardCreationViewController)!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,29 +21,11 @@ final class MyCardListViewController: ViewController {
         viewModel.load()
         bind()
         
-        #warning("카드 탭 액션 트리거 가구현, 실구현 후 제거해야합니다.") // Booung
+//        #warning("카드 탭 액션 트리거 가구현, 실구현 후 제거해야합니다.") // Booung
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
-            self.viewModel.tapCard(at: 3)
+//            self.viewModel.tapCard(at: 3)
+            self.viewModel.tapCardCreation()
         })
-    }
-    
-    override func setupLayout() {
-        self.view.addSubview(titleLabel)
-        titleLabel.snp.makeConstraints {
-            $0.center.equalTo(self.view)
-        }
-    }
-    
-    override func setupAttribute() {
-        let tab = HomeTab.myCardList
-        self.tabBarItem = UITabBarItem(
-            title: tab.description,
-            image: nil,
-            selectedImage: nil
-        )
-        
-        self.view.backgroundColor = .systemBlue
-        titleLabel.text = "MyCardList"
     }
     
     private func bind() {
@@ -63,41 +36,19 @@ final class MyCardListViewController: ViewController {
             }).disposed(by: disposeBag)
     }
     
-    private func navigate(_ action: MyCardListNavigation) {
-        let viewController = createViewController(action.destination)
-        switch action.action {
-        case .present:
-            if let presentedViewController = self.presentedViewController {
-                presentedViewController.dismiss(animated: false, completion: { [weak self] in
-                    viewController.modalPresentationStyle = .fullScreen
-                    self?.present(viewController, animated: true, completion: nil)
-                })
-            } else {
-                viewController.modalPresentationStyle = .fullScreen
-                self.present(viewController, animated: true, completion: nil)
-            }
-            
-        case .push:
-            if let presentedViewController = self.presentedViewController {
-                presentedViewController.dismiss(animated: false, completion: { [weak self] in
-                    self?.navigationController?.pushViewController(viewController, animated: true)
-                })
-            } else {
-                navigationController?.pushViewController(viewController, animated: true)
-            }
-        }
+    private func navigate(_ navigation: MyCardListNavigation) {
+        let viewController = createViewController(navigation.destination)
+        navigate(viewController, action: navigation.action)
     }
     
     private func createViewController(_ next: MyCardListDesitination) -> UIViewController {
         switch next {
         case .cardDetail(let cardID):
             return cardDetailViewControllerFactory(cardID)
+        case .cardCreation:
+            return cardCreationViewControllerFactory()
         }
     }
     
-    private let viewModel: MyCardListViewModel
-    private let cardDetailViewControllerFactory: (String) -> CardDetailViewController
     private let disposeBag = DisposeBag()
-    
-    private let titleLabel = UILabel()
 }

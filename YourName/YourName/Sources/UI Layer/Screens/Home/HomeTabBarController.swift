@@ -14,7 +14,7 @@ final class HomeTabBarController: UITabBarController {
     
     init(
         viewModel: HomeViewModel,
-        viewControllerFactory: @escaping (HomeTab) -> ViewController
+        viewControllerFactory: @escaping (HomeTab) -> UIViewController
     ) {
         self.viewModel = viewModel
         self.viewControllerFactory = viewControllerFactory
@@ -33,6 +33,7 @@ final class HomeTabBarController: UITabBarController {
     }
     
     private func setupAttributes() {
+        self.tabBar.tintColor = .black
     }
     
     private func bind() {
@@ -47,9 +48,11 @@ final class HomeTabBarController: UITabBarController {
         viewModel.tabItems.distinctUntilChanged()
             .subscribe( onNext: { [weak self] tabItems in
                 guard let self = self else { return }
-                let viewControllers = tabItems.map(self.viewControllerFactory)
-                    .map { UINavigationController(rootViewController: $0) }
-                self.setViewControllers(viewControllers, animated: false)
+                let viewControllers = tabItems.map { tabItem -> UIViewController in
+                    let viewController = self.viewControllerFactory(tabItem)
+                    return viewController
+                }
+                self.setViewControllers(viewControllers, animated: true)
             })
             .disposed(by: disposeBag)
         
@@ -65,7 +68,10 @@ final class HomeTabBarController: UITabBarController {
             .disposed(by: disposeBag)
     }
     
-    private let viewModel: HomeViewModel
-    private let viewControllerFactory: (HomeTab) -> ViewController
     private let disposeBag = DisposeBag()
+    var viewModel: HomeViewModel
+    var viewControllerFactory: (HomeTab) -> UIViewController
+}
+
+final class CreateViewController: ViewController {
 }

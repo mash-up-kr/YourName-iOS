@@ -11,7 +11,7 @@ import XCTest
 @testable import YourName
 
 final class MyCardListViewModelTests: XCTestCase {
-
+    
     // 🧪 System Under Test
     var sut: MyCardListViewModel!
     // 🥸 Test Double
@@ -38,10 +38,10 @@ final class MyCardListViewModelTests: XCTestCase {
         _ = mockMyCardRepository.calledFetchList.subscribe(calledFetchListObserver)
         
         // when
-            _ = testScheduler.createHotObservable([
-                .next(300, sut.load()),
-                .completed(500)
-            ])
+        _ = testScheduler.createHotObservable([
+            .next(300, sut.load()),
+            .completed(500)
+        ])
         testScheduler.start()
         
         // then
@@ -90,4 +90,23 @@ final class MyCardListViewModelTests: XCTestCase {
         let navigations = navigationObserver.events.compactMap(\.value.element)
         expect(navigations).to(equal([.push(.cardDetail(cardID: "test-4"))]))
     }
+    
+    func test_카드추가를_누르면_카드제작화면으로_이동합니다() {
+        // given
+        let testScheduler = TestScheduler(initialClock: 0)
+        let navigationObserver = testScheduler.createObserver(MyCardListNavigation.self)
+        _ = sut.navigation.subscribe(navigationObserver)
+        
+        // when
+        _ = testScheduler.createHotObservable([
+            .next(100, sut.tapCardCreation()),
+            .completed(500)
+        ])
+        testScheduler.start()
+        
+        // then
+        let navigations = navigationObserver.events.compactMap(\.value.element)
+        expect(navigations).to(equal([.present(.cardCreation)]))
+    }
+    
 }

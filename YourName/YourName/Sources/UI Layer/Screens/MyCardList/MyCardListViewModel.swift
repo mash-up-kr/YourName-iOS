@@ -9,6 +9,7 @@ import RxRelay
 import RxSwift
 
 enum MyCardListDesitination: Equatable {
+    case cardCreation
     case cardDetail(cardID: String)
 }
 
@@ -27,6 +28,10 @@ final class MyCardListViewModel {
         myCardRepository.fetchList()
             .bind(to: myCardList)
             .disposed(by: disposeBag)
+    }
+    
+    func tapCardCreation() {
+        navigation.accept(.present(.cardCreation))
     }
     
     func tapCard(at index: Int) {
