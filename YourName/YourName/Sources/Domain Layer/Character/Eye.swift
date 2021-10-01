@@ -18,5 +18,5 @@ enum Eye {
     static let name8 = "eye_8"
     static let name9 = "eye_9"
     
-    static let all: [String] = [ name1, name2, name3, name4, name5, name6, name7, name8, name9]
+    static let all: [String] = [name1, name2, name3, name4, name5, name6, name7, name8, name9]
 }

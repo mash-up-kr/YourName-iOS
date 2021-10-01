@@ -7,23 +7,28 @@
 
 import UIKit
 
-final class CharacterCreationViewController: ViewController {
+final class CharacterCreationViewController: ViewController, Storyboarded {
 
+    var viewModel: CharacterCreationViewModel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func bind() {
+        dispatch(to: viewModel)
+        render(viewModel)
     }
-    */
+    
+    private func dispatch(to viewModel: CharacterCreationViewModel) {
+        
+    }
+    
+    private func render(_ viewModel: CharacterCreationViewModel) {
+        
+    }
 
 }
+

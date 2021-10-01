@@ -14,6 +14,7 @@ import UIKit
 final class CardCreationViewController: ViewController, Storyboarded {
     
     var viewModel: CardCreationViewModel!
+    var characterCreationViewControllerFactory: (() -> CharacterCreationViewController)?
     
     override func viewDidLoad() {
         super.viewDidLoad()

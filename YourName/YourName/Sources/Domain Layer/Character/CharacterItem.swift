@@ -1,5 +1,5 @@
 //
-//  ItemType.swift
+//  CharacterItem.swift
 //  YourName
 //
 //  Created by Booung on 2021/10/02.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ItemType: Int, CaseIterable, Equatable {
+enum CharacterItemType: Int, CaseIterable, Equatable {
     case body
     case eye
     case nose
@@ -15,7 +15,7 @@ enum ItemType: Int, CaseIterable, Equatable {
     case hairAccessory
     case accessory
 }
-extension ItemType: CustomStringConvertible {
+extension CharacterItemType: CustomStringConvertible {
     var description: String {
         switch self {
         case .body: return "몸"
@@ -26,4 +26,9 @@ extension ItemType: CustomStringConvertible {
         case .accessory: return "장식2"
         }
     }
+}
+
+struct CharacterItem {
+    let type: CharacterItemType
+    let itemID: String
 }
