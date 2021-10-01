@@ -11,14 +11,13 @@ import RxSwift
 import UIKit
 
 final class CardCreationViewController: ViewController, Storyboarded {
-
+    
     var viewModel: CardCreationViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         bind()
-        setupNotification()
     }
     
     private func bind() {
@@ -53,7 +52,9 @@ final class CardCreationViewController: ViewController, Storyboarded {
             .disposed(by: disposeBag)
         
         completeButton?.rx.tap
-            .subscribe(onNext: { [weak self] in self?.viewModel.tapCompletion() })
+            .subscribe(onNext: { [weak self] in self?.viewModel.tapCompletion()
+                self?.dismiss(animated: true, completion: nil)
+            })
             .disposed(by: disposeBag)
     }
     
@@ -110,38 +111,20 @@ final class CardCreationViewController: ViewController, Storyboarded {
         self.view.rx.tapGesture().when(.recognized)
             .subscribe(onNext: { _ in self.view.endEditing(true) })
             .disposed(by: disposeBag)
-    }
-    
-    private func setupNotification() {
-        let keyboardFrameHeight = Observable.merge(
-            NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification)
-                .map { ($0.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height },
-            NotificationCenter.default.rx.notification(UIResponder.keyboardWillHideNotification).map { _ in CGFloat.zero }
-        ).filterNil()
         
-        let animationDuration = Observable.merge(
-            NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification),
-            NotificationCenter.default.rx.notification(UIResponder.keyboardWillHideNotification)
-        ).map { ($0.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0.3 }
-                
-        Observable.combineLatest(keyboardFrameHeight, animationDuration)
-            .subscribe(onNext: { [weak self] keyboardHeight, duration in
-                guard let self = self else { return }
-                UIView.animate(withDuration: duration, animations: {
-                    self.keyboardFrameViewHeightConstraint.constant = keyboardHeight
-                    self.view.layoutIfNeeded()
-                })
-            }).disposed(by: disposeBag)
     }
     
     private let disposeBag = DisposeBag()
+    private let keyboard: Keyboard = KeyboardImpl.shared
     
+    @IBOutlet private weak var scrollView: UIScrollView?
     @IBOutlet private weak var profileClearButton: UIButton?
     @IBOutlet private weak var profilePlaceholderView: UIView?
     @IBOutlet private weak var backgroundSettingButton: UIButton?
     @IBOutlet private weak var nameField: UITextField?
     @IBOutlet private weak var roleField: UITextField?
     @IBOutlet private weak var mySkillSettingButton: UIButton?
+    @IBOutlet private var contactInputViews: [ContactInputView]?
     @IBOutlet private weak var personalityTitleField: UITextField?
     @IBOutlet private weak var personalityKeywordField: UITextField?
     @IBOutlet private weak var myTMISettingButton: UIButton?
@@ -149,4 +132,63 @@ final class CardCreationViewController: ViewController, Storyboarded {
     @IBOutlet private weak var aboutMePlaceholderLabel: UILabel?
     @IBOutlet private weak var keyboardFrameViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var completeButton: UIButton?
+}
+
+enum ContactType: Int, CaseIterable {
+    case phone
+    case email
+    case sns
+}
+
+struct ContactInfo {
+    let type: ContactType
+    let value: String
+}
+
+final class ContactInputView: UIView {
+    @IBOutlet private weak var contactTypeView: UIView?
+    @IBOutlet private weak var contactValueField: UITextField?
+}
+
+
+
+
+import RxRelay
+
+protocol Keyboard {
+    var isHidden: BehaviorRelay<Bool> { get }
+    var height: BehaviorRelay<CGFloat> { get }
+    var animationDuration: BehaviorRelay<TimeInterval> { get }
+}
+
+final class KeyboardImpl: NSObject, Keyboard {
+    static let shared = KeyboardImpl()
+    
+    let isHidden = BehaviorRelay(value: false)
+    let height = BehaviorRelay<CGFloat>(value: .zero)
+    let animationDuration = BehaviorRelay(value: 0.25)
+    
+    override init() {
+        super.init()
+        
+        NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification)
+            .subscribe(onNext: { [weak self] notification in
+                let keyboardHeight = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height ?? 336
+                let duration = (notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0.25
+                self?.height.accept(keyboardHeight)
+                self?.animationDuration.accept(duration)
+                self?.isHidden.accept(false)
+            }).disposed(by: disposeBag)
+        
+        NotificationCenter.default.rx.notification(UIResponder.keyboardWillHideNotification)
+            .subscribe(onNext: {  [weak self] notification in
+                let keyboardHeight = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height ?? 336
+                let duration = (notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0.25
+                self?.height.accept(keyboardHeight)
+                self?.animationDuration.accept(duration)
+                self?.isHidden.accept(true)
+            }).disposed(by: disposeBag)
+    }
+    
+    private let disposeBag = DisposeBag()
 }
