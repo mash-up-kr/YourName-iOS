@@ -11,7 +11,7 @@ import UIKit
 
 final class CardCreationViewController: ViewController, Storyboarded {
 
-    var viewModel: CardCreationViewModel?
+    var viewModel: CardCreationViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,8 +20,6 @@ final class CardCreationViewController: ViewController, Storyboarded {
     }
     
     private func bind() {
-        guard let viewModel = self.viewModel else { return }
-        
         dispatch(to: viewModel)
         render(viewModel)
     }
@@ -29,31 +27,31 @@ final class CardCreationViewController: ViewController, Storyboarded {
     private func dispatch(to viewModel: CardCreationViewModel) {
         nameField?.rx.text
             .filterNil()
-            .subscribe(onNext: { [weak self] in self?.viewModel?.typeName($0) })
+            .subscribe(onNext: { [weak self] in self?.viewModel.typeName($0) })
             .disposed(by: disposeBag)
         
         roleField?.rx.text
             .filterNil()
-            .subscribe(onNext: { [weak self] in self?.viewModel?.typeRole($0) })
+            .subscribe(onNext: { [weak self] in self?.viewModel.typeRole($0) })
             .disposed(by: disposeBag)
         
         personalityTitleField?.rx.text
             .filterNil()
-            .subscribe(onNext: { [weak self] in self?.viewModel?.typePersonalityTitle($0) })
+            .subscribe(onNext: { [weak self] in self?.viewModel.typePersonalityTitle($0) })
             .disposed(by: disposeBag)
         
         personalityKeywordField?.rx.text
             .filterNil()
-            .subscribe(onNext: { [weak self] in self?.viewModel?.typePersonalityKeyword($0) })
+            .subscribe(onNext: { [weak self] in self?.viewModel.typePersonalityKeyword($0) })
             .disposed(by: disposeBag)
         
         aboutMeTextView?.rx.text
             .filterNil()
-            .subscribe(onNext: { [weak self] in self?.viewModel?.typeAboutMe($0) })
+            .subscribe(onNext: { [weak self] in self?.viewModel.typeAboutMe($0) })
             .disposed(by: disposeBag)
         
         completeButton?.rx.tap
-            .subscribe(onNext: { [weak self] in self?.viewModel?.tapCompletion() })
+            .subscribe(onNext: { [weak self] in self?.viewModel.tapCompletion() })
             .disposed(by: disposeBag)
     }
     
@@ -63,26 +61,43 @@ final class CardCreationViewController: ViewController, Storyboarded {
                 .bind(to: nameField.rx.text)
                 .disposed(by: disposeBag)
         }
+        
         if let roleField = self.roleField {
             viewModel.role.distinctUntilChanged()
                 .bind(to: roleField.rx.text)
                 .disposed(by: disposeBag)
         }
+        
         if let personalityTitleField = self.personalityTitleField {
             viewModel.personalityTitle.distinctUntilChanged()
                 .bind(to: personalityTitleField.rx.text)
                 .disposed(by: disposeBag)
         }
+        
         if let personalityKeywordField = self.personalityKeywordField {
             viewModel.personalityKeyword.distinctUntilChanged()
                 .bind(to: personalityKeywordField.rx.text)
                 .disposed(by: disposeBag)
         }
+        
         if let aboutMeTextView = self.aboutMeTextView {
             viewModel.aboutMe.distinctUntilChanged()
                 .bind(to: aboutMeTextView.rx.text)
                 .disposed(by: disposeBag)
         }
+        
+        if let profileClearButton = self.profileClearButton {
+            viewModel.shouldHideClear
+                .bind(to: profileClearButton.rx.isHidden)
+                .disposed(by: disposeBag)
+        }
+        
+        if let profilePlaceholderView = self.profilePlaceholderView {
+            viewModel.shouldHideProfilePlaceholder
+                .bind(to: profilePlaceholderView.rx.isHidden)
+                .disposed(by: disposeBag)
+        }
+        
         viewModel.navigation
             .subscribe(onNext: { [weak self] navigation in
                 let viewController = UIViewController()

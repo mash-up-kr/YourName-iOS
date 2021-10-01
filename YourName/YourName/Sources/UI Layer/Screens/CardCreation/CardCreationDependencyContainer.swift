@@ -14,8 +14,9 @@ final class CardCreationDependencyContainer {
     }
     
     func createCardCreationViewController() -> CardCreationViewController {
+        let viewModel = CardCreationViewModel()
         let viewContorller = CardCreationViewController.instantiate()
-        
+        viewContorller.viewModel = viewModel
         return viewContorller
     }
 }

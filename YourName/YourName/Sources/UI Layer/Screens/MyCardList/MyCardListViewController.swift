@@ -5,6 +5,7 @@
 //  Created by Booung on 2021/09/17.
 //
 
+import RxOptional
 import RxSwift
 import UIKit
 
@@ -18,22 +19,31 @@ final class MyCardListViewController: ViewController, Storyboarded {
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.isHidden = true
-        viewModel.load()
-        bind()
         
-//        #warning("카드 탭 액션 트리거 가구현, 실구현 후 제거해야합니다.") // Booung
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
-//            self.viewModel.tapCard(at: 3)
-            self.viewModel.tapCardCreation()
-        })
+        bind()
     }
     
     private func bind() {
-        self.rx.viewDidAppear.flatMapFirst { _ in self.viewModel.navigation }
+        dispatch(to: viewModel)
+        render(viewModel)
+    }
+    
+    private func dispatch(to viewModel: MyCardListViewModel) {
+        viewModel.load()
+        
+        self.rx.viewDidAppear.flatMapFirst { _ in self.viewModel.navigation}
             .subscribe(onNext: { [weak self] action in
                 guard let self = self else { return }
                 self.navigate(action)
             }).disposed(by: disposeBag)
+        
+        addCardButton?.rx.tap
+            .subscribe(onNext: { [weak self] _ in self?.viewModel.tapCardCreation() })
+            .disposed(by: disposeBag)
+    }
+    
+    private func render(_ viewModel: MyCardListViewModel) {
+        
     }
     
     private func navigate(_ navigation: MyCardListNavigation) {
@@ -51,4 +61,5 @@ final class MyCardListViewController: ViewController, Storyboarded {
     }
     
     private let disposeBag = DisposeBag()
+    @IBOutlet private weak var addCardButton: UIButton?
 }

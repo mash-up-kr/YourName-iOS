@@ -22,21 +22,35 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Nl-1u-r3f">
+                                <rect key="frame" x="366" y="74" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="Acr-yh-GMY"/>
+                                    <constraint firstAttribute="height" constant="24" id="jqu-9B-sjx"/>
+                                </constraints>
+                                <state key="normal" image="icon_add"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemTealColor"/>
                         <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="2Nl-1u-r3f" secondAttribute="trailing" constant="24" id="Od6-fQ-Ehg"/>
                             <constraint firstItem="H10-KI-OaA" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Z9P-6y-rSh"/>
                             <constraint firstItem="H10-KI-OaA" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="fbC-Kn-o8Y"/>
+                            <constraint firstItem="2Nl-1u-r3f" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="30" id="gSm-H6-Ruq"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="addCardButton" destination="2Nl-1u-r3f" id="2pO-e6-Yml"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3" y="80"/>
+            <point key="canvasLocation" x="-243" y="137"/>
         </scene>
     </scenes>
     <resources>
+        <image name="icon_add" width="24" height="24"/>
         <systemColor name="systemTealColor">
             <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
