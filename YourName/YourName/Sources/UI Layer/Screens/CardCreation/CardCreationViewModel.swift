@@ -9,10 +9,11 @@ import Foundation
 import RxRelay
 
 enum CardCreationDestination: Equatable {
-    case profileBackgroundSetting
+    case profileBackgroundPicker
+    case imageSourcePicker
     case createCharacter
-    case mySkillSetting
-    case myTMISetting
+    case settingSkill
+    case settingTMI
 }
 
 typealias CardCreationNavigation = Navigation<CardCreationDestination>
@@ -22,7 +23,7 @@ enum ImageSource: Equatable {
     case url(URL)
 }
 
-enum BackgroundColor: Equatable {
+enum ColorSource: Equatable {
     case monotone(UIColor)
     case gradient([UIColor])
 }
@@ -33,7 +34,7 @@ final class CardCreationViewModel {
     let shouldHideClear = BehaviorRelay<Bool>(value: true)
     let shouldHideProfilePlaceholder = BehaviorRelay<Bool>(value: false)
     let profileImageSource = BehaviorRelay<ImageSource?>(value: nil)
-    let profileBackgroundColor = BehaviorRelay<BackgroundColor>(value: .monotone(Palette.black1))
+    let profileBackgroundColor = BehaviorRelay<ColorSource>(value: .gradient([Palette.yellow, Palette.lightGreen, Palette.skyBlue]))
     let name = BehaviorRelay<String>(value: .empty)
     let role = BehaviorRelay<String>(value: .empty)
     let personalityTitle = BehaviorRelay<String>(value: .empty)
@@ -53,7 +54,7 @@ final class CardCreationViewModel {
     }
     
     func tapProfileBackgroundSetting() {
-        navigation.accept(.present(.profileBackgroundSetting))
+        navigation.accept(.present(.profileBackgroundPicker))
     }
     
     func typeName(_ text: String) {
@@ -64,8 +65,8 @@ final class CardCreationViewModel {
         role.accept(text)
     }
    
-    func tapMySkillSetting() {
-        navigation.accept(.present(.mySkillSetting))
+    func tapSkillSetting() {
+        navigation.accept(.present(.settingSkill))
     }
     
     func selectContactType(_ type: ContactType, index: Int) {
@@ -84,8 +85,8 @@ final class CardCreationViewModel {
         personalityKeyword.accept(text)
     }
     
-    func tapMyTMISetting() {
-        navigation.accept(.present(.myTMISetting))
+    func tapTMISetting() {
+        navigation.accept(.present(.settingTMI))
     }
     
     func typeAboutMe(_ text: String) {

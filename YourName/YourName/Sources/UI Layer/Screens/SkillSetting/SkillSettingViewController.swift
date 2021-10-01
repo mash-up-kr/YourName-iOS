@@ -5,4 +5,8 @@
 //  Created by Booung on 2021/10/02.
 //
 
-import Foundation
+import UIKit
+
+final class SkillSettingViewController: ViewController {
+    
+}

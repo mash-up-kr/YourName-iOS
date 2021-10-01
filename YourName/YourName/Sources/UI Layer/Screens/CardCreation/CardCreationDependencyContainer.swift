@@ -18,14 +18,38 @@ final class CardCreationDependencyContainer {
         let viewContorller = CardCreationViewController.instantiate()
         viewContorller.viewModel = viewModel
         viewContorller.characterCreationViewControllerFactory = {
-            let dependencyContainer = self.createCharacterItemDependencyContainer()
+            let dependencyContainer = self.createCharacterCreationDependencyContainer()
             return dependencyContainer.createCharacterCreationViewController()
+        }
+        viewContorller.paletteViewControllerFactory = {
+            let dependencyContainer = self.createPaletteDependencyContainer()
+            return dependencyContainer.createPaletteViewController()
+        }
+        viewContorller.tmiSettingViewControllerFactory = {
+            let dependencyContainer = self.createTMISettingDependencyContainer()
+            return dependencyContainer.createTMISettingViewController()
+        }
+        viewContorller.skillSettingViewControllerFactory = {
+            let dependencyContainer = self.createSkillSettingDependencyContainer()
+            return dependencyContainer.createSkillSettingViewController()
         }
         return viewContorller
     }
     
     // Child
-    private func createCharacterItemDependencyContainer() -> CharacterCreationDependencyContainer {
+    private func createCharacterCreationDependencyContainer() -> CharacterCreationDependencyContainer {
         return CharacterCreationDependencyContainer(cardCreationDependencyContainer: self)
+    }
+    
+    private func createPaletteDependencyContainer() -> PaletteDependencyContainer {
+        return PaletteDependencyContainer(cardCreationDependencyContainer: self)
+    }
+    
+    private func createTMISettingDependencyContainer() -> TMISettingDependencyContainer {
+        return TMISettingDependencyContainer(cardCreationDependencyContainer: self)
+    }
+    
+    private func createSkillSettingDependencyContainer() -> SkillSettingDependencyContainer {
+        return SkillSettingDependencyContainer(cardCreationDependencyContainer: self)
     }
 }

@@ -15,6 +15,9 @@ final class CardCreationViewController: ViewController, Storyboarded {
     
     var viewModel: CardCreationViewModel!
     var characterCreationViewControllerFactory: (() -> CharacterCreationViewController)?
+    var paletteViewControllerFactory: (() -> PaletteViewController)?
+    var tmiSettingViewControllerFactory: (() -> TMISettingViewController)?
+    var skillSettingViewControllerFactory: (() -> SkillSettingViewController)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,7 +67,7 @@ final class CardCreationViewController: ViewController, Storyboarded {
             .disposed(by: disposeBag)
         
         mySkillSettingButton?.rx.tap
-            .subscribe(onNext: { [weak self] in self?.viewModel.tapMySkillSetting() })
+            .subscribe(onNext: { [weak self] in self?.viewModel.tapSkillSetting() })
             .disposed(by: disposeBag)
         
         contactInputViews?.enumerated().forEach { index, contactInputView in
@@ -90,7 +93,7 @@ final class CardCreationViewController: ViewController, Storyboarded {
             .disposed(by: disposeBag)
         
         myTMISettingButton?.rx.tap
-            .subscribe(onNext: { [weak self] in self?.viewModel.tapMyTMISetting() })
+            .subscribe(onNext: { [weak self] in self?.viewModel.tapTMISetting() })
             .disposed(by: disposeBag)
         
         aboutMeTextView?.rx.text
@@ -119,18 +122,11 @@ final class CardCreationViewController: ViewController, Storyboarded {
                 .disposed(by: disposeBag)
         }
         
+        if let profileImageView = self.profileImageView {
         viewModel.profileImageSource.distinctUntilChanged()
-            .subscribe(onNext: { [weak self] imageSource in
-                switch imageSource {
-                case .image(let uiImage):
-                    self?.profileImageView?.image = uiImage
-                case .url(let url):
-                    self?.profileImageView?.kf.setImage(with: url)
-                case .none:
-                    self?.profileImageView?.image = nil
-                }
-            })
+            .bind(to: profileImageView.rx.imageSource)
             .disposed(by: disposeBag)
+        }
         
         viewModel.profileBackgroundColor.distinctUntilChanged()
             .subscribe(onNext: { [weak self] backgroundColor in
@@ -182,7 +178,7 @@ final class CardCreationViewController: ViewController, Storyboarded {
         }
         
         if let aboutMePlaceholderLabel = self.aboutMePlaceholderLabel {
-            viewModel.aboutMe.map { $0.isEmpty }
+            viewModel.aboutMe.map { $0.isEmpty == false }
                 .distinctUntilChanged()
                 .bind(to: aboutMePlaceholderLabel.rx.isHidden)
                 .disposed(by: disposeBag)

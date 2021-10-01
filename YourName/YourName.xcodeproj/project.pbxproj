@@ -32,6 +32,14 @@
 		CE4D4E8E2707AF6E00081A2B /* FakeCharacterItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E8D2707AF6E00081A2B /* FakeCharacterItemRepository.swift */; };
 		CE4D4E922707B27200081A2B /* SkillSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E912707B27200081A2B /* SkillSettingViewController.swift */; };
 		CE4D4E942707B28200081A2B /* TMISettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E932707B28200081A2B /* TMISettingViewController.swift */; };
+		CE4D4E982707B35100081A2B /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E972707B35100081A2B /* UIImageView+.swift */; };
+		CE4D4E9B2707BB2500081A2B /* PaletteDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E9A2707BB2500081A2B /* PaletteDependencyContainer.swift */; };
+		CE4D4E9D2707BB3F00081A2B /* PaletteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E9C2707BB3F00081A2B /* PaletteViewController.swift */; };
+		CE4D4EA02707BB8400081A2B /* SkillSettingDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E9F2707BB8400081A2B /* SkillSettingDependencyContainer.swift */; };
+		CE4D4EA22707BBBA00081A2B /* TMISettingDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4EA12707BBBA00081A2B /* TMISettingDependencyContainer.swift */; };
+		CE4D4EA42707BC2000081A2B /* PaletteViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE4D4EA32707BC2000081A2B /* PaletteViewController.storyboard */; };
+		CE4D4EA62707BC3900081A2B /* SkillSettingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE4D4EA52707BC3900081A2B /* SkillSettingViewController.storyboard */; };
+		CE4D4EA82707BC5000081A2B /* TMISettingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE4D4EA72707BC5000081A2B /* TMISettingViewController.storyboard */; };
 		CE63123A26F59C7800B2E69B /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63123926F59C7800B2E69B /* RootViewController.swift */; };
 		CE63124026F59E6700B2E69B /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63123F26F59E6700B2E69B /* RootViewModel.swift */; };
 		CE63124926F5A30200B2E69B /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63124826F5A30200B2E69B /* Navigation.swift */; };
@@ -166,6 +174,14 @@
 		CE4D4E8D2707AF6E00081A2B /* FakeCharacterItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeCharacterItemRepository.swift; sourceTree = "<group>"; };
 		CE4D4E912707B27200081A2B /* SkillSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillSettingViewController.swift; sourceTree = "<group>"; };
 		CE4D4E932707B28200081A2B /* TMISettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMISettingViewController.swift; sourceTree = "<group>"; };
+		CE4D4E972707B35100081A2B /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
+		CE4D4E9A2707BB2500081A2B /* PaletteDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteDependencyContainer.swift; sourceTree = "<group>"; };
+		CE4D4E9C2707BB3F00081A2B /* PaletteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteViewController.swift; sourceTree = "<group>"; };
+		CE4D4E9F2707BB8400081A2B /* SkillSettingDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillSettingDependencyContainer.swift; sourceTree = "<group>"; };
+		CE4D4EA12707BBBA00081A2B /* TMISettingDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMISettingDependencyContainer.swift; sourceTree = "<group>"; };
+		CE4D4EA32707BC2000081A2B /* PaletteViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PaletteViewController.storyboard; sourceTree = "<group>"; };
+		CE4D4EA52707BC3900081A2B /* SkillSettingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SkillSettingViewController.storyboard; sourceTree = "<group>"; };
+		CE4D4EA72707BC5000081A2B /* TMISettingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TMISettingViewController.storyboard; sourceTree = "<group>"; };
 		CE63123926F59C7800B2E69B /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		CE63123F26F59E6700B2E69B /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		CE63124826F5A30200B2E69B /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
@@ -342,6 +358,8 @@
 		CE4D4E8F2707B21400081A2B /* TMISetting */ = {
 			isa = PBXGroup;
 			children = (
+				CE4D4EA12707BBBA00081A2B /* TMISettingDependencyContainer.swift */,
+				CE4D4EA72707BC5000081A2B /* TMISettingViewController.storyboard */,
 				CE4D4E932707B28200081A2B /* TMISettingViewController.swift */,
 			);
 			path = TMISetting;
@@ -350,9 +368,35 @@
 		CE4D4E902707B24A00081A2B /* SkillSetting */ = {
 			isa = PBXGroup;
 			children = (
+				CE4D4E9F2707BB8400081A2B /* SkillSettingDependencyContainer.swift */,
+				CE4D4EA52707BC3900081A2B /* SkillSettingViewController.storyboard */,
 				CE4D4E912707B27200081A2B /* SkillSettingViewController.swift */,
 			);
 			path = SkillSetting;
+			sourceTree = "<group>";
+		};
+		CE4D4E952707B2FB00081A2B /* TMI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TMI;
+			sourceTree = "<group>";
+		};
+		CE4D4E962707B30400081A2B /* Skill */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Skill;
+			sourceTree = "<group>";
+		};
+		CE4D4E992707BA9800081A2B /* Palette */ = {
+			isa = PBXGroup;
+			children = (
+				CE4D4E9A2707BB2500081A2B /* PaletteDependencyContainer.swift */,
+				CE4D4EA32707BC2000081A2B /* PaletteViewController.storyboard */,
+				CE4D4E9C2707BB3F00081A2B /* PaletteViewController.swift */,
+			);
+			path = Palette;
 			sourceTree = "<group>";
 		};
 		CE63123826F59C6B00B2E69B /* Root */ = {
@@ -587,7 +631,9 @@
 				CE4D4E732707A70000081A2B /* Character */,
 				CE6312C626F9B38A00B2E69B /* MyCard */,
 				CEB6586626EB2C0700C11F33 /* Scheme */,
+				CE4D4E962707B30400081A2B /* Skill */,
 				CEFA037826EFB75D00D12AAB /* Snapshot */,
+				CE4D4E952707B2FB00081A2B /* TMI */,
 				CEFA037B26EFBAC100D12AAB /* QR */,
 			);
 			path = "Domain Layer";
@@ -610,6 +656,7 @@
 				CE4D4E6E2707A0CB00081A2B /* CharacterCreation */,
 				CEB6586A26EB2C6400C11F33 /* Home */,
 				CED16DEC26F3A4C30076565F /* MyCardList */,
+				CE4D4E992707BA9800081A2B /* Palette */,
 				CED16DEE26F3A5000076565F /* Quest */,
 				CE63123826F59C6B00B2E69B /* Root */,
 				CED16DEF26F3A5050076565F /* Setting */,
@@ -777,8 +824,9 @@
 				CE6312D026F9BD6B00B2E69B /* Array+.swift */,
 				CE63125426F5E25200B2E69B /* String+.swift */,
 				CE6BABAE2704EE9C0006D26B /* UICollectionView+.swift */,
-				CE6BABAC2704ED700006D26B /* UITableView+.swift */,
+				CE4D4E972707B35100081A2B /* UIImageView+.swift */,
 				CEF8C55626EDFB6F009BA9C2 /* UIStackView+.swift */,
+				CE6BABAC2704ED700006D26B /* UITableView+.swift */,
 				CEF8C55226EDF8D5009BA9C2 /* UIView+.swift */,
 				CE6BABAA2704E2480006D26B /* UIVIewController+.swift */,
 				CEB6582F26EB15A600C11F33 /* ViewController.swift */,
@@ -890,9 +938,12 @@
 				CE6BABA22704D9520006D26B /* SettingViewController.storyboard in Resources */,
 				CE6BABA52704DAFB0006D26B /* CardCreationViewController.storyboard in Resources */,
 				CE2BB2C727074F4600936148 /* Colors.xcassets in Resources */,
+				CE4D4EA42707BC2000081A2B /* PaletteViewController.storyboard in Resources */,
 				CE6BABA02704D7BF0006D26B /* SplashViewController.storyboard in Resources */,
 				CE6BAB9C2704D7170006D26B /* QuestViewController.storyboard in Resources */,
 				CEB6583826EB15AC00C11F33 /* LaunchScreen.storyboard in Resources */,
+				CE4D4EA62707BC3900081A2B /* SkillSettingViewController.storyboard in Resources */,
+				CE4D4EA82707BC5000081A2B /* TMISettingViewController.storyboard in Resources */,
 				CE4D4E722707A11500081A2B /* CharacterCreationViewController.storyboard in Resources */,
 				CEB6583526EB15AC00C11F33 /* Images.xcassets in Resources */,
 				CE6BAB982704D69F0006D26B /* CardDetailViewController.storyboard in Resources */,
@@ -999,7 +1050,9 @@
 			files = (
 				CE6312C026F9AB4A00B2E69B /* MyCardListViewModel.swift in Sources */,
 				CEF8C55726EDFB6F009BA9C2 /* UIStackView+.swift in Sources */,
+				CE4D4EA02707BB8400081A2B /* SkillSettingDependencyContainer.swift in Sources */,
 				CE63125526F5E25200B2E69B /* String+.swift in Sources */,
+				CE4D4EA22707BBBA00081A2B /* TMISettingDependencyContainer.swift in Sources */,
 				CE6BABAD2704ED700006D26B /* UITableView+.swift in Sources */,
 				CE63124026F59E6700B2E69B /* RootViewModel.swift in Sources */,
 				CEB6589526EC838000C11F33 /* HTTPClient.swift in Sources */,
@@ -1023,7 +1076,9 @@
 				CE6312AA26F8CB2F00B2E69B /* RootDependencyContainer.swift in Sources */,
 				CE6312A826F8CB2F00B2E69B /* SignedInDependencyContainer.swift in Sources */,
 				CE63125226F5E19700B2E69B /* AccessTokenRepository.swift in Sources */,
+				CE4D4E982707B35100081A2B /* UIImageView+.swift in Sources */,
 				CEB6589326EC834900C11F33 /* Foundation+Decoder.swift in Sources */,
+				CE4D4E9D2707BB3F00081A2B /* PaletteViewController.swift in Sources */,
 				CEB6587926EC806F00C11F33 /* Connectable.swift in Sources */,
 				CEFA037D26EFBACE00D12AAB /* QRGenerater.swift in Sources */,
 				A2A5C83A26FB1A3D005D2849 /* AppKey.swift in Sources */,
@@ -1068,6 +1123,7 @@
 				CEB6586C26EB2C7600C11F33 /* HomeTabBarController.swift in Sources */,
 				CEB6582C26EB15A600C11F33 /* AppDelegate.swift in Sources */,
 				CE4D4E6D2707883600081A2B /* ContactInputView.swift in Sources */,
+				CE4D4E9B2707BB2500081A2B /* PaletteDependencyContainer.swift in Sources */,
 				CE63129E26F8618000B2E69B /* AuthenticationDelegate.swift in Sources */,
 				CE63125E26F6270B00B2E69B /* SplashViewController.swift in Sources */,
 				CED16DF926F3A55D0076565F /* MyCardListViewController.swift in Sources */,

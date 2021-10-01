@@ -60,7 +60,7 @@ final class CardCreationViewModelTests: XCTestCase {
         
         //then
         let navigations = navigationObserver.events.compactMap(\.value.element)
-        expect(navigations).to(equal([.present(.profileBackgroundSetting)]))
+        expect(navigations).to(equal([.present(.profileBackgroundPicker)]))
     }
     
     func test_이름을_타이핑하면_상태에_반영됩니다() {
@@ -118,14 +118,14 @@ final class CardCreationViewModelTests: XCTestCase {
         
         // when
         _ = testScheduler.createHotObservable([
-            .next(100, sut.tapMySkillSetting()),
+            .next(100, sut.tapSkillSetting()),
             .completed(300)
         ])
         testScheduler.start()
         
         //then
         let navigations = navigationObserver.events.compactMap(\.value.element)
-        expect(navigations).to(equal([.present(.mySkillSetting)]))
+        expect(navigations).to(equal([.present(.settingSkill)]))
     }
     
     func test_성격_타이틀을_타이핑하면_상태에_반영됩니다() {
@@ -179,14 +179,14 @@ final class CardCreationViewModelTests: XCTestCase {
         
         // when
         _ = testScheduler.createHotObservable([
-            .next(100, sut.tapMyTMISetting()),
+            .next(100, sut.tapTMISetting()),
             .completed(300)
         ])
         testScheduler.start()
         
         //then
         let navigations = navigationObserver.events.compactMap(\.value.element)
-        expect(navigations).to(equal([.present(.myTMISetting)]))
+        expect(navigations).to(equal([.present(.settingTMI)]))
     }
     
     func test_About_Me를_타이핑하면_상태에_반영됩니다() {
@@ -210,10 +210,6 @@ final class CardCreationViewModelTests: XCTestCase {
         //then
         let aboutMes = aboutMeObserver.events.compactMap(\.value.element)
         expect(aboutMes).to(equal(["", "ㅇ", "아", "안", "안ㄴ", "안녀", "안녕"]))
-    }
-    
-    func test_9() {
-        
     }
     
 }
