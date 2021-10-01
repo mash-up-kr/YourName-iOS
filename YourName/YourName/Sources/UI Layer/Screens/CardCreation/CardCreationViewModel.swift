@@ -20,7 +20,6 @@ typealias CardCreationNavigation = Navigation<CardCreationDestination>
 final class CardCreationViewModel {
     
     // State
-    let shouldShowImageSelectOption = PublishRelay<Void>()
     let shouldHideClear = BehaviorRelay<Bool>(value: true)
     let shouldHideProfilePlaceholder = BehaviorRelay<Bool>(value: false)
     let name = BehaviorRelay<String>(value: .empty)
@@ -28,6 +27,8 @@ final class CardCreationViewModel {
     let personalityTitle = BehaviorRelay<String>(value: .empty)
     let personalityKeyword = BehaviorRelay<String>(value: .empty)
     let aboutMe = BehaviorRelay<String>(value: .empty)
+    
+    let shouldShowImageSelectOption = PublishRelay<Void>()
     let navigation = PublishRelay<CardCreationNavigation>()
     
     // Event

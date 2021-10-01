@@ -5,6 +5,7 @@
 //  Created by Booung on 2021/09/30.
 //
 
+import RxGesture
 import RxOptional
 import RxSwift
 import UIKit
@@ -17,6 +18,7 @@ final class CardCreationViewController: ViewController, Storyboarded {
         super.viewDidLoad()
         
         bind()
+        setupNotification()
     }
     
     private func bind() {
@@ -104,6 +106,32 @@ final class CardCreationViewController: ViewController, Storyboarded {
                 self?.navigate(viewController, action: navigation.action)
             })
             .disposed(by: disposeBag)
+        
+        self.view.rx.tapGesture().when(.recognized)
+            .subscribe(onNext: { _ in self.view.endEditing(true) })
+            .disposed(by: disposeBag)
+    }
+    
+    private func setupNotification() {
+        let keyboardFrameHeight = Observable.merge(
+            NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification)
+                .map { ($0.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height },
+            NotificationCenter.default.rx.notification(UIResponder.keyboardWillHideNotification).map { _ in CGFloat.zero }
+        ).filterNil()
+        
+        let animationDuration = Observable.merge(
+            NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification),
+            NotificationCenter.default.rx.notification(UIResponder.keyboardWillHideNotification)
+        ).map { ($0.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0.3 }
+                
+        Observable.combineLatest(keyboardFrameHeight, animationDuration)
+            .subscribe(onNext: { [weak self] keyboardHeight, duration in
+                guard let self = self else { return }
+                UIView.animate(withDuration: duration, animations: {
+                    self.keyboardFrameViewHeightConstraint.constant = keyboardHeight
+                    self.view.layoutIfNeeded()
+                })
+            }).disposed(by: disposeBag)
     }
     
     private let disposeBag = DisposeBag()
@@ -118,5 +146,7 @@ final class CardCreationViewController: ViewController, Storyboarded {
     @IBOutlet private weak var personalityKeywordField: UITextField?
     @IBOutlet private weak var myTMISettingButton: UIButton?
     @IBOutlet private weak var aboutMeTextView: UITextView?
+    @IBOutlet private weak var aboutMePlaceholderLabel: UILabel?
+    @IBOutlet private weak var keyboardFrameViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var completeButton: UIButton?
 }
