@@ -5,6 +5,7 @@
 //  Created by Booung on 2021/09/30.
 //
 
+import Kingfisher
 import RxGesture
 import RxOptional
 import RxSwift
@@ -20,33 +21,79 @@ final class CardCreationViewController: ViewController, Storyboarded {
         bind()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        backgroundSettingButton?.clipsToBounds = true
+        profileBackgroundColorButtonLayer.frame = backgroundSettingButton?.bounds ?? .zero
+        backgroundSettingButton?.layer.insertSublayer(profileBackgroundColorButtonLayer, at: 0)
+        profileBackgroundColorButtonLayer.startPoint = .zero
+        profileBackgroundColorButtonLayer.endPoint = CGPoint(x: 1, y: 1)
+    }
+    
     private func bind() {
         dispatch(to: viewModel)
         render(viewModel)
     }
     
     private func dispatch(to viewModel: CardCreationViewModel) {
+        
+        profileClearButton?.rx.tap
+            .subscribe(onNext: { [weak self] in self?.viewModel.tapProfileClear() })
+            .disposed(by: disposeBag)
+        
+        profilePlaceholderView?.rx.tapGesture()
+            .when(.recognized)
+            .subscribe(onNext: { [weak self] _ in self?.viewModel.tapProfilePlaceHolder() })
+            .disposed(by: disposeBag)
+        
+        backgroundSettingButton?.rx.tap
+            .subscribe(onNext: { [weak self] _ in self?.viewModel.tapProfileBackgroundSetting() })
+            .disposed(by: disposeBag)
+        
         nameField?.rx.text
+            .distinctUntilChanged()
             .filterNil()
             .subscribe(onNext: { [weak self] in self?.viewModel.typeName($0) })
             .disposed(by: disposeBag)
         
         roleField?.rx.text
+            .distinctUntilChanged()
             .filterNil()
             .subscribe(onNext: { [weak self] in self?.viewModel.typeRole($0) })
             .disposed(by: disposeBag)
         
+        mySkillSettingButton?.rx.tap
+            .subscribe(onNext: { [weak self] in self?.viewModel.tapMySkillSetting() })
+            .disposed(by: disposeBag)
+        
+        contactInputViews?.enumerated().forEach { index, contactInputView in
+            contactInputView.rx.contactType.distinctUntilChanged()
+                .subscribe(onNext: { [weak self] in self?.viewModel.selectContactType($0, index: index) })
+                .disposed(by: disposeBag)
+            
+            contactInputView.rx.contactValue.distinctUntilChanged()
+                .subscribe(onNext: { [weak self] in self?.viewModel.typeContactValue($0, index: index) })
+                .disposed(by: disposeBag)
+        }
+        
         personalityTitleField?.rx.text
+            .distinctUntilChanged()
             .filterNil()
             .subscribe(onNext: { [weak self] in self?.viewModel.typePersonalityTitle($0) })
             .disposed(by: disposeBag)
         
         personalityKeywordField?.rx.text
+            .distinctUntilChanged()
             .filterNil()
             .subscribe(onNext: { [weak self] in self?.viewModel.typePersonalityKeyword($0) })
             .disposed(by: disposeBag)
         
+        myTMISettingButton?.rx.tap
+            .subscribe(onNext: { [weak self] in self?.viewModel.tapMyTMISetting() })
+            .disposed(by: disposeBag)
+        
         aboutMeTextView?.rx.text
+            .distinctUntilChanged()
             .filterNil()
             .subscribe(onNext: { [weak self] in self?.viewModel.typeAboutMe($0) })
             .disposed(by: disposeBag)
@@ -56,9 +103,47 @@ final class CardCreationViewController: ViewController, Storyboarded {
                 self?.dismiss(animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
+        
+        self.view.rx.tapGesture()
+            .when(.recognized)
+            .subscribe(onNext: { _ in self.view.endEditing(true) })
+            .disposed(by: disposeBag)
     }
     
     private func render(_ viewModel: CardCreationViewModel) {
+        
+        if let profilePlaceholderView = self.profilePlaceholderView {
+            viewModel.shouldHideProfilePlaceholder.distinctUntilChanged()
+                .bind(to: profilePlaceholderView.rx.isHidden)
+                .disposed(by: disposeBag)
+        }
+        
+        viewModel.profileImageSource.distinctUntilChanged()
+            .subscribe(onNext: { [weak self] imageSource in
+                switch imageSource {
+                case .image(let uiImage):
+                    self?.profileImageView?.image = uiImage
+                case .url(let url):
+                    self?.profileImageView?.kf.setImage(with: url)
+                case .none:
+                    self?.profileImageView?.image = nil
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.profileBackgroundColor.distinctUntilChanged()
+            .subscribe(onNext: { [weak self] backgroundColor in
+                switch backgroundColor {
+                case .monotone(let color):
+                    self?.backgroundSettingButton?.backgroundColor = color
+                    self?.profileBackgroundColorButtonLayer.colors = nil
+                case .gradient(let colors):
+                    self?.backgroundSettingButton?.backgroundColor = nil
+                    self?.profileBackgroundColorButtonLayer.colors = colors.map(\.cgColor)
+                }
+            })
+            .disposed(by: disposeBag)
+        
         if let nameField = self.nameField {
             viewModel.name.distinctUntilChanged()
                 .bind(to: nameField.rx.text)
@@ -90,36 +175,34 @@ final class CardCreationViewController: ViewController, Storyboarded {
         }
         
         if let profileClearButton = self.profileClearButton {
-            viewModel.shouldHideClear
+            viewModel.shouldHideClear.distinctUntilChanged()
                 .bind(to: profileClearButton.rx.isHidden)
                 .disposed(by: disposeBag)
         }
         
-        if let profilePlaceholderView = self.profilePlaceholderView {
-            viewModel.shouldHideProfilePlaceholder
-                .bind(to: profilePlaceholderView.rx.isHidden)
+        if let aboutMePlaceholderLabel = self.aboutMePlaceholderLabel {
+            viewModel.aboutMe.map { $0.isEmpty }
+                .distinctUntilChanged()
+                .bind(to: aboutMePlaceholderLabel.rx.isHidden)
                 .disposed(by: disposeBag)
         }
         
-        viewModel.navigation
-            .subscribe(onNext: { [weak self] navigation in
-                let viewController = UIViewController()
-                self?.navigate(viewController, action: navigation.action)
-            })
-            .disposed(by: disposeBag)
-        
-        self.view.rx.tapGesture().when(.recognized)
-            .subscribe(onNext: { _ in self.view.endEditing(true) })
-            .disposed(by: disposeBag)
-        
+//        viewModel.navigation
+//            .subscribe(onNext: { [weak self] navigation in
+//                let viewController = UIViewController()
+//                self?.navigate(viewController, action: navigation.action)
+//            })
+//            .disposed(by: disposeBag)
     }
     
     private let disposeBag = DisposeBag()
     private let keyboard: Keyboard = KeyboardImpl.shared
+    private let profileBackgroundColorButtonLayer = CAGradientLayer()
     
     @IBOutlet private weak var scrollView: UIScrollView?
     @IBOutlet private weak var profileClearButton: UIButton?
     @IBOutlet private weak var profilePlaceholderView: UIView?
+    @IBOutlet private weak var profileImageView: UIImageView?
     @IBOutlet private weak var backgroundSettingButton: UIButton?
     @IBOutlet private weak var nameField: UITextField?
     @IBOutlet private weak var roleField: UITextField?
@@ -133,24 +216,6 @@ final class CardCreationViewController: ViewController, Storyboarded {
     @IBOutlet private weak var keyboardFrameViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var completeButton: UIButton?
 }
-
-enum ContactType: Int, CaseIterable {
-    case phone
-    case email
-    case sns
-}
-
-struct ContactInfo {
-    let type: ContactType
-    let value: String
-}
-
-final class ContactInputView: UIView {
-    @IBOutlet private weak var contactTypeView: UIView?
-    @IBOutlet private weak var contactValueField: UITextField?
-}
-
-
 
 
 import RxRelay

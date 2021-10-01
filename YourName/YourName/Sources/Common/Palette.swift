@@ -16,6 +16,7 @@ enum Palette {
     static let lightGray2 = UIColor(named: "lightGray2")!
     static let lightGray3 = UIColor(named: "lightGray3")!
     static let lightGray4 = UIColor(named: "lightGray4")!
+    static let lightGreen = UIColor(named: "lightGreen")!
     static let orange = UIColor(named: "orange")!
     static let pink = UIColor(named: "pink")!
     static let skyBlue = UIColor(named: "skyBlue")!

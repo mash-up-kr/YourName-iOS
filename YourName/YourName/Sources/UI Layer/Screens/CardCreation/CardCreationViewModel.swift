@@ -17,11 +17,23 @@ enum CardCreationDestination: Equatable {
 
 typealias CardCreationNavigation = Navigation<CardCreationDestination>
 
+enum ImageSource: Equatable {
+    case image(UIImage)
+    case url(URL)
+}
+
+enum BackgroundColor: Equatable {
+    case monotone(UIColor)
+    case gradient([UIColor])
+}
+
 final class CardCreationViewModel {
     
     // State
     let shouldHideClear = BehaviorRelay<Bool>(value: true)
     let shouldHideProfilePlaceholder = BehaviorRelay<Bool>(value: false)
+    let profileImageSource = BehaviorRelay<ImageSource?>(value: nil)
+    let profileBackgroundColor = BehaviorRelay<BackgroundColor>(value: .monotone(Palette.black1))
     let name = BehaviorRelay<String>(value: .empty)
     let role = BehaviorRelay<String>(value: .empty)
     let personalityTitle = BehaviorRelay<String>(value: .empty)
@@ -32,6 +44,10 @@ final class CardCreationViewModel {
     let navigation = PublishRelay<CardCreationNavigation>()
     
     // Event
+    func tapProfileClear() {
+        
+    }
+    
     func tapProfilePlaceHolder() {
         shouldShowImageSelectOption.accept(Void())
     }
@@ -50,6 +66,14 @@ final class CardCreationViewModel {
    
     func tapMySkillSetting() {
         navigation.accept(.present(.mySkillSetting))
+    }
+    
+    func selectContactType(_ type: ContactType, index: Int) {
+        
+    }
+    
+    func typeContactValue(_ value: String, index: Int) {
+        
     }
     
     func typePersonalityTitle(_ text: String) {
