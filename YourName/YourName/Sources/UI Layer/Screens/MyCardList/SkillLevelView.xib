@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SkillLevelView" customModule="YourName" customModuleProvider="target">
+            <connections>
+                <outlet property="skillStackView" destination="f7Y-xh-QYx" id="TtZ-0b-8C7"/>
+                <outlet property="skillTitle" destination="paC-tK-cim" id="hsy-6t-RVv"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="909" height="93"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="드립력" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="paC-tK-cim">
+                    <rect key="frame" x="0.0" y="0.0" width="909" height="79"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" name="gray3"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="f7Y-xh-QYx">
+                    <rect key="frame" x="0.0" y="86" width="909" height="7"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5DS-qv-u1R">
+                            <rect key="frame" x="0.0" y="0.0" width="91" height="7"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CUY-ys-S0t">
+                            <rect key="frame" x="91" y="0.0" width="91" height="7"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MD7-nV-EIq">
+                            <rect key="frame" x="182" y="0.0" width="90.5" height="7"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hfc-cJ-Nsh">
+                            <rect key="frame" x="272.5" y="0.0" width="91" height="7"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7tp-Gv-rDh">
+                            <rect key="frame" x="363.5" y="0.0" width="91" height="7"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fsh-QA-aZc">
+                            <rect key="frame" x="454.5" y="0.0" width="91" height="7"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ssV-CJ-on6">
+                            <rect key="frame" x="545.5" y="0.0" width="91" height="7"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Ut-nB-0PG">
+                            <rect key="frame" x="636.5" y="0.0" width="90.5" height="7"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U9j-EE-gJt">
+                            <rect key="frame" x="727" y="0.0" width="91" height="7"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tIh-8s-hRe">
+                            <rect key="frame" x="818" y="0.0" width="91" height="7"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="7" id="EZa-3E-3w1"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="f7Y-xh-QYx" firstAttribute="top" secondItem="paC-tK-cim" secondAttribute="bottom" constant="7" id="1U2-oJ-3pn"/>
+                <constraint firstItem="paC-tK-cim" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="6LS-aK-lwv"/>
+                <constraint firstAttribute="bottom" secondItem="f7Y-xh-QYx" secondAttribute="bottom" id="FFr-Gl-aKx"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="f7Y-xh-QYx" secondAttribute="trailing" id="VEG-v0-ENl"/>
+                <constraint firstItem="paC-tK-cim" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="dLE-8k-rV3"/>
+                <constraint firstItem="f7Y-xh-QYx" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="ii1-sg-1A7"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="paC-tK-cim" secondAttribute="trailing" id="shV-ss-OCA"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="496.37681159420293" y="-159.04017857142856"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="gray3">
+            <color red="0.33725490196078434" green="0.33725490196078434" blue="0.33725490196078434" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
