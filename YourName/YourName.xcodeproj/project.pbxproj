@@ -11,8 +11,15 @@
 		A2A5C83826FB17D0005D2849 /* KakaoAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A5C83726FB17D0005D2849 /* KakaoAuth.swift */; };
 		A2A5C83A26FB1A3D005D2849 /* AppKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A5C83926FB1A3D005D2849 /* AppKey.swift */; };
 		A2CC655E27075C8900610C49 /* MyCardListEmptyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2CC655D27075C8900610C49 /* MyCardListEmptyCollectionViewCell.xib */; };
-		A2CC656027075DD000610C49 /* SkillProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2CC655F27075DD000610C49 /* SkillProgressView.xib */; };
 		A2CC65622707622D00610C49 /* MyCardListEmptyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CC65612707622D00610C49 /* MyCardListEmptyCollectionViewCell.swift */; };
+		A2CC65642708229C00610C49 /* MyCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2CC65632708229C00610C49 /* MyCardView.xib */; };
+		A2CC656827082EAB00610C49 /* MyCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CC656727082EAB00610C49 /* MyCardView.swift */; };
+		A2CC656A27084BF300610C49 /* CALayer+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CC656927084BF300610C49 /* CALayer+.swift */; };
+		A2CC656C2708877E00610C49 /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CC656B2708877E00610C49 /* NibLoadable.swift */; };
+		A2CC656E27088E9C00610C49 /* MyCardListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CC656D27088E9C00610C49 /* MyCardListCollectionViewCell.swift */; };
+		A2CC657027088ED100610C49 /* MyCardListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2CC656F27088ED100610C49 /* MyCardListCollectionViewCell.xib */; };
+		A2CC65722708AAF900610C49 /* SkillLevelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2CC65712708AAF900610C49 /* SkillLevelView.xib */; };
+		A2CC65742708AB2C00610C49 /* SkillLevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CC65732708AB2C00610C49 /* SkillLevelView.swift */; };
 		A2D875DF26EE295C00ED5949 /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D875DE26EE295C00ED5949 /* AuthResponse.swift */; };
 		CE2BB2C727074F4600936148 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE2BB2C627074F4600936148 /* Colors.xcassets */; };
 		CE2BB2C92707560800936148 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2BB2C82707560800936148 /* Palette.swift */; };
@@ -155,8 +162,15 @@
 		A2A5C83726FB17D0005D2849 /* KakaoAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoAuth.swift; sourceTree = "<group>"; };
 		A2A5C83926FB1A3D005D2849 /* AppKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppKey.swift; sourceTree = "<group>"; };
 		A2CC655D27075C8900610C49 /* MyCardListEmptyCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCardListEmptyCollectionViewCell.xib; sourceTree = "<group>"; };
-		A2CC655F27075DD000610C49 /* SkillProgressView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SkillProgressView.xib; sourceTree = "<group>"; };
 		A2CC65612707622D00610C49 /* MyCardListEmptyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardListEmptyCollectionViewCell.swift; sourceTree = "<group>"; };
+		A2CC65632708229C00610C49 /* MyCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCardView.xib; sourceTree = "<group>"; };
+		A2CC656727082EAB00610C49 /* MyCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardView.swift; sourceTree = "<group>"; };
+		A2CC656927084BF300610C49 /* CALayer+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+.swift"; sourceTree = "<group>"; };
+		A2CC656B2708877E00610C49 /* NibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
+		A2CC656D27088E9C00610C49 /* MyCardListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardListCollectionViewCell.swift; sourceTree = "<group>"; };
+		A2CC656F27088ED100610C49 /* MyCardListCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCardListCollectionViewCell.xib; sourceTree = "<group>"; };
+		A2CC65712708AAF900610C49 /* SkillLevelView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SkillLevelView.xib; sourceTree = "<group>"; };
+		A2CC65732708AB2C00610C49 /* SkillLevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillLevelView.swift; sourceTree = "<group>"; };
 		A2D875DE26EE295C00ED5949 /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
 		A3E561B79C6998E82DB447DF /* Pods-YourName-YourNameTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourName-YourNameTests.debug.xcconfig"; path = "Target Support Files/Pods-YourName-YourNameTests/Pods-YourName-YourNameTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CE2BB2C627074F4600936148 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -501,6 +515,7 @@
 			isa = PBXGroup;
 			children = (
 				CE6BAB932704D0990006D26B /* Storyboarded.swift */,
+				A2CC656B2708877E00610C49 /* NibLoadable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -788,13 +803,18 @@
 		CED16DEC26F3A4C30076565F /* MyCardList */ = {
 			isa = PBXGroup;
 			children = (
+				A2CC656D27088E9C00610C49 /* MyCardListCollectionViewCell.swift */,
+				A2CC656F27088ED100610C49 /* MyCardListCollectionViewCell.xib */,
 				CE6312BB26F9A04800B2E69B /* MyCardListDependencyContainer.swift */,
 				A2CC65612707622D00610C49 /* MyCardListEmptyCollectionViewCell.swift */,
 				A2CC655D27075C8900610C49 /* MyCardListEmptyCollectionViewCell.xib */,
-				CE6BAB992704D6E30006D26B /* MyCardListViewController.storyboard */,
 				CED16DF826F3A55D0076565F /* MyCardListViewController.swift */,
+				CE6BAB992704D6E30006D26B /* MyCardListViewController.storyboard */,
 				CE6312BF26F9AB4A00B2E69B /* MyCardListViewModel.swift */,
-				A2CC655F27075DD000610C49 /* SkillProgressView.xib */,
+				A2CC656727082EAB00610C49 /* MyCardView.swift */,
+				A2CC65632708229C00610C49 /* MyCardView.xib */,
+				A2CC65732708AB2C00610C49 /* SkillLevelView.swift */,
+				A2CC65712708AAF900610C49 /* SkillLevelView.xib */,
 			);
 			path = MyCardList;
 			sourceTree = "<group>";
@@ -839,6 +859,7 @@
 				CEF8C55226EDF8D5009BA9C2 /* UIView+.swift */,
 				CE6BABAA2704E2480006D26B /* UIVIewController+.swift */,
 				CEB6582F26EB15A600C11F33 /* ViewController.swift */,
+				A2CC656927084BF300610C49 /* CALayer+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -949,16 +970,18 @@
 				CE2BB2C727074F4600936148 /* Colors.xcassets in Resources */,
 				CE4D4EA42707BC2000081A2B /* PaletteViewController.storyboard in Resources */,
 				CE6BABA02704D7BF0006D26B /* SplashViewController.storyboard in Resources */,
+				A2CC65722708AAF900610C49 /* SkillLevelView.xib in Resources */,
 				CE6BAB9C2704D7170006D26B /* QuestViewController.storyboard in Resources */,
 				CEB6583826EB15AC00C11F33 /* LaunchScreen.storyboard in Resources */,
 				A2CC655E27075C8900610C49 /* MyCardListEmptyCollectionViewCell.xib in Resources */,
 				CE4D4EA62707BC3900081A2B /* SkillSettingViewController.storyboard in Resources */,
 				CE4D4EA82707BC5000081A2B /* TMISettingViewController.storyboard in Resources */,
 				CE4D4E722707A11500081A2B /* CharacterCreationViewController.storyboard in Resources */,
+				A2CC657027088ED100610C49 /* MyCardListCollectionViewCell.xib in Resources */,
+				A2CC65642708229C00610C49 /* MyCardView.xib in Resources */,
 				CEB6583526EB15AC00C11F33 /* Images.xcassets in Resources */,
 				CE6BAB982704D69F0006D26B /* CardDetailViewController.storyboard in Resources */,
 				CE6BAB9E2704D7610006D26B /* SignInViewController.storyboard in Resources */,
-				A2CC656027075DD000610C49 /* SkillProgressView.xib in Resources */,
 				CE6BAB962704D3C40006D26B /* CardBookViewController.storyboard in Resources */,
 				CE6BAB9A2704D6E30006D26B /* MyCardListViewController.storyboard in Resources */,
 			);
@@ -1083,6 +1106,8 @@
 				CE4D4E7B2707A75600081A2B /* Mouth.swift in Sources */,
 				CE4D4E772707A72100081A2B /* Eye.swift in Sources */,
 				CEB6589126EC826300C11F33 /* Enviorment.swift in Sources */,
+				A2CC656E27088E9C00610C49 /* MyCardListCollectionViewCell.swift in Sources */,
+				A2CC65742708AB2C00610C49 /* SkillLevelView.swift in Sources */,
 				CE63123A26F59C7800B2E69B /* RootViewController.swift in Sources */,
 				CE6312AA26F8CB2F00B2E69B /* RootDependencyContainer.swift in Sources */,
 				CE6312A826F8CB2F00B2E69B /* SignedInDependencyContainer.swift in Sources */,
@@ -1096,12 +1121,14 @@
 				CE4D4E922707B27200081A2B /* SkillSettingViewController.swift in Sources */,
 				CE6312C826F9B3B000B2E69B /* MyCardRepository.swift in Sources */,
 				CEB6589726EC844D00C11F33 /* main.swift in Sources */,
+				A2CC656C2708877E00610C49 /* NibLoadable.swift in Sources */,
 				A2CC65622707622D00610C49 /* MyCardListEmptyCollectionViewCell.swift in Sources */,
 				CE4D4E882707AE3800081A2B /* CharacterCreationDependencyContainer.swift in Sources */,
 				CE63126026F6281800B2E69B /* SplashViewModel.swift in Sources */,
 				CE4D4E862707AE1700081A2B /* CharacterCreationViewModel.swift in Sources */,
 				CE4D4E8A2707AEDD00081A2B /* CharacterItem.swift in Sources */,
 				CE2EC99327073453006B9852 /* CardCreationViewModel.swift in Sources */,
+				A2CC656A27084BF300610C49 /* CALayer+.swift in Sources */,
 				CEB6587226EB2CAB00C11F33 /* Networking.swift in Sources */,
 				CE4D4E702707A0FB00081A2B /* CharacterCreationViewController.swift in Sources */,
 				CE4D4E802707A81D00081A2B /* HairAccessory.swift in Sources */,
@@ -1123,6 +1150,7 @@
 				CEB6589C26EC988F00C11F33 /* ObserverType+.swift in Sources */,
 				CED16DFB26F3A5690076565F /* CardBookViewController.swift in Sources */,
 				CE6312D126F9BD6B00B2E69B /* Array+.swift in Sources */,
+				A2CC656827082EAB00610C49 /* MyCardView.swift in Sources */,
 				CEB6588426EC814C00C11F33 /* API.swift in Sources */,
 				CEB6588726EC817A00C11F33 /* HTTP.swift in Sources */,
 				A2A5C83826FB17D0005D2849 /* KakaoAuth.swift in Sources */,

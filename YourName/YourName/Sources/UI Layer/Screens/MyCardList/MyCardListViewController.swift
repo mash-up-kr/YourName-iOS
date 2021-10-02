@@ -7,27 +7,31 @@
 
 import RxOptional
 import RxSwift
+import RxCocoa
 import UIKit
 
 final class MyCardListViewController: ViewController, Storyboarded {
     
     var viewModel: MyCardListViewModel!
     var cardDetailViewControllerFactory: ((String) -> CardDetailViewController)!
-    @IBOutlet private weak var myCardAddButton: UIButton!
     @IBOutlet private weak var userNameLabel: UILabel!
     @IBOutlet private weak var myCardListCollectionview: UICollectionView!
     @IBOutlet private weak var pageControl: UIPageControl!
     var cardCreationViewControllerFactory: (() -> CardCreationViewController)!
-    
+    lazy var collectionViewWidth = ( 312 * self.myCardListCollectionview.bounds.height ) / 512
+    var datanumber = 1
     override func viewDidLoad() {
         super.viewDidLoad()
         myCardListCollectionview.decelerationRate = .fast
         myCardListCollectionview.isPagingEnabled = false
+        let cellNib = UINib(nibName: "MyCardListCollectionViewCell", bundle: Bundle(path: "MyCardListCollectionViewCell"))
+        
+        myCardListCollectionview.register(cellNib, forCellWithReuseIdentifier: "MyCardListCollectionViewCell")
         self.navigationController?.navigationBar.isHidden = true
         
         bind()
-        userNameLabel.text = "서영님의 미츄(3)"
-        pageControl.currentPage = 0
+        pageControl.numberOfPages = datanumber
+        pageControl.currentPage = 0 // viewModel에서 받아오게 수정필요
         
         //        #warning("카드 탭 액션 트리거 가구현, 실구현 후 제거해야합니다.") // Booung
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
@@ -77,32 +81,53 @@ final class MyCardListViewController: ViewController, Storyboarded {
     @IBOutlet private weak var addCardButton: UIButton?
 }
 
+// rxdatasource로 교체필요
 extension MyCardListViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        3
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
+        datanumber
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCardListEmptyCollectionViewCell", for: indexPath) as? MyCardListEmptyCollectionViewCell else { return .init() }
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(MyCardListCollectionViewCell.self,
+                                                            for: indexPath) else { return .init() }
         return cell
     }
 }
 extension MyCardListViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: 312, height: 512)
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        CGSize(width: (312 * collectionView.bounds.height) / 512,
+               height: collectionView.bounds.height)
     }
 }
 extension MyCardListViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+        
+        if datanumber == 1 {
+            
+            let edges = UIScreen.main.bounds.width - collectionViewWidth
+            return UIEdgeInsets(top: 0, left: edges / 2, bottom: 0, right: edges / 2)
+        } else {
+            return UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
+        }
+    }
     
 }
 extension MyCardListViewController: UIScrollViewDelegate {
     
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView,
+                                   withVelocity velocity: CGPoint,
+                                   targetContentOffset: UnsafeMutablePointer<CGPoint>) {
 
         guard let layout = myCardListCollectionview.collectionViewLayout as? UICollectionViewFlowLayout else { return }
-        
+
         // cell width + item사이거리
-        let cellWidthIncludingSpacing = 312 + layout.minimumInteritemSpacing
+        let cellWidthIncludingSpacing = collectionViewWidth + layout.minimumInteritemSpacing
         
         let estimatedIndex = scrollView.contentOffset.x / cellWidthIncludingSpacing
         let index: Int

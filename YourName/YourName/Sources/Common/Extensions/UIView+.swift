@@ -68,3 +68,30 @@ extension UIView {
         set { self.layer.shadowColor = newValue?.cgColor }
     }
 }
+
+extension UIView {
+    func dashBorder(dashWidth: CGFloat = 1,
+                    dashColor: CGColor = Palette.gray2.cgColor,
+                    dashLength: NSNumber = 4,
+                    betweenDashSpace: NSNumber = 4) {
+        
+        let dashBorder = CAShapeLayer()
+        dashBorder.lineWidth = dashWidth
+        dashBorder.strokeColor = dashColor
+        dashBorder.lineDashPattern = [dashLength, betweenDashSpace]
+        dashBorder.frame = bounds
+        dashBorder.fillColor = nil
+        if cornerRadius > 0 {
+            print(cornerRadius, "radius > 0")
+            dashBorder.path = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius).cgPath
+        } else {
+            print(cornerRadius, "==0")
+            dashBorder.path = UIBezierPath(rect: bounds).cgPath
+        }
+        layer.addSublayer(dashBorder)
+    }
+}
+
+extension UIView {
+    
+}
