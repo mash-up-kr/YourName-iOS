@@ -36,10 +36,15 @@ final class PageSheetController<ContentView: UIView>: ViewController {
     }
     
     func show(completion: @escaping (ContentView) -> Void = { _ in }) {
-        guard let visableViewController = UIApplication.shared.keyWindow?.rootViewController else { return }
-        visableViewController.modalPresentationStyle = .overCurrentContext
+        guard let visableViewController = UIViewController.visableViewController() else { return }
+        self.modalPresentationStyle = .overFullScreen
         visableViewController.present(self, animated: false, completion: nil)
         self.completion = completion
+    }
+    
+    func close() {
+        self.dismiss(animated: false, completion: nil)
+        self.completion?(self.contentView)
     }
     
     private func configureUI() {
@@ -56,7 +61,8 @@ final class PageSheetController<ContentView: UIView>: ViewController {
         topBarView.clipsToBounds = true
         topBarView.addSubviews(closeButton, titleLabel)
         topBarView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        topBarView.layer.cornerRadius = 10
+        topBarView.layer.cornerRadius = 20
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 18)
         closeButton.setImage(UIImage(named: "btn_close")!, for: .normal)
         closeButton.snp.makeConstraints {
             $0.width.height.equalTo(30)
@@ -74,8 +80,7 @@ final class PageSheetController<ContentView: UIView>: ViewController {
             .filter { [weak self] _ in self?.canEasilyClose == true }
             .subscribe(onNext: { [weak self] _ in
                 guard let self = self else { return }
-                self.dismiss(animated: false, completion: nil)
-                self.completion?(self.contentView)
+                self.close()
             })
             .disposed(by: disposeBag)
     }

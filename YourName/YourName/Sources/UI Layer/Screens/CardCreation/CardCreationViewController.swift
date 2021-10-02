@@ -15,7 +15,7 @@ final class CardCreationViewController: ViewController, Storyboarded {
     
     var viewModel: CardCreationViewModel!
     var characterCreationViewControllerFactory: (() -> CharacterCreationViewController)?
-    var paletteViewControllerFactory: (() -> PaletteViewController)?
+    var paletteViewControllerFactory: (() -> PageSheetController<PaletteView>)?
     var tmiSettingViewControllerFactory: (() -> TMISettingViewController)?
     var skillSettingViewControllerFactory: (() -> SkillSettingViewController)?
     
@@ -34,14 +34,18 @@ final class CardCreationViewController: ViewController, Storyboarded {
         profileBackgroundColorButtonLayer.endPoint = CGPoint(x: 1, y: 1)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let paletteView = PaletteView()
+        PageSheetController(title: "배경 컬러 선택하기", contentView: paletteView).show()
+    }
+    
     private func bind() {
         dispatch(to: viewModel)
         render(viewModel)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidLoad()
-    }
     
     private func dispatch(to viewModel: CardCreationViewModel) {
         

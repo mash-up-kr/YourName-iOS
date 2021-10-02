@@ -8,6 +8,22 @@
 import UIKit
 
 extension UIViewController {
+    static var rootViewController: UIViewController? {
+        return UIApplication.shared.keyWindow?.rootViewController
+    }
+    
+    static func visableViewController(_ viewController: UIViewController? = UIViewController.rootViewController) -> UIViewController? {
+        if let tabBarController = viewController as? UITabBarController {
+            return visableViewController(tabBarController.selectedViewController)
+        } else if let naviController = viewController as? UINavigationController {
+            return visableViewController(naviController.visibleViewController)
+        } else if let presentedController = viewController?.presentedViewController {
+            return visableViewController(presentedController)
+        }
+        return viewController
+    }
+}
+extension UIViewController {
     func navigate(_ viewController: UIViewController, action: NavigationAction) {
         switch action {
         case .present:

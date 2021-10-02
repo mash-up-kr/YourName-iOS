@@ -44,13 +44,14 @@
 		CE4D4E942707B28200081A2B /* TMISettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E932707B28200081A2B /* TMISettingViewController.swift */; };
 		CE4D4E982707B35100081A2B /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E972707B35100081A2B /* UIImageView+.swift */; };
 		CE4D4E9B2707BB2500081A2B /* PaletteDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E9A2707BB2500081A2B /* PaletteDependencyContainer.swift */; };
-		CE4D4E9D2707BB3F00081A2B /* PaletteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E9C2707BB3F00081A2B /* PaletteViewController.swift */; };
 		CE4D4EA02707BB8400081A2B /* SkillSettingDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E9F2707BB8400081A2B /* SkillSettingDependencyContainer.swift */; };
 		CE4D4EA22707BBBA00081A2B /* TMISettingDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4EA12707BBBA00081A2B /* TMISettingDependencyContainer.swift */; };
-		CE4D4EA42707BC2000081A2B /* PaletteViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE4D4EA32707BC2000081A2B /* PaletteViewController.storyboard */; };
 		CE4D4EA62707BC3900081A2B /* SkillSettingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE4D4EA52707BC3900081A2B /* SkillSettingViewController.storyboard */; };
 		CE4D4EA82707BC5000081A2B /* TMISettingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE4D4EA72707BC5000081A2B /* TMISettingViewController.storyboard */; };
 		CE4D4EAF2708780A00081A2B /* PageSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4EAE2708780A00081A2B /* PageSheetController.swift */; };
+		CE4D4EB52708E9EC00081A2B /* PaletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4EB42708E9EC00081A2B /* PaletteView.swift */; };
+		CE4D4EB72708E9F400081A2B /* PaletteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE4D4EB62708E9F400081A2B /* PaletteView.xib */; };
+		CE4D4EB92708EA2200081A2B /* PaletteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4EB82708EA2200081A2B /* PaletteViewModel.swift */; };
 		CE63123A26F59C7800B2E69B /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63123926F59C7800B2E69B /* RootViewController.swift */; };
 		CE63124026F59E6700B2E69B /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63123F26F59E6700B2E69B /* RootViewModel.swift */; };
 		CE63124926F5A30200B2E69B /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63124826F5A30200B2E69B /* Navigation.swift */; };
@@ -197,13 +198,14 @@
 		CE4D4E932707B28200081A2B /* TMISettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMISettingViewController.swift; sourceTree = "<group>"; };
 		CE4D4E972707B35100081A2B /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
 		CE4D4E9A2707BB2500081A2B /* PaletteDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteDependencyContainer.swift; sourceTree = "<group>"; };
-		CE4D4E9C2707BB3F00081A2B /* PaletteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteViewController.swift; sourceTree = "<group>"; };
 		CE4D4E9F2707BB8400081A2B /* SkillSettingDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillSettingDependencyContainer.swift; sourceTree = "<group>"; };
 		CE4D4EA12707BBBA00081A2B /* TMISettingDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMISettingDependencyContainer.swift; sourceTree = "<group>"; };
-		CE4D4EA32707BC2000081A2B /* PaletteViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PaletteViewController.storyboard; sourceTree = "<group>"; };
 		CE4D4EA52707BC3900081A2B /* SkillSettingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SkillSettingViewController.storyboard; sourceTree = "<group>"; };
 		CE4D4EA72707BC5000081A2B /* TMISettingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TMISettingViewController.storyboard; sourceTree = "<group>"; };
 		CE4D4EAE2708780A00081A2B /* PageSheetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageSheetController.swift; sourceTree = "<group>"; };
+		CE4D4EB42708E9EC00081A2B /* PaletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteView.swift; sourceTree = "<group>"; };
+		CE4D4EB62708E9F400081A2B /* PaletteView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaletteView.xib; sourceTree = "<group>"; };
+		CE4D4EB82708EA2200081A2B /* PaletteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteViewModel.swift; sourceTree = "<group>"; };
 		CE63123926F59C7800B2E69B /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		CE63123F26F59E6700B2E69B /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		CE63124826F5A30200B2E69B /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
@@ -415,8 +417,9 @@
 			isa = PBXGroup;
 			children = (
 				CE4D4E9A2707BB2500081A2B /* PaletteDependencyContainer.swift */,
-				CE4D4EA32707BC2000081A2B /* PaletteViewController.storyboard */,
-				CE4D4E9C2707BB3F00081A2B /* PaletteViewController.swift */,
+				CE4D4EB42708E9EC00081A2B /* PaletteView.swift */,
+				CE4D4EB62708E9F400081A2B /* PaletteView.xib */,
+				CE4D4EB82708EA2200081A2B /* PaletteViewModel.swift */,
 			);
 			path = Palette;
 			sourceTree = "<group>";
@@ -987,9 +990,9 @@
 				CE6BABA22704D9520006D26B /* SettingViewController.storyboard in Resources */,
 				CE6BABA52704DAFB0006D26B /* CardCreationViewController.storyboard in Resources */,
 				CE2BB2C727074F4600936148 /* Colors.xcassets in Resources */,
-				CE4D4EA42707BC2000081A2B /* PaletteViewController.storyboard in Resources */,
 				CE6BABA02704D7BF0006D26B /* SplashViewController.storyboard in Resources */,
 				A2CC65722708AAF900610C49 /* SkillLevelView.xib in Resources */,
+				CE4D4EB72708E9F400081A2B /* PaletteView.xib in Resources */,
 				CE6BAB9C2704D7170006D26B /* QuestViewController.storyboard in Resources */,
 				CEB6583826EB15AC00C11F33 /* LaunchScreen.storyboard in Resources */,
 				A2CC655E27075C8900610C49 /* MyCardListEmptyCollectionViewCell.xib in Resources */,
@@ -1133,7 +1136,7 @@
 				CE63125226F5E19700B2E69B /* AccessTokenRepository.swift in Sources */,
 				CE4D4E982707B35100081A2B /* UIImageView+.swift in Sources */,
 				CEB6589326EC834900C11F33 /* Foundation+Decoder.swift in Sources */,
-				CE4D4E9D2707BB3F00081A2B /* PaletteViewController.swift in Sources */,
+				CE4D4EB92708EA2200081A2B /* PaletteViewModel.swift in Sources */,
 				CEB6587926EC806F00C11F33 /* Connectable.swift in Sources */,
 				CEFA037D26EFBACE00D12AAB /* QRGenerater.swift in Sources */,
 				A2A5C83A26FB1A3D005D2849 /* AppKey.swift in Sources */,
@@ -1154,6 +1157,7 @@
 				CEB6587B26EC809800C11F33 /* URLRequestConvertible.swift in Sources */,
 				CE4D4E792707A72E00081A2B /* Nose.swift in Sources */,
 				A2D875DF26EE295C00ED5949 /* AuthResponse.swift in Sources */,
+				CE4D4EB52708E9EC00081A2B /* PaletteView.swift in Sources */,
 				CE6BABAF2704EE9C0006D26B /* UICollectionView+.swift in Sources */,
 				CEF8C55326EDF8D5009BA9C2 /* UIView+.swift in Sources */,
 				CED16DE926F39F700076565F /* HomeTab.swift in Sources */,
