@@ -12,10 +12,10 @@ extension UIView {
         views.forEach(addSubview(_:))
     }
     
-    class func fromNib() -> Self? {
+    class func fromNib<View: UIView>() -> View? {
         let nibName = String(describing: self)
         let views = Bundle.main.loadNibNamed(nibName, owner: nil, options: nil)
-        return views?.first as? Self
+        return views?.first as? View
     }
 }
 extension UIView {
