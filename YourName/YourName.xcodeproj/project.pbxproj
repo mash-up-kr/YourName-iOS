@@ -40,6 +40,7 @@
 		CE4D4EA42707BC2000081A2B /* PaletteViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE4D4EA32707BC2000081A2B /* PaletteViewController.storyboard */; };
 		CE4D4EA62707BC3900081A2B /* SkillSettingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE4D4EA52707BC3900081A2B /* SkillSettingViewController.storyboard */; };
 		CE4D4EA82707BC5000081A2B /* TMISettingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE4D4EA72707BC5000081A2B /* TMISettingViewController.storyboard */; };
+		CE4D4EAB2708211500081A2B /* PageSheetController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE4D4EAA2708211500081A2B /* PageSheetController.storyboard */; };
 		CE63123A26F59C7800B2E69B /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63123926F59C7800B2E69B /* RootViewController.swift */; };
 		CE63124026F59E6700B2E69B /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63123F26F59E6700B2E69B /* RootViewModel.swift */; };
 		CE63124926F5A30200B2E69B /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63124826F5A30200B2E69B /* Navigation.swift */; };
@@ -182,6 +183,7 @@
 		CE4D4EA32707BC2000081A2B /* PaletteViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PaletteViewController.storyboard; sourceTree = "<group>"; };
 		CE4D4EA52707BC3900081A2B /* SkillSettingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SkillSettingViewController.storyboard; sourceTree = "<group>"; };
 		CE4D4EA72707BC5000081A2B /* TMISettingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TMISettingViewController.storyboard; sourceTree = "<group>"; };
+		CE4D4EAA2708211500081A2B /* PageSheetController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PageSheetController.storyboard; sourceTree = "<group>"; };
 		CE63123926F59C7800B2E69B /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		CE63123F26F59E6700B2E69B /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		CE63124826F5A30200B2E69B /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
@@ -399,6 +401,14 @@
 			path = Palette;
 			sourceTree = "<group>";
 		};
+		CE4D4EA9270820F900081A2B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CE4D4EAA2708211500081A2B /* PageSheetController.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		CE63123826F59C6B00B2E69B /* Root */ = {
 			isa = PBXGroup;
 			children = (
@@ -609,6 +619,7 @@
 		CEB6586226EB2BB000C11F33 /* UI Layer */ = {
 			isa = PBXGroup;
 			children = (
+				CE4D4EA9270820F900081A2B /* Views */,
 				CEB6586926EB2C5F00C11F33 /* Screens */,
 				CE63124826F5A30200B2E69B /* Navigation.swift */,
 			);
@@ -948,6 +959,7 @@
 				CEB6583526EB15AC00C11F33 /* Images.xcassets in Resources */,
 				CE6BAB982704D69F0006D26B /* CardDetailViewController.storyboard in Resources */,
 				CE6BAB9E2704D7610006D26B /* SignInViewController.storyboard in Resources */,
+				CE4D4EAB2708211500081A2B /* PageSheetController.storyboard in Resources */,
 				CE6BAB962704D3C40006D26B /* CardBookViewController.storyboard in Resources */,
 				CE6BAB9A2704D6E30006D26B /* MyCardListViewController.storyboard in Resources */,
 			);
