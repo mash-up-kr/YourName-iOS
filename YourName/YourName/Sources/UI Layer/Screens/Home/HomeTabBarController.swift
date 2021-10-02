@@ -37,6 +37,11 @@ final class HomeTabBarController: UITabBarController {
     }
     
     private func bind() {
+        dispatch(to: viewModel)
+        render(as: viewModel)
+    }
+    
+    private func dispatch(to viewModel: HomeViewModel) {
         self.rx.didSelect.distinctUntilChanged()
             .map { [weak self] selected in self?.viewControllers?.firstIndex(where: { selected === $0 }) }
             .filterNil()
@@ -44,6 +49,10 @@ final class HomeTabBarController: UITabBarController {
                 self?.viewModel.selectTab(index: $0)
             })
             .disposed(by: disposeBag)
+        
+    }
+    
+    private func render(as viewModel: HomeViewModel) {
         
         viewModel.tabItems.distinctUntilChanged()
             .subscribe( onNext: { [weak self] tabItems in
@@ -68,9 +77,10 @@ final class HomeTabBarController: UITabBarController {
             .disposed(by: disposeBag)
     }
     
+    
     private let disposeBag = DisposeBag()
-    var viewModel: HomeViewModel
-    var viewControllerFactory: (HomeTab) -> UIViewController
+    private let viewModel: HomeViewModel
+    private let viewControllerFactory: (HomeTab) -> UIViewController
 }
 
 final class CreateViewController: ViewController {

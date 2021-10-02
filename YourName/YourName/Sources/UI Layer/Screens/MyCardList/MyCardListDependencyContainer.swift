@@ -21,13 +21,13 @@ final class MyCardListDependencyContainer {
             let dependencyContainer = self.createCardDetailDependencyContainer(cardID: cardID)
             return dependencyContainer.createCardDetailViewController()
         }
-        let createCardViewControllerFactory: () -> CardCreationViewController = {
+        let cardCreationViewControllerFactory: () -> CardCreationViewController = {
             let dependencyContainer = self.createCardCreationDependencyContainer()
             return dependencyContainer.createCardCreationViewController()
         }
         viewController.viewModel = viewModel
         viewController.cardDetailViewControllerFactory = cardDetailViewControllerFactory
-        viewController.cardCreationViewControllerFactory = createCardViewControllerFactory
+        viewController.cardCreationViewControllerFactory = cardCreationViewControllerFactory
         let naviController = UINavigationController(rootViewController: viewController)
         return naviController
     }

@@ -11,7 +11,35 @@
 		A2A5C83826FB17D0005D2849 /* KakaoAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A5C83726FB17D0005D2849 /* KakaoAuth.swift */; };
 		A2A5C83A26FB1A3D005D2849 /* AppKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A5C83926FB1A3D005D2849 /* AppKey.swift */; };
 		A2D875DF26EE295C00ED5949 /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D875DE26EE295C00ED5949 /* AuthResponse.swift */; };
-		CE4B8B312707115300788B76 /* ContactInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4B8B302707115300788B76 /* ContactInputView.swift */; };
+		CE2BB2C727074F4600936148 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE2BB2C627074F4600936148 /* Colors.xcassets */; };
+		CE2BB2C92707560800936148 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2BB2C82707560800936148 /* Palette.swift */; };
+		CE2EC99327073453006B9852 /* CardCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2EC99227073453006B9852 /* CardCreationViewModel.swift */; };
+		CE2EC99627073493006B9852 /* CardCreationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2EC99527073493006B9852 /* CardCreationViewModelTests.swift */; };
+		CE4D4E6D2707883600081A2B /* ContactInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E6C2707883600081A2B /* ContactInputView.swift */; };
+		CE4D4E702707A0FB00081A2B /* CharacterCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E6F2707A0FB00081A2B /* CharacterCreationViewController.swift */; };
+		CE4D4E722707A11500081A2B /* CharacterCreationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE4D4E712707A11500081A2B /* CharacterCreationViewController.storyboard */; };
+		CE4D4E752707A71800081A2B /* Body.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E742707A71800081A2B /* Body.swift */; };
+		CE4D4E772707A72100081A2B /* Eye.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E762707A72100081A2B /* Eye.swift */; };
+		CE4D4E792707A72E00081A2B /* Nose.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E782707A72E00081A2B /* Nose.swift */; };
+		CE4D4E7B2707A75600081A2B /* Mouth.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E7A2707A75600081A2B /* Mouth.swift */; };
+		CE4D4E7E2707A7E000081A2B /* Accessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E7D2707A7E000081A2B /* Accessory.swift */; };
+		CE4D4E802707A81D00081A2B /* HairAccessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E7F2707A81D00081A2B /* HairAccessory.swift */; };
+		CE4D4E842707A91900081A2B /* Items.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE4D4E832707A91900081A2B /* Items.xcassets */; };
+		CE4D4E862707AE1700081A2B /* CharacterCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E852707AE1700081A2B /* CharacterCreationViewModel.swift */; };
+		CE4D4E882707AE3800081A2B /* CharacterCreationDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E872707AE3800081A2B /* CharacterCreationDependencyContainer.swift */; };
+		CE4D4E8A2707AEDD00081A2B /* CharacterItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E892707AEDD00081A2B /* CharacterItem.swift */; };
+		CE4D4E8C2707AF0500081A2B /* CharacterItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E8B2707AF0500081A2B /* CharacterItemRepository.swift */; };
+		CE4D4E8E2707AF6E00081A2B /* FakeCharacterItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E8D2707AF6E00081A2B /* FakeCharacterItemRepository.swift */; };
+		CE4D4E922707B27200081A2B /* SkillSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E912707B27200081A2B /* SkillSettingViewController.swift */; };
+		CE4D4E942707B28200081A2B /* TMISettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E932707B28200081A2B /* TMISettingViewController.swift */; };
+		CE4D4E982707B35100081A2B /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E972707B35100081A2B /* UIImageView+.swift */; };
+		CE4D4E9B2707BB2500081A2B /* PaletteDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E9A2707BB2500081A2B /* PaletteDependencyContainer.swift */; };
+		CE4D4E9D2707BB3F00081A2B /* PaletteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E9C2707BB3F00081A2B /* PaletteViewController.swift */; };
+		CE4D4EA02707BB8400081A2B /* SkillSettingDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E9F2707BB8400081A2B /* SkillSettingDependencyContainer.swift */; };
+		CE4D4EA22707BBBA00081A2B /* TMISettingDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4EA12707BBBA00081A2B /* TMISettingDependencyContainer.swift */; };
+		CE4D4EA42707BC2000081A2B /* PaletteViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE4D4EA32707BC2000081A2B /* PaletteViewController.storyboard */; };
+		CE4D4EA62707BC3900081A2B /* SkillSettingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE4D4EA52707BC3900081A2B /* SkillSettingViewController.storyboard */; };
+		CE4D4EA82707BC5000081A2B /* TMISettingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE4D4EA72707BC5000081A2B /* TMISettingViewController.storyboard */; };
 		CE63123A26F59C7800B2E69B /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63123926F59C7800B2E69B /* RootViewController.swift */; };
 		CE63124026F59E6700B2E69B /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63123F26F59E6700B2E69B /* RootViewModel.swift */; };
 		CE63124926F5A30200B2E69B /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63124826F5A30200B2E69B /* Navigation.swift */; };
@@ -125,7 +153,35 @@
 		A2A5C83926FB1A3D005D2849 /* AppKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppKey.swift; sourceTree = "<group>"; };
 		A2D875DE26EE295C00ED5949 /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
 		A3E561B79C6998E82DB447DF /* Pods-YourName-YourNameTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourName-YourNameTests.debug.xcconfig"; path = "Target Support Files/Pods-YourName-YourNameTests/Pods-YourName-YourNameTests.debug.xcconfig"; sourceTree = "<group>"; };
-		CE4B8B302707115300788B76 /* ContactInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInputView.swift; sourceTree = "<group>"; };
+		CE2BB2C627074F4600936148 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		CE2BB2C82707560800936148 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
+		CE2EC99227073453006B9852 /* CardCreationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCreationViewModel.swift; sourceTree = "<group>"; };
+		CE2EC99527073493006B9852 /* CardCreationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCreationViewModelTests.swift; sourceTree = "<group>"; };
+		CE4D4E6C2707883600081A2B /* ContactInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInputView.swift; sourceTree = "<group>"; };
+		CE4D4E6F2707A0FB00081A2B /* CharacterCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCreationViewController.swift; sourceTree = "<group>"; };
+		CE4D4E712707A11500081A2B /* CharacterCreationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CharacterCreationViewController.storyboard; sourceTree = "<group>"; };
+		CE4D4E742707A71800081A2B /* Body.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Body.swift; sourceTree = "<group>"; };
+		CE4D4E762707A72100081A2B /* Eye.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Eye.swift; sourceTree = "<group>"; };
+		CE4D4E782707A72E00081A2B /* Nose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nose.swift; sourceTree = "<group>"; };
+		CE4D4E7A2707A75600081A2B /* Mouth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mouth.swift; sourceTree = "<group>"; };
+		CE4D4E7D2707A7E000081A2B /* Accessory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accessory.swift; sourceTree = "<group>"; };
+		CE4D4E7F2707A81D00081A2B /* HairAccessory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HairAccessory.swift; sourceTree = "<group>"; };
+		CE4D4E832707A91900081A2B /* Items.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Items.xcassets; sourceTree = "<group>"; };
+		CE4D4E852707AE1700081A2B /* CharacterCreationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCreationViewModel.swift; sourceTree = "<group>"; };
+		CE4D4E872707AE3800081A2B /* CharacterCreationDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCreationDependencyContainer.swift; sourceTree = "<group>"; };
+		CE4D4E892707AEDD00081A2B /* CharacterItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterItem.swift; sourceTree = "<group>"; };
+		CE4D4E8B2707AF0500081A2B /* CharacterItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterItemRepository.swift; sourceTree = "<group>"; };
+		CE4D4E8D2707AF6E00081A2B /* FakeCharacterItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeCharacterItemRepository.swift; sourceTree = "<group>"; };
+		CE4D4E912707B27200081A2B /* SkillSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillSettingViewController.swift; sourceTree = "<group>"; };
+		CE4D4E932707B28200081A2B /* TMISettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMISettingViewController.swift; sourceTree = "<group>"; };
+		CE4D4E972707B35100081A2B /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
+		CE4D4E9A2707BB2500081A2B /* PaletteDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteDependencyContainer.swift; sourceTree = "<group>"; };
+		CE4D4E9C2707BB3F00081A2B /* PaletteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteViewController.swift; sourceTree = "<group>"; };
+		CE4D4E9F2707BB8400081A2B /* SkillSettingDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillSettingDependencyContainer.swift; sourceTree = "<group>"; };
+		CE4D4EA12707BBBA00081A2B /* TMISettingDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMISettingDependencyContainer.swift; sourceTree = "<group>"; };
+		CE4D4EA32707BC2000081A2B /* PaletteViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PaletteViewController.storyboard; sourceTree = "<group>"; };
+		CE4D4EA52707BC3900081A2B /* SkillSettingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SkillSettingViewController.storyboard; sourceTree = "<group>"; };
+		CE4D4EA72707BC5000081A2B /* TMISettingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TMISettingViewController.storyboard; sourceTree = "<group>"; };
 		CE63123926F59C7800B2E69B /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		CE63123F26F59E6700B2E69B /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		CE63124826F5A30200B2E69B /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
@@ -264,6 +320,85 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CE2EC9942707347E006B9852 /* CardCreationTests */ = {
+			isa = PBXGroup;
+			children = (
+				CE2EC99527073493006B9852 /* CardCreationViewModelTests.swift */,
+			);
+			path = CardCreationTests;
+			sourceTree = "<group>";
+		};
+		CE4D4E6E2707A0CB00081A2B /* CharacterCreation */ = {
+			isa = PBXGroup;
+			children = (
+				CE4D4E872707AE3800081A2B /* CharacterCreationDependencyContainer.swift */,
+				CE4D4E712707A11500081A2B /* CharacterCreationViewController.storyboard */,
+				CE4D4E6F2707A0FB00081A2B /* CharacterCreationViewController.swift */,
+				CE4D4E852707AE1700081A2B /* CharacterCreationViewModel.swift */,
+			);
+			path = CharacterCreation;
+			sourceTree = "<group>";
+		};
+		CE4D4E732707A70000081A2B /* Character */ = {
+			isa = PBXGroup;
+			children = (
+				CE4D4E7D2707A7E000081A2B /* Accessory.swift */,
+				CE4D4E742707A71800081A2B /* Body.swift */,
+				CE4D4E892707AEDD00081A2B /* CharacterItem.swift */,
+				CE4D4E8B2707AF0500081A2B /* CharacterItemRepository.swift */,
+				CE4D4E762707A72100081A2B /* Eye.swift */,
+				CE4D4E8D2707AF6E00081A2B /* FakeCharacterItemRepository.swift */,
+				CE4D4E7F2707A81D00081A2B /* HairAccessory.swift */,
+				CE4D4E7A2707A75600081A2B /* Mouth.swift */,
+				CE4D4E782707A72E00081A2B /* Nose.swift */,
+			);
+			path = Character;
+			sourceTree = "<group>";
+		};
+		CE4D4E8F2707B21400081A2B /* TMISetting */ = {
+			isa = PBXGroup;
+			children = (
+				CE4D4EA12707BBBA00081A2B /* TMISettingDependencyContainer.swift */,
+				CE4D4EA72707BC5000081A2B /* TMISettingViewController.storyboard */,
+				CE4D4E932707B28200081A2B /* TMISettingViewController.swift */,
+			);
+			path = TMISetting;
+			sourceTree = "<group>";
+		};
+		CE4D4E902707B24A00081A2B /* SkillSetting */ = {
+			isa = PBXGroup;
+			children = (
+				CE4D4E9F2707BB8400081A2B /* SkillSettingDependencyContainer.swift */,
+				CE4D4EA52707BC3900081A2B /* SkillSettingViewController.storyboard */,
+				CE4D4E912707B27200081A2B /* SkillSettingViewController.swift */,
+			);
+			path = SkillSetting;
+			sourceTree = "<group>";
+		};
+		CE4D4E952707B2FB00081A2B /* TMI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TMI;
+			sourceTree = "<group>";
+		};
+		CE4D4E962707B30400081A2B /* Skill */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Skill;
+			sourceTree = "<group>";
+		};
+		CE4D4E992707BA9800081A2B /* Palette */ = {
+			isa = PBXGroup;
+			children = (
+				CE4D4E9A2707BB2500081A2B /* PaletteDependencyContainer.swift */,
+				CE4D4EA32707BC2000081A2B /* PaletteViewController.storyboard */,
+				CE4D4E9C2707BB3F00081A2B /* PaletteViewController.swift */,
+			);
+			path = Palette;
+			sourceTree = "<group>";
+		};
 		CE63123826F59C6B00B2E69B /* Root */ = {
 			isa = PBXGroup;
 			children = (
@@ -370,7 +505,8 @@
 				CE6BABA82704DB2A0006D26B /* CardCreationDependencyContainer.swift */,
 				CE6BABA42704DAFB0006D26B /* CardCreationViewController.storyboard */,
 				CE6BABA62704DB0A0006D26B /* CardCreationViewController.swift */,
-				CE4B8B302707115300788B76 /* ContactInputView.swift */,
+				CE2EC99227073453006B9852 /* CardCreationViewModel.swift */,
+				CE4D4E6C2707883600081A2B /* ContactInputView.swift */,
 			);
 			path = CardCreation;
 			sourceTree = "<group>";
@@ -409,6 +545,7 @@
 		CEB6584126EB15AD00C11F33 /* YourNameTests */ = {
 			isa = PBXGroup;
 			children = (
+				CE2EC9942707347E006B9852 /* CardCreationTests */,
 				CE6312C126F9B02300B2E69B /* MyCardListTests */,
 				CEB658B626EC9E8E00C11F33 /* NetworkTests */,
 				CE6312AB26F8CBAD00B2E69B /* RootTests */,
@@ -435,6 +572,8 @@
 			isa = PBXGroup;
 			children = (
 				CEB6583426EB15AC00C11F33 /* Images.xcassets */,
+				CE2BB2C627074F4600936148 /* Colors.xcassets */,
+				CE4D4E832707A91900081A2B /* Items.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -462,6 +601,7 @@
 			children = (
 				CE6BAB922704D08D0006D26B /* Protocols */,
 				CEF8C55526EDF8F7009BA9C2 /* Extensions */,
+				CE2BB2C82707560800936148 /* Palette.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -488,9 +628,12 @@
 			isa = PBXGroup;
 			children = (
 				CEB6586D26EB2C8800C11F33 /* Auth */,
+				CE4D4E732707A70000081A2B /* Character */,
 				CE6312C626F9B38A00B2E69B /* MyCard */,
 				CEB6586626EB2C0700C11F33 /* Scheme */,
+				CE4D4E962707B30400081A2B /* Skill */,
 				CEFA037826EFB75D00D12AAB /* Snapshot */,
+				CE4D4E952707B2FB00081A2B /* TMI */,
 				CEFA037B26EFBAC100D12AAB /* QR */,
 			);
 			path = "Domain Layer";
@@ -510,13 +653,17 @@
 				CED16DED26F3A4F70076565F /* CardBook */,
 				CE6BABA32704DAA20006D26B /* CardCreation */,
 				CE6312B526F99F6200B2E69B /* CardDetail */,
+				CE4D4E6E2707A0CB00081A2B /* CharacterCreation */,
 				CEB6586A26EB2C6400C11F33 /* Home */,
 				CED16DEC26F3A4C30076565F /* MyCardList */,
+				CE4D4E992707BA9800081A2B /* Palette */,
 				CED16DEE26F3A5000076565F /* Quest */,
 				CE63123826F59C6B00B2E69B /* Root */,
 				CED16DEF26F3A5050076565F /* Setting */,
 				CE63124A26F5DD5D00B2E69B /* SignIn */,
+				CE4D4E902707B24A00081A2B /* SkillSetting */,
 				CE63125C26F626F600B2E69B /* Splash */,
+				CE4D4E8F2707B21400081A2B /* TMISetting */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -677,8 +824,9 @@
 				CE6312D026F9BD6B00B2E69B /* Array+.swift */,
 				CE63125426F5E25200B2E69B /* String+.swift */,
 				CE6BABAE2704EE9C0006D26B /* UICollectionView+.swift */,
-				CE6BABAC2704ED700006D26B /* UITableView+.swift */,
+				CE4D4E972707B35100081A2B /* UIImageView+.swift */,
 				CEF8C55626EDFB6F009BA9C2 /* UIStackView+.swift */,
+				CE6BABAC2704ED700006D26B /* UITableView+.swift */,
 				CEF8C55226EDF8D5009BA9C2 /* UIView+.swift */,
 				CE6BABAA2704E2480006D26B /* UIVIewController+.swift */,
 				CEB6582F26EB15A600C11F33 /* ViewController.swift */,
@@ -786,11 +934,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE4D4E842707A91900081A2B /* Items.xcassets in Resources */,
 				CE6BABA22704D9520006D26B /* SettingViewController.storyboard in Resources */,
 				CE6BABA52704DAFB0006D26B /* CardCreationViewController.storyboard in Resources */,
+				CE2BB2C727074F4600936148 /* Colors.xcassets in Resources */,
+				CE4D4EA42707BC2000081A2B /* PaletteViewController.storyboard in Resources */,
 				CE6BABA02704D7BF0006D26B /* SplashViewController.storyboard in Resources */,
 				CE6BAB9C2704D7170006D26B /* QuestViewController.storyboard in Resources */,
 				CEB6583826EB15AC00C11F33 /* LaunchScreen.storyboard in Resources */,
+				CE4D4EA62707BC3900081A2B /* SkillSettingViewController.storyboard in Resources */,
+				CE4D4EA82707BC5000081A2B /* TMISettingViewController.storyboard in Resources */,
+				CE4D4E722707A11500081A2B /* CharacterCreationViewController.storyboard in Resources */,
 				CEB6583526EB15AC00C11F33 /* Images.xcassets in Resources */,
 				CE6BAB982704D69F0006D26B /* CardDetailViewController.storyboard in Resources */,
 				CE6BAB9E2704D7610006D26B /* SignInViewController.storyboard in Resources */,
@@ -896,7 +1050,9 @@
 			files = (
 				CE6312C026F9AB4A00B2E69B /* MyCardListViewModel.swift in Sources */,
 				CEF8C55726EDFB6F009BA9C2 /* UIStackView+.swift in Sources */,
+				CE4D4EA02707BB8400081A2B /* SkillSettingDependencyContainer.swift in Sources */,
 				CE63125526F5E25200B2E69B /* String+.swift in Sources */,
+				CE4D4EA22707BBBA00081A2B /* TMISettingDependencyContainer.swift in Sources */,
 				CE6BABAD2704ED700006D26B /* UITableView+.swift in Sources */,
 				CE63124026F59E6700B2E69B /* RootViewModel.swift in Sources */,
 				CEB6589526EC838000C11F33 /* HTTPClient.swift in Sources */,
@@ -913,27 +1069,41 @@
 				CEB6583026EB15A600C11F33 /* ViewController.swift in Sources */,
 				CE63125726F5E2A100B2E69B /* FakeAccessTokenRepository.swift in Sources */,
 				CE6312A926F8CB2F00B2E69B /* SignedOutDependencyContainer.swift in Sources */,
+				CE4D4E7B2707A75600081A2B /* Mouth.swift in Sources */,
+				CE4D4E772707A72100081A2B /* Eye.swift in Sources */,
 				CEB6589126EC826300C11F33 /* Enviorment.swift in Sources */,
 				CE63123A26F59C7800B2E69B /* RootViewController.swift in Sources */,
 				CE6312AA26F8CB2F00B2E69B /* RootDependencyContainer.swift in Sources */,
 				CE6312A826F8CB2F00B2E69B /* SignedInDependencyContainer.swift in Sources */,
 				CE63125226F5E19700B2E69B /* AccessTokenRepository.swift in Sources */,
+				CE4D4E982707B35100081A2B /* UIImageView+.swift in Sources */,
 				CEB6589326EC834900C11F33 /* Foundation+Decoder.swift in Sources */,
+				CE4D4E9D2707BB3F00081A2B /* PaletteViewController.swift in Sources */,
 				CEB6587926EC806F00C11F33 /* Connectable.swift in Sources */,
 				CEFA037D26EFBACE00D12AAB /* QRGenerater.swift in Sources */,
 				A2A5C83A26FB1A3D005D2849 /* AppKey.swift in Sources */,
+				CE4D4E922707B27200081A2B /* SkillSettingViewController.swift in Sources */,
 				CE6312C826F9B3B000B2E69B /* MyCardRepository.swift in Sources */,
 				CEB6589726EC844D00C11F33 /* main.swift in Sources */,
+				CE4D4E882707AE3800081A2B /* CharacterCreationDependencyContainer.swift in Sources */,
 				CE63126026F6281800B2E69B /* SplashViewModel.swift in Sources */,
+				CE4D4E862707AE1700081A2B /* CharacterCreationViewModel.swift in Sources */,
+				CE4D4E8A2707AEDD00081A2B /* CharacterItem.swift in Sources */,
+				CE2EC99327073453006B9852 /* CardCreationViewModel.swift in Sources */,
 				CEB6587226EB2CAB00C11F33 /* Networking.swift in Sources */,
+				CE4D4E702707A0FB00081A2B /* CharacterCreationViewController.swift in Sources */,
+				CE4D4E802707A81D00081A2B /* HairAccessory.swift in Sources */,
 				CEB6587B26EC809800C11F33 /* URLRequestConvertible.swift in Sources */,
+				CE4D4E792707A72E00081A2B /* Nose.swift in Sources */,
 				A2D875DF26EE295C00ED5949 /* AuthResponse.swift in Sources */,
 				CE6BABAF2704EE9C0006D26B /* UICollectionView+.swift in Sources */,
 				CEF8C55326EDF8D5009BA9C2 /* UIView+.swift in Sources */,
 				CED16DE926F39F700076565F /* HomeTab.swift in Sources */,
+				CE2BB2C92707560800936148 /* Palette.swift in Sources */,
 				CE63124926F5A30200B2E69B /* Navigation.swift in Sources */,
 				CEB6587726EB2CFE00C11F33 /* HomeViewModel.swift in Sources */,
 				CEFA037A26EFB76D00D12AAB /* SnapshotService.swift in Sources */,
+				CE4D4E8E2707AF6E00081A2B /* FakeCharacterItemRepository.swift in Sources */,
 				CE6312CC26F9B4FC00B2E69B /* MockMyCardRepository.swift in Sources */,
 				CEB6587D26EC80BF00C11F33 /* DataTask.swift in Sources */,
 				CE6BABA92704DB2A0006D26B /* CardCreationDependencyContainer.swift in Sources */,
@@ -945,20 +1115,25 @@
 				CEB6588726EC817A00C11F33 /* HTTP.swift in Sources */,
 				A2A5C83826FB17D0005D2849 /* KakaoAuth.swift in Sources */,
 				CE6BABAB2704E2480006D26B /* UIVIewController+.swift in Sources */,
+				CE4D4E752707A71800081A2B /* Body.swift in Sources */,
 				CE6312B726F99F7000B2E69B /* CardDetailViewController.swift in Sources */,
+				CE4D4E942707B28200081A2B /* TMISettingViewController.swift in Sources */,
 				CEB6586826EB2C3700C11F33 /* SchemeNavigator.swift in Sources */,
 				CEB6588B26EC81B200C11F33 /* Decoder.swift in Sources */,
 				CEB6586C26EB2C7600C11F33 /* HomeTabBarController.swift in Sources */,
 				CEB6582C26EB15A600C11F33 /* AppDelegate.swift in Sources */,
+				CE4D4E6D2707883600081A2B /* ContactInputView.swift in Sources */,
+				CE4D4E9B2707BB2500081A2B /* PaletteDependencyContainer.swift in Sources */,
 				CE63129E26F8618000B2E69B /* AuthenticationDelegate.swift in Sources */,
 				CE63125E26F6270B00B2E69B /* SplashViewController.swift in Sources */,
 				CED16DF926F3A55D0076565F /* MyCardListViewController.swift in Sources */,
 				CED16DF526F3A5480076565F /* QuestViewController.swift in Sources */,
 				CEB6588926EC818900C11F33 /* HTTPError.swift in Sources */,
-				CE4B8B312707115300788B76 /* ContactInputView.swift in Sources */,
 				CE6BAB942704D0990006D26B /* Storyboarded.swift in Sources */,
+				CE4D4E8C2707AF0500081A2B /* CharacterItemRepository.swift in Sources */,
 				CE6312BE26F9A4C700B2E69B /* CardDetailDependencyContainer.swift in Sources */,
 				CEB6588026EC80F500C11F33 /* Foundation+Network.swift in Sources */,
+				CE4D4E7E2707A7E000081A2B /* Accessory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -968,6 +1143,7 @@
 			files = (
 				CEB658AC26EC9A3B00C11F33 /* MockNetwork.swift in Sources */,
 				CEB658B126EC9A3B00C11F33 /* MockDataTask.swift in Sources */,
+				CE2EC99627073493006B9852 /* CardCreationViewModelTests.swift in Sources */,
 				CE6312B226F8F27600B2E69B /* SplashViewModelTests.swift in Sources */,
 				CE6312C526F9B05700B2E69B /* MyCardListViewModelTests.swift in Sources */,
 				CE6312AF26F8CC0A00B2E69B /* RootViewModelTests.swift in Sources */,
