@@ -39,6 +39,10 @@ final class CardCreationViewController: ViewController, Storyboarded {
         render(viewModel)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidLoad()
+    }
+    
     private func dispatch(to viewModel: CardCreationViewModel) {
         
         profileClearButton?.rx.tap
