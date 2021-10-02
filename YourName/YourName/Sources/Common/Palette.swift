@@ -22,9 +22,4 @@ enum Palette {
     static let skyBlue = UIColor(named: "skyBlue")!
     static let vilolet = UIColor(named: "vilolet")!
     static let yellow = UIColor(named: "yellow")!
-    
-    
-    static let progessBar: SkillProgressBar? = SkillProgressBar.fromNib()
 }
-
-class SkillProgressBar: UIView {}

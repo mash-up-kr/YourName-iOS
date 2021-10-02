@@ -23,6 +23,16 @@ final class MyCardListViewController: ViewController, Storyboarded {
         bind()
     }
     
+    func presentVC() {
+        let contentView = UIView().then { $0.backgroundColor = .brown }
+        contentView.snp.makeConstraints {
+            $0.height.equalTo(350)
+        }
+        let pageSheetController = PageSheetController(contentView: contentView)
+        pageSheetController.modalPresentationStyle = .fullScreen
+        self.present(pageSheetController, animated: false, completion: nil)
+    }
+    
     private func bind() {
         dispatch(to: viewModel)
         render(viewModel)
@@ -37,8 +47,8 @@ final class MyCardListViewController: ViewController, Storyboarded {
                 self.navigate(action)
             }).disposed(by: disposeBag)
         
-        addCardButton?.rx.tap
-            .subscribe(onNext: { [weak self] _ in self?.viewModel.tapCardCreation() })
+        addCardButton?.rx.tap.subscribe(onNext: { self.presentVC() })
+//            .subscribe(onNext: { [weak self] _ in self?.viewModel.tapCardCreation() }       )
             .disposed(by: disposeBag)
     }
     
