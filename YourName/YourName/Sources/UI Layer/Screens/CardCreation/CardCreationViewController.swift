@@ -14,6 +14,7 @@ import UIKit
 final class CardCreationViewController: ViewController, Storyboarded {
     
     var viewModel: CardCreationViewModel!
+    var imageSourceTypePickerViewControllerFactory: (() -> ImageSourceTypePickerViewController)?
     var characterCreationViewControllerFactory: (() -> CharacterCreationViewController)?
     var paletteViewControllerFactory: (() -> PaletteViewController)?
     var tmiSettingViewControllerFactory: (() -> TMISettingViewController)?
@@ -39,9 +40,6 @@ final class CardCreationViewController: ViewController, Storyboarded {
         render(viewModel)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidLoad()
-    }
     
     private func dispatch(to viewModel: CardCreationViewModel) {
         
@@ -188,12 +186,22 @@ final class CardCreationViewController: ViewController, Storyboarded {
                 .disposed(by: disposeBag)
         }
         
-//        viewModel.navigation
-//            .subscribe(onNext: { [weak self] navigation in
-//                let viewController = UIViewController()
-//                self?.navigate(viewController, action: navigation.action)
-//            })
-//            .disposed(by: disposeBag)
+        viewModel.navigation
+            .subscribe(onNext: { [weak self] navigation in
+                guard let viewController = self?.createViewController(of: navigation.destination) else { return }
+                self?.navigate(viewController, action: navigation.action)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func createViewController(of destination: CardCreationDestination) -> UIViewController? {
+        switch destination {
+        case .imageSourceTypePicker: return imageSourceTypePickerViewControllerFactory?()
+        case .palette: return paletteViewControllerFactory?()
+        case .createCharacter: return characterCreationViewControllerFactory?()
+        case .settingSkill: return skillSettingViewControllerFactory?()
+        case .settingTMI: return tmiSettingViewControllerFactory?()
+        }
     }
     
     private let disposeBag = DisposeBag()
@@ -216,45 +224,4 @@ final class CardCreationViewController: ViewController, Storyboarded {
     @IBOutlet private weak var aboutMePlaceholderLabel: UILabel?
     @IBOutlet private weak var keyboardFrameViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var completeButton: UIButton?
-}
-
-
-import RxRelay
-
-protocol Keyboard {
-    var isHidden: BehaviorRelay<Bool> { get }
-    var height: BehaviorRelay<CGFloat> { get }
-    var animationDuration: BehaviorRelay<TimeInterval> { get }
-}
-
-final class KeyboardImpl: NSObject, Keyboard {
-    static let shared = KeyboardImpl()
-    
-    let isHidden = BehaviorRelay(value: false)
-    let height = BehaviorRelay<CGFloat>(value: .zero)
-    let animationDuration = BehaviorRelay(value: 0.25)
-    
-    override init() {
-        super.init()
-        
-        NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification)
-            .subscribe(onNext: { [weak self] notification in
-                let keyboardHeight = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height ?? 336
-                let duration = (notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0.25
-                self?.height.accept(keyboardHeight)
-                self?.animationDuration.accept(duration)
-                self?.isHidden.accept(false)
-            }).disposed(by: disposeBag)
-        
-        NotificationCenter.default.rx.notification(UIResponder.keyboardWillHideNotification)
-            .subscribe(onNext: {  [weak self] notification in
-                let keyboardHeight = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height ?? 336
-                let duration = (notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0.25
-                self?.height.accept(keyboardHeight)
-                self?.animationDuration.accept(duration)
-                self?.isHidden.accept(true)
-            }).disposed(by: disposeBag)
-    }
-    
-    private let disposeBag = DisposeBag()
 }

@@ -19,6 +19,7 @@ final class MyCardView: UIView, NibLoadable {
         setupFromNib()
         configureSkillProgressBar(level: 2)
     }
+    
     // viewModel 봐서 수정필요
     private func configureSkillProgressBar(level: Int...) {
         skillStackView.subviews.forEach { subview in

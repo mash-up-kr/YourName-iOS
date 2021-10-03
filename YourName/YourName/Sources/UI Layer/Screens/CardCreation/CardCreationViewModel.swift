@@ -9,9 +9,9 @@ import Foundation
 import RxRelay
 
 enum CardCreationDestination: Equatable {
-    case profileBackgroundPicker
-    case imageSourcePicker
+    case imageSourceTypePicker
     case createCharacter
+    case palette
     case settingSkill
     case settingTMI
 }
@@ -41,20 +41,25 @@ final class CardCreationViewModel {
     let personalityKeyword = BehaviorRelay<String>(value: .empty)
     let aboutMe = BehaviorRelay<String>(value: .empty)
     
-    let shouldShowImageSelectOption = PublishRelay<Void>()
     let navigation = PublishRelay<CardCreationNavigation>()
     
     // Event
     func tapProfileClear() {
-        
+        profileImageSource.accept(nil)
+        shouldHideProfilePlaceholder.accept(false)
+        shouldHideClear.accept(true)
     }
     
     func tapProfilePlaceHolder() {
-        shouldShowImageSelectOption.accept(Void())
+        navigation.accept(.show(.imageSourceTypePicker, withDimmed: true))
     }
     
     func tapProfileBackgroundSetting() {
-        navigation.accept(.present(.profileBackgroundPicker))
+        navigation.accept(.show(.palette, withDimmed: true))
+    }
+    
+    func tapCreatCharacter() {
+        navigation.accept(.present(.createCharacter))
     }
     
     func typeName(_ text: String) {

@@ -9,18 +9,19 @@ import RxCocoa
 import RxSwift
 import UIKit
 
-final class PageSheetController<ContentView: UIView>: ViewController {
-    
-    override var title: String? {
-        didSet { self.titleLabel.text = title }
-    }
-    var canEasilyClose: Bool = true
+protocol PageSheetContentView: UIView {
+    var title: String { get }
+    var isModal: Bool { get }
+}
+
+final class PageSheetController<ContentView: PageSheetContentView>: ViewController {
     let contentView: ContentView
+    var onDismiss: ((ContentView) -> Void)?
     
-    init(title: String? = nil, contentView: ContentView) {
+    init(contentView: ContentView) {
         self.contentView = contentView
         super.init()
-        self.titleLabel.text = title
+        self.titleLabel.text = contentView.title
     }
     
     required init?(coder: NSCoder) {
@@ -35,11 +36,22 @@ final class PageSheetController<ContentView: UIView>: ViewController {
         bind()
     }
     
-    func show(completion: @escaping (ContentView) -> Void = { _ in }) {
-        guard let visableViewController = UIApplication.shared.keyWindow?.rootViewController else { return }
-        visableViewController.modalPresentationStyle = .overCurrentContext
+    func show() {
+        guard let visableViewController = UIViewController.visableViewController() else { return }
+        self.modalPresentationStyle = .overFullScreen
+        let dimmedView = UIView().then { $0.backgroundColor = Palette.black1.withAlphaComponent(0.6) }
+        visableViewController.view.addSubview(dimmedView)
+        dimmedView.frame = visableViewController.view.bounds
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: { [weak dimmedView] in
+            dimmedView?.removeFromSuperview()
+        })
         visableViewController.present(self, animated: false, completion: nil)
-        self.completion = completion
+    }
+    
+    func close() {
+        self.dismiss(animated: false, completion: {
+            self.onDismiss?(self.contentView)
+        })
     }
     
     private func configureUI() {
@@ -56,7 +68,8 @@ final class PageSheetController<ContentView: UIView>: ViewController {
         topBarView.clipsToBounds = true
         topBarView.addSubviews(closeButton, titleLabel)
         topBarView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        topBarView.layer.cornerRadius = 10
+        topBarView.layer.cornerRadius = 20
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 18)
         closeButton.setImage(UIImage(named: "btn_close")!, for: .normal)
         closeButton.snp.makeConstraints {
             $0.width.height.equalTo(30)
@@ -71,11 +84,10 @@ final class PageSheetController<ContentView: UIView>: ViewController {
     private func bind() {
         self.view.rx.tapGesture()
             .when(.recognized)
-            .filter { [weak self] _ in self?.canEasilyClose == true }
+            .filter { [weak self] _ in (self?.contentView.isModal).isFalseOrNil }
             .subscribe(onNext: { [weak self] _ in
                 guard let self = self else { return }
-                self.dismiss(animated: false, completion: nil)
-                self.completion?(self.contentView)
+                self.close()
             })
             .disposed(by: disposeBag)
     }
@@ -88,8 +100,6 @@ final class PageSheetController<ContentView: UIView>: ViewController {
         stackView.removeArrangedSubview(contentView)
         contentView.removeFromSuperview()
     }
-    
-    private var completion: ((ContentView) -> Void)?
     private let stackView = UIStackView().then { $0.axis = .vertical }
     private let topBarView = UIView()
     private let titleLabel = UILabel()
