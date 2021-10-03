@@ -19,15 +19,24 @@ struct Navigation<Destination: Equatable>: Equatable {
 }
 
 extension Navigation {
+<<<<<<< HEAD
     static func present(_ destination: Destination, animated: Bool = true) -> Self {
         return Navigation(action: .present(animated: animated), destination: destination)
+=======
+    static func present(_ destination: Destination) -> Self {
+        return Navigation(action: .present(animated: true), destination: destination)
+>>>>>>> develop
     }
     
     static func push(_ destination: Destination) -> Self {
         return Navigation(action: .push, destination: destination)
     }
     
+<<<<<<< HEAD
     static func show(_ destination: Destination, withDimmed dimmed: Bool = true) -> Self {
+=======
+    static func show(_ destination: Destination, withDimmed dimmed: Bool = false) -> Self {
+>>>>>>> develop
         return Navigation(action: .show(withDimmed: dimmed), destination: destination)
     }
 }
