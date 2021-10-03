@@ -13,7 +13,6 @@ enum ColorSourceStatus {
     case locked
 }
 
-
 final class ColorSourceCollectionViewCell: UICollectionViewCell {
     
     private var colorSource: ColorSource = .monotone(Palette.lightGray1)

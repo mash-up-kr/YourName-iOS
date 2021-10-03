@@ -9,9 +9,9 @@ import Foundation
 import RxRelay
 
 enum CardCreationDestination: Equatable {
-    case profileBackgroundPicker
-    case imageSourcePicker
+    case imageSourceTypePicker
     case createCharacter
+    case palette
     case settingSkill
     case settingTMI
 }
@@ -46,7 +46,9 @@ final class CardCreationViewModel {
     
     // Event
     func tapProfileClear() {
-        
+        profileImageSource.accept(nil)
+        shouldHideProfilePlaceholder.accept(false)
+        shouldHideClear.accept(true)
     }
     
     func tapProfilePlaceHolder() {
@@ -54,7 +56,11 @@ final class CardCreationViewModel {
     }
     
     func tapProfileBackgroundSetting() {
-        navigation.accept(.present(.profileBackgroundPicker))
+        navigation.accept(.present(.imageSourceTypePicker))
+    }
+    
+    func tapCreatCharacter() {
+        
     }
     
     func typeName(_ text: String) {

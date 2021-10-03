@@ -21,7 +21,6 @@ final class RootDependencyContainer {
         self.accessTokenRepository = fakeAccessTokenRepository
     }
     
-    // Root Factory
     func createRootViewController() -> RootViewController {
         let splashViewControllerFactory: () -> SplashViewController = {
             let dependencyContainer = self.createSplashDependencyContainer()

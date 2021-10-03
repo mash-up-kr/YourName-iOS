@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class ImageSourcePickerViewModel {
+final class ImageSourceTypePickerViewModel {
     
 }
 

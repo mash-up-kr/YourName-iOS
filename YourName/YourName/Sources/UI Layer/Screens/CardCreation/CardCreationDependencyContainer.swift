@@ -17,6 +17,10 @@ final class CardCreationDependencyContainer {
         let viewModel = CardCreationViewModel()
         let viewContorller = CardCreationViewController.instantiate()
         viewContorller.viewModel = viewModel
+        viewContorller.imageSourceTypePickerPageSheetFactory = {
+            let dependencyContainer = self.createImageSourceDependencyContainer()
+            return dependencyContainer.createImageSourcePickerPageSheetController()
+        }
         viewContorller.characterCreationViewControllerFactory = {
             let dependencyContainer = self.createCharacterCreationDependencyContainer()
             return dependencyContainer.createCharacterCreationViewController()
@@ -39,6 +43,10 @@ final class CardCreationDependencyContainer {
     // 👼 Child Dependency Container
     private func createCharacterCreationDependencyContainer() -> CharacterCreationDependencyContainer {
         return CharacterCreationDependencyContainer(cardCreationDependencyContainer: self)
+    }
+    
+    private func createImageSourceDependencyContainer() -> ImageSourceTypePickerDependencyContainer {
+        return ImageSourceTypePickerDependencyContainer(cardCreationDependencyContainer: self)
     }
     
     private func createPaletteDependencyContainer() -> PaletteDependencyContainer {

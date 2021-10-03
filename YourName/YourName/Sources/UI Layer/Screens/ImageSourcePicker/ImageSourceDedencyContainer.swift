@@ -7,25 +7,25 @@
 
 import Foundation
 
-final class ImageSourceDependencyContainer {
+final class ImageSourceTypePickerDependencyContainer {
     
     init(cardCreationDependencyContainer: CardCreationDependencyContainer) {
         
     }
     
-    func createImageSourcePickerPageSheetController() -> PageSheetController<ImageSourcePickerView> {
+    func createImageSourcePickerPageSheetController() -> PageSheetController<ImageSourceTypePickerView> {
         let view = createImageSourcePickerView()
         return PageSheetController(contentView: view)
     }
     
-    private func createImageSourcePickerView() -> ImageSourcePickerView {
-        let view = ImageSourcePickerView()
+    private func createImageSourcePickerView() -> ImageSourceTypePickerView {
+        let view = ImageSourceTypePickerView()
         view.viewModel = createImageSourcePickerViewModel()
         return view
     }
     
-    private func createImageSourcePickerViewModel() -> ImageSourcePickerViewModel {
-        return ImageSourcePickerViewModel()
+    private func createImageSourcePickerViewModel() -> ImageSourceTypePickerViewModel {
+        return ImageSourceTypePickerViewModel()
     }
     
 }

@@ -26,3 +26,9 @@ final class PaletteView: UIView, NibLoadable {
 extension PaletteView: PageSheetContentView {
     var title: String { "배경 컬러 선택하기" }
 }
+//extension PaletteView: UICollectionViewDataSource {
+//    
+//}
+//extension PaletteView: UICollectionViewDelegateFlowLayout {
+//    
+//}

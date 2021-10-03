@@ -8,10 +8,6 @@
 import Foundation
 import RxRelay
 
-struct ProfileColor {
-    let colorSource: ColorSource
-    let status: ColorSourceStatus
-}
 
 final class PaletteViewModel {
     
