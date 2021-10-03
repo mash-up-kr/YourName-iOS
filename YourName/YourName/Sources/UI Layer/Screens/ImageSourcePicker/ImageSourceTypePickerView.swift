@@ -23,5 +23,6 @@ final class ImageSourceTypePickerView: UIView, NibLoadable {
 }
 extension ImageSourceTypePickerView: PageSheetContentView {
     var title: String { "대표 이미지 추가하기" }
+    var isModal: Bool { false }
 }
 

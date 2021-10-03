@@ -11,7 +11,6 @@ extension UITableView {
     
     func register<TableViewCell: UITableViewCell>(_ cellType: TableViewCell.Type) {
         let identifier = String(describing: cellType)
-        print(identifier)
         self.register(cellType, forCellReuseIdentifier: identifier)
     }
     

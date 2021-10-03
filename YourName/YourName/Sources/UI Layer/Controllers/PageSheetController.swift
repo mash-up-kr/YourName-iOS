@@ -11,12 +11,11 @@ import UIKit
 
 protocol PageSheetContentView: UIView {
     var title: String { get }
+    var isModal: Bool { get }
 }
 
 final class PageSheetController<ContentView: PageSheetContentView>: ViewController {
     let contentView: ContentView
-    
-    var canEasilyClose: Bool = true
     var onDismiss: ((ContentView) -> Void)?
     
     init(contentView: ContentView) {
@@ -85,7 +84,7 @@ final class PageSheetController<ContentView: PageSheetContentView>: ViewControll
     private func bind() {
         self.view.rx.tapGesture()
             .when(.recognized)
-            .filter { [weak self] _ in self?.canEasilyClose == true }
+            .filter { [weak self] _ in (self?.contentView.isModal).isFalseOrNil }
             .subscribe(onNext: { [weak self] _ in
                 guard let self = self else { return }
                 self.close()
@@ -101,7 +100,6 @@ final class PageSheetController<ContentView: PageSheetContentView>: ViewControll
         stackView.removeArrangedSubview(contentView)
         contentView.removeFromSuperview()
     }
-    
     private let stackView = UIStackView().then { $0.axis = .vertical }
     private let topBarView = UIView()
     private let titleLabel = UILabel()

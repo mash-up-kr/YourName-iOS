@@ -17,8 +17,8 @@ final class CardCreationViewController: ViewController, Storyboarded {
     var imageSourceTypePickerPageSheetFactory: (() -> PageSheetController<ImageSourceTypePickerView>)?
     var characterCreationViewControllerFactory: (() -> CharacterCreationViewController)?
     var palettePageSheetControllerFactory: (() -> PageSheetController<PaletteView>)?
-    var tmiSettingViewControllerFactory: (() -> TMISettingViewController)?
-    var skillSettingViewControllerFactory: (() -> SkillSettingViewController)?
+    var tmiSettingPageSheetControllerFactory: (() -> PageSheetController<TMISettingView>)?
+    var skillSettingPageSheetControllerFactory: (() -> PageSheetController<SkillSettingView>)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -199,8 +199,8 @@ final class CardCreationViewController: ViewController, Storyboarded {
         case .imageSourceTypePicker: return imageSourceTypePickerPageSheetFactory?()
         case .palette: return palettePageSheetControllerFactory?()
         case .createCharacter: return characterCreationViewControllerFactory?()
-        case .settingSkill: return skillSettingViewControllerFactory?()
-        case .settingTMI: return tmiSettingViewControllerFactory?()
+        case .settingSkill: return skillSettingPageSheetControllerFactory?()
+        case .settingTMI: return tmiSettingPageSheetControllerFactory?()
         }
     }
     

@@ -29,13 +29,13 @@ final class CardCreationDependencyContainer {
             let dependencyContainer = self.createPaletteDependencyContainer()
             return dependencyContainer.createPalettePageSheetController()
         }
-        viewContorller.tmiSettingViewControllerFactory = {
+        viewContorller.tmiSettingPageSheetControllerFactory = {
             let dependencyContainer = self.createTMISettingDependencyContainer()
-            return dependencyContainer.createTMISettingViewController()
+            return dependencyContainer.createTMISettingPageSheetController()
         }
-        viewContorller.skillSettingViewControllerFactory = {
+        viewContorller.skillSettingPageSheetControllerFactory = {
             let dependencyContainer = self.createSkillSettingDependencyContainer()
-            return dependencyContainer.createSkillSettingViewController()
+            return dependencyContainer.createSkillSettingPageSheetController()
         }
         return viewContorller
     }

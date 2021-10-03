@@ -40,14 +40,10 @@
 		CE4D4E8A2707AEDD00081A2B /* CharacterItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E892707AEDD00081A2B /* CharacterItem.swift */; };
 		CE4D4E8C2707AF0500081A2B /* CharacterItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E8B2707AF0500081A2B /* CharacterItemRepository.swift */; };
 		CE4D4E8E2707AF6E00081A2B /* FakeCharacterItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E8D2707AF6E00081A2B /* FakeCharacterItemRepository.swift */; };
-		CE4D4E922707B27200081A2B /* SkillSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E912707B27200081A2B /* SkillSettingViewController.swift */; };
-		CE4D4E942707B28200081A2B /* TMISettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E932707B28200081A2B /* TMISettingViewController.swift */; };
 		CE4D4E982707B35100081A2B /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E972707B35100081A2B /* UIImageView+.swift */; };
 		CE4D4E9B2707BB2500081A2B /* PaletteDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E9A2707BB2500081A2B /* PaletteDependencyContainer.swift */; };
 		CE4D4EA02707BB8400081A2B /* SkillSettingDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E9F2707BB8400081A2B /* SkillSettingDependencyContainer.swift */; };
 		CE4D4EA22707BBBA00081A2B /* TMISettingDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4EA12707BBBA00081A2B /* TMISettingDependencyContainer.swift */; };
-		CE4D4EA62707BC3900081A2B /* SkillSettingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE4D4EA52707BC3900081A2B /* SkillSettingViewController.storyboard */; };
-		CE4D4EA82707BC5000081A2B /* TMISettingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE4D4EA72707BC5000081A2B /* TMISettingViewController.storyboard */; };
 		CE4D4EAF2708780A00081A2B /* PageSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4EAE2708780A00081A2B /* PageSheetController.swift */; };
 		CE4D4EB52708E9EC00081A2B /* PaletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4EB42708E9EC00081A2B /* PaletteView.swift */; };
 		CE4D4EB72708E9F400081A2B /* PaletteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE4D4EB62708E9F400081A2B /* PaletteView.xib */; };
@@ -62,6 +58,13 @@
 		CE4D4ED02709F1F200081A2B /* SplashDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4ECF2709F1F200081A2B /* SplashDependencyContainer.swift */; };
 		CE4D4ED22709F47400081A2B /* ProfileColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4ED12709F47400081A2B /* ProfileColor.swift */; };
 		CE4D4ED52709F9E700081A2B /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4ED42709F9E700081A2B /* Keyboard.swift */; };
+		CE4D4ED7270A0CE200081A2B /* SkillSettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE4D4ED6270A0CE200081A2B /* SkillSettingView.xib */; };
+		CE4D4ED9270A0D1400081A2B /* SkillSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4ED8270A0D1400081A2B /* SkillSettingView.swift */; };
+		CE4D4EDB270A0D2000081A2B /* SkillSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4EDA270A0D2000081A2B /* SkillSettingViewModel.swift */; };
+		CE4D4EDD270A0F9900081A2B /* TMISettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4EDC270A0F9900081A2B /* TMISettingView.swift */; };
+		CE4D4EDF270A0FCF00081A2B /* TMISettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4EDE270A0FCF00081A2B /* TMISettingViewModel.swift */; };
+		CE4D4EE1270A100B00081A2B /* TMISettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE4D4EE0270A100B00081A2B /* TMISettingView.xib */; };
+		CE4D4EE3270A1AF800081A2B /* Optional+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4EE2270A1AF800081A2B /* Optional+.swift */; };
 		CE63123A26F59C7800B2E69B /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63123926F59C7800B2E69B /* RootViewController.swift */; };
 		CE63124026F59E6700B2E69B /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63123F26F59E6700B2E69B /* RootViewModel.swift */; };
 		CE63124926F5A30200B2E69B /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63124826F5A30200B2E69B /* Navigation.swift */; };
@@ -204,14 +207,10 @@
 		CE4D4E892707AEDD00081A2B /* CharacterItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterItem.swift; sourceTree = "<group>"; };
 		CE4D4E8B2707AF0500081A2B /* CharacterItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterItemRepository.swift; sourceTree = "<group>"; };
 		CE4D4E8D2707AF6E00081A2B /* FakeCharacterItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeCharacterItemRepository.swift; sourceTree = "<group>"; };
-		CE4D4E912707B27200081A2B /* SkillSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillSettingViewController.swift; sourceTree = "<group>"; };
-		CE4D4E932707B28200081A2B /* TMISettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMISettingViewController.swift; sourceTree = "<group>"; };
 		CE4D4E972707B35100081A2B /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
 		CE4D4E9A2707BB2500081A2B /* PaletteDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteDependencyContainer.swift; sourceTree = "<group>"; };
 		CE4D4E9F2707BB8400081A2B /* SkillSettingDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillSettingDependencyContainer.swift; sourceTree = "<group>"; };
 		CE4D4EA12707BBBA00081A2B /* TMISettingDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMISettingDependencyContainer.swift; sourceTree = "<group>"; };
-		CE4D4EA52707BC3900081A2B /* SkillSettingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SkillSettingViewController.storyboard; sourceTree = "<group>"; };
-		CE4D4EA72707BC5000081A2B /* TMISettingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TMISettingViewController.storyboard; sourceTree = "<group>"; };
 		CE4D4EAE2708780A00081A2B /* PageSheetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageSheetController.swift; sourceTree = "<group>"; };
 		CE4D4EB42708E9EC00081A2B /* PaletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteView.swift; sourceTree = "<group>"; };
 		CE4D4EB62708E9F400081A2B /* PaletteView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaletteView.xib; sourceTree = "<group>"; };
@@ -226,6 +225,13 @@
 		CE4D4ECF2709F1F200081A2B /* SplashDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashDependencyContainer.swift; sourceTree = "<group>"; };
 		CE4D4ED12709F47400081A2B /* ProfileColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileColor.swift; sourceTree = "<group>"; };
 		CE4D4ED42709F9E700081A2B /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
+		CE4D4ED6270A0CE200081A2B /* SkillSettingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SkillSettingView.xib; sourceTree = "<group>"; };
+		CE4D4ED8270A0D1400081A2B /* SkillSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillSettingView.swift; sourceTree = "<group>"; };
+		CE4D4EDA270A0D2000081A2B /* SkillSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillSettingViewModel.swift; sourceTree = "<group>"; };
+		CE4D4EDC270A0F9900081A2B /* TMISettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMISettingView.swift; sourceTree = "<group>"; };
+		CE4D4EDE270A0FCF00081A2B /* TMISettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMISettingViewModel.swift; sourceTree = "<group>"; };
+		CE4D4EE0270A100B00081A2B /* TMISettingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TMISettingView.xib; sourceTree = "<group>"; };
+		CE4D4EE2270A1AF800081A2B /* Optional+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+.swift"; sourceTree = "<group>"; };
 		CE63123926F59C7800B2E69B /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		CE63123F26F59E6700B2E69B /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		CE63124826F5A30200B2E69B /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
@@ -402,9 +408,10 @@
 		CE4D4E8F2707B21400081A2B /* TMISetting */ = {
 			isa = PBXGroup;
 			children = (
-				CE4D4EA72707BC5000081A2B /* TMISettingViewController.storyboard */,
 				CE4D4EA12707BBBA00081A2B /* TMISettingDependencyContainer.swift */,
-				CE4D4E932707B28200081A2B /* TMISettingViewController.swift */,
+				CE4D4EDC270A0F9900081A2B /* TMISettingView.swift */,
+				CE4D4EE0270A100B00081A2B /* TMISettingView.xib */,
+				CE4D4EDE270A0FCF00081A2B /* TMISettingViewModel.swift */,
 			);
 			path = TMISetting;
 			sourceTree = "<group>";
@@ -412,9 +419,10 @@
 		CE4D4E902707B24A00081A2B /* SkillSetting */ = {
 			isa = PBXGroup;
 			children = (
-				CE4D4EA52707BC3900081A2B /* SkillSettingViewController.storyboard */,
 				CE4D4E9F2707BB8400081A2B /* SkillSettingDependencyContainer.swift */,
-				CE4D4E912707B27200081A2B /* SkillSettingViewController.swift */,
+				CE4D4ED8270A0D1400081A2B /* SkillSettingView.swift */,
+				CE4D4EDA270A0D2000081A2B /* SkillSettingViewModel.swift */,
+				CE4D4ED6270A0CE200081A2B /* SkillSettingView.xib */,
 			);
 			path = SkillSetting;
 			sourceTree = "<group>";
@@ -928,6 +936,7 @@
 				CE6BABAA2704E2480006D26B /* UIVIewController+.swift */,
 				CEB6582F26EB15A600C11F33 /* ViewController.swift */,
 				CEB6589A26EC987800C11F33 /* Rx */,
+				CE4D4EE2270A1AF800081A2B /* Optional+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1043,8 +1052,7 @@
 				CE6BAB9C2704D7170006D26B /* QuestViewController.storyboard in Resources */,
 				CEB6583826EB15AC00C11F33 /* LaunchScreen.storyboard in Resources */,
 				A2CC655E27075C8900610C49 /* MyCardListEmptyCollectionViewCell.xib in Resources */,
-				CE4D4EA62707BC3900081A2B /* SkillSettingViewController.storyboard in Resources */,
-				CE4D4EA82707BC5000081A2B /* TMISettingViewController.storyboard in Resources */,
+				CE4D4ED7270A0CE200081A2B /* SkillSettingView.xib in Resources */,
 				CE4D4E722707A11500081A2B /* CharacterCreationViewController.storyboard in Resources */,
 				A2CC657027088ED100610C49 /* MyCardListCollectionViewCell.xib in Resources */,
 				A2CC65642708229C00610C49 /* MyCardView.xib in Resources */,
@@ -1053,6 +1061,7 @@
 				CE4D4EC72709045500081A2B /* ImageSourceTypePickerView.xib in Resources */,
 				CE6BAB9E2704D7610006D26B /* SignInViewController.storyboard in Resources */,
 				CE6BAB962704D3C40006D26B /* CardBookViewController.storyboard in Resources */,
+				CE4D4EE1270A100B00081A2B /* TMISettingView.xib in Resources */,
 				CE6BAB9A2704D6E30006D26B /* MyCardListViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1153,6 +1162,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE6312C026F9AB4A00B2E69B /* MyCardListViewModel.swift in Sources */,
+				CE4D4ED9270A0D1400081A2B /* SkillSettingView.swift in Sources */,
 				CE4D4EC52709044D00081A2B /* ImageSourceTypePickerView.swift in Sources */,
 				CEF8C55726EDFB6F009BA9C2 /* UIStackView+.swift in Sources */,
 				CE4D4EA02707BB8400081A2B /* SkillSettingDependencyContainer.swift in Sources */,
@@ -1164,6 +1174,7 @@
 				CEB658BC26ECC90600C11F33 /* NoContent.swift in Sources */,
 				CE6BABA72704DB0A0006D26B /* CardCreationViewController.swift in Sources */,
 				CEB6588226EC811E00C11F33 /* DataLoading.swift in Sources */,
+				CE4D4EDB270A0D2000081A2B /* SkillSettingViewModel.swift in Sources */,
 				CE63124C26F5DDC000B2E69B /* SignInViewController.swift in Sources */,
 				CE63125026F5DE6800B2E69B /* SignInViewModel.swift in Sources */,
 				CEB6586F26EB2C9400C11F33 /* Auth.swift in Sources */,
@@ -1184,16 +1195,17 @@
 				CE6312AA26F8CB2F00B2E69B /* RootDependencyContainer.swift in Sources */,
 				CE4D4EC3270902FC00081A2B /* ImageSourcePickerViewModel.swift in Sources */,
 				CE4D4ED02709F1F200081A2B /* SplashDependencyContainer.swift in Sources */,
+				CE4D4EDF270A0FCF00081A2B /* TMISettingViewModel.swift in Sources */,
 				CE6312A826F8CB2F00B2E69B /* SignedInDependencyContainer.swift in Sources */,
 				CE63125226F5E19700B2E69B /* AccessTokenRepository.swift in Sources */,
 				CE4D4E982707B35100081A2B /* UIImageView+.swift in Sources */,
 				CEB6589326EC834900C11F33 /* Foundation+Decoder.swift in Sources */,
 				CE4D4ED22709F47400081A2B /* ProfileColor.swift in Sources */,
+				CE4D4EE3270A1AF800081A2B /* Optional+.swift in Sources */,
 				CE4D4EB92708EA2200081A2B /* PaletteViewModel.swift in Sources */,
 				CEB6587926EC806F00C11F33 /* Connectable.swift in Sources */,
 				CEFA037D26EFBACE00D12AAB /* QRGenerater.swift in Sources */,
 				A2A5C83A26FB1A3D005D2849 /* AppKey.swift in Sources */,
-				CE4D4E922707B27200081A2B /* SkillSettingViewController.swift in Sources */,
 				CE6312C826F9B3B000B2E69B /* MyCardRepository.swift in Sources */,
 				CEB6589726EC844D00C11F33 /* main.swift in Sources */,
 				A2CC656C2708877E00610C49 /* NibLoadable.swift in Sources */,
@@ -1233,10 +1245,10 @@
 				CEB6588426EC814C00C11F33 /* API.swift in Sources */,
 				CEB6588726EC817A00C11F33 /* HTTP.swift in Sources */,
 				A2A5C83826FB17D0005D2849 /* KakaoAuth.swift in Sources */,
+				CE4D4EDD270A0F9900081A2B /* TMISettingView.swift in Sources */,
 				CE6BABAB2704E2480006D26B /* UIVIewController+.swift in Sources */,
 				CE4D4E752707A71800081A2B /* Body.swift in Sources */,
 				CE6312B726F99F7000B2E69B /* CardDetailViewController.swift in Sources */,
-				CE4D4E942707B28200081A2B /* TMISettingViewController.swift in Sources */,
 				CEB6586826EB2C3700C11F33 /* SchemeNavigator.swift in Sources */,
 				CEB6588B26EC81B200C11F33 /* Decoder.swift in Sources */,
 				CEB6586C26EB2C7600C11F33 /* HomeTabBarController.swift in Sources */,
