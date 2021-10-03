@@ -90,6 +90,12 @@ final class PageSheetController<ContentView: PageSheetContentView>: ViewControll
                 self.close()
             })
             .disposed(by: disposeBag)
+        
+        self.closeButton.rx.tap.subscribe(onNext: { [weak self] in
+            guard let self = self else { return }
+            self.close()
+        })
+        .disposed(by: disposeBag)
     }
     
     private func setupContentView(contentView: ContentView) {
