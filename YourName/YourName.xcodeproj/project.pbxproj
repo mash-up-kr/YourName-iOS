@@ -52,6 +52,12 @@
 		CE4D4EB52708E9EC00081A2B /* PaletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4EB42708E9EC00081A2B /* PaletteView.swift */; };
 		CE4D4EB72708E9F400081A2B /* PaletteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE4D4EB62708E9F400081A2B /* PaletteView.xib */; };
 		CE4D4EB92708EA2200081A2B /* PaletteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4EB82708EA2200081A2B /* PaletteViewModel.swift */; };
+		CE4D4EBD2709022800081A2B /* ImageSourceDedencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4EBC2709022800081A2B /* ImageSourceDedencyContainer.swift */; };
+		CE4D4EC3270902FC00081A2B /* ImageSourcePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4EC2270902FC00081A2B /* ImageSourcePickerViewModel.swift */; };
+		CE4D4EC52709044D00081A2B /* ImageSourcePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4EC42709044D00081A2B /* ImageSourcePickerView.swift */; };
+		CE4D4EC72709045500081A2B /* ImageSourcePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE4D4EC62709045500081A2B /* ImageSourcePickerView.xib */; };
+		CE4D4ECA27090D5200081A2B /* ColorSourceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4EC827090D5200081A2B /* ColorSourceCollectionViewCell.swift */; };
+		CE4D4ECB27090D5200081A2B /* ColorSourceCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE4D4EC927090D5200081A2B /* ColorSourceCollectionViewCell.xib */; };
 		CE63123A26F59C7800B2E69B /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63123926F59C7800B2E69B /* RootViewController.swift */; };
 		CE63124026F59E6700B2E69B /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63123F26F59E6700B2E69B /* RootViewModel.swift */; };
 		CE63124926F5A30200B2E69B /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63124826F5A30200B2E69B /* Navigation.swift */; };
@@ -206,6 +212,12 @@
 		CE4D4EB42708E9EC00081A2B /* PaletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteView.swift; sourceTree = "<group>"; };
 		CE4D4EB62708E9F400081A2B /* PaletteView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaletteView.xib; sourceTree = "<group>"; };
 		CE4D4EB82708EA2200081A2B /* PaletteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteViewModel.swift; sourceTree = "<group>"; };
+		CE4D4EBC2709022800081A2B /* ImageSourceDedencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSourceDedencyContainer.swift; sourceTree = "<group>"; };
+		CE4D4EC2270902FC00081A2B /* ImageSourcePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSourcePickerViewModel.swift; sourceTree = "<group>"; };
+		CE4D4EC42709044D00081A2B /* ImageSourcePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSourcePickerView.swift; sourceTree = "<group>"; };
+		CE4D4EC62709045500081A2B /* ImageSourcePickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageSourcePickerView.xib; sourceTree = "<group>"; };
+		CE4D4EC827090D5200081A2B /* ColorSourceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSourceCollectionViewCell.swift; sourceTree = "<group>"; };
+		CE4D4EC927090D5200081A2B /* ColorSourceCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorSourceCollectionViewCell.xib; sourceTree = "<group>"; };
 		CE63123926F59C7800B2E69B /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		CE63123F26F59E6700B2E69B /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		CE63124826F5A30200B2E69B /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
@@ -416,6 +428,8 @@
 		CE4D4E992707BA9800081A2B /* Palette */ = {
 			isa = PBXGroup;
 			children = (
+				CE4D4EC827090D5200081A2B /* ColorSourceCollectionViewCell.swift */,
+				CE4D4EC927090D5200081A2B /* ColorSourceCollectionViewCell.xib */,
 				CE4D4E9A2707BB2500081A2B /* PaletteDependencyContainer.swift */,
 				CE4D4EB42708E9EC00081A2B /* PaletteView.swift */,
 				CE4D4EB62708E9F400081A2B /* PaletteView.xib */,
@@ -437,6 +451,17 @@
 				CE4D4EAE2708780A00081A2B /* PageSheetController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		CE4D4EBB270901DF00081A2B /* ImageSourcePicker */ = {
+			isa = PBXGroup;
+			children = (
+				CE4D4EBC2709022800081A2B /* ImageSourceDedencyContainer.swift */,
+				CE4D4EC42709044D00081A2B /* ImageSourcePickerView.swift */,
+				CE4D4EC62709045500081A2B /* ImageSourcePickerView.xib */,
+				CE4D4EC2270902FC00081A2B /* ImageSourcePickerViewModel.swift */,
+			);
+			path = ImageSourcePicker;
 			sourceTree = "<group>";
 		};
 		CE63123826F59C6B00B2E69B /* Root */ = {
@@ -698,6 +723,7 @@
 				CE6312B526F99F6200B2E69B /* CardDetail */,
 				CE4D4E6E2707A0CB00081A2B /* CharacterCreation */,
 				CEB6586A26EB2C6400C11F33 /* Home */,
+				CE4D4EBB270901DF00081A2B /* ImageSourcePicker */,
 				CED16DEC26F3A4C30076565F /* MyCardList */,
 				CE4D4E992707BA9800081A2B /* Palette */,
 				CED16DEE26F3A5000076565F /* Quest */,
@@ -986,6 +1012,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE4D4ECB27090D5200081A2B /* ColorSourceCollectionViewCell.xib in Resources */,
 				CE4D4E842707A91900081A2B /* Items.xcassets in Resources */,
 				CE6BABA22704D9520006D26B /* SettingViewController.storyboard in Resources */,
 				CE6BABA52704DAFB0006D26B /* CardCreationViewController.storyboard in Resources */,
@@ -1003,6 +1030,7 @@
 				A2CC65642708229C00610C49 /* MyCardView.xib in Resources */,
 				CEB6583526EB15AC00C11F33 /* Images.xcassets in Resources */,
 				CE6BAB982704D69F0006D26B /* CardDetailViewController.storyboard in Resources */,
+				CE4D4EC72709045500081A2B /* ImageSourcePickerView.xib in Resources */,
 				CE6BAB9E2704D7610006D26B /* SignInViewController.storyboard in Resources */,
 				CE6BAB962704D3C40006D26B /* CardBookViewController.storyboard in Resources */,
 				CE6BAB9A2704D6E30006D26B /* MyCardListViewController.storyboard in Resources */,
@@ -1105,6 +1133,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE6312C026F9AB4A00B2E69B /* MyCardListViewModel.swift in Sources */,
+				CE4D4EC52709044D00081A2B /* ImageSourcePickerView.swift in Sources */,
 				CEF8C55726EDFB6F009BA9C2 /* UIStackView+.swift in Sources */,
 				CE4D4EA02707BB8400081A2B /* SkillSettingDependencyContainer.swift in Sources */,
 				CE63125526F5E25200B2E69B /* String+.swift in Sources */,
@@ -1125,6 +1154,7 @@
 				CEB6583026EB15A600C11F33 /* ViewController.swift in Sources */,
 				CE63125726F5E2A100B2E69B /* FakeAccessTokenRepository.swift in Sources */,
 				CE6312A926F8CB2F00B2E69B /* SignedOutDependencyContainer.swift in Sources */,
+				CE4D4ECA27090D5200081A2B /* ColorSourceCollectionViewCell.swift in Sources */,
 				CE4D4E7B2707A75600081A2B /* Mouth.swift in Sources */,
 				CE4D4E772707A72100081A2B /* Eye.swift in Sources */,
 				CEB6589126EC826300C11F33 /* Enviorment.swift in Sources */,
@@ -1132,6 +1162,7 @@
 				A2CC65742708AB2C00610C49 /* SkillLevelView.swift in Sources */,
 				CE63123A26F59C7800B2E69B /* RootViewController.swift in Sources */,
 				CE6312AA26F8CB2F00B2E69B /* RootDependencyContainer.swift in Sources */,
+				CE4D4EC3270902FC00081A2B /* ImageSourcePickerViewModel.swift in Sources */,
 				CE6312A826F8CB2F00B2E69B /* SignedInDependencyContainer.swift in Sources */,
 				CE63125226F5E19700B2E69B /* AccessTokenRepository.swift in Sources */,
 				CE4D4E982707B35100081A2B /* UIImageView+.swift in Sources */,
@@ -1149,6 +1180,7 @@
 				CE63126026F6281800B2E69B /* SplashViewModel.swift in Sources */,
 				CE4D4E862707AE1700081A2B /* CharacterCreationViewModel.swift in Sources */,
 				CE4D4E8A2707AEDD00081A2B /* CharacterItem.swift in Sources */,
+				CE4D4EBD2709022800081A2B /* ImageSourceDedencyContainer.swift in Sources */,
 				CE2EC99327073453006B9852 /* CardCreationViewModel.swift in Sources */,
 				A2CC656A27084BF300610C49 /* CALayer+.swift in Sources */,
 				CEB6587226EB2CAB00C11F33 /* Networking.swift in Sources */,

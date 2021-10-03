@@ -37,8 +37,9 @@ final class CardCreationViewController: ViewController, Storyboarded {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let paletteView = PaletteView()
-        PageSheetController(title: "배경 컬러 선택하기", contentView: paletteView).show()
+        let view = ImageSourcePickerView()
+        view.viewModel = ImageSourcePickerViewModel()
+        PageSheetController(title: "대표 이미지 추가하기", contentView: view).show()
     }
     
     private func bind() {

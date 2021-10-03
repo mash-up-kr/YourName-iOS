@@ -1,5 +1,5 @@
 //
-//  PaletteView.swift
+//  ImageSourcePickerView.swift
 //  YourName
 //
 //  Created by Booung on 2021/10/03.
@@ -7,9 +7,9 @@
 
 import UIKit
 
-final class PaletteView: UIView, NibLoadable {
+final class ImageSourcePickerView: UIView, NibLoadable {
     
-    var viewModel: PaletteViewModel!
+    var viewModel: ImageSourcePickerViewModel!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -20,7 +20,4 @@ final class PaletteView: UIView, NibLoadable {
         super.init(coder: coder)
         setupFromNib()
     }
-    
-    @IBOutlet private weak var colorsCollectionView: UICollectionView?
-    @IBOutlet private weak var completeButton: UIButton?
 }

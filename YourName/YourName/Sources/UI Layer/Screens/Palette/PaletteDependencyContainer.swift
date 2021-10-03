@@ -16,9 +16,7 @@ final class PaletteDependencyContainer {
     func createPaletteViewController() -> PageSheetController<PaletteView> {
         let viewModel = PaletteViewModel()
         let view = PaletteView()
-        return PageSheetController(
-            title: "배경 컬러 선택하기",
-            contentView: view
-        )
+        view.viewModel = viewModel
+        return PageSheetController(title: "배경 컬러 선택하기", contentView: view)
     }
 }
