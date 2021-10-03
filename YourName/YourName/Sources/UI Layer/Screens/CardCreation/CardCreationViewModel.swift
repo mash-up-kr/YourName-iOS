@@ -51,15 +51,15 @@ final class CardCreationViewModel {
     }
     
     func tapProfilePlaceHolder() {
-        navigation.accept(.show(.imageSourceTypePicker, withDimmed: true))
+        navigation.accept(.show(.imageSourceTypePicker))
     }
     
     func tapProfileBackgroundSetting() {
-        navigation.accept(.show(.palette, withDimmed: true))
+        navigation.accept(.show(.palette))
     }
     
     func tapCreatCharacter() {
-        navigation.accept(.present(.createCharacter))
+        navigation.accept(.show(.createCharacter))
     }
     
     func typeName(_ text: String) {
@@ -71,7 +71,7 @@ final class CardCreationViewModel {
     }
    
     func tapSkillSetting() {
-        navigation.accept(.present(.settingSkill))
+        navigation.accept(.show(.settingSkill))
     }
     
     func selectContactType(_ type: ContactType, index: Int) {
@@ -91,7 +91,7 @@ final class CardCreationViewModel {
     }
     
     func tapTMISetting() {
-        navigation.accept(.present(.settingTMI))
+        navigation.accept(.show(.settingTMI))
     }
     
     func typeAboutMe(_ text: String) {
