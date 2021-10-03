@@ -70,8 +70,8 @@
 		CE63123A26F59C7800B2E69B /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63123926F59C7800B2E69B /* RootViewController.swift */; };
 		CE63124026F59E6700B2E69B /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63123F26F59E6700B2E69B /* RootViewModel.swift */; };
 		CE63124926F5A30200B2E69B /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63124826F5A30200B2E69B /* Navigation.swift */; };
-		CE63124C26F5DDC000B2E69B /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63124B26F5DDC000B2E69B /* SignInViewController.swift */; };
-		CE63125026F5DE6800B2E69B /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63124F26F5DE6800B2E69B /* SignInViewModel.swift */; };
+		CE63124C26F5DDC000B2E69B /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63124B26F5DDC000B2E69B /* WelcomeViewController.swift */; };
+		CE63125026F5DE6800B2E69B /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63124F26F5DE6800B2E69B /* WelcomeViewModel.swift */; };
 		CE63125226F5E19700B2E69B /* AccessTokenRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63125126F5E19700B2E69B /* AccessTokenRepository.swift */; };
 		CE63125526F5E25200B2E69B /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63125426F5E25200B2E69B /* String+.swift */; };
 		CE63125726F5E2A100B2E69B /* FakeAccessTokenRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63125626F5E2A100B2E69B /* FakeAccessTokenRepository.swift */; };
@@ -99,7 +99,7 @@
 		CE6BAB982704D69F0006D26B /* CardDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6BAB972704D69F0006D26B /* CardDetailViewController.storyboard */; };
 		CE6BAB9A2704D6E30006D26B /* MyCardListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6BAB992704D6E30006D26B /* MyCardListViewController.storyboard */; };
 		CE6BAB9C2704D7170006D26B /* QuestViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6BAB9B2704D7160006D26B /* QuestViewController.storyboard */; };
-		CE6BAB9E2704D7610006D26B /* SignInViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6BAB9D2704D7610006D26B /* SignInViewController.storyboard */; };
+		CE6BAB9E2704D7610006D26B /* WelcomeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6BAB9D2704D7610006D26B /* WelcomeViewController.storyboard */; };
 		CE6BABA02704D7BF0006D26B /* SplashViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6BAB9F2704D7BF0006D26B /* SplashViewController.storyboard */; };
 		CE6BABA22704D9520006D26B /* SettingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6BABA12704D9520006D26B /* SettingViewController.storyboard */; };
 		CE6BABA52704DAFB0006D26B /* CardCreationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6BABA42704DAFB0006D26B /* CardCreationViewController.storyboard */; };
@@ -239,8 +239,8 @@
 		CE63123926F59C7800B2E69B /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		CE63123F26F59E6700B2E69B /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		CE63124826F5A30200B2E69B /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
-		CE63124B26F5DDC000B2E69B /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
-		CE63124F26F5DE6800B2E69B /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		CE63124B26F5DDC000B2E69B /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		CE63124F26F5DE6800B2E69B /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
 		CE63125126F5E19700B2E69B /* AccessTokenRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenRepository.swift; sourceTree = "<group>"; };
 		CE63125426F5E25200B2E69B /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		CE63125626F5E2A100B2E69B /* FakeAccessTokenRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAccessTokenRepository.swift; sourceTree = "<group>"; };
@@ -268,7 +268,7 @@
 		CE6BAB972704D69F0006D26B /* CardDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CardDetailViewController.storyboard; sourceTree = "<group>"; };
 		CE6BAB992704D6E30006D26B /* MyCardListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyCardListViewController.storyboard; sourceTree = "<group>"; };
 		CE6BAB9B2704D7160006D26B /* QuestViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QuestViewController.storyboard; sourceTree = "<group>"; };
-		CE6BAB9D2704D7610006D26B /* SignInViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignInViewController.storyboard; sourceTree = "<group>"; };
+		CE6BAB9D2704D7610006D26B /* WelcomeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WelcomeViewController.storyboard; sourceTree = "<group>"; };
 		CE6BAB9F2704D7BF0006D26B /* SplashViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SplashViewController.storyboard; sourceTree = "<group>"; };
 		CE6BABA12704D9520006D26B /* SettingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingViewController.storyboard; sourceTree = "<group>"; };
 		CE6BABA42704DAFB0006D26B /* CardCreationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CardCreationViewController.storyboard; sourceTree = "<group>"; };
@@ -505,15 +505,15 @@
 			path = Root;
 			sourceTree = "<group>";
 		};
-		CE63124A26F5DD5D00B2E69B /* SignIn */ = {
+		CE63124A26F5DD5D00B2E69B /* Welcome */ = {
 			isa = PBXGroup;
 			children = (
-				CE6BAB9D2704D7610006D26B /* SignInViewController.storyboard */,
+				CE6BAB9D2704D7610006D26B /* WelcomeViewController.storyboard */,
 				CE6312A626F8CB2F00B2E69B /* SignedOutDependencyContainer.swift */,
-				CE63124B26F5DDC000B2E69B /* SignInViewController.swift */,
-				CE63124F26F5DE6800B2E69B /* SignInViewModel.swift */,
+				CE63124B26F5DDC000B2E69B /* WelcomeViewController.swift */,
+				CE63124F26F5DE6800B2E69B /* WelcomeViewModel.swift */,
 			);
-			path = SignIn;
+			path = Welcome;
 			sourceTree = "<group>";
 		};
 		CE63125326F5E1B600B2E69B /* Local */ = {
@@ -763,7 +763,7 @@
 				CED16DEE26F3A5000076565F /* Quest */,
 				CE63123826F59C6B00B2E69B /* Root */,
 				CED16DEF26F3A5050076565F /* Setting */,
-				CE63124A26F5DD5D00B2E69B /* SignIn */,
+				CE63124A26F5DD5D00B2E69B /* Welcome */,
 				CE4D4E902707B24A00081A2B /* SkillSetting */,
 				CE63125C26F626F600B2E69B /* Splash */,
 				CE4D4E8F2707B21400081A2B /* TMISetting */,
@@ -1066,7 +1066,7 @@
 				CEB6583526EB15AC00C11F33 /* Images.xcassets in Resources */,
 				CE6BAB982704D69F0006D26B /* CardDetailViewController.storyboard in Resources */,
 				CE4D4EC72709045500081A2B /* ImageSourceTypePickerView.xib in Resources */,
-				CE6BAB9E2704D7610006D26B /* SignInViewController.storyboard in Resources */,
+				CE6BAB9E2704D7610006D26B /* WelcomeViewController.storyboard in Resources */,
 				CE6BAB962704D3C40006D26B /* CardBookViewController.storyboard in Resources */,
 				CE4D4EE1270A100B00081A2B /* TMISettingView.xib in Resources */,
 				CE6BAB9A2704D6E30006D26B /* MyCardListViewController.storyboard in Resources */,
@@ -1183,8 +1183,8 @@
 				CE6BABA72704DB0A0006D26B /* CardCreationViewController.swift in Sources */,
 				CEB6588226EC811E00C11F33 /* DataLoading.swift in Sources */,
 				CE4D4EDB270A0D2000081A2B /* SkillSettingViewModel.swift in Sources */,
-				CE63124C26F5DDC000B2E69B /* SignInViewController.swift in Sources */,
-				CE63125026F5DE6800B2E69B /* SignInViewModel.swift in Sources */,
+				CE63124C26F5DDC000B2E69B /* WelcomeViewController.swift in Sources */,
+				CE63125026F5DE6800B2E69B /* WelcomeViewModel.swift in Sources */,
 				CEB6586F26EB2C9400C11F33 /* Auth.swift in Sources */,
 				CE6312B926F99F7A00B2E69B /* CardDetailViewModel.swift in Sources */,
 				CEB6588E26EC821300C11F33 /* Network.swift in Sources */,
