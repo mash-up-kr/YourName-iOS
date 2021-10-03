@@ -14,11 +14,11 @@ import UIKit
 final class CardCreationViewController: ViewController, Storyboarded {
     
     var viewModel: CardCreationViewModel!
-    var imageSourceTypePickerPageSheetFactory: (() -> PageSheetController<ImageSourceTypePickerView>)?
+    var imageSourceTypePickerViewControllerFactory: (() -> ImageSourceTypePickerViewController)?
     var characterCreationViewControllerFactory: (() -> CharacterCreationViewController)?
-    var palettePageSheetControllerFactory: (() -> PageSheetController<PaletteView>)?
-    var tmiSettingPageSheetControllerFactory: (() -> PageSheetController<TMISettingView>)?
-    var skillSettingPageSheetControllerFactory: (() -> PageSheetController<SkillSettingView>)?
+    var paletteViewControllerFactory: (() -> PaletteViewController)?
+    var tmiSettingViewControllerFactory: (() -> TMISettingViewController)?
+    var skillSettingViewControllerFactory: (() -> SkillSettingViewController)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -196,11 +196,11 @@ final class CardCreationViewController: ViewController, Storyboarded {
     
     private func createViewController(of destination: CardCreationDestination) -> UIViewController? {
         switch destination {
-        case .imageSourceTypePicker: return imageSourceTypePickerPageSheetFactory?()
-        case .palette: return palettePageSheetControllerFactory?()
+        case .imageSourceTypePicker: return imageSourceTypePickerViewControllerFactory?()
+        case .palette: return paletteViewControllerFactory?()
         case .createCharacter: return characterCreationViewControllerFactory?()
-        case .settingSkill: return skillSettingPageSheetControllerFactory?()
-        case .settingTMI: return tmiSettingPageSheetControllerFactory?()
+        case .settingSkill: return skillSettingViewControllerFactory?()
+        case .settingTMI: return tmiSettingViewControllerFactory?()
         }
     }
     

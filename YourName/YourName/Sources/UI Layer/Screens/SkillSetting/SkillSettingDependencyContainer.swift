@@ -15,7 +15,7 @@ final class SkillSettingDependencyContainer {
         
     }
     
-    func createSkillSettingPageSheetController() -> PageSheetController<SkillSettingView> {
+    func createSkillSettingViewController() -> SkillSettingViewController {
         let view = createSkillSettingView()
         return PageSheetController(contentView: view)
     }

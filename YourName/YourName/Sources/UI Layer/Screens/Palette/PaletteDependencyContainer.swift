@@ -7,15 +7,16 @@
 
 import Foundation
 
+
 final class PaletteDependencyContainer {
     
     init(cardCreationDependencyContainer: CardCreationDependencyContainer) {
         
     }
     
-    func createPalettePageSheetController() -> PageSheetController<PaletteView> {
+    func createPaletteViewController() -> PaletteViewController {
         let view = createPaletteView()
-        return PageSheetController(contentView: view)
+        return PaletteViewController(contentView: view)
     }
     
     private func createPaletteView() -> PaletteView {

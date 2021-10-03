@@ -7,6 +7,8 @@
 
 import UIKit
 
+typealias ImageSourceTypePickerViewController = PageSheetController<ImageSourceTypePickerView>
+
 final class ImageSourceTypePickerView: UIView, NibLoadable {
     
     var viewModel: ImageSourceTypePickerViewModel!

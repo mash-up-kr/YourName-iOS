@@ -13,7 +13,7 @@ final class TMISettingDependencyContainer {
         
     }
     
-    func createTMISettingPageSheetController() -> PageSheetController<TMISettingView> {
+    func createTMISettingViewController() -> TMISettingViewController {
         let view = TMISettingView()
         view.viewModel = createTMISettingViewModel()
         return PageSheetController(contentView: view)

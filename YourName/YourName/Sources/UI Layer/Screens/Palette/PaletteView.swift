@@ -7,6 +7,8 @@
 
 import UIKit
 
+typealias PaletteViewController = PageSheetController<PaletteView>
+
 final class PaletteView: UIView, NibLoadable {
     var viewModel: PaletteViewModel!
     

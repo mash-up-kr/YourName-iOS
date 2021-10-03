@@ -7,6 +7,8 @@
 
 import UIKit
 
+typealias SkillSettingViewController = PageSheetController<SkillSettingView>
+
 final class SkillSettingView: UIView, NibLoadable {
     
     var viewModel: SkillSettingViewModel!

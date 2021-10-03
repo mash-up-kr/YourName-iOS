@@ -17,25 +17,25 @@ final class CardCreationDependencyContainer {
         let viewModel = CardCreationViewModel()
         let viewContorller = CardCreationViewController.instantiate()
         viewContorller.viewModel = viewModel
-        viewContorller.imageSourceTypePickerPageSheetFactory = {
+        viewContorller.imageSourceTypePickerViewControllerFactory = {
             let dependencyContainer = self.createImageSourceDependencyContainer()
-            return dependencyContainer.createImageSourcePickerPageSheetController()
+            return dependencyContainer.createImageSourcePickerViewController()
         }
         viewContorller.characterCreationViewControllerFactory = {
             let dependencyContainer = self.createCharacterCreationDependencyContainer()
             return dependencyContainer.createCharacterCreationViewController()
         }
-        viewContorller.palettePageSheetControllerFactory = {
+        viewContorller.paletteViewControllerFactory = {
             let dependencyContainer = self.createPaletteDependencyContainer()
-            return dependencyContainer.createPalettePageSheetController()
+            return dependencyContainer.createPaletteViewController()
         }
-        viewContorller.tmiSettingPageSheetControllerFactory = {
+        viewContorller.tmiSettingViewControllerFactory = {
             let dependencyContainer = self.createTMISettingDependencyContainer()
-            return dependencyContainer.createTMISettingPageSheetController()
+            return dependencyContainer.createTMISettingViewController()
         }
-        viewContorller.skillSettingPageSheetControllerFactory = {
+        viewContorller.skillSettingViewControllerFactory = {
             let dependencyContainer = self.createSkillSettingDependencyContainer()
-            return dependencyContainer.createSkillSettingPageSheetController()
+            return dependencyContainer.createSkillSettingViewController()
         }
         return viewContorller
     }

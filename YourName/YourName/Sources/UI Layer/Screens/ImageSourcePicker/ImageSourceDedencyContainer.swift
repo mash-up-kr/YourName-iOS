@@ -13,9 +13,9 @@ final class ImageSourceTypePickerDependencyContainer {
         
     }
     
-    func createImageSourcePickerPageSheetController() -> PageSheetController<ImageSourceTypePickerView> {
+    func createImageSourcePickerViewController() -> ImageSourceTypePickerViewController {
         let view = createImageSourcePickerView()
-        return PageSheetController(contentView: view)
+        return ImageSourceTypePickerViewController(contentView: view)
     }
     
     private func createImageSourcePickerView() -> ImageSourceTypePickerView {
