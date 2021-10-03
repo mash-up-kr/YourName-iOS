@@ -45,6 +45,48 @@ extension UIViewController {
             } else {
                 self.navigationController?.pushViewController(viewController, animated: true)
             }
+            
+        case .show(let isDimmed):
+            guard let underlaiedViewController = UIViewController.visableViewController() else { return }
+            let overlaiedViewController = viewController
+            overlaiedViewController.modalPresentationStyle = .overFullScreen
+            let completion: (() -> Void)?
+            if isDimmed {
+                let dimmedColor = Palette.black1.withAlphaComponent(0.6)
+                let dimmedView = UIView().then {
+                    $0.layer.shouldRasterize = true
+                    $0.backgroundColor = Palette.black1.withAlphaComponent(0.6)
+                    $0.frame = underlaiedViewController.view.bounds
+                }
+                overlaiedViewController.view.backgroundColor = .clear
+                underlaiedViewController.view.addSubview(dimmedView)
+                completion = { [weak dimmedView, weak overlaiedViewController] in
+                    dimmedView?.removeFromSuperview()
+                    overlaiedViewController?.view.backgroundColor = dimmedColor
+                }
+            } else {
+                completion = nil
+            }
+            underlaiedViewController.present(overlaiedViewController, animated: true, completion: completion)
         }
     }
+    
+    private func underlayDimmedView(on underlaiedViewController: UIViewController, overlaiedViewController: UIViewController) {
+        let dimmedColor = Palette.black1.withAlphaComponent(0.6)
+        let dimmedView = UIView().then {
+            $0.layer.shouldRasterize = true
+            $0.backgroundColor = Palette.black1.withAlphaComponent(0.6)
+            $0.frame = underlaiedViewController.view.bounds
+        }
+        overlaiedViewController.view.backgroundColor = .clear
+        underlaiedViewController.view.addSubview(dimmedView)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: { [weak dimmedView] in
+            dimmedView?.removeFromSuperview()
+            underlaiedViewController.view.backgroundColor = dimmedColor
+        })
+    }
+}
+
+extension CGRect {
+    
 }

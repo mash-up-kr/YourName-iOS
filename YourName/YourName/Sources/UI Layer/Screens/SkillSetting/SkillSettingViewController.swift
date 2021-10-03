@@ -7,6 +7,6 @@
 
 import UIKit
 
-final class SkillSettingViewController: ViewController {
+final class SkillSettingViewController: ViewController, Storyboarded {
     
 }

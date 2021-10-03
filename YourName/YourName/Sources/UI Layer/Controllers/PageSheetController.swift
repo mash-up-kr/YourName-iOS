@@ -14,8 +14,10 @@ protocol PageSheetContentView: UIView {
 }
 
 final class PageSheetController<ContentView: PageSheetContentView>: ViewController {
-    var canEasilyClose: Bool = true
     let contentView: ContentView
+    
+    var canEasilyClose: Bool = true
+    var onDismiss: ((ContentView) -> Void)?
     
     init(contentView: ContentView) {
         self.contentView = contentView
@@ -35,16 +37,22 @@ final class PageSheetController<ContentView: PageSheetContentView>: ViewControll
         bind()
     }
     
-    func show(completion: @escaping (ContentView) -> Void = { _ in }) {
+    func show() {
         guard let visableViewController = UIViewController.visableViewController() else { return }
         self.modalPresentationStyle = .overFullScreen
+        let dimmedView = UIView().then { $0.backgroundColor = Palette.black1.withAlphaComponent(0.6) }
+        visableViewController.view.addSubview(dimmedView)
+        dimmedView.frame = visableViewController.view.bounds
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: { [weak dimmedView] in
+            dimmedView?.removeFromSuperview()
+        })
         visableViewController.present(self, animated: false, completion: nil)
-        self.completion = completion
     }
     
     func close() {
-        self.dismiss(animated: false, completion: nil)
-        self.completion?(self.contentView)
+        self.dismiss(animated: false, completion: {
+            self.onDismiss?(self.contentView)
+        })
     }
     
     private func configureUI() {
@@ -94,7 +102,6 @@ final class PageSheetController<ContentView: PageSheetContentView>: ViewControll
         contentView.removeFromSuperview()
     }
     
-    private var completion: ((ContentView) -> Void)?
     private let stackView = UIStackView().then { $0.axis = .vertical }
     private let topBarView = UIView()
     private let titleLabel = UILabel()

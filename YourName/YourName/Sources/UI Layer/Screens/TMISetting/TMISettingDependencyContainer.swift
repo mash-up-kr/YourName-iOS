@@ -14,7 +14,7 @@ final class TMISettingDependencyContainer {
     }
     
     func createTMISettingViewController() -> TMISettingViewController {
-        return TMISettingViewController()
+        return TMISettingViewController.instantiate()
     }
     
 }

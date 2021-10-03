@@ -55,7 +55,7 @@
 		CE4D4EBD2709022800081A2B /* ImageSourceDedencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4EBC2709022800081A2B /* ImageSourceDedencyContainer.swift */; };
 		CE4D4EC3270902FC00081A2B /* ImageSourcePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4EC2270902FC00081A2B /* ImageSourcePickerViewModel.swift */; };
 		CE4D4EC52709044D00081A2B /* ImageSourceTypePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4EC42709044D00081A2B /* ImageSourceTypePickerView.swift */; };
-		CE4D4EC72709045500081A2B /* ImageSourcePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE4D4EC62709045500081A2B /* ImageSourcePickerView.xib */; };
+		CE4D4EC72709045500081A2B /* ImageSourceTypePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE4D4EC62709045500081A2B /* ImageSourceTypePickerView.xib */; };
 		CE4D4ECA27090D5200081A2B /* ColorSourceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4EC827090D5200081A2B /* ColorSourceCollectionViewCell.swift */; };
 		CE4D4ECB27090D5200081A2B /* ColorSourceCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE4D4EC927090D5200081A2B /* ColorSourceCollectionViewCell.xib */; };
 		CE4D4ECE2709ECDF00081A2B /* ProfileColorRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4ECD2709ECDF00081A2B /* ProfileColorRepository.swift */; };
@@ -219,7 +219,7 @@
 		CE4D4EBC2709022800081A2B /* ImageSourceDedencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSourceDedencyContainer.swift; sourceTree = "<group>"; };
 		CE4D4EC2270902FC00081A2B /* ImageSourcePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSourcePickerViewModel.swift; sourceTree = "<group>"; };
 		CE4D4EC42709044D00081A2B /* ImageSourceTypePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSourceTypePickerView.swift; sourceTree = "<group>"; };
-		CE4D4EC62709045500081A2B /* ImageSourcePickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageSourcePickerView.xib; sourceTree = "<group>"; };
+		CE4D4EC62709045500081A2B /* ImageSourceTypePickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageSourceTypePickerView.xib; sourceTree = "<group>"; };
 		CE4D4EC827090D5200081A2B /* ColorSourceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSourceCollectionViewCell.swift; sourceTree = "<group>"; };
 		CE4D4EC927090D5200081A2B /* ColorSourceCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorSourceCollectionViewCell.xib; sourceTree = "<group>"; };
 		CE4D4ECD2709ECDF00081A2B /* ProfileColorRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileColorRepository.swift; sourceTree = "<group>"; };
@@ -375,8 +375,8 @@
 		CE4D4E6E2707A0CB00081A2B /* CharacterCreation */ = {
 			isa = PBXGroup;
 			children = (
-				CE4D4E872707AE3800081A2B /* CharacterCreationDependencyContainer.swift */,
 				CE4D4E712707A11500081A2B /* CharacterCreationViewController.storyboard */,
+				CE4D4E872707AE3800081A2B /* CharacterCreationDependencyContainer.swift */,
 				CE4D4E6F2707A0FB00081A2B /* CharacterCreationViewController.swift */,
 				CE4D4E852707AE1700081A2B /* CharacterCreationViewModel.swift */,
 			);
@@ -402,8 +402,8 @@
 		CE4D4E8F2707B21400081A2B /* TMISetting */ = {
 			isa = PBXGroup;
 			children = (
-				CE4D4EA12707BBBA00081A2B /* TMISettingDependencyContainer.swift */,
 				CE4D4EA72707BC5000081A2B /* TMISettingViewController.storyboard */,
+				CE4D4EA12707BBBA00081A2B /* TMISettingDependencyContainer.swift */,
 				CE4D4E932707B28200081A2B /* TMISettingViewController.swift */,
 			);
 			path = TMISetting;
@@ -412,8 +412,8 @@
 		CE4D4E902707B24A00081A2B /* SkillSetting */ = {
 			isa = PBXGroup;
 			children = (
-				CE4D4E9F2707BB8400081A2B /* SkillSettingDependencyContainer.swift */,
 				CE4D4EA52707BC3900081A2B /* SkillSettingViewController.storyboard */,
+				CE4D4E9F2707BB8400081A2B /* SkillSettingDependencyContainer.swift */,
 				CE4D4E912707B27200081A2B /* SkillSettingViewController.swift */,
 			);
 			path = SkillSetting;
@@ -437,11 +437,11 @@
 			isa = PBXGroup;
 			children = (
 				CE4D4EC827090D5200081A2B /* ColorSourceCollectionViewCell.swift */,
-				CE4D4EC927090D5200081A2B /* ColorSourceCollectionViewCell.xib */,
 				CE4D4E9A2707BB2500081A2B /* PaletteDependencyContainer.swift */,
 				CE4D4EB42708E9EC00081A2B /* PaletteView.swift */,
-				CE4D4EB62708E9F400081A2B /* PaletteView.xib */,
 				CE4D4EB82708EA2200081A2B /* PaletteViewModel.swift */,
+				CE4D4EC927090D5200081A2B /* ColorSourceCollectionViewCell.xib */,
+				CE4D4EB62708E9F400081A2B /* PaletteView.xib */,
 			);
 			path = Palette;
 			sourceTree = "<group>";
@@ -465,9 +465,9 @@
 			isa = PBXGroup;
 			children = (
 				CE4D4EBC2709022800081A2B /* ImageSourceDedencyContainer.swift */,
-				CE4D4EC42709044D00081A2B /* ImageSourceTypePickerView.swift */,
-				CE4D4EC62709045500081A2B /* ImageSourcePickerView.xib */,
 				CE4D4EC2270902FC00081A2B /* ImageSourcePickerViewModel.swift */,
+				CE4D4EC42709044D00081A2B /* ImageSourceTypePickerView.swift */,
+				CE4D4EC62709045500081A2B /* ImageSourceTypePickerView.xib */,
 			);
 			path = ImageSourcePicker;
 			sourceTree = "<group>";
@@ -479,14 +479,6 @@
 				CE4D4ED12709F47400081A2B /* ProfileColor.swift */,
 			);
 			path = Palette;
-			sourceTree = "<group>";
-		};
-		CE4D4ED32709F9D400081A2B /* Keyboard */ = {
-			isa = PBXGroup;
-			children = (
-				CE4D4ED42709F9E700081A2B /* Keyboard.swift */,
-			);
-			path = Keyboard;
 			sourceTree = "<group>";
 		};
 		CE63123826F59C6B00B2E69B /* Root */ = {
@@ -502,8 +494,8 @@
 		CE63124A26F5DD5D00B2E69B /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
-				CE6312A626F8CB2F00B2E69B /* SignedOutDependencyContainer.swift */,
 				CE6BAB9D2704D7610006D26B /* SignInViewController.storyboard */,
+				CE6312A626F8CB2F00B2E69B /* SignedOutDependencyContainer.swift */,
 				CE63124B26F5DDC000B2E69B /* SignInViewController.swift */,
 				CE63124F26F5DE6800B2E69B /* SignInViewModel.swift */,
 			);
@@ -520,8 +512,8 @@
 		CE63125C26F626F600B2E69B /* Splash */ = {
 			isa = PBXGroup;
 			children = (
-				CE4D4ECF2709F1F200081A2B /* SplashDependencyContainer.swift */,
 				CE6BAB9F2704D7BF0006D26B /* SplashViewController.storyboard */,
+				CE4D4ECF2709F1F200081A2B /* SplashDependencyContainer.swift */,
 				CE63125D26F6270B00B2E69B /* SplashViewController.swift */,
 				CE63125F26F6281800B2E69B /* SplashViewModel.swift */,
 			);
@@ -548,8 +540,8 @@
 		CE6312B526F99F6200B2E69B /* CardDetail */ = {
 			isa = PBXGroup;
 			children = (
-				CE6312BD26F9A4C700B2E69B /* CardDetailDependencyContainer.swift */,
 				CE6BAB972704D69F0006D26B /* CardDetailViewController.storyboard */,
+				CE6312BD26F9A4C700B2E69B /* CardDetailDependencyContainer.swift */,
 				CE6312B626F99F6F00B2E69B /* CardDetailViewController.swift */,
 				CE6312B826F99F7A00B2E69B /* CardDetailViewModel.swift */,
 			);
@@ -594,8 +586,8 @@
 		CE6BABA32704DAA20006D26B /* CardCreation */ = {
 			isa = PBXGroup;
 			children = (
-				CE6BABA82704DB2A0006D26B /* CardCreationDependencyContainer.swift */,
 				CE6BABA42704DAFB0006D26B /* CardCreationViewController.storyboard */,
+				CE6BABA82704DB2A0006D26B /* CardCreationDependencyContainer.swift */,
 				CE6BABA62704DB0A0006D26B /* CardCreationViewController.swift */,
 				CE2EC99227073453006B9852 /* CardCreationViewModel.swift */,
 				CE4D4E6C2707883600081A2B /* ContactInputView.swift */,
@@ -691,9 +683,10 @@
 		CEB6586026EB29B000C11F33 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				CE6BAB922704D08D0006D26B /* Protocols */,
-				CEF8C55526EDF8F7009BA9C2 /* Extensions */,
+				CE4D4ED42709F9E700081A2B /* Keyboard.swift */,
 				CE2BB2C82707560800936148 /* Palette.swift */,
+				CEF8C55526EDF8F7009BA9C2 /* Extensions */,
+				CE6BAB922704D08D0006D26B /* Protocols */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -701,11 +694,10 @@
 		CEB6586226EB2BB000C11F33 /* UI Layer */ = {
 			isa = PBXGroup;
 			children = (
-				CE4D4ED32709F9D400081A2B /* Keyboard */,
-				CE4D4EB32708E7AF00081A2B /* Controllers */,
-				CE4D4EA9270820F900081A2B /* Views */,
-				CEB6586926EB2C5F00C11F33 /* Screens */,
 				CE63124826F5A30200B2E69B /* Navigation.swift */,
+				CE4D4EB32708E7AF00081A2B /* Controllers */,
+				CEB6586926EB2C5F00C11F33 /* Screens */,
+				CE4D4EA9270820F900081A2B /* Views */,
 			);
 			path = "UI Layer";
 			sourceTree = "<group>";
@@ -768,10 +760,10 @@
 		CEB6586A26EB2C6400C11F33 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				CE6312A426F8CB2F00B2E69B /* SignedInDependencyContainer.swift */,
+				CED16DE826F39F700076565F /* HomeTab.swift */,
 				CEB6586B26EB2C7600C11F33 /* HomeTabBarController.swift */,
 				CEB6587626EB2CFE00C11F33 /* HomeViewModel.swift */,
-				CED16DE826F39F700076565F /* HomeTab.swift */,
+				CE6312A426F8CB2F00B2E69B /* SignedInDependencyContainer.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -879,17 +871,17 @@
 		CED16DEC26F3A4C30076565F /* MyCardList */ = {
 			isa = PBXGroup;
 			children = (
+				CE6BAB992704D6E30006D26B /* MyCardListViewController.storyboard */,
 				A2CC656D27088E9C00610C49 /* MyCardListCollectionViewCell.swift */,
-				A2CC656F27088ED100610C49 /* MyCardListCollectionViewCell.xib */,
 				CE6312BB26F9A04800B2E69B /* MyCardListDependencyContainer.swift */,
 				A2CC65612707622D00610C49 /* MyCardListEmptyCollectionViewCell.swift */,
-				A2CC655D27075C8900610C49 /* MyCardListEmptyCollectionViewCell.xib */,
 				CED16DF826F3A55D0076565F /* MyCardListViewController.swift */,
-				CE6BAB992704D6E30006D26B /* MyCardListViewController.storyboard */,
 				CE6312BF26F9AB4A00B2E69B /* MyCardListViewModel.swift */,
 				A2CC656727082EAB00610C49 /* MyCardView.swift */,
-				A2CC65632708229C00610C49 /* MyCardView.xib */,
 				A2CC65732708AB2C00610C49 /* SkillLevelView.swift */,
+				A2CC656F27088ED100610C49 /* MyCardListCollectionViewCell.xib */,
+				A2CC655D27075C8900610C49 /* MyCardListEmptyCollectionViewCell.xib */,
+				A2CC65632708229C00610C49 /* MyCardView.xib */,
 				A2CC65712708AAF900610C49 /* SkillLevelView.xib */,
 			);
 			path = MyCardList;
@@ -925,8 +917,8 @@
 		CEF8C55526EDF8F7009BA9C2 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				CEB6589A26EC987800C11F33 /* Rx */,
 				CE6312D026F9BD6B00B2E69B /* Array+.swift */,
+				A2CC656927084BF300610C49 /* CALayer+.swift */,
 				CE63125426F5E25200B2E69B /* String+.swift */,
 				CE6BABAE2704EE9C0006D26B /* UICollectionView+.swift */,
 				CE4D4E972707B35100081A2B /* UIImageView+.swift */,
@@ -935,7 +927,7 @@
 				CEF8C55226EDF8D5009BA9C2 /* UIView+.swift */,
 				CE6BABAA2704E2480006D26B /* UIVIewController+.swift */,
 				CEB6582F26EB15A600C11F33 /* ViewController.swift */,
-				A2CC656927084BF300610C49 /* CALayer+.swift */,
+				CEB6589A26EC987800C11F33 /* Rx */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1058,7 +1050,7 @@
 				A2CC65642708229C00610C49 /* MyCardView.xib in Resources */,
 				CEB6583526EB15AC00C11F33 /* Images.xcassets in Resources */,
 				CE6BAB982704D69F0006D26B /* CardDetailViewController.storyboard in Resources */,
-				CE4D4EC72709045500081A2B /* ImageSourcePickerView.xib in Resources */,
+				CE4D4EC72709045500081A2B /* ImageSourceTypePickerView.xib in Resources */,
 				CE6BAB9E2704D7610006D26B /* SignInViewController.storyboard in Resources */,
 				CE6BAB962704D3C40006D26B /* CardBookViewController.storyboard in Resources */,
 				CE6BAB9A2704D6E30006D26B /* MyCardListViewController.storyboard in Resources */,

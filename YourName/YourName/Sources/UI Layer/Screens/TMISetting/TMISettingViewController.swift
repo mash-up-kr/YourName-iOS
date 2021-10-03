@@ -7,6 +7,6 @@
 
 import UIKit
 
-final class TMISettingViewController: ViewController {}
+final class TMISettingViewController: ViewController, Storyboarded {}
 
 

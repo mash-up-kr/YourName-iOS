@@ -16,7 +16,7 @@ final class SkillSettingDependencyContainer {
     }
     
     func createSkillSettingViewController() -> SkillSettingViewController {
-        return SkillSettingViewController()
+        return SkillSettingViewController.instantiate()
     }
     
 }
