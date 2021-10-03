@@ -8,6 +8,7 @@
 import RxCocoa
 import RxSwift
 import UIKit
+import FLEX
 
 protocol PageSheetContentView: UIView {
     var title: String { get }
@@ -96,6 +97,16 @@ final class PageSheetController<ContentView: PageSheetContentView>: ViewControll
             self.close()
         })
         .disposed(by: disposeBag)
+        
+        #if DEBUG
+        self.contentView.rx.tapGesture()
+            .when(.recognized)
+            .filter { $0.numberOfTapsRequired > 2 }
+            .subscribe(onNext: { _ in
+                FLEXManager.shared.showExplorer()
+            })
+            .disposed(by: disposeBag)
+        #endif
     }
     
     private func setupContentView(contentView: ContentView) {
@@ -106,6 +117,7 @@ final class PageSheetController<ContentView: PageSheetContentView>: ViewControll
         stackView.removeArrangedSubview(contentView)
         contentView.removeFromSuperview()
     }
+    
     private let stackView = UIStackView().then { $0.axis = .vertical }
     private let topBarView = UIView()
     private let titleLabel = UILabel()

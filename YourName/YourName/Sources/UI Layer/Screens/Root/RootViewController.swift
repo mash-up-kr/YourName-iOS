@@ -31,6 +31,7 @@ final class RootViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.backgroundColor = .white
         bind()
     }
     

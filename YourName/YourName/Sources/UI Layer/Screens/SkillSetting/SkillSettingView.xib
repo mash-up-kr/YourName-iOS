@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,73 +14,89 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Wy-yr-SSr">
-                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Wy-yr-SSr">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="650"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="tf8-tu-aqO">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="tf8-tu-aqO">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="230"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tkH-tx-JB3">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
-                                    <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_star" translatesAutoresizingMaskIntoConstraints="NO" id="Wv0-fu-AFr">
-                                            <rect key="frame" x="24" y="5" width="30" height="30"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="30" id="GQf-l0-KkO"/>
-                                                <constraint firstAttribute="width" constant="30" id="s6U-Il-kO6"/>
-                                            </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tip" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bCs-58-Awg">
-                                            <rect key="frame" x="57" y="9.5" width="27.5" height="21.5"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                            <color key="textColor" name="black1"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WsV-OP-xZN">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="24"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="40" id="0UK-6m-6V4"/>
-                                        <constraint firstItem="Wv0-fu-AFr" firstAttribute="centerY" secondItem="tkH-tx-JB3" secondAttribute="centerY" id="4rs-mE-EMF"/>
-                                        <constraint firstItem="bCs-58-Awg" firstAttribute="centerY" secondItem="tkH-tx-JB3" secondAttribute="centerY" id="Byp-Kc-kb8"/>
-                                        <constraint firstItem="Wv0-fu-AFr" firstAttribute="leading" secondItem="tkH-tx-JB3" secondAttribute="leading" constant="24" id="QZl-N3-A45"/>
-                                        <constraint firstItem="bCs-58-Awg" firstAttribute="leading" secondItem="Wv0-fu-AFr" secondAttribute="trailing" constant="3" id="s6w-sj-BNH"/>
+                                        <constraint firstAttribute="height" constant="24" id="HX6-BE-UpL"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zhz-V1-vPo" customClass="TipInfoView" customModule="YourName" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="24" width="414" height="50"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" placeholder="YES" id="80z-RY-RMk"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="text">
+                                            <string key="value">아래 추천 Skill들을 참고해 입력해보세요.
+  ﹒ 스킬은 1~3개까지 입력할 수 있습니다. 
+  ﹒  레벨을 조절해 내 능력치를 표현해보세요.</string>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="kwU-p1-WlJ">
+                                    <rect key="frame" x="0.0" y="74" width="414" height="144"/>
+                                    <color key="backgroundColor" name="pink"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="144" id="GBS-06-C3N"/>
+                                    </constraints>
+                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="h6L-Jw-rak">
+                                        <size key="itemSize" width="128" height="128"/>
+                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    </collectionViewFlowLayout>
+                                </collectionView>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BNi-3W-GBZ">
+                                    <rect key="frame" x="0.0" y="218" width="414" height="12"/>
+                                    <color key="backgroundColor" name="lightGray2"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="12" id="Xca-RL-DKt"/>
                                     </constraints>
                                 </view>
                             </subviews>
+                            <color key="backgroundColor" red="0.58072251080000004" green="0.066734083" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </stackView>
                     </subviews>
                     <constraints>
+                        <constraint firstItem="tf8-tu-aqO" firstAttribute="bottom" secondItem="0Q6-hn-4Hq" secondAttribute="bottom" id="3nN-3e-hZ2"/>
                         <constraint firstItem="tf8-tu-aqO" firstAttribute="trailing" secondItem="0Q6-hn-4Hq" secondAttribute="trailing" id="8lu-zy-LtU"/>
+                        <constraint firstAttribute="height" constant="650" id="CTC-nt-tMV"/>
                         <constraint firstItem="tf8-tu-aqO" firstAttribute="bottom" secondItem="0Q6-hn-4Hq" secondAttribute="bottom" id="FQ2-og-un9"/>
                         <constraint firstItem="tf8-tu-aqO" firstAttribute="width" secondItem="gLA-GO-DzA" secondAttribute="width" id="Hrm-Kh-t62"/>
-                        <constraint firstItem="tf8-tu-aqO" firstAttribute="leading" secondItem="0Q6-hn-4Hq" secondAttribute="leading" id="tJ5-M2-AB9"/>
                         <constraint firstItem="0Q6-hn-4Hq" firstAttribute="top" secondItem="tf8-tu-aqO" secondAttribute="top" id="yHe-LW-FBj"/>
                     </constraints>
                     <viewLayoutGuide key="contentLayoutGuide" id="0Q6-hn-4Hq"/>
                     <viewLayoutGuide key="frameLayoutGuide" id="gLA-GO-DzA"/>
                 </scrollView>
             </subviews>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" systemColor="systemGreenColor"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="6Wy-yr-SSr" secondAttribute="bottom" id="1uh-73-Cti"/>
-                <constraint firstItem="6Wy-yr-SSr" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Zkj-Wv-Ki3"/>
-                <constraint firstItem="6Wy-yr-SSr" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="fFH-pJ-Frw"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="6Wy-yr-SSr" secondAttribute="trailing" id="yAb-ts-IkC"/>
+                <constraint firstAttribute="bottom" secondItem="6Wy-yr-SSr" secondAttribute="bottom" id="3dC-qD-mNi"/>
+                <constraint firstItem="6Wy-yr-SSr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Zkj-Wv-Ki3"/>
+                <constraint firstItem="6Wy-yr-SSr" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="fFH-pJ-Frw"/>
+                <constraint firstItem="6Wy-yr-SSr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="lZc-We-U4c"/>
+                <constraint firstAttribute="trailing" secondItem="6Wy-yr-SSr" secondAttribute="trailing" id="yAb-ts-IkC"/>
             </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="-159" y="115"/>
         </view>
     </objects>
     <resources>
-        <image name="icon_star" width="31" height="27"/>
-        <namedColor name="black1">
-            <color red="0.082352941176470587" green="0.082352941176470587" blue="0.082352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="lightGray2">
+            <color red="0.95686274509803926" green="0.95686274509803926" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="pink">
+            <color red="1" green="0.89411764705882357" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
