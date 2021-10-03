@@ -43,11 +43,7 @@ final class CardCreationViewModelTests: XCTestCase {
         
         //then
         let navigations = navigationObserver.events.compactMap(\.value.element)
-<<<<<<< HEAD
         expect(navigations).to(equal([.show(.imageSourceTypePicker)]))
-=======
-        expect(navigations).to(equal([.present(.imageSourceTypePicker)]))
->>>>>>> develop
     }
     
     func test_배경색설정버튼을_클릭하면_배경색설정_페이지시트를_표시합니다() {
@@ -65,11 +61,7 @@ final class CardCreationViewModelTests: XCTestCase {
         
         //then
         let navigations = navigationObserver.events.compactMap(\.value.element)
-<<<<<<< HEAD
         expect(navigations).to(equal([.show(.palette)]))
-=======
-        expect(navigations).to(equal([.present(.palette)]))
->>>>>>> develop
     }
     
     func test_이름을_타이핑하면_상태에_반영됩니다() {
