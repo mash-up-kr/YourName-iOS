@@ -6,7 +6,22 @@
 //
 
 import Foundation
+import RxRelay
+
+struct ProfileColor {
+    let colorSource: ColorSource
+    let status: ColorSourceStatus
+}
 
 final class PaletteViewModel {
     
+    init(profileColorRepository: ProfileColorRepository) {
+        self.profileColorRepository = profileColorRepository
+    }
+    
+    func didLoad() {
+        
+    }
+
+    private let profileColorRepository: ProfileColorRepository
 }

@@ -9,18 +9,18 @@ import RxCocoa
 import RxSwift
 import UIKit
 
-final class PageSheetController<ContentView: UIView>: ViewController {
-    
-    override var title: String? {
-        didSet { self.titleLabel.text = title }
-    }
+protocol PageSheetContentView: UIView {
+    var title: String { get }
+}
+
+final class PageSheetController<ContentView: PageSheetContentView>: ViewController {
     var canEasilyClose: Bool = true
     let contentView: ContentView
     
-    init(title: String? = nil, contentView: ContentView) {
+    init(contentView: ContentView) {
         self.contentView = contentView
         super.init()
-        self.titleLabel.text = title
+        self.titleLabel.text = contentView.title
     }
     
     required init?(coder: NSCoder) {

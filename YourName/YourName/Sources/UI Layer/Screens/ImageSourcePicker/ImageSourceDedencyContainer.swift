@@ -13,9 +13,19 @@ final class ImageSourceDependencyContainer {
         
     }
     
-    func createImageSourcePickerViewController() -> PageSheetController<ImageSourcePickerView> {
-        let view = ImageSourcePickerView()
-        view.viewModel = ImageSourcePickerViewModel()
-        return PageSheetController(title: "대표 이미지 추가하기", contentView: view)
+    func createImageSourcePickerPageSheetController() -> PageSheetController<ImageSourcePickerView> {
+        let view = createImageSourcePickerView()
+        return PageSheetController(contentView: view)
     }
+    
+    private func createImageSourcePickerView() -> ImageSourcePickerView {
+        let view = ImageSourcePickerView()
+        view.viewModel = createImageSourcePickerViewModel()
+        return view
+    }
+    
+    private func createImageSourcePickerViewModel() -> ImageSourcePickerViewModel {
+        return ImageSourcePickerViewModel()
+    }
+    
 }

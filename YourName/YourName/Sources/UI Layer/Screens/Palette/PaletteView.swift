@@ -8,7 +8,6 @@
 import UIKit
 
 final class PaletteView: UIView, NibLoadable {
-    
     var viewModel: PaletteViewModel!
     
     override init(frame: CGRect) {
@@ -23,4 +22,7 @@ final class PaletteView: UIView, NibLoadable {
     
     @IBOutlet private weak var colorsCollectionView: UICollectionView?
     @IBOutlet private weak var completeButton: UIButton?
+}
+extension PaletteView: PageSheetContentView {
+    var title: String { "배경 컬러 선택하기" }
 }

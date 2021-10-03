@@ -13,10 +13,25 @@ final class PaletteDependencyContainer {
         
     }
     
-    func createPaletteViewController() -> PageSheetController<PaletteView> {
-        let viewModel = PaletteViewModel()
+    func createPalettePageSheetController() -> PageSheetController<PaletteView> {
+        let view = createPaletteView()
+        return PageSheetController(contentView: view)
+    }
+    
+    private func createPaletteView() -> PaletteView {
         let view = PaletteView()
-        view.viewModel = viewModel
-        return PageSheetController(title: "배경 컬러 선택하기", contentView: view)
+        view.viewModel = createPaletteViewModel()
+        return view
+    }
+    
+    private func createPaletteViewModel() -> PaletteViewModel {
+        let repository = createProfileColorRepository()
+        let viewModel = PaletteViewModel(profileColorRepository: repository)
+        return viewModel
+    }
+    
+    private func createProfileColorRepository() -> ProfileColorRepository {
+        let mockProfileColorRepository = MockProfileColorRepository()
+        return mockProfileColorRepository
     }
 }

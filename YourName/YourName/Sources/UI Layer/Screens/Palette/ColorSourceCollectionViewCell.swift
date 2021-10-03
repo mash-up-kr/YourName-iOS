@@ -7,26 +7,26 @@
 
 import UIKit
 
+enum ColorSourceStatus {
+    case normal
+    case selected
+    case locked
+}
+
 
 final class ColorSourceCollectionViewCell: UICollectionViewCell {
     
-    enum Status {
-        case normal
-        case selected
-        case locked
-    }
-    
     private var colorSource: ColorSource = .monotone(Palette.lightGray1)
-    private var status: Status = .normal
+    private var status: ColorSourceStatus = .normal
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
     
-    func configure(colorSource: ColorSource, status: Status) {
-        self.colorSource = colorSource
-        self.status = status
+    func configure(profileColor: ProfileColor) {
+        self.colorSource = profileColor.colorSource
+        self.status = profileColor.status
         
         updateUI(with: colorSource)
         updateUI(with: status)
@@ -45,7 +45,7 @@ final class ColorSourceCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    private func updateUI(with status: Status) {
+    private func updateUI(with status: ColorSourceStatus) {
         switch status {
         case .normal:
             borderWidth = 0

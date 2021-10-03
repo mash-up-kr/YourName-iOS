@@ -21,9 +21,9 @@ final class CardCreationDependencyContainer {
             let dependencyContainer = self.createCharacterCreationDependencyContainer()
             return dependencyContainer.createCharacterCreationViewController()
         }
-        viewContorller.paletteViewControllerFactory = {
+        viewContorller.palettePageSheetControllerFactory = {
             let dependencyContainer = self.createPaletteDependencyContainer()
-            return dependencyContainer.createPaletteViewController()
+            return dependencyContainer.createPalettePageSheetController()
         }
         viewContorller.tmiSettingViewControllerFactory = {
             let dependencyContainer = self.createTMISettingDependencyContainer()
@@ -36,7 +36,7 @@ final class CardCreationDependencyContainer {
         return viewContorller
     }
     
-    // Child
+    // 👼 Child Dependency Container
     private func createCharacterCreationDependencyContainer() -> CharacterCreationDependencyContainer {
         return CharacterCreationDependencyContainer(cardCreationDependencyContainer: self)
     }
@@ -52,4 +52,5 @@ final class CardCreationDependencyContainer {
     private func createSkillSettingDependencyContainer() -> SkillSettingDependencyContainer {
         return SkillSettingDependencyContainer(cardCreationDependencyContainer: self)
     }
+    
 }

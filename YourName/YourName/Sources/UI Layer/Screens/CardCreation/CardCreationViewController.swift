@@ -15,7 +15,7 @@ final class CardCreationViewController: ViewController, Storyboarded {
     
     var viewModel: CardCreationViewModel!
     var characterCreationViewControllerFactory: (() -> CharacterCreationViewController)?
-    var paletteViewControllerFactory: (() -> PageSheetController<PaletteView>)?
+    var palettePageSheetControllerFactory: (() -> PageSheetController<PaletteView>)?
     var tmiSettingViewControllerFactory: (() -> TMISettingViewController)?
     var skillSettingViewControllerFactory: (() -> SkillSettingViewController)?
     
@@ -32,14 +32,6 @@ final class CardCreationViewController: ViewController, Storyboarded {
         backgroundSettingButton?.layer.insertSublayer(profileBackgroundColorButtonLayer, at: 0)
         profileBackgroundColorButtonLayer.startPoint = .zero
         profileBackgroundColorButtonLayer.endPoint = CGPoint(x: 1, y: 1)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        let view = ImageSourcePickerView()
-        view.viewModel = ImageSourcePickerViewModel()
-        PageSheetController(title: "대표 이미지 추가하기", contentView: view).show()
     }
     
     private func bind() {

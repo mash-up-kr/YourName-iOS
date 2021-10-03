@@ -24,7 +24,8 @@ final class RootDependencyContainer {
     // Root Factory
     func createRootViewController() -> RootViewController {
         let splashViewControllerFactory: () -> SplashViewController = {
-            self.createSplashViewController()
+            let dependencyContainer = self.createSplashDependencyContainer()
+            return dependencyContainer.createSplashViewController()
         }
         let signInViewControllerFactory: () -> SignInViewController = {
             let dependencyContainer = self.createSignedOutDependencyContainer()
@@ -43,18 +44,11 @@ final class RootDependencyContainer {
         )
     }
     
-    // Splash Factory
-    private func createSplashViewController() -> SplashViewController {
-        let viewModel = SplashViewModel(
-            accessTokenRepository: accessTokenRepository,
-            authenticationDelegate: rootViewModel
-        )
-        let viewController = SplashViewController.instantiate()
-        viewController.viewModel = viewModel
-        return viewController
+    // 👼 Child Dependency Container
+    private func createSplashDependencyContainer() -> SplashDependencyContainer {
+        return SplashDependencyContainer(rootDependencyContainer: self)
     }
     
-    // Child Dependency Container Factory
     private func createSignedInDependencyContainer(accessToken: AccessToken) -> SignedInDependencyContainer {
         return SignedInDependencyContainer(accessToken: accessToken, rootDependencyContainer: self)
     }
