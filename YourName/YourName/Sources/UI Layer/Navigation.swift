@@ -19,8 +19,8 @@ struct Navigation<Destination: Equatable>: Equatable {
 }
 
 extension Navigation {
-    static func present(_ destination: Destination) -> Self {
-        return Navigation(action: .present(animated: true), destination: destination)
+    static func present(_ destination: Destination, animated: Bool = true) -> Self {
+        return Navigation(action: .present(animated: animated), destination: destination)
     }
     
     static func push(_ destination: Destination) -> Self {
