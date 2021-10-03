@@ -126,7 +126,7 @@ final class CardCreationViewModelTests: XCTestCase {
         
         //then
         let navigations = navigationObserver.events.compactMap(\.value.element)
-        expect(navigations).to(equal([.present(.settingSkill)]))
+        expect(navigations).to(equal([.show(.settingSkill)]))
     }
     
     func test_성격_타이틀을_타이핑하면_상태에_반영됩니다() {
@@ -187,7 +187,7 @@ final class CardCreationViewModelTests: XCTestCase {
         
         //then
         let navigations = navigationObserver.events.compactMap(\.value.element)
-        expect(navigations).to(equal([.present(.settingTMI)]))
+        expect(navigations).to(equal([.show(.settingTMI)]))
     }
     
     func test_About_Me를_타이핑하면_상태에_반영됩니다() {
