@@ -27,7 +27,7 @@ extension Navigation {
         return Navigation(action: .push, destination: destination)
     }
     
-    static func show(_ destination: Destination, withDimmed dimmed: Bool = false) -> Self {
+    static func show(_ destination: Destination, withDimmed dimmed: Bool = true) -> Self {
         return Navigation(action: .show(withDimmed: dimmed), destination: destination)
     }
 }

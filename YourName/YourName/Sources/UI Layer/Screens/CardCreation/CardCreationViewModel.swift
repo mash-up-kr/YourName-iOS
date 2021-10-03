@@ -51,11 +51,11 @@ final class CardCreationViewModel {
     }
     
     func tapProfilePlaceHolder() {
-        navigation.accept(.show(.imageSourceTypePicker, withDimmed: true))
+        navigation.accept(.show(.imageSourceTypePicker))
     }
     
     func tapProfileBackgroundSetting() {
-        navigation.accept(.show(.palette, withDimmed: true))
+        navigation.accept(.show(.palette))
     }
     
     func tapCreatCharacter() {

@@ -26,15 +26,15 @@ extension UIViewController {
 extension UIViewController {
     func navigate(_ viewController: UIViewController, action: NavigationAction) {
         switch action {
-        case .present:
+        case .present(let animated):
             if let presentedViewController = self.presentedViewController {
                 presentedViewController.dismiss(animated: false, completion: { [weak self] in
                     viewController.modalPresentationStyle = .fullScreen
-                    self?.present(viewController, animated: true, completion: nil)
+                    self?.present(viewController, animated: animated, completion: nil)
                 })
             } else {
                 viewController.modalPresentationStyle = .fullScreen
-                self.present(viewController, animated: true, completion: nil)
+                self.present(viewController, animated: animated, completion: nil)
             }
             
         case .push:
