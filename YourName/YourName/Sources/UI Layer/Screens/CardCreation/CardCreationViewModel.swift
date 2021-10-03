@@ -41,7 +41,6 @@ final class CardCreationViewModel {
     let personalityKeyword = BehaviorRelay<String>(value: .empty)
     let aboutMe = BehaviorRelay<String>(value: .empty)
     
-    let shouldShowImageSelectOption = PublishRelay<Void>()
     let navigation = PublishRelay<CardCreationNavigation>()
     
     // Event

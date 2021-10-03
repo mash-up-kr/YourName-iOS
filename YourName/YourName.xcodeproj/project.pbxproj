@@ -65,6 +65,8 @@
 		CE4D4EDF270A0FCF00081A2B /* TMISettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4EDE270A0FCF00081A2B /* TMISettingViewModel.swift */; };
 		CE4D4EE1270A100B00081A2B /* TMISettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE4D4EE0270A100B00081A2B /* TMISettingView.xib */; };
 		CE4D4EE3270A1AF800081A2B /* Optional+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4EE2270A1AF800081A2B /* Optional+.swift */; };
+		CE4D4EE5270A248100081A2B /* TipInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE4D4EE4270A248100081A2B /* TipInfoView.xib */; };
+		CE4D4EE7270A24AB00081A2B /* TipInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4EE6270A24AB00081A2B /* TipInfoView.swift */; };
 		CE63123A26F59C7800B2E69B /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63123926F59C7800B2E69B /* RootViewController.swift */; };
 		CE63124026F59E6700B2E69B /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63123F26F59E6700B2E69B /* RootViewModel.swift */; };
 		CE63124926F5A30200B2E69B /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63124826F5A30200B2E69B /* Navigation.swift */; };
@@ -232,6 +234,8 @@
 		CE4D4EDE270A0FCF00081A2B /* TMISettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMISettingViewModel.swift; sourceTree = "<group>"; };
 		CE4D4EE0270A100B00081A2B /* TMISettingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TMISettingView.xib; sourceTree = "<group>"; };
 		CE4D4EE2270A1AF800081A2B /* Optional+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+.swift"; sourceTree = "<group>"; };
+		CE4D4EE4270A248100081A2B /* TipInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TipInfoView.xib; path = YourName/Sources/Common/Extensions/TipInfoView.xib; sourceTree = SOURCE_ROOT; };
+		CE4D4EE6270A24AB00081A2B /* TipInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TipInfoView.swift; path = YourName/Sources/Common/Extensions/TipInfoView.swift; sourceTree = SOURCE_ROOT; };
 		CE63123926F59C7800B2E69B /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		CE63123F26F59E6700B2E69B /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		CE63124826F5A30200B2E69B /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
@@ -457,6 +461,8 @@
 		CE4D4EA9270820F900081A2B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CE4D4EE4270A248100081A2B /* TipInfoView.xib */,
+				CE4D4EE6270A24AB00081A2B /* TipInfoView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1044,6 +1050,7 @@
 				CE4D4ECB27090D5200081A2B /* ColorSourceCollectionViewCell.xib in Resources */,
 				CE4D4E842707A91900081A2B /* Items.xcassets in Resources */,
 				CE6BABA22704D9520006D26B /* SettingViewController.storyboard in Resources */,
+				CE4D4EE5270A248100081A2B /* TipInfoView.xib in Resources */,
 				CE6BABA52704DAFB0006D26B /* CardCreationViewController.storyboard in Resources */,
 				CE2BB2C727074F4600936148 /* Colors.xcassets in Resources */,
 				CE6BABA02704D7BF0006D26B /* SplashViewController.storyboard in Resources */,
@@ -1171,6 +1178,7 @@
 				CE6BABAD2704ED700006D26B /* UITableView+.swift in Sources */,
 				CE63124026F59E6700B2E69B /* RootViewModel.swift in Sources */,
 				CEB6589526EC838000C11F33 /* HTTPClient.swift in Sources */,
+				CE4D4EE7270A24AB00081A2B /* TipInfoView.swift in Sources */,
 				CEB658BC26ECC90600C11F33 /* NoContent.swift in Sources */,
 				CE6BABA72704DB0A0006D26B /* CardCreationViewController.swift in Sources */,
 				CEB6588226EC811E00C11F33 /* DataLoading.swift in Sources */,
