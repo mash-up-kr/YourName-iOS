@@ -11,7 +11,7 @@ import RxCocoa
 import UIKit
 
 final class MyCardListViewController: ViewController, Storyboarded {
-
+    
     private enum Constant {
         static let collectionViewSectionInset: CGFloat = 24
     }
@@ -29,7 +29,15 @@ final class MyCardListViewController: ViewController, Storyboarded {
     var viewModel: MyCardListViewModel!
     private let disposeBag = DisposeBag()
     private lazy var collectionViewWidth = ( 312 * self.myCardListCollectionview.bounds.height ) / 512
-    private let dummyData = [Palette.lightGreen, Palette.orange]
+    private let dummyData = [Palette.lightGreen, Palette.orange, Palette.vilolet] // dummy
+    private let content = [   // dummy
+        [MySkillProgressView.Item(title: "이게 너무 길면 어떻게보일지 테스트해볼까싶은데 과연", level: 3),
+         MySkillProgressView.Item(title: "인싸력", level: 10)],
+        [MySkillProgressView.Item(title: "드립력", level: 3),
+         MySkillProgressView.Item(title: "인싸력", level: 10),
+         MySkillProgressView.Item(title: "재력", level: 5)],
+        [MySkillProgressView.Item(title: "드립력", level: 2)]
+    ]
     
     
     override func viewDidLoad() {
@@ -104,6 +112,7 @@ extension MyCardListViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        // TODO: API 연결 이후 enum타입으로 정의할 예정
         if dummyData.count == 1 {
             guard let cell = collectionView.dequeueReusableCell(MyCardListEmptyCollectionViewCell.self,
                                                                 for: indexPath)
@@ -119,7 +128,7 @@ extension MyCardListViewController: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(MyCardListCollectionViewCell.self,
                                                                 for: indexPath),
                   let myCardView = cell.contentView as? MyCardView else { return .init() }
-            
+            myCardView.configureSkills(skills: content[indexPath.row])
             myCardView.backgroundColor = dummyData[indexPath.row]
             return cell
         }
@@ -129,7 +138,8 @@ extension MyCardListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: (312 * collectionView.bounds.height) / 512,
+
+        return CGSize(width: (312 * collectionView.bounds.height) / 512,
                height: collectionView.bounds.height)
     }
 }

@@ -7,13 +7,24 @@
 
 import UIKit
 
-final class SkillLevelView: UIView, NibLoadable {
+final class MySkillProgressView: UIView, NibLoadable {
+    
+    struct Item {
+        let title: String
+        let level: Int
+    }
     
     @IBOutlet private weak var skillTitle: UILabel!
     @IBOutlet private weak var skillStackView: UIStackView!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupFromNib()
+        configureProgressView()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
         setupFromNib()
         configureProgressView()
     }
@@ -21,15 +32,15 @@ final class SkillLevelView: UIView, NibLoadable {
     private func configureProgressView() {
         guard let firstView = skillStackView.subviews.first,
               let endView = skillStackView.subviews.last else { return }
-        firstView.cornerRadius = firstView.bounds.height / 2
-        endView.cornerRadius = firstView.bounds.height / 2
+        firstView.cornerRadius = (self.bounds.height * 0.26) / 2
+        endView.cornerRadius = (self.bounds.height * 0.26) / 2
         firstView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
         endView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner]
     }
     
-    func configureLevel(level: Int) {
-        // 받아온 레벨의 수만큼 색 변경
-        for index in 0..<level {
+    func configureSkill(skill: MySkillProgressView.Item) {
+        skillTitle.text = skill.title
+        for index in 0..<skill.level {
             skillStackView.subviews[index].backgroundColor = Palette.gray3
         }
     }
