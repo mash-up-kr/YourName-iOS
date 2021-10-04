@@ -9,7 +9,7 @@ import Foundation
 import RxRelay
 
 enum CardBookDestination: Equatable {
-    case search
+    case addCard
 }
 
 typealias CardBookNavigation = Navigation<CardBookDestination>
@@ -19,7 +19,7 @@ final class CardBookViewModel {
     let navigation = PublishRelay<CardBookNavigation>()
     
     func tapSearchButton() {
-        navigation.accept(.present(.search))
+        navigation.accept(.show(.addCard))
     }
     
     init(cardBookRepository: CardBookRepository) {

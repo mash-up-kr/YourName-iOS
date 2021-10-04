@@ -10,6 +10,7 @@ import RxSwift
 import RxCocoa
 
 final class CardBookViewController: ViewController, Storyboarded {
+   
     
     @IBOutlet private weak var cardBookTitleLabel: UILabel!
     @IBOutlet private weak var addCardButton: UIButton!
@@ -58,7 +59,7 @@ extension CardBookViewController {
     }
     private func createViewController(_ next: CardBookDestination) -> UIViewController {
         switch next {
-        case .search:
+        case .addCard:
             return addCardViewControllerFactory()
         }
     }

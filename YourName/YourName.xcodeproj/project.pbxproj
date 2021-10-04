@@ -13,6 +13,7 @@
 		A2B1011D270A9FFE00CAE013 /* Reactive+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B1011C270A9FFE00CAE013 /* Reactive+.swift */; };
 		A2B1011F270AA1C000CAE013 /* CardBookDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B1011E270AA1C000CAE013 /* CardBookDependencyContainer.swift */; };
 		A2B10121270AA80900CAE013 /* AddCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B10120270AA80900CAE013 /* AddCardViewModel.swift */; };
+		A2B10123270AB2E300CAE013 /* AddCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2B10122270AB2E300CAE013 /* AddCardView.xib */; };
 		A2CC655E27075C8900610C49 /* MyCardListEmptyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2CC655D27075C8900610C49 /* MyCardListEmptyCollectionViewCell.xib */; };
 		A2CC65622707622D00610C49 /* MyCardListEmptyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CC65612707622D00610C49 /* MyCardListEmptyCollectionViewCell.swift */; };
 		A2CC65642708229C00610C49 /* MyCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2CC65632708229C00610C49 /* MyCardView.xib */; };
@@ -27,8 +28,7 @@
 		A2CC65782708DAD900610C49 /* CardBookCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2CC65762708DAD800610C49 /* CardBookCollectionViewCell.xib */; };
 		A2CC657A2708DAEA00610C49 /* CardBookEmptyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CC65792708DAEA00610C49 /* CardBookEmptyCollectionViewCell.swift */; };
 		A2CC657C2708DAF900610C49 /* CardBookEmptyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2CC657B2708DAF900610C49 /* CardBookEmptyCollectionViewCell.xib */; };
-		A2CC657F2708E93900610C49 /* AddCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CC657E2708E93900610C49 /* AddCardViewController.swift */; };
-		A2CC65812708E95000610C49 /* AddCardViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2CC65802708E95000610C49 /* AddCardViewController.storyboard */; };
+		A2CC657F2708E93900610C49 /* AddCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CC657E2708E93900610C49 /* AddCardView.swift */; };
 		A2CC65832708F06800610C49 /* CardBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CC65822708F06800610C49 /* CardBookViewModel.swift */; };
 		A2CC65862708F17A00610C49 /* CardBookRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CC65852708F17A00610C49 /* CardBookRepository.swift */; };
 		A2D875DF26EE295C00ED5949 /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D875DE26EE295C00ED5949 /* AuthResponse.swift */; };
@@ -194,6 +194,7 @@
 		A2B1011C270A9FFE00CAE013 /* Reactive+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+.swift"; sourceTree = "<group>"; };
 		A2B1011E270AA1C000CAE013 /* CardBookDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBookDependencyContainer.swift; sourceTree = "<group>"; };
 		A2B10120270AA80900CAE013 /* AddCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardViewModel.swift; sourceTree = "<group>"; };
+		A2B10122270AB2E300CAE013 /* AddCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddCardView.xib; sourceTree = "<group>"; };
 		A2CC655D27075C8900610C49 /* MyCardListEmptyCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCardListEmptyCollectionViewCell.xib; sourceTree = "<group>"; };
 		A2CC65612707622D00610C49 /* MyCardListEmptyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardListEmptyCollectionViewCell.swift; sourceTree = "<group>"; };
 		A2CC65632708229C00610C49 /* MyCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCardView.xib; sourceTree = "<group>"; };
@@ -208,8 +209,7 @@
 		A2CC65762708DAD800610C49 /* CardBookCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardBookCollectionViewCell.xib; sourceTree = "<group>"; };
 		A2CC65792708DAEA00610C49 /* CardBookEmptyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBookEmptyCollectionViewCell.swift; sourceTree = "<group>"; };
 		A2CC657B2708DAF900610C49 /* CardBookEmptyCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardBookEmptyCollectionViewCell.xib; sourceTree = "<group>"; };
-		A2CC657E2708E93900610C49 /* AddCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardViewController.swift; sourceTree = "<group>"; };
-		A2CC65802708E95000610C49 /* AddCardViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddCardViewController.storyboard; sourceTree = "<group>"; };
+		A2CC657E2708E93900610C49 /* AddCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardView.swift; sourceTree = "<group>"; };
 		A2CC65822708F06800610C49 /* CardBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBookViewModel.swift; sourceTree = "<group>"; };
 		A2CC65852708F17A00610C49 /* CardBookRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBookRepository.swift; sourceTree = "<group>"; };
 		A2D875DE26EE295C00ED5949 /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
@@ -403,9 +403,9 @@
 		A2CC657D2708E90400610C49 /* AddCard */ = {
 			isa = PBXGroup;
 			children = (
-				A2CC657E2708E93900610C49 /* AddCardViewController.swift */,
-				A2CC65802708E95000610C49 /* AddCardViewController.storyboard */,
+				A2CC657E2708E93900610C49 /* AddCardView.swift */,
 				A2B10120270AA80900CAE013 /* AddCardViewModel.swift */,
+				A2B10122270AB2E300CAE013 /* AddCardView.xib */,
 			);
 			path = AddCard;
 			sourceTree = "<group>";
@@ -933,17 +933,17 @@
 		CED16DEC26F3A4C30076565F /* MyCardList */ = {
 			isa = PBXGroup;
 			children = (
-				CE6BAB992704D6E30006D26B /* MyCardListViewController.storyboard */,
 				A2CC656D27088E9C00610C49 /* MyCardListCollectionViewCell.swift */,
+				A2CC656F27088ED100610C49 /* MyCardListCollectionViewCell.xib */,
 				CE6312BB26F9A04800B2E69B /* MyCardListDependencyContainer.swift */,
 				A2CC65612707622D00610C49 /* MyCardListEmptyCollectionViewCell.swift */,
+				A2CC655D27075C8900610C49 /* MyCardListEmptyCollectionViewCell.xib */,
+				CE6BAB992704D6E30006D26B /* MyCardListViewController.storyboard */,
 				CED16DF826F3A55D0076565F /* MyCardListViewController.swift */,
 				CE6312BF26F9AB4A00B2E69B /* MyCardListViewModel.swift */,
 				A2CC656727082EAB00610C49 /* MyCardView.swift */,
-				A2CC65732708AB2C00610C49 /* SkillLevelView.swift */,
-				A2CC656F27088ED100610C49 /* MyCardListCollectionViewCell.xib */,
-				A2CC655D27075C8900610C49 /* MyCardListEmptyCollectionViewCell.xib */,
 				A2CC65632708229C00610C49 /* MyCardView.xib */,
+				A2CC65732708AB2C00610C49 /* SkillLevelView.swift */,
 				A2CC65712708AAF900610C49 /* SkillLevelView.xib */,
 			);
 			path = MyCardList;
@@ -953,14 +953,14 @@
 			isa = PBXGroup;
 			children = (
 				A2CC657D2708E90400610C49 /* AddCard */,
-				CE6BAB952704D3C30006D26B /* CardBookViewController.storyboard */,
-				CED16DFA26F3A5690076565F /* CardBookViewController.swift */,
 				A2CC65752708DAD800610C49 /* CardBookCollectionViewCell.swift */,
 				A2CC65762708DAD800610C49 /* CardBookCollectionViewCell.xib */,
+				A2B1011E270AA1C000CAE013 /* CardBookDependencyContainer.swift */,
 				A2CC65792708DAEA00610C49 /* CardBookEmptyCollectionViewCell.swift */,
 				A2CC657B2708DAF900610C49 /* CardBookEmptyCollectionViewCell.xib */,
+				CE6BAB952704D3C30006D26B /* CardBookViewController.storyboard */,
+				CED16DFA26F3A5690076565F /* CardBookViewController.swift */,
 				A2CC65822708F06800610C49 /* CardBookViewModel.swift */,
-				A2B1011E270AA1C000CAE013 /* CardBookDependencyContainer.swift */,
 			);
 			path = CardBook;
 			sourceTree = "<group>";
@@ -1104,6 +1104,7 @@
 			files = (
 				CE4D4ECB27090D5200081A2B /* ColorSourceCollectionViewCell.xib in Resources */,
 				CE4D4E842707A91900081A2B /* Items.xcassets in Resources */,
+				A2B10123270AB2E300CAE013 /* AddCardView.xib in Resources */,
 				CE6BABA22704D9520006D26B /* SettingViewController.storyboard in Resources */,
 				CE4D4EE5270A248100081A2B /* TipInfoView.xib in Resources */,
 				CE6BABA52704DAFB0006D26B /* CardCreationViewController.storyboard in Resources */,
@@ -1117,13 +1118,11 @@
 				A2CC655E27075C8900610C49 /* MyCardListEmptyCollectionViewCell.xib in Resources */,
 				CE4D4ED7270A0CE200081A2B /* SkillSettingView.xib in Resources */,
 				CE8ECC0D270A63D900E5B038 /* SkillInputView.xib in Resources */,
-				CE4D4EA82707BC5000081A2B /* TMISettingViewController.storyboard in Resources */,
 				A2CC657C2708DAF900610C49 /* CardBookEmptyCollectionViewCell.xib in Resources */,
 				CE4D4E722707A11500081A2B /* CharacterCreationViewController.storyboard in Resources */,
 				A2CC657027088ED100610C49 /* MyCardListCollectionViewCell.xib in Resources */,
 				A2CC65642708229C00610C49 /* MyCardView.xib in Resources */,
 				CEB6583526EB15AC00C11F33 /* Images.xcassets in Resources */,
-				A2CC65812708E95000610C49 /* AddCardViewController.storyboard in Resources */,
 				CE6BAB982704D69F0006D26B /* CardDetailViewController.storyboard in Resources */,
 				CE4D4EC72709045500081A2B /* ImageSourceTypePickerView.xib in Resources */,
 				CE6BAB9E2704D7610006D26B /* WelcomeViewController.storyboard in Resources */,
@@ -1266,7 +1265,7 @@
 				CE4D4ED02709F1F200081A2B /* SplashDependencyContainer.swift in Sources */,
 				CE4D4EDF270A0FCF00081A2B /* TMISettingViewModel.swift in Sources */,
 				CE6312A826F8CB2F00B2E69B /* SignedInDependencyContainer.swift in Sources */,
-				A2CC657F2708E93900610C49 /* AddCardViewController.swift in Sources */,
+				A2CC657F2708E93900610C49 /* AddCardView.swift in Sources */,
 				CE63125226F5E19700B2E69B /* AccessTokenRepository.swift in Sources */,
 				CE4D4E982707B35100081A2B /* UIImageView+.swift in Sources */,
 				CEB6589326EC834900C11F33 /* Foundation+Decoder.swift in Sources */,
@@ -1323,7 +1322,6 @@
 				CE4D4E752707A71800081A2B /* Body.swift in Sources */,
 				CE6312B726F99F7000B2E69B /* CardDetailViewController.swift in Sources */,
 				A2CC65862708F17A00610C49 /* CardBookRepository.swift in Sources */,
-				CE4D4E942707B28200081A2B /* TMISettingViewController.swift in Sources */,
 				CEB6586826EB2C3700C11F33 /* SchemeNavigator.swift in Sources */,
 				CEB6588B26EC81B200C11F33 /* Decoder.swift in Sources */,
 				CEB6586C26EB2C7600C11F33 /* HomeTabBarController.swift in Sources */,

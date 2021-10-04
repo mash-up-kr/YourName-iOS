@@ -19,8 +19,9 @@ final class CardBookDependencyContainer {
         let viewModel = createCardBookViewModel()
         let addCardViewControllerFactory: () -> AddCardViewController = {
             let viewModel = AddCardViewModel()
-            let viewController = AddCardViewController.instantiate()
-            viewController.viewModel = viewModel
+            let contentView = AddCardView()
+            contentView.viewModel = viewModel
+            let viewController = PageSheetController(contentView: contentView)
             return viewController
         }
         viewController.viewModel = viewModel

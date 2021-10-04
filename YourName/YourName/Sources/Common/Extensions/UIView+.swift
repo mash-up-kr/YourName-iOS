@@ -86,8 +86,6 @@ extension UIView {
         } else {
             dashBorder.path = UIBezierPath(rect: bounds).cgPath
         }
-//        dashBorder.path = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius).cgPath
-//        dashBorder.path = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius).cgPath
         layer.addSublayer(dashBorder)
     }
 }
