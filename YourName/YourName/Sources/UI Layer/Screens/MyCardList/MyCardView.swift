@@ -9,18 +9,19 @@ import UIKit
 
 final class MyCardView: UIView, NibLoadable {
     
-    @IBOutlet weak var userProfileImage: UIImageView!
-    @IBOutlet weak var userNameLabel: UILabel!
-    @IBOutlet weak var userRoleLabel: UILabel!
-    @IBOutlet weak var skillStackView: UIStackView!
+    @IBOutlet private weak var userProfileImage: UIImageView!
+    @IBOutlet private weak var userNameLabel: UILabel!
+    @IBOutlet private weak var userRoleLabel: UILabel!
+    @IBOutlet private weak var skillStackView: UIStackView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         setupFromNib()
-        configureSkillProgressBar(level: 2)
+        configureSkill(level: 2) // 호출시점 수정필요
     }
-    // viewModel 봐서 수정필요
-    private func configureSkillProgressBar(level: Int...) {
+    
+    // viewModel생성 이후 수정필요
+    private func configureSkill(level: Int...) {
         skillStackView.subviews.forEach { subview in
             guard let subview = subview as? SkillLevelView else { return }
             subview.configureLevel(level: level.first ?? 0)

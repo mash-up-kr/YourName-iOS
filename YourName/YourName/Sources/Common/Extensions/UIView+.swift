@@ -82,16 +82,12 @@ extension UIView {
         dashBorder.frame = bounds
         dashBorder.fillColor = nil
         if cornerRadius > 0 {
-            print(cornerRadius, "radius > 0")
             dashBorder.path = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius).cgPath
         } else {
-            print(cornerRadius, "==0")
             dashBorder.path = UIBezierPath(rect: bounds).cgPath
         }
+//        dashBorder.path = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius).cgPath
+//        dashBorder.path = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius).cgPath
         layer.addSublayer(dashBorder)
     }
-}
-
-extension UIView {
-    
 }

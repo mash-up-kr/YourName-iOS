@@ -11,7 +11,5 @@ final class MyCardListCollectionViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.cornerRadius = 12
-        dashBorder()
     }
 }

@@ -19,7 +19,6 @@ final class MyCardListViewController: ViewController, Storyboarded {
     @IBOutlet private weak var pageControl: UIPageControl!
     var cardCreationViewControllerFactory: (() -> CardCreationViewController)!
     lazy var collectionViewWidth = ( 312 * self.myCardListCollectionview.bounds.height ) / 512
-    var datanumber = 1
     override func viewDidLoad() {
         super.viewDidLoad()
         myCardListCollectionview.decelerationRate = .fast
@@ -30,14 +29,8 @@ final class MyCardListViewController: ViewController, Storyboarded {
         self.navigationController?.navigationBar.isHidden = true
         
         bind()
-        pageControl.numberOfPages = datanumber
+        pageControl.numberOfPages = colors.count
         pageControl.currentPage = 0 // viewModel에서 받아오게 수정필요
-        
-        //        #warning("카드 탭 액션 트리거 가구현, 실구현 후 제거해야합니다.") // Booung
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
-            //            self.viewModel.tapCard(at: 3)
-            self.viewModel.tapCardCreation()
-        })
     }
     
     private func bind() {
@@ -79,19 +72,29 @@ final class MyCardListViewController: ViewController, Storyboarded {
     
     private let disposeBag = DisposeBag()
     @IBOutlet private weak var addCardButton: UIButton?
+    
+    let colors = [Palette.lightGreen,
+                  Palette.vilolet,
+                  Palette.skyBlue,
+                  Palette.orange,
+                  Palette.pink,
+                  Palette.yellow]
 }
 
 // rxdatasource로 교체필요
 extension MyCardListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        datanumber
+        colors.count
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(MyCardListCollectionViewCell.self,
                                                             for: indexPath) else { return .init() }
+        guard let myCardView = cell.contentView as? MyCardView else { return .init() }
+
+        myCardView.backgroundColor = colors[indexPath.row]
         return cell
     }
 }
@@ -108,8 +111,7 @@ extension MyCardListViewController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
         
-        if datanumber == 1 {
-            
+        if colors.count == 1 {
             let edges = UIScreen.main.bounds.width - collectionViewWidth
             return UIEdgeInsets(top: 0, left: edges / 2, bottom: 0, right: edges / 2)
         } else {
