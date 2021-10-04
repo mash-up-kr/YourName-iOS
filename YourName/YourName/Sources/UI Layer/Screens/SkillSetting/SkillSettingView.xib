@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,11 +15,22 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Wy-yr-SSr">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="650"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MP7-GF-PHv">
+                    <rect key="frame" x="24" y="798" width="366" height="56"/>
+                    <color key="backgroundColor" name="black1"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="56" id="RYu-5c-Eu1"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                    <state key="normal" title="입력 완료">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                </button>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Wy-yr-SSr">
+                    <rect key="frame" x="0.0" y="198" width="414" height="600"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="tf8-tu-aqO">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="230"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="tf8-tu-aqO">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="901"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WsV-OP-xZN">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="24"/>
@@ -61,6 +73,48 @@
                                         <constraint firstAttribute="height" constant="12" id="Xca-RL-DKt"/>
                                     </constraints>
                                 </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xys-Xi-ajH" customClass="SkillInputView" customModule="YourName" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="230" width="414" height="204"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="204" placeholder="YES" id="aLJ-Gf-9Dx"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SYx-9M-ClD">
+                                    <rect key="frame" x="0.0" y="434" width="414" height="12"/>
+                                    <color key="backgroundColor" name="lightGray2"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="12" id="TkL-rj-hLZ"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SWO-7w-qHE" customClass="SkillInputView" customModule="YourName" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="446" width="414" height="204"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="204" placeholder="YES" id="Crd-xD-KzP"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KDd-IZ-yRt">
+                                    <rect key="frame" x="0.0" y="650" width="414" height="12"/>
+                                    <color key="backgroundColor" name="lightGray2"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="12" id="Fg1-BC-wZM"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ohK-JN-yvS" customClass="SkillInputView" customModule="YourName" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="662" width="414" height="204"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="204" placeholder="YES" id="ine-xN-JyP"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uJ4-8G-MUX">
+                                    <rect key="frame" x="0.0" y="866" width="414" height="35"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="35" id="cfg-eN-A3m"/>
+                                    </constraints>
+                                </view>
                             </subviews>
                             <color key="backgroundColor" red="0.58072251080000004" green="0.066734083" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </stackView>
@@ -68,19 +122,25 @@
                     <constraints>
                         <constraint firstItem="tf8-tu-aqO" firstAttribute="bottom" secondItem="0Q6-hn-4Hq" secondAttribute="bottom" id="3nN-3e-hZ2"/>
                         <constraint firstItem="tf8-tu-aqO" firstAttribute="trailing" secondItem="0Q6-hn-4Hq" secondAttribute="trailing" id="8lu-zy-LtU"/>
-                        <constraint firstAttribute="height" constant="650" id="CTC-nt-tMV"/>
                         <constraint firstItem="tf8-tu-aqO" firstAttribute="bottom" secondItem="0Q6-hn-4Hq" secondAttribute="bottom" id="FQ2-og-un9"/>
                         <constraint firstItem="tf8-tu-aqO" firstAttribute="width" secondItem="gLA-GO-DzA" secondAttribute="width" id="Hrm-Kh-t62"/>
+                        <constraint firstAttribute="height" constant="600" id="Y94-fd-6ST"/>
+                        <constraint firstItem="tf8-tu-aqO" firstAttribute="leading" secondItem="0Q6-hn-4Hq" secondAttribute="leading" id="v0F-5w-gRh"/>
                         <constraint firstItem="0Q6-hn-4Hq" firstAttribute="top" secondItem="tf8-tu-aqO" secondAttribute="top" id="yHe-LW-FBj"/>
                     </constraints>
                     <viewLayoutGuide key="contentLayoutGuide" id="0Q6-hn-4Hq"/>
                     <viewLayoutGuide key="frameLayoutGuide" id="gLA-GO-DzA"/>
                 </scrollView>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="da9-de-oVr"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="6Wy-yr-SSr" secondAttribute="bottom" id="3dC-qD-mNi"/>
+                <constraint firstItem="MP7-GF-PHv" firstAttribute="top" secondItem="6Wy-yr-SSr" secondAttribute="bottom" id="3dC-qD-mNi"/>
+                <constraint firstItem="da9-de-oVr" firstAttribute="trailing" secondItem="MP7-GF-PHv" secondAttribute="trailing" constant="24" id="CFH-1u-EQL"/>
+                <constraint firstItem="MP7-GF-PHv" firstAttribute="leading" secondItem="da9-de-oVr" secondAttribute="leading" constant="24" id="DgW-G0-DQ2"/>
                 <constraint firstItem="6Wy-yr-SSr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Zkj-Wv-Ki3"/>
                 <constraint firstItem="6Wy-yr-SSr" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="fFH-pJ-Frw"/>
+                <constraint firstItem="da9-de-oVr" firstAttribute="bottom" secondItem="MP7-GF-PHv" secondAttribute="bottom" constant="8" id="lIy-fF-I7J"/>
                 <constraint firstItem="6Wy-yr-SSr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="lZc-We-U4c"/>
                 <constraint firstAttribute="trailing" secondItem="6Wy-yr-SSr" secondAttribute="trailing" id="yAb-ts-IkC"/>
             </constraints>
@@ -89,6 +149,9 @@
         </view>
     </objects>
     <resources>
+        <namedColor name="black1">
+            <color red="0.082352941176470587" green="0.082352941176470587" blue="0.082352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="lightGray2">
             <color red="0.95686274509803926" green="0.95686274509803926" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
