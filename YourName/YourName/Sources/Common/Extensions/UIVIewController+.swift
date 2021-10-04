@@ -86,7 +86,3 @@ extension UIViewController {
         })
     }
 }
-
-extension CGRect {
-    
-}

@@ -31,13 +31,8 @@ final class MyCardListViewController: ViewController, Storyboarded {
         
         bind()
         pageControl.numberOfPages = datanumber
-        pageControl.currentPage = 0 // viewModel에서 받아오게 수정필요
+        pageControl.currentPage = 0
         
-        //        #warning("카드 탭 액션 트리거 가구현, 실구현 후 제거해야합니다.") // Booung
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
-            //            self.viewModel.tapCard(at: 3)
-            self.viewModel.tapCardCreation()
-        })
     }
     
     private func bind() {

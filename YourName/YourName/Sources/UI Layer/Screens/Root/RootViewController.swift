@@ -14,7 +14,7 @@ final class RootViewController: ViewController {
     init(
         viewModel: RootViewModel,
         splashViewControllerFactory: @escaping () -> SplashViewController,
-        signInViewControllerFactory: @escaping () -> SignInViewController,
+        signInViewControllerFactory: @escaping () -> WelcomeViewController,
         homeTabBarControllerFactory: @escaping (AccessToken) -> HomeTabBarController
     ) {
         self.viewModel = viewModel
@@ -31,6 +31,7 @@ final class RootViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.backgroundColor = .white
         bind()
     }
     
@@ -57,7 +58,7 @@ final class RootViewController: ViewController {
     
     private let viewModel: RootViewModel
     private let splashViewControllerFactory: () -> SplashViewController
-    private let signInViewControllerFactory: () -> SignInViewController
+    private let signInViewControllerFactory: () -> WelcomeViewController
     private let homeTabBarControllerFactory: (AccessToken) -> HomeTabBarController
     private let disposeBag = DisposeBag()
     

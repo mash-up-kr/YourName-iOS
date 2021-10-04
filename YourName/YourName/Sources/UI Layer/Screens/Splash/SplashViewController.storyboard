@@ -15,18 +15,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Splash" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tsh-SV-NYX">
-                                <rect key="frame" x="181" y="437.5" width="52" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_meetup" translatesAutoresizingMaskIntoConstraints="NO" id="f56-v9-hJW">
+                                <rect key="frame" x="138" y="235.5" width="138" height="69"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="i3w-mH-T9C">
+                                <rect key="frame" x="103.5" y="344.5" width="207" height="207"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="i3w-mH-T9C" secondAttribute="height" id="KCe-fW-sE0"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" red="1" green="0.2527923882" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="tsh-SV-NYX" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="Xpp-3b-BGi"/>
-                            <constraint firstItem="tsh-SV-NYX" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="uYg-oH-ZOz"/>
+                            <constraint firstItem="i3w-mH-T9C" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="52J-bk-q10"/>
+                            <constraint firstItem="f56-v9-hJW" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="EAq-oB-jK6"/>
+                            <constraint firstItem="i3w-mH-T9C" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.5" id="ENR-qj-Nrh"/>
+                            <constraint firstItem="f56-v9-hJW" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="1/3" id="GeD-zc-okN"/>
+                            <constraint firstItem="i3w-mH-T9C" firstAttribute="top" secondItem="f56-v9-hJW" secondAttribute="bottom" constant="40" id="YmD-yl-eK0"/>
+                            <constraint firstItem="i3w-mH-T9C" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="oxu-Vq-hMv"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -35,4 +42,8 @@
             <point key="canvasLocation" x="-29" y="80"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo_meetup" width="147" height="69"/>
+        <image name="splash" width="186" height="212"/>
+    </resources>
 </document>
