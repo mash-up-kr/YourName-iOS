@@ -15,7 +15,7 @@ final class CardCreationViewController: ViewController, Storyboarded {
     
     var viewModel: CardCreationViewModel!
     var imageSourceTypePickerViewControllerFactory: (() -> ImageSourceTypePickerViewController)?
-    var characterCreationViewControllerFactory: (() -> CharacterCreationViewController)?
+    var characterSettingViewControllerFactory: (() -> CharacterSettingViewController)?
     var paletteViewControllerFactory: (() -> PaletteViewController)?
     var tmiSettingViewControllerFactory: (() -> TMISettingViewController)?
     var skillSettingViewControllerFactory: (() -> SkillSettingViewController)?
@@ -192,13 +192,19 @@ final class CardCreationViewController: ViewController, Storyboarded {
                 self?.navigate(viewController, action: navigation.action)
             })
             .disposed(by: disposeBag)
+        
+        viewModel.shouldDismiss.subscribe(onNext: { [weak self] in
+            self?.dismiss(animated: true, completion: nil)
+        })
+        .disposed(by: disposeBag)
     }
     
     private func createViewController(of destination: CardCreationDestination) -> UIViewController? {
         switch destination {
-        case .imageSourceTypePicker: return imageSourceTypePickerViewControllerFactory?()
+        case .imageSourceTypePicker:
+            return imageSourceTypePickerViewControllerFactory?()
         case .palette: return paletteViewControllerFactory?()
-        case .createCharacter: return characterCreationViewControllerFactory?()
+        case .createCharacter: return characterSettingViewControllerFactory?()
         case .settingSkill: return skillSettingViewControllerFactory?()
         case .settingTMI: return tmiSettingViewControllerFactory?()
         }

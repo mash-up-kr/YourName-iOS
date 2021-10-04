@@ -7,7 +7,25 @@
 
 import Foundation
 
+protocol ImageSourcePickerResponder: AnyObject {
+    func selectPhoto()
+    func selectCharacter()
+}
+
 final class ImageSourceTypePickerViewModel {
     
+    init(imageSourceResponder: ImageSourcePickerResponder) {
+        self.imageSourceResponder = imageSourceResponder
+    }
+    
+    func tapPhotoButton() {
+        imageSourceResponder.selectPhoto()
+    }
+    
+    func tapCreateCharacterButton() {
+        imageSourceResponder.selectCharacter()
+    }
+    
+    private let imageSourceResponder: ImageSourcePickerResponder
 }
 

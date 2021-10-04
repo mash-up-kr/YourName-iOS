@@ -33,6 +33,7 @@ final class CardCreationViewModel {
     // State
     let shouldHideClear = BehaviorRelay<Bool>(value: true)
     let shouldHideProfilePlaceholder = BehaviorRelay<Bool>(value: false)
+    let shouldDismiss = PublishRelay<Void>()
     let profileImageSource = BehaviorRelay<ImageSource?>(value: nil)
     let profileBackgroundColor = BehaviorRelay<ColorSource>(value: .monotone(Palette.black1))
     let name = BehaviorRelay<String>(value: .empty)
@@ -56,10 +57,6 @@ final class CardCreationViewModel {
     
     func tapProfileBackgroundSetting() {
         navigation.accept(.show(.palette))
-    }
-    
-    func tapCreatCharacter() {
-        navigation.accept(.show(.createCharacter))
     }
     
     func typeName(_ text: String) {
@@ -99,7 +96,18 @@ final class CardCreationViewModel {
     }
     
     func tapCompletion() {
+        shouldDismiss.accept(Void())
+    }
+    
+}
+extension CardCreationViewModel: ImageSourcePickerResponder {
+    
+    func selectPhoto() {
         
+    }
+    
+    func selectCharacter() {
+        navigation.accept(.show(.createCharacter))
     }
     
 }
