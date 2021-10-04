@@ -30,8 +30,8 @@ final class CardCreationViewModelTests: XCTestCase {
     func test_대표이미지_플레이스홀더를_클릭하면_대표이미지_선택화면을_표시합니다() {
         // given
         let testScheduler = TestScheduler(initialClock: 0)
-        let shouldShowImageSelectOptionObserver = testScheduler.createObserver(Void.self)
-        _ = sut.shouldShowImageSelectOption.subscribe(shouldShowImageSelectOptionObserver)
+        let navigationObserver = testScheduler.createObserver(CardCreationNavigation.self)
+        _ = sut.navigation.subscribe(navigationObserver)
         
         // when
         _ = testScheduler.createHotObservable([
@@ -40,12 +40,13 @@ final class CardCreationViewModelTests: XCTestCase {
         ])
         testScheduler.start()
         
+        
         //then
-        let shouldShowImageSelectOption: [Void] = shouldShowImageSelectOptionObserver.events.compactMap(\.value.element)
-        expect(shouldShowImageSelectOption).to(haveCount(1))
+        let navigations = navigationObserver.events.compactMap(\.value.element)
+        expect(navigations).to(equal([.show(.imageSourceTypePicker)]))
     }
     
-    func test_배경색설정버튼을_클릭하면_배경색설정_화면으로_네비게이션합니다() {
+    func test_배경색설정버튼을_클릭하면_배경색설정_페이지시트를_표시합니다() {
         // given
         let testScheduler = TestScheduler(initialClock: 0)
         let navigationObserver = testScheduler.createObserver(CardCreationNavigation.self)
@@ -60,7 +61,7 @@ final class CardCreationViewModelTests: XCTestCase {
         
         //then
         let navigations = navigationObserver.events.compactMap(\.value.element)
-        expect(navigations).to(equal([.present(.profileBackgroundPicker)]))
+        expect(navigations).to(equal([.show(.palette)]))
     }
     
     func test_이름을_타이핑하면_상태에_반영됩니다() {
@@ -125,7 +126,7 @@ final class CardCreationViewModelTests: XCTestCase {
         
         //then
         let navigations = navigationObserver.events.compactMap(\.value.element)
-        expect(navigations).to(equal([.present(.settingSkill)]))
+        expect(navigations).to(equal([.show(.settingSkill)]))
     }
     
     func test_성격_타이틀을_타이핑하면_상태에_반영됩니다() {
@@ -186,7 +187,7 @@ final class CardCreationViewModelTests: XCTestCase {
         
         //then
         let navigations = navigationObserver.events.compactMap(\.value.element)
-        expect(navigations).to(equal([.present(.settingTMI)]))
+        expect(navigations).to(equal([.show(.settingTMI)]))
     }
     
     func test_About_Me를_타이핑하면_상태에_반영됩니다() {

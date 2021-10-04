@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 final class PaletteDependencyContainer {
     
     init(cardCreationDependencyContainer: CardCreationDependencyContainer) {
@@ -14,6 +15,24 @@ final class PaletteDependencyContainer {
     }
     
     func createPaletteViewController() -> PaletteViewController {
-        return PaletteViewController()
+        let view = createPaletteView()
+        return PaletteViewController(contentView: view)
+    }
+    
+    private func createPaletteView() -> PaletteView {
+        let view = PaletteView()
+        view.viewModel = createPaletteViewModel()
+        return view
+    }
+    
+    private func createPaletteViewModel() -> PaletteViewModel {
+        let repository = createProfileColorRepository()
+        let viewModel = PaletteViewModel(profileColorRepository: repository)
+        return viewModel
+    }
+    
+    private func createProfileColorRepository() -> ProfileColorRepository {
+        let mockProfileColorRepository = MockProfileColorRepository()
+        return mockProfileColorRepository
     }
 }

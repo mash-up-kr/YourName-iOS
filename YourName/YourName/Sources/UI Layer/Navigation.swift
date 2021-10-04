@@ -7,10 +7,10 @@
 
 import Foundation
 
-
 enum NavigationAction: Equatable {
-    case present
+    case present(animated: Bool = true)
     case push
+    case show(withDimmed: Bool = false)
 }
 
 struct Navigation<Destination: Equatable>: Equatable {
@@ -19,11 +19,16 @@ struct Navigation<Destination: Equatable>: Equatable {
 }
 
 extension Navigation {
-    static func present(_ destination: Destination) -> Self {
-        return Navigation(action: .present, destination: destination)
+    
+    static func present(_ destination: Destination, animated: Bool = true) -> Self {
+        return Navigation(action: .present(animated: animated), destination: destination)
     }
     
     static func push(_ destination: Destination) -> Self {
         return Navigation(action: .push, destination: destination)
+    }
+    
+    static func show(_ destination: Destination, withDimmed dimmed: Bool = true) -> Self {
+        return Navigation(action: .show(withDimmed: dimmed), destination: destination)
     }
 }

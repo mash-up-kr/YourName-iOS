@@ -33,6 +33,7 @@ final class MyCardListEmptyCollectionViewCell: UICollectionViewCell {
                 scheduler: MainScheduler.instance
             )
             .bind {
+                #warning("⚠️ TODO: 삭제") // 송서영
                 print("button tapped")
             }
             .disposed(by: disposeBag)

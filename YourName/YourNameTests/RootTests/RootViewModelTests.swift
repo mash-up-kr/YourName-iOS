@@ -44,7 +44,7 @@ final class RootViewModelTests: XCTestCase {
         
         // then
         let navigations = observer.events.compactMap(\.value.element)
-        expect(navigations).to(equal([.present(.splash), .present(.signedIn(with: expectedAccessToken))]))
+        expect(navigations).to(equal([.present(.splash, animated: false), .present(.signedIn(with: expectedAccessToken), animated: false)]))
     }
     
     func test_로그인_실패시_splash_화면이_뜬_뒤에_로그인화면으로_네비게이션_합니다() {
@@ -62,6 +62,6 @@ final class RootViewModelTests: XCTestCase {
         
         // then
         let navigations = observer.events.compactMap(\.value.element)
-        expect(navigations).to(equal([.present(.splash), .present(.signedOut)]))
+        expect(navigations).to(equal([.present(.splash, animated: false), .present(.signedOut)]))
     }
 }

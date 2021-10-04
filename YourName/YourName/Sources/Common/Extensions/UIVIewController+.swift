@@ -8,17 +8,33 @@
 import UIKit
 
 extension UIViewController {
+    static var rootViewController: UIViewController? {
+        return UIApplication.shared.keyWindow?.rootViewController
+    }
+    
+    static func visableViewController(_ viewController: UIViewController? = UIViewController.rootViewController) -> UIViewController? {
+        if let tabBarController = viewController as? UITabBarController {
+            return visableViewController(tabBarController.selectedViewController)
+        } else if let naviController = viewController as? UINavigationController {
+            return visableViewController(naviController.visibleViewController)
+        } else if let presentedController = viewController?.presentedViewController {
+            return visableViewController(presentedController)
+        }
+        return viewController
+    }
+}
+extension UIViewController {
     func navigate(_ viewController: UIViewController, action: NavigationAction) {
         switch action {
-        case .present:
+        case .present(let animated):
             if let presentedViewController = self.presentedViewController {
                 presentedViewController.dismiss(animated: false, completion: { [weak self] in
                     viewController.modalPresentationStyle = .fullScreen
-                    self?.present(viewController, animated: true, completion: nil)
+                    self?.present(viewController, animated: animated, completion: nil)
                 })
             } else {
                 viewController.modalPresentationStyle = .fullScreen
-                self.present(viewController, animated: true, completion: nil)
+                self.present(viewController, animated: animated, completion: nil)
             }
             
         case .push:
@@ -29,6 +45,44 @@ extension UIViewController {
             } else {
                 self.navigationController?.pushViewController(viewController, animated: true)
             }
+            
+        case .show(let isDimmed):
+            guard let underlaiedViewController = UIViewController.visableViewController() else { return }
+            let overlaiedViewController = viewController
+            overlaiedViewController.modalPresentationStyle = .overFullScreen
+            let completion: (() -> Void)?
+            if isDimmed {
+                let dimmedColor = Palette.black1.withAlphaComponent(0.6)
+                let dimmedView = UIView().then {
+                    $0.layer.shouldRasterize = true
+                    $0.backgroundColor = Palette.black1.withAlphaComponent(0.6)
+                    $0.frame = underlaiedViewController.view.bounds
+                }
+                overlaiedViewController.view.backgroundColor = .clear
+                underlaiedViewController.view.addSubview(dimmedView)
+                completion = { [weak dimmedView, weak overlaiedViewController] in
+                    dimmedView?.removeFromSuperview()
+                    overlaiedViewController?.view.backgroundColor = dimmedColor
+                }
+            } else {
+                completion = nil
+            }
+            underlaiedViewController.present(overlaiedViewController, animated: true, completion: completion)
         }
+    }
+    
+    private func underlayDimmedView(on underlaiedViewController: UIViewController, overlaiedViewController: UIViewController) {
+        let dimmedColor = Palette.black1.withAlphaComponent(0.6)
+        let dimmedView = UIView().then {
+            $0.layer.shouldRasterize = true
+            $0.backgroundColor = Palette.black1.withAlphaComponent(0.6)
+            $0.frame = underlaiedViewController.view.bounds
+        }
+        overlaiedViewController.view.backgroundColor = .clear
+        underlaiedViewController.view.addSubview(dimmedView)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: { [weak dimmedView] in
+            dimmedView?.removeFromSuperview()
+            underlaiedViewController.view.backgroundColor = dimmedColor
+        })
     }
 }

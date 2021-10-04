@@ -16,19 +16,19 @@ final class RootDependencyContainer {
         #warning("⚠️ TODO: FakeAccessTokenRepository를 나중에 실제 오브젝트로 대체해야합니다.") // Booung
         self.rootViewModel = RootViewModel()
         let fakeAccessTokenRepository = FakeAccessTokenRepository()
-        // fakeAccessTokenRepository.hasAccessToken = false
+        fakeAccessTokenRepository.hasAccessToken = false
         // hasAccessToken - 신규로그인의 경우에는 true, 자동로그인의 경우에는 false로 테스트할 수 있습니다.
         self.accessTokenRepository = fakeAccessTokenRepository
     }
     
-    // Root Factory
     func createRootViewController() -> RootViewController {
         let splashViewControllerFactory: () -> SplashViewController = {
-            self.createSplashViewController()
+            let dependencyContainer = self.createSplashDependencyContainer()
+            return dependencyContainer.createSplashViewController()
         }
-        let signInViewControllerFactory: () -> SignInViewController = {
+        let signInViewControllerFactory: () -> WelcomeViewController = {
             let dependencyContainer = self.createSignedOutDependencyContainer()
-            return dependencyContainer.createSignInViewController()
+            return dependencyContainer.createWelcomeViewController()
         }
         let homeTabBarControllerFactory: (AccessToken) -> HomeTabBarController = { accessToken in
             let dependencyContainer = self.createSignedInDependencyContainer(accessToken: accessToken)
@@ -43,18 +43,11 @@ final class RootDependencyContainer {
         )
     }
     
-    // Splash Factory
-    private func createSplashViewController() -> SplashViewController {
-        let viewModel = SplashViewModel(
-            accessTokenRepository: accessTokenRepository,
-            authenticationDelegate: rootViewModel
-        )
-        let viewController = SplashViewController.instantiate()
-        viewController.viewModel = viewModel
-        return viewController
+    // 👼 Child Dependency Container
+    private func createSplashDependencyContainer() -> SplashDependencyContainer {
+        return SplashDependencyContainer(rootDependencyContainer: self)
     }
     
-    // Child Dependency Container Factory
     private func createSignedInDependencyContainer(accessToken: AccessToken) -> SignedInDependencyContainer {
         return SignedInDependencyContainer(accessToken: accessToken, rootDependencyContainer: self)
     }
