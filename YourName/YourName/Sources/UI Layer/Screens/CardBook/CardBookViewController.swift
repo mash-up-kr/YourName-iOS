@@ -64,9 +64,8 @@ extension CardBookViewController {
         }
     }
     private func configureCollectionView() {
-        cardBookCollectionView.register(UINib(nibName: "CardBookEmptyCollectionViewCell",
-                                              bundle: Bundle(path: "CardBookEmptyCollectionViewCell")),
-                                        forCellWithReuseIdentifier: "CardBookEmptyCollectionViewCell")
+        cardBookCollectionView.registerWithNib(CardBookCollectionViewCell.self)
+        cardBookCollectionView.registerWithNib(CardBookEmptyCollectionViewCell.self)
     }
 }
 
@@ -78,7 +77,7 @@ extension CardBookViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(CardBookEmptyCollectionViewCell.self, for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(CardBookCollectionViewCell.self, for: indexPath)
         else { return .init() }
         
         return cell
