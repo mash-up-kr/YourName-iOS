@@ -106,8 +106,8 @@
 		CE6BABAF2704EE9C0006D26B /* UICollectionView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6BABAE2704EE9C0006D26B /* UICollectionView+.swift */; };
 		CE6D1480270AF04500AF4C5C /* TipInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6D147E270AF04400AF4C5C /* TipInfoView.swift */; };
 		CE6D1481270AF04500AF4C5C /* TipInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6D147F270AF04400AF4C5C /* TipInfoView.xib */; };
-		CE74D356270A8B1200BF36C9 /* CharacterCreationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE74D355270A8B1200BF36C9 /* CharacterCreationView.xib */; };
-		CE74D358270A8B3200BF36C9 /* CharacterCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74D357270A8B3200BF36C9 /* CharacterCreationView.swift */; };
+		CE74D356270A8B1200BF36C9 /* CharacterSettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE74D355270A8B1200BF36C9 /* CharacterSettingView.xib */; };
+		CE74D358270A8B3200BF36C9 /* CharacterSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74D357270A8B3200BF36C9 /* CharacterSettingView.swift */; };
 		CE8ECC0B270A635C00E5B038 /* SkillInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8ECC0A270A635C00E5B038 /* SkillInputView.swift */; };
 		CE8ECC0D270A63D900E5B038 /* SkillInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8ECC0C270A63D900E5B038 /* SkillInputView.xib */; };
 		CEB6582C26EB15A600C11F33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6582B26EB15A600C11F33 /* AppDelegate.swift */; };
@@ -277,8 +277,8 @@
 		CE6BABAE2704EE9C0006D26B /* UICollectionView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+.swift"; sourceTree = "<group>"; };
 		CE6D147E270AF04400AF4C5C /* TipInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipInfoView.swift; sourceTree = "<group>"; };
 		CE6D147F270AF04400AF4C5C /* TipInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TipInfoView.xib; sourceTree = "<group>"; };
-		CE74D355270A8B1200BF36C9 /* CharacterCreationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterCreationView.xib; sourceTree = "<group>"; };
-		CE74D357270A8B3200BF36C9 /* CharacterCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCreationView.swift; sourceTree = "<group>"; };
+		CE74D355270A8B1200BF36C9 /* CharacterSettingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterSettingView.xib; sourceTree = "<group>"; };
+		CE74D357270A8B3200BF36C9 /* CharacterSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSettingView.swift; sourceTree = "<group>"; };
 		CE8ECC0A270A635C00E5B038 /* SkillInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillInputView.swift; sourceTree = "<group>"; };
 		CE8ECC0C270A63D900E5B038 /* SkillInputView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SkillInputView.xib; sourceTree = "<group>"; };
 		CEB6582826EB15A600C11F33 /* YourName.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YourName.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -390,9 +390,9 @@
 			isa = PBXGroup;
 			children = (
 				CE4D4E872707AE3800081A2B /* CharacterCreationDependencyContainer.swift */,
-				CE74D357270A8B3200BF36C9 /* CharacterCreationView.swift */,
+				CE74D357270A8B3200BF36C9 /* CharacterSettingView.swift */,
 				CE4D4E852707AE1700081A2B /* CharacterSettingViewModel.swift */,
-				CE74D355270A8B1200BF36C9 /* CharacterCreationView.xib */,
+				CE74D355270A8B1200BF36C9 /* CharacterSettingView.xib */,
 			);
 			path = CharacterCreation;
 			sourceTree = "<group>";
@@ -418,8 +418,8 @@
 			children = (
 				CE4D4EA12707BBBA00081A2B /* TMISettingDependencyContainer.swift */,
 				CE4D4EDC270A0F9900081A2B /* TMISettingView.swift */,
-				CE4D4EE0270A100B00081A2B /* TMISettingView.xib */,
 				CE4D4EDE270A0FCF00081A2B /* TMISettingViewModel.swift */,
+				CE4D4EE0270A100B00081A2B /* TMISettingView.xib */,
 			);
 			path = TMISetting;
 			sourceTree = "<group>";
@@ -1067,7 +1067,7 @@
 				A2CC655E27075C8900610C49 /* MyCardListEmptyCollectionViewCell.xib in Resources */,
 				CE4D4ED7270A0CE200081A2B /* SkillSettingView.xib in Resources */,
 				CE8ECC0D270A63D900E5B038 /* SkillInputView.xib in Resources */,
-				CE74D356270A8B1200BF36C9 /* CharacterCreationView.xib in Resources */,
+				CE74D356270A8B1200BF36C9 /* CharacterSettingView.xib in Resources */,
 				A2CC657027088ED100610C49 /* MyCardListCollectionViewCell.xib in Resources */,
 				A2CC65642708229C00610C49 /* MyCardView.xib in Resources */,
 				CEB6583526EB15AC00C11F33 /* Images.xcassets in Resources */,
@@ -1249,7 +1249,7 @@
 				CEB6587726EB2CFE00C11F33 /* HomeViewModel.swift in Sources */,
 				CEFA037A26EFB76D00D12AAB /* SnapshotService.swift in Sources */,
 				CE4D4E8E2707AF6E00081A2B /* FakeCharacterItemRepository.swift in Sources */,
-				CE74D358270A8B3200BF36C9 /* CharacterCreationView.swift in Sources */,
+				CE74D358270A8B3200BF36C9 /* CharacterSettingView.swift in Sources */,
 				CE6312CC26F9B4FC00B2E69B /* MockMyCardRepository.swift in Sources */,
 				CEB6587D26EC80BF00C11F33 /* DataTask.swift in Sources */,
 				CE6BABA92704DB2A0006D26B /* CardCreationDependencyContainer.swift in Sources */,
