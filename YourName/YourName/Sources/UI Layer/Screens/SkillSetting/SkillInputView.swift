@@ -43,7 +43,8 @@ final class SkillInputView: UIView, NibLoadable {
             levelUpButton.rx.tap.map { +1 },
             levelDownButton.rx.tap.map { -1 }
         ).subscribe(onNext: { [weak self] changes in
-            self?.level += changes
+            let newLv = (self?.level ?? 0) + changes
+            self?.level = min(max(newLv, 0), 10)
         }).disposed(by: disposeBag)
         
         levelRelay.distinctUntilChanged()
@@ -65,8 +66,8 @@ final class SkillInputView: UIView, NibLoadable {
     private let disposeBag = DisposeBag()
     
     fileprivate let levelRelay = BehaviorRelay<Int>(value: 0)
-    @IBOutlet fileprivate weak var skillNameField: UITextField?
     
+    @IBOutlet fileprivate weak var skillNameField: UITextField?
     @IBOutlet private weak var titleLabel: UILabel?
     @IBOutlet private weak var gageStackView: UIStackView?
     @IBOutlet private weak var levelDownButton: UIButton?
