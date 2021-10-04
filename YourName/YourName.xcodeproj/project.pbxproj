@@ -14,6 +14,7 @@
 		A2B1011F270AA1C000CAE013 /* CardBookDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B1011E270AA1C000CAE013 /* CardBookDependencyContainer.swift */; };
 		A2B10121270AA80900CAE013 /* AddCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B10120270AA80900CAE013 /* AddCardViewModel.swift */; };
 		A2B10123270AB2E300CAE013 /* AddCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2B10122270AB2E300CAE013 /* AddCardView.xib */; };
+		A2B10127270AD44C00CAE013 /* ObservableType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B10126270AD44C00CAE013 /* ObservableType+.swift */; };
 		A2CC655E27075C8900610C49 /* MyCardListEmptyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2CC655D27075C8900610C49 /* MyCardListEmptyCollectionViewCell.xib */; };
 		A2CC65622707622D00610C49 /* MyCardListEmptyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CC65612707622D00610C49 /* MyCardListEmptyCollectionViewCell.swift */; };
 		A2CC65642708229C00610C49 /* MyCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2CC65632708229C00610C49 /* MyCardView.xib */; };
@@ -195,6 +196,7 @@
 		A2B1011E270AA1C000CAE013 /* CardBookDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBookDependencyContainer.swift; sourceTree = "<group>"; };
 		A2B10120270AA80900CAE013 /* AddCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardViewModel.swift; sourceTree = "<group>"; };
 		A2B10122270AB2E300CAE013 /* AddCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddCardView.xib; sourceTree = "<group>"; };
+		A2B10126270AD44C00CAE013 /* ObservableType+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+.swift"; sourceTree = "<group>"; };
 		A2CC655D27075C8900610C49 /* MyCardListEmptyCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCardListEmptyCollectionViewCell.xib; sourceTree = "<group>"; };
 		A2CC65612707622D00610C49 /* MyCardListEmptyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardListEmptyCollectionViewCell.swift; sourceTree = "<group>"; };
 		A2CC65632708229C00610C49 /* MyCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCardView.xib; sourceTree = "<group>"; };
@@ -900,6 +902,7 @@
 			children = (
 				CEB6589B26EC988F00C11F33 /* ObserverType+.swift */,
 				A2B1011C270A9FFE00CAE013 /* Reactive+.swift */,
+				A2B10126270AD44C00CAE013 /* ObservableType+.swift */,
 			);
 			path = Rx;
 			sourceTree = "<group>";
@@ -1261,6 +1264,7 @@
 				A2CC65742708AB2C00610C49 /* SkillLevelView.swift in Sources */,
 				CE63123A26F59C7800B2E69B /* RootViewController.swift in Sources */,
 				CE6312AA26F8CB2F00B2E69B /* RootDependencyContainer.swift in Sources */,
+				A2B10127270AD44C00CAE013 /* ObservableType+.swift in Sources */,
 				CE4D4EC3270902FC00081A2B /* ImageSourcePickerViewModel.swift in Sources */,
 				CE4D4ED02709F1F200081A2B /* SplashDependencyContainer.swift in Sources */,
 				CE4D4EDF270A0FCF00081A2B /* TMISettingViewModel.swift in Sources */,
