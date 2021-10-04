@@ -13,12 +13,15 @@ final class CharacterCreationDependencyContainer {
         
     }
     
-    func createCharacterCreationViewController() -> CharacterCreationViewController {
-        let characterItemRepository = createCharacterItemRepository()
-        let viewModel = CharacterCreationViewModel(characterItemRepository: characterItemRepository)
-        let viewController = CharacterCreationViewController.instantiate()
-        viewController.viewModel = viewModel
-        return viewController
+    func createCharacterSettingViewController() -> CharacterSettingViewController {
+        let view = CharacterSettingView()
+        view.viewModel = createCharaterSettingViewModel()
+        return PageSheetController(contentView: view)
+    }
+    
+    private func createCharaterSettingViewModel() -> CharacterSettingViewModel {
+        let repository = createCharacterItemRepository()
+        return CharacterSettingViewModel(characterItemRepository: repository)
     }
     
     private func createCharacterItemRepository() -> CharacterItemRepository {

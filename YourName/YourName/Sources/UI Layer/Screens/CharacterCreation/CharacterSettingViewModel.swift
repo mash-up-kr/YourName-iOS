@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class CharacterCreationViewModel {
+final class CharacterSettingViewModel {
     
     init(characterItemRepository: CharacterItemRepository) {
         self.characterItemRepository = characterItemRepository
