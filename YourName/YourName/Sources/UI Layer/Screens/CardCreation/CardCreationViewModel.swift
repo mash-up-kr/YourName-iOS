@@ -34,7 +34,7 @@ final class CardCreationViewModel {
     let shouldHideClear = BehaviorRelay<Bool>(value: true)
     let shouldHideProfilePlaceholder = BehaviorRelay<Bool>(value: false)
     let profileImageSource = BehaviorRelay<ImageSource?>(value: nil)
-    let profileBackgroundColor = BehaviorRelay<ColorSource>(value: .gradient([Palette.yellow, Palette.lightGreen, Palette.skyBlue]))
+    let profileBackgroundColor = BehaviorRelay<ColorSource>(value: .monotone(Palette.black1))
     let name = BehaviorRelay<String>(value: .empty)
     let role = BehaviorRelay<String>(value: .empty)
     let personalityTitle = BehaviorRelay<String>(value: .empty)
