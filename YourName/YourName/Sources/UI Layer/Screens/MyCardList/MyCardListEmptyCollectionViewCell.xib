@@ -38,14 +38,14 @@
                         <color key="textColor" name="gray2"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jrh-f7-Vva">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jrh-f7-Vva">
                         <rect key="frame" x="144" y="379.5" width="40" height="40"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="40" id="GEl-zT-Qn7"/>
                             <constraint firstAttribute="width" secondItem="Jrh-f7-Vva" secondAttribute="height" multiplier="1:1" id="fqX-cg-SQP"/>
                         </constraints>
-                        <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" image="btn_add_gray"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" image="btn_add_gray"/>
                     </button>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

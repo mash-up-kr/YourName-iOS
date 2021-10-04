@@ -11,12 +11,16 @@ import RxCocoa
 
 final class MyCardListEmptyCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet private weak var createCardButton: UIButton!
-    private let disposeBag = DisposeBag()
+    @IBOutlet weak var createCardButton: UIButton!
+    private(set) var disposeBag = DisposeBag()
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        bind()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disposeBag = .init()
     }
     
     override func layoutSubviews() {
@@ -24,19 +28,4 @@ final class MyCardListEmptyCollectionViewCell: UICollectionViewCell {
         self.layer.cornerRadius = 12
         dashBorder()
     }
-    
-    private func bind() {
-        createCardButton.rx.tap
-            .throttle(
-                .milliseconds(400),
-                latest: false,
-                scheduler: MainScheduler.instance
-            )
-            .bind {
-                #warning("⚠️ TODO: 삭제") // 송서영
-                print("button tapped")
-            }
-            .disposed(by: disposeBag)
-    }
-    
 }
