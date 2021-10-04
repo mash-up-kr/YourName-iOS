@@ -9,9 +9,9 @@ import Foundation
 import RxRelay
 
 enum CardCreationDestination: Equatable {
-    case profileBackgroundPicker
-    case imageSourcePicker
+    case imageSourceTypePicker
     case createCharacter
+    case palette
     case settingSkill
     case settingTMI
 }
@@ -34,27 +34,32 @@ final class CardCreationViewModel {
     let shouldHideClear = BehaviorRelay<Bool>(value: true)
     let shouldHideProfilePlaceholder = BehaviorRelay<Bool>(value: false)
     let profileImageSource = BehaviorRelay<ImageSource?>(value: nil)
-    let profileBackgroundColor = BehaviorRelay<ColorSource>(value: .gradient([Palette.yellow, Palette.lightGreen, Palette.skyBlue]))
+    let profileBackgroundColor = BehaviorRelay<ColorSource>(value: .monotone(Palette.black1))
     let name = BehaviorRelay<String>(value: .empty)
     let role = BehaviorRelay<String>(value: .empty)
     let personalityTitle = BehaviorRelay<String>(value: .empty)
     let personalityKeyword = BehaviorRelay<String>(value: .empty)
     let aboutMe = BehaviorRelay<String>(value: .empty)
     
-    let shouldShowImageSelectOption = PublishRelay<Void>()
     let navigation = PublishRelay<CardCreationNavigation>()
     
     // Event
     func tapProfileClear() {
-        
+        profileImageSource.accept(nil)
+        shouldHideProfilePlaceholder.accept(false)
+        shouldHideClear.accept(true)
     }
     
     func tapProfilePlaceHolder() {
-        shouldShowImageSelectOption.accept(Void())
+        navigation.accept(.show(.imageSourceTypePicker))
     }
     
     func tapProfileBackgroundSetting() {
-        navigation.accept(.present(.profileBackgroundPicker))
+        navigation.accept(.show(.palette))
+    }
+    
+    func tapCreatCharacter() {
+        navigation.accept(.show(.createCharacter))
     }
     
     func typeName(_ text: String) {
@@ -66,7 +71,7 @@ final class CardCreationViewModel {
     }
    
     func tapSkillSetting() {
-        navigation.accept(.present(.settingSkill))
+        navigation.accept(.show(.settingSkill))
     }
     
     func selectContactType(_ type: ContactType, index: Int) {
@@ -86,7 +91,7 @@ final class CardCreationViewModel {
     }
     
     func tapTMISetting() {
-        navigation.accept(.present(.settingTMI))
+        navigation.accept(.show(.settingTMI))
     }
     
     func typeAboutMe(_ text: String) {

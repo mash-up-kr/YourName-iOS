@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Welcome View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="WelcomeViewController" customModule="YourName" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hHR-M6-qmc">
+                                <rect key="frame" x="63" y="96" width="288" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="jXg-f0-n2E"/>
+                                </constraints>
+                                <string key="text">다양한 내 모습을 소개하는 
+미츄를 만들고 친구와 공유하세요!</string>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <color key="textColor" name="black1"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="welcome_cards_preview" translatesAutoresizingMaskIntoConstraints="NO" id="CEJ-0X-HJj">
+                                <rect key="frame" x="57" y="254" width="300" height="240"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="dkf-gd-D5B"/>
+                                    <constraint firstAttribute="height" constant="240" id="yM0-GV-sf3"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="O5G-bE-mVy">
+                                <rect key="frame" x="24" y="700" width="366" height="120"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Z6-qq-8qU">
+                                        <rect key="frame" x="0.0" y="0.0" width="366" height="52"/>
+                                        <color key="backgroundColor" red="0.98431372549019602" green="0.90196078431372551" blue="0.30980392156862746" alpha="1" colorSpace="calibratedRGB"/>
+                                        <rect key="contentStretch" x="0.050000000000000003" y="0.0" width="1" height="1"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="52" id="plA-XN-YWM"/>
+                                        </constraints>
+                                        <inset key="titleEdgeInsets" minX="12" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="카카오로 시작하기" image="logo_kakao">
+                                            <color key="titleColor" name="black1"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="12"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4fG-mo-NbW">
+                                        <rect key="frame" x="0.0" y="68" width="366" height="52"/>
+                                        <color key="backgroundColor" name="black1"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="52" id="rr6-QA-vzO"/>
+                                        </constraints>
+                                        <inset key="titleEdgeInsets" minX="12" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Apple로 시작하기" image="logo_apple">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="12"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="hHR-M6-qmc" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="2IN-6n-SAG"/>
+                            <constraint firstItem="CEJ-0X-HJj" firstAttribute="top" secondItem="hHR-M6-qmc" secondAttribute="bottom" constant="78" id="3ky-uJ-oVk"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="O5G-bE-mVy" secondAttribute="trailing" constant="24" id="8wy-pf-NLX"/>
+                            <constraint firstItem="CEJ-0X-HJj" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="BM6-ED-NKK"/>
+                            <constraint firstItem="O5G-bE-mVy" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="24" id="Gb6-hj-7Xb"/>
+                            <constraint firstItem="hHR-M6-qmc" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="52" id="ogS-FB-Cww"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="O5G-bE-mVy" secondAttribute="bottom" constant="42" id="xTR-hZ-uaA"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="signInAppleButton" destination="4fG-mo-NbW" id="aAY-EQ-AAc"/>
+                        <outlet property="signInKakaoButton" destination="3Z6-qq-8qU" id="QXj-eY-cGC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3" y="80"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="logo_apple" width="24" height="24"/>
+        <image name="logo_kakao" width="23" height="20"/>
+        <image name="welcome_cards_preview" width="297" height="241"/>
+        <namedColor name="black1">
+            <color red="0.082352941176470587" green="0.082352941176470587" blue="0.082352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

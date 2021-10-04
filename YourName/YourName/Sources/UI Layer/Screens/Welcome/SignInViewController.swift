@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class SignInViewController: ViewController, Storyboarded {
+final class WelcomeViewController: ViewController, Storyboarded {
     
     var viewModel: SignInViewModel!
     

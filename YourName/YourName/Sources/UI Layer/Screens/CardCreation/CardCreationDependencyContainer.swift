@@ -17,6 +17,10 @@ final class CardCreationDependencyContainer {
         let viewModel = CardCreationViewModel()
         let viewContorller = CardCreationViewController.instantiate()
         viewContorller.viewModel = viewModel
+        viewContorller.imageSourceTypePickerViewControllerFactory = {
+            let dependencyContainer = self.createImageSourceDependencyContainer()
+            return dependencyContainer.createImageSourcePickerViewController()
+        }
         viewContorller.characterCreationViewControllerFactory = {
             let dependencyContainer = self.createCharacterCreationDependencyContainer()
             return dependencyContainer.createCharacterCreationViewController()
@@ -36,9 +40,13 @@ final class CardCreationDependencyContainer {
         return viewContorller
     }
     
-    // Child
+    // 👼 Child Dependency Container
     private func createCharacterCreationDependencyContainer() -> CharacterCreationDependencyContainer {
         return CharacterCreationDependencyContainer(cardCreationDependencyContainer: self)
+    }
+    
+    private func createImageSourceDependencyContainer() -> ImageSourceTypePickerDependencyContainer {
+        return ImageSourceTypePickerDependencyContainer(cardCreationDependencyContainer: self)
     }
     
     private func createPaletteDependencyContainer() -> PaletteDependencyContainer {
@@ -52,4 +60,5 @@ final class CardCreationDependencyContainer {
     private func createSkillSettingDependencyContainer() -> SkillSettingDependencyContainer {
         return SkillSettingDependencyContainer(cardCreationDependencyContainer: self)
     }
+    
 }

@@ -47,7 +47,7 @@ final class SignedInDependencyContainer {
         return viewController
     }
 
-    // Child Dependency Container Factory
+    // 👼 Child Dependency Container Factory
     private func createMyCardListDependencyContainer() -> MyCardListDependencyContainer {
         return MyCardListDependencyContainer(signedInDependencyContainer: self)
     }

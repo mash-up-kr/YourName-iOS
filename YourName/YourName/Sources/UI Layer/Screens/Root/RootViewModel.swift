@@ -18,10 +18,10 @@ typealias RootNavigation = Navigation<RootDestination>
 
 final class RootViewModel: AuthenticationDelegate {
     
-    let navigation = BehaviorRelay<RootNavigation>(value: .present(.splash))
+    let navigation = BehaviorRelay<RootNavigation>(value: .present(.splash, animated: false))
     
     func signIn(withAccessToken accessToken: AccessToken) {
-        navigation.accept(.present(.signedIn(with: accessToken)))
+        navigation.accept(.present(.signedIn(with: accessToken), animated: false))
     }
     
     func notSignIn() {
