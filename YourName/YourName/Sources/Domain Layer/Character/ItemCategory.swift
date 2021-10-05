@@ -23,8 +23,8 @@ extension ItemCategory: CustomStringConvertible {
         case .eye:              return "eye"
         case .nose:             return "nose"
         case .mouth:            return "mouth"
-        case .hairAccessory:    return "hairAccessory"
-        case .accessory:        return "accessory"
+        case .hairAccessory:    return "item1"
+        case .accessory:        return "item2"
         }
     }
     
@@ -41,8 +41,8 @@ extension ItemCategory: CustomStringConvertible {
         case .eye:              return 12
         case .nose:             return 6
         case .mouth:            return 12
-        case .hairAccessory:    return 12
-        case .accessory:        return 9
+        case .hairAccessory:    return 11
+        case .accessory:        return 8
         }
     }
     

@@ -109,6 +109,10 @@
 		CE8ECC0D270A63D900E5B038 /* SkillInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8ECC0C270A63D900E5B038 /* SkillInputView.xib */; };
 		CEA4D2D7270C9B1D008189FE /* CharacterEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4D2D6270C9B1D008189FE /* CharacterEntity.swift */; };
 		CEA4D2D9270CA54A008189FE /* ProfileColorRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4D2D8270CA54A008189FE /* ProfileColorRepository.swift */; };
+		CEA4D2DB270CB39F008189FE /* ItemForDisplay.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEA4D2DA270CB39F008189FE /* ItemForDisplay.xcassets */; };
+		CEA4D2DE270CB4BF008189FE /* ItemCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4D2DC270CB4BF008189FE /* ItemCategoryCollectionViewCell.swift */; };
+		CEA4D2DF270CB4BF008189FE /* ItemCategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEA4D2DD270CB4BF008189FE /* ItemCategoryCollectionViewCell.xib */; };
+		CEA4D2E1270CC378008189FE /* ItemCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4D2E0270CC378008189FE /* ItemCategoryView.swift */; };
 		CEB6582C26EB15A600C11F33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6582B26EB15A600C11F33 /* AppDelegate.swift */; };
 		CEB6583026EB15A600C11F33 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6582F26EB15A600C11F33 /* ViewController.swift */; };
 		CEB6583526EB15AC00C11F33 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEB6583426EB15AC00C11F33 /* Images.xcassets */; };
@@ -279,6 +283,10 @@
 		CE8ECC0C270A63D900E5B038 /* SkillInputView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SkillInputView.xib; sourceTree = "<group>"; };
 		CEA4D2D6270C9B1D008189FE /* CharacterEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterEntity.swift; sourceTree = "<group>"; };
 		CEA4D2D8270CA54A008189FE /* ProfileColorRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileColorRepository.swift; sourceTree = "<group>"; };
+		CEA4D2DA270CB39F008189FE /* ItemForDisplay.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ItemForDisplay.xcassets; sourceTree = "<group>"; };
+		CEA4D2DC270CB4BF008189FE /* ItemCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		CEA4D2DD270CB4BF008189FE /* ItemCategoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemCategoryCollectionViewCell.xib; sourceTree = "<group>"; };
+		CEA4D2E0270CC378008189FE /* ItemCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCategoryView.swift; sourceTree = "<group>"; };
 		CEB6582826EB15A600C11F33 /* YourName.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YourName.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB6582B26EB15A600C11F33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEB6582F26EB15A600C11F33 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -391,6 +399,9 @@
 				CE74D357270A8B3200BF36C9 /* CharacterSettingView.swift */,
 				CE4D4E852707AE1700081A2B /* CharacterSettingViewModel.swift */,
 				CE74D355270A8B1200BF36C9 /* CharacterSettingView.xib */,
+				CEA4D2DC270CB4BF008189FE /* ItemCategoryCollectionViewCell.swift */,
+				CEA4D2DD270CB4BF008189FE /* ItemCategoryCollectionViewCell.xib */,
+				CEA4D2E0270CC378008189FE /* ItemCategoryView.swift */,
 			);
 			path = CharacterCreation;
 			sourceTree = "<group>";
@@ -675,6 +686,7 @@
 				CEB6583426EB15AC00C11F33 /* Images.xcassets */,
 				CE2BB2C627074F4600936148 /* Colors.xcassets */,
 				CE4D4E832707A91900081A2B /* Items.xcassets */,
+				CEA4D2DA270CB39F008189FE /* ItemForDisplay.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1059,6 +1071,7 @@
 				CE6BABA02704D7BF0006D26B /* SplashViewController.storyboard in Resources */,
 				A2CC65722708AAF900610C49 /* SkillLevelView.xib in Resources */,
 				CE4D4EB72708E9F400081A2B /* PaletteView.xib in Resources */,
+				CEA4D2DF270CB4BF008189FE /* ItemCategoryCollectionViewCell.xib in Resources */,
 				CE6BAB9C2704D7170006D26B /* QuestViewController.storyboard in Resources */,
 				CEB6583826EB15AC00C11F33 /* LaunchScreen.storyboard in Resources */,
 				A2CC655E27075C8900610C49 /* MyCardListEmptyCollectionViewCell.xib in Resources */,
@@ -1066,6 +1079,7 @@
 				CE8ECC0D270A63D900E5B038 /* SkillInputView.xib in Resources */,
 				CE74D356270A8B1200BF36C9 /* CharacterSettingView.xib in Resources */,
 				A2CC657027088ED100610C49 /* MyCardListCollectionViewCell.xib in Resources */,
+				CEA4D2DB270CB39F008189FE /* ItemForDisplay.xcassets in Resources */,
 				A2CC65642708229C00610C49 /* MyCardView.xib in Resources */,
 				CEB6583526EB15AC00C11F33 /* Images.xcassets in Resources */,
 				CE6BAB982704D69F0006D26B /* CardDetailViewController.storyboard in Resources */,
@@ -1217,6 +1231,7 @@
 				CE4D4EB92708EA2200081A2B /* PaletteViewModel.swift in Sources */,
 				CEB6587926EC806F00C11F33 /* Connectable.swift in Sources */,
 				CE6D1480270AF04500AF4C5C /* TipInfoView.swift in Sources */,
+				CEA4D2DE270CB4BF008189FE /* ItemCategoryCollectionViewCell.swift in Sources */,
 				CEFA037D26EFBACE00D12AAB /* QRGenerater.swift in Sources */,
 				A2A5C83A26FB1A3D005D2849 /* AppKey.swift in Sources */,
 				CE8ECC0B270A635C00E5B038 /* SkillInputView.swift in Sources */,
@@ -1256,6 +1271,7 @@
 				CED16DFB26F3A5690076565F /* CardBookViewController.swift in Sources */,
 				CE6312D126F9BD6B00B2E69B /* Array+.swift in Sources */,
 				A2CC656827082EAB00610C49 /* MyCardView.swift in Sources */,
+				CEA4D2E1270CC378008189FE /* ItemCategoryView.swift in Sources */,
 				CEB6588426EC814C00C11F33 /* API.swift in Sources */,
 				CEB6588726EC817A00C11F33 /* HTTP.swift in Sources */,
 				A2A5C83826FB17D0005D2849 /* KakaoAuth.swift in Sources */,
