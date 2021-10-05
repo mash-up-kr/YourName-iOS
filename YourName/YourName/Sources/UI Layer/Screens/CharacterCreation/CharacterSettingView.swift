@@ -52,6 +52,8 @@ final class CharacterSettingView: UIView, NibLoadable {
     
     private let disposeBag = DisposeBag()
     
+    @IBOutlet private weak var itemsCollectionView: UICollectionView?
+    @IBOutlet private weak var categoriesCollectionView: UICollectionView?
     @IBOutlet private weak var bodyImageView: UIImageView?
     @IBOutlet private weak var eyeImageView: UIImageView?
     @IBOutlet private weak var noseImageView: UIImageView?
@@ -62,23 +64,4 @@ final class CharacterSettingView: UIView, NibLoadable {
 extension CharacterSettingView: PageSheetContentView {
     var title: String { "캐릭터 생성하기"}
     var isModal: Bool { true }
-}
-
-struct CharacterMeta: Equatable {
-    let bodyID: String
-    let eyeID: String
-    let noseID: String
-    let mouthID: String
-    let hairAccessoryID: String?
-    let etcAccesstoryID: String?
-}
-extension CharacterMeta {
-    static let `default` = CharacterMeta(
-        bodyID: "body_3",
-        eyeID: "eye_5",
-        noseID: "nose_5",
-        mouthID: "mouth_6",
-        hairAccessoryID: "hairAccessory_8",
-        etcAccesstoryID: "accessory_3"
-    )
 }

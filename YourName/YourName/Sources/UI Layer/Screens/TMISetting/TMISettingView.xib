@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,7 +14,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qrm-w8-0et">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="600"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="656"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ftS-WL-wpD">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="1725.5"/>
@@ -64,7 +63,7 @@
                                         <constraint firstItem="xtM-hw-d5T" firstAttribute="leading" secondItem="XnF-QA-f28" secondAttribute="leading" constant="24" id="v9r-ug-y3e"/>
                                     </constraints>
                                 </view>
-                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="nHh-Pf-TwD">
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="nHh-Pf-TwD">
                                     <rect key="frame" x="0.0" y="242" width="414" height="146"/>
                                     <color key="backgroundColor" systemColor="systemBlueColor"/>
                                     <constraints>
@@ -94,7 +93,7 @@
                                         <constraint firstAttribute="bottom" secondItem="ds3-ui-fI5" secondAttribute="bottom" constant="20" id="aOg-v0-PPP"/>
                                     </constraints>
                                 </view>
-                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="f1x-Jz-21s">
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="f1x-Jz-21s">
                                     <rect key="frame" x="0.0" y="438" width="414" height="159.5"/>
                                     <color key="backgroundColor" red="0.0" green="0.45882352939999999" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
@@ -122,7 +121,7 @@
                         <constraint firstItem="ftS-WL-wpD" firstAttribute="trailing" secondItem="8jF-o6-Pzd" secondAttribute="trailing" id="Kmk-iR-lXo"/>
                         <constraint firstItem="ftS-WL-wpD" firstAttribute="top" secondItem="8jF-o6-Pzd" secondAttribute="top" id="LYN-IN-rx4"/>
                         <constraint firstItem="ftS-WL-wpD" firstAttribute="width" secondItem="hTn-86-201" secondAttribute="width" id="nlx-g8-imN"/>
-                        <constraint firstAttribute="height" constant="600" id="oIm-XU-zVl"/>
+                        <constraint firstAttribute="height" constant="656" id="oIm-XU-zVl"/>
                         <constraint firstItem="ftS-WL-wpD" firstAttribute="leading" secondItem="8jF-o6-Pzd" secondAttribute="leading" id="ydd-Re-4kq"/>
                     </constraints>
                     <viewLayoutGuide key="contentLayoutGuide" id="8jF-o6-Pzd"/>
@@ -154,7 +153,7 @@
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemTealColor">
-            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

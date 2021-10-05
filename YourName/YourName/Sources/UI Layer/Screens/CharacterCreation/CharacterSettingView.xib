@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -13,9 +12,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CharacterSettingView" customModule="YourName" customModuleProvider="target">
             <connections>
                 <outlet property="bodyImageView" destination="fhk-kl-RkY" id="hKw-AI-DI8"/>
+                <outlet property="categoriesCollectionView" destination="Jrb-ir-dEX" id="lvd-eT-U8R"/>
                 <outlet property="etcAccessoryImageView" destination="Gf1-dZ-Vh1" id="180-Jy-Vhb"/>
                 <outlet property="eyeImageView" destination="OXx-sN-Cae" id="ILF-3k-Qsk"/>
                 <outlet property="hairAccessoryImageView" destination="eUR-mM-eN5" id="r1E-hB-78j"/>
+                <outlet property="itemsCollectionView" destination="suB-L3-0pf" id="oES-4J-IPH"/>
                 <outlet property="mouthImageView" destination="LfT-pA-z3e" id="86R-O8-tLu"/>
                 <outlet property="noseImageView" destination="5QV-Ka-7NW" id="75i-7l-Z37"/>
             </connections>
@@ -29,40 +30,40 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="weR-65-Fyw">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="349.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="348"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fhk-kl-RkY" userLabel="bodyImageView">
-                                    <rect key="frame" x="32" y="0.0" width="350" height="349.5"/>
+                                    <rect key="frame" x="33" y="0.0" width="348" height="348"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="fhk-kl-RkY" secondAttribute="height" id="agr-vT-4kE"/>
                                     </constraints>
                                 </imageView>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OXx-sN-Cae" userLabel="eye Image View">
-                                    <rect key="frame" x="32" y="0.0" width="350" height="349.5"/>
+                                    <rect key="frame" x="33" y="0.0" width="348" height="348"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="OXx-sN-Cae" secondAttribute="height" id="DIZ-fg-hbE"/>
                                     </constraints>
                                 </imageView>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5QV-Ka-7NW" userLabel="noseImageView">
-                                    <rect key="frame" x="32" y="0.0" width="350" height="349.5"/>
+                                    <rect key="frame" x="33" y="0.0" width="348" height="348"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="5QV-Ka-7NW" secondAttribute="height" id="MFk-Lb-2uf"/>
                                     </constraints>
                                 </imageView>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LfT-pA-z3e" userLabel="mouthImageView">
-                                    <rect key="frame" x="32" y="0.0" width="350" height="349.5"/>
+                                    <rect key="frame" x="33" y="0.0" width="348" height="348"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="LfT-pA-z3e" secondAttribute="height" id="7yw-WA-5Em"/>
                                     </constraints>
                                 </imageView>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eUR-mM-eN5" userLabel="accessoryImageView1">
-                                    <rect key="frame" x="32" y="0.0" width="350" height="349.5"/>
+                                    <rect key="frame" x="33" y="0.0" width="348" height="348"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="eUR-mM-eN5" secondAttribute="height" id="myV-RN-oHW"/>
                                     </constraints>
                                 </imageView>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Gf1-dZ-Vh1" userLabel="accessoryImageView2">
-                                    <rect key="frame" x="32" y="0.0" width="350" height="349.5"/>
+                                    <rect key="frame" x="33" y="0.0" width="348" height="348"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="Gf1-dZ-Vh1" secondAttribute="height" id="CKt-BS-1ko"/>
                                     </constraints>
@@ -101,8 +102,8 @@
                             </constraints>
                         </view>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Jrb-ir-dEX">
-                            <rect key="frame" x="0.0" y="349.5" width="414" height="64"/>
-                            <color key="backgroundColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <rect key="frame" x="0.0" y="348" width="414" height="64"/>
+                            <color key="backgroundColor" systemColor="systemGreenColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="64" id="7PX-ar-83n"/>
                             </constraints>
@@ -113,10 +114,23 @@
                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </collectionViewFlowLayout>
                         </collectionView>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xL4-Ok-ec0" userLabel="Item View">
-                            <rect key="frame" x="0.0" y="413.5" width="414" height="482.5"/>
-                            <color key="backgroundColor" systemColor="systemGreenColor"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mxH-Y8-ekz">
+                            <rect key="frame" x="0.0" y="412" width="414" height="1.5"/>
+                            <color key="backgroundColor" name="lightGray4"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1.5" id="KIW-Tb-pGT"/>
+                            </constraints>
                         </view>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="suB-L3-0pf">
+                            <rect key="frame" x="0.0" y="413.5" width="414" height="482.5"/>
+                            <color key="backgroundColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="h1D-pl-WfT">
+                                <size key="itemSize" width="128" height="128"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                        </collectionView>
                     </subviews>
                     <color key="backgroundColor" name="vilolet"/>
                 </stackView>
@@ -124,7 +138,7 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="xL4-Ok-ec0" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="379/704" id="1SK-d7-Rve"/>
+                <constraint firstItem="suB-L3-0pf" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="379/704" id="K0P-m1-LaQ"/>
                 <constraint firstAttribute="bottom" secondItem="AH7-b8-urX" secondAttribute="bottom" id="L1c-ZV-N72"/>
                 <constraint firstItem="AH7-b8-urX" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="dVk-96-ZC5"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="AH7-b8-urX" secondAttribute="trailing" id="y9X-CI-biu"/>
@@ -137,6 +151,9 @@
     <resources>
         <namedColor name="lightGray2">
             <color red="0.95686274509803926" green="0.95686274509803926" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="lightGray4">
+            <color red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="vilolet">
             <color red="0.88235294117647056" green="0.81960784313725488" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

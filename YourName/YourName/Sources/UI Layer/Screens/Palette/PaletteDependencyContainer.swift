@@ -32,7 +32,22 @@ final class PaletteDependencyContainer {
     }
     
     private func createProfileColorRepository() -> ProfileColorRepository {
-        let mockProfileColorRepository = MockProfileColorRepository()
-        return mockProfileColorRepository
+        let repository = FakeProfileColorRepository()
+        repository.stubedProfileColors = [
+            ProfileColor(colorSource: .monotone(Palette.vilolet), status: .selected),
+            ProfileColor(colorSource: .monotone(Palette.pink), status: .normal),
+            ProfileColor(colorSource: .monotone(Palette.orange), status: .normal),
+            ProfileColor(colorSource: .monotone(Palette.yellow), status: .normal),
+            ProfileColor(colorSource: .monotone(Palette.lightGreen), status: .normal),
+            ProfileColor(colorSource: .monotone(Palette.skyBlue), status: .normal),
+            ProfileColor(colorSource: .gradient([Palette.yellow, Palette.lightGreen, Palette.orange, Palette.pink, Palette.vilolet]), status: .locked),
+            ProfileColor(colorSource: .gradient([Palette.skyBlue, Palette.pink, Palette.yellow]), status: .normal),
+        ]
+        return repository
+    }
+    
+    private func createColorSourceRepository() -> ColorSourceRepository {
+        let mockColorSourceRepository = MockColorSourceRepository()
+        return mockColorSourceRepository
     }
 }

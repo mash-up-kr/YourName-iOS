@@ -9,5 +9,5 @@ import Foundation
 import RxSwift
 
 protocol CharacterItemRepository {
-    func fetchItems(type: CharacterItemType) -> Observable<[CharacterItem]>
+    func fetchItems(type: ItemCategory) -> Observable<[CharacterItem]>
 }

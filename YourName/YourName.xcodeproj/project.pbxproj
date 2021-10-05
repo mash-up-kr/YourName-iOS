@@ -26,12 +26,6 @@
 		CE2EC99327073453006B9852 /* CardCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2EC99227073453006B9852 /* CardCreationViewModel.swift */; };
 		CE2EC99627073493006B9852 /* CardCreationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2EC99527073493006B9852 /* CardCreationViewModelTests.swift */; };
 		CE4D4E6D2707883600081A2B /* ContactInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E6C2707883600081A2B /* ContactInputView.swift */; };
-		CE4D4E752707A71800081A2B /* Body.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E742707A71800081A2B /* Body.swift */; };
-		CE4D4E772707A72100081A2B /* Eye.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E762707A72100081A2B /* Eye.swift */; };
-		CE4D4E792707A72E00081A2B /* Nose.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E782707A72E00081A2B /* Nose.swift */; };
-		CE4D4E7B2707A75600081A2B /* Mouth.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E7A2707A75600081A2B /* Mouth.swift */; };
-		CE4D4E7E2707A7E000081A2B /* Accessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E7D2707A7E000081A2B /* Accessory.swift */; };
-		CE4D4E802707A81D00081A2B /* HairAccessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E7F2707A81D00081A2B /* HairAccessory.swift */; };
 		CE4D4E842707A91900081A2B /* Items.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE4D4E832707A91900081A2B /* Items.xcassets */; };
 		CE4D4E862707AE1700081A2B /* CharacterSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E852707AE1700081A2B /* CharacterSettingViewModel.swift */; };
 		CE4D4E882707AE3800081A2B /* CharacterCreationDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E872707AE3800081A2B /* CharacterCreationDependencyContainer.swift */; };
@@ -52,7 +46,7 @@
 		CE4D4EC72709045500081A2B /* ImageSourceTypePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE4D4EC62709045500081A2B /* ImageSourceTypePickerView.xib */; };
 		CE4D4ECA27090D5200081A2B /* ColorSourceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4EC827090D5200081A2B /* ColorSourceCollectionViewCell.swift */; };
 		CE4D4ECB27090D5200081A2B /* ColorSourceCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE4D4EC927090D5200081A2B /* ColorSourceCollectionViewCell.xib */; };
-		CE4D4ECE2709ECDF00081A2B /* ProfileColorRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4ECD2709ECDF00081A2B /* ProfileColorRepository.swift */; };
+		CE4D4ECE2709ECDF00081A2B /* ColorSourceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4ECD2709ECDF00081A2B /* ColorSourceRepository.swift */; };
 		CE4D4ED02709F1F200081A2B /* SplashDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4ECF2709F1F200081A2B /* SplashDependencyContainer.swift */; };
 		CE4D4ED22709F47400081A2B /* ProfileColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4ED12709F47400081A2B /* ProfileColor.swift */; };
 		CE4D4ED52709F9E700081A2B /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4ED42709F9E700081A2B /* Keyboard.swift */; };
@@ -106,10 +100,15 @@
 		CE6BABAF2704EE9C0006D26B /* UICollectionView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6BABAE2704EE9C0006D26B /* UICollectionView+.swift */; };
 		CE6D1480270AF04500AF4C5C /* TipInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6D147E270AF04400AF4C5C /* TipInfoView.swift */; };
 		CE6D1481270AF04500AF4C5C /* TipInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6D147F270AF04400AF4C5C /* TipInfoView.xib */; };
+		CE6D1483270C927E00AF4C5C /* CharacterMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6D1482270C927E00AF4C5C /* CharacterMeta.swift */; };
+		CE6D1485270C94F900AF4C5C /* ItemCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6D1484270C94F900AF4C5C /* ItemCategory.swift */; };
+		CE6D1487270C952900AF4C5C /* CharacterItemFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6D1486270C952900AF4C5C /* CharacterItemFactory.swift */; };
 		CE74D356270A8B1200BF36C9 /* CharacterSettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE74D355270A8B1200BF36C9 /* CharacterSettingView.xib */; };
 		CE74D358270A8B3200BF36C9 /* CharacterSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74D357270A8B3200BF36C9 /* CharacterSettingView.swift */; };
 		CE8ECC0B270A635C00E5B038 /* SkillInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8ECC0A270A635C00E5B038 /* SkillInputView.swift */; };
 		CE8ECC0D270A63D900E5B038 /* SkillInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8ECC0C270A63D900E5B038 /* SkillInputView.xib */; };
+		CEA4D2D7270C9B1D008189FE /* CharacterEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4D2D6270C9B1D008189FE /* CharacterEntity.swift */; };
+		CEA4D2D9270CA54A008189FE /* ProfileColorRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4D2D8270CA54A008189FE /* ProfileColorRepository.swift */; };
 		CEB6582C26EB15A600C11F33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6582B26EB15A600C11F33 /* AppDelegate.swift */; };
 		CEB6583026EB15A600C11F33 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6582F26EB15A600C11F33 /* ViewController.swift */; };
 		CEB6583526EB15AC00C11F33 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEB6583426EB15AC00C11F33 /* Images.xcassets */; };
@@ -197,12 +196,6 @@
 		CE2EC99227073453006B9852 /* CardCreationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCreationViewModel.swift; sourceTree = "<group>"; };
 		CE2EC99527073493006B9852 /* CardCreationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCreationViewModelTests.swift; sourceTree = "<group>"; };
 		CE4D4E6C2707883600081A2B /* ContactInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInputView.swift; sourceTree = "<group>"; };
-		CE4D4E742707A71800081A2B /* Body.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Body.swift; sourceTree = "<group>"; };
-		CE4D4E762707A72100081A2B /* Eye.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Eye.swift; sourceTree = "<group>"; };
-		CE4D4E782707A72E00081A2B /* Nose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nose.swift; sourceTree = "<group>"; };
-		CE4D4E7A2707A75600081A2B /* Mouth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mouth.swift; sourceTree = "<group>"; };
-		CE4D4E7D2707A7E000081A2B /* Accessory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accessory.swift; sourceTree = "<group>"; };
-		CE4D4E7F2707A81D00081A2B /* HairAccessory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HairAccessory.swift; sourceTree = "<group>"; };
 		CE4D4E832707A91900081A2B /* Items.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Items.xcassets; sourceTree = "<group>"; };
 		CE4D4E852707AE1700081A2B /* CharacterSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSettingViewModel.swift; sourceTree = "<group>"; };
 		CE4D4E872707AE3800081A2B /* CharacterCreationDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCreationDependencyContainer.swift; sourceTree = "<group>"; };
@@ -223,7 +216,7 @@
 		CE4D4EC62709045500081A2B /* ImageSourceTypePickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageSourceTypePickerView.xib; sourceTree = "<group>"; };
 		CE4D4EC827090D5200081A2B /* ColorSourceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSourceCollectionViewCell.swift; sourceTree = "<group>"; };
 		CE4D4EC927090D5200081A2B /* ColorSourceCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorSourceCollectionViewCell.xib; sourceTree = "<group>"; };
-		CE4D4ECD2709ECDF00081A2B /* ProfileColorRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileColorRepository.swift; sourceTree = "<group>"; };
+		CE4D4ECD2709ECDF00081A2B /* ColorSourceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSourceRepository.swift; sourceTree = "<group>"; };
 		CE4D4ECF2709F1F200081A2B /* SplashDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashDependencyContainer.swift; sourceTree = "<group>"; };
 		CE4D4ED12709F47400081A2B /* ProfileColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileColor.swift; sourceTree = "<group>"; };
 		CE4D4ED42709F9E700081A2B /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
@@ -277,10 +270,15 @@
 		CE6BABAE2704EE9C0006D26B /* UICollectionView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+.swift"; sourceTree = "<group>"; };
 		CE6D147E270AF04400AF4C5C /* TipInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipInfoView.swift; sourceTree = "<group>"; };
 		CE6D147F270AF04400AF4C5C /* TipInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TipInfoView.xib; sourceTree = "<group>"; };
+		CE6D1482270C927E00AF4C5C /* CharacterMeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterMeta.swift; sourceTree = "<group>"; };
+		CE6D1484270C94F900AF4C5C /* ItemCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCategory.swift; sourceTree = "<group>"; };
+		CE6D1486270C952900AF4C5C /* CharacterItemFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterItemFactory.swift; sourceTree = "<group>"; };
 		CE74D355270A8B1200BF36C9 /* CharacterSettingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterSettingView.xib; sourceTree = "<group>"; };
 		CE74D357270A8B3200BF36C9 /* CharacterSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSettingView.swift; sourceTree = "<group>"; };
 		CE8ECC0A270A635C00E5B038 /* SkillInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillInputView.swift; sourceTree = "<group>"; };
 		CE8ECC0C270A63D900E5B038 /* SkillInputView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SkillInputView.xib; sourceTree = "<group>"; };
+		CEA4D2D6270C9B1D008189FE /* CharacterEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterEntity.swift; sourceTree = "<group>"; };
+		CEA4D2D8270CA54A008189FE /* ProfileColorRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileColorRepository.swift; sourceTree = "<group>"; };
 		CEB6582826EB15A600C11F33 /* YourName.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YourName.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB6582B26EB15A600C11F33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEB6582F26EB15A600C11F33 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -400,15 +398,13 @@
 		CE4D4E732707A70000081A2B /* Character */ = {
 			isa = PBXGroup;
 			children = (
-				CE4D4E7D2707A7E000081A2B /* Accessory.swift */,
-				CE4D4E742707A71800081A2B /* Body.swift */,
+				CEA4D2D6270C9B1D008189FE /* CharacterEntity.swift */,
 				CE4D4E892707AEDD00081A2B /* CharacterItem.swift */,
+				CE6D1486270C952900AF4C5C /* CharacterItemFactory.swift */,
 				CE4D4E8B2707AF0500081A2B /* CharacterItemRepository.swift */,
-				CE4D4E762707A72100081A2B /* Eye.swift */,
+				CE6D1482270C927E00AF4C5C /* CharacterMeta.swift */,
 				CE4D4E8D2707AF6E00081A2B /* FakeCharacterItemRepository.swift */,
-				CE4D4E7F2707A81D00081A2B /* HairAccessory.swift */,
-				CE4D4E7A2707A75600081A2B /* Mouth.swift */,
-				CE4D4E782707A72E00081A2B /* Nose.swift */,
+				CE6D1484270C94F900AF4C5C /* ItemCategory.swift */,
 			);
 			path = Character;
 			sourceTree = "<group>";
@@ -495,8 +491,9 @@
 		CE4D4ECC2709ECAD00081A2B /* Palette */ = {
 			isa = PBXGroup;
 			children = (
-				CE4D4ECD2709ECDF00081A2B /* ProfileColorRepository.swift */,
+				CE4D4ECD2709ECDF00081A2B /* ColorSourceRepository.swift */,
 				CE4D4ED12709F47400081A2B /* ProfileColor.swift */,
+				CEA4D2D8270CA54A008189FE /* ProfileColorRepository.swift */,
 			);
 			path = Palette;
 			sourceTree = "<group>";
@@ -1186,11 +1183,14 @@
 				CE63124026F59E6700B2E69B /* RootViewModel.swift in Sources */,
 				CEB6589526EC838000C11F33 /* HTTPClient.swift in Sources */,
 				CEB658BC26ECC90600C11F33 /* NoContent.swift in Sources */,
+				CE6D1485270C94F900AF4C5C /* ItemCategory.swift in Sources */,
 				CE6BABA72704DB0A0006D26B /* CardCreationViewController.swift in Sources */,
 				CEB6588226EC811E00C11F33 /* DataLoading.swift in Sources */,
 				CE4D4EDB270A0D2000081A2B /* SkillSettingViewModel.swift in Sources */,
+				CEA4D2D9270CA54A008189FE /* ProfileColorRepository.swift in Sources */,
 				CE63124C26F5DDC000B2E69B /* WelcomeViewController.swift in Sources */,
 				CE63125026F5DE6800B2E69B /* WelcomeViewModel.swift in Sources */,
+				CE6D1487270C952900AF4C5C /* CharacterItemFactory.swift in Sources */,
 				CEB6586F26EB2C9400C11F33 /* Auth.swift in Sources */,
 				CE6312B926F99F7A00B2E69B /* CardDetailViewModel.swift in Sources */,
 				CEB6588E26EC821300C11F33 /* Network.swift in Sources */,
@@ -1200,8 +1200,6 @@
 				CE63125726F5E2A100B2E69B /* FakeAccessTokenRepository.swift in Sources */,
 				CE6312A926F8CB2F00B2E69B /* SignedOutDependencyContainer.swift in Sources */,
 				CE4D4ECA27090D5200081A2B /* ColorSourceCollectionViewCell.swift in Sources */,
-				CE4D4E7B2707A75600081A2B /* Mouth.swift in Sources */,
-				CE4D4E772707A72100081A2B /* Eye.swift in Sources */,
 				CEB6589126EC826300C11F33 /* Enviorment.swift in Sources */,
 				A2CC656E27088E9C00610C49 /* MyCardListCollectionViewCell.swift in Sources */,
 				A2CC65742708AB2C00610C49 /* SkillLevelView.swift in Sources */,
@@ -1233,12 +1231,11 @@
 				CE4D4EBD2709022800081A2B /* ImageSourceDedencyContainer.swift in Sources */,
 				CE2EC99327073453006B9852 /* CardCreationViewModel.swift in Sources */,
 				A2CC656A27084BF300610C49 /* CALayer+.swift in Sources */,
+				CE6D1483270C927E00AF4C5C /* CharacterMeta.swift in Sources */,
 				CEB6587226EB2CAB00C11F33 /* Networking.swift in Sources */,
-				CE4D4E802707A81D00081A2B /* HairAccessory.swift in Sources */,
 				CEB6587B26EC809800C11F33 /* URLRequestConvertible.swift in Sources */,
-				CE4D4E792707A72E00081A2B /* Nose.swift in Sources */,
 				A2D875DF26EE295C00ED5949 /* AuthResponse.swift in Sources */,
-				CE4D4ECE2709ECDF00081A2B /* ProfileColorRepository.swift in Sources */,
+				CE4D4ECE2709ECDF00081A2B /* ColorSourceRepository.swift in Sources */,
 				CE4D4EB52708E9EC00081A2B /* PaletteView.swift in Sources */,
 				CE6BABAF2704EE9C0006D26B /* UICollectionView+.swift in Sources */,
 				CEF8C55326EDF8D5009BA9C2 /* UIView+.swift in Sources */,
@@ -1248,6 +1245,7 @@
 				CE63124926F5A30200B2E69B /* Navigation.swift in Sources */,
 				CEB6587726EB2CFE00C11F33 /* HomeViewModel.swift in Sources */,
 				CEFA037A26EFB76D00D12AAB /* SnapshotService.swift in Sources */,
+				CEA4D2D7270C9B1D008189FE /* CharacterEntity.swift in Sources */,
 				CE4D4E8E2707AF6E00081A2B /* FakeCharacterItemRepository.swift in Sources */,
 				CE74D358270A8B3200BF36C9 /* CharacterSettingView.swift in Sources */,
 				CE6312CC26F9B4FC00B2E69B /* MockMyCardRepository.swift in Sources */,
@@ -1263,7 +1261,6 @@
 				A2A5C83826FB17D0005D2849 /* KakaoAuth.swift in Sources */,
 				CE4D4EDD270A0F9900081A2B /* TMISettingView.swift in Sources */,
 				CE6BABAB2704E2480006D26B /* UIVIewController+.swift in Sources */,
-				CE4D4E752707A71800081A2B /* Body.swift in Sources */,
 				CE6312B726F99F7000B2E69B /* CardDetailViewController.swift in Sources */,
 				CEB6586826EB2C3700C11F33 /* SchemeNavigator.swift in Sources */,
 				CEB6588B26EC81B200C11F33 /* Decoder.swift in Sources */,
@@ -1281,7 +1278,6 @@
 				CE4D4E8C2707AF0500081A2B /* CharacterItemRepository.swift in Sources */,
 				CE6312BE26F9A4C700B2E69B /* CardDetailDependencyContainer.swift in Sources */,
 				CEB6588026EC80F500C11F33 /* Foundation+Network.swift in Sources */,
-				CE4D4E7E2707A7E000081A2B /* Accessory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
