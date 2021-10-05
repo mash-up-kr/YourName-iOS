@@ -10,6 +10,7 @@ import UIKit
 typealias TMISettingViewController = PageSheetController<TMISettingView>
 
 final class TMISettingView: UIView, NibLoadable {
+    
     var viewModel: TMISettingViewModel!
     
     override init(frame: CGRect) {

@@ -31,7 +31,6 @@ final class PageSheetController<ContentView: PageSheetContentView>: ViewControll
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configureUI()
         setupContentView(contentView: contentView)
         bind()

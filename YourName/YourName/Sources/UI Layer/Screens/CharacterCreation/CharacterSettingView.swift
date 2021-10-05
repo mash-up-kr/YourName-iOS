@@ -9,11 +9,11 @@ import RxCocoa
 import RxGesture
 import RxSwift
 import UIKit
+import SnapKit
 
 typealias CharacterSettingViewController = PageSheetController<CharacterSettingView>
 
 final class CharacterSettingView: UIView, NibLoadable {
-    
     var viewModel: CharacterSettingViewModel! {
         didSet {
             bind(to: viewModel)
@@ -33,8 +33,17 @@ final class CharacterSettingView: UIView, NibLoadable {
     }
     
     private func setupUI() {
-        itemsCollectionView?.dataSource = self
-        itemsCollectionView?.delegate = self
+        pageViewController.dataSource = self
+        
+        self.addSubview(pageViewController.view)
+        if let itemsCollectionView = itemsCollectionView {
+            pageViewController.view.snp.makeConstraints {
+                $0.top.equalTo(itemsCollectionView.snp.top)
+                $0.leading.trailing.bottom.equalTo(self)
+            }
+        }
+        guard let firstViewController = categoryItemControllers.first else { return }
+        pageViewController.setViewControllers([firstViewController], direction: .forward, animated: true, completion: {_ in } )
     }
     
     private func bind(to viewModel: CharacterSettingViewModel) {
@@ -43,6 +52,8 @@ final class CharacterSettingView: UIView, NibLoadable {
     }
     
     private func dispatch(to viewModel: CharacterSettingViewModel) {
+        viewModel.didLoad()
+        
         categoryStackview?.arrangedSubviews.enumerated().forEach { (index, view) in
             view.rx.tapGesture().when(.recognized)
                 .subscribe(onNext: { [weak self] _ in
@@ -55,6 +66,10 @@ final class CharacterSettingView: UIView, NibLoadable {
         viewModel.selectedCategory.distinctUntilChanged()
             .subscribe(onNext: { [weak self] selectedCategory in
                 self?.updateCategoryItem(selectedIndex: selectedCategory.rawValue)
+                let beforeIndex = self?.selectedCategoryIndex
+                let newIndex = selectedCategory.rawValue
+                self?.selectedCategoryIndex = newIndex
+                self?.scroll(from: beforeIndex ?? .zero, to: newIndex)
             }).disposed(by: disposeBag)
         
         viewModel.characterMeta.distinctUntilChanged()
@@ -88,12 +103,16 @@ final class CharacterSettingView: UIView, NibLoadable {
         UIView.animate(withDuration: 0.2, animations: {
             self.layoutIfNeeded()
         })
-        
+    }
+    
+    private func scroll(from before: Int, to after: Int) {
+        guard let selectedViewController = categoryItemControllers[safe: after] else { return }
+        pageViewController.setViewControllers([selectedViewController], direction: before < after ? .forward : .forward, animated: true, completion: nil)
     }
     
     private let disposeBag = DisposeBag()
-    
     private var categories = [ItemCategory]()
+    private var selectedCategoryIndex = 0
     
     @IBOutlet private weak var bodyImageView: UIImageView?
     @IBOutlet private weak var eyeImageView: UIImageView?
@@ -103,41 +122,30 @@ final class CharacterSettingView: UIView, NibLoadable {
     @IBOutlet private weak var etcAccessoryImageView: UIImageView?
     @IBOutlet private weak var categoryStackview: UIStackView?
     @IBOutlet var categoryLabels: [UILabel]?
+    @IBOutlet private weak var selectedCategoryUnderLine: UIView?
     private var selectedCategoryLineStart: NSLayoutConstraint?
     private var selectedCategoryLineEnd: NSLayoutConstraint?
-    @IBOutlet private weak var selectedCategoryUnderLine: UIView?
     @IBOutlet private weak var itemsCollectionView: UICollectionView?
+    private let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: [:])
+    private let categoryItemControllers = [
+        CategoryItemsViewController.instantiate(),  // 몸
+        CategoryItemsViewController.instantiate(),  // 눈
+        CategoryItemsViewController.instantiate(),  // 코
+        CategoryItemsViewController.instantiate(),  // 입
+        CategoryItemsViewController.instantiate(),  // 장식1
+        CategoryItemsViewController.instantiate()   // 장식2
+    ]
 }
-extension CharacterSettingView: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
-    }
-    
-    private func categoryCell(indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
-    }
-    
-    private func itemCell(cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
-    }
-    
-}
-extension CharacterSettingView: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    }
-}
-
-extension CharacterSettingView: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return .zero
-    }
-}
-
 extension CharacterSettingView: PageSheetContentView {
     var title: String { "캐릭터 생성하기"}
     var isModal: Bool { true }
+}
+
+extension CharacterSettingView: UIPageViewControllerDataSource {
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        categoryItemControllers[safe: self.selectedCategoryIndex - 1]
+    }
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        categoryItemControllers[safe: self.selectedCategoryIndex + 1]
+    }
 }

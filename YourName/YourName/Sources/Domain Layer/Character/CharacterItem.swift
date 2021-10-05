@@ -12,4 +12,9 @@ struct CharacterItem {
     let itemID: String
     let displayItemID: String
 }
-
+extension CharacterItem {
+    static func empty(typeOf type: ItemCategory) -> CharacterItem? {
+        guard type.isOption else { return nil }
+        return CharacterItem(type: type, itemID: .empty, displayItemID: "no_item_for_display")
+    }
+}
