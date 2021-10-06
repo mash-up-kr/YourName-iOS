@@ -49,9 +49,26 @@ final class PageSheetController<ContentView: PageSheetContentView>: ViewControll
     }
     
     func close() {
-        self.dismiss(animated: false, completion: {
-            self.onDismiss?(self.contentView)
-        })
+        let dimmedColor = Palette.black1.withAlphaComponent(0.6)
+        if let underlaiedViewController = self.presentingViewController {
+            let overlaiedViewController = self
+            let dimmedView = UIView().then {
+                $0.layer.shouldRasterize = true
+                $0.backgroundColor = Palette.black1.withAlphaComponent(0.6)
+                $0.frame = underlaiedViewController.view.bounds
+            }
+            overlaiedViewController.view.backgroundColor = .clear
+            underlaiedViewController.view.addSubview(dimmedView)
+            self.dismiss(animated: true, completion: { [weak dimmedView, weak overlaiedViewController] in
+                dimmedView?.removeFromSuperview()
+                overlaiedViewController?.view.backgroundColor = dimmedColor
+                self.onDismiss?(self.contentView)
+            })
+        } else {
+            self.dismiss(animated: true, completion: {
+                self.onDismiss?(self.contentView)
+            })
+        }
     }
     
     private func configureUI() {
@@ -102,7 +119,7 @@ final class PageSheetController<ContentView: PageSheetContentView>: ViewControll
     private func setupContentView(contentView: ContentView) {
         stackView.addArrangedSubview(contentView)
     }
-
+    
     private func removeContentView(contentView: ContentView) {
         stackView.removeArrangedSubview(contentView)
         contentView.removeFromSuperview()

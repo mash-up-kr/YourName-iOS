@@ -24,7 +24,6 @@ final class DisplayCharacterItemsViewController: ViewController, Storyboarded {
     func setupUI() {
         itemsCollectionView?.dataSource = self
         itemsCollectionView?.delegate = self
-//        itemsCollectionView?.registerNib(DisplayCharacterItemCollectionViewCell.self)
     }
     
     private func bind(to viewModel: DisplayCharacterItemsViewModel) {
