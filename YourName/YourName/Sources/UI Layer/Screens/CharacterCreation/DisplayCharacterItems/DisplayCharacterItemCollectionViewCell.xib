@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,22 +17,34 @@
                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DvB-ik-k4W">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fGY-8L-RsM">
                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                <real key="value" value="4"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
-                    </imageView>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DvB-ik-k4W">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="DvB-ik-k4W" firstAttribute="top" secondItem="fGY-8L-RsM" secondAttribute="top" id="8Ti-ij-Eto"/>
+                            <constraint firstItem="DvB-ik-k4W" firstAttribute="leading" secondItem="fGY-8L-RsM" secondAttribute="leading" id="BKr-1g-NiD"/>
+                            <constraint firstAttribute="bottom" secondItem="DvB-ik-k4W" secondAttribute="bottom" id="IUu-lC-Aac"/>
+                            <constraint firstAttribute="trailing" secondItem="DvB-ik-k4W" secondAttribute="trailing" id="K8K-uS-ftb"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstItem="DvB-ik-k4W" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="NVS-fM-rLP"/>
-                <constraint firstItem="DvB-ik-k4W" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="QcE-pu-5sx"/>
-                <constraint firstAttribute="bottom" secondItem="DvB-ik-k4W" secondAttribute="bottom" id="hp7-mK-eYr"/>
-                <constraint firstAttribute="trailing" secondItem="DvB-ik-k4W" secondAttribute="trailing" id="yJE-yc-TI6"/>
+                <constraint firstItem="fGY-8L-RsM" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="B0B-VZ-zEk"/>
+                <constraint firstAttribute="trailing" secondItem="fGY-8L-RsM" secondAttribute="trailing" id="PVY-0f-l4W"/>
+                <constraint firstItem="fGY-8L-RsM" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="RdC-CA-SOR"/>
+                <constraint firstAttribute="bottom" secondItem="fGY-8L-RsM" secondAttribute="bottom" id="iNw-2N-JgN"/>
             </constraints>
             <userDefinedRuntimeAttributes>
                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -44,4 +57,9 @@
             <point key="canvasLocation" x="21.739130434782609" y="153.34821428571428"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

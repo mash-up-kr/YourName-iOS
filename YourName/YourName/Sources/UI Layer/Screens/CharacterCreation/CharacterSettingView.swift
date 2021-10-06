@@ -83,11 +83,11 @@ final class CharacterSettingView: UIView, NibLoadable {
                 self?.eyeImageView?.image = UIImage(named: characterMeta.eyeID)
                 self?.noseImageView?.image = UIImage(named: characterMeta.noseID)
                 self?.mouthImageView?.image = UIImage(named: characterMeta.mouthID)
-                if let hairAccessoryID = characterMeta.hairAccessoryID, hairAccessoryID.isNotEmpty {
-                    self?.hairAccessoryImageView?.image = UIImage(named: hairAccessoryID)
+                if let hairAccessoryID = characterMeta.hairAccessoryID {
+                    self?.hairAccessoryImageView?.image = hairAccessoryID.isNotEmpty ? UIImage(named: hairAccessoryID) : nil
                 }
-                if let etcAccesstoryID = characterMeta.etcAccesstoryID, etcAccesstoryID.isNotEmpty {
-                    self?.etcAccessoryImageView?.image = UIImage(named: etcAccesstoryID)
+                if let etcAccesstoryID = characterMeta.etcAccesstoryID {
+                    self?.etcAccessoryImageView?.image = etcAccesstoryID.isNotEmpty ? UIImage(named: etcAccesstoryID) : nil
                 }
             })
             .disposed(by: disposeBag)
@@ -116,12 +116,18 @@ final class CharacterSettingView: UIView, NibLoadable {
     
     private func scroll(from before: Int, to after: Int) {
         guard let selectedViewController = displayCategoryItemsViewControllers[safe: after] else { return }
-        pageViewController.setViewControllers([selectedViewController], direction: before < after ? .forward : .forward, animated: true, completion: nil)
+        pageViewController.setViewControllers([selectedViewController], direction: before < after ? .forward : .reverse, animated: true, completion: nil)
     }
     
     private let disposeBag = DisposeBag()
     private var categories = [ItemCategory]()
     private var selectedCategoryIndex = 0
+    private var selectedCategoryLineStart: NSLayoutConstraint?
+    private var selectedCategoryLineEnd: NSLayoutConstraint?
+    private var displayCategoryItemsViewControllers: [DisplayCharacterItemsViewController] = []
+    private let pageViewController = UIPageViewController(transitionStyle: .scroll,
+                                                          navigationOrientation: .horizontal,
+                                                          options: [:])
     
     @IBOutlet private weak var bodyImageView: UIImageView?
     @IBOutlet private weak var eyeImageView: UIImageView?
@@ -130,13 +136,9 @@ final class CharacterSettingView: UIView, NibLoadable {
     @IBOutlet private weak var hairAccessoryImageView: UIImageView?
     @IBOutlet private weak var etcAccessoryImageView: UIImageView?
     @IBOutlet private weak var categoryStackview: UIStackView?
-    @IBOutlet var categoryLabels: [UILabel]?
+    @IBOutlet private var categoryLabels: [UILabel]?
     @IBOutlet private weak var selectedCategoryUnderLine: UIView?
-    private var selectedCategoryLineStart: NSLayoutConstraint?
-    private var selectedCategoryLineEnd: NSLayoutConstraint?
-    @IBOutlet weak var categoryItemFrameView: UIView?
-    private let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: [:])
-    private var displayCategoryItemsViewControllers: [DisplayCharacterItemsViewController] = []
+    @IBOutlet private weak var categoryItemFrameView: UIView?
 }
 extension CharacterSettingView: PageSheetContentView {
     var title: String { "캐릭터 생성하기" }
@@ -151,6 +153,7 @@ extension CharacterSettingView: UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         guard let nextViewController = displayCategoryItemsViewControllers[safe: self.selectedCategoryIndex + 1] else { return nil }
+        
         return nextViewController
     }
 }
