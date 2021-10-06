@@ -40,10 +40,13 @@ final class CharacterSettingViewModel {
         selectedCategory.accept(category)
     }
     
-    func tapItem(at index: Int) {
-    }
-    
     private let disposeBag = DisposeBag()
     private let characterItemRepository: CharacterItemRepository
     
+}
+extension CharacterSettingViewModel: DisplayCharacterItemsResponder {
+    
+    func selectDisplayCategoryItem(_ item: CharacterItem) {
+        ()
+    }
 }

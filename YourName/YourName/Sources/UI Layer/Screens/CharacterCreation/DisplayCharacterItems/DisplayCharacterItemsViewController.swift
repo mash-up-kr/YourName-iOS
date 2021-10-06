@@ -6,11 +6,16 @@
 //
 
 import UIKit
+import RxCocoa
 
-final class CategoryItemsViewController: ViewController, Storyboarded {
 
+final class DisplayCharacterItemsViewController: ViewController, Storyboarded {
+    
+    var viewModel: DisplayCharacterItemsViewModel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
+    
 }

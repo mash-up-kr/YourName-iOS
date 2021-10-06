@@ -32,18 +32,17 @@ final class CharacterSettingView: UIView, NibLoadable {
         setupUI()
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.categoryItemFrameView?.addSubview(pageViewController.view)
+        pageViewController.view.frame = categoryItemFrameView?.bounds ?? .zero
+    }
+    
     private func setupUI() {
         pageViewController.dataSource = self
         
-        self.addSubview(pageViewController.view)
-        if let itemsCollectionView = itemsCollectionView {
-            pageViewController.view.snp.makeConstraints {
-                $0.top.equalTo(itemsCollectionView.snp.top)
-                $0.leading.trailing.bottom.equalTo(self)
-            }
-        }
-        guard let firstViewController = categoryItemControllers.first else { return }
-        pageViewController.setViewControllers([firstViewController], direction: .forward, animated: true, completion: {_ in } )
+        guard let firstViewController = displayCategoryItemsViewControllers.first else { return }
+        pageViewController.setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
     }
     
     private func bind(to viewModel: CharacterSettingViewModel) {
@@ -65,11 +64,11 @@ final class CharacterSettingView: UIView, NibLoadable {
     private func render(viewModel: CharacterSettingViewModel) {
         viewModel.selectedCategory.distinctUntilChanged()
             .subscribe(onNext: { [weak self] selectedCategory in
-                self?.updateCategoryItem(selectedIndex: selectedCategory.rawValue)
                 let beforeIndex = self?.selectedCategoryIndex
                 let newIndex = selectedCategory.rawValue
                 self?.selectedCategoryIndex = newIndex
                 self?.scroll(from: beforeIndex ?? .zero, to: newIndex)
+                self?.updateCategoryItem(selectedIndex: newIndex)
             }).disposed(by: disposeBag)
         
         viewModel.characterMeta.distinctUntilChanged()
@@ -89,7 +88,7 @@ final class CharacterSettingView: UIView, NibLoadable {
             label.font = isSelected ? .boldSystemFont(ofSize: 16) : .systemFont(ofSize: 16)
             label.textColor = isSelected ? Palette.black1 : Palette.gray2
         }
-        
+        print(selectedIndex)
         guard let selectedCategoryView = self.categoryStackview?.arrangedSubviews[safe: selectedIndex] else { return }
         selectedCategoryLineStart?.isActive = false
         selectedCategoryLineEnd?.isActive = false
@@ -106,7 +105,7 @@ final class CharacterSettingView: UIView, NibLoadable {
     }
     
     private func scroll(from before: Int, to after: Int) {
-        guard let selectedViewController = categoryItemControllers[safe: after] else { return }
+        guard let selectedViewController = displayCategoryItemsViewControllers[safe: after] else { return }
         pageViewController.setViewControllers([selectedViewController], direction: before < after ? .forward : .forward, animated: true, completion: nil)
     }
     
@@ -125,27 +124,29 @@ final class CharacterSettingView: UIView, NibLoadable {
     @IBOutlet private weak var selectedCategoryUnderLine: UIView?
     private var selectedCategoryLineStart: NSLayoutConstraint?
     private var selectedCategoryLineEnd: NSLayoutConstraint?
-    @IBOutlet private weak var itemsCollectionView: UICollectionView?
+    @IBOutlet weak var categoryItemFrameView: UIView?
     private let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: [:])
-    private let categoryItemControllers = [
-        CategoryItemsViewController.instantiate(),  // 몸
-        CategoryItemsViewController.instantiate(),  // 눈
-        CategoryItemsViewController.instantiate(),  // 코
-        CategoryItemsViewController.instantiate(),  // 입
-        CategoryItemsViewController.instantiate(),  // 장식1
-        CategoryItemsViewController.instantiate()   // 장식2
+    private let displayCategoryItemsViewControllers = [
+        DisplayCharacterItemsViewController.instantiate().then { $0.view.backgroundColor = .red },  // 몸
+        DisplayCharacterItemsViewController.instantiate().then { $0.view.backgroundColor = .orange },  // 눈
+        DisplayCharacterItemsViewController.instantiate().then { $0.view.backgroundColor = .yellow },  // 코
+        DisplayCharacterItemsViewController.instantiate().then { $0.view.backgroundColor = .green },  // 입
+        DisplayCharacterItemsViewController.instantiate().then { $0.view.backgroundColor = .blue },  // 장식1
+        DisplayCharacterItemsViewController.instantiate().then { $0.view.backgroundColor = .purple }   // 장식2
     ]
 }
 extension CharacterSettingView: PageSheetContentView {
-    var title: String { "캐릭터 생성하기"}
+    var title: String { "캐릭터 생성하기" }
     var isModal: Bool { true }
 }
 
 extension CharacterSettingView: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        categoryItemControllers[safe: self.selectedCategoryIndex - 1]
+        guard let previousViewController = displayCategoryItemsViewControllers[safe: self.selectedCategoryIndex - 1] else { return nil }
+        return previousViewController
     }
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        categoryItemControllers[safe: self.selectedCategoryIndex + 1]
+        guard let nextViewController = displayCategoryItemsViewControllers[safe: self.selectedCategoryIndex + 1] else { return nil }
+        return nextViewController
     }
 }

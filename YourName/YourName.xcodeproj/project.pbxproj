@@ -112,8 +112,10 @@
 		CEA4D2DB270CB39F008189FE /* ItemForDisplay.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEA4D2DA270CB39F008189FE /* ItemForDisplay.xcassets */; };
 		CEA4D2E4270CD24A008189FE /* DisplayCharacterItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4D2E2270CD24A008189FE /* DisplayCharacterItemCollectionViewCell.swift */; };
 		CEA4D2E5270CD24A008189FE /* DisplayCharacterItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEA4D2E3270CD24A008189FE /* DisplayCharacterItemCollectionViewCell.xib */; };
-		CEA4D2E7270CD401008189FE /* CategoryItemsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEA4D2E6270CD401008189FE /* CategoryItemsViewController.storyboard */; };
-		CEA4D2E9270CD415008189FE /* CategoryItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4D2E8270CD415008189FE /* CategoryItemsViewController.swift */; };
+		CEA4D2E7270CD401008189FE /* DisplayCharacterItemsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEA4D2E6270CD401008189FE /* DisplayCharacterItemsViewController.storyboard */; };
+		CEA4D2E9270CD415008189FE /* DisplayCharacterItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4D2E8270CD415008189FE /* DisplayCharacterItemsViewController.swift */; };
+		CEA4D2EC270D34C3008189FE /* DisplayCharacterItemsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4D2EB270D34C3008189FE /* DisplayCharacterItemsViewModel.swift */; };
+		CEA4D2EE270D35A2008189FE /* DisplayCharacterItemsDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4D2ED270D35A2008189FE /* DisplayCharacterItemsDependencyContainer.swift */; };
 		CEB6582C26EB15A600C11F33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6582B26EB15A600C11F33 /* AppDelegate.swift */; };
 		CEB6583026EB15A600C11F33 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6582F26EB15A600C11F33 /* ViewController.swift */; };
 		CEB6583526EB15AC00C11F33 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEB6583426EB15AC00C11F33 /* Images.xcassets */; };
@@ -287,8 +289,10 @@
 		CEA4D2DA270CB39F008189FE /* ItemForDisplay.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ItemForDisplay.xcassets; sourceTree = "<group>"; };
 		CEA4D2E2270CD24A008189FE /* DisplayCharacterItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayCharacterItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		CEA4D2E3270CD24A008189FE /* DisplayCharacterItemCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DisplayCharacterItemCollectionViewCell.xib; sourceTree = "<group>"; };
-		CEA4D2E6270CD401008189FE /* CategoryItemsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CategoryItemsViewController.storyboard; sourceTree = "<group>"; };
-		CEA4D2E8270CD415008189FE /* CategoryItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItemsViewController.swift; sourceTree = "<group>"; };
+		CEA4D2E6270CD401008189FE /* DisplayCharacterItemsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DisplayCharacterItemsViewController.storyboard; sourceTree = "<group>"; };
+		CEA4D2E8270CD415008189FE /* DisplayCharacterItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayCharacterItemsViewController.swift; sourceTree = "<group>"; };
+		CEA4D2EB270D34C3008189FE /* DisplayCharacterItemsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayCharacterItemsViewModel.swift; sourceTree = "<group>"; };
+		CEA4D2ED270D35A2008189FE /* DisplayCharacterItemsDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayCharacterItemsDependencyContainer.swift; sourceTree = "<group>"; };
 		CEB6582826EB15A600C11F33 /* YourName.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YourName.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB6582B26EB15A600C11F33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEB6582F26EB15A600C11F33 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -397,14 +401,11 @@
 		CE4D4E6E2707A0CB00081A2B /* CharacterCreation */ = {
 			isa = PBXGroup;
 			children = (
+				CEA4D2EA270D34A9008189FE /* DisplayCharacterItems */,
 				CE4D4E872707AE3800081A2B /* CharacterCreationDependencyContainer.swift */,
 				CE74D357270A8B3200BF36C9 /* CharacterSettingView.swift */,
 				CE4D4E852707AE1700081A2B /* CharacterSettingViewModel.swift */,
-				CEA4D2E2270CD24A008189FE /* DisplayCharacterItemCollectionViewCell.swift */,
 				CE74D355270A8B1200BF36C9 /* CharacterSettingView.xib */,
-				CEA4D2E3270CD24A008189FE /* DisplayCharacterItemCollectionViewCell.xib */,
-				CEA4D2E6270CD401008189FE /* CategoryItemsViewController.storyboard */,
-				CEA4D2E8270CD415008189FE /* CategoryItemsViewController.swift */,
 			);
 			path = CharacterCreation;
 			sourceTree = "<group>";
@@ -624,6 +625,19 @@
 				CE4D4E6C2707883600081A2B /* ContactInputView.swift */,
 			);
 			path = CardCreation;
+			sourceTree = "<group>";
+		};
+		CEA4D2EA270D34A9008189FE /* DisplayCharacterItems */ = {
+			isa = PBXGroup;
+			children = (
+				CEA4D2E6270CD401008189FE /* DisplayCharacterItemsViewController.storyboard */,
+				CEA4D2E2270CD24A008189FE /* DisplayCharacterItemCollectionViewCell.swift */,
+				CEA4D2ED270D35A2008189FE /* DisplayCharacterItemsDependencyContainer.swift */,
+				CEA4D2E8270CD415008189FE /* DisplayCharacterItemsViewController.swift */,
+				CEA4D2EB270D34C3008189FE /* DisplayCharacterItemsViewModel.swift */,
+				CEA4D2E3270CD24A008189FE /* DisplayCharacterItemCollectionViewCell.xib */,
+			);
+			path = DisplayCharacterItems;
 			sourceTree = "<group>";
 		};
 		CEB6581F26EB15A600C11F33 = {
@@ -1083,7 +1097,7 @@
 				A2CC657027088ED100610C49 /* MyCardListCollectionViewCell.xib in Resources */,
 				CEA4D2DB270CB39F008189FE /* ItemForDisplay.xcassets in Resources */,
 				A2CC65642708229C00610C49 /* MyCardView.xib in Resources */,
-				CEA4D2E7270CD401008189FE /* CategoryItemsViewController.storyboard in Resources */,
+				CEA4D2E7270CD401008189FE /* DisplayCharacterItemsViewController.storyboard in Resources */,
 				CEB6583526EB15AC00C11F33 /* Images.xcassets in Resources */,
 				CE6BAB982704D69F0006D26B /* CardDetailViewController.storyboard in Resources */,
 				CE4D4EC72709045500081A2B /* ImageSourceTypePickerView.xib in Resources */,
@@ -1202,6 +1216,7 @@
 				CEB6589526EC838000C11F33 /* HTTPClient.swift in Sources */,
 				CEB658BC26ECC90600C11F33 /* NoContent.swift in Sources */,
 				CE6D1485270C94F900AF4C5C /* ItemCategory.swift in Sources */,
+				CEA4D2EC270D34C3008189FE /* DisplayCharacterItemsViewModel.swift in Sources */,
 				CE6BABA72704DB0A0006D26B /* CardCreationViewController.swift in Sources */,
 				CEB6588226EC811E00C11F33 /* DataLoading.swift in Sources */,
 				CE4D4EDB270A0D2000081A2B /* SkillSettingViewModel.swift in Sources */,
@@ -1243,6 +1258,7 @@
 				A2CC656C2708877E00610C49 /* NibLoadable.swift in Sources */,
 				A2CC65622707622D00610C49 /* MyCardListEmptyCollectionViewCell.swift in Sources */,
 				CE4D4E882707AE3800081A2B /* CharacterCreationDependencyContainer.swift in Sources */,
+				CEA4D2EE270D35A2008189FE /* DisplayCharacterItemsDependencyContainer.swift in Sources */,
 				CE63126026F6281800B2E69B /* SplashViewModel.swift in Sources */,
 				CE4D4E862707AE1700081A2B /* CharacterSettingViewModel.swift in Sources */,
 				CE4D4E8A2707AEDD00081A2B /* CharacterItem.swift in Sources */,
@@ -1283,7 +1299,7 @@
 				CEB6586826EB2C3700C11F33 /* SchemeNavigator.swift in Sources */,
 				CEB6588B26EC81B200C11F33 /* Decoder.swift in Sources */,
 				CEB6586C26EB2C7600C11F33 /* HomeTabBarController.swift in Sources */,
-				CEA4D2E9270CD415008189FE /* CategoryItemsViewController.swift in Sources */,
+				CEA4D2E9270CD415008189FE /* DisplayCharacterItemsViewController.swift in Sources */,
 				CEB6582C26EB15A600C11F33 /* AppDelegate.swift in Sources */,
 				CE4D4E6D2707883600081A2B /* ContactInputView.swift in Sources */,
 				CE4D4E9B2707BB2500081A2B /* PaletteDependencyContainer.swift in Sources */,
