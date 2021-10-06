@@ -45,7 +45,7 @@
                                                 <constraint firstItem="CQg-is-bB5" firstAttribute="top" secondItem="GET-ub-qWj" secondAttribute="top" id="odM-oX-zTO"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <color key="backgroundColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="displayItemImageView" destination="CQg-is-bB5" id="CO7-CH-AX9"/>
                                         </connections>
