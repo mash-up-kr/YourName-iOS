@@ -15,10 +15,9 @@ typealias CharacterSettingViewController = PageSheetController<CharacterSettingV
 
 final class CharacterSettingView: UIView, NibLoadable {
     var viewModel: CharacterSettingViewModel! {
-        didSet {
-            bind(to: viewModel)
-        }
+        didSet { bind(to: viewModel) }
     }
+    var displayCharacterItemsViewControllerFactory: (([ItemCategory]) -> [DisplayCharacterItemsViewController])!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -40,6 +39,7 @@ final class CharacterSettingView: UIView, NibLoadable {
     
     private func setupUI() {
         pageViewController.dataSource = self
+        pageViewController.delegate = self
         
         guard let firstViewController = displayCategoryItemsViewControllers.first else { return }
         pageViewController.setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
@@ -62,7 +62,13 @@ final class CharacterSettingView: UIView, NibLoadable {
     }
     
     private func render(viewModel: CharacterSettingViewModel) {
+        viewModel.categories.subscribe(onNext: { [weak self] categories in
+            self?.displayCategoryItemsViewControllers = self?.displayCharacterItemsViewControllerFactory(categories) ?? []
+        })
+        .disposed(by: disposeBag)
+        
         viewModel.selectedCategory.distinctUntilChanged()
+            .filterNil()
             .subscribe(onNext: { [weak self] selectedCategory in
                 let beforeIndex = self?.selectedCategoryIndex
                 let newIndex = selectedCategory.rawValue
@@ -77,9 +83,14 @@ final class CharacterSettingView: UIView, NibLoadable {
                 self?.eyeImageView?.image = UIImage(named: characterMeta.eyeID)
                 self?.noseImageView?.image = UIImage(named: characterMeta.noseID)
                 self?.mouthImageView?.image = UIImage(named: characterMeta.mouthID)
-                self?.hairAccessoryImageView?.image = UIImage(named: characterMeta.hairAccessoryID ?? .empty)
-                self?.etcAccessoryImageView?.image = UIImage(named: characterMeta.etcAccesstoryID ?? .empty)
-            }).disposed(by: disposeBag)
+                if let hairAccessoryID = characterMeta.hairAccessoryID, hairAccessoryID.isNotEmpty {
+                    self?.hairAccessoryImageView?.image = UIImage(named: hairAccessoryID)
+                }
+                if let etcAccesstoryID = characterMeta.etcAccesstoryID, etcAccesstoryID.isNotEmpty {
+                    self?.etcAccessoryImageView?.image = UIImage(named: etcAccesstoryID)
+                }
+            })
+            .disposed(by: disposeBag)
     }
     
     private func updateCategoryItem(selectedIndex: Int) {
@@ -88,7 +99,6 @@ final class CharacterSettingView: UIView, NibLoadable {
             label.font = isSelected ? .boldSystemFont(ofSize: 16) : .systemFont(ofSize: 16)
             label.textColor = isSelected ? Palette.black1 : Palette.gray2
         }
-        print(selectedIndex)
         guard let selectedCategoryView = self.categoryStackview?.arrangedSubviews[safe: selectedIndex] else { return }
         selectedCategoryLineStart?.isActive = false
         selectedCategoryLineEnd?.isActive = false
@@ -126,14 +136,7 @@ final class CharacterSettingView: UIView, NibLoadable {
     private var selectedCategoryLineEnd: NSLayoutConstraint?
     @IBOutlet weak var categoryItemFrameView: UIView?
     private let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: [:])
-    private let displayCategoryItemsViewControllers = [
-        DisplayCharacterItemsViewController.instantiate().then { $0.view.backgroundColor = .red },  // 몸
-        DisplayCharacterItemsViewController.instantiate().then { $0.view.backgroundColor = .orange },  // 눈
-        DisplayCharacterItemsViewController.instantiate().then { $0.view.backgroundColor = .yellow },  // 코
-        DisplayCharacterItemsViewController.instantiate().then { $0.view.backgroundColor = .green },  // 입
-        DisplayCharacterItemsViewController.instantiate().then { $0.view.backgroundColor = .blue },  // 장식1
-        DisplayCharacterItemsViewController.instantiate().then { $0.view.backgroundColor = .purple }   // 장식2
-    ]
+    private var displayCategoryItemsViewControllers: [DisplayCharacterItemsViewController] = []
 }
 extension CharacterSettingView: PageSheetContentView {
     var title: String { "캐릭터 생성하기" }
@@ -145,8 +148,16 @@ extension CharacterSettingView: UIPageViewControllerDataSource {
         guard let previousViewController = displayCategoryItemsViewControllers[safe: self.selectedCategoryIndex - 1] else { return nil }
         return previousViewController
     }
+    
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         guard let nextViewController = displayCategoryItemsViewControllers[safe: self.selectedCategoryIndex + 1] else { return nil }
         return nextViewController
+    }
+}
+extension CharacterSettingView: UIPageViewControllerDelegate {
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        guard let currentViewController = pageViewController.viewControllers?.first as? DisplayCharacterItemsViewController else { return }
+        guard let selectedIndex = displayCategoryItemsViewControllers.firstIndex(of: currentViewController) else { return }
+        self.viewModel.tapCategory(at: selectedIndex)
     }
 }

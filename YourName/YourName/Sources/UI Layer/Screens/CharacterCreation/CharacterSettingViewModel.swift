@@ -12,31 +12,19 @@ import RxRelay
 final class CharacterSettingViewModel {
     
     let characterMeta = BehaviorRelay<CharacterMeta>(value: .default)
-    let selectedCategory = BehaviorRelay<ItemCategory>(value: .body)
-    let items = BehaviorRelay<[ItemCategory: [CharacterItem]]>(value: [:])
+    let categories = BehaviorRelay<[ItemCategory]>(value: ItemCategory.allCases)
+    let selectedCategory = BehaviorRelay<ItemCategory?>(value: nil)
     
     init(characterItemRepository: CharacterItemRepository) {
         self.characterItemRepository = characterItemRepository
     }
     
     func didLoad() {
-        ItemCategory.allCases.forEach { category in
-            characterItemRepository.fetchItems(type: category)
-                .subscribe(onNext: { [weak self] loadedItems in
-                    var loadedItems = loadedItems
-                    var newItems = self?.items.value
-                    if let emptyItem = CharacterItem.empty(typeOf: category) {
-                        loadedItems.insert(emptyItem, at: 0)
-                    }
-                    newItems?[category] = loadedItems
-                    self?.items.accept(newItems ?? [:])
-                })
-                .disposed(by: disposeBag)
-        }
+        selectedCategory.accept(.body)
     }
     
     func tapCategory(at index: Int) {
-        guard let category = ItemCategory(rawValue: index) else { return }
+        guard let category = self.categories.value[safe: index] else { return }
         selectedCategory.accept(category)
     }
     
@@ -47,6 +35,15 @@ final class CharacterSettingViewModel {
 extension CharacterSettingViewModel: DisplayCharacterItemsResponder {
     
     func selectDisplayCategoryItem(_ item: CharacterItem) {
-        ()
+        var newCharaterMeta = characterMeta.value
+        switch item.type {
+        case .body:          newCharaterMeta.bodyID = item.itemID
+        case .eye:           newCharaterMeta.eyeID = item.itemID
+        case .nose:          newCharaterMeta.noseID = item.itemID
+        case .mouth:         newCharaterMeta.mouthID = item.itemID
+        case .hairAccessory: newCharaterMeta.hairAccessoryID = item.itemID
+        case .accessory:     newCharaterMeta.etcAccesstoryID = item.itemID
+        }
+        characterMeta.accept(newCharaterMeta)
     }
 }

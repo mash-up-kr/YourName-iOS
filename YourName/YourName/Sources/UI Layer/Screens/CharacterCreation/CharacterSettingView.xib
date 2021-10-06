@@ -29,11 +29,11 @@
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
+        <view contentMode="scaleToFill" ambiguous="YES" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="AH7-b8-urX" userLabel="Body Stack View">
+                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="AH7-b8-urX" userLabel="Body Stack View">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="weR-65-Fyw">
@@ -108,7 +108,7 @@
                                 <constraint firstItem="OXx-sN-Cae" firstAttribute="height" secondItem="weR-65-Fyw" secondAttribute="height" id="zzt-YN-LWZ"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="owF-VP-hhP">
+                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="owF-VP-hhP">
                             <rect key="frame" x="0.0" y="260" width="414" height="251.5"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="E2F-QN-Zc1">
@@ -236,7 +236,7 @@
                                 <constraint firstItem="E2F-QN-Zc1" firstAttribute="top" secondItem="owF-VP-hhP" secondAttribute="top" id="VDO-6N-7SD"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dAt-Ko-X7K">
+                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dAt-Ko-X7K">
                             <rect key="frame" x="0.0" y="511.5" width="414" height="3"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Du-gb-sbC" userLabel="under line">
@@ -256,14 +256,14 @@
                                 <constraint firstAttribute="bottom" secondItem="6Du-gb-sbC" secondAttribute="bottom" id="sjt-mQ-AfY"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mxH-Y8-ekz">
+                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mxH-Y8-ekz">
                             <rect key="frame" x="0.0" y="514.5" width="414" height="1.5"/>
                             <color key="backgroundColor" name="lightGray4"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1.5" id="KIW-Tb-pGT"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IP3-YL-smF">
+                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IP3-YL-smF">
                             <rect key="frame" x="0.0" y="516" width="414" height="380"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>

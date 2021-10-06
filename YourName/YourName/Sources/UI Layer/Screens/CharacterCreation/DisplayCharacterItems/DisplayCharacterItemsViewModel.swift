@@ -29,13 +29,17 @@ final class DisplayCharacterItemsViewModel {
     }
     
     func didLoad() {
-        
+        characterItemRepository.fetchItems(type: category)
+            .bind(to: items)
+            .disposed(by: disposeBag)
     }
     
     func tapItem(at index: Int) {
         guard let selectedItem = self.items.value[safe: index] else { return }
         displayCharacterItemsResponder.selectDisplayCategoryItem(selectedItem)
     }
+    
+    private let disposeBag = DisposeBag()
     
     private let category: ItemCategory
     private let characterItemRepository: CharacterItemRepository

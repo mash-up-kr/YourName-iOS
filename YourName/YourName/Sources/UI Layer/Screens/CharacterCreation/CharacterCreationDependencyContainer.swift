@@ -14,7 +14,7 @@ final class CharacterCreationDependencyContainer {
     
     init(cardCreationDependencyContainer: CardCreationDependencyContainer) {
         func createCharacterItemRepository() -> CharacterItemRepository {
-            return FakeCharacterItemRepository()
+            return CharacterItemRepositoryImpl(factory: CharacterItemFactoryImpl())
         }
         
         func createCharaterSettingViewModel(_ characterItemRepository: CharacterItemRepository) -> CharacterSettingViewModel {
@@ -27,6 +27,10 @@ final class CharacterCreationDependencyContainer {
     
     func createCharacterSettingViewController() -> CharacterSettingViewController {
         let view = CharacterSettingView()
+        view.displayCharacterItemsViewControllerFactory = { categories in
+            let dependencyContainer = self.createDisplayCharacterItemsDependencyContainer()
+            return dependencyContainer.createDisplayCharacterItemsViewControllers(of: categories)
+        }
         view.viewModel = characterSettingViewModel
         return PageSheetController(contentView: view)
     }

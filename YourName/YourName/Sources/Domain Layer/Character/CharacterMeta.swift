@@ -8,12 +8,12 @@
 import Foundation
 
 struct CharacterMeta: Equatable {
-    let bodyID: String
-    let eyeID: String
-    let noseID: String
-    let mouthID: String
-    let hairAccessoryID: String?
-    let etcAccesstoryID: String?
+    var bodyID: String
+    var eyeID: String
+    var noseID: String
+    var mouthID: String
+    var hairAccessoryID: String?
+    var etcAccesstoryID: String?
 }
 extension CharacterMeta {
     static let `default` = CharacterMeta(
