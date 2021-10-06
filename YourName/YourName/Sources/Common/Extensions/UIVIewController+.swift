@@ -27,10 +27,6 @@ extension UIViewController {
     func navigate(_ viewController: UIViewController, action: NavigationAction) {
         switch action {
         case .present(let animated):
-//            closeOverlayViewControllers(completion: { [weak self] in
-//                viewController.modalPresentationStyle = .fullScreen
-//                self?.present(viewController, animated: animated, completion: nil)
-//            })
             if let presentedViewController = self.presentedViewController {
                 presentedViewController.dismiss(animated: false, completion: { [weak self] in
                     viewController.modalPresentationStyle = .fullScreen
@@ -42,17 +38,13 @@ extension UIViewController {
             }
             
         case .push:
-//            closeOverlayViewControllers(completion: { [weak self] in
-//                viewController.modalPresentationStyle = .fullScreen
-//                self?.navigationController?.pushViewController(viewController, animated: true)
-//            })
-                    if let presentedViewController = self.presentedViewController {
-                        presentedViewController.dismiss(animated: false, completion: { [weak self] in
-                            self?.navigationController?.pushViewController(viewController, animated: true)
-                        })
-                    } else {
-                        self.navigationController?.pushViewController(viewController, animated: true)
-                    }
+            if let presentedViewController = self.presentedViewController {
+                presentedViewController.dismiss(animated: false, completion: { [weak self] in
+                    self?.navigationController?.pushViewController(viewController, animated: true)
+                })
+            } else {
+                self.navigationController?.pushViewController(viewController, animated: true)
+            }
             
         case .show(let isDimmed):
             let underlaiedViewController = self
@@ -75,9 +67,6 @@ extension UIViewController {
             } else {
                 completion = nil
             }
-//            closeOverlayViewControllers(completion: { [weak underlaiedViewController] in
-//                underlaiedViewController?.present(overlaiedViewController, animated: true, completion: completion)
-//            })
             if let presentedViewController = self.presentedViewController {
                 presentedViewController.dismiss(animated: false, completion: { [weak underlaiedViewController] in
                     underlaiedViewController?.present(overlaiedViewController, animated: true, completion: completion)
@@ -85,7 +74,7 @@ extension UIViewController {
             } else {
                 underlaiedViewController.present(overlaiedViewController, animated: true, completion: completion)
             }
-
+            
         }
     }
     

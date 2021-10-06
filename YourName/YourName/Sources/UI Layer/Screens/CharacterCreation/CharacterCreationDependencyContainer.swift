@@ -9,22 +9,35 @@ import Foundation
 
 final class CharacterCreationDependencyContainer {
     
+    let characterSettingViewModel: CharacterSettingViewModel
+    let characterItemRepository: CharacterItemRepository
+    
     init(cardCreationDependencyContainer: CardCreationDependencyContainer) {
+        func createCharacterItemRepository() -> CharacterItemRepository {
+            return CharacterItemRepositoryImpl(factory: CharacterItemFactoryImpl())
+        }
         
+        func createCharaterSettingViewModel(_ characterItemRepository: CharacterItemRepository) -> CharacterSettingViewModel {
+            return CharacterSettingViewModel(characterItemRepository: characterItemRepository)
+        }
+        
+        self.characterItemRepository = createCharacterItemRepository()
+        self.characterSettingViewModel = createCharaterSettingViewModel(self.characterItemRepository)
     }
     
     func createCharacterSettingViewController() -> CharacterSettingViewController {
         let view = CharacterSettingView()
-        view.viewModel = createCharaterSettingViewModel()
+        view.displayCharacterItemsViewControllerFactory = { categories in
+            let dependencyContainer = self.createDisplayCharacterItemsDependencyContainer()
+            return dependencyContainer.createDisplayCharacterItemsViewControllers(of: categories)
+        }
+        view.viewModel = characterSettingViewModel
         return PageSheetController(contentView: view)
     }
     
-    private func createCharaterSettingViewModel() -> CharacterSettingViewModel {
-        let repository = createCharacterItemRepository()
-        return CharacterSettingViewModel(characterItemRepository: repository)
+    // 👼 Child DependencyContainer
+    private func createDisplayCharacterItemsDependencyContainer() -> DisplayCharacterItemsDependencyContainer {
+        return DisplayCharacterItemsDependencyContainer(characterCreationDependencyContainer: self)
     }
     
-    private func createCharacterItemRepository() -> CharacterItemRepository {
-        return FakeCharacterItemRepository()
-    }
 }

@@ -31,7 +31,6 @@ final class PageSheetController<ContentView: PageSheetContentView>: ViewControll
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configureUI()
         setupContentView(contentView: contentView)
         bind()
@@ -50,9 +49,26 @@ final class PageSheetController<ContentView: PageSheetContentView>: ViewControll
     }
     
     func close() {
-        self.dismiss(animated: false, completion: {
-            self.onDismiss?(self.contentView)
-        })
+        let dimmedColor = Palette.black1.withAlphaComponent(0.6)
+        if let underlaiedViewController = self.presentingViewController {
+            let overlaiedViewController = self
+            let dimmedView = UIView().then {
+                $0.layer.shouldRasterize = true
+                $0.backgroundColor = Palette.black1.withAlphaComponent(0.6)
+                $0.frame = underlaiedViewController.view.bounds
+            }
+            overlaiedViewController.view.backgroundColor = .clear
+            underlaiedViewController.view.addSubview(dimmedView)
+            self.dismiss(animated: true, completion: { [weak dimmedView, weak overlaiedViewController] in
+                dimmedView?.removeFromSuperview()
+                overlaiedViewController?.view.backgroundColor = dimmedColor
+                self.onDismiss?(self.contentView)
+            })
+        } else {
+            self.dismiss(animated: true, completion: {
+                self.onDismiss?(self.contentView)
+            })
+        }
     }
     
     private func configureUI() {
@@ -83,36 +99,27 @@ final class PageSheetController<ContentView: PageSheetContentView>: ViewControll
     }
     
     private func bind() {
-        self.view.rx.tapGesture()
-            .when(.recognized)
-            .filter { [weak self] _ in (self?.contentView.isModal).isFalseOrNil }
-            .subscribe(onNext: { [weak self] _ in
-                guard let self = self else { return }
-                self.close()
-            })
-            .disposed(by: disposeBag)
+        if contentView.isModal == false {
+            self.view.rx.tapGesture()
+                .when(.recognized)
+                .subscribe(onNext: { [weak self] _ in
+                    guard let self = self else { return }
+                    self.close()
+                })
+                .disposed(by: disposeBag)
+        }
         
         self.closeButton.rx.tap.subscribe(onNext: { [weak self] in
             guard let self = self else { return }
             self.close()
         })
         .disposed(by: disposeBag)
-        
-        #if DEBUG
-        self.contentView.rx.tapGesture()
-            .when(.recognized)
-            .filter { $0.numberOfTapsRequired > 2 }
-            .subscribe(onNext: { _ in
-                FLEXManager.shared.showExplorer()
-            })
-            .disposed(by: disposeBag)
-        #endif
     }
     
     private func setupContentView(contentView: ContentView) {
         stackView.addArrangedSubview(contentView)
     }
-
+    
     private func removeContentView(contentView: ContentView) {
         stackView.removeArrangedSubview(contentView)
         contentView.removeFromSuperview()
