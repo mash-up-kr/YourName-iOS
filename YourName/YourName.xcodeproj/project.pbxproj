@@ -111,7 +111,6 @@
 		CEA4D2D9270CA54A008189FE /* ProfileColorRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4D2D8270CA54A008189FE /* ProfileColorRepository.swift */; };
 		CEA4D2DB270CB39F008189FE /* ItemForDisplay.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEA4D2DA270CB39F008189FE /* ItemForDisplay.xcassets */; };
 		CEA4D2E4270CD24A008189FE /* DisplayCharacterItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4D2E2270CD24A008189FE /* DisplayCharacterItemCollectionViewCell.swift */; };
-		CEA4D2E5270CD24A008189FE /* DisplayCharacterItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEA4D2E3270CD24A008189FE /* DisplayCharacterItemCollectionViewCell.xib */; };
 		CEA4D2E7270CD401008189FE /* DisplayCharacterItemsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEA4D2E6270CD401008189FE /* DisplayCharacterItemsViewController.storyboard */; };
 		CEA4D2E9270CD415008189FE /* DisplayCharacterItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4D2E8270CD415008189FE /* DisplayCharacterItemsViewController.swift */; };
 		CEA4D2EC270D34C3008189FE /* DisplayCharacterItemsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4D2EB270D34C3008189FE /* DisplayCharacterItemsViewModel.swift */; };
@@ -288,7 +287,6 @@
 		CEA4D2D8270CA54A008189FE /* ProfileColorRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileColorRepository.swift; sourceTree = "<group>"; };
 		CEA4D2DA270CB39F008189FE /* ItemForDisplay.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ItemForDisplay.xcassets; sourceTree = "<group>"; };
 		CEA4D2E2270CD24A008189FE /* DisplayCharacterItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayCharacterItemCollectionViewCell.swift; sourceTree = "<group>"; };
-		CEA4D2E3270CD24A008189FE /* DisplayCharacterItemCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DisplayCharacterItemCollectionViewCell.xib; sourceTree = "<group>"; };
 		CEA4D2E6270CD401008189FE /* DisplayCharacterItemsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DisplayCharacterItemsViewController.storyboard; sourceTree = "<group>"; };
 		CEA4D2E8270CD415008189FE /* DisplayCharacterItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayCharacterItemsViewController.swift; sourceTree = "<group>"; };
 		CEA4D2EB270D34C3008189FE /* DisplayCharacterItemsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayCharacterItemsViewModel.swift; sourceTree = "<group>"; };
@@ -635,7 +633,6 @@
 				CEA4D2ED270D35A2008189FE /* DisplayCharacterItemsDependencyContainer.swift */,
 				CEA4D2E8270CD415008189FE /* DisplayCharacterItemsViewController.swift */,
 				CEA4D2EB270D34C3008189FE /* DisplayCharacterItemsViewModel.swift */,
-				CEA4D2E3270CD24A008189FE /* DisplayCharacterItemCollectionViewCell.xib */,
 			);
 			path = DisplayCharacterItems;
 			sourceTree = "<group>";
@@ -1105,7 +1102,6 @@
 				CE6BAB962704D3C40006D26B /* CardBookViewController.storyboard in Resources */,
 				CE4D4EE1270A100B00081A2B /* TMISettingView.xib in Resources */,
 				CE6BAB9A2704D6E30006D26B /* MyCardListViewController.storyboard in Resources */,
-				CEA4D2E5270CD24A008189FE /* DisplayCharacterItemCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

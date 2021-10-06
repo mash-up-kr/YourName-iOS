@@ -54,7 +54,8 @@ final class CharacterSettingView: UIView, NibLoadable {
         viewModel.didLoad()
         
         categoryStackview?.arrangedSubviews.enumerated().forEach { (index, view) in
-            view.rx.tapGesture().when(.recognized)
+            view.rx.tapGesture()
+                .when(.recognized)
                 .subscribe(onNext: { [weak self] _ in
                 self?.viewModel.tapCategory(at: index)
             }).disposed(by: disposeBag)
@@ -62,10 +63,11 @@ final class CharacterSettingView: UIView, NibLoadable {
     }
     
     private func render(viewModel: CharacterSettingViewModel) {
-        viewModel.categories.subscribe(onNext: { [weak self] categories in
-            self?.displayCategoryItemsViewControllers = self?.displayCharacterItemsViewControllerFactory(categories) ?? []
-        })
-        .disposed(by: disposeBag)
+        viewModel.categories.distinctUntilChanged()
+            .subscribe(onNext: { [weak self] categories in
+                self?.displayCategoryItemsViewControllers = self?.displayCharacterItemsViewControllerFactory(categories) ?? []
+            })
+            .disposed(by: disposeBag)
         
         viewModel.selectedCategory.distinctUntilChanged()
             .filterNil()
@@ -116,6 +118,7 @@ final class CharacterSettingView: UIView, NibLoadable {
     
     private func scroll(from before: Int, to after: Int) {
         guard let selectedViewController = displayCategoryItemsViewControllers[safe: after] else { return }
+        guard selectedViewController !== pageViewController.viewControllers?.first else { return }
         pageViewController.setViewControllers([selectedViewController], direction: before < after ? .forward : .reverse, animated: true, completion: nil)
     }
     

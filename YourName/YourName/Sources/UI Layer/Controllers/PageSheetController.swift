@@ -82,30 +82,21 @@ final class PageSheetController<ContentView: PageSheetContentView>: ViewControll
     }
     
     private func bind() {
-        self.view.rx.tapGesture()
-            .when(.recognized)
-            .filter { [weak self] _ in (self?.contentView.isModal).isFalseOrNil }
-            .subscribe(onNext: { [weak self] _ in
-                guard let self = self else { return }
-                self.close()
-            })
-            .disposed(by: disposeBag)
+        if contentView.isModal == false {
+            self.view.rx.tapGesture()
+                .when(.recognized)
+                .subscribe(onNext: { [weak self] _ in
+                    guard let self = self else { return }
+                    self.close()
+                })
+                .disposed(by: disposeBag)
+        }
         
         self.closeButton.rx.tap.subscribe(onNext: { [weak self] in
             guard let self = self else { return }
             self.close()
         })
         .disposed(by: disposeBag)
-        
-        #if DEBUG
-        self.contentView.rx.tapGesture()
-            .when(.recognized)
-            .filter { $0.numberOfTapsRequired > 2 }
-            .subscribe(onNext: { _ in
-                FLEXManager.shared.showExplorer()
-            })
-            .disposed(by: disposeBag)
-        #endif
     }
     
     private func setupContentView(contentView: ContentView) {
