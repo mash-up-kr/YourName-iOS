@@ -18,11 +18,13 @@ final class CharacterSettingView: UIView, NibLoadable {
         didSet { bind(to: viewModel) }
     }
     var displayCharacterItemsViewControllerFactory: (([ItemCategory]) -> [DisplayCharacterItemsViewController])!
+    var onComplete: (() -> Void)?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupFromNib()
         setupUI()
+        
     }
     
     required init?(coder: NSCoder) {
@@ -48,6 +50,7 @@ final class CharacterSettingView: UIView, NibLoadable {
     private func bind(to viewModel: CharacterSettingViewModel) {
         dispatch(to: viewModel)
         render(viewModel: viewModel)
+        onComplete = { [weak viewModel] in viewModel?.tapComplete() }
     }
     
     private func dispatch(to viewModel: CharacterSettingViewModel) {
@@ -81,18 +84,32 @@ final class CharacterSettingView: UIView, NibLoadable {
         
         viewModel.characterMeta.distinctUntilChanged()
             .subscribe(onNext: { [weak self] characterMeta in
-                self?.bodyImageView?.image = UIImage(named: characterMeta.bodyID)
-                self?.eyeImageView?.image = UIImage(named: characterMeta.eyeID)
-                self?.noseImageView?.image = UIImage(named: characterMeta.noseID)
-                self?.mouthImageView?.image = UIImage(named: characterMeta.mouthID)
+                self?.bodyImageView?.image =    UIImage(named: characterMeta.bodyID)
+                self?.eyeImageView?.image =     UIImage(named: characterMeta.eyeID)
+                self?.noseImageView?.image =    UIImage(named: characterMeta.noseID)
+                self?.mouthImageView?.image =   UIImage(named: characterMeta.mouthID)
                 if let hairAccessoryID = characterMeta.hairAccessoryID {
                     self?.hairAccessoryImageView?.image = hairAccessoryID.isNotEmpty ? UIImage(named: hairAccessoryID) : nil
                 }
                 if let etcAccesstoryID = characterMeta.etcAccesstoryID {
                     self?.etcAccessoryImageView?.image = etcAccesstoryID.isNotEmpty ? UIImage(named: etcAccesstoryID) : nil
                 }
+                self?.characterImageDidChange()
             })
             .disposed(by: disposeBag)
+    }
+    
+    private func characterImageDidChange() {
+        let originalColor = Palette.lightGray2
+        let captureColor = UIColor.white
+        
+        guard let characterFittingView = self.characterFittingView else { return }
+        characterFittingView.backgroundColor = captureColor
+        
+        guard let data = SnapshotServiceImpl.capture(characterFittingView) else { return }
+        
+        viewModel.updateCharacterData(data)
+        characterFittingView.backgroundColor = originalColor
     }
     
     private func updateCategoryItem(selectedIndex: Int) {
@@ -123,6 +140,7 @@ final class CharacterSettingView: UIView, NibLoadable {
     }
     
     private let disposeBag = DisposeBag()
+    
     private var categories = [ItemCategory]()
     private var selectedCategoryIndex = 0
     private var selectedCategoryLineStart: NSLayoutConstraint?
@@ -132,6 +150,7 @@ final class CharacterSettingView: UIView, NibLoadable {
                                                           navigationOrientation: .horizontal,
                                                           options: [:])
     
+    @IBOutlet private weak var characterFittingView: UIView?
     @IBOutlet private weak var bodyImageView: UIImageView?
     @IBOutlet private weak var eyeImageView: UIImageView?
     @IBOutlet private weak var noseImageView: UIImageView?

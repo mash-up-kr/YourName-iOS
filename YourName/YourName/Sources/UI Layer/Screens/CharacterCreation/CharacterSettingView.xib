@@ -14,6 +14,7 @@
                 <outlet property="bodyImageView" destination="fhk-kl-RkY" id="hKw-AI-DI8"/>
                 <outlet property="categoryItemFrameView" destination="IP3-YL-smF" id="7Ya-df-WVd"/>
                 <outlet property="categoryStackview" destination="E2F-QN-Zc1" id="DVa-Gm-fme"/>
+                <outlet property="characterFittingView" destination="weR-65-Fyw" id="Ity-ea-8mP"/>
                 <outlet property="etcAccessoryImageView" destination="Gf1-dZ-Vh1" id="180-Jy-Vhb"/>
                 <outlet property="eyeImageView" destination="OXx-sN-Cae" id="ILF-3k-Qsk"/>
                 <outlet property="hairAccessoryImageView" destination="eUR-mM-eN5" id="r1E-hB-78j"/>
@@ -29,87 +30,99 @@
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" ambiguous="YES" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="709"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="AH7-b8-urX" userLabel="Body Stack View">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="AH7-b8-urX" userLabel="Body Stack View">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="709"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="weR-65-Fyw">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eiq-59-RhS">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="260"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fhk-kl-RkY" userLabel="bodyImageView">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="weR-65-Fyw" userLabel="Character Fitting View">
                                     <rect key="frame" x="77" y="0.0" width="260" height="260"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fhk-kl-RkY" userLabel="bodyImageView">
+                                            <rect key="frame" x="0.0" y="0.0" width="260" height="260"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="fhk-kl-RkY" secondAttribute="height" id="agr-vT-4kE"/>
+                                            </constraints>
+                                        </imageView>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OXx-sN-Cae" userLabel="eye Image View">
+                                            <rect key="frame" x="0.0" y="0.0" width="260" height="260"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="OXx-sN-Cae" secondAttribute="height" id="DIZ-fg-hbE"/>
+                                            </constraints>
+                                        </imageView>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5QV-Ka-7NW" userLabel="noseImageView">
+                                            <rect key="frame" x="0.0" y="0.0" width="260" height="260"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="5QV-Ka-7NW" secondAttribute="height" id="MFk-Lb-2uf"/>
+                                            </constraints>
+                                        </imageView>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LfT-pA-z3e" userLabel="mouthImageView">
+                                            <rect key="frame" x="0.0" y="0.0" width="260" height="260"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="LfT-pA-z3e" secondAttribute="height" id="7yw-WA-5Em"/>
+                                            </constraints>
+                                        </imageView>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eUR-mM-eN5" userLabel="accessoryImageView1">
+                                            <rect key="frame" x="0.0" y="0.0" width="260" height="260"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="eUR-mM-eN5" secondAttribute="height" id="myV-RN-oHW"/>
+                                            </constraints>
+                                        </imageView>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Gf1-dZ-Vh1" userLabel="accessoryImageView2">
+                                            <rect key="frame" x="0.0" y="0.0" width="260" height="260"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="Gf1-dZ-Vh1" secondAttribute="height" id="CKt-BS-1ko"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" name="lightGray2"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" secondItem="fhk-kl-RkY" secondAttribute="height" id="agr-vT-4kE"/>
+                                        <constraint firstItem="fhk-kl-RkY" firstAttribute="centerX" secondItem="weR-65-Fyw" secondAttribute="centerX" id="1Yd-12-hZS"/>
+                                        <constraint firstItem="5QV-Ka-7NW" firstAttribute="width" secondItem="5QV-Ka-7NW" secondAttribute="height" id="4F4-Zh-aCt"/>
+                                        <constraint firstAttribute="height" constant="260" id="4TH-b3-sa5"/>
+                                        <constraint firstItem="LfT-pA-z3e" firstAttribute="centerX" secondItem="weR-65-Fyw" secondAttribute="centerX" id="7R4-7n-8oP"/>
+                                        <constraint firstAttribute="width" constant="260" id="9rP-dY-d6N"/>
+                                        <constraint firstItem="OXx-sN-Cae" firstAttribute="centerX" secondItem="weR-65-Fyw" secondAttribute="centerX" id="EZi-9a-LRm"/>
+                                        <constraint firstItem="fhk-kl-RkY" firstAttribute="height" secondItem="weR-65-Fyw" secondAttribute="height" id="F7i-nR-GnS"/>
+                                        <constraint firstItem="eUR-mM-eN5" firstAttribute="centerX" secondItem="weR-65-Fyw" secondAttribute="centerX" id="GHa-TM-QEj"/>
+                                        <constraint firstItem="LfT-pA-z3e" firstAttribute="width" secondItem="LfT-pA-z3e" secondAttribute="height" id="HNp-wf-PpU"/>
+                                        <constraint firstItem="5QV-Ka-7NW" firstAttribute="centerY" secondItem="weR-65-Fyw" secondAttribute="centerY" id="Hx1-Rk-5cj"/>
+                                        <constraint firstItem="LfT-pA-z3e" firstAttribute="centerY" secondItem="weR-65-Fyw" secondAttribute="centerY" id="Inh-NE-pd6"/>
+                                        <constraint firstItem="Gf1-dZ-Vh1" firstAttribute="centerX" secondItem="weR-65-Fyw" secondAttribute="centerX" id="KAw-Fd-b8Y"/>
+                                        <constraint firstItem="Gf1-dZ-Vh1" firstAttribute="width" secondItem="Gf1-dZ-Vh1" secondAttribute="height" id="Keh-Km-bMM"/>
+                                        <constraint firstItem="eUR-mM-eN5" firstAttribute="width" secondItem="eUR-mM-eN5" secondAttribute="height" id="MOC-nf-rBi"/>
+                                        <constraint firstItem="Gf1-dZ-Vh1" firstAttribute="width" secondItem="Gf1-dZ-Vh1" secondAttribute="height" id="O8A-Q3-UP7"/>
+                                        <constraint firstItem="Gf1-dZ-Vh1" firstAttribute="height" secondItem="weR-65-Fyw" secondAttribute="height" id="OAv-hb-AOi"/>
+                                        <constraint firstItem="eUR-mM-eN5" firstAttribute="height" secondItem="weR-65-Fyw" secondAttribute="height" id="PSE-S8-NMx"/>
+                                        <constraint firstItem="eUR-mM-eN5" firstAttribute="width" secondItem="eUR-mM-eN5" secondAttribute="height" id="Ux7-H1-xCc"/>
+                                        <constraint firstItem="eUR-mM-eN5" firstAttribute="centerY" secondItem="weR-65-Fyw" secondAttribute="centerY" id="WNS-1D-ImS"/>
+                                        <constraint firstItem="LfT-pA-z3e" firstAttribute="height" secondItem="weR-65-Fyw" secondAttribute="height" id="XLd-0a-IJT"/>
+                                        <constraint firstItem="5QV-Ka-7NW" firstAttribute="height" secondItem="weR-65-Fyw" secondAttribute="height" id="Z27-Fv-QtW"/>
+                                        <constraint firstItem="5QV-Ka-7NW" firstAttribute="width" secondItem="5QV-Ka-7NW" secondAttribute="height" id="dWq-PS-q6A"/>
+                                        <constraint firstItem="fhk-kl-RkY" firstAttribute="centerY" secondItem="weR-65-Fyw" secondAttribute="centerY" id="jd4-2F-qyt"/>
+                                        <constraint firstItem="Gf1-dZ-Vh1" firstAttribute="centerY" secondItem="weR-65-Fyw" secondAttribute="centerY" id="loF-hn-xeA"/>
+                                        <constraint firstItem="OXx-sN-Cae" firstAttribute="centerY" secondItem="weR-65-Fyw" secondAttribute="centerY" id="lyx-PL-3zT"/>
+                                        <constraint firstItem="5QV-Ka-7NW" firstAttribute="centerX" secondItem="weR-65-Fyw" secondAttribute="centerX" id="pk7-Rd-onx"/>
+                                        <constraint firstItem="OXx-sN-Cae" firstAttribute="width" secondItem="OXx-sN-Cae" secondAttribute="height" id="qRm-Jv-6s4"/>
+                                        <constraint firstItem="LfT-pA-z3e" firstAttribute="width" secondItem="LfT-pA-z3e" secondAttribute="height" id="tNL-sI-JW1"/>
+                                        <constraint firstItem="OXx-sN-Cae" firstAttribute="height" secondItem="weR-65-Fyw" secondAttribute="height" id="zzt-YN-LWZ"/>
                                     </constraints>
-                                </imageView>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OXx-sN-Cae" userLabel="eye Image View">
-                                    <rect key="frame" x="77" y="0.0" width="260" height="260"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" secondItem="OXx-sN-Cae" secondAttribute="height" id="DIZ-fg-hbE"/>
-                                    </constraints>
-                                </imageView>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5QV-Ka-7NW" userLabel="noseImageView">
-                                    <rect key="frame" x="77" y="0.0" width="260" height="260"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" secondItem="5QV-Ka-7NW" secondAttribute="height" id="MFk-Lb-2uf"/>
-                                    </constraints>
-                                </imageView>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LfT-pA-z3e" userLabel="mouthImageView">
-                                    <rect key="frame" x="77" y="0.0" width="260" height="260"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" secondItem="LfT-pA-z3e" secondAttribute="height" id="7yw-WA-5Em"/>
-                                    </constraints>
-                                </imageView>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eUR-mM-eN5" userLabel="accessoryImageView1">
-                                    <rect key="frame" x="77" y="0.0" width="260" height="260"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" secondItem="eUR-mM-eN5" secondAttribute="height" id="myV-RN-oHW"/>
-                                    </constraints>
-                                </imageView>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Gf1-dZ-Vh1" userLabel="accessoryImageView2">
-                                    <rect key="frame" x="77" y="0.0" width="260" height="260"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" secondItem="Gf1-dZ-Vh1" secondAttribute="height" id="CKt-BS-1ko"/>
-                                    </constraints>
-                                </imageView>
+                                </view>
                             </subviews>
                             <color key="backgroundColor" name="lightGray2"/>
                             <constraints>
-                                <constraint firstItem="fhk-kl-RkY" firstAttribute="centerX" secondItem="weR-65-Fyw" secondAttribute="centerX" id="1Yd-12-hZS"/>
-                                <constraint firstItem="5QV-Ka-7NW" firstAttribute="width" secondItem="5QV-Ka-7NW" secondAttribute="height" id="4F4-Zh-aCt"/>
-                                <constraint firstAttribute="height" constant="260" id="4TH-b3-sa5"/>
-                                <constraint firstItem="LfT-pA-z3e" firstAttribute="centerX" secondItem="weR-65-Fyw" secondAttribute="centerX" id="7R4-7n-8oP"/>
-                                <constraint firstItem="OXx-sN-Cae" firstAttribute="centerX" secondItem="weR-65-Fyw" secondAttribute="centerX" id="EZi-9a-LRm"/>
-                                <constraint firstItem="fhk-kl-RkY" firstAttribute="height" secondItem="weR-65-Fyw" secondAttribute="height" id="F7i-nR-GnS"/>
-                                <constraint firstItem="eUR-mM-eN5" firstAttribute="centerX" secondItem="weR-65-Fyw" secondAttribute="centerX" id="GHa-TM-QEj"/>
-                                <constraint firstItem="LfT-pA-z3e" firstAttribute="width" secondItem="LfT-pA-z3e" secondAttribute="height" id="HNp-wf-PpU"/>
-                                <constraint firstItem="5QV-Ka-7NW" firstAttribute="centerY" secondItem="weR-65-Fyw" secondAttribute="centerY" id="Hx1-Rk-5cj"/>
-                                <constraint firstItem="LfT-pA-z3e" firstAttribute="centerY" secondItem="weR-65-Fyw" secondAttribute="centerY" id="Inh-NE-pd6"/>
-                                <constraint firstItem="Gf1-dZ-Vh1" firstAttribute="centerX" secondItem="weR-65-Fyw" secondAttribute="centerX" id="KAw-Fd-b8Y"/>
-                                <constraint firstItem="Gf1-dZ-Vh1" firstAttribute="width" secondItem="Gf1-dZ-Vh1" secondAttribute="height" id="Keh-Km-bMM"/>
-                                <constraint firstItem="eUR-mM-eN5" firstAttribute="width" secondItem="eUR-mM-eN5" secondAttribute="height" id="MOC-nf-rBi"/>
-                                <constraint firstItem="Gf1-dZ-Vh1" firstAttribute="width" secondItem="Gf1-dZ-Vh1" secondAttribute="height" id="O8A-Q3-UP7"/>
-                                <constraint firstItem="Gf1-dZ-Vh1" firstAttribute="height" secondItem="weR-65-Fyw" secondAttribute="height" id="OAv-hb-AOi"/>
-                                <constraint firstItem="eUR-mM-eN5" firstAttribute="height" secondItem="weR-65-Fyw" secondAttribute="height" id="PSE-S8-NMx"/>
-                                <constraint firstItem="eUR-mM-eN5" firstAttribute="width" secondItem="eUR-mM-eN5" secondAttribute="height" id="Ux7-H1-xCc"/>
-                                <constraint firstItem="eUR-mM-eN5" firstAttribute="centerY" secondItem="weR-65-Fyw" secondAttribute="centerY" id="WNS-1D-ImS"/>
-                                <constraint firstItem="LfT-pA-z3e" firstAttribute="height" secondItem="weR-65-Fyw" secondAttribute="height" id="XLd-0a-IJT"/>
-                                <constraint firstItem="5QV-Ka-7NW" firstAttribute="height" secondItem="weR-65-Fyw" secondAttribute="height" id="Z27-Fv-QtW"/>
-                                <constraint firstItem="5QV-Ka-7NW" firstAttribute="width" secondItem="5QV-Ka-7NW" secondAttribute="height" id="dWq-PS-q6A"/>
-                                <constraint firstItem="fhk-kl-RkY" firstAttribute="centerY" secondItem="weR-65-Fyw" secondAttribute="centerY" id="jd4-2F-qyt"/>
-                                <constraint firstItem="Gf1-dZ-Vh1" firstAttribute="centerY" secondItem="weR-65-Fyw" secondAttribute="centerY" id="loF-hn-xeA"/>
-                                <constraint firstItem="OXx-sN-Cae" firstAttribute="centerY" secondItem="weR-65-Fyw" secondAttribute="centerY" id="lyx-PL-3zT"/>
-                                <constraint firstItem="5QV-Ka-7NW" firstAttribute="centerX" secondItem="weR-65-Fyw" secondAttribute="centerX" id="pk7-Rd-onx"/>
-                                <constraint firstItem="OXx-sN-Cae" firstAttribute="width" secondItem="OXx-sN-Cae" secondAttribute="height" id="qRm-Jv-6s4"/>
-                                <constraint firstItem="LfT-pA-z3e" firstAttribute="width" secondItem="LfT-pA-z3e" secondAttribute="height" id="tNL-sI-JW1"/>
-                                <constraint firstItem="OXx-sN-Cae" firstAttribute="height" secondItem="weR-65-Fyw" secondAttribute="height" id="zzt-YN-LWZ"/>
+                                <constraint firstItem="weR-65-Fyw" firstAttribute="centerX" secondItem="Eiq-59-RhS" secondAttribute="centerX" id="2XW-AK-aBr"/>
+                                <constraint firstAttribute="height" constant="260" id="F6S-4y-YlC"/>
+                                <constraint firstItem="weR-65-Fyw" firstAttribute="centerY" secondItem="Eiq-59-RhS" secondAttribute="centerY" id="zdv-c4-hLb"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="owF-VP-hhP">
-                            <rect key="frame" x="0.0" y="260" width="414" height="251.5"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="owF-VP-hhP" userLabel="Item Category Views">
+                            <rect key="frame" x="0.0" y="260" width="414" height="64"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="E2F-QN-Zc1">
                                     <rect key="frame" x="12" y="0.0" width="390" height="64"/>
@@ -236,8 +249,8 @@
                                 <constraint firstItem="E2F-QN-Zc1" firstAttribute="top" secondItem="owF-VP-hhP" secondAttribute="top" id="VDO-6N-7SD"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dAt-Ko-X7K">
-                            <rect key="frame" x="0.0" y="511.5" width="414" height="3"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dAt-Ko-X7K" userLabel="Divder">
+                            <rect key="frame" x="0.0" y="324" width="414" height="3"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Du-gb-sbC" userLabel="under line">
                                     <rect key="frame" x="182" y="0.0" width="50" height="3"/>
@@ -256,15 +269,15 @@
                                 <constraint firstAttribute="bottom" secondItem="6Du-gb-sbC" secondAttribute="bottom" id="sjt-mQ-AfY"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mxH-Y8-ekz">
-                            <rect key="frame" x="0.0" y="514.5" width="414" height="1.5"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mxH-Y8-ekz" userLabel="Specer">
+                            <rect key="frame" x="0.0" y="327" width="414" height="2"/>
                             <color key="backgroundColor" name="lightGray4"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="1.5" id="KIW-Tb-pGT"/>
+                                <constraint firstAttribute="height" constant="2" id="KIW-Tb-pGT"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IP3-YL-smF">
-                            <rect key="frame" x="0.0" y="516" width="414" height="380"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IP3-YL-smF" userLabel="Page Controller Frame View">
+                            <rect key="frame" x="0.0" y="329" width="414" height="380"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="380" id="9wa-nQ-7uB"/>

@@ -9,14 +9,21 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SkillSettingView" customModule="YourName" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SkillSettingView" customModule="YourName" customModuleProvider="target">
+            <connections>
+                <outlet property="completeButton" destination="MP7-GF-PHv" id="Txh-c7-hLu"/>
+                <outletCollection property="skillInputViews" destination="Xys-Xi-ajH" collectionClass="NSMutableArray" id="Hu6-s3-vZR"/>
+                <outletCollection property="skillInputViews" destination="SWO-7w-qHE" collectionClass="NSMutableArray" id="j1s-Ik-PlU"/>
+                <outletCollection property="skillInputViews" destination="ohK-JN-yvS" collectionClass="NSMutableArray" id="DHk-dv-yYh"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="664"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MP7-GF-PHv">
-                    <rect key="frame" x="24" y="798" width="366" height="56"/>
+                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MP7-GF-PHv">
+                    <rect key="frame" x="24" y="600" width="366" height="56"/>
                     <color key="backgroundColor" name="black1"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="56" id="RYu-5c-Eu1"/>
@@ -32,7 +39,7 @@
                     </userDefinedRuntimeAttributes>
                 </button>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Wy-yr-SSr">
-                    <rect key="frame" x="0.0" y="198" width="414" height="600"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="600"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="tf8-tu-aqO">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="901"/>
@@ -269,6 +276,9 @@
                                     <constraints>
                                         <constraint firstAttribute="height" constant="204" placeholder="YES" id="aLJ-Gf-9Dx"/>
                                     </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="titleText" value="Skill.01 *"/>
+                                    </userDefinedRuntimeAttributes>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SYx-9M-ClD">
                                     <rect key="frame" x="0.0" y="434" width="414" height="12"/>
@@ -283,6 +293,9 @@
                                     <constraints>
                                         <constraint firstAttribute="height" constant="204" placeholder="YES" id="Crd-xD-KzP"/>
                                     </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="titleText" value="Skill.02 *"/>
+                                    </userDefinedRuntimeAttributes>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KDd-IZ-yRt">
                                     <rect key="frame" x="0.0" y="650" width="414" height="12"/>
@@ -297,6 +310,9 @@
                                     <constraints>
                                         <constraint firstAttribute="height" constant="204" placeholder="YES" id="ine-xN-JyP"/>
                                     </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="titleText" value="Skill.03 *"/>
+                                    </userDefinedRuntimeAttributes>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uJ4-8G-MUX">
                                     <rect key="frame" x="0.0" y="866" width="414" height="35"/>

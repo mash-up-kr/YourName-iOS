@@ -13,6 +13,10 @@ import FLEX
 protocol PageSheetContentView: UIView {
     var title: String { get }
     var isModal: Bool { get }
+    var onComplete: (() -> Void)? { get }
+}
+extension PageSheetContentView {
+    var onComplete: (() -> Void)? { nil }
 }
 
 final class PageSheetController<ContentView: PageSheetContentView>: ViewController {
@@ -74,46 +78,55 @@ final class PageSheetController<ContentView: PageSheetContentView>: ViewControll
     private func configureUI() {
         self.view.backgroundColor = Palette.black1.withAlphaComponent(0.6)
         self.view.addSubview(stackView)
-        stackView.snp.makeConstraints {
-            $0.leading.trailing.bottom.equalToSuperview()
-        }
+        stackView.snp.makeConstraints { $0.leading.trailing.bottom.equalToSuperview() }
         stackView.addArrangedSubviews(topBarView)
-        topBarView.snp.makeConstraints {
-            $0.height.equalTo(64)
-        }
+        
+        topBarView.snp.makeConstraints { $0.height.equalTo(64) }
         topBarView.backgroundColor = .white
         topBarView.clipsToBounds = true
-        topBarView.addSubviews(closeButton, titleLabel)
+        topBarView.addSubviews(closeButton, titleLabel, completeButton)
         topBarView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         topBarView.layer.cornerRadius = 20
+        
         titleLabel.font = UIFont.boldSystemFont(ofSize: 18)
+        titleLabel.snp.makeConstraints {
+            $0.center.equalToSuperview()
+        }
+        
         closeButton.setImage(UIImage(named: "btn_close")!, for: .normal)
         closeButton.snp.makeConstraints {
             $0.width.height.equalTo(30)
             $0.leading.equalToSuperview().offset(18)
             $0.centerY.equalToSuperview()
         }
-        titleLabel.snp.makeConstraints {
-            $0.center.equalToSuperview()
+        
+        completeButton.setTitle("완료", for: .normal)
+        completeButton.setTitleColor(Palette.black1, for: .normal)
+        completeButton.snp.makeConstraints {
+            $0.trailing.equalToSuperview().inset(24)
+            $0.centerY.equalToSuperview()
         }
+        completeButton.isHidden = contentView.onComplete == nil
     }
     
     private func bind() {
         if contentView.isModal == false {
             self.view.rx.tapGesture()
                 .when(.recognized)
-                .subscribe(onNext: { [weak self] _ in
-                    guard let self = self else { return }
-                    self.close()
-                })
+                .subscribe(onNext: { [weak self] _ in self?.close() })
                 .disposed(by: disposeBag)
         }
         
-        self.closeButton.rx.tap.subscribe(onNext: { [weak self] in
-            guard let self = self else { return }
-            self.close()
-        })
-        .disposed(by: disposeBag)
+        self.closeButton.rx.tap
+            .subscribe(onNext: { [weak self] in self?.close() })
+            .disposed(by: disposeBag)
+        
+        self.completeButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.contentView.onComplete?()
+                self?.close()
+            })
+            .disposed(by: disposeBag)
     }
     
     private func setupContentView(contentView: ContentView) {
@@ -129,5 +142,6 @@ final class PageSheetController<ContentView: PageSheetContentView>: ViewControll
     private let topBarView = UIView()
     private let titleLabel = UILabel()
     private let closeButton = UIButton()
+    private let completeButton = UIButton()
     private let disposeBag = DisposeBag()
 }

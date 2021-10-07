@@ -9,14 +9,24 @@ import Foundation
 import RxSwift
 import RxRelay
 
+protocol CharacterSettingResponder: AnyObject {
+    func characterSettingDidComplete(characterMeta: CharacterMeta, characterData: Data)
+}
+
 final class CharacterSettingViewModel {
     
+    let shouldDismiss = PublishRelay<Void>()
     let characterMeta = BehaviorRelay<CharacterMeta>(value: .default)
+    let characterData = BehaviorRelay<Data>(value: Data())
     let categories = BehaviorRelay<[ItemCategory]>(value: ItemCategory.allCases)
     let selectedCategory = BehaviorRelay<ItemCategory?>(value: nil)
     
-    init(characterItemRepository: CharacterItemRepository) {
+    init(
+        characterItemRepository: CharacterItemRepository,
+        characterSettingResponder: CharacterSettingResponder
+    ) {
         self.characterItemRepository = characterItemRepository
+        self.characterSettingResponder = characterSettingResponder
     }
     
     func didLoad() {
@@ -28,8 +38,20 @@ final class CharacterSettingViewModel {
         selectedCategory.accept(category)
     }
     
+    func updateCharacterData(_ data: Data) {
+        characterData.accept(data)
+    }
+    
+    func tapComplete() {
+        characterSettingResponder.characterSettingDidComplete(characterMeta: characterMeta.value,
+                                                              characterData: characterData.value)
+        shouldDismiss.accept(Void())
+    }
+    
     private let disposeBag = DisposeBag()
+    
     private let characterItemRepository: CharacterItemRepository
+    private let characterSettingResponder: CharacterSettingResponder
     
 }
 extension CharacterSettingViewModel: DisplayCharacterItemsResponder {

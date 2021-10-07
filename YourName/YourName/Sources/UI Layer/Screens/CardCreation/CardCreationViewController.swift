@@ -173,6 +173,30 @@ final class CardCreationViewController: ViewController, Storyboarded {
                 .disposed(by: disposeBag)
         }
         
+        viewModel.hasCompletedSkillInput.distinctUntilChanged()
+            .subscribe(onNext: { [weak self] hasCompleted in
+                if hasCompleted {
+                    self?.skillCompleteImageView?.image = UIImage(named: "icon_complete")
+                    self?.mySkillSettingButton?.backgroundColor = Palette.lightGreen
+                } else {
+                    self?.skillCompleteImageView?.image = UIImage(named: "icon_incomplete")
+                    self?.mySkillSettingButton?.backgroundColor = .white
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.hasCompletedTMIInput.distinctUntilChanged()
+            .subscribe(onNext: { [weak self] hasCompleted in
+                if hasCompleted {
+                    self?.tmiCompleteImageView?.image = UIImage(named: "icon_complete")
+                    self?.myTMISettingButton?.backgroundColor = Palette.lightGreen
+                } else {
+                    self?.tmiCompleteImageView?.image = UIImage(named: "icon_incomplete")
+                    self?.myTMISettingButton?.backgroundColor = .white
+                }
+            })
+            .disposed(by: disposeBag)
+        
         if let profileClearButton = self.profileClearButton {
             viewModel.shouldHideClear.distinctUntilChanged()
                 .bind(to: profileClearButton.rx.isHidden)
@@ -195,6 +219,11 @@ final class CardCreationViewController: ViewController, Storyboarded {
         
         viewModel.shouldDismiss.subscribe(onNext: { [weak self] in
             self?.dismiss(animated: true, completion: nil)
+        })
+        .disposed(by: disposeBag)
+        
+        viewModel.shouldDismissOverlays.subscribe(onNext: { [weak self] in
+            self?.presentedViewController?.dismiss(animated: true, completion: nil)
         })
         .disposed(by: disposeBag)
     }
@@ -221,10 +250,14 @@ final class CardCreationViewController: ViewController, Storyboarded {
     @IBOutlet private weak var backgroundSettingButton: UIButton?
     @IBOutlet private weak var nameField: UITextField?
     @IBOutlet private weak var roleField: UITextField?
+    
+    @IBOutlet private weak var skillCompleteImageView: UIImageView?
     @IBOutlet private weak var mySkillSettingButton: UIButton?
     @IBOutlet private var contactInputViews: [ContactInputView]?
     @IBOutlet private weak var personalityTitleField: UITextField?
     @IBOutlet private weak var personalityKeywordField: UITextField?
+    
+    @IBOutlet private weak var tmiCompleteImageView: UIImageView?
     @IBOutlet private weak var myTMISettingButton: UIButton?
     @IBOutlet private weak var aboutMeTextView: UITextView?
     @IBOutlet private weak var aboutMePlaceholderLabel: UILabel?

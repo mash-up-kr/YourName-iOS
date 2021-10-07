@@ -9,8 +9,21 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+struct SkillInputViewModel: Equatable {
+    var title: String
+    var level: Int
+}
+extension SkillInputViewModel {
+    static var empty: SkillInputViewModel {
+        SkillInputViewModel(title: .empty, level: 0)
+    }
+}
+
 final class SkillInputView: UIView, NibLoadable {
-    
+    var skillName: String? {
+        get { self.skillNameField?.text }
+        set { self.skillNameField?.text = newValue }
+    }
     var level: Int = 0 {
         didSet { configure(level: level) }
     }
@@ -72,6 +85,12 @@ final class SkillInputView: UIView, NibLoadable {
     @IBOutlet private weak var gageStackView: UIStackView?
     @IBOutlet private weak var levelDownButton: UIButton?
     @IBOutlet private weak var levelUpButton: UIButton?
+    
+    @IBInspectable
+    private var titleText: String? {
+        get { self.titleLabel?.text }
+        set { self.titleLabel?.text = newValue }
+    }
 }
 extension Reactive where Base: SkillInputView {
     
