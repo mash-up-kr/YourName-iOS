@@ -35,17 +35,7 @@ final class HomeTabBarController: UITabBarController {
     private func setupAttributes() {
         tabBar.tintColor = .black
         tabBar.backgroundColor = .white
-        tabBar.layer.applyShadow(color: UIColor.black.cgColor,
-                                 alpha: 0.25,
-                                 x: 0,
-                                 y: 0,
-                                 blur: 5)
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        tabBar.frame.origin.y = view.frame.height - 96
-        tabBar.frame.size.height = 96
+        tabBar.layer.applyShadow()
     }
     
     private func bind() {
