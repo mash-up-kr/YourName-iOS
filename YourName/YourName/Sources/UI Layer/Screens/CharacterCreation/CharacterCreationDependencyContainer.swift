@@ -17,12 +17,20 @@ final class CharacterCreationDependencyContainer {
             return CharacterItemRepositoryImpl(factory: CharacterItemFactoryImpl())
         }
         
-        func createCharaterSettingViewModel(_ characterItemRepository: CharacterItemRepository) -> CharacterSettingViewModel {
-            return CharacterSettingViewModel(characterItemRepository: characterItemRepository)
+        func createCharaterSettingViewModel(
+            characterItemRepository: CharacterItemRepository,
+            cardCreationViewModel: CardCreationViewModel
+        ) -> CharacterSettingViewModel {
+            return CharacterSettingViewModel(
+                characterItemRepository: characterItemRepository,
+                characterSettingResponder: cardCreationViewModel
+            )
         }
         
+        let cardCreationViewModel = cardCreationDependencyContainer.viewModel
         self.characterItemRepository = createCharacterItemRepository()
-        self.characterSettingViewModel = createCharaterSettingViewModel(self.characterItemRepository)
+        self.characterSettingViewModel = createCharaterSettingViewModel(characterItemRepository: self.characterItemRepository,
+                                                                        cardCreationViewModel: cardCreationViewModel)
     }
     
     func createCharacterSettingViewController() -> CharacterSettingViewController {

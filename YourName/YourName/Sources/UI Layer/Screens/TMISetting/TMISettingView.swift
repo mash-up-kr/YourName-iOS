@@ -29,6 +29,8 @@ final class TMISettingView: UIView, NibLoadable {
         didSet { bind(to: viewModel) }
     }
     
+    var onComplete: (() -> Void)?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setupFromNib()
@@ -57,6 +59,7 @@ final class TMISettingView: UIView, NibLoadable {
         self.dispatch(to: viewModel)
         self.render(viewModel)
         
+        onComplete = { [weak viewModel] in viewModel?.tapComplete() }
         tmiCollectionView?.rx.observe(CGSize.self, "contentSize")
             .distinctUntilChanged()
             .filterNil()

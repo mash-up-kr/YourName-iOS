@@ -15,6 +15,7 @@ protocol SkillSettingResponder: AnyObject {
 
 final class SkillSettingViewModel {
     
+    let shouldDismiss = PublishRelay<Void>()
     let canComplete = BehaviorRelay<Bool>(value: false)
     let skillsForDisplay = BehaviorRelay<[SkillInputViewModel]>(value: [.empty, .empty, .empty])
     
@@ -44,6 +45,7 @@ final class SkillSettingViewModel {
         
         let skills = skillsForDisplay.value.map { Skill(title: $0.title, level: $0.level) }
         skillSettingResponder.skillSettingDidComplete(skills: skills)
+        shouldDismiss.accept(Void())
     }
     
     private func transform() {

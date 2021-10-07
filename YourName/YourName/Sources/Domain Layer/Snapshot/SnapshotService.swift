@@ -8,14 +8,14 @@
 import UIKit
 
 protocol SnapshotService {
-    static func capture(_ view: UIView) -> UIImage
+    static func capture(_ view: UIView) -> Data?
 }
 
 enum SnapshotServiceImpl: SnapshotService {
-    static func capture(_ view: UIView) -> UIImage {
+    static func capture(_ view: UIView) -> Data? {
         let renderer = UIGraphicsImageRenderer(bounds: view.bounds)
         return renderer.image { rendererContext in
             view.layer.render(in: rendererContext.cgContext)
-        }
+        }.pngData()
     }
 }

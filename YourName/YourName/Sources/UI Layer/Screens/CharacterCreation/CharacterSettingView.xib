@@ -14,6 +14,7 @@
                 <outlet property="bodyImageView" destination="fhk-kl-RkY" id="hKw-AI-DI8"/>
                 <outlet property="categoryItemFrameView" destination="IP3-YL-smF" id="7Ya-df-WVd"/>
                 <outlet property="categoryStackview" destination="E2F-QN-Zc1" id="DVa-Gm-fme"/>
+                <outlet property="characterFittingView" destination="weR-65-Fyw" id="Ity-ea-8mP"/>
                 <outlet property="etcAccessoryImageView" destination="Gf1-dZ-Vh1" id="180-Jy-Vhb"/>
                 <outlet property="eyeImageView" destination="OXx-sN-Cae" id="ILF-3k-Qsk"/>
                 <outlet property="hairAccessoryImageView" destination="eUR-mM-eN5" id="r1E-hB-78j"/>

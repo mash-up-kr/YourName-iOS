@@ -15,4 +15,5 @@ final class MockStrongPointRepository: StrongPointRepository {
     func fetchAll() -> Observable<[StrongPoint]> {
         return .just(stubedData)
     }
+    
 }

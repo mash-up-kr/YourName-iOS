@@ -118,6 +118,8 @@
 		CE94ABB2270EFCA3005D2E80 /* TMISectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94ABB0270EFCA3005D2E80 /* TMISectionHeaderView.swift */; };
 		CE94ABB3270EFCA3005D2E80 /* TMISectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE94ABB1270EFCA3005D2E80 /* TMISectionHeaderView.xib */; };
 		CE94ABB5270F2C81005D2E80 /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94ABB4270F2C81005D2E80 /* Skill.swift */; };
+		CE94ABB8270F4104005D2E80 /* ImageSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94ABB7270F4104005D2E80 /* ImageSource.swift */; };
+		CE94ABBA270F4114005D2E80 /* ColorSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94ABB9270F4114005D2E80 /* ColorSource.swift */; };
 		CEA4D2D7270C9B1D008189FE /* CharacterEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4D2D6270C9B1D008189FE /* CharacterEntity.swift */; };
 		CEA4D2D9270CA54A008189FE /* ProfileColorRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4D2D8270CA54A008189FE /* ProfileColorRepository.swift */; };
 		CEA4D2DB270CB39F008189FE /* ItemForDisplay.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEA4D2DA270CB39F008189FE /* ItemForDisplay.xcassets */; };
@@ -305,6 +307,8 @@
 		CE94ABB0270EFCA3005D2E80 /* TMISectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMISectionHeaderView.swift; sourceTree = "<group>"; };
 		CE94ABB1270EFCA3005D2E80 /* TMISectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TMISectionHeaderView.xib; sourceTree = "<group>"; };
 		CE94ABB4270F2C81005D2E80 /* Skill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
+		CE94ABB7270F4104005D2E80 /* ImageSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSource.swift; sourceTree = "<group>"; };
+		CE94ABB9270F4114005D2E80 /* ColorSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSource.swift; sourceTree = "<group>"; };
 		CEA4D2D6270C9B1D008189FE /* CharacterEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterEntity.swift; sourceTree = "<group>"; };
 		CEA4D2D8270CA54A008189FE /* ProfileColorRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileColorRepository.swift; sourceTree = "<group>"; };
 		CEA4D2DA270CB39F008189FE /* ItemForDisplay.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ItemForDisplay.xcassets; sourceTree = "<group>"; };
@@ -788,6 +792,8 @@
 				CE4D4EB32708E7AF00081A2B /* Controllers */,
 				CEB6586926EB2C5F00C11F33 /* Screens */,
 				CE4D4EA9270820F900081A2B /* Views */,
+				CE94ABB7270F4104005D2E80 /* ImageSource.swift */,
+				CE94ABB9270F4114005D2E80 /* ColorSource.swift */,
 			);
 			path = "UI Layer";
 			sourceTree = "<group>";
@@ -1267,6 +1273,7 @@
 				CE6BABA72704DB0A0006D26B /* CardCreationViewController.swift in Sources */,
 				CEB6588226EC811E00C11F33 /* DataLoading.swift in Sources */,
 				CE4D4EDB270A0D2000081A2B /* SkillSettingViewModel.swift in Sources */,
+				CE94ABB8270F4104005D2E80 /* ImageSource.swift in Sources */,
 				CEA4D2D9270CA54A008189FE /* ProfileColorRepository.swift in Sources */,
 				CE63124C26F5DDC000B2E69B /* WelcomeViewController.swift in Sources */,
 				CE63125026F5DE6800B2E69B /* WelcomeViewModel.swift in Sources */,
@@ -1310,6 +1317,7 @@
 				CE4D4E882707AE3800081A2B /* CharacterCreationDependencyContainer.swift in Sources */,
 				CE94AB99270ECC32005D2E80 /* StrongPoint.swift in Sources */,
 				CEA4D2EE270D35A2008189FE /* DisplayCharacterItemsDependencyContainer.swift in Sources */,
+				CE94ABBA270F4114005D2E80 /* ColorSource.swift in Sources */,
 				CE63126026F6281800B2E69B /* SplashViewModel.swift in Sources */,
 				CE4D4E862707AE1700081A2B /* CharacterSettingViewModel.swift in Sources */,
 				CE4D4E8A2707AEDD00081A2B /* CharacterItem.swift in Sources */,

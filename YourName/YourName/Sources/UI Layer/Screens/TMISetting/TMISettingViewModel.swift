@@ -9,6 +9,8 @@ import Foundation
 import RxRelay
 import RxSwift
 
+protocol TMISettingResponder {}
+
 final class TMISettingViewModel {
     
     let interestesForDisplay = BehaviorRelay<[TMIContentCellViewModel]>(value: [])
@@ -60,6 +62,10 @@ final class TMISettingViewModel {
         
         let updatedPersonalities = strongPointsForDisplay.value.with { $0[index] = selectedPersonality }
         strongPointsForDisplay.accept(updatedPersonalities)
+    }
+    
+    func tapComplete() {
+        
     }
     
     private let disposeBag = DisposeBag()

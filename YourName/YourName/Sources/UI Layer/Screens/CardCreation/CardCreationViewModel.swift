@@ -18,29 +18,21 @@ enum CardCreationDestination: Equatable {
 
 typealias CardCreationNavigation = Navigation<CardCreationDestination>
 
-enum ImageSource: Equatable {
-    case image(UIImage)
-    case url(URL)
-}
-
-enum ColorSource: Equatable {
-    case monotone(UIColor)
-    case gradient([UIColor])
-}
-
 final class CardCreationViewModel {
     
     // State
     let shouldHideClear = BehaviorRelay<Bool>(value: true)
     let shouldHideProfilePlaceholder = BehaviorRelay<Bool>(value: false)
     let shouldDismiss = PublishRelay<Void>()
+    let hasCompltedSkillInput = BehaviorRelay<Bool>(value: false)
+    let hasCompltedTMIInput = BehaviorRelay<Bool>(value: false)
+    let canComplete = BehaviorRelay<Bool>(value: false)
+    
     let profileImageSource = BehaviorRelay<ImageSource?>(value: nil)
     let profileBackgroundColor = BehaviorRelay<ColorSource>(value: .monotone(Palette.black1))
-    let hasCompltedSkillInput = BehaviorRelay<Bool>(value: false)
     let skills = BehaviorRelay<[Skill]>(value: [])
     let name = BehaviorRelay<String>(value: .empty)
     let role = BehaviorRelay<String>(value: .empty)
-    let hasCompltedTMIInput = BehaviorRelay<Bool>(value: false)
     let personalityTitle = BehaviorRelay<String>(value: .empty)
     let personalityKeyword = BehaviorRelay<String>(value: .empty)
     let aboutMe = BehaviorRelay<String>(value: .empty)
@@ -122,3 +114,13 @@ extension CardCreationViewModel: SkillSettingResponder {
     }
     
 }
+extension CardCreationViewModel: CharacterSettingResponder {
+    
+    func characterSettingDidComplete(characterMeta: CharacterMeta, characterData: Data) {
+        shouldHideClear.accept(false)
+        shouldHideProfilePlaceholder.accept(true)
+        profileImageSource.accept(.data(characterData))
+    }
+    
+}
+
