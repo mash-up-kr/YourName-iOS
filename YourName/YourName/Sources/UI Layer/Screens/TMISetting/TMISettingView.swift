@@ -72,16 +72,16 @@ final class TMISettingView: UIView, NibLoadable {
     }
     
     private func render(_ viewModel: TMISettingViewModel) {
-        viewModel.interestes.distinctUntilChanged()
-            .subscribe(onNext: { [weak self] interestes in
-                self?.interestes = interestes
+        viewModel.interestesForDisplay.distinctUntilChanged()
+            .subscribe(onNext: { [weak self] list in
+                self?.interestes = list
                 self?.tmiCollectionView?.reloadData()
             })
             .disposed(by: disposeBag)
         
-        viewModel.personalities.distinctUntilChanged()
-            .subscribe(onNext: { [weak self] personalities in
-                self?.personalities = personalities
+        viewModel.personalitiesForDisplay.distinctUntilChanged()
+            .subscribe(onNext: { [weak self] list in
+                self?.personalities = list
                 self?.tmiCollectionView?.reloadData()
             })
             .disposed(by: disposeBag)
@@ -89,8 +89,8 @@ final class TMISettingView: UIView, NibLoadable {
     
     private let disposeBag = DisposeBag()
     
-    private var interestes: [Interest] = []
-    private var personalities: [Personality] = []
+    private var interestes: [TMIContentCellViewModel] = []
+    private var personalities: [TMIContentCellViewModel] = []
     
     @IBOutlet private weak var tmiCollectionView: UICollectionView?
     @IBOutlet private weak var tmiCollectionViewHeight: NSLayoutConstraint?
@@ -137,8 +137,7 @@ extension TMISettingView: UICollectionViewDataSource {
         guard let cell = tmiCollectionView?.dequeueReusableCell(TMIContentCollectionViewCell.self, for: indexPath) else { return UICollectionViewCell() }
         guard let interest = interestes[safe: indexPath.item] else { return cell }
         
-        let cellViewModel = TMIContentCellViewModel(isSelected: .random(), content: interest.content)
-        cell.configure(with: cellViewModel)
+        cell.configure(with: interest)
         return cell
     }
     
@@ -146,15 +145,21 @@ extension TMISettingView: UICollectionViewDataSource {
         guard let cell = tmiCollectionView?.dequeueReusableCell(TMIContentCollectionViewCell.self, for: indexPath) else { return UICollectionViewCell() }
         guard let personality = personalities[safe: indexPath.item] else { return cell }
         
-        let cellViewModel = TMIContentCellViewModel(isSelected: .random(), content: personality.content)
-        cell.configure(with: cellViewModel)
+        cell.configure(with: personality)
         return cell
     }
     
 }
 
 extension TMISettingView: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let section = TMISection(rawValue: indexPath.section) else { return }
+        
+        switch section {
+        case .interest:     viewModel.tapInterest(at: indexPath.item)
+        case .personality:  viewModel.tapPersonality(at: indexPath.item)
+        }
+    }
 }
 
 extension TMISettingView: UICollectionViewDelegateFlowLayout {

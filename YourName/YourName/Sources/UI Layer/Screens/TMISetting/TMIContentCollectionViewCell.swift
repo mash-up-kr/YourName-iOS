@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct TMIContentCellViewModel {
+struct TMIContentCellViewModel: Equatable {
     var isSelected: Bool
     let content: String
 }
