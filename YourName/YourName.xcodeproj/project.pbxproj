@@ -107,9 +107,9 @@
 		CE74D358270A8B3200BF36C9 /* CharacterSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74D357270A8B3200BF36C9 /* CharacterSettingView.swift */; };
 		CE8ECC0B270A635C00E5B038 /* SkillInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8ECC0A270A635C00E5B038 /* SkillInputView.swift */; };
 		CE8ECC0D270A63D900E5B038 /* SkillInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8ECC0C270A63D900E5B038 /* SkillInputView.xib */; };
-		CE94AB97270ECB8E005D2E80 /* PersonalityRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94AB96270ECB8E005D2E80 /* PersonalityRepository.swift */; };
-		CE94AB99270ECC32005D2E80 /* Personality.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94AB98270ECC32005D2E80 /* Personality.swift */; };
-		CE94AB9B270ECC4F005D2E80 /* MockPersonalityRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94AB9A270ECC4F005D2E80 /* MockPersonalityRepository.swift */; };
+		CE94AB97270ECB8E005D2E80 /* StrongPointRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94AB96270ECB8E005D2E80 /* StrongPointRepository.swift */; };
+		CE94AB99270ECC32005D2E80 /* StrongPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94AB98270ECC32005D2E80 /* StrongPoint.swift */; };
+		CE94AB9B270ECC4F005D2E80 /* MockStrongPointRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94AB9A270ECC4F005D2E80 /* MockStrongPointRepository.swift */; };
 		CE94AB9D270ECED4005D2E80 /* InterestRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94AB9C270ECED4005D2E80 /* InterestRepository.swift */; };
 		CE94AB9F270ECEED005D2E80 /* MockInterestRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94AB9E270ECEED005D2E80 /* MockInterestRepository.swift */; };
 		CE94ABA3270ECF2E005D2E80 /* Interest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94ABA2270ECF2E005D2E80 /* Interest.swift */; };
@@ -294,9 +294,9 @@
 		CE74D357270A8B3200BF36C9 /* CharacterSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSettingView.swift; sourceTree = "<group>"; };
 		CE8ECC0A270A635C00E5B038 /* SkillInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillInputView.swift; sourceTree = "<group>"; };
 		CE8ECC0C270A63D900E5B038 /* SkillInputView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SkillInputView.xib; sourceTree = "<group>"; };
-		CE94AB96270ECB8E005D2E80 /* PersonalityRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalityRepository.swift; sourceTree = "<group>"; };
-		CE94AB98270ECC32005D2E80 /* Personality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Personality.swift; sourceTree = "<group>"; };
-		CE94AB9A270ECC4F005D2E80 /* MockPersonalityRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPersonalityRepository.swift; sourceTree = "<group>"; };
+		CE94AB96270ECB8E005D2E80 /* StrongPointRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrongPointRepository.swift; sourceTree = "<group>"; };
+		CE94AB98270ECC32005D2E80 /* StrongPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrongPoint.swift; sourceTree = "<group>"; };
+		CE94AB9A270ECC4F005D2E80 /* MockStrongPointRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStrongPointRepository.swift; sourceTree = "<group>"; };
 		CE94AB9C270ECED4005D2E80 /* InterestRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestRepository.swift; sourceTree = "<group>"; };
 		CE94AB9E270ECEED005D2E80 /* MockInterestRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockInterestRepository.swift; sourceTree = "<group>"; };
 		CE94ABA2270ECF2E005D2E80 /* Interest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interest.swift; sourceTree = "<group>"; };
@@ -658,11 +658,18 @@
 		CE94ABA1270ECF08005D2E80 /* Personality */ = {
 			isa = PBXGroup;
 			children = (
-				CE94AB9A270ECC4F005D2E80 /* MockPersonalityRepository.swift */,
-				CE94AB98270ECC32005D2E80 /* Personality.swift */,
-				CE94AB96270ECB8E005D2E80 /* PersonalityRepository.swift */,
 			);
 			path = Personality;
+			sourceTree = "<group>";
+		};
+		CE94ABB6270F3F64005D2E80 /* StrongPoint */ = {
+			isa = PBXGroup;
+			children = (
+				CE94AB9A270ECC4F005D2E80 /* MockStrongPointRepository.swift */,
+				CE94AB98270ECC32005D2E80 /* StrongPoint.swift */,
+				CE94AB96270ECB8E005D2E80 /* StrongPointRepository.swift */,
+			);
+			path = StrongPoint;
 			sourceTree = "<group>";
 		};
 		CEA4D2EA270D34A9008189FE /* DisplayCharacterItems */ = {
@@ -807,6 +814,7 @@
 				CEB6586626EB2C0700C11F33 /* Scheme */,
 				CE4D4E962707B30400081A2B /* Skill */,
 				CEFA037826EFB75D00D12AAB /* Snapshot */,
+				CE94ABB6270F3F64005D2E80 /* StrongPoint */,
 			);
 			path = "Domain Layer";
 			sourceTree = "<group>";
@@ -1300,7 +1308,7 @@
 				A2CC65622707622D00610C49 /* MyCardListEmptyCollectionViewCell.swift in Sources */,
 				CE94AB9F270ECEED005D2E80 /* MockInterestRepository.swift in Sources */,
 				CE4D4E882707AE3800081A2B /* CharacterCreationDependencyContainer.swift in Sources */,
-				CE94AB99270ECC32005D2E80 /* Personality.swift in Sources */,
+				CE94AB99270ECC32005D2E80 /* StrongPoint.swift in Sources */,
 				CEA4D2EE270D35A2008189FE /* DisplayCharacterItemsDependencyContainer.swift in Sources */,
 				CE63126026F6281800B2E69B /* SplashViewModel.swift in Sources */,
 				CE4D4E862707AE1700081A2B /* CharacterSettingViewModel.swift in Sources */,
@@ -1326,7 +1334,7 @@
 				CE4D4E8E2707AF6E00081A2B /* FakeCharacterItemRepository.swift in Sources */,
 				CE74D358270A8B3200BF36C9 /* CharacterSettingView.swift in Sources */,
 				CE6312CC26F9B4FC00B2E69B /* MockMyCardRepository.swift in Sources */,
-				CE94AB9B270ECC4F005D2E80 /* MockPersonalityRepository.swift in Sources */,
+				CE94AB9B270ECC4F005D2E80 /* MockStrongPointRepository.swift in Sources */,
 				CEB6587D26EC80BF00C11F33 /* DataTask.swift in Sources */,
 				CE6BABA92704DB2A0006D26B /* CardCreationDependencyContainer.swift in Sources */,
 				CE6312BC26F9A04800B2E69B /* MyCardListDependencyContainer.swift in Sources */,
@@ -1336,7 +1344,7 @@
 				A2CC656827082EAB00610C49 /* MyCardView.swift in Sources */,
 				CEB6588426EC814C00C11F33 /* API.swift in Sources */,
 				CE94AB9D270ECED4005D2E80 /* InterestRepository.swift in Sources */,
-				CE94AB97270ECB8E005D2E80 /* PersonalityRepository.swift in Sources */,
+				CE94AB97270ECB8E005D2E80 /* StrongPointRepository.swift in Sources */,
 				CEB6588726EC817A00C11F33 /* HTTP.swift in Sources */,
 				CE94ABA6270ED4B7005D2E80 /* TMIContentCollectionViewCell.swift in Sources */,
 				A2A5C83826FB17D0005D2849 /* KakaoAuth.swift in Sources */,

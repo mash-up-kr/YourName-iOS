@@ -21,9 +21,9 @@ final class TMISettingDependencyContainer {
     
     private func createTMISettingViewModel() -> TMISettingViewModel {
         let interestRepository = createInterestRepository()
-        let personalityRepository = createPersonalityRepository()
+        let strongPointRepository = createStrongPointRepository()
         return TMISettingViewModel(interestRepository: interestRepository,
-                                   personalityRepository: personalityRepository)
+                                   strongPointRepository: strongPointRepository)
     }
     
     private func createInterestRepository() -> InterestRepository {
@@ -32,9 +32,9 @@ final class TMISettingDependencyContainer {
         return interestRepository
     }
     
-    private func createPersonalityRepository() -> PersonalityRepository {
-        let personalityRepository = MockPersonalityRepository()
-        personalityRepository.stubedData = Personality.dummy
-        return personalityRepository
+    private func createStrongPointRepository() -> StrongPointRepository {
+        let strongPointRepository = MockStrongPointRepository()
+        strongPointRepository.stubedData = StrongPoint.dummy
+        return strongPointRepository
     }
 }

@@ -79,7 +79,7 @@ final class TMISettingView: UIView, NibLoadable {
             })
             .disposed(by: disposeBag)
         
-        viewModel.personalitiesForDisplay.distinctUntilChanged()
+        viewModel.strongPointsForDisplay.distinctUntilChanged()
             .subscribe(onNext: { [weak self] list in
                 self?.personalities = list
                 self?.tmiCollectionView?.reloadData()

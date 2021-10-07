@@ -12,14 +12,14 @@ import RxSwift
 final class TMISettingViewModel {
     
     let interestesForDisplay = BehaviorRelay<[TMIContentCellViewModel]>(value: [])
-    let personalitiesForDisplay = BehaviorRelay<[TMIContentCellViewModel]>(value: [])
+    let strongPointsForDisplay = BehaviorRelay<[TMIContentCellViewModel]>(value: [])
     
     init(
         interestRepository: InterestRepository,
-        personalityRepository: PersonalityRepository
+        strongPointRepository: StrongPointRepository
     ) {
         self.interestRepository = interestRepository
-        self.personalityRepository = personalityRepository
+        self.strongPointRepository = strongPointRepository
         
         transform()
     }
@@ -29,7 +29,7 @@ final class TMISettingViewModel {
             .bind(to: interestes)
             .disposed(by: disposeBag)
         
-        personalityRepository.fetchAll()
+        strongPointRepository.fetchAll()
             .bind(to: personalities)
             .disposed(by: disposeBag)
     }
@@ -42,12 +42,12 @@ final class TMISettingViewModel {
         
         personalities.map { list in
             list.map { TMIContentCellViewModel(isSelected: false, content: $0.content) }
-        }.bind(to: personalitiesForDisplay)
+        }.bind(to: strongPointsForDisplay)
         .disposed(by: disposeBag)
     }
     
     func tapInterest(at index: Int) {
-        guard var selectedInterest = interestesForDisplay.value[safe: index]  else { return }
+        guard var selectedInterest = interestesForDisplay.value[safe: index] else { return }
         selectedInterest.isSelected.toggle()
         
         let updateInterestes = interestesForDisplay.value.with { $0[index] = selectedInterest }
@@ -55,18 +55,18 @@ final class TMISettingViewModel {
     }
     
     func tapPersonality(at index: Int) {
-        guard var selectedPersonality = personalitiesForDisplay.value[safe: index]  else { return }
+        guard var selectedPersonality = strongPointsForDisplay.value[safe: index] else { return }
         selectedPersonality.isSelected.toggle()
         
-        let updatedPersonalities = personalitiesForDisplay.value.with { $0[index] = selectedPersonality }
-        interestesForDisplay.accept(updatedPersonalities)
+        let updatedPersonalities = strongPointsForDisplay.value.with { $0[index] = selectedPersonality }
+        strongPointsForDisplay.accept(updatedPersonalities)
     }
     
     private let disposeBag = DisposeBag()
     
     private let interestes = BehaviorRelay<[Interest]>(value: [])
-    private let personalities = BehaviorRelay<[Personality]>(value: [])
+    private let personalities = BehaviorRelay<[StrongPoint]>(value: [])
     
     private let interestRepository: InterestRepository
-    private let personalityRepository: PersonalityRepository
+    private let strongPointRepository: StrongPointRepository
 }

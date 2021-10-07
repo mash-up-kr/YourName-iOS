@@ -36,8 +36,11 @@ final class CardCreationViewModel {
     let shouldDismiss = PublishRelay<Void>()
     let profileImageSource = BehaviorRelay<ImageSource?>(value: nil)
     let profileBackgroundColor = BehaviorRelay<ColorSource>(value: .monotone(Palette.black1))
+    let hasCompltedSkillInput = BehaviorRelay<Bool>(value: false)
+    let skills = BehaviorRelay<[Skill]>(value: [])
     let name = BehaviorRelay<String>(value: .empty)
     let role = BehaviorRelay<String>(value: .empty)
+    let hasCompltedTMIInput = BehaviorRelay<Bool>(value: false)
     let personalityTitle = BehaviorRelay<String>(value: .empty)
     let personalityKeyword = BehaviorRelay<String>(value: .empty)
     let aboutMe = BehaviorRelay<String>(value: .empty)
@@ -108,6 +111,14 @@ extension CardCreationViewModel: ImageSourcePickerResponder {
     
     func selectCharacter() {
         navigation.accept(.show(.createCharacter))
+    }
+    
+}
+extension CardCreationViewModel: SkillSettingResponder {
+    
+    func skillSettingDidComplete(skills: [Skill]) {
+        hasCompltedSkillInput.accept(skills.isNotEmpty)
+        self.skills.accept(skills)
     }
     
 }

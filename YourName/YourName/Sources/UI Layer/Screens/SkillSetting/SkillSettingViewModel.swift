@@ -9,8 +9,8 @@ import Foundation
 import RxRelay
 import RxSwift
 
-protocol SkillSettingResponder {
-    
+protocol SkillSettingResponder: AnyObject {
+    func skillSettingDidComplete(skills: [Skill])
 }
 
 final class SkillSettingViewModel {
@@ -18,7 +18,8 @@ final class SkillSettingViewModel {
     let canComplete = BehaviorRelay<Bool>(value: false)
     let skillsForDisplay = BehaviorRelay<[SkillInputViewModel]>(value: [.empty, .empty, .empty])
     
-    init() {
+    init(skillSettingResponder: SkillSettingResponder) {
+        self.skillSettingResponder = skillSettingResponder
         transform()
     }
     
@@ -39,7 +40,10 @@ final class SkillSettingViewModel {
     }
     
     func tapComplete() {
+        guard canComplete.value else { return }
         
+        let skills = skillsForDisplay.value.map { Skill(title: $0.title, level: $0.level) }
+        skillSettingResponder.skillSettingDidComplete(skills: skills)
     }
     
     private func transform() {
@@ -50,4 +54,6 @@ final class SkillSettingViewModel {
     }
     
     private let disposeBag = DisposeBag()
+    
+    private let skillSettingResponder: SkillSettingResponder
 }

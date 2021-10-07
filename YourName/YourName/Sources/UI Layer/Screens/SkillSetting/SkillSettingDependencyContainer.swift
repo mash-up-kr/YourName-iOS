@@ -11,8 +11,10 @@ import Foundation
 
 final class SkillSettingDependencyContainer {
     
+    let cardCreationViewModel: CardCreationViewModel
+    
     init(cardCreationDependencyContainer: CardCreationDependencyContainer) {
-        
+        self.cardCreationViewModel = cardCreationDependencyContainer.viewModel
     }
     
     func createSkillSettingViewController() -> SkillSettingViewController {
@@ -27,7 +29,6 @@ final class SkillSettingDependencyContainer {
     }
     
     private func createSkillSettingViewModel() -> SkillSettingViewModel {
-        return SkillSettingViewModel()
+        return SkillSettingViewModel(skillSettingResponder: cardCreationViewModel)
     }
-    
 }
