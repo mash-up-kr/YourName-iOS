@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CharacterSettingView" customModule="YourName" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CharacterSettingView" customModule="MEETU" customModuleProvider="target">
             <connections>
                 <outlet property="bodyImageView" destination="fhk-kl-RkY" id="hKw-AI-DI8"/>
                 <outlet property="categoryItemFrameView" destination="IP3-YL-smF" id="7Ya-df-WVd"/>
@@ -127,7 +127,7 @@
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="E2F-QN-Zc1">
                                     <rect key="frame" x="12" y="0.0" width="390" height="64"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JXD-nP-0Lu" customClass="ItemCategoryView" customModule="YourName" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JXD-nP-0Lu" customClass="ItemCategoryView" customModule="MEETU" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="64"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="몸" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6pS-ha-mee">
@@ -145,7 +145,7 @@
                                                 <constraint firstItem="6pS-ha-mee" firstAttribute="leading" secondItem="JXD-nP-0Lu" secondAttribute="leading" constant="12" id="ocU-5w-OQR"/>
                                             </constraints>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e17-4y-AAO" customClass="ItemCategoryView" customModule="YourName" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e17-4y-AAO" customClass="ItemCategoryView" customModule="MEETU" customModuleProvider="target">
                                             <rect key="frame" x="51" y="0.0" width="50" height="64"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="눈" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aj5-u8-IOM">
@@ -163,7 +163,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="Aj5-u8-IOM" secondAttribute="trailing" constant="12" id="x3h-oe-Pfr"/>
                                             </constraints>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0W1-tM-o1M" customClass="ItemCategoryView" customModule="YourName" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0W1-tM-o1M" customClass="ItemCategoryView" customModule="MEETU" customModuleProvider="target">
                                             <rect key="frame" x="102" y="0.0" width="50" height="64"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="코" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="44t-ca-uqb">
@@ -181,7 +181,7 @@
                                                 <constraint firstItem="44t-ca-uqb" firstAttribute="leading" secondItem="0W1-tM-o1M" secondAttribute="leading" constant="12" id="cuP-zw-HHu"/>
                                             </constraints>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3qs-br-400" customClass="ItemCategoryView" customModule="YourName" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3qs-br-400" customClass="ItemCategoryView" customModule="MEETU" customModuleProvider="target">
                                             <rect key="frame" x="153" y="0.0" width="49.5" height="64"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="입" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="scm-LQ-SKH">
@@ -199,7 +199,7 @@
                                                 <constraint firstItem="scm-LQ-SKH" firstAttribute="centerY" secondItem="3qs-br-400" secondAttribute="centerY" id="nBh-Ut-v13"/>
                                             </constraints>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Pk-5N-ped" customClass="ItemCategoryView" customModule="YourName" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Pk-5N-ped" customClass="ItemCategoryView" customModule="MEETU" customModuleProvider="target">
                                             <rect key="frame" x="203.5" y="0.0" width="129.5" height="64"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="장식1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ojv-G0-sDm">
@@ -217,7 +217,7 @@
                                                 <constraint firstItem="ojv-G0-sDm" firstAttribute="centerY" secondItem="3Pk-5N-ped" secondAttribute="centerY" id="w8I-3R-QaU"/>
                                             </constraints>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lvD-GM-eCy" customClass="ItemCategoryView" customModule="YourName" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lvD-GM-eCy" customClass="ItemCategoryView" customModule="MEETU" customModuleProvider="target">
                                             <rect key="frame" x="334" y="0.0" width="56" height="64"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="장식2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOR-br-EQD">
