@@ -9,7 +9,9 @@ import Foundation
 import RxRelay
 import RxSwift
 
-protocol TMISettingResponder {}
+protocol TMISettingResponder {
+    func tmiSettingDidComplete(interests: [Interest], strongPoints: [StrongPoint])
+}
 
 final class TMISettingViewModel {
     
@@ -18,10 +20,12 @@ final class TMISettingViewModel {
     
     init(
         interestRepository: InterestRepository,
-        strongPointRepository: StrongPointRepository
+        strongPointRepository: StrongPointRepository,
+        tmiSettingResponder: TMISettingResponder
     ) {
         self.interestRepository = interestRepository
         self.strongPointRepository = strongPointRepository
+        self.tmiSettingResponder = tmiSettingResponder
         
         transform()
     }
@@ -32,7 +36,7 @@ final class TMISettingViewModel {
             .disposed(by: disposeBag)
         
         strongPointRepository.fetchAll()
-            .bind(to: personalities)
+            .bind(to: strongPoints)
             .disposed(by: disposeBag)
     }
     
@@ -42,7 +46,7 @@ final class TMISettingViewModel {
         }.bind(to: interestesForDisplay)
         .disposed(by: disposeBag)
         
-        personalities.map { list in
+        strongPoints.map { list in
             list.map { TMIContentCellViewModel(isSelected: false, content: $0.content) }
         }.bind(to: strongPointsForDisplay)
         .disposed(by: disposeBag)
@@ -65,14 +69,22 @@ final class TMISettingViewModel {
     }
     
     func tapComplete() {
+        let selectedInterestes = interestesForDisplay.value
+            .filter { $0.isSelected }
+            .map { Interest(content: $0.content) }
+        let selectedStrongPoints = strongPointsForDisplay.value
+            .filter { $0.isSelected }
+            .map { StrongPoint(content: $0.content) }
         
+        tmiSettingResponder.tmiSettingDidComplete(interests: selectedInterestes, strongPoints: selectedStrongPoints)
     }
     
     private let disposeBag = DisposeBag()
     
     private let interestes = BehaviorRelay<[Interest]>(value: [])
-    private let personalities = BehaviorRelay<[StrongPoint]>(value: [])
+    private let strongPoints = BehaviorRelay<[StrongPoint]>(value: [])
     
     private let interestRepository: InterestRepository
     private let strongPointRepository: StrongPointRepository
+    private let tmiSettingResponder: TMISettingResponder
 }

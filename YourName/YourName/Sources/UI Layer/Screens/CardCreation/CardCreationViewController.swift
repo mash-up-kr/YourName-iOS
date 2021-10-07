@@ -176,11 +176,11 @@ final class CardCreationViewController: ViewController, Storyboarded {
         viewModel.hasCompletedSkillInput.distinctUntilChanged()
             .subscribe(onNext: { [weak self] hasCompleted in
                 if hasCompleted {
+                    self?.skillCompleteImageView?.image = UIImage(named: "icon_complete")
+                    self?.mySkillSettingButton?.backgroundColor = Palette.lightGreen
+                } else {
                     self?.skillCompleteImageView?.image = UIImage(named: "icon_incomplete")
                     self?.mySkillSettingButton?.backgroundColor = .white
-                } else {
-                    self?.skillCompleteImageView?.image = UIImage(named: "icon_complete")
-                    self?.mySkillSettingButton?.backgroundColor = Palette.lightGray4
                 }
             })
             .disposed(by: disposeBag)
@@ -188,13 +188,12 @@ final class CardCreationViewController: ViewController, Storyboarded {
         viewModel.hasCompletedTMIInput.distinctUntilChanged()
             .subscribe(onNext: { [weak self] hasCompleted in
                 if hasCompleted {
+                    self?.tmiCompleteImageView?.image = UIImage(named: "icon_complete")
+                    self?.myTMISettingButton?.backgroundColor = Palette.lightGreen
+                } else {
                     self?.tmiCompleteImageView?.image = UIImage(named: "icon_incomplete")
                     self?.myTMISettingButton?.backgroundColor = .white
-                } else {
-                    self?.tmiCompleteImageView?.image = UIImage(named: "icon_complete")
-                    self?.myTMISettingButton?.backgroundColor = Palette.lightGray4
                 }
-                
             })
             .disposed(by: disposeBag)
         

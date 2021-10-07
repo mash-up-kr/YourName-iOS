@@ -61,6 +61,10 @@ final class SkillSettingView: UIView, NibLoadable {
                 .bind(to: completeButton.rx.isEnabled)
                 .disposed(by: disposeBag)
         }
+        
+        viewModel.shouldDismiss.subscribe(onNext: { [weak self] in
+            
+        }).disposed(by: disposeBag)
     }
     
     private func updateUI(for skills: [SkillInputViewModel]) {

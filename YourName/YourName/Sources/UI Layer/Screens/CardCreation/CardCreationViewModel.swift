@@ -35,6 +35,8 @@ final class CardCreationViewModel {
     let role = BehaviorRelay<String>(value: .empty)
     let personalityTitle = BehaviorRelay<String>(value: .empty)
     let personalityKeyword = BehaviorRelay<String>(value: .empty)
+    let interestes = BehaviorRelay<[Interest]>(value: [])
+    let strongPoints = BehaviorRelay<[StrongPoint]>(value: [])
     let aboutMe = BehaviorRelay<String>(value: .empty)
     
     let navigation = PublishRelay<CardCreationNavigation>()
@@ -95,6 +97,7 @@ final class CardCreationViewModel {
     }
     
 }
+
 extension CardCreationViewModel: ImageSourcePickerResponder {
     
     func selectPhoto() {
@@ -106,6 +109,7 @@ extension CardCreationViewModel: ImageSourcePickerResponder {
     }
     
 }
+
 extension CardCreationViewModel: CharacterSettingResponder {
     
     func characterSettingDidComplete(characterMeta: CharacterMeta, characterData: Data) {
@@ -115,11 +119,24 @@ extension CardCreationViewModel: CharacterSettingResponder {
     }
     
 }
+
 extension CardCreationViewModel: SkillSettingResponder {
     
     func skillSettingDidComplete(skills: [Skill]) {
         hasCompletedSkillInput.accept(skills.isNotEmpty)
         self.skills.accept(skills)
+    }
+    
+}
+
+extension CardCreationViewModel: TMISettingResponder {
+    
+    func tmiSettingDidComplete(interests: [Interest], strongPoints: [StrongPoint]) {
+        let updatedInterests = interests
+        let updatedStrongPoints = strongPoints
+        self.interestes.accept(updatedInterests)
+        self.strongPoints.accept(updatedStrongPoints)
+        hasCompletedTMIInput.accept(updatedInterests.isNotEmpty || updatedStrongPoints.isNotEmpty)
     }
     
 }
