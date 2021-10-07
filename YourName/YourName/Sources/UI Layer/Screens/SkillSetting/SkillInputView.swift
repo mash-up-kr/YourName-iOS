@@ -72,6 +72,12 @@ final class SkillInputView: UIView, NibLoadable {
     @IBOutlet private weak var gageStackView: UIStackView?
     @IBOutlet private weak var levelDownButton: UIButton?
     @IBOutlet private weak var levelUpButton: UIButton?
+    
+    @IBInspectable
+    private var titleText: String? {
+        get { self.titleLabel?.text }
+        set { self.titleLabel?.text = newValue }
+    }
 }
 extension Reactive where Base: SkillInputView {
     

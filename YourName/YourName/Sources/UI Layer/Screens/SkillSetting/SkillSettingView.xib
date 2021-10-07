@@ -269,6 +269,9 @@
                                     <constraints>
                                         <constraint firstAttribute="height" constant="204" placeholder="YES" id="aLJ-Gf-9Dx"/>
                                     </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="titleText" value="Skill.01 *"/>
+                                    </userDefinedRuntimeAttributes>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SYx-9M-ClD">
                                     <rect key="frame" x="0.0" y="434" width="414" height="12"/>
@@ -283,6 +286,9 @@
                                     <constraints>
                                         <constraint firstAttribute="height" constant="204" placeholder="YES" id="Crd-xD-KzP"/>
                                     </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="titleText" value="Skill.02 *"/>
+                                    </userDefinedRuntimeAttributes>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KDd-IZ-yRt">
                                     <rect key="frame" x="0.0" y="650" width="414" height="12"/>
@@ -297,6 +303,9 @@
                                     <constraints>
                                         <constraint firstAttribute="height" constant="204" placeholder="YES" id="ine-xN-JyP"/>
                                     </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="titleText" value="Skill.03 *"/>
+                                    </userDefinedRuntimeAttributes>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uJ4-8G-MUX">
                                     <rect key="frame" x="0.0" y="866" width="414" height="35"/>
