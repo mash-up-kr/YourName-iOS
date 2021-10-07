@@ -102,8 +102,7 @@ final class AlertController: ViewController {
         alertView.addSubviews(messageLabel, dividerView ,buttonStackView)
         
         messageLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(10)
-            $0.leading.trailing.equalToSuperview().inset(72)
+            $0.top.leading.trailing.equalToSuperview().inset(10)
         }
         dividerView.snp.makeConstraints {
             $0.height.equalTo(1)
@@ -116,5 +115,12 @@ final class AlertController: ViewController {
             $0.height.equalTo(63)
             $0.bottom.equalToSuperview()
         }
+    }
+    
+    func show() {
+        guard let visableViewController = UIViewController.visableViewController() else { return }
+        self.modalPresentationStyle = .overFullScreen
+        self.modalTransitionStyle = .crossDissolve
+        visableViewController.present(self, animated: true)
     }
 }
