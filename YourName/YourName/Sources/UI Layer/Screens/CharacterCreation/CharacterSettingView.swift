@@ -100,10 +100,16 @@ final class CharacterSettingView: UIView, NibLoadable {
     }
     
     private func characterImageDidChange() {
-        guard let characterFittingView = self.characterFittingView          else { return }
-        guard let data = SnapshotServiceImpl.capture(characterFittingView)  else { return }
+        let originalColor = Palette.lightGray2
+        let captureColor = UIColor.white
+        
+        guard let characterFittingView = self.characterFittingView else { return }
+        characterFittingView.backgroundColor = captureColor
+        
+        guard let data = SnapshotServiceImpl.capture(characterFittingView) else { return }
         
         viewModel.updateCharacterData(data)
+        characterFittingView.backgroundColor = originalColor
     }
     
     private func updateCategoryItem(selectedIndex: Int) {

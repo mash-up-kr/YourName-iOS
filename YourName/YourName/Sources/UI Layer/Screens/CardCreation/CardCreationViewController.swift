@@ -221,6 +221,11 @@ final class CardCreationViewController: ViewController, Storyboarded {
             self?.dismiss(animated: true, completion: nil)
         })
         .disposed(by: disposeBag)
+        
+        viewModel.shouldDismissOverlays.subscribe(onNext: { [weak self] in
+            self?.presentedViewController?.dismiss(animated: true, completion: nil)
+        })
+        .disposed(by: disposeBag)
     }
     
     private func createViewController(of destination: CardCreationDestination) -> UIViewController? {

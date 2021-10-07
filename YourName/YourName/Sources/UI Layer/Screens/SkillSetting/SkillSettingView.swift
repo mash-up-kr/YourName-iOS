@@ -42,6 +42,10 @@ final class SkillSettingView: UIView, NibLoadable {
                 .subscribe(onNext: { [weak self] in self?.viewModel.changeSkillLevel($0, at: index) })
                 .disposed(by: disposeBag)
         }
+        
+        completeButton?.rx.tap
+            .subscribe(onNext: { [weak self] in self?.viewModel.tapComplete() })
+            .disposed(by: disposeBag)
     }
     
     private func render(_ viewModel: SkillSettingViewModel) {
@@ -62,9 +66,6 @@ final class SkillSettingView: UIView, NibLoadable {
                 .disposed(by: disposeBag)
         }
         
-        viewModel.shouldDismiss.subscribe(onNext: { [weak self] in
-            
-        }).disposed(by: disposeBag)
     }
     
     private func updateUI(for skills: [SkillInputViewModel]) {

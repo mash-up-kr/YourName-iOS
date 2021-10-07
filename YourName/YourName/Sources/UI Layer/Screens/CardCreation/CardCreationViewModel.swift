@@ -21,6 +21,7 @@ typealias CardCreationNavigation = Navigation<CardCreationDestination>
 final class CardCreationViewModel {
     
     // State
+    let shouldDismissOverlays = PublishRelay<Void>()
     let shouldHideClear = BehaviorRelay<Bool>(value: true)
     let shouldHideProfilePlaceholder = BehaviorRelay<Bool>(value: false)
     let shouldDismiss = PublishRelay<Void>()
@@ -125,6 +126,7 @@ extension CardCreationViewModel: SkillSettingResponder {
     func skillSettingDidComplete(skills: [Skill]) {
         hasCompletedSkillInput.accept(skills.isNotEmpty)
         self.skills.accept(skills)
+        shouldDismissOverlays.accept(Void())
     }
     
 }
@@ -137,6 +139,7 @@ extension CardCreationViewModel: TMISettingResponder {
         self.interestes.accept(updatedInterests)
         self.strongPoints.accept(updatedStrongPoints)
         hasCompletedTMIInput.accept(updatedInterests.isNotEmpty || updatedStrongPoints.isNotEmpty)
+        shouldDismissOverlays.accept(Void())
     }
     
 }
