@@ -117,6 +117,7 @@
 		CE94ABA7270ED4B7005D2E80 /* TMIContentCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE94ABA5270ED4B7005D2E80 /* TMIContentCollectionViewCell.xib */; };
 		CE94ABB2270EFCA3005D2E80 /* TMISectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94ABB0270EFCA3005D2E80 /* TMISectionHeaderView.swift */; };
 		CE94ABB3270EFCA3005D2E80 /* TMISectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE94ABB1270EFCA3005D2E80 /* TMISectionHeaderView.xib */; };
+		CE94ABB5270F2C81005D2E80 /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94ABB4270F2C81005D2E80 /* Skill.swift */; };
 		CEA4D2D7270C9B1D008189FE /* CharacterEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4D2D6270C9B1D008189FE /* CharacterEntity.swift */; };
 		CEA4D2D9270CA54A008189FE /* ProfileColorRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4D2D8270CA54A008189FE /* ProfileColorRepository.swift */; };
 		CEA4D2DB270CB39F008189FE /* ItemForDisplay.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEA4D2DA270CB39F008189FE /* ItemForDisplay.xcassets */; };
@@ -303,6 +304,7 @@
 		CE94ABA5270ED4B7005D2E80 /* TMIContentCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TMIContentCollectionViewCell.xib; sourceTree = "<group>"; };
 		CE94ABB0270EFCA3005D2E80 /* TMISectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMISectionHeaderView.swift; sourceTree = "<group>"; };
 		CE94ABB1270EFCA3005D2E80 /* TMISectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TMISectionHeaderView.xib; sourceTree = "<group>"; };
+		CE94ABB4270F2C81005D2E80 /* Skill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
 		CEA4D2D6270C9B1D008189FE /* CharacterEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterEntity.swift; sourceTree = "<group>"; };
 		CEA4D2D8270CA54A008189FE /* ProfileColorRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileColorRepository.swift; sourceTree = "<group>"; };
 		CEA4D2DA270CB39F008189FE /* ItemForDisplay.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ItemForDisplay.xcassets; sourceTree = "<group>"; };
@@ -473,6 +475,7 @@
 		CE4D4E962707B30400081A2B /* Skill */ = {
 			isa = PBXGroup;
 			children = (
+				CE94ABB4270F2C81005D2E80 /* Skill.swift */,
 			);
 			path = Skill;
 			sourceTree = "<group>";
@@ -1261,6 +1264,7 @@
 				CE63125026F5DE6800B2E69B /* WelcomeViewModel.swift in Sources */,
 				CE6D1487270C952900AF4C5C /* CharacterItemFactory.swift in Sources */,
 				CEB6586F26EB2C9400C11F33 /* Auth.swift in Sources */,
+				CE94ABB5270F2C81005D2E80 /* Skill.swift in Sources */,
 				CE6312B926F99F7A00B2E69B /* CardDetailViewModel.swift in Sources */,
 				CEB6588E26EC821300C11F33 /* Network.swift in Sources */,
 				CED16DF726F3A5540076565F /* SettingViewController.swift in Sources */,
