@@ -24,8 +24,8 @@ final class CardCreationViewModel {
     let shouldHideClear = BehaviorRelay<Bool>(value: true)
     let shouldHideProfilePlaceholder = BehaviorRelay<Bool>(value: false)
     let shouldDismiss = PublishRelay<Void>()
-    let hasCompltedSkillInput = BehaviorRelay<Bool>(value: false)
-    let hasCompltedTMIInput = BehaviorRelay<Bool>(value: false)
+    let hasCompletedSkillInput = BehaviorRelay<Bool>(value: false)
+    let hasCompletedTMIInput = BehaviorRelay<Bool>(value: false)
     let canComplete = BehaviorRelay<Bool>(value: false)
     
     let profileImageSource = BehaviorRelay<ImageSource?>(value: nil)
@@ -106,14 +106,6 @@ extension CardCreationViewModel: ImageSourcePickerResponder {
     }
     
 }
-extension CardCreationViewModel: SkillSettingResponder {
-    
-    func skillSettingDidComplete(skills: [Skill]) {
-        hasCompltedSkillInput.accept(skills.isNotEmpty)
-        self.skills.accept(skills)
-    }
-    
-}
 extension CardCreationViewModel: CharacterSettingResponder {
     
     func characterSettingDidComplete(characterMeta: CharacterMeta, characterData: Data) {
@@ -123,4 +115,11 @@ extension CardCreationViewModel: CharacterSettingResponder {
     }
     
 }
-
+extension CardCreationViewModel: SkillSettingResponder {
+    
+    func skillSettingDidComplete(skills: [Skill]) {
+        hasCompletedSkillInput.accept(skills.isNotEmpty)
+        self.skills.accept(skills)
+    }
+    
+}
