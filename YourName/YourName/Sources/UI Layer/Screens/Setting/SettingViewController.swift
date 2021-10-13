@@ -12,9 +12,8 @@ import RxCocoa
 
 final class SettingViewController: ViewController, Storyboarded {
     
-    @IBOutlet private unowned var userEmailLabel: UILabel!
-    @IBOutlet private unowned var userNameLabel: UILabel!
-    @IBOutlet private unowned var settingButton: UIButton!
+    @IBOutlet private weak var resignButton: UIButton!
+    @IBOutlet private weak var logoutButton: UIButton!
     @IBOutlet private unowned var questView: UIView!
     @IBOutlet private unowned var questProgressView: UIProgressView!
     @IBOutlet private unowned var noticeView: UIView!
@@ -55,14 +54,6 @@ extension SettingViewController {
     }
     
     private func bind() {
-        settingButton.rx.tap
-            .throttle(.milliseconds(400),
-                      latest: false,
-                      scheduler: MainScheduler.instance)
-            .bind(onNext: { [weak self] in
-                self?.viewModel.tapUserSetting()
-            })
-            .disposed(by: disposeBag)
         
         questView.rx.tapWhenRecognized()
             .bind(onNext: { [weak self] in
@@ -81,6 +72,25 @@ extension SettingViewController {
                 self?.viewModel.tapMaker()
             })
             .disposed(by: disposeBag)
+        
+        logoutButton.rx.tap
+            .throttle(.microseconds(400),
+                      latest: false,
+                      scheduler: MainScheduler.instance)
+            .bind(onNext: {
+                print("logout")
+            })
+            .disposed(by: disposeBag)
+        
+        resignButton.rx.tap
+            .throttle(.microseconds(400),
+                      latest: false,
+                      scheduler: MainScheduler.instance)
+            .bind (onNext:{
+                print("탈퇴하기")
+            })
+            .disposed(by: disposeBag)
+            
     }
     
     private func navigate(_ navigation: SettingNavigation) {
