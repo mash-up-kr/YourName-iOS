@@ -143,3 +143,11 @@ extension CardCreationViewModel: TMISettingResponder {
     }
     
 }
+extension CardCreationViewModel: PaletteResponder {
+    
+    func profileColorSettingDidComplete(selectedColor: ProfileColor) {
+        profileBackgroundColor.accept(selectedColor.colorSource)
+        shouldDismissOverlays.accept(Void())
+    }
+    
+}

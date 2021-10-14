@@ -10,8 +10,10 @@ import Foundation
 
 final class PaletteDependencyContainer {
     
+    let paletteResponder: PaletteResponder
+    
     init(cardCreationDependencyContainer: CardCreationDependencyContainer) {
-        
+        self.paletteResponder = cardCreationDependencyContainer.viewModel
     }
     
     func createPaletteViewController() -> PaletteViewController {
@@ -26,15 +28,16 @@ final class PaletteDependencyContainer {
     }
     
     private func createPaletteViewModel() -> PaletteViewModel {
-        let repository = createProfileColorRepository()
-        let viewModel = PaletteViewModel(profileColorRepository: repository)
+        let profileColorRepository = createProfileColorRepository()
+        let viewModel = PaletteViewModel(profileColorRepository: profileColorRepository,
+                                         paletteResponder: paletteResponder)
         return viewModel
     }
     
     private func createProfileColorRepository() -> ProfileColorRepository {
         let repository = FakeProfileColorRepository()
         repository.stubedProfileColors = [
-            ProfileColor(colorSource: .monotone(Palette.vilolet), status: .selected),
+            ProfileColor(colorSource: .monotone(Palette.vilolet), status: .normal),
             ProfileColor(colorSource: .monotone(Palette.pink), status: .normal),
             ProfileColor(colorSource: .monotone(Palette.orange), status: .normal),
             ProfileColor(colorSource: .monotone(Palette.yellow), status: .normal),

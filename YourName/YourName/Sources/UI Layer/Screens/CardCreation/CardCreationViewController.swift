@@ -27,7 +27,7 @@ final class CardCreationViewController: ViewController, Storyboarded {
     }
     
     override func viewDidLayoutSubviews() {
-        super.viewWillLayoutSubviews()
+        super.viewDidLayoutSubviews()
         backgroundSettingButton?.clipsToBounds = true
         profileBackgroundColorButtonLayer.frame = backgroundSettingButton?.bounds ?? .zero
         backgroundSettingButton?.layer.insertSublayer(profileBackgroundColorButtonLayer, at: 0)
@@ -39,7 +39,6 @@ final class CardCreationViewController: ViewController, Storyboarded {
         dispatch(to: viewModel)
         render(viewModel)
     }
-    
     
     private func dispatch(to viewModel: CardCreationViewModel) {
         
