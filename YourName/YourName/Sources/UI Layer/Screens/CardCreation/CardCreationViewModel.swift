@@ -21,19 +21,20 @@ typealias CardCreationNavigation = Navigation<CardCreationDestination>
 final class CardCreationViewModel {
     
     // State
-    let shouldDismissOverlays = PublishRelay<Void>()
     let shouldHideClear = BehaviorRelay<Bool>(value: true)
     let shouldHideProfilePlaceholder = BehaviorRelay<Bool>(value: false)
-    let shouldDismiss = PublishRelay<Void>()
     let hasCompletedSkillInput = BehaviorRelay<Bool>(value: false)
     let hasCompletedTMIInput = BehaviorRelay<Bool>(value: false)
     let canComplete = BehaviorRelay<Bool>(value: false)
-    
+    let shouldDismiss = PublishRelay<Void>()
+    let shouldDismissOverlays = PublishRelay<Void>()
+    let indexOfContactTypeBeingSelected = BehaviorRelay<Int?>(value: nil)
     let profileImageSource = BehaviorRelay<ImageSource?>(value: nil)
     let profileBackgroundColor = BehaviorRelay<ColorSource>(value: .monotone(Palette.black1))
     let skills = BehaviorRelay<[Skill]>(value: [])
     let name = BehaviorRelay<String>(value: .empty)
     let role = BehaviorRelay<String>(value: .empty)
+    let contactInfos = BehaviorRelay<[ContactInfo]>(value: [])
     let personalityTitle = BehaviorRelay<String>(value: .empty)
     let personalityKeyword = BehaviorRelay<String>(value: .empty)
     let interestes = BehaviorRelay<[Interest]>(value: [])
@@ -43,6 +44,15 @@ final class CardCreationViewModel {
     let navigation = PublishRelay<CardCreationNavigation>()
     
     // Event
+    func didLoad() {
+        let defaultContactInfos = [ContactInfo(type: .phone, value: .empty),
+                                   ContactInfo(type: .email, value: .empty),
+                                   ContactInfo(type: .sns, value: .empty),
+                                   ContactInfo(type: .sns, value: .empty),
+                                   ContactInfo(type: .sns, value: .empty)]
+        contactInfos.accept(defaultContactInfos)
+    }
+    
     func tapProfileClear() {
         profileImageSource.accept(nil)
         shouldHideProfilePlaceholder.accept(false)
@@ -69,12 +79,27 @@ final class CardCreationViewModel {
         navigation.accept(.show(.settingSkill))
     }
     
+    func tapContactType(at index: Int) {
+        indexOfContactTypeBeingSelected.accept(index)
+    }
+    
     func selectContactType(_ type: ContactType, index: Int) {
+        var updatedContactInfos = contactInfos.value
+        guard var updatedContactInfo = updatedContactInfos[safe: index] else { return }
         
+        updatedContactInfo.type = type
+        updatedContactInfos[index] = updatedContactInfo
+        contactInfos.accept(updatedContactInfos)
+        indexOfContactTypeBeingSelected.accept(nil)
     }
     
     func typeContactValue(_ value: String, index: Int) {
+        var updatedContactInfos = contactInfos.value
+        guard var updatedContactInfo = updatedContactInfos[safe: index] else { return }
         
+        updatedContactInfo.value = value
+        updatedContactInfos[index] = updatedContactInfo
+        contactInfos.accept(updatedContactInfos)
     }
     
     func typePersonalityTitle(_ text: String) {
