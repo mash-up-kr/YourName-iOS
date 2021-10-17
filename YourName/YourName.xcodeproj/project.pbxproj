@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8CE2A8B5191C919CFE08E6BD /* Pods_YourName.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A104CCC69AFB71F0412B7A45 /* Pods_YourName.framework */; };
+		323213B10D5A848F639AFE36 /* Pods_MEETU_YourNameTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF1C79392C44764BDC375302 /* Pods_MEETU_YourNameTests.framework */; };
+		451C17BFCC5F982A982C554D /* Pods_MEETU.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44861AA2F42C9691F1BC4ECB /* Pods_MEETU.framework */; };
 		A2A5C83826FB17D0005D2849 /* KakaoAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A5C83726FB17D0005D2849 /* KakaoAuth.swift */; };
 		A2A5C83A26FB1A3D005D2849 /* AppKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A5C83926FB1A3D005D2849 /* AppKey.swift */; };
 		A2B10176270F424800CAE013 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B10175270F424800CAE013 /* AlertController.swift */; };
@@ -121,6 +122,7 @@
 		CE94ABB5270F2C81005D2E80 /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94ABB4270F2C81005D2E80 /* Skill.swift */; };
 		CE94ABB8270F4104005D2E80 /* ImageSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94ABB7270F4104005D2E80 /* ImageSource.swift */; };
 		CE94ABBA270F4114005D2E80 /* ColorSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94ABB9270F4114005D2E80 /* ColorSource.swift */; };
+		CE94ABBE270F68C1005D2E80 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE94ABBD270F68C1005D2E80 /* GoogleService-Info.plist */; };
 		CEA4D2D7270C9B1D008189FE /* CharacterEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4D2D6270C9B1D008189FE /* CharacterEntity.swift */; };
 		CEA4D2D9270CA54A008189FE /* ProfileColorRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4D2D8270CA54A008189FE /* ProfileColorRepository.swift */; };
 		CEA4D2DB270CB39F008189FE /* ItemForDisplay.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEA4D2DA270CB39F008189FE /* ItemForDisplay.xcassets */; };
@@ -174,7 +176,6 @@
 		CEF8C55726EDFB6F009BA9C2 /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF8C55626EDFB6F009BA9C2 /* UIStackView+.swift */; };
 		CEFA037A26EFB76D00D12AAB /* SnapshotService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFA037926EFB76D00D12AAB /* SnapshotService.swift */; };
 		CEFA037D26EFBACE00D12AAB /* QRGenerater.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFA037C26EFBACE00D12AAB /* QRGenerater.swift */; };
-		F19405088FA4BA7E61C79C9F /* Pods_YourName_YourNameTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC31067244B5463F18A419D8 /* Pods_YourName_YourNameTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -192,9 +193,13 @@
 		2542E49521192642CD7B506E /* Pods-YourNameTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourNameTests.release.xcconfig"; path = "Target Support Files/Pods-YourNameTests/Pods-YourNameTests.release.xcconfig"; sourceTree = "<group>"; };
 		2AB2756C3C74652DA7089153 /* Pods_YourName_YourNameUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YourName_YourNameUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CCE5B3128930676FB5D1886 /* Pods-YourName.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourName.debug.xcconfig"; path = "Target Support Files/Pods-YourName/Pods-YourName.debug.xcconfig"; sourceTree = "<group>"; };
+		44861AA2F42C9691F1BC4ECB /* Pods_MEETU.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MEETU.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		70E446189D6231860211802E /* Pods-MEETU-YourNameTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MEETU-YourNameTests.release.xcconfig"; path = "Target Support Files/Pods-MEETU-YourNameTests/Pods-MEETU-YourNameTests.release.xcconfig"; sourceTree = "<group>"; };
+		8EB93BC30EE6D9B49A59296C /* Pods-MEETU-YourNameTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MEETU-YourNameTests.debug.xcconfig"; path = "Target Support Files/Pods-MEETU-YourNameTests/Pods-MEETU-YourNameTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8F8380609FFFABDCA6489AAA /* Pods-MEETU.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MEETU.release.xcconfig"; path = "Target Support Files/Pods-MEETU/Pods-MEETU.release.xcconfig"; sourceTree = "<group>"; };
+		903860478CDC7D7B803C6EA2 /* Pods-MEETU.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MEETU.debug.xcconfig"; path = "Target Support Files/Pods-MEETU/Pods-MEETU.debug.xcconfig"; sourceTree = "<group>"; };
 		99A05CF416DCFF0B2118B6CD /* Pods-YourName-YourNameUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourName-YourNameUITests.release.xcconfig"; path = "Target Support Files/Pods-YourName-YourNameUITests/Pods-YourName-YourNameUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A011DAB29A02E4438613947A /* Pods-YourName-YourNameTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourName-YourNameTests.release.xcconfig"; path = "Target Support Files/Pods-YourName-YourNameTests/Pods-YourName-YourNameTests.release.xcconfig"; sourceTree = "<group>"; };
-		A104CCC69AFB71F0412B7A45 /* Pods_YourName.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YourName.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A10969B73C6F2B6D2B45B54A /* Pods-YourName-YourNameUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourName-YourNameUITests.debug.xcconfig"; path = "Target Support Files/Pods-YourName-YourNameUITests/Pods-YourName-YourNameUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A1AC0CE1DA2C5DDF40338B84 /* Pods-YourNameTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourNameTests.debug.xcconfig"; path = "Target Support Files/Pods-YourNameTests/Pods-YourNameTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A2A5C83726FB17D0005D2849 /* KakaoAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoAuth.swift; sourceTree = "<group>"; };
@@ -311,6 +316,7 @@
 		CE94ABB4270F2C81005D2E80 /* Skill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
 		CE94ABB7270F4104005D2E80 /* ImageSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSource.swift; sourceTree = "<group>"; };
 		CE94ABB9270F4114005D2E80 /* ColorSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSource.swift; sourceTree = "<group>"; };
+		CE94ABBD270F68C1005D2E80 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CEA4D2D6270C9B1D008189FE /* CharacterEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterEntity.swift; sourceTree = "<group>"; };
 		CEA4D2D8270CA54A008189FE /* ProfileColorRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileColorRepository.swift; sourceTree = "<group>"; };
 		CEA4D2DA270CB39F008189FE /* ItemForDisplay.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ItemForDisplay.xcassets; sourceTree = "<group>"; };
@@ -319,7 +325,7 @@
 		CEA4D2E8270CD415008189FE /* DisplayCharacterItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayCharacterItemsViewController.swift; sourceTree = "<group>"; };
 		CEA4D2EB270D34C3008189FE /* DisplayCharacterItemsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayCharacterItemsViewModel.swift; sourceTree = "<group>"; };
 		CEA4D2ED270D35A2008189FE /* DisplayCharacterItemsDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayCharacterItemsDependencyContainer.swift; sourceTree = "<group>"; };
-		CEB6582826EB15A600C11F33 /* YourName.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YourName.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEB6582826EB15A600C11F33 /* MEETU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MEETU.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB6582B26EB15A600C11F33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEB6582F26EB15A600C11F33 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CEB6583426EB15AC00C11F33 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -368,7 +374,7 @@
 		CEF8C55626EDFB6F009BA9C2 /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 		CEFA037926EFB76D00D12AAB /* SnapshotService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotService.swift; sourceTree = "<group>"; };
 		CEFA037C26EFBACE00D12AAB /* QRGenerater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRGenerater.swift; sourceTree = "<group>"; };
-		DC31067244B5463F18A419D8 /* Pods_YourName_YourNameTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YourName_YourNameTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF1C79392C44764BDC375302 /* Pods_MEETU_YourNameTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MEETU_YourNameTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -376,7 +382,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8CE2A8B5191C919CFE08E6BD /* Pods_YourName.framework in Frameworks */,
+				451C17BFCC5F982A982C554D /* Pods_MEETU.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,7 +390,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F19405088FA4BA7E61C79C9F /* Pods_YourName_YourNameTests.framework in Frameworks */,
+				323213B10D5A848F639AFE36 /* Pods_MEETU_YourNameTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,6 +408,10 @@
 				2542E49521192642CD7B506E /* Pods-YourNameTests.release.xcconfig */,
 				A3E561B79C6998E82DB447DF /* Pods-YourName-YourNameTests.debug.xcconfig */,
 				A011DAB29A02E4438613947A /* Pods-YourName-YourNameTests.release.xcconfig */,
+				903860478CDC7D7B803C6EA2 /* Pods-MEETU.debug.xcconfig */,
+				8F8380609FFFABDCA6489AAA /* Pods-MEETU.release.xcconfig */,
+				8EB93BC30EE6D9B49A59296C /* Pods-MEETU-YourNameTests.debug.xcconfig */,
+				70E446189D6231860211802E /* Pods-MEETU-YourNameTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -409,9 +419,9 @@
 		79DE58E69F71FA7F9940F1F2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A104CCC69AFB71F0412B7A45 /* Pods_YourName.framework */,
 				2AB2756C3C74652DA7089153 /* Pods_YourName_YourNameUITests.framework */,
-				DC31067244B5463F18A419D8 /* Pods_YourName_YourNameTests.framework */,
+				44861AA2F42C9691F1BC4ECB /* Pods_MEETU.framework */,
+				DF1C79392C44764BDC375302 /* Pods_MEETU_YourNameTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -705,7 +715,7 @@
 		CEB6582926EB15A600C11F33 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CEB6582826EB15A600C11F33 /* YourName.app */,
+				CEB6582826EB15A600C11F33 /* MEETU.app */,
 				CEB6583E26EB15AD00C11F33 /* YourNameTests.xctest */,
 			);
 			name = Products;
@@ -714,10 +724,10 @@
 		CEB6582A26EB15A600C11F33 /* YourName */ = {
 			isa = PBXGroup;
 			children = (
+				CE94ABBD270F68C1005D2E80 /* GoogleService-Info.plist */,
 				CEB6585D26EB297600C11F33 /* Support Files */,
 				CEB6585B26EB296100C11F33 /* Sources */,
 				CEB6585C26EB296A00C11F33 /* Resources */,
-				CEB6583626EB15AC00C11F33 /* LaunchScreen.storyboard */,
 			);
 			path = YourName;
 			sourceTree = "<group>";
@@ -751,6 +761,7 @@
 		CEB6585C26EB296A00C11F33 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CEB6583626EB15AC00C11F33 /* LaunchScreen.storyboard */,
 				CEB6583426EB15AC00C11F33 /* Images.xcassets */,
 				CE2BB2C627074F4600936148 /* Colors.xcassets */,
 				CE4D4E832707A91900081A2B /* Items.xcassets */,
@@ -1053,9 +1064,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CEB6582726EB15A600C11F33 /* YourName */ = {
+		CEB6582726EB15A600C11F33 /* MEETU */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CEB6585226EB15AD00C11F33 /* Build configuration list for PBXNativeTarget "YourName" */;
+			buildConfigurationList = CEB6585226EB15AD00C11F33 /* Build configuration list for PBXNativeTarget "MEETU" */;
 			buildPhases = (
 				E430AFAFF61CE87327B86215 /* [CP] Check Pods Manifest.lock */,
 				CEB6582426EB15A600C11F33 /* Sources */,
@@ -1067,9 +1078,9 @@
 			);
 			dependencies = (
 			);
-			name = YourName;
+			name = MEETU;
 			productName = YourName;
-			productReference = CEB6582826EB15A600C11F33 /* YourName.app */;
+			productReference = CEB6582826EB15A600C11F33 /* MEETU.app */;
 			productType = "com.apple.product-type.application";
 		};
 		CEB6583D26EB15AD00C11F33 /* YourNameTests */ = {
@@ -1123,7 +1134,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CEB6582726EB15A600C11F33 /* YourName */,
+				CEB6582726EB15A600C11F33 /* MEETU */,
 				CEB6583D26EB15AD00C11F33 /* YourNameTests */,
 			);
 		};
@@ -1138,6 +1149,7 @@
 				CE4D4E842707A91900081A2B /* Items.xcassets in Resources */,
 				CE6BABA22704D9520006D26B /* SettingViewController.storyboard in Resources */,
 				CE6D1481270AF04500AF4C5C /* TipInfoView.xib in Resources */,
+				CE94ABBE270F68C1005D2E80 /* GoogleService-Info.plist in Resources */,
 				CE6BABA52704DAFB0006D26B /* CardCreationViewController.storyboard in Resources */,
 				CE2BB2C727074F4600936148 /* Colors.xcassets in Resources */,
 				CE6BABA02704D7BF0006D26B /* SplashViewController.storyboard in Resources */,
@@ -1190,7 +1202,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-YourName-YourNameTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-MEETU-YourNameTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1203,15 +1215,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-YourName/Pods-YourName-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-MEETU/Pods-MEETU-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-YourName/Pods-YourName-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-MEETU/Pods-MEETU-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YourName/Pods-YourName-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MEETU/Pods-MEETU-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E430AFAFF61CE87327B86215 /* [CP] Check Pods Manifest.lock */ = {
@@ -1229,7 +1241,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-YourName-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-MEETU-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1242,15 +1254,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-YourName-YourNameTests/Pods-YourName-YourNameTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-MEETU-YourNameTests/Pods-MEETU-YourNameTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-YourName-YourNameTests/Pods-YourName-YourNameTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-MEETU-YourNameTests/Pods-MEETU-YourNameTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YourName-YourNameTests/Pods-YourName-YourNameTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MEETU-YourNameTests/Pods-MEETU-YourNameTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1413,7 +1425,7 @@
 /* Begin PBXTargetDependency section */
 		CEB6584026EB15AD00C11F33 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = CEB6582726EB15A600C11F33 /* YourName */;
+			target = CEB6582726EB15A600C11F33 /* MEETU */;
 			targetProxy = CEB6583F26EB15AD00C11F33 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1548,7 +1560,7 @@
 		};
 		CEB6585326EB15AD00C11F33 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3CCE5B3128930676FB5D1886 /* Pods-YourName.debug.xcconfig */;
+			baseConfigurationReference = 903860478CDC7D7B803C6EA2 /* Pods-MEETU.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1568,7 +1580,7 @@
 		};
 		CEB6585426EB15AD00C11F33 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 174D5DB299DAAE9B4BE38DEF /* Pods-YourName.release.xcconfig */;
+			baseConfigurationReference = 8F8380609FFFABDCA6489AAA /* Pods-MEETU.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1588,7 +1600,7 @@
 		};
 		CEB6585626EB15AD00C11F33 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A3E561B79C6998E82DB447DF /* Pods-YourName-YourNameTests.debug.xcconfig */;
+			baseConfigurationReference = 8EB93BC30EE6D9B49A59296C /* Pods-MEETU-YourNameTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1611,7 +1623,7 @@
 		};
 		CEB6585726EB15AD00C11F33 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A011DAB29A02E4438613947A /* Pods-YourName-YourNameTests.release.xcconfig */;
+			baseConfigurationReference = 70E446189D6231860211802E /* Pods-MEETU-YourNameTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1644,7 +1656,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CEB6585226EB15AD00C11F33 /* Build configuration list for PBXNativeTarget "YourName" */ = {
+		CEB6585226EB15AD00C11F33 /* Build configuration list for PBXNativeTarget "MEETU" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CEB6585326EB15AD00C11F33 /* Debug */,

@@ -76,6 +76,14 @@ final class PageSheetController<ContentView: PageSheetContentView>: ViewControll
     }
     
     private func configureUI() {
+        
+        backgroundView.backgroundColor = .clear
+        self.view.addSubviews(backgroundView, stackView)
+        backgroundView.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(stackView.snp.top)
+        }
+        
         self.view.backgroundColor = Palette.black1.withAlphaComponent(0.6)
         self.view.addSubview(stackView)
         stackView.snp.makeConstraints { $0.leading.trailing.bottom.equalToSuperview() }
@@ -99,7 +107,6 @@ final class PageSheetController<ContentView: PageSheetContentView>: ViewControll
             $0.leading.equalToSuperview().offset(18)
             $0.centerY.equalToSuperview()
         }
-        
         completeButton.setTitle("완료", for: .normal)
         completeButton.setTitleColor(Palette.black1, for: .normal)
         completeButton.snp.makeConstraints {
@@ -111,7 +118,7 @@ final class PageSheetController<ContentView: PageSheetContentView>: ViewControll
     
     private func bind() {
         if contentView.isModal == false {
-            self.view.rx.tapGesture()
+            self.backgroundView.rx.tapGesture()
                 .when(.recognized)
                 .subscribe(onNext: { [weak self] _ in self?.close() })
                 .disposed(by: disposeBag)
@@ -138,6 +145,7 @@ final class PageSheetController<ContentView: PageSheetContentView>: ViewControll
         contentView.removeFromSuperview()
     }
     
+    private let backgroundView = UIView()
     private let stackView = UIStackView().then { $0.axis = .vertical }
     private let topBarView = UIView()
     private let titleLabel = UILabel()

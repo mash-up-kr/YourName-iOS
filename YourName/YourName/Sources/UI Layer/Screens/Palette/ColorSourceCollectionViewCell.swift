@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum ColorSourceStatus {
+enum ColorSourceStatus: Equatable {
     case normal
     case selected
     case locked
