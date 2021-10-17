@@ -135,7 +135,9 @@ final class CardCreationViewController: ViewController, Storyboarded {
         
         self.view.rx.tapGesture()
             .when(.recognized)
-            .subscribe(onNext: { _ in self.view.endEditing(true) })
+            .subscribe(onNext: { [weak self] _ in
+                self?.view.endEditing(true)
+            })
             .disposed(by: disposeBag)
     }
     
@@ -261,8 +263,7 @@ final class CardCreationViewController: ViewController, Storyboarded {
                    let contactIndex = ContactType.allCases.firstIndex(of: selected.type) {
                     self?.contactTypePickerView?.selectRow(contactIndex, inComponent: 0, animated: false)
                 }
-                self?.contactTypePickerView?.isHidden = index == nil
-                self?.selectContactTypeButton?.isHidden = index == nil
+                index == nil ? self?.hidePickerView() : self?.presentPickerView()
                 self?.completeButton?.isHidden = index != nil
                 self?.contactTypePickerView?.reloadComponent(0)
                 self?.indexOfContactTypeBeingSelected = index
@@ -297,6 +298,29 @@ final class CardCreationViewController: ViewController, Storyboarded {
         case .settingSkill: return skillSettingViewControllerFactory?()
         case .settingTMI: return tmiSettingViewControllerFactory?()
         }
+    }
+    
+    private func presentPickerView() {
+        contactTypePickerView?.alpha = 0
+        selectContactTypeButton?.alpha = 0
+        contactTypePickerView?.isHidden = false
+        selectContactTypeButton?.isHidden = false
+        UIView.animate(withDuration: 0.3, animations: {
+            self.contactTypePickerView?.alpha = 1
+            self.selectContactTypeButton?.alpha = 1
+        })
+    }
+    
+    private func hidePickerView() {
+        contactTypePickerView?.alpha = 1
+        selectContactTypeButton?.alpha = 1
+        UIView.animate(withDuration: 0.3, animations: {
+            self.contactTypePickerView?.alpha = 0
+            self.selectContactTypeButton?.alpha = 0
+        }, completion: { _ in
+            self.contactTypePickerView?.isHidden = true
+            self.selectContactTypeButton?.isHidden = true
+        })
     }
     
     private let disposeBag = DisposeBag()
