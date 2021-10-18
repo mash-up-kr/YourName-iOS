@@ -29,38 +29,12 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rdW-AF-HAC">
                                         <rect key="frame" x="0.0" y="34.5" width="366" height="116"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zDD-tA-R88">
-                                                <rect key="frame" x="16" y="16" width="120" height="18.5"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Onboarding Quest" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RWc-O5-bfL">
-                                                        <rect key="frame" x="5" y="2" width="110" height="14.5"/>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="6"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </label>
-                                                </subviews>
-                                                <color key="backgroundColor" name="gray1"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="RWc-O5-bfL" secondAttribute="trailing" constant="5" id="3iD-GR-dN3"/>
-                                                    <constraint firstItem="RWc-O5-bfL" firstAttribute="leading" secondItem="zDD-tA-R88" secondAttribute="leading" constant="5" id="OxL-ib-zyt"/>
-                                                    <constraint firstItem="RWc-O5-bfL" firstAttribute="top" secondItem="zDD-tA-R88" secondAttribute="top" constant="2" id="PX2-qg-He6"/>
-                                                    <constraint firstAttribute="bottom" secondItem="RWc-O5-bfL" secondAttribute="bottom" constant="2" id="wR9-8p-kpd"/>
-                                                </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="6"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="퀘스트를 달성하고 특수 컬러를 획득하자 !" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dge-rB-wNx">
-                                                <rect key="frame" x="16" y="48.5" width="261" height="19.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                <nil key="textColor"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dge-rB-wNx">
+                                                <rect key="frame" x="16" y="15" width="151.5" height="53"/>
+                                                <string key="text">퀘스트를 클리어하고,
+유니크 컬러를 획득하츄!</string>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                                <color key="textColor" name="gray3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="blH-Mj-zRI">
@@ -69,7 +43,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="12" id="P7P-Uw-hwK"/>
                                                 </constraints>
-                                                <color key="progressTintColor" name="gray3"/>
+                                                <color key="progressTintColor" name="yellow2"/>
                                                 <color key="trackTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -77,16 +51,22 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </progressView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_quest" translatesAutoresizingMaskIntoConstraints="NO" id="urQ-fx-JOa">
+                                                <rect key="frame" x="301.5" y="20" width="32.5" height="43"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="urQ-fx-JOa" secondAttribute="height" multiplier="32:42.58" id="10x-aZ-6eU"/>
+                                                </constraints>
+                                            </imageView>
                                         </subviews>
-                                        <color key="backgroundColor" name="lightGray2"/>
+                                        <color key="backgroundColor" name="yellow"/>
                                         <constraints>
                                             <constraint firstItem="blH-Mj-zRI" firstAttribute="top" secondItem="dge-rB-wNx" secondAttribute="bottom" constant="16" id="0TZ-14-HYc"/>
+                                            <constraint firstItem="dge-rB-wNx" firstAttribute="top" secondItem="rdW-AF-HAC" secondAttribute="top" constant="15" id="31S-cH-Xuf"/>
                                             <constraint firstItem="blH-Mj-zRI" firstAttribute="leading" secondItem="rdW-AF-HAC" secondAttribute="leading" constant="16" id="7at-fb-5R0"/>
                                             <constraint firstAttribute="trailing" secondItem="blH-Mj-zRI" secondAttribute="trailing" constant="16" id="IIW-ex-re8"/>
                                             <constraint firstAttribute="bottom" secondItem="blH-Mj-zRI" secondAttribute="bottom" constant="20" id="ISI-M4-Sxg"/>
-                                            <constraint firstItem="dge-rB-wNx" firstAttribute="top" secondItem="zDD-tA-R88" secondAttribute="bottom" constant="14" id="JkB-wm-1ib"/>
-                                            <constraint firstItem="zDD-tA-R88" firstAttribute="top" secondItem="rdW-AF-HAC" secondAttribute="top" constant="16" id="VYN-bd-UVQ"/>
-                                            <constraint firstItem="zDD-tA-R88" firstAttribute="leading" secondItem="rdW-AF-HAC" secondAttribute="leading" constant="16" id="fCk-JO-W6r"/>
+                                            <constraint firstAttribute="trailing" secondItem="urQ-fx-JOa" secondAttribute="trailing" constant="32" id="LIM-4n-JUL"/>
+                                            <constraint firstItem="urQ-fx-JOa" firstAttribute="centerY" secondItem="dge-rB-wNx" secondAttribute="centerY" id="am2-yD-jTh"/>
                                             <constraint firstItem="dge-rB-wNx" firstAttribute="leading" secondItem="rdW-AF-HAC" secondAttribute="leading" constant="16" id="nam-3k-PFZ"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
@@ -231,8 +211,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="aboutProductionTeamView" destination="sSc-6I-fOT" id="sGx-7Z-TBP"/>
                         <outlet property="logoutButton" destination="jUo-Gt-Kuu" id="vmG-ia-LvF"/>
-                        <outlet property="makerView" destination="sSc-6I-fOT" id="XYb-Gv-6rP"/>
                         <outlet property="noticeView" destination="KLt-NF-xPc" id="vdw-73-3X4"/>
                         <outlet property="questProgressView" destination="blH-Mj-zRI" id="t6Y-to-Em2"/>
                         <outlet property="questView" destination="rdW-AF-HAC" id="vWv-3U-05V"/>
@@ -246,6 +226,7 @@
     </scenes>
     <resources>
         <image name="btn_next" width="8" height="14"/>
+        <image name="icon_quest" width="32" height="43"/>
         <namedColor name="black1">
             <color red="0.082352941176470587" green="0.082352941176470587" blue="0.082352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -260,6 +241,12 @@
         </namedColor>
         <namedColor name="lightGray4">
             <color red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="yellow">
+            <color red="1" green="0.96470588235294119" blue="0.72156862745098038" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="yellow2">
+            <color red="1" green="0.89411764705882357" blue="0.22352941176470589" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

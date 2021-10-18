@@ -52,7 +52,7 @@ final class SignedInDependencyContainer {
         return MyCardListDependencyContainer(signedInDependencyContainer: self)
     }
     private func createSettingDependencyContainer() -> SettingDependencyContainer {
-        return SettingDependencyContainer()
+        return SettingDependencyContainer(signedInDependencyContainer: self)
     }
     
     private func createCardBookViewController() -> UIViewController {

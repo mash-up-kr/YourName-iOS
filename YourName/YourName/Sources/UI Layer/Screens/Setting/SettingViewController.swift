@@ -12,12 +12,12 @@ import RxCocoa
 
 final class SettingViewController: ViewController, Storyboarded {
     
-    @IBOutlet private weak var resignButton: UIButton!
-    @IBOutlet private weak var logoutButton: UIButton!
+    @IBOutlet private unowned var resignButton: UIButton!
+    @IBOutlet private unowned var logoutButton: UIButton!
     @IBOutlet private unowned var questView: UIView!
     @IBOutlet private unowned var questProgressView: UIProgressView!
     @IBOutlet private unowned var noticeView: UIView!
-    @IBOutlet private unowned var makerView: UIView!
+    @IBOutlet private unowned var aboutProductionTeamView: UIView!
     
     private let disposeBag = DisposeBag()
     var viewModel: SettingViewModel!
@@ -40,7 +40,7 @@ extension SettingViewController {
         questProgressView.layer.sublayers![1].cornerRadius = 6
         questProgressView.subviews[1].layer.masksToBounds = true
         noticeView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        makerView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        aboutProductionTeamView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
     }
     
     private func dispatch(to viewModel: SettingViewModel) {
@@ -67,7 +67,7 @@ extension SettingViewController {
             })
             .disposed(by: disposeBag)
         
-        makerView.rx.tapWhenRecognized()
+        aboutProductionTeamView.rx.tapWhenRecognized()
             .bind(onNext: { [weak self] in
                 self?.viewModel.tapMaker()
             })

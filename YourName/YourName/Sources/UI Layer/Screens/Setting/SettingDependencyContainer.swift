@@ -2,12 +2,20 @@
 //  SettingDependencyContainer.swift
 //  YourName
 //
-//  Created by seori on 2021/10/09.
+//  Created by 송서영 on 2021/10/09.
 //
 
 import UIKit
 
 final class SettingDependencyContainer {
+    
+    init(signedInDependencyContainer: SignedInDependencyContainer) {
+        
+    }
+    
+    init(mycardListDependencyContainer: MyCardListDependencyContainer) {
+        
+    }
     
     func settingViewController() -> UIViewController {
         let viewModel = SettingViewModel()
