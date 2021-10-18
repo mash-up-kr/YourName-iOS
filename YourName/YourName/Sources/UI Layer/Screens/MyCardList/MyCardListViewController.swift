@@ -29,7 +29,7 @@ final class MyCardListViewController: ViewController, Storyboarded {
     var viewModel: MyCardListViewModel!
     private let disposeBag = DisposeBag()
     private lazy var collectionViewWidth = ( 312 * self.myCardListCollectionview.bounds.height ) / 512
-    private let dummyData = [Palette.lightGreen, Palette.orange, Palette.vilolet] // dummy
+    private let dummyData = [Palette.lightGreen] // dummy
     private let content = [   // dummy
         [MySkillProgressView.Item(title: "이게 너무 길면 어떻게보일지 테스트해볼까싶은데 과연", level: 3),
          MySkillProgressView.Item(title: "인싸력", level: 10)],
@@ -118,11 +118,10 @@ extension MyCardListViewController: UICollectionViewDataSource {
                                                                 for: indexPath)
             else { return .init() }
             
-            cell.createCardButton.rx.throttleTap
-                .bind(onNext: { [weak self] _ in
-                    self?.viewModel.tapCardCreation()
-                })
-                .disposed(by: cell.disposeBag)
+            let didSelect: (() -> Void)? = { [weak self] in
+                self?.viewModel.tapCardCreation()
+            }
+            cell.didSelect = didSelect
             return cell
         } else {
             guard let cell = collectionView.dequeueReusableCell(MyCardListCollectionViewCell.self,

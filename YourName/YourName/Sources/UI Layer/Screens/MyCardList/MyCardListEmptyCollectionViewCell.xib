@@ -19,47 +19,39 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bubble_add" translatesAutoresizingMaskIntoConstraints="NO" id="FZx-Sz-qOd">
-                        <rect key="frame" x="198" y="108" width="29" height="30"/>
+                        <rect key="frame" x="198.5" y="108" width="29" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="FZx-Sz-qOd" secondAttribute="height" multiplier="28.96:29.73" id="Blj-ye-73p"/>
+                        </constraints>
                     </imageView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="meetu_cry" translatesAutoresizingMaskIntoConstraints="NO" id="VrD-JH-Z8c">
                         <rect key="frame" x="120.5" y="138" width="87" height="102"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제작된 미츄가 없습니다" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mVc-pE-mBj">
-                        <rect key="frame" x="73" y="260" width="182" height="24"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제작된 미츄가 없츄" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mVc-pE-mBj">
+                        <rect key="frame" x="90.5" y="281" width="147.5" height="24"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                         <color key="textColor" name="gray2"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5lj-ok-VEh">
-                        <rect key="frame" x="71.5" y="296" width="185.5" height="41"/>
+                        <rect key="frame" x="71.5" y="321" width="185.5" height="41"/>
                         <string key="text">추가하기를 클릭해
 새로운 미츄를 만들어보세요</string>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" name="gray2"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jrh-f7-Vva">
-                        <rect key="frame" x="144" y="379.5" width="40" height="40"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="40" id="GEl-zT-Qn7"/>
-                            <constraint firstAttribute="width" secondItem="Jrh-f7-Vva" secondAttribute="height" multiplier="1:1" id="fqX-cg-SQP"/>
-                        </constraints>
-                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                        <state key="normal" image="btn_add_gray"/>
-                    </button>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="5lj-ok-VEh" firstAttribute="centerX" secondItem="lfi-E8-UuX" secondAttribute="centerX" id="4aY-97-pwT"/>
-                    <constraint firstItem="Jrh-f7-Vva" firstAttribute="top" secondItem="5lj-ok-VEh" secondAttribute="bottom" constant="42.850000000000001" id="DEe-Ia-7PE"/>
-                    <constraint firstItem="5lj-ok-VEh" firstAttribute="top" secondItem="mVc-pE-mBj" secondAttribute="bottom" constant="12" id="KM2-xp-yiw"/>
-                    <constraint firstItem="FZx-Sz-qOd" firstAttribute="top" secondItem="lfi-E8-UuX" secondAttribute="top" constant="108" id="KTu-Ht-9zi"/>
-                    <constraint firstItem="Jrh-f7-Vva" firstAttribute="centerX" secondItem="lfi-E8-UuX" secondAttribute="centerX" id="LeJ-aa-mng"/>
+                    <constraint firstItem="5lj-ok-VEh" firstAttribute="top" secondItem="mVc-pE-mBj" secondAttribute="bottom" constant="16.079999999999998" id="KM2-xp-yiw"/>
                     <constraint firstItem="mVc-pE-mBj" firstAttribute="centerX" secondItem="lfi-E8-UuX" secondAttribute="centerX" id="T8C-Bz-5O2"/>
-                    <constraint firstAttribute="trailing" secondItem="FZx-Sz-qOd" secondAttribute="trailing" constant="101" id="epX-ld-zji"/>
-                    <constraint firstItem="mVc-pE-mBj" firstAttribute="top" secondItem="VrD-JH-Z8c" secondAttribute="bottom" constant="19.890000000000001" id="h8G-Cf-0x5"/>
+                    <constraint firstItem="FZx-Sz-qOd" firstAttribute="trailing" secondItem="VrD-JH-Z8c" secondAttribute="trailing" constant="20" id="dGM-97-qfK"/>
+                    <constraint firstItem="mVc-pE-mBj" firstAttribute="top" secondItem="VrD-JH-Z8c" secondAttribute="bottom" constant="40.890000000000001" id="h8G-Cf-0x5"/>
                     <constraint firstItem="VrD-JH-Z8c" firstAttribute="top" secondItem="lfi-E8-UuX" secondAttribute="top" constant="137.88999999999999" id="pZr-AW-5Pk"/>
                     <constraint firstItem="VrD-JH-Z8c" firstAttribute="centerX" secondItem="lfi-E8-UuX" secondAttribute="centerX" id="r5j-w9-8Io"/>
+                    <constraint firstItem="VrD-JH-Z8c" firstAttribute="top" secondItem="FZx-Sz-qOd" secondAttribute="bottom" id="y4h-1w-UH4"/>
                 </constraints>
                 <userDefinedRuntimeAttributes>
                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -69,14 +61,10 @@
                 </userDefinedRuntimeAttributes>
             </collectionViewCellContentView>
             <size key="customSize" width="328" height="519"/>
-            <connections>
-                <outlet property="createCardButton" destination="Jrh-f7-Vva" id="Q9D-j9-pQL"/>
-            </connections>
             <point key="canvasLocation" x="27.536231884057973" y="-27.790178571428569"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="btn_add_gray" width="40" height="40"/>
         <image name="bubble_add" width="29" height="30"/>
         <image name="meetu_cry" width="87" height="102"/>
         <namedColor name="gray2">
