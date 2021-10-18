@@ -11,6 +11,8 @@
 		A28A9B12271175A80063692D /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A9B11271175A70063692D /* SettingViewModel.swift */; };
 		A28A9B14271178360063692D /* Reactive+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A9B13271178360063692D /* Reactive+.swift */; };
 		A28A9B1627117ACA0063692D /* SettingDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A9B1527117ACA0063692D /* SettingDependencyContainer.swift */; };
+		A29DA247271DCE4E00B1E647 /* AboutProductionTeamViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A29DA246271DCE4E00B1E647 /* AboutProductionTeamViewController.storyboard */; };
+		A29DA249271DCF3100B1E647 /* AboutProductionTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29DA248271DCF3100B1E647 /* AboutProductionTeamViewController.swift */; };
 		A2A5C83826FB17D0005D2849 /* KakaoAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A5C83726FB17D0005D2849 /* KakaoAuth.swift */; };
 		A2A5C83A26FB1A3D005D2849 /* AppKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A5C83926FB1A3D005D2849 /* AppKey.swift */; };
 		A2CC655E27075C8900610C49 /* MyCardListEmptyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2CC655D27075C8900610C49 /* MyCardListEmptyCollectionViewCell.xib */; };
@@ -202,6 +204,8 @@
 		A28A9B11271175A70063692D /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		A28A9B13271178360063692D /* Reactive+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+.swift"; sourceTree = "<group>"; };
 		A28A9B1527117ACA0063692D /* SettingDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDependencyContainer.swift; sourceTree = "<group>"; };
+		A29DA246271DCE4E00B1E647 /* AboutProductionTeamViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AboutProductionTeamViewController.storyboard; sourceTree = "<group>"; };
+		A29DA248271DCF3100B1E647 /* AboutProductionTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutProductionTeamViewController.swift; sourceTree = "<group>"; };
 		A2A5C83726FB17D0005D2849 /* KakaoAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoAuth.swift; sourceTree = "<group>"; };
 		A2A5C83926FB1A3D005D2849 /* AppKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppKey.swift; sourceTree = "<group>"; };
 		A2CC655D27075C8900610C49 /* MyCardListEmptyCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCardListEmptyCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -418,6 +422,15 @@
 				DC31067244B5463F18A419D8 /* Pods_YourName_YourNameTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A29DA245271DCE2800B1E647 /* AboutProductionTeam */ = {
+			isa = PBXGroup;
+			children = (
+				A29DA246271DCE4E00B1E647 /* AboutProductionTeamViewController.storyboard */,
+				A29DA248271DCF3100B1E647 /* AboutProductionTeamViewController.swift */,
+			);
+			path = AboutProductionTeam;
 			sourceTree = "<group>";
 		};
 		CE2EC9942707347E006B9852 /* CardCreationTests */ = {
@@ -1013,6 +1026,7 @@
 		CED16DEF26F3A5050076565F /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				A29DA245271DCE2800B1E647 /* AboutProductionTeam */,
 				A28A9B1527117ACA0063692D /* SettingDependencyContainer.swift */,
 				CE6BABA12704D9520006D26B /* SettingViewController.storyboard */,
 				CED16DF626F3A5540076565F /* SettingViewController.swift */,
@@ -1151,6 +1165,7 @@
 				A2CC65722708AAF900610C49 /* SkillLevelView.xib in Resources */,
 				CE4D4EB72708E9F400081A2B /* PaletteView.xib in Resources */,
 				CE6BAB9C2704D7170006D26B /* QuestViewController.storyboard in Resources */,
+				A29DA247271DCE4E00B1E647 /* AboutProductionTeamViewController.storyboard in Resources */,
 				CEB6583826EB15AC00C11F33 /* LaunchScreen.storyboard in Resources */,
 				A2CC655E27075C8900610C49 /* MyCardListEmptyCollectionViewCell.xib in Resources */,
 				CE4D4ED7270A0CE200081A2B /* SkillSettingView.xib in Resources */,
@@ -1365,6 +1380,7 @@
 				CE94AB9D270ECED4005D2E80 /* InterestRepository.swift in Sources */,
 				CE94AB97270ECB8E005D2E80 /* StrongPointRepository.swift in Sources */,
 				CEB6588726EC817A00C11F33 /* HTTP.swift in Sources */,
+				A29DA249271DCF3100B1E647 /* AboutProductionTeamViewController.swift in Sources */,
 				CE94ABA6270ED4B7005D2E80 /* TMIContentCollectionViewCell.swift in Sources */,
 				A2A5C83826FB17D0005D2849 /* KakaoAuth.swift in Sources */,
 				CE4D4EDD270A0F9900081A2B /* TMISettingView.swift in Sources */,

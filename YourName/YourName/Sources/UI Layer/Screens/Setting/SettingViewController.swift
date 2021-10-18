@@ -21,6 +21,7 @@ final class SettingViewController: ViewController, Storyboarded {
     
     private let disposeBag = DisposeBag()
     var viewModel: SettingViewModel!
+    var aboutProductionTeamFactory: (() -> AboutProductionTeamViewController)!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,7 +70,7 @@ extension SettingViewController {
         
         aboutProductionTeamView.rx.tapWhenRecognized()
             .bind(onNext: { [weak self] in
-                self?.viewModel.tapMaker()
+                self?.viewModel.tapAboutProductionTeam()
             })
             .disposed(by: disposeBag)
         
@@ -102,6 +103,8 @@ extension SettingViewController {
         case .onboardingQuest:
             // TODO: 수정필요
             return .init()
+        case .aboutProductionTeam:
+            return aboutProductionTeamFactory()
         default:
             return .init()
         }

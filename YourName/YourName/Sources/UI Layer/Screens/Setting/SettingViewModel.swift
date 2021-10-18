@@ -12,7 +12,7 @@ enum SettingDestination: Equatable {
     case userSetting
     case onboardingQuest
     case notice
-    case maker
+    case aboutProductionTeam
 }
 
 typealias SettingNavigation = Navigation<SettingDestination>
@@ -31,8 +31,7 @@ final class SettingViewModel {
         print(#function)
 //        navigation.accept(.push(.notice))
     }
-    func tapMaker() {
-        print(#function)
-//        navigation.accept(.push(.maker))
+    func tapAboutProductionTeam() {
+        navigation.accept(.push(.aboutProductionTeam))
     }
 }

@@ -21,6 +21,13 @@ final class SettingDependencyContainer {
         let viewModel = SettingViewModel()
         let viewController = SettingViewController.instantiate()
         viewController.viewModel = viewModel
+        
+        let aboutProductionTeamFactory: () -> AboutProductionTeamViewController = {
+            return AboutProductionTeamViewController.instantiate()
+        }
+        
+        viewController.aboutProductionTeamFactory = aboutProductionTeamFactory
+      
         let navigationController = UINavigationController(rootViewController: viewController)
         return navigationController
     }
