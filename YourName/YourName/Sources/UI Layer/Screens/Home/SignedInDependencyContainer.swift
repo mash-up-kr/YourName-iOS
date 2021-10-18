@@ -40,7 +40,8 @@ final class SignedInDependencyContainer {
         case .cardBook:
             viewController = createCardBookViewController()
         case .setting:
-            viewController = createSettingViewController()
+            let dependencyContainer = createSettingDependencyContainer()
+            viewController = dependencyContainer.settingViewController()
         }
         viewController.tabBarItem = tab.asTabBarItem()
         return viewController
@@ -50,15 +51,12 @@ final class SignedInDependencyContainer {
     private func createMyCardListDependencyContainer() -> MyCardListDependencyContainer {
         return MyCardListDependencyContainer(signedInDependencyContainer: self)
     }
+    private func createSettingDependencyContainer() -> SettingDependencyContainer {
+        return SettingDependencyContainer(signedInDependencyContainer: self)
+    }
     
     private func createCardBookViewController() -> UIViewController {
         let viewController = CardBookViewController.instantiate()
-        let naviController = UINavigationController(rootViewController: viewController)
-        return naviController
-    }
-    
-    private func createSettingViewController() -> UIViewController {
-        let viewController = SettingViewController.instantiate()
         let naviController = UINavigationController(rootViewController: viewController)
         return naviController
     }
