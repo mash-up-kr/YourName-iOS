@@ -64,8 +64,8 @@ extension CardBookViewController {
         }
     }
     private func configureCollectionView() {
-        cardBookCollectionView.registerWithNib(CardBookCollectionViewCell.self)
-        cardBookCollectionView.registerWithNib(CardBookEmptyCollectionViewCell.self)
+        cardBookCollectionView.registerNib(CardBookCollectionViewCell.self)
+        cardBookCollectionView.registerNib(CardBookEmptyCollectionViewCell.self)
     }
 }
 
