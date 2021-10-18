@@ -6,7 +6,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -25,7 +24,7 @@
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bMt-aJ-acH">
                     <rect key="frame" x="81.5" y="48" width="244" height="244"/>
-                    <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="bMt-aJ-acH" secondAttribute="height" multiplier="1:1" id="ccg-zc-SKB"/>
                     </constraints>
@@ -76,7 +75,7 @@
                 </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="9SB-35-rwy"/>
-            <color key="backgroundColor" systemColor="linkColor"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="9xB-Cg-2DP" firstAttribute="centerX" secondItem="nEZ-cL-CmB" secondAttribute="centerX" id="1gf-Rv-714"/>
                 <constraint firstItem="bMt-aJ-acH" firstAttribute="centerX" secondItem="nEZ-cL-CmB" secondAttribute="centerX" id="I6d-WF-Q8L"/>
@@ -99,11 +98,5 @@
         <namedColor name="gray3">
             <color red="0.33725490196078434" green="0.33725490196078434" blue="0.33725490196078434" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
     </resources>
 </document>

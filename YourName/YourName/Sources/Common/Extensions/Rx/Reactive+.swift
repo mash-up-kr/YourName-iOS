@@ -15,3 +15,15 @@ extension Reactive where Base: View {
         return tapGesture().when(.recognized).map { _ in return }
     }
 }
+
+extension Reactive where Base: UIButton {
+    var throttleTap: ControlEvent<Void> {
+        let source = tap
+            .throttle(
+                .milliseconds(400),
+                latest: false,
+                scheduler: MainScheduler.instance
+            )
+        return ControlEvent(events: source)
+    }
+}

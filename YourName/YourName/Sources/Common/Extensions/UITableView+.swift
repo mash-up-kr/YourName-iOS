@@ -9,6 +9,11 @@ import UIKit
 
 extension UITableView {
     
+    func registerWithNib<TableViewCell: UITableViewCell>(_ cellType: TableViewCell.Type) {
+        let nibFile = UINib(nibName: String(describing: cellType), bundle: Bundle.main)
+        self.register(nibFile, forCellReuseIdentifier: String(describing: cellType))
+    }
+    
     func register<TableViewCell: UITableViewCell>(_ cellType: TableViewCell.Type) {
         let identifier = String(describing: cellType)
         self.register(cellType, forCellReuseIdentifier: identifier)

@@ -19,13 +19,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="메시님의 미츄 (4)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a20-yh-Ogx">
-                                <rect key="frame" x="24" y="63" width="142" height="24"/>
+                                <rect key="frame" x="24" y="73" width="142" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="drb-E3-gdJ">
-                                <rect key="frame" x="0.0" y="107" width="414" height="645"/>
+                                <rect key="frame" x="0.0" y="117" width="414" height="635"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="16" minimumInteritemSpacing="16" id="ze6-xV-yOH">
                                     <size key="itemSize" width="128" height="128"/>
@@ -54,14 +54,13 @@
                                 <color key="currentPageIndicatorTintColor" name="gray2"/>
                             </pageControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z8U-w8-KQp">
-                                <rect key="frame" x="366" y="63" width="24" height="24"/>
+                                <rect key="frame" x="366" y="73" width="24" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="24" id="ihh-Eu-z74"/>
                                     <constraint firstAttribute="width" secondItem="Z8U-w8-KQp" secondAttribute="height" multiplier="1:1" id="sAm-cN-954"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Button" image="btn_add"/>
-                                <buttonConfiguration key="configuration" style="plain" image="btn_add"/>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
@@ -72,7 +71,7 @@
                             <constraint firstItem="a20-yh-Ogx" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="24" id="K29-oN-Odf"/>
                             <constraint firstItem="Ccn-ZI-nOs" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="LFq-FO-N9c"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="drb-E3-gdJ" secondAttribute="trailing" id="Qor-YR-2J7"/>
-                            <constraint firstItem="a20-yh-Ogx" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="19" id="knX-VR-tkt"/>
+                            <constraint firstItem="a20-yh-Ogx" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="29" id="knX-VR-tkt"/>
                             <constraint firstItem="Ccn-ZI-nOs" firstAttribute="top" secondItem="drb-E3-gdJ" secondAttribute="bottom" constant="27" id="mF6-A6-54s"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Ccn-ZI-nOs" secondAttribute="bottom" constant="57" id="mNg-GC-56e"/>
                             <constraint firstItem="drb-E3-gdJ" firstAttribute="top" secondItem="a20-yh-Ogx" secondAttribute="bottom" constant="20" id="n6v-Kq-2Qc"/>
