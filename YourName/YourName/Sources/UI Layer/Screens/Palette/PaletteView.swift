@@ -42,15 +42,35 @@ final class PaletteView: UIView, NibLoadable {
     
     private func dispatch(to viewModel: PaletteViewModel) {
         self.viewModel.didLoad()
+        
+        colorsCollectionView?.rx.itemSelected
+            .subscribe(onNext: { [weak self] indexPath in
+                self?.viewModel.selectColor(at: indexPath.item)
+            })
+            .disposed(by: self.disposeBag)
+        
+        completeButton?.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.viewModel.tapComplete()
+            })
+            .disposed(by: self.disposeBag)
     }
     
     private func render(_ viewModel: PaletteViewModel) {
         self.viewModel.profileColors
+            .distinctUntilChanged()
             .subscribe(onNext: { [weak self] profileColors in
                 self?.profileColors = profileColors
                 self?.colorsCollectionView?.reloadData()
             })
             .disposed(by: disposeBag)
+        
+        if let completeButton = self.completeButton {
+            self.viewModel.canBeCompleted
+                .distinctUntilChanged()
+                .bind(to: completeButton.rx.isEnabled)
+                .disposed(by: disposeBag)
+        }
     }
     
     private let disposeBag = DisposeBag()
@@ -60,8 +80,10 @@ final class PaletteView: UIView, NibLoadable {
     
     @IBOutlet private weak var colorsCollectionView: UICollectionView?
     @IBOutlet private weak var completeButton: UIButton?
+    
 }
 extension PaletteView: UICollectionViewDataSource {
+    
     func collectionView(
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int

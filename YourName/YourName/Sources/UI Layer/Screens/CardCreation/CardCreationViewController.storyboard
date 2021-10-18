@@ -12,20 +12,20 @@
         <!--Card Creation View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="CardCreationViewController" customModule="YourName" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Y6W-OH-hqX" customClass="CardCreationViewController" customModule="MEETU" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="2000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KfK-Sr-fIy">
-                                <rect key="frame" x="0.0" y="1910" width="414" height="0.0"/>
+                                <rect key="frame" x="0.0" y="1638" width="414" height="0.0"/>
                                 <color key="backgroundColor" systemColor="systemGreenColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" id="Y6u-uH-sP8"/>
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3pK-M4-D4c">
-                                <rect key="frame" x="0.0" y="44" width="414" height="1866"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="1594"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="BIS-af-h3O">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1870"/>
@@ -144,7 +144,7 @@
                                                     <constraint firstAttribute="height" constant="20" id="AB9-nm-opZ"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SHs-uB-Yk7" customClass="TipInfoView" customModule="YourName" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SHs-uB-Yk7" customClass="TipInfoView" customModule="MEETU" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="261" width="414" height="50"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
@@ -375,7 +375,7 @@
                                                     <constraint firstAttribute="height" constant="26" id="6wa-0o-xDN"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="50C-wC-hun" customClass="ContactInputView" customModule="YourName" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="50C-wC-hun" customClass="ContactInputView" customModule="MEETU" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="643" width="414" height="128"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact.01" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="raf-hb-Fmw">
@@ -474,6 +474,7 @@
                                                     <constraint firstItem="sWg-K3-rCd" firstAttribute="leading" secondItem="50C-wC-hun" secondAttribute="leading" constant="24" id="xn1-aq-BIM"/>
                                                 </constraints>
                                                 <connections>
+                                                    <outlet property="contactTypeLabel" destination="VSl-gF-Csi" id="eUf-Bg-xsu"/>
                                                     <outlet property="contactTypeView" destination="sWg-K3-rCd" id="fBL-LL-m2v"/>
                                                     <outlet property="contactValueField" destination="LzQ-Kx-r7Y" id="8fx-jI-d5Y"/>
                                                 </connections>
@@ -485,7 +486,7 @@
                                                     <constraint firstAttribute="height" constant="20" id="uxR-9o-gnx"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="srS-Kf-nJ8" customClass="ContactInputView" customModule="YourName" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="srS-Kf-nJ8" customClass="ContactInputView" customModule="MEETU" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="791" width="414" height="128"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact.02" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JnB-fL-PXI">
@@ -584,6 +585,7 @@
                                                     <constraint firstAttribute="trailing" secondItem="aB9-5H-nOw" secondAttribute="trailing" constant="24" id="bFY-kT-cRG"/>
                                                 </constraints>
                                                 <connections>
+                                                    <outlet property="contactTypeLabel" destination="wNr-lj-01G" id="G3T-R7-CAh"/>
                                                     <outlet property="contactTypeView" destination="GQH-WA-lqp" id="WOs-4Q-kbT"/>
                                                     <outlet property="contactValueField" destination="vKY-K4-4VQ" id="ZWf-GF-x9Q"/>
                                                 </connections>
@@ -595,7 +597,7 @@
                                                     <constraint firstAttribute="height" constant="20" id="iJm-Wt-4VY"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Yo-83-S3Z" customClass="ContactInputView" customModule="YourName" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Yo-83-S3Z" customClass="ContactInputView" customModule="MEETU" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="939" width="414" height="128"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact.03" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="igB-T9-O3e">
@@ -694,6 +696,7 @@
                                                     <constraint firstAttribute="bottom" secondItem="Fmw-Yf-du2" secondAttribute="bottom" id="pM3-Mn-W2g"/>
                                                 </constraints>
                                                 <connections>
+                                                    <outlet property="contactTypeLabel" destination="e1U-xD-zew" id="bHM-Ei-fEH"/>
                                                     <outlet property="contactTypeView" destination="xMk-k2-pia" id="oix-pa-OfP"/>
                                                     <outlet property="contactValueField" destination="MzM-zv-XC6" id="Vyp-7V-E0Y"/>
                                                 </connections>
@@ -705,7 +708,7 @@
                                                     <constraint firstAttribute="height" constant="20" id="TV9-Ya-MSe"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IEG-67-NrW" customClass="ContactInputView" customModule="YourName" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IEG-67-NrW" customClass="ContactInputView" customModule="MEETU" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="1087" width="414" height="128"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact.04" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zXF-5i-jHd">
@@ -804,6 +807,7 @@
                                                     <constraint firstItem="T02-4V-AYh" firstAttribute="top" secondItem="zXF-5i-jHd" secondAttribute="bottom" constant="12" id="z1p-mi-WZl"/>
                                                 </constraints>
                                                 <connections>
+                                                    <outlet property="contactTypeLabel" destination="90m-Uf-t40" id="qOf-8y-cFi"/>
                                                     <outlet property="contactTypeView" destination="T02-4V-AYh" id="CX5-y4-jWT"/>
                                                     <outlet property="contactValueField" destination="5yq-9q-hbr" id="a5q-oF-zVR"/>
                                                 </connections>
@@ -815,7 +819,7 @@
                                                     <constraint firstAttribute="height" constant="20" id="IC5-2t-ocp"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QIE-Yx-5NU" customClass="ContactInputView" customModule="YourName" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QIE-Yx-5NU" customClass="ContactInputView" customModule="MEETU" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="1235" width="414" height="128"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact.05" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="32w-ju-r3A">
@@ -914,6 +918,7 @@
                                                     <constraint firstItem="32w-ju-r3A" firstAttribute="leading" secondItem="QIE-Yx-5NU" secondAttribute="leading" constant="32" id="vkj-Ep-NvN"/>
                                                 </constraints>
                                                 <connections>
+                                                    <outlet property="contactTypeLabel" destination="iF1-0r-p2p" id="yL3-ez-QQU"/>
                                                     <outlet property="contactTypeView" destination="5Ed-nz-9KW" id="6qC-5q-Q6M"/>
                                                     <outlet property="contactValueField" destination="MO3-8h-e2q" id="wY3-2l-kfL"/>
                                                 </connections>
@@ -1167,31 +1172,66 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="ayD-q3-X15"/>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vPy-Ej-eRQ" userLabel="입력버튼">
-                                <rect key="frame" x="0.0" y="1910" width="414" height="56"/>
+                                <rect key="frame" x="0.0" y="1638" width="414" height="328"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZAC-I2-7S3">
-                                        <rect key="frame" x="24" y="0.0" width="366" height="56"/>
-                                        <color key="backgroundColor" name="black1"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="qYX-qD-P0A">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="328"/>
+                                        <subviews>
+                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xgb-Sc-awo">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="216"/>
+                                                <color key="backgroundColor" name="lightGray1"/>
+                                            </pickerView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t2a-oi-v5I">
+                                                <rect key="frame" x="24" y="216" width="366" height="56"/>
+                                                <color key="backgroundColor" name="black1"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="56" id="Q5d-Mt-doD"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <state key="normal" title="선택완료">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZAC-I2-7S3">
+                                                <rect key="frame" x="24" y="272" width="366" height="56"/>
+                                                <color key="backgroundColor" name="black1"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="56" id="UYt-0x-Vfm"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <state key="normal" title="입력 완료">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                        </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="56" id="UYt-0x-Vfm"/>
+                                            <constraint firstAttribute="trailing" secondItem="Xgb-Sc-awo" secondAttribute="trailing" id="NMA-kB-YzK"/>
+                                            <constraint firstItem="Xgb-Sc-awo" firstAttribute="leading" secondItem="qYX-qD-P0A" secondAttribute="leading" id="Rpb-5Z-maL"/>
+                                            <constraint firstAttribute="trailing" secondItem="t2a-oi-v5I" secondAttribute="trailing" constant="24" id="eg5-Iq-LBm"/>
+                                            <constraint firstItem="ZAC-I2-7S3" firstAttribute="leading" secondItem="qYX-qD-P0A" secondAttribute="leading" constant="24" id="rBn-Y1-ZzE"/>
+                                            <constraint firstItem="t2a-oi-v5I" firstAttribute="leading" secondItem="qYX-qD-P0A" secondAttribute="leading" constant="24" id="rkM-nM-eb0"/>
+                                            <constraint firstAttribute="trailing" secondItem="ZAC-I2-7S3" secondAttribute="trailing" constant="24" id="vWG-c8-esh"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <state key="normal" title="입력 완료">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="12"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </button>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="ZAC-I2-7S3" secondAttribute="bottom" id="2AF-tj-0Eo"/>
-                                    <constraint firstItem="ZAC-I2-7S3" firstAttribute="leading" secondItem="vPy-Ej-eRQ" secondAttribute="leading" constant="24" id="CAb-w1-sz3"/>
-                                    <constraint firstItem="ZAC-I2-7S3" firstAttribute="top" secondItem="vPy-Ej-eRQ" secondAttribute="top" id="kaw-cA-ZlF"/>
-                                    <constraint firstAttribute="trailing" secondItem="ZAC-I2-7S3" secondAttribute="trailing" constant="24" id="qF3-vp-h4J"/>
+                                    <constraint firstItem="qYX-qD-P0A" firstAttribute="leading" secondItem="vPy-Ej-eRQ" secondAttribute="leading" id="6g3-JI-jbi"/>
+                                    <constraint firstAttribute="bottom" secondItem="qYX-qD-P0A" secondAttribute="bottom" id="9y7-jZ-YPm"/>
+                                    <constraint firstItem="qYX-qD-P0A" firstAttribute="top" secondItem="vPy-Ej-eRQ" secondAttribute="top" id="YcR-Ve-vBj"/>
+                                    <constraint firstAttribute="bottom" secondItem="qYX-qD-P0A" secondAttribute="bottom" id="bxa-pN-Wey"/>
+                                    <constraint firstAttribute="trailing" secondItem="qYX-qD-P0A" secondAttribute="trailing" id="n15-ee-S92"/>
+                                    <constraint firstAttribute="trailing" secondItem="qYX-qD-P0A" secondAttribute="trailing" id="wug-Zs-Wg4"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1200,7 +1240,11 @@
                         <constraints>
                             <constraint firstItem="3pK-M4-D4c" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="33q-yC-WAb"/>
                             <constraint firstItem="KfK-Sr-fIy" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="6LW-6L-G6u"/>
+                            <constraint firstItem="vPy-Ej-eRQ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Gfn-No-7xX"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="KfK-Sr-fIy" secondAttribute="trailing" id="HEe-iq-1Ma"/>
+                            <constraint firstItem="vPy-Ej-eRQ" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="Kqf-vo-Spz"/>
+                            <constraint firstItem="vPy-Ej-eRQ" firstAttribute="top" secondItem="KfK-Sr-fIy" secondAttribute="bottom" id="PFA-IW-hvS"/>
+                            <constraint firstItem="vPy-Ej-eRQ" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="UkQ-xq-pHO"/>
                             <constraint firstItem="3pK-M4-D4c" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="cSA-hF-T5d"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="vPy-Ej-eRQ" secondAttribute="bottom" id="iGi-ZK-Qqw"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="vPy-Ej-eRQ" secondAttribute="trailing" id="jPg-aD-Uco"/>
@@ -1216,6 +1260,7 @@
                         <outlet property="aboutMeTextView" destination="O1J-7U-eGo" id="Nj6-hG-ew3"/>
                         <outlet property="backgroundSettingButton" destination="gvE-d8-0OO" id="fVw-aZ-6Od"/>
                         <outlet property="completeButton" destination="ZAC-I2-7S3" id="bH2-Yc-OkE"/>
+                        <outlet property="contactTypePickerView" destination="Xgb-Sc-awo" id="7GH-p1-4sk"/>
                         <outlet property="keyboardFrameViewHeightConstraint" destination="Y6u-uH-sP8" id="Jkf-wf-vAo"/>
                         <outlet property="mySkillSettingButton" destination="bIt-jS-wNf" id="4wO-E0-ntG"/>
                         <outlet property="myTMISettingButton" destination="cmX-IZ-yLn" id="QOD-tG-2mL"/>
@@ -1227,6 +1272,7 @@
                         <outlet property="profilePlaceholderView" destination="rRb-rH-btY" id="TbN-SL-hze"/>
                         <outlet property="roleField" destination="kjX-JT-Kgp" id="pMJ-oD-dcm"/>
                         <outlet property="scrollView" destination="3pK-M4-D4c" id="bhA-gl-3n4"/>
+                        <outlet property="selectContactTypeButton" destination="t2a-oi-v5I" id="lrz-Ji-k6I"/>
                         <outlet property="skillCompleteImageView" destination="vZ4-mW-JW4" id="tnU-iZ-GSI"/>
                         <outlet property="tmiCompleteImageView" destination="98q-a6-y10" id="4Qh-ea-0wU"/>
                         <outletCollection property="contactInputViews" destination="50C-wC-hun" collectionClass="NSMutableArray" id="tBA-SB-Ylh"/>
