@@ -25,10 +25,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print(" 🐳 \(String(describing: self)) view did load")
-        
-        #if DEBUG
-        setupFLEX()
-        #endif
     }
     
     deinit {

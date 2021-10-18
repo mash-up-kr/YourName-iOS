@@ -47,7 +47,7 @@ extension UIViewController {
             }
             
         case .show(let isDimmed):
-            guard let underlaiedViewController = UIViewController.visableViewController() else { return }
+            let underlaiedViewController = self
             let overlaiedViewController = viewController
             overlaiedViewController.modalPresentationStyle = .overFullScreen
             let completion: (() -> Void)?
@@ -67,22 +67,28 @@ extension UIViewController {
             } else {
                 completion = nil
             }
-            underlaiedViewController.present(overlaiedViewController, animated: true, completion: completion)
+            if let presentedViewController = self.presentedViewController {
+                presentedViewController.dismiss(animated: false, completion: { [weak underlaiedViewController] in
+                    underlaiedViewController?.present(overlaiedViewController, animated: true, completion: completion)
+                })
+            } else {
+                underlaiedViewController.present(overlaiedViewController, animated: true, completion: completion)
+            }
+            
         }
     }
     
-    private func underlayDimmedView(on underlaiedViewController: UIViewController, overlaiedViewController: UIViewController) {
-        let dimmedColor = Palette.black1.withAlphaComponent(0.6)
-        let dimmedView = UIView().then {
-            $0.layer.shouldRasterize = true
-            $0.backgroundColor = Palette.black1.withAlphaComponent(0.6)
-            $0.frame = underlaiedViewController.view.bounds
+    func closeOverlayViewControllers(completion: @escaping () -> Void = {}) {
+        let visableViewController = UIViewController.visableViewController()
+        guard visableViewController === self else { return completion() }
+        
+        if let naviController = visableViewController?.navigationController {
+            naviController.popViewController(animated: true)
+            self.closeOverlayViewControllers(completion: completion)
+        } else {
+            visableViewController?.dismiss(animated: false, completion: { [weak self] in
+                self?.closeOverlayViewControllers(completion: completion)
+            })
         }
-        overlaiedViewController.view.backgroundColor = .clear
-        underlaiedViewController.view.addSubview(dimmedView)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: { [weak dimmedView] in
-            dimmedView?.removeFromSuperview()
-            underlaiedViewController.view.backgroundColor = dimmedColor
-        })
     }
 }

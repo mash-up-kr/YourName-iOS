@@ -33,13 +33,13 @@
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstItem="Tzy-bj-Xqb" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="60a-iN-lPL"/>
-                <constraint firstItem="Tzy-bj-Xqb" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="wEg-Nl-qch"/>
+                <constraint firstItem="Tzy-bj-Xqb" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="P3E-VG-LVC"/>
+                <constraint firstItem="Tzy-bj-Xqb" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="aJf-tE-0bU"/>
             </constraints>
             <size key="customSize" width="90" height="80"/>
             <userDefinedRuntimeAttributes>
                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                    <real key="value" value="3"/>
+                    <real key="value" value="10"/>
                 </userDefinedRuntimeAttribute>
                 <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                     <color key="value" name="black1"/>

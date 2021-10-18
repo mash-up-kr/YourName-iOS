@@ -14,9 +14,10 @@ import UIKit
 extension UIImageView {
     func setImageSource(_ imageSource: ImageSource?) {
         switch imageSource {
-        case .image(let image): self.image = image
-        case .url(let url): self.kf.setImage(with: url)
-        case .none: self.image = nil
+        case .image(let image):     self.image = image
+        case .url(let url):         self.kf.setImage(with: url)
+        case .data(let data):       self.image = UIImage(data: data)
+        case .none:                 self.image = nil
         }
     }
 }
@@ -25,9 +26,10 @@ extension Reactive where Base: UIImageView {
     var imageSource: Binder<ImageSource?> {
         return Binder(self.base) { view, imageSource in
             switch imageSource {
-            case .image(let image): view.image = image
-            case .url(let url): view.kf.setImage(with: url)
-            case .none: view.image = nil
+            case .image(let image):     view.image = image
+            case .url(let url):         view.kf.setImage(with: url)
+            case .data(let data):       view.image = UIImage(data: data)
+            case .none:                 view.image = nil
             }
         }
     }

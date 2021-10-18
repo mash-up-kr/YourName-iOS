@@ -18,32 +18,41 @@ enum CardCreationDestination: Equatable {
 
 typealias CardCreationNavigation = Navigation<CardCreationDestination>
 
-enum ImageSource: Equatable {
-    case image(UIImage)
-    case url(URL)
-}
-
-enum ColorSource: Equatable {
-    case monotone(UIColor)
-    case gradient([UIColor])
-}
-
 final class CardCreationViewModel {
     
     // State
     let shouldHideClear = BehaviorRelay<Bool>(value: true)
     let shouldHideProfilePlaceholder = BehaviorRelay<Bool>(value: false)
+    let hasCompletedSkillInput = BehaviorRelay<Bool>(value: false)
+    let hasCompletedTMIInput = BehaviorRelay<Bool>(value: false)
+    let canComplete = BehaviorRelay<Bool>(value: false)
+    let shouldDismiss = PublishRelay<Void>()
+    let shouldDismissOverlays = PublishRelay<Void>()
+    let indexOfContactTypeBeingSelected = BehaviorRelay<Int?>(value: nil)
     let profileImageSource = BehaviorRelay<ImageSource?>(value: nil)
     let profileBackgroundColor = BehaviorRelay<ColorSource>(value: .monotone(Palette.black1))
+    let skills = BehaviorRelay<[Skill]>(value: [])
     let name = BehaviorRelay<String>(value: .empty)
     let role = BehaviorRelay<String>(value: .empty)
+    let contactInfos = BehaviorRelay<[ContactInfo]>(value: [])
     let personalityTitle = BehaviorRelay<String>(value: .empty)
     let personalityKeyword = BehaviorRelay<String>(value: .empty)
+    let interestes = BehaviorRelay<[Interest]>(value: [])
+    let strongPoints = BehaviorRelay<[StrongPoint]>(value: [])
     let aboutMe = BehaviorRelay<String>(value: .empty)
     
     let navigation = PublishRelay<CardCreationNavigation>()
     
     // Event
+    func didLoad() {
+        let defaultContactInfos = [ContactInfo(type: .phone, value: .empty),
+                                   ContactInfo(type: .email, value: .empty),
+                                   ContactInfo(type: .sns, value: .empty),
+                                   ContactInfo(type: .sns, value: .empty),
+                                   ContactInfo(type: .sns, value: .empty)]
+        contactInfos.accept(defaultContactInfos)
+    }
+    
     func tapProfileClear() {
         profileImageSource.accept(nil)
         shouldHideProfilePlaceholder.accept(false)
@@ -58,10 +67,6 @@ final class CardCreationViewModel {
         navigation.accept(.show(.palette))
     }
     
-    func tapCreatCharacter() {
-        navigation.accept(.show(.createCharacter))
-    }
-    
     func typeName(_ text: String) {
         name.accept(text)
     }
@@ -74,12 +79,27 @@ final class CardCreationViewModel {
         navigation.accept(.show(.settingSkill))
     }
     
+    func tapContactType(at index: Int) {
+        indexOfContactTypeBeingSelected.accept(index)
+    }
+    
     func selectContactType(_ type: ContactType, index: Int) {
+        var updatedContactInfos = contactInfos.value
+        guard var updatedContactInfo = updatedContactInfos[safe: index] else { return }
         
+        updatedContactInfo.type = type
+        updatedContactInfos[index] = updatedContactInfo
+        contactInfos.accept(updatedContactInfos)
+        indexOfContactTypeBeingSelected.accept(nil)
     }
     
     func typeContactValue(_ value: String, index: Int) {
+        var updatedContactInfos = contactInfos.value
+        guard var updatedContactInfo = updatedContactInfos[safe: index] else { return }
         
+        updatedContactInfo.value = value
+        updatedContactInfos[index] = updatedContactInfo
+        contactInfos.accept(updatedContactInfos)
     }
     
     func typePersonalityTitle(_ text: String) {
@@ -99,7 +119,60 @@ final class CardCreationViewModel {
     }
     
     func tapCompletion() {
+        shouldDismiss.accept(Void())
+    }
+    
+}
+
+extension CardCreationViewModel: ImageSourcePickerResponder {
+    
+    func selectPhoto() {
         
+    }
+    
+    func selectCharacter() {
+        navigation.accept(.show(.createCharacter))
+    }
+    
+}
+
+extension CardCreationViewModel: CharacterSettingResponder {
+    
+    func characterSettingDidComplete(characterMeta: CharacterMeta, characterData: Data) {
+        shouldHideClear.accept(false)
+        shouldHideProfilePlaceholder.accept(true)
+        profileImageSource.accept(.data(characterData))
+    }
+    
+}
+
+extension CardCreationViewModel: SkillSettingResponder {
+    
+    func skillSettingDidComplete(skills: [Skill]) {
+        hasCompletedSkillInput.accept(skills.isNotEmpty)
+        self.skills.accept(skills)
+        shouldDismissOverlays.accept(Void())
+    }
+    
+}
+
+extension CardCreationViewModel: TMISettingResponder {
+    
+    func tmiSettingDidComplete(interests: [Interest], strongPoints: [StrongPoint]) {
+        let updatedInterests = interests
+        let updatedStrongPoints = strongPoints
+        self.interestes.accept(updatedInterests)
+        self.strongPoints.accept(updatedStrongPoints)
+        hasCompletedTMIInput.accept(updatedInterests.isNotEmpty || updatedStrongPoints.isNotEmpty)
+        shouldDismissOverlays.accept(Void())
+    }
+    
+}
+extension CardCreationViewModel: PaletteResponder {
+    
+    func profileColorSettingDidComplete(selectedColor: ProfileColor) {
+        profileBackgroundColor.accept(selectedColor.colorSource)
+        shouldDismissOverlays.accept(Void())
     }
     
 }

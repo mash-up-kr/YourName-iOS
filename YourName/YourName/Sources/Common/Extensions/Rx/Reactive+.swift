@@ -2,11 +2,19 @@
 //  Reactive+.swift
 //  YourName
 //
-//  Created by seori on 2021/10/04.
+//  Created by 송서영 on 2021/10/09.
 //
 
-import RxCocoa
+import UIKit
 import RxSwift
+import RxCocoa
+import RxGesture
+
+extension Reactive where Base: View {
+    func tapWhenRecognized() -> Observable<Void> {
+        return tapGesture().when(.recognized).map { _ in return }
+    }
+}
 
 extension Reactive where Base: UIButton {
     var throttleTap: ControlEvent<Void> {

@@ -10,7 +10,7 @@ import RxSwift
 
 final class FakeCharacterItemRepository: CharacterItemRepository {
     
-    func fetchItems(type: CharacterItemType) -> Observable<[CharacterItem]> {
+    func fetchItems(type: ItemCategory) -> Observable<[CharacterItem]> {
         return .just([])
     }
     

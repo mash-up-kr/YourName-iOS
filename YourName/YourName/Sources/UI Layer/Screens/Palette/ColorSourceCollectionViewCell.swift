@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum ColorSourceStatus {
+enum ColorSourceStatus: Equatable {
     case normal
     case selected
     case locked
@@ -18,44 +18,50 @@ final class ColorSourceCollectionViewCell: UICollectionViewCell {
     private var colorSource: ColorSource = .monotone(Palette.lightGray1)
     private var status: ColorSourceStatus = .normal
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        self.contentView.clipsToBounds = true
+        self.contentView.cornerRadius = 10
+        self.colorLayer.frame = self.contentView.bounds
+        self.colorLayer.startPoint = .zero
+        self.colorLayer.endPoint = CGPoint(x: 1, y: 1)
+        self.contentView.layer.insertSublayer(colorLayer, at: 0)
     }
     
     func configure(profileColor: ProfileColor) {
         self.colorSource = profileColor.colorSource
         self.status = profileColor.status
-        
-        updateUI(with: colorSource)
-        updateUI(with: status)
+
+        self.configure(with: colorSource)
+        self.configure(with: status)
     }
     
-    private func updateUI(with color: ColorSource) {
+    private func configure(with color: ColorSource) {
         let isLockedColor = status == .locked
         
         switch colorSource {
         case .monotone(let color):
-            backgroundColor = color.withAlphaComponent(isLockedColor ? 0.6 : 1)
+            self.contentView.backgroundColor = color.withAlphaComponent(isLockedColor ? 0.6 : 1)
             colorLayer.colors = nil
         case .gradient(let colors):
-            backgroundColor = nil
-            colorLayer.colors = colors.compactMap{ $0.cgColor.copy(alpha: isLockedColor ? 0.6 : 1) }
+            self.contentView.backgroundColor = nil
+            colorLayer.colors = colors.compactMap { $0.cgColor.copy(alpha: isLockedColor ? 0.6 : 1) }
         }
     }
     
-    private func updateUI(with status: ColorSourceStatus) {
+    private func configure(with status: ColorSourceStatus) {
         switch status {
         case .normal:
-            borderWidth = 0
+            self.contentView.borderWidth = 0
             iconImageView?.image = nil
             
         case .selected:
-            borderWidth = 3
+            self.contentView.borderWidth = 3
             iconImageView?.image = UIImage(named: "icon_check")
             
         case .locked:
-            borderWidth = 0
+            self.contentView.borderWidth = 0
             iconImageView?.image = UIImage(named: "icon_lock")
         }
     }

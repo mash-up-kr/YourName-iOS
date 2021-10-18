@@ -9,8 +9,10 @@ import Foundation
 
 final class ImageSourceTypePickerDependencyContainer {
     
+    let imageSourceResponder: ImageSourcePickerResponder
+    
     init(cardCreationDependencyContainer: CardCreationDependencyContainer) {
-        
+        self.imageSourceResponder = cardCreationDependencyContainer.viewModel
     }
     
     func createImageSourcePickerViewController() -> ImageSourceTypePickerViewController {
@@ -25,7 +27,7 @@ final class ImageSourceTypePickerDependencyContainer {
     }
     
     private func createImageSourcePickerViewModel() -> ImageSourceTypePickerViewModel {
-        return ImageSourceTypePickerViewModel()
+        return ImageSourceTypePickerViewModel(imageSourceResponder: imageSourceResponder)
     }
     
 }

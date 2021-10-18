@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CEB6582726EB15A600C11F33"
-               BuildableName = "YourName.app"
-               BlueprintName = "YourName"
+               BuildableName = "MEETU.app"
+               BlueprintName = "MEETU"
                ReferencedContainer = "container:YourName.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -55,8 +55,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CEB6582726EB15A600C11F33"
-            BuildableName = "YourName.app"
-            BlueprintName = "YourName"
+            BuildableName = "MEETU.app"
+            BlueprintName = "MEETU"
             ReferencedContainer = "container:YourName.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -72,8 +72,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CEB6582726EB15A600C11F33"
-            BuildableName = "YourName.app"
-            BlueprintName = "YourName"
+            BuildableName = "MEETU.app"
+            BlueprintName = "MEETU"
             ReferencedContainer = "container:YourName.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
