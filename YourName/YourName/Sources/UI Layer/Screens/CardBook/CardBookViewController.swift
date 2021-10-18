@@ -72,12 +72,12 @@ extension CardBookViewController {
 // TODO: rx datasource로 추후 교체예정
 extension CardBookViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        dummyDataNumber
+        1
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(CardBookCollectionViewCell.self, for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(CardBookEmptyCollectionViewCell.self, for: indexPath)
         else { return .init() }
         
         return cell
