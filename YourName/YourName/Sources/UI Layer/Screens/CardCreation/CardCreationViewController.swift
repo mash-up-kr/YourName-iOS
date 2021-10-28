@@ -15,7 +15,7 @@ final class CardCreationViewController: ViewController, Storyboarded {
     
     var viewModel: CardCreationViewModel!
     var imageSourceTypePickerViewControllerFactory: (() -> ImageSourceTypePickerViewController)?
-    var characterCreationViewControllerFactory: (() -> CharacterCreationViewController)?
+    var characterSettingViewControllerFactory: (() -> CharacterSettingViewController)?
     var paletteViewControllerFactory: (() -> PaletteViewController)?
     var tmiSettingViewControllerFactory: (() -> TMISettingViewController)?
     var skillSettingViewControllerFactory: (() -> SkillSettingViewController)?
@@ -24,10 +24,11 @@ final class CardCreationViewController: ViewController, Storyboarded {
         super.viewDidLoad()
         
         bind()
+        setupUI()
     }
     
     override func viewDidLayoutSubviews() {
-        super.viewWillLayoutSubviews()
+        super.viewDidLayoutSubviews()
         backgroundSettingButton?.clipsToBounds = true
         profileBackgroundColorButtonLayer.frame = backgroundSettingButton?.bounds ?? .zero
         backgroundSettingButton?.layer.insertSublayer(profileBackgroundColorButtonLayer, at: 0)
@@ -40,8 +41,13 @@ final class CardCreationViewController: ViewController, Storyboarded {
         render(viewModel)
     }
     
+    private func setupUI() {
+        contactTypePickerView?.dataSource = self
+        contactTypePickerView?.delegate = self
+    }
     
     private func dispatch(to viewModel: CardCreationViewModel) {
+        viewModel.didLoad()
         
         profileClearButton?.rx.tap
             .subscribe(onNext: { [weak self] in self?.viewModel.tapProfileClear() })
@@ -73,12 +79,19 @@ final class CardCreationViewController: ViewController, Storyboarded {
             .disposed(by: disposeBag)
         
         contactInputViews?.enumerated().forEach { index, contactInputView in
-            contactInputView.rx.contactType.distinctUntilChanged()
-                .subscribe(onNext: { [weak self] in self?.viewModel.selectContactType($0, index: index) })
+            
+            contactInputView.rx.tapContactType
+                .map { _ in index }
+                .subscribe(onNext: { [weak self] index in
+                    self?.viewModel.tapContactType(at: index)
+                })
                 .disposed(by: disposeBag)
             
-            contactInputView.rx.contactValue.distinctUntilChanged()
-                .subscribe(onNext: { [weak self] in self?.viewModel.typeContactValue($0, index: index) })
+            contactInputView.rx.contactValue
+                .distinctUntilChanged()
+                .subscribe(onNext: { [weak self] in
+                    self?.viewModel.typeContactValue($0, index: index)
+                })
                 .disposed(by: disposeBag)
         }
         
@@ -104,6 +117,16 @@ final class CardCreationViewController: ViewController, Storyboarded {
             .subscribe(onNext: { [weak self] in self?.viewModel.typeAboutMe($0) })
             .disposed(by: disposeBag)
         
+        selectContactTypeButton?.rx.tap
+            .subscribe(onNext: { [weak self] in
+                guard let indexOfContactTypeBeingSelected = self?.indexOfContactTypeBeingSelected   else { return }
+                guard let selectedIndex = self?.contactTypePickerView?.selectedRow(inComponent: 0)  else { return }
+                guard let contactType = ContactType(rawValue: selectedIndex)                        else { return }
+                
+                self?.viewModel.selectContactType(contactType, index: indexOfContactTypeBeingSelected)
+            })
+            .disposed(by: disposeBag)
+        
         completeButton?.rx.tap
             .subscribe(onNext: { [weak self] in self?.viewModel.tapCompletion()
                 self?.dismiss(animated: true, completion: nil)
@@ -112,25 +135,30 @@ final class CardCreationViewController: ViewController, Storyboarded {
         
         self.view.rx.tapGesture()
             .when(.recognized)
-            .subscribe(onNext: { _ in self.view.endEditing(true) })
+            .subscribe(onNext: { [weak self] _ in
+                self?.view.endEditing(true)
+            })
             .disposed(by: disposeBag)
     }
     
     private func render(_ viewModel: CardCreationViewModel) {
         
         if let profilePlaceholderView = self.profilePlaceholderView {
-            viewModel.shouldHideProfilePlaceholder.distinctUntilChanged()
+            viewModel.shouldHideProfilePlaceholder
+                .distinctUntilChanged()
                 .bind(to: profilePlaceholderView.rx.isHidden)
                 .disposed(by: disposeBag)
         }
         
         if let profileImageView = self.profileImageView {
-        viewModel.profileImageSource.distinctUntilChanged()
-            .bind(to: profileImageView.rx.imageSource)
-            .disposed(by: disposeBag)
+            viewModel.profileImageSource
+                .distinctUntilChanged()
+                .bind(to: profileImageView.rx.imageSource)
+                .disposed(by: disposeBag)
         }
         
-        viewModel.profileBackgroundColor.distinctUntilChanged()
+        viewModel.profileBackgroundColor
+            .distinctUntilChanged()
             .subscribe(onNext: { [weak self] backgroundColor in
                 switch backgroundColor {
                 case .monotone(let color):
@@ -150,46 +178,114 @@ final class CardCreationViewController: ViewController, Storyboarded {
         }
         
         if let roleField = self.roleField {
-            viewModel.role.distinctUntilChanged()
+            viewModel.role
+                .distinctUntilChanged()
                 .bind(to: roleField.rx.text)
                 .disposed(by: disposeBag)
         }
         
         if let personalityTitleField = self.personalityTitleField {
-            viewModel.personalityTitle.distinctUntilChanged()
+            viewModel.personalityTitle
+                .distinctUntilChanged()
                 .bind(to: personalityTitleField.rx.text)
                 .disposed(by: disposeBag)
         }
         
         if let personalityKeywordField = self.personalityKeywordField {
-            viewModel.personalityKeyword.distinctUntilChanged()
+            viewModel.personalityKeyword
+                .distinctUntilChanged()
                 .bind(to: personalityKeywordField.rx.text)
                 .disposed(by: disposeBag)
         }
         
         if let aboutMeTextView = self.aboutMeTextView {
-            viewModel.aboutMe.distinctUntilChanged()
+            viewModel.aboutMe
+                .distinctUntilChanged()
                 .bind(to: aboutMeTextView.rx.text)
                 .disposed(by: disposeBag)
         }
         
+        viewModel.hasCompletedSkillInput
+            .distinctUntilChanged()
+            .subscribe(onNext: { [weak self] hasCompleted in
+                if hasCompleted {
+                    self?.skillCompleteImageView?.image = UIImage(named: "icon_complete")
+                    self?.mySkillSettingButton?.backgroundColor = Palette.lightGreen
+                } else {
+                    self?.skillCompleteImageView?.image = UIImage(named: "icon_incomplete")
+                    self?.mySkillSettingButton?.backgroundColor = .white
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.hasCompletedTMIInput
+            .distinctUntilChanged()
+            .subscribe(onNext: { [weak self] hasCompleted in
+                if hasCompleted {
+                    self?.tmiCompleteImageView?.image = UIImage(named: "icon_complete")
+                    self?.myTMISettingButton?.backgroundColor = Palette.lightGreen
+                } else {
+                    self?.tmiCompleteImageView?.image = UIImage(named: "icon_incomplete")
+                    self?.myTMISettingButton?.backgroundColor = .white
+                }
+            })
+            .disposed(by: disposeBag)
+        
         if let profileClearButton = self.profileClearButton {
-            viewModel.shouldHideClear.distinctUntilChanged()
+            viewModel.shouldHideClear
+                .distinctUntilChanged()
                 .bind(to: profileClearButton.rx.isHidden)
                 .disposed(by: disposeBag)
         }
         
         if let aboutMePlaceholderLabel = self.aboutMePlaceholderLabel {
-            viewModel.aboutMe.map { $0.isEmpty == false }
+            viewModel.aboutMe
+                .map { $0.isEmpty == false }
                 .distinctUntilChanged()
                 .bind(to: aboutMePlaceholderLabel.rx.isHidden)
                 .disposed(by: disposeBag)
         }
         
+        viewModel.contactInfos
+            .subscribe(onNext: { [weak self] contactInfos in
+                contactInfos.enumerated().forEach { index, contactInfo in
+                    guard let contactInputView = self?.contactInputViews?[safe: index] else { return }
+                    contactInputView.configure(with: contactInfo)
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.indexOfContactTypeBeingSelected
+            .distinctUntilChanged()
+            .subscribe(onNext: { [weak self] index in
+                if let index = index,
+                   let selected = self?.viewModel.contactInfos.value[safe: index],
+                   let contactIndex = ContactType.allCases.firstIndex(of: selected.type) {
+                    self?.contactTypePickerView?.selectRow(contactIndex, inComponent: 0, animated: false)
+                }
+                index == nil ? self?.hidePickerView() : self?.presentPickerView()
+                self?.completeButton?.isHidden = index != nil
+                self?.contactTypePickerView?.reloadComponent(0)
+                self?.indexOfContactTypeBeingSelected = index
+            }).disposed(by: disposeBag)
+        
         viewModel.navigation
+            .distinctUntilChanged()
             .subscribe(onNext: { [weak self] navigation in
                 guard let viewController = self?.createViewController(of: navigation.destination) else { return }
                 self?.navigate(viewController, action: navigation.action)
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.shouldDismiss
+            .subscribe(onNext: { [weak self] in
+                self?.dismiss(animated: true, completion: nil)
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.shouldDismissOverlays
+            .subscribe(onNext: { [weak self] in
+                self?.presentedViewController?.dismiss(animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
     }
@@ -198,15 +294,39 @@ final class CardCreationViewController: ViewController, Storyboarded {
         switch destination {
         case .imageSourceTypePicker: return imageSourceTypePickerViewControllerFactory?()
         case .palette: return paletteViewControllerFactory?()
-        case .createCharacter: return characterCreationViewControllerFactory?()
+        case .createCharacter: return characterSettingViewControllerFactory?()
         case .settingSkill: return skillSettingViewControllerFactory?()
         case .settingTMI: return tmiSettingViewControllerFactory?()
         }
     }
     
+    private func presentPickerView() {
+        contactTypePickerView?.alpha = 0
+        selectContactTypeButton?.alpha = 0
+        contactTypePickerView?.isHidden = false
+        selectContactTypeButton?.isHidden = false
+        UIView.animate(withDuration: 0.3, animations: {
+            self.contactTypePickerView?.alpha = 1
+            self.selectContactTypeButton?.alpha = 1
+        })
+    }
+    
+    private func hidePickerView() {
+        contactTypePickerView?.alpha = 1
+        selectContactTypeButton?.alpha = 1
+        UIView.animate(withDuration: 0.3, animations: {
+            self.contactTypePickerView?.alpha = 0
+            self.selectContactTypeButton?.alpha = 0
+        }, completion: { _ in
+            self.contactTypePickerView?.isHidden = true
+            self.selectContactTypeButton?.isHidden = true
+        })
+    }
+    
     private let disposeBag = DisposeBag()
     private let keyboard: Keyboard = KeyboardImpl.shared
     private let profileBackgroundColorButtonLayer = CAGradientLayer()
+    private var indexOfContactTypeBeingSelected: Int? = nil
     
     @IBOutlet private weak var scrollView: UIScrollView?
     @IBOutlet private weak var profileClearButton: UIButton?
@@ -215,13 +335,37 @@ final class CardCreationViewController: ViewController, Storyboarded {
     @IBOutlet private weak var backgroundSettingButton: UIButton?
     @IBOutlet private weak var nameField: UITextField?
     @IBOutlet private weak var roleField: UITextField?
+    
+    @IBOutlet private weak var skillCompleteImageView: UIImageView?
     @IBOutlet private weak var mySkillSettingButton: UIButton?
     @IBOutlet private var contactInputViews: [ContactInputView]?
     @IBOutlet private weak var personalityTitleField: UITextField?
     @IBOutlet private weak var personalityKeywordField: UITextField?
+    
+    @IBOutlet private weak var tmiCompleteImageView: UIImageView?
     @IBOutlet private weak var myTMISettingButton: UIButton?
     @IBOutlet private weak var aboutMeTextView: UITextView?
     @IBOutlet private weak var aboutMePlaceholderLabel: UILabel?
     @IBOutlet private weak var keyboardFrameViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var contactTypePickerView: UIPickerView?
+    @IBOutlet private weak var selectContactTypeButton: UIButton?
     @IBOutlet private weak var completeButton: UIButton?
+}
+extension CardCreationViewController: UIPickerViewDataSource {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return ContactType.allCases.count
+    }
+    
+}
+extension CardCreationViewController: UIPickerViewDelegate {
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return ContactType.allCases[safe: row]?.description
+    }
+    
 }

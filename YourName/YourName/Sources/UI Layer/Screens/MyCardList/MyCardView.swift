@@ -9,10 +9,10 @@ import UIKit
 
 final class MyCardView: UIView, NibLoadable {
     
-    @IBOutlet weak var userProfileImage: UIImageView!
-    @IBOutlet weak var userNameLabel: UILabel!
-    @IBOutlet weak var userRoleLabel: UILabel!
-    @IBOutlet weak var skillStackView: UIStackView!
+    @IBOutlet private weak var userProfileImage: UIImageView!
+    @IBOutlet private weak var userNameLabel: UILabel!
+    @IBOutlet private weak var userRoleLabel: UILabel!
+    @IBOutlet private weak var skillStackView: UIStackView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

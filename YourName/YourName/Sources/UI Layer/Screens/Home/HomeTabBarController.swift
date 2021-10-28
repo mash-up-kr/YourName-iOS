@@ -33,7 +33,9 @@ final class HomeTabBarController: UITabBarController {
     }
     
     private func setupAttributes() {
-        self.tabBar.tintColor = .black
+        tabBar.tintColor = .black
+        tabBar.backgroundColor = .white
+        tabBar.layer.applyShadow()
     }
     
     private func bind() {

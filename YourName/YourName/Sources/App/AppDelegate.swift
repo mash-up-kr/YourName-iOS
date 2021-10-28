@@ -8,6 +8,7 @@
 import UIKit
 import KakaoSDKCommon
 import KakaoSDKAuth
+import Firebase
 
 final class AppDelegate: UIResponder, UIApplicationDelegate {
     
@@ -22,6 +23,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = window
         
         kakaoSDKInit()
+        FirebaseApp.configure()
         
         return true
     }

@@ -9,21 +9,26 @@ import Foundation
 
 final class CardCreationDependencyContainer {
     
+    let viewModel: CardCreationViewModel
+    
     init(myCardListDependencyContainer: MyCardListDependencyContainer) {
+        func createCardCreationViewModel() -> CardCreationViewModel {
+            return CardCreationViewModel()
+        }
         
+        self.viewModel = createCardCreationViewModel()
     }
     
     func createCardCreationViewController() -> CardCreationViewController {
-        let viewModel = CardCreationViewModel()
         let viewContorller = CardCreationViewController.instantiate()
         viewContorller.viewModel = viewModel
         viewContorller.imageSourceTypePickerViewControllerFactory = {
             let dependencyContainer = self.createImageSourceDependencyContainer()
             return dependencyContainer.createImageSourcePickerViewController()
         }
-        viewContorller.characterCreationViewControllerFactory = {
+        viewContorller.characterSettingViewControllerFactory = {
             let dependencyContainer = self.createCharacterCreationDependencyContainer()
-            return dependencyContainer.createCharacterCreationViewController()
+            return dependencyContainer.createCharacterSettingViewController()
         }
         viewContorller.paletteViewControllerFactory = {
             let dependencyContainer = self.createPaletteDependencyContainer()

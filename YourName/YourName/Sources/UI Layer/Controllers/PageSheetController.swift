@@ -13,6 +13,10 @@ import FLEX
 protocol PageSheetContentView: UIView {
     var title: String { get }
     var isModal: Bool { get }
+    var onComplete: (() -> Void)? { get }
+}
+extension PageSheetContentView {
+    var onComplete: (() -> Void)? { nil }
 }
 
 final class PageSheetController<ContentView: PageSheetContentView>: ViewController {
@@ -31,7 +35,6 @@ final class PageSheetController<ContentView: PageSheetContentView>: ViewControll
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configureUI()
         setupContentView(contentView: contentView)
         bind()
@@ -50,77 +53,103 @@ final class PageSheetController<ContentView: PageSheetContentView>: ViewControll
     }
     
     func close() {
-        self.dismiss(animated: false, completion: {
-            self.onDismiss?(self.contentView)
-        })
+        let dimmedColor = Palette.black1.withAlphaComponent(0.6)
+        if let underlaiedViewController = self.presentingViewController {
+            let overlaiedViewController = self
+            let dimmedView = UIView().then {
+                $0.layer.shouldRasterize = true
+                $0.backgroundColor = Palette.black1.withAlphaComponent(0.6)
+                $0.frame = underlaiedViewController.view.bounds
+            }
+            overlaiedViewController.view.backgroundColor = .clear
+            underlaiedViewController.view.addSubview(dimmedView)
+            self.dismiss(animated: true, completion: { [weak dimmedView, weak overlaiedViewController] in
+                dimmedView?.removeFromSuperview()
+                overlaiedViewController?.view.backgroundColor = dimmedColor
+                self.onDismiss?(self.contentView)
+            })
+        } else {
+            self.dismiss(animated: true, completion: {
+                self.onDismiss?(self.contentView)
+            })
+        }
     }
     
     private func configureUI() {
+        
+        backgroundView.backgroundColor = .clear
+        self.view.addSubviews(backgroundView, stackView)
+        backgroundView.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(stackView.snp.top)
+        }
+        
         self.view.backgroundColor = Palette.black1.withAlphaComponent(0.6)
         self.view.addSubview(stackView)
-        stackView.snp.makeConstraints {
-            $0.leading.trailing.bottom.equalToSuperview()
-        }
+        stackView.snp.makeConstraints { $0.leading.trailing.bottom.equalToSuperview() }
         stackView.addArrangedSubviews(topBarView)
-        topBarView.snp.makeConstraints {
-            $0.height.equalTo(64)
-        }
+        
+        topBarView.snp.makeConstraints { $0.height.equalTo(64) }
         topBarView.backgroundColor = .white
         topBarView.clipsToBounds = true
-        topBarView.addSubviews(closeButton, titleLabel)
+        topBarView.addSubviews(closeButton, titleLabel, completeButton)
         topBarView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         topBarView.layer.cornerRadius = 20
+        
         titleLabel.font = UIFont.boldSystemFont(ofSize: 18)
+        titleLabel.snp.makeConstraints {
+            $0.center.equalToSuperview()
+        }
+        
         closeButton.setImage(UIImage(named: "btn_close")!, for: .normal)
         closeButton.snp.makeConstraints {
             $0.width.height.equalTo(30)
             $0.leading.equalToSuperview().offset(18)
             $0.centerY.equalToSuperview()
         }
-        titleLabel.snp.makeConstraints {
-            $0.center.equalToSuperview()
+        completeButton.setTitle("완료", for: .normal)
+        completeButton.setTitleColor(Palette.black1, for: .normal)
+        completeButton.snp.makeConstraints {
+            $0.trailing.equalToSuperview().inset(24)
+            $0.centerY.equalToSuperview()
         }
+        completeButton.isHidden = contentView.onComplete == nil
     }
     
     private func bind() {
-        self.view.rx.tapGesture()
-            .when(.recognized)
-            .filter { [weak self] _ in (self?.contentView.isModal).isFalseOrNil }
-            .subscribe(onNext: { [weak self] _ in
-                guard let self = self else { return }
-                self.close()
-            })
+        if contentView.isModal == false {
+            self.backgroundView.rx.tapGesture()
+                .when(.recognized)
+                .subscribe(onNext: { [weak self] _ in self?.close() })
+                .disposed(by: disposeBag)
+        }
+        
+        self.closeButton.rx.tap
+            .subscribe(onNext: { [weak self] in self?.close() })
             .disposed(by: disposeBag)
         
-        self.closeButton.rx.tap.subscribe(onNext: { [weak self] in
-            guard let self = self else { return }
-            self.close()
-        })
-        .disposed(by: disposeBag)
-        
-        #if DEBUG
-        self.contentView.rx.tapGesture()
-            .when(.recognized)
-            .filter { $0.numberOfTapsRequired > 2 }
-            .subscribe(onNext: { _ in
-                FLEXManager.shared.showExplorer()
+        self.completeButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.contentView.onComplete?()
+                self?.close()
             })
             .disposed(by: disposeBag)
-        #endif
     }
     
     private func setupContentView(contentView: ContentView) {
         stackView.addArrangedSubview(contentView)
     }
-
+    
     private func removeContentView(contentView: ContentView) {
         stackView.removeArrangedSubview(contentView)
         contentView.removeFromSuperview()
     }
     
+    private let backgroundView = UIView()
     private let stackView = UIStackView().then { $0.axis = .vertical }
     private let topBarView = UIView()
     private let titleLabel = UILabel()
     private let closeButton = UIButton()
+    private let completeButton = UIButton()
     private let disposeBag = DisposeBag()
 }

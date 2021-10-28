@@ -1,17 +1,8 @@
 {
   "images" : [
     {
-      "filename" : "코_3.pdf",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "idiom" : "universal",
-      "scale" : "2x"
-    },
-    {
-      "idiom" : "universal",
-      "scale" : "3x"
+      "filename" : "nose_3.pdf",
+      "idiom" : "universal"
     }
   ],
   "info" : {

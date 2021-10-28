@@ -7,28 +7,14 @@
 
 import Foundation
 
-enum CharacterItemType: Int, CaseIterable, Equatable {
-    case body
-    case eye
-    case nose
-    case mouth
-    case hairAccessory
-    case accessory
-}
-extension CharacterItemType: CustomStringConvertible {
-    var description: String {
-        switch self {
-        case .body: return "몸"
-        case .eye: return "눈"
-        case .nose: return "코"
-        case .mouth: return "입"
-        case .hairAccessory: return "장식1"
-        case .accessory: return "장식2"
-        }
-    }
-}
-
 struct CharacterItem {
-    let type: CharacterItemType
+    let type: ItemCategory
     let itemID: String
+    let displayItemID: String
+}
+extension CharacterItem {
+    static func empty(typeOf type: ItemCategory) -> CharacterItem? {
+        guard type.isOption else { return nil }
+        return CharacterItem(type: type, itemID: .empty, displayItemID: "no_item_for_display")
+    }
 }

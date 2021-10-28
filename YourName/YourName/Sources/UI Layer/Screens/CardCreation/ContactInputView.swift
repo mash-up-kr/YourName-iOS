@@ -25,18 +25,23 @@ extension ContactType: CustomStringConvertible {
 }
 
 struct ContactInfo {
-    let type: ContactType
-    let value: String
+    var type: ContactType
+    var value: String
 }
 
 final class ContactInputView: UIView {
     @IBOutlet fileprivate weak var contactTypeView: UIView?
+    @IBOutlet fileprivate weak var contactTypeLabel: UILabel?
     @IBOutlet fileprivate weak var contactValueField: UITextField?
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
     
+    func configure(with model: ContactInfo) {
+        contactTypeLabel?.text = model.type.description
+        contactValueField?.text = model.value
+    }
 }
 
 extension Reactive where Base: ContactInputView {

@@ -10,7 +10,7 @@ import Foundation
 extension Array {
     subscript(safe index: Int) -> Element? {
         get {
-            guard index < self.count else { return nil }
+            guard indices ~= index else { return nil }
             return self[index]
         }
     }

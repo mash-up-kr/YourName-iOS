@@ -1,17 +1,8 @@
 {
   "images" : [
     {
-      "filename" : "입_6.pdf",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "idiom" : "universal",
-      "scale" : "2x"
-    },
-    {
-      "idiom" : "universal",
-      "scale" : "3x"
+      "filename" : "mouth_6.pdf",
+      "idiom" : "universal"
     }
   ],
   "info" : {
