@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class AddCardViewModel {
+final class AddFriendCardViewModel {
     
     
 }

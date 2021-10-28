@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CardBookCollectionViewCell: UICollectionViewCell {
+final class FriendCardCollectionViewCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
