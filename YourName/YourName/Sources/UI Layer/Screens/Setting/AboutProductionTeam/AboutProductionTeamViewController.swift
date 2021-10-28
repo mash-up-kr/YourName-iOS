@@ -9,8 +9,15 @@ import UIKit
 
 final class AboutProductionTeamViewController: ViewController, Storyboarded {
 
+    @IBOutlet unowned var naviBackButton: UIButton!
+    
     override func viewDidLoad() {
-        self.navigationController?.navigationBar.isHidden = true
         super.viewDidLoad()
+    }
+    
+}
+
+extension AboutProductionTeamViewController {
+    func bind() {
     }
 }
