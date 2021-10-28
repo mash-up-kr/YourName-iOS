@@ -11,9 +11,9 @@ import RxCocoa
 import SnapKit
 import RxGesture
 
-typealias AddCardViewController = PageSheetController<AddCardView>
+typealias AddFriendCardViewController = PageSheetController<AddFriendCardView>
 
-final class AddCardView: UIView, NibLoadable {
+final class AddFriendCardView: UIView, NibLoadable {
     
     private enum Constant {
         static let modalTitle = "도감 추가하기"
@@ -24,7 +24,7 @@ final class AddCardView: UIView, NibLoadable {
     @IBOutlet private weak var searchButton: UIButton!
     
     private let disposeBag = DisposeBag()
-    var viewModel: AddCardViewModel!
+    var viewModel: AddFriendCardViewModel!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -40,12 +40,12 @@ final class AddCardView: UIView, NibLoadable {
     }
 }
 
-extension AddCardView: PageSheetContentView {
+extension AddFriendCardView: PageSheetContentView {
     var title: String { Constant.modalTitle }
     var isModal: Bool { true }
 }
 
-extension AddCardView {
+extension AddFriendCardView {
     
     private func configureEmptyResultView() {
         self.searchResultEmptyView.snp.makeConstraints {

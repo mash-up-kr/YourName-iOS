@@ -8,15 +8,15 @@
 import Foundation
 import RxRelay
 
-enum CardBookDestination: Equatable {
+enum CardBookDetailDestination: Equatable {
     case addCard
 }
 
-typealias CardBookNavigation = Navigation<CardBookDestination>
+typealias CardBookDetailNavigation = Navigation<CardBookDetailDestination>
 
-final class CardBookViewModel {
+final class CardBookDetailViewModel {
     
-    let navigation = PublishRelay<CardBookNavigation>()
+    let navigation = PublishRelay<CardBookDetailNavigation>()
     
     func tapSearchButton() {
         navigation.accept(.show(.addCard))
