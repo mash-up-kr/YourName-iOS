@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6bn-qp-cfa">
-                                <rect key="frame" x="0.0" y="114" width="414" height="782"/>
+                                <rect key="frame" x="0.0" y="100" width="414" height="796"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fGp-LT-7os">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1129"/>
@@ -47,16 +47,16 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="qwZ-Or-dPW"/>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sef-pi-gnA">
-                                <rect key="frame" x="0.0" y="44" width="414" height="70"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="만든이들" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X4B-EY-YUR">
-                                        <rect key="frame" x="175.5" y="28" width="63" height="22"/>
+                                        <rect key="frame" x="175.5" y="17" width="63" height="22"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vrD-0S-rUJ">
-                                        <rect key="frame" x="32" y="31" width="8" height="16"/>
+                                        <rect key="frame" x="32" y="20" width="8" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="AVU-6J-UmI"/>
                                             <constraint firstAttribute="width" constant="8" id="W4E-D3-dJt"/>
@@ -67,9 +67,9 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="X4B-EY-YUR" firstAttribute="centerY" secondItem="vrD-0S-rUJ" secondAttribute="centerY" id="Exw-a6-ylG"/>
-                                    <constraint firstAttribute="height" constant="70" id="Yn3-9E-yGA"/>
-                                    <constraint firstItem="vrD-0S-rUJ" firstAttribute="top" secondItem="sef-pi-gnA" secondAttribute="top" constant="31" id="dF9-5U-L8I"/>
+                                    <constraint firstItem="X4B-EY-YUR" firstAttribute="centerY" secondItem="vrD-0S-rUJ" secondAttribute="centerY" id="9qh-QG-qRi"/>
+                                    <constraint firstAttribute="height" constant="56" id="Yn3-9E-yGA"/>
+                                    <constraint firstItem="vrD-0S-rUJ" firstAttribute="top" secondItem="sef-pi-gnA" secondAttribute="top" constant="20" id="dF9-5U-L8I"/>
                                     <constraint firstItem="vrD-0S-rUJ" firstAttribute="leading" secondItem="sef-pi-gnA" secondAttribute="leading" constant="32" id="yUu-tP-mJi"/>
                                     <constraint firstItem="X4B-EY-YUR" firstAttribute="centerX" secondItem="sef-pi-gnA" secondAttribute="centerX" id="yVg-sw-Opo"/>
                                 </constraints>

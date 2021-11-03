@@ -10,19 +10,26 @@ import RxSwift
 
 final class AboutProductionTeamViewController: ViewController, Storyboarded {
 
-    @IBOutlet unowned var naviBackButton: UIButton!
+    @IBOutlet private unowned var naviBackButton: UIButton!
     private let disposeBag = DisposeBag()
+    override var hidesBottomBarWhenPushed: Bool {
+        get {
+          return navigationController?.topViewController == self
+        }
+        set {
+          super.hidesBottomBarWhenPushed = newValue
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBarController?.tabBar.isHidden = true
         bind()
     }
 }
 
 extension AboutProductionTeamViewController {
     func bind() {
-        naviBackButton.rx.throttleTap
+        self.naviBackButton.rx.throttleTap
             .bind(onNext: { [weak self] in
                 self?.closeOverlayViewControllers()
             })
