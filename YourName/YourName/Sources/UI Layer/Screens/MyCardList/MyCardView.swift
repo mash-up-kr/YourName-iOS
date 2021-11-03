@@ -9,10 +9,10 @@ import UIKit
 
 final class MyCardView: UIView, NibLoadable {
     
-    @IBOutlet private weak var userProfileImage: UIImageView!
-    @IBOutlet private weak var userNameLabel: UILabel!
-    @IBOutlet private weak var userRoleLabel: UILabel!
-    @IBOutlet private weak var skillStackView: UIStackView!
+    @IBOutlet unowned var userProfileImage: UIImageView!
+    @IBOutlet unowned var userNameLabel: UILabel!
+    @IBOutlet unowned var userRoleLabel: UILabel!
+    @IBOutlet unowned var skillStackView: UIStackView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,11 +23,11 @@ final class MyCardView: UIView, NibLoadable {
     }
     
     //TODO: viewModel생성 이후 수정필요
-    func configureSkills(skills: [MySkillProgressView.Item]) {
+    func configure(skills: [MySkillProgressView.Item]) {
         skills.enumerated().forEach { index, skill in
             guard let skillView = skillStackView.subviews[index] as? MySkillProgressView else { return }
             skillView.isHidden = false
-            skillView.configureSkill(skill: skill)
+            skillView.configure(skill: skill)
         }
     }
 }

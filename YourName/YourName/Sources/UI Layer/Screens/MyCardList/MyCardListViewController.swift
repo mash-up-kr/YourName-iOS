@@ -18,19 +18,22 @@ final class MyCardListViewController: ViewController, Storyboarded {
     
     // MARK: - UIComponents
     
-    @IBOutlet private weak var userNameLabel: UILabel!
-    @IBOutlet private weak var myCardListCollectionview: UICollectionView!
-    @IBOutlet private weak var pageControl: UIPageControl!
-    @IBOutlet private weak var addCardButton: UIButton!
+    @IBOutlet private unowned var userNameLabel: UILabel!
+    @IBOutlet private unowned var myCardListCollectionView: UICollectionView!
+    @IBOutlet private unowned var pageControl: UIPageControl!
+    @IBOutlet private unowned var addCardButton: UIButton!
     
     // MARK: - Properties
+    
     var cardCreationViewControllerFactory: (() -> CardCreationViewController)!
     var cardDetailViewControllerFactory: ((String) -> CardDetailViewController)!
     var viewModel: MyCardListViewModel!
     private let disposeBag = DisposeBag()
-    private lazy var collectionViewWidth = ( 312 * self.myCardListCollectionview.bounds.height ) / 512
-    private let dummyData = [Palette.lightGreen] // dummy
-    private let content = [   // dummy
+    private lazy var collectionViewWidth = ( 312 * self.myCardListCollectionView.bounds.height ) / 512
+    
+    /* Dummy */
+    private let dummyData = [Palette.lightGreen, Palette.orange, Palette.pink]
+    private let content = [
         [MySkillProgressView.Item(title: "이게 너무 길면 어떻게보일지 테스트해볼까싶은데 과연", level: 3),
          MySkillProgressView.Item(title: "인싸력", level: 10)],
         [MySkillProgressView.Item(title: "드립력", level: 3),
@@ -39,53 +42,42 @@ final class MyCardListViewController: ViewController, Storyboarded {
         [MySkillProgressView.Item(title: "드립력", level: 2)]
     ]
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.isHidden = true
-        configureCollectionView()
-        bind()
+     
+        self.configure(colletionView: myCardListCollectionView)
+        self.dispatch(to: viewModel)
     }
 }
 
 // MARK: - Methods
 extension MyCardListViewController {
     
-    private func configureCollectionView() {
-        myCardListCollectionview.decelerationRate = .fast
-        myCardListCollectionview.isPagingEnabled = false
-        myCardListCollectionview.registerWithNib(MyCardListEmptyCollectionViewCell.self)
-        myCardListCollectionview.registerWithNib(MyCardListCollectionViewCell.self)
-    }
-    
-    private func bind() {
-        dispatch(to: viewModel)
-        render(viewModel)
-        
-        // TODO: ViewModel observe하는 방식으로 수정
-        pageControl.numberOfPages = dummyData.count
-        pageControl.currentPage = 0
-        
+    private func configure(colletionView: UICollectionView) {
+        colletionView.decelerationRate = .fast
+        colletionView.isPagingEnabled = false
+        colletionView.registerNib(MyCardListEmptyCollectionViewCell.self)
+        colletionView.registerNib(MyCardListCollectionViewCell.self)
     }
     
     private func dispatch(to viewModel: MyCardListViewModel) {
         viewModel.load()
         
-        self.rx.viewDidAppear.flatMapFirst { _ in self.viewModel.navigation}
+        self.rx.viewDidAppear.flatMapFirst { _ in self.viewModel.navigation }
         .bind(onNext: { [weak self] action in
             guard let self = self else { return }
             self.navigate(action)
         }).disposed(by: disposeBag)
         
-        addCardButton?.rx.throttleTap
+        self.addCardButton.rx.throttleTap
             .bind(onNext: { [weak self] _ in
                 self?.viewModel.tapCardCreation()
             })
             .disposed(by: disposeBag)
-    }
-    
-    private func render(_ viewModel: MyCardListViewModel) {
         
+        // TODO: ViewModel observe하는 방식으로 수정
+        self.pageControl.numberOfPages = content.count
+        self.pageControl.currentPage = 0
     }
     
     private func navigate(_ navigation: MyCardListNavigation) {
@@ -103,22 +95,22 @@ extension MyCardListViewController {
     }
 }
 
-//TODO:  rxdatasource로 교체필요
+//MARK: - UICollectionViewDataSource
 extension MyCardListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        dummyData.count
+        content.count
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // TODO: API 연결 이후 enum타입으로 정의할 예정
-        if dummyData.count == 1 {
+        if content.count == 1 {
             guard let cell = collectionView.dequeueReusableCell(MyCardListEmptyCollectionViewCell.self,
                                                                 for: indexPath)
             else { return .init() }
             
-            let didSelect: (() -> Void)? = { [weak self] in
+            let didSelect: (() -> Void) = { [weak self] in
                 self?.viewModel.tapCardCreation()
             }
             cell.didSelect = didSelect
@@ -127,12 +119,15 @@ extension MyCardListViewController: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(MyCardListCollectionViewCell.self,
                                                                 for: indexPath),
                   let myCardView = cell.contentView as? MyCardView else { return .init() }
-            myCardView.configureSkills(skills: content[indexPath.row])
-            myCardView.backgroundColor = dummyData[indexPath.row]
+            myCardView.configure(skills: content[indexPath.row])
+            myCardView.backgroundColor = dummyData[safe: indexPath.row]
             return cell
         }
     }
 }
+
+// MARK: - UICollectionViewDelegate
+
 extension MyCardListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
@@ -142,6 +137,9 @@ extension MyCardListViewController: UICollectionViewDelegate {
                height: collectionView.bounds.height)
     }
 }
+
+// MARK: - UICollectionViewDelegateFlowLayout
+
 extension MyCardListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
@@ -168,7 +166,7 @@ extension MyCardListViewController: UIScrollViewDelegate {
                                    withVelocity velocity: CGPoint,
                                    targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         
-        guard let layout = myCardListCollectionview.collectionViewLayout as? UICollectionViewFlowLayout else { return }
+        guard let layout = myCardListCollectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
         
         // cell width + item사이거리
         let cellWidthIncludingSpacing = collectionViewWidth + layout.minimumInteritemSpacing
