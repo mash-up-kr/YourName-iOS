@@ -6,6 +6,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -35,53 +36,47 @@
                     </userDefinedRuntimeAttributes>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="매시매시업" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9xB-Cg-2DP">
-                    <rect key="frame" x="160.5" y="315" width="86.5" height="29.5"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="29.079999999999998" id="Lw6-HR-Z6N"/>
-                    </constraints>
+                    <rect key="frame" x="160.5" y="315" width="86.5" height="24"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                     <color key="textColor" name="black1"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="매시업 11기 UXUI 디자이너" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uxd-r4-TYI">
-                    <rect key="frame" x="137" y="347.5" width="133.5" height="29"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="29.079999999999998" id="2N7-lR-2UH"/>
-                    </constraints>
+                    <rect key="frame" x="137" y="342" width="133.5" height="14.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" name="gray3"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="U0M-mr-k0h">
-                    <rect key="frame" x="103" y="408" width="201" height="106"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="U0M-mr-k0h">
+                    <rect key="frame" x="73.5" y="388.5" width="260" height="105"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Ik-lt-nvq" customClass="SkillLevelView" customModule="YourName" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="201" height="26"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5zv-r5-KOb" customClass="MySkillProgressView" customModule="YourName" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="260" height="30"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VYH-6l-15s" customClass="SkillLevelView" customModule="YourName" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="40" width="201" height="26"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7eZ-2c-dKp" customClass="MySkillProgressView" customModule="YourName" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="38" width="260" height="29.5"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qmg-hF-0Ll" customClass="SkillLevelView" customModule="YourName" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="80" width="201" height="26"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U06-8r-UKo" customClass="MySkillProgressView" customModule="YourName" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="75.5" width="260" height="29.5"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                     </subviews>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="201" id="Y6W-6e-4xv"/>
-                        <constraint firstAttribute="height" constant="106" id="yPn-dv-ilh"/>
-                    </constraints>
                 </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="9SB-35-rwy"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="9xB-Cg-2DP" firstAttribute="centerX" secondItem="nEZ-cL-CmB" secondAttribute="centerX" id="1gf-Rv-714"/>
+                <constraint firstItem="U06-8r-UKo" firstAttribute="height" secondItem="nEZ-cL-CmB" secondAttribute="height" multiplier="0.05" id="Fdt-JF-KES"/>
                 <constraint firstItem="bMt-aJ-acH" firstAttribute="centerX" secondItem="nEZ-cL-CmB" secondAttribute="centerX" id="I6d-WF-Q8L"/>
                 <constraint firstItem="uxd-r4-TYI" firstAttribute="top" secondItem="9xB-Cg-2DP" secondAttribute="bottom" constant="3" id="INg-LS-iuu"/>
+                <constraint firstItem="7eZ-2c-dKp" firstAttribute="height" secondItem="nEZ-cL-CmB" secondAttribute="height" multiplier="0.05" id="KrL-ug-YT1"/>
                 <constraint firstItem="9xB-Cg-2DP" firstAttribute="top" secondItem="bMt-aJ-acH" secondAttribute="bottom" constant="23" id="RBE-g8-AuX"/>
                 <constraint firstItem="U0M-mr-k0h" firstAttribute="top" secondItem="uxd-r4-TYI" secondAttribute="bottom" constant="31.850000000000001" id="b8Z-xH-m2d"/>
+                <constraint firstItem="5zv-r5-KOb" firstAttribute="height" secondItem="nEZ-cL-CmB" secondAttribute="height" multiplier="0.05" id="ejp-zJ-M3Z"/>
+                <constraint firstItem="U0M-mr-k0h" firstAttribute="width" secondItem="nEZ-cL-CmB" secondAttribute="width" multiplier="0.64" id="fBc-Hb-gvF"/>
                 <constraint firstItem="U0M-mr-k0h" firstAttribute="centerX" secondItem="nEZ-cL-CmB" secondAttribute="centerX" id="kjS-le-xHP"/>
                 <constraint firstItem="bMt-aJ-acH" firstAttribute="width" secondItem="nEZ-cL-CmB" secondAttribute="width" multiplier="0.6" id="l5H-K8-6qD"/>
                 <constraint firstItem="bMt-aJ-acH" firstAttribute="top" secondItem="nEZ-cL-CmB" secondAttribute="top" constant="48" id="pPq-RJ-BFE"/>

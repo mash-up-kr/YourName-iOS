@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddCardView" customModule="YourName" customModuleProvider="target">
+            <connections>
+                <outlet property="searchButton" destination="ihi-2g-1N9" id="nIo-Ug-hBE"/>
+                <outlet property="searchResultEmptyView" destination="0We-DD-8WG" id="lZX-fz-1Ya"/>
+                <outlet property="searchTextField" destination="hM6-tM-ylW" id="DMa-RY-zfw"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ㅇㅇㅇ를 입력하세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hM6-tM-ylW">
+                    <rect key="frame" x="24" y="20" width="296" height="48"/>
+                    <color key="backgroundColor" name="lightGray1"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="12"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ihi-2g-1N9">
+                    <rect key="frame" x="336" y="20" width="54" height="48"/>
+                    <color key="backgroundColor" name="black1"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="54" id="hqW-P7-Pmm"/>
+                        <constraint firstAttribute="height" constant="48" id="p4A-Kz-vk4"/>
+                    </constraints>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" image="icon_search">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="12"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0We-DD-8WG">
+                    <rect key="frame" x="0.0" y="68" width="414" height="828"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="meetu_search" translatesAutoresizingMaskIntoConstraints="NO" id="Me7-1d-1YV">
+                            <rect key="frame" x="138.5" y="180.5" width="137" height="144"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Akm-W4-SFP">
+                            <rect key="frame" x="85.5" y="48" width="243" height="96"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="96" id="mM8-QM-Cub"/>
+                            </constraints>
+                            <attributedString key="attributedText">
+                                <fragment>
+                                    <string key="content">해당 계정의 미츄를 찾지 못했습니다.
+</string>
+                                    <attributes>
+                                        <color key="NSColor" name="gray2"/>
+                                        <font key="NSFont" metaFont="system" size="17"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                    </attributes>
+                                </fragment>
+                                <fragment content="확인 후 다시 검색해주세요.">
+                                    <attributes>
+                                        <color key="NSColor" name="gray2"/>
+                                        <font key="NSFont" metaFont="system" size="17"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="27.199999999999999" tighteningFactorForTruncation="0.0"/>
+                                    </attributes>
+                                </fragment>
+                            </attributedString>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="Me7-1d-1YV" firstAttribute="centerX" secondItem="0We-DD-8WG" secondAttribute="centerX" id="BRe-fv-83Q"/>
+                        <constraint firstItem="Me7-1d-1YV" firstAttribute="top" secondItem="Akm-W4-SFP" secondAttribute="bottom" constant="36.740000000000002" id="WE4-Ei-Qha"/>
+                        <constraint firstItem="Akm-W4-SFP" firstAttribute="centerX" secondItem="0We-DD-8WG" secondAttribute="centerX" id="dq2-wh-RLX"/>
+                        <constraint firstItem="Akm-W4-SFP" firstAttribute="top" secondItem="0We-DD-8WG" secondAttribute="top" constant="48" id="vg0-L3-vWF"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ihi-2g-1N9" secondAttribute="trailing" constant="24" id="8cJ-36-T0D"/>
+                <constraint firstItem="0We-DD-8WG" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="AUH-Wn-2Pr"/>
+                <constraint firstItem="ihi-2g-1N9" firstAttribute="leading" secondItem="hM6-tM-ylW" secondAttribute="trailing" constant="16" id="Efe-W5-Wjm"/>
+                <constraint firstItem="hM6-tM-ylW" firstAttribute="top" secondItem="ihi-2g-1N9" secondAttribute="top" id="OeG-sO-0ew"/>
+                <constraint firstItem="hM6-tM-ylW" firstAttribute="bottom" secondItem="ihi-2g-1N9" secondAttribute="bottom" id="e8j-tX-y0K"/>
+                <constraint firstAttribute="bottom" secondItem="0We-DD-8WG" secondAttribute="bottom" id="lzz-5t-kGI"/>
+                <constraint firstItem="0We-DD-8WG" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="mlt-Yy-ur8"/>
+                <constraint firstItem="ihi-2g-1N9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="ngf-O5-jk9"/>
+                <constraint firstItem="hM6-tM-ylW" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="zJL-zL-Auz"/>
+                <constraint firstItem="0We-DD-8WG" firstAttribute="top" secondItem="hM6-tM-ylW" secondAttribute="bottom" id="zdv-jX-RmI"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="137.68115942028987" y="120.53571428571428"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_search" width="24" height="24"/>
+        <image name="meetu_search" width="137" height="144"/>
+        <namedColor name="black1">
+            <color red="0.082352941176470587" green="0.082352941176470587" blue="0.082352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="gray2">
+            <color red="0.51764705882352946" green="0.51764705882352946" blue="0.51764705882352946" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="lightGray1">
+            <color red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
