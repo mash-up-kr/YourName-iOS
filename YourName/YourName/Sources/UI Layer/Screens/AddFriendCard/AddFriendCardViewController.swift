@@ -11,11 +11,12 @@ import RxCocoa
 
 final class AddFriendCardViewController: ViewController, Storyboarded {
     
+    @IBOutlet private unowned var resultView: AddFriendCardResultView!
+    @IBOutlet private unowned var noResultView: AddFriendCardNoResultView!
     @IBOutlet private unowned var searchTextField: UITextField!
-    @IBOutlet private unowned var searchResultEmptyView: UIView!
+    @IBOutlet private unowned var validationLabel: UILabel!
     @IBOutlet private unowned var searchButton: UIButton!
     @IBOutlet private unowned var backButton: UIButton!
-    @IBOutlet private unowned var addButton: UIButton!
     
     private let disposeBag = DisposeBag()
     var viewModel: AddFriendCardViewModel!
@@ -30,25 +31,32 @@ final class AddFriendCardViewController: ViewController, Storyboarded {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         configureUI()
+        render(self.viewModel)
         bind()
     }
 }
 
 extension AddFriendCardViewController {
-    
     private func configureUI() {
-        searchResultEmptyView.isHidden = true
-        addButton.isHidden = true
         self.searchTextField.becomeFirstResponder()
+        [self.noResultView, self.resultView, self.validationLabel].forEach { $0?.isHidden = true }
+        self.searchTextField.leftView = UIView(frame: .init(x: 0, y: 0, width: 11, height: searchTextField.bounds.height))
+        self.searchTextField.leftViewMode = .always
+        configure(self.searchTextField)
     }
     
     private func bind() {
         
         Observable.merge(
-            searchTextField.rx.controlEvent([.editingDidEndOnExit])
+            self.searchTextField.rx.controlEvent([.editingDidEndOnExit])
                 .mapToVoid(),
-            searchResultEmptyView.rx.tapWhenRecognized()
+            self.resultView.rx.tapWhenRecognized()
+                .mapToVoid(),
+            self.noResultView.rx.tapWhenRecognized()
+                .mapToVoid(),
+            self.view.rx.tapWhenRecognized()
                 .mapToVoid()
             )
             .bind(onNext: { [weak self] _ in
@@ -56,15 +64,57 @@ extension AddFriendCardViewController {
             })
             .disposed(by: disposeBag)
         
+        let searchId = PublishRelay<String>()
         
-        searchButton.rx.throttleTap
-            .bind(onNext: { [weak self] in
-                // TODO: 로직 수정 필요.
-                // 검색하기전 -> searchResultEmptyView.isHidden = true
-                // 검색 후 ->
-                //  ㄴ 1. 검색결과 존재 -> 카드 디테일화면 + 추가하기 버튼
-                //  ㄴ 2. 검색결과 존재 X -> searchResultEmptyView.isHidden = false
-                self?.searchResultEmptyView.isHidden = false
+        self.searchTextField.rx.text
+            .compactMap { $0 }
+            .bind(to: searchId)
+            .disposed(by: disposeBag)
+        
+        self.searchButton.rx.throttleTap
+            .withLatestFrom(searchId)
+            .bind(onNext: { [weak self] id in
+                self?.viewModel.didTapSearchButton(with: id)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func configure(_ textField: UITextField,
+                           state: AddFriendCardViewModel.CardState = .none) {
+        textField.layer.borderWidth = 1
+        switch state {
+        case .alreadyAdded:
+            textField.layer.borderColor = Palette.red.cgColor
+        default:
+            textField.layer.borderColor = Palette.gray1.cgColor
+        }
+    }
+    
+    private func render(_ viewModel: AddFriendCardViewModel) {
+        
+        self.viewModel.addFriendCardResult
+            .bind(onNext: { [weak self] state in
+                print(state)
+                guard let self = self else { return }
+                switch state {
+                case .noResult:
+                    self.noResultView.isHidden = false
+                    self.resultView.isHidden = true
+                    self.validationLabel.isHidden = true
+                    self.configure(self.searchTextField)
+                case .success(let _):
+                    self.noResultView.isHidden = true
+                    self.resultView.isHidden = false
+                    self.validationLabel.isHidden = true
+                    self.configure(self.searchTextField)
+                case .alreadyAdded(let _):
+                    self.noResultView.isHidden = true
+                    self.resultView.isHidden = false
+                    self.validationLabel.isHidden = false
+                    self.configure(self.searchTextField, state: state)
+                default:
+                    break
+                }
             })
             .disposed(by: disposeBag)
     }

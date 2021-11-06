@@ -60,54 +60,21 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gxC-BM-4BK">
-                                <rect key="frame" x="32" y="180" width="350" height="609"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="meetu_search" translatesAutoresizingMaskIntoConstraints="NO" id="Ocb-cw-TiA">
-                                        <rect key="frame" x="106.5" y="124.5" width="137" height="144"/>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EGx-84-i5y">
-                                        <rect key="frame" x="71" y="54" width="208" height="35.5"/>
-                                        <attributedString key="attributedText">
-                                            <fragment>
-                                                <string key="content">해당 코드의 미츄를 찾지 못했츄...
-확인 후 다시 검색해주세요.</string>
-                                                <attributes>
-                                                    <color key="NSColor" name="gray2"/>
-                                                    <font key="NSFont" size="16" name=".AppleSDGothicNeoI-Regular"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                </attributes>
-                                            </fragment>
-                                        </attributedString>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstItem="EGx-84-i5y" firstAttribute="centerX" secondItem="gxC-BM-4BK" secondAttribute="centerX" id="7lH-9M-OJp"/>
-                                    <constraint firstItem="EGx-84-i5y" firstAttribute="top" secondItem="gxC-BM-4BK" secondAttribute="top" constant="54" id="XEG-G6-2W9"/>
-                                    <constraint firstItem="Ocb-cw-TiA" firstAttribute="centerX" secondItem="gxC-BM-4BK" secondAttribute="centerX" id="dHj-1w-VEX"/>
-                                    <constraint firstItem="Ocb-cw-TiA" firstAttribute="top" secondItem="EGx-84-i5y" secondAttribute="bottom" constant="35" id="rpO-aG-DO7"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이미 추가된 친구 미츄입니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TUs-eg-zeS">
+                                <rect key="frame" x="24" y="166" width="138.5" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" name="red"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gxC-BM-4BK" customClass="AddFriendCardNoResultView" customModule="MEETU" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="180" width="414" height="716"/>
+                                <color key="backgroundColor" systemColor="systemBrownColor"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IN3-pS-EZn">
-                                <rect key="frame" x="24" y="809" width="366" height="56"/>
-                                <color key="backgroundColor" name="black1"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="56" id="qWf-Zz-0GW"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="추가하기">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="12"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="코드명을 입력하세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JGO-dx-r1T">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bvg-hL-8Uw" customClass="AddFriendCardResultView" customModule="MEETU" customModuleProvider="target">
+                                <rect key="frame" x="24" y="195.5" width="366" height="700.5"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                            </view>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="코드명을 입력하세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JGO-dx-r1T">
                                 <rect key="frame" x="24" y="112" width="296" height="48"/>
                                 <color key="backgroundColor" name="lightGray1"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -123,29 +90,33 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="REX-NW-Pwq" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="0kz-KW-e9O"/>
-                            <constraint firstAttribute="trailing" secondItem="gxC-BM-4BK" secondAttribute="trailing" constant="32" id="38G-XZ-j2K"/>
+                            <constraint firstAttribute="trailing" secondItem="gxC-BM-4BK" secondAttribute="trailing" id="38G-XZ-j2K"/>
                             <constraint firstItem="JGO-dx-r1T" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="24" id="3Ob-rb-Xcu"/>
                             <constraint firstItem="gAf-tz-zag" firstAttribute="height" secondItem="JGO-dx-r1T" secondAttribute="height" id="9wB-5A-IAa"/>
-                            <constraint firstItem="IN3-pS-EZn" firstAttribute="top" secondItem="gxC-BM-4BK" secondAttribute="bottom" constant="20" id="KRs-Th-yZM"/>
+                            <constraint firstItem="TUs-eg-zeS" firstAttribute="leading" secondItem="JGO-dx-r1T" secondAttribute="leading" id="F31-5i-0jp"/>
+                            <constraint firstAttribute="bottom" secondItem="bvg-hL-8Uw" secondAttribute="bottom" id="K0j-Sf-80M"/>
                             <constraint firstItem="REX-NW-Pwq" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="NJj-lx-PVA"/>
-                            <constraint firstItem="IN3-pS-EZn" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="24" id="NKG-UH-Vww"/>
                             <constraint firstItem="REX-NW-Pwq" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Oct-vl-ueO"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="IN3-pS-EZn" secondAttribute="trailing" constant="24" id="PbH-Yj-Xhr"/>
                             <constraint firstItem="gxC-BM-4BK" firstAttribute="top" secondItem="JGO-dx-r1T" secondAttribute="bottom" constant="20" id="TGH-4P-awc"/>
-                            <constraint firstItem="gxC-BM-4BK" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="32" id="TvN-u3-9Xd"/>
+                            <constraint firstItem="gxC-BM-4BK" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="TvN-u3-9Xd"/>
                             <constraint firstItem="JGO-dx-r1T" firstAttribute="top" secondItem="REX-NW-Pwq" secondAttribute="bottom" constant="12" id="Xtk-t8-zbd"/>
-                            <constraint firstAttribute="bottom" secondItem="IN3-pS-EZn" secondAttribute="bottom" constant="31" id="Y4H-3l-GrT"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="gAf-tz-zag" secondAttribute="trailing" constant="24" id="YFn-ZC-htD"/>
                             <constraint firstItem="gAf-tz-zag" firstAttribute="top" secondItem="REX-NW-Pwq" secondAttribute="bottom" constant="12" id="fE6-TB-iAG"/>
                             <constraint firstItem="gAf-tz-zag" firstAttribute="leading" secondItem="JGO-dx-r1T" secondAttribute="trailing" constant="16" id="fYq-AF-8uT"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="bvg-hL-8Uw" secondAttribute="trailing" constant="24" id="gsC-W0-fS6"/>
+                            <constraint firstItem="TUs-eg-zeS" firstAttribute="top" secondItem="JGO-dx-r1T" secondAttribute="bottom" constant="6" id="i0s-gG-7iw"/>
+                            <constraint firstAttribute="bottom" secondItem="gxC-BM-4BK" secondAttribute="bottom" id="lX6-Uq-BwG"/>
+                            <constraint firstItem="bvg-hL-8Uw" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="24" id="npj-GJ-MZR"/>
+                            <constraint firstItem="bvg-hL-8Uw" firstAttribute="top" secondItem="TUs-eg-zeS" secondAttribute="bottom" constant="15" id="tq3-Kk-hHh"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="addButton" destination="IN3-pS-EZn" id="QmK-Nw-Fbn"/>
                         <outlet property="backButton" destination="A3r-Vk-fGQ" id="KKi-Fu-oDs"/>
+                        <outlet property="noResultView" destination="gxC-BM-4BK" id="BCR-wj-NNT"/>
+                        <outlet property="resultView" destination="bvg-hL-8Uw" id="ZwG-qj-Hr0"/>
                         <outlet property="searchButton" destination="gAf-tz-zag" id="fSP-O7-1ia"/>
-                        <outlet property="searchResultEmptyView" destination="gxC-BM-4BK" id="VM2-G0-Bwr"/>
                         <outlet property="searchTextField" destination="JGO-dx-r1T" id="DHw-an-vQR"/>
+                        <outlet property="validationLabel" destination="TUs-eg-zeS" id="4Uv-45-x37"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -156,18 +127,23 @@
     <resources>
         <image name="icon_back_black" width="24" height="24"/>
         <image name="icon_search" width="24" height="24"/>
-        <image name="meetu_search" width="137" height="144"/>
         <namedColor name="black1">
             <color red="0.082352941176470587" green="0.082352941176470587" blue="0.082352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="gray2">
-            <color red="0.51764705882352946" green="0.51764705882352946" blue="0.51764705882352946" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="lightGray1">
             <color red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="red">
+            <color red="0.92156862745098034" green="0.086274509803921567" blue="0.086274509803921567" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBrownColor">
+            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

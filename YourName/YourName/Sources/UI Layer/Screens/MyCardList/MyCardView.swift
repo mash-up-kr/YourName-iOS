@@ -7,19 +7,29 @@
 
 import UIKit
 
-final class MyCardView: UIView, NibLoadable {
+final class MyCardView: NibLoadableView {
     
     @IBOutlet unowned var userProfileImage: UIImageView!
     @IBOutlet unowned var userNameLabel: UILabel!
     @IBOutlet unowned var userRoleLabel: UILabel!
     @IBOutlet unowned var skillStackView: UIStackView!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setupFromNib()
         skillStackView.subviews.forEach {
             $0.isHidden = true
         }
+        contentView.layer.cornerRadius = 12
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setupFromNib()
+        skillStackView.subviews.forEach {
+            $0.isHidden = true
+        }
+        contentView.layer.cornerRadius = 12
     }
     
     //TODO: viewModel생성 이후 수정필요
@@ -29,5 +39,9 @@ final class MyCardView: UIView, NibLoadable {
             skillView.isHidden = false
             skillView.configure(skill: skill)
         }
+    }
+    
+    func configure(backGroundColor: UIColor) {
+        contentView.backgroundColor = backGroundColor
     }
 }

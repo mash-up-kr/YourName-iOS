@@ -25,4 +25,5 @@ enum Palette {
     static let vilolet = UIColor(named: "vilolet")!
     static let yellow = UIColor(named: "yellow")!
     static let yellow2 = UIColor(named: "yellow2")!
+    static let red = UIColor(named: "red")!
 }

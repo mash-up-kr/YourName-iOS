@@ -120,7 +120,7 @@ extension MyCardListViewController: UICollectionViewDataSource {
                                                                 for: indexPath),
                   let myCardView = cell.contentView as? MyCardView else { return .init() }
             myCardView.configure(skills: content[indexPath.row])
-            myCardView.backgroundColor = dummyData[safe: indexPath.row]
+            myCardView.configure(backGroundColor: dummyData[indexPath.row])
             return cell
         }
     }
