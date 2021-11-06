@@ -17,6 +17,7 @@ final class AddFriendCardViewController: ViewController, Storyboarded {
     @IBOutlet private unowned var validationLabel: UILabel!
     @IBOutlet private unowned var searchButton: UIButton!
     @IBOutlet private unowned var backButton: UIButton!
+    @IBOutlet private unowned var resultViewTopConstraints: NSLayoutConstraint!
     
     private let disposeBag = DisposeBag()
     var viewModel: AddFriendCardViewModel!
@@ -29,24 +30,33 @@ final class AddFriendCardViewController: ViewController, Storyboarded {
             super.hidesBottomBarWhenPushed = newValue
         }
     }
+    
+    // MARK: - LifeCycles
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configureUI()
-        render(self.viewModel)
-        bind()
+        self.configureUI()
+        self.render(self.viewModel)
+        self.bind()
+    }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.configureTextFieldLeftView()
     }
 }
 
+// MARK: - Methods
 extension AddFriendCardViewController {
     private func configureUI() {
         self.searchTextField.becomeFirstResponder()
         [self.noResultView, self.resultView, self.validationLabel].forEach { $0?.isHidden = true }
-        self.searchTextField.leftView = UIView(frame: .init(x: 0, y: 0, width: 11, height: searchTextField.bounds.height))
-        self.searchTextField.leftViewMode = .always
+        
         configure(self.searchTextField)
     }
-    
+    private func configureTextFieldLeftView() {
+        self.searchTextField.leftView = UIView(frame: .init(x: 0, y: 0, width: 11, height: self.searchTextField.frame.height))
+        self.searchTextField.leftViewMode = .always
+    }
     private func bind() {
         
         Observable.merge(
@@ -94,23 +104,33 @@ extension AddFriendCardViewController {
         
         self.viewModel.addFriendCardResult
             .bind(onNext: { [weak self] state in
-                print(state)
                 guard let self = self else { return }
                 switch state {
+                    // MARK: 결과가 없는 경우
                 case .noResult:
                     self.noResultView.isHidden = false
                     self.resultView.isHidden = true
                     self.validationLabel.isHidden = true
                     self.configure(self.searchTextField)
-                case .success(let _):
+                    
+                    // MARK: 결과가 있는 경우
+                case .success(let item):
                     self.noResultView.isHidden = true
                     self.resultView.isHidden = false
                     self.validationLabel.isHidden = true
+                    
+                    self.resultViewTopConstraints.constant = 20
+                    self.resultView.configureCardView(item: item)
                     self.configure(self.searchTextField)
-                case .alreadyAdded(let _):
+                    
+                    // MARK: 이미 추가된 경우
+                case .alreadyAdded(let item):
                     self.noResultView.isHidden = true
                     self.resultView.isHidden = false
                     self.validationLabel.isHidden = false
+                    
+                    self.resultViewTopConstraints.constant = 37
+                    self.resultView.configureCardView(item: item)
                     self.configure(self.searchTextField, state: state)
                 default:
                     break

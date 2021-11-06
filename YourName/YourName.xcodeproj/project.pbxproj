@@ -12,7 +12,7 @@
 		A23920F5273666A10069E418 /* AddFriendCardViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A23920F4273666A10069E418 /* AddFriendCardViewController.storyboard */; };
 		A23920F7273683070069E418 /* AddFriendCardNoResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A23920F6273683070069E418 /* AddFriendCardNoResultView.xib */; };
 		A23920F92736835F0069E418 /* AddFriendCardNoResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23920F82736835F0069E418 /* AddFriendCardNoResultView.swift */; };
-		A23920FB273692DD0069E418 /* AddFirendCardResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A23920FA273692DD0069E418 /* AddFirendCardResultView.xib */; };
+		A23920FB273692DD0069E418 /* AddFriendCardResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A23920FA273692DD0069E418 /* AddFriendCardResultView.xib */; };
 		A23920FD273695B30069E418 /* AddFriendCardResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23920FC273695B30069E418 /* AddFriendCardResultView.swift */; };
 		A28A9B12271175A80063692D /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A9B11271175A70063692D /* SettingViewModel.swift */; };
 		A28A9B14271178360063692D /* Reactive+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A9B13271178360063692D /* Reactive+.swift */; };
@@ -225,7 +225,7 @@
 		A23920F4273666A10069E418 /* AddFriendCardViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddFriendCardViewController.storyboard; sourceTree = "<group>"; };
 		A23920F6273683070069E418 /* AddFriendCardNoResultView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddFriendCardNoResultView.xib; sourceTree = "<group>"; };
 		A23920F82736835F0069E418 /* AddFriendCardNoResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendCardNoResultView.swift; sourceTree = "<group>"; };
-		A23920FA273692DD0069E418 /* AddFirendCardResultView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddFirendCardResultView.xib; sourceTree = "<group>"; };
+		A23920FA273692DD0069E418 /* AddFriendCardResultView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddFriendCardResultView.xib; sourceTree = "<group>"; };
 		A23920FC273695B30069E418 /* AddFriendCardResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendCardResultView.swift; sourceTree = "<group>"; };
 		A28A9B11271175A70063692D /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		A28A9B13271178360063692D /* Reactive+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+.swift"; sourceTree = "<group>"; };
@@ -483,7 +483,7 @@
 				A2B10120270AA80900CAE013 /* AddFriendCardViewModel.swift */,
 				A23920F6273683070069E418 /* AddFriendCardNoResultView.xib */,
 				A23920F82736835F0069E418 /* AddFriendCardNoResultView.swift */,
-				A23920FA273692DD0069E418 /* AddFirendCardResultView.xib */,
+				A23920FA273692DD0069E418 /* AddFriendCardResultView.xib */,
 				A23920FC273695B30069E418 /* AddFriendCardResultView.swift */,
 			);
 			path = AddFriendCard;
@@ -1245,7 +1245,7 @@
 				A29DA247271DCE4E00B1E647 /* AboutProductionTeamViewController.storyboard in Resources */,
 				CEB6583826EB15AC00C11F33 /* LaunchScreen.storyboard in Resources */,
 				A2CC655E27075C8900610C49 /* MyCardListEmptyCollectionViewCell.xib in Resources */,
-				A23920FB273692DD0069E418 /* AddFirendCardResultView.xib in Resources */,
+				A23920FB273692DD0069E418 /* AddFriendCardResultView.xib in Resources */,
 				CE4D4ED7270A0CE200081A2B /* SkillSettingView.xib in Resources */,
 				CE8ECC0D270A63D900E5B038 /* SkillInputView.xib in Resources */,
 				A23920F7273683070069E418 /* AddFriendCardNoResultView.xib in Resources */,

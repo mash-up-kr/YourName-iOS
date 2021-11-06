@@ -24,25 +24,20 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qlf-5c-7sP" customClass="MyCardView" customModule="MEETU" customModuleProvider="target">
                     <rect key="frame" x="32" y="0.0" width="350" height="789"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GR2-3O-9EE">
-                            <rect key="frame" x="281" y="12" width="52" height="24"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="24" id="Bzj-8x-Ubq"/>
-                                <constraint firstAttribute="width" constant="52" id="kl5-u3-Tvr"/>
-                            </constraints>
-                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="6" maxY="0.0"/>
-                            <state key="normal" title="뒷면" image="icon_flip">
-                                <color key="titleColor" name="gray2"/>
-                            </state>
-                        </button>
-                    </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <constraints>
-                        <constraint firstItem="GR2-3O-9EE" firstAttribute="top" secondItem="qlf-5c-7sP" secondAttribute="top" constant="12" id="Cbx-6a-Ghg"/>
-                        <constraint firstAttribute="trailing" secondItem="GR2-3O-9EE" secondAttribute="trailing" constant="17" id="b02-mw-9TW"/>
-                    </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GR2-3O-9EE">
+                    <rect key="frame" x="311" y="12" width="52" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="52" id="Jfc-Co-YxC"/>
+                        <constraint firstAttribute="height" constant="24" id="XaW-Aj-mJE"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="6" maxY="0.0"/>
+                    <state key="normal" title="뒷면" image="icon_flip">
+                        <color key="titleColor" name="gray2"/>
+                    </state>
+                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g1F-3T-Oga">
                     <rect key="frame" x="24" y="809" width="366" height="56"/>
                     <color key="backgroundColor" name="black1"/>
@@ -67,9 +62,11 @@
                 <constraint firstItem="g1F-3T-Oga" firstAttribute="top" secondItem="qlf-5c-7sP" secondAttribute="bottom" constant="20" id="2jd-NN-9ii"/>
                 <constraint firstItem="g1F-3T-Oga" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="608-3M-wSy"/>
                 <constraint firstItem="qlf-5c-7sP" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="32" id="AyT-d1-n3H"/>
+                <constraint firstItem="GR2-3O-9EE" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="12" id="VV2-dc-68K"/>
                 <constraint firstAttribute="bottom" secondItem="g1F-3T-Oga" secondAttribute="bottom" constant="31" id="W2k-CZ-TGd"/>
                 <constraint firstItem="qlf-5c-7sP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="adm-cU-1fk"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="g1F-3T-Oga" secondAttribute="trailing" constant="24" id="dhZ-6a-0hB"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="GR2-3O-9EE" secondAttribute="trailing" constant="51" id="kNb-34-80q"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="qlf-5c-7sP" secondAttribute="trailing" constant="32" id="xXj-V8-N6v"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

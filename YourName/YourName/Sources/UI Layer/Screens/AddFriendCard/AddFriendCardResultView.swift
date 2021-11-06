@@ -7,8 +7,26 @@
 
 import UIKit
 
-final class AddFriendCardResultView: NibLoadableView {
+final class AddFriendCardResultView: UIView, NibLoadable {
+    
     @IBOutlet private unowned var cardView: MyCardView!
     @IBOutlet private unowned var flipButton: UIButton!
     @IBOutlet private unowned var addButton: UIButton!
+    
+    // MARK: - Initializers
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupFromNib()
+    }
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setupFromNib()
+    }
+}
+
+// MARK: - Methods
+extension AddFriendCardResultView {
+    func configureCardView(item: MyCardView.Item) {
+        self.cardView.configure(item: item)
+    }
 }
