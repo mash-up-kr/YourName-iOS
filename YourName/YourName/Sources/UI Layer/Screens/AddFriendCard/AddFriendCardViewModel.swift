@@ -9,7 +9,6 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-
 final class AddFriendCardViewModel {
     
     enum CardState {
@@ -19,9 +18,9 @@ final class AddFriendCardViewModel {
         case none
     }
     
-    var dummyId = ["abcd", "1234"]
-    var alreadyId = ["aaa"]
-    var addFriendCardResult = PublishRelay<CardState>()
+    private var dummyId = ["abcd", "1234"]
+    private var alreadyId = ["aaa"]
+    private var addFriendCardResult = PublishRelay<CardState>()
     
     func didTapSearchButton(with id: String) {
         if dummyId.contains(id) {

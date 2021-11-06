@@ -87,6 +87,12 @@ extension AddFriendCardViewController {
                 self?.viewModel.didTapSearchButton(with: id)
             })
             .disposed(by: disposeBag)
+        
+        self.backButton.rx.throttleTap
+            .bind(onNext: { [weak self] _ in
+                self?.closeOverlayViewControllers()
+            })
+            .disposed(by: disposeBag)
     }
     
     private func configure(_ textField: UITextField,
