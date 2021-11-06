@@ -18,15 +18,15 @@ final class CardBookDetailDependencyContainer {
         let viewController = CardBookDetailViewController.instantiate()
         let viewModel = createCardBookDetailViewModel()
         let addCardViewControllerFactory: () -> AddFriendCardViewController = {
+            let viewController = AddFriendCardViewController.instantiate()
             let viewModel = AddFriendCardViewModel()
-            let contentView = AddFriendCardView()
-            contentView.viewModel = viewModel
-            let viewController = PageSheetController(contentView: contentView)
+            viewController.viewModel = viewModel
             return viewController
         }
         viewController.viewModel = viewModel
         viewController.addFriendCardViewControllerFactory = addCardViewControllerFactory
-        return viewController
+        let navigationController = UINavigationController(rootViewController: viewController)
+        return navigationController
     }
     
     private func createCardBookDetailViewModel() -> CardBookDetailViewModel {

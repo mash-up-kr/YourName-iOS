@@ -19,7 +19,7 @@ final class CardBookDetailViewModel {
     let navigation = PublishRelay<CardBookDetailNavigation>()
     
     func tapSearchButton() {
-        navigation.accept(.show(.addCard))
+        navigation.accept(.push(.addCard))
     }
     
     init(cardBookRepository: CardBookRepository) {
