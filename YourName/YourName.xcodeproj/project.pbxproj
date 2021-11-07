@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		323213B10D5A848F639AFE36 /* Pods_MEETU_YourNameTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF1C79392C44764BDC375302 /* Pods_MEETU_YourNameTests.framework */; };
 		451C17BFCC5F982A982C554D /* Pods_MEETU.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44861AA2F42C9691F1BC4ECB /* Pods_MEETU.framework */; };
+		A239210B2737ED1B0069E418 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A239210A2737ED1B0069E418 /* AlertViewController.swift */; };
+		A239210D2737FA9B0069E418 /* AlertViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A239210C2737FA9B0069E418 /* AlertViewController.storyboard */; };
 		A28A9B12271175A80063692D /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A9B11271175A70063692D /* SettingViewModel.swift */; };
 		A28A9B14271178360063692D /* Reactive+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A9B13271178360063692D /* Reactive+.swift */; };
 		A28A9B1627117ACA0063692D /* SettingDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A9B1527117ACA0063692D /* SettingDependencyContainer.swift */; };
@@ -218,6 +220,8 @@
 		A011DAB29A02E4438613947A /* Pods-YourName-YourNameTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourName-YourNameTests.release.xcconfig"; path = "Target Support Files/Pods-YourName-YourNameTests/Pods-YourName-YourNameTests.release.xcconfig"; sourceTree = "<group>"; };
 		A10969B73C6F2B6D2B45B54A /* Pods-YourName-YourNameUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourName-YourNameUITests.debug.xcconfig"; path = "Target Support Files/Pods-YourName-YourNameUITests/Pods-YourName-YourNameUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A1AC0CE1DA2C5DDF40338B84 /* Pods-YourNameTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourNameTests.debug.xcconfig"; path = "Target Support Files/Pods-YourNameTests/Pods-YourNameTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A239210A2737ED1B0069E418 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		A239210C2737FA9B0069E418 /* AlertViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AlertViewController.storyboard; sourceTree = "<group>"; };
 		A28A9B11271175A70063692D /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		A28A9B13271178360063692D /* Reactive+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+.swift"; sourceTree = "<group>"; };
 		A28A9B1527117ACA0063692D /* SettingDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDependencyContainer.swift; sourceTree = "<group>"; };
@@ -582,6 +586,8 @@
 			children = (
 				CE4D4EAE2708780A00081A2B /* PageSheetController.swift */,
 				A2B10175270F424800CAE013 /* AlertController.swift */,
+				A239210A2737ED1B0069E418 /* AlertViewController.swift */,
+				A239210C2737FA9B0069E418 /* AlertViewController.storyboard */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1219,6 +1225,7 @@
 			files = (
 				CE4D4ECB27090D5200081A2B /* ColorSourceCollectionViewCell.xib in Resources */,
 				CE4D4E842707A91900081A2B /* Items.xcassets in Resources */,
+				A239210D2737FA9B0069E418 /* AlertViewController.storyboard in Resources */,
 				A2B10123270AB2E300CAE013 /* AddFriendCardView.xib in Resources */,
 				CE6BABA22704D9520006D26B /* SettingViewController.storyboard in Resources */,
 				CE6D1481270AF04500AF4C5C /* TipInfoView.xib in Resources */,
@@ -1451,6 +1458,7 @@
 				CEB6588426EC814C00C11F33 /* API.swift in Sources */,
 				CE94AB9D270ECED4005D2E80 /* InterestRepository.swift in Sources */,
 				CE94AB97270ECB8E005D2E80 /* StrongPointRepository.swift in Sources */,
+				A239210B2737ED1B0069E418 /* AlertViewController.swift in Sources */,
 				CEB6588726EC817A00C11F33 /* HTTP.swift in Sources */,
 				A29DA249271DCF3100B1E647 /* AboutProductionTeamViewController.swift in Sources */,
 				CE94ABA6270ED4B7005D2E80 /* TMIContentCollectionViewCell.swift in Sources */,
