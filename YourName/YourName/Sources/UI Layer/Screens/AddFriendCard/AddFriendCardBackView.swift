@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 final class AddFriendCardBackView: NibLoadableView {
     
@@ -22,46 +23,53 @@ final class AddFriendCardBackView: NibLoadableView {
         }
     }
 
+    @IBOutlet private unowned var flipButton: UIButton!
     @IBOutlet private unowned var contactStackView: UIStackView!
     @IBOutlet private unowned var personalityLabel: UILabel!
     @IBOutlet private unowned var introduceLabel: UILabel!
     
+    var didTapFlipButton: ((AddFriendCardResultView.CardState) -> Void)!
+    private let disposeBag = DisposeBag()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupFromNib()
         configureUI()
+        bind()
     }
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
+        super.init(coder: coder) 
         setupFromNib()
         configureUI()
+        bind()
     }
 }
 
 extension AddFriendCardBackView {
     
     private func configureUI() {
-        self.contactStackView.arrangedSubviews.forEach { $0.isHidden = true }
-        contentView.layer.cornerRadius = 12
+        self.contentView.layer.cornerRadius = 12
+        self.contactStackView.isLayoutMarginsRelativeArrangement = true
+        self.contactStackView.layoutMargins = .init(top: 23, left: 20, bottom: 23, right: 20)
     }
     
     func configure(item: Item) {
+        self.contactStackView.arrangedSubviews.forEach { $0.isHidden = true }
         self.personalityLabel.text = item.personality
         self.introduceLabel.text = item.introduce
         self.contentView.backgroundColor = item.backgroundColor
         
         item.contacts.enumerated().forEach { index, contact in
-            contactStackView.arrangedSubviews[safe: index]?.isHidden = false
-            let boldText = contact.type
-            let boldAttributes: [NSAttributedString.Key: Any] = [
-                .font: UIFont.systemFont(ofSize: 14, weight: .bold)
-            ]
-            let attributedText = NSMutableAttributedString(string: boldText + contact.value)
-            attributedText.setAttributes(boldAttributes, range: NSRange(location: 0, length: boldText.count))
-            
-            let contactLabel = contactStackView.arrangedSubviews[safe: index]?.subviews[safe: 1] as? UILabel
-            contactLabel?.attributedText = attributedText
+            guard let subView = self.contactStackView.arrangedSubviews[safe: index] as? ContactView else { return }
+            subView.isHidden = false
+            subView.configure(contact: contact)
         }
+    }
+    private func bind() {
+        self.flipButton.rx.throttleTap
+            .bind(onNext: { [weak self] _ in
+                self?.didTapFlipButton(.back)
+            })
+            .disposed(by: disposeBag)
     }
 }

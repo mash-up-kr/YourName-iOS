@@ -8,8 +8,4 @@
 import Foundation
 
 final class AddFriendCardResultViewModel {
-    
-    func didTapFlipButton() {
-        
-    }
 }

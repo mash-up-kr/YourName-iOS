@@ -10,6 +10,7 @@ import UIKit
 final class AddFriendCardNoResultView: UIView, NibLoadable {
     
     // MARK: - Initializers
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupFromNib()

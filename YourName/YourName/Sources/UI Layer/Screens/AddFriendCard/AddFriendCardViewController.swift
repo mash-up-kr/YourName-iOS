@@ -11,6 +11,8 @@ import RxCocoa
 
 final class AddFriendCardViewController: ViewController, Storyboarded {
     
+    typealias FriendCardState = AddFriendCardViewModel.FriendCardState
+    
     @IBOutlet private unowned var resultView: AddFriendCardResultView!
     @IBOutlet private unowned var noResultView: AddFriendCardNoResultView!
     @IBOutlet private unowned var searchTextField: UITextField!
@@ -96,7 +98,7 @@ extension AddFriendCardViewController {
     }
     
     private func configure(_ textField: UITextField,
-                           state: AddFriendCardViewModel.CardState = .none) {
+                           state: FriendCardState = .none) {
         textField.layer.borderWidth = 1
         switch state {
         case .alreadyAdded:
@@ -126,8 +128,9 @@ extension AddFriendCardViewController {
                     self.validationLabel.isHidden = true
                     
                     self.resultViewTopConstraints.constant = 20
-                    self.resultView.configureCardView(frontItem: frontItem,
-                                                      backItem: backItem)
+                    self.resultView.configure(frontCardItem: frontItem,
+                                              backCardItem: backItem,
+                                              friendCardState: state)
                     self.configure(self.searchTextField)
                     
                     // MARK: 이미 추가된 경우
@@ -137,8 +140,9 @@ extension AddFriendCardViewController {
                     self.validationLabel.isHidden = false
                     
                     self.resultViewTopConstraints.constant = 37
-                    self.resultView.configureCardView(frontItem: frontItem,
-                                                      backItem: backItem)
+                    self.resultView.configure(frontCardItem: frontItem,
+                                              backCardItem: backItem,
+                                              friendCardState: state)
                     self.configure(self.searchTextField, state: state)
                 default:
                     break

@@ -33,13 +33,13 @@ final class MyCardListViewController: ViewController, Storyboarded {
     
     /* Dummy */
     private let dummyData = [Palette.lightGreen, Palette.orange, Palette.pink]
-    private let content = [ MyCardView.Item(image: "",
+    private let content = [ CardFrontView.Item(image: "",
                                             name: "서영부캐1",
                                             role: "역할이 길면 짤려야합니다.짤려야한다고!!!",
                                             skills: [.init(title: "인사력", level: 10),
                                                      .init(title: "잠만보", level: 1)],
                                             backgroundColor: Palette.vilolet),
-                            MyCardView.Item(image: "",
+                            CardFrontView.Item(image: "",
                                             name: "서영 본캐입니다.",
                                             role: "역할",
                                             skills: [
@@ -125,7 +125,7 @@ extension MyCardListViewController: UICollectionViewDataSource {
         } else {
             guard let cell = collectionView.dequeueReusableCell(MyCardListCollectionViewCell.self,
                                                                 for: indexPath),
-                  let myCardView = cell.contentView as? MyCardView else { return .init() }
+                  let myCardView = cell.contentView as? CardFrontView else { return .init() }
             myCardView.configure(item: content[indexPath.row])
             return cell
         }

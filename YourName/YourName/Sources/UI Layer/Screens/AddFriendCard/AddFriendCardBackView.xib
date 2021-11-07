@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddFriendCardBackView" customModule="MEETU" customModuleProvider="target">
             <connections>
                 <outlet property="contactStackView" destination="X4l-xU-fjG" id="6a2-Fj-2sO"/>
+                <outlet property="flipButton" destination="342-rh-c2I" id="elc-Sj-oDl"/>
                 <outlet property="introduceLabel" destination="OTo-Jq-p9Z" id="O3F-a3-1z8"/>
                 <outlet property="personalityLabel" destination="MOb-rK-An4" id="35e-aF-0JQ"/>
             </connections>
@@ -29,108 +30,43 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="X4l-xU-fjG">
-                    <rect key="frame" x="16" y="72.5" width="309" height="0.0"/>
+                    <rect key="frame" x="16" y="72.5" width="309" height="130"/>
                     <subviews>
-                        <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="PEO-89-P98">
-                            <rect key="frame" x="0.0" y="0.0" width="175.5" height="14"/>
-                            <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="E5a-vc-MtA">
-                                    <rect key="frame" x="0.0" y="0.0" width="10" height="14"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="10" id="bYQ-CO-1cO"/>
-                                    </constraints>
-                                </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone. 010-3333-4444" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="216-XB-TDo">
-                                    <rect key="frame" x="20" y="0.0" width="155.5" height="14"/>
-                                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
-                                    <color key="textColor" name="black1"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f0s-EL-BUL" customClass="ContactView" customModule="MEETU" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="309" height="14"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="14" id="cdR-PR-mG8"/>
+                                <constraint firstAttribute="height" constant="14" id="tTL-89-5Bb"/>
                             </constraints>
-                        </stackView>
-                        <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="JF3-P8-NYE">
-                            <rect key="frame" x="0.0" y="0.0" width="175.5" height="14"/>
-                            <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vOp-nd-BNU">
-                                    <rect key="frame" x="0.0" y="0.0" width="10" height="14"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="10" id="JnZ-R5-c9F"/>
-                                    </constraints>
-                                </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone. 010-3333-4444" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2MP-m5-mPY">
-                                    <rect key="frame" x="20" y="0.0" width="155.5" height="14"/>
-                                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
-                                    <color key="textColor" name="black1"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L8W-WO-xLF" customClass="ContactView" customModule="MEETU" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="29" width="309" height="14"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="14" id="wgs-74-fIH"/>
+                                <constraint firstAttribute="height" constant="14" id="G5z-PQ-FPX"/>
                             </constraints>
-                        </stackView>
-                        <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="3u1-Ck-eBm">
-                            <rect key="frame" x="0.0" y="0.0" width="175.5" height="14"/>
-                            <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zhk-22-HK9">
-                                    <rect key="frame" x="0.0" y="0.0" width="10" height="14"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="10" id="8Lg-8t-LXL"/>
-                                    </constraints>
-                                </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone. 010-3333-4444" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tHq-uD-t20">
-                                    <rect key="frame" x="20" y="0.0" width="155.5" height="14"/>
-                                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
-                                    <color key="textColor" name="black1"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WVc-5K-QvA" customClass="ContactView" customModule="MEETU" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="58" width="309" height="14"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="14" id="vOj-sv-Aeh"/>
+                                <constraint firstAttribute="height" constant="14" id="4jT-1y-pEn"/>
                             </constraints>
-                        </stackView>
-                        <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="nk4-ss-CkC">
-                            <rect key="frame" x="0.0" y="0.0" width="175.5" height="14"/>
-                            <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="i7n-Jf-eWV">
-                                    <rect key="frame" x="0.0" y="0.0" width="10" height="14"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="10" id="nKv-2f-Toc"/>
-                                    </constraints>
-                                </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone. 010-3333-4444" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qrf-K8-E7O">
-                                    <rect key="frame" x="20" y="0.0" width="155.5" height="14"/>
-                                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
-                                    <color key="textColor" name="black1"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dbK-Hj-fWQ" customClass="ContactView" customModule="MEETU" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="87" width="309" height="14"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="14" id="Y1g-6P-1Ps"/>
+                                <constraint firstAttribute="height" constant="14" id="g2C-xN-XBq"/>
                             </constraints>
-                        </stackView>
-                        <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="QVu-qu-GKw">
-                            <rect key="frame" x="0.0" y="0.0" width="175.5" height="14"/>
-                            <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LyE-dp-Xxu">
-                                    <rect key="frame" x="0.0" y="0.0" width="10" height="14"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="10" id="QdJ-zM-zJM"/>
-                                    </constraints>
-                                </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone. 010-3333-4444" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tku-XJ-gCb">
-                                    <rect key="frame" x="20" y="0.0" width="155.5" height="14"/>
-                                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
-                                    <color key="textColor" name="black1"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gOV-Ep-0eX" customClass="ContactView" customModule="MEETU" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="116" width="309" height="14"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="14" id="d8g-gK-EQQ"/>
+                                <constraint firstAttribute="height" constant="14" id="Em4-HT-dyG"/>
                             </constraints>
-                        </stackView>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <userDefinedRuntimeAttributes>
@@ -140,7 +76,7 @@
                     </userDefinedRuntimeAttributes>
                 </stackView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Personality" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qFo-QL-wZr">
-                    <rect key="frame" x="16" y="104.5" width="87.5" height="19.5"/>
+                    <rect key="frame" x="16" y="234.5" width="87.5" height="19.5"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -153,7 +89,7 @@
                     </constraints>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dje-GM-AyB">
-                    <rect key="frame" x="16" y="136" width="309" height="79"/>
+                    <rect key="frame" x="16" y="266" width="309" height="79"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="INTJ / 용의주도한 전략가" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MOb-rK-An4">
                             <rect key="frame" x="16" y="23" width="277" height="14.5"/>
@@ -184,9 +120,21 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="342-rh-c2I">
+                    <rect key="frame" x="270" y="12" width="52" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="52" id="8Mx-J0-VeS"/>
+                        <constraint firstAttribute="height" constant="24" id="pDj-hu-eF9"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="6" maxY="0.0"/>
+                    <state key="normal" title="앞면" image="icon_flip">
+                        <color key="titleColor" name="gray2"/>
+                    </state>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" systemColor="systemBrownColor"/>
+            <color key="backgroundColor" systemColor="tintColor"/>
             <constraints>
                 <constraint firstItem="X4l-xU-fjG" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="7l7-yO-qh9"/>
                 <constraint firstItem="OnE-uk-hgf" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ASj-fF-rga"/>
@@ -195,10 +143,12 @@
                 <constraint firstItem="JF6-6z-IDG" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="RuO-T1-D2G"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="X4l-xU-fjG" secondAttribute="trailing" constant="16" id="SJh-2I-ept"/>
                 <constraint firstItem="Dje-GM-AyB" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="ecT-cK-1sk"/>
+                <constraint firstItem="342-rh-c2I" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="12" id="h2h-N8-bDt"/>
                 <constraint firstItem="Dje-GM-AyB" firstAttribute="top" secondItem="qFo-QL-wZr" secondAttribute="bottom" constant="12" id="iKt-CA-eTg"/>
                 <constraint firstItem="qFo-QL-wZr" firstAttribute="top" secondItem="X4l-xU-fjG" secondAttribute="bottom" constant="32" id="ixc-nE-IQa"/>
                 <constraint firstItem="qFo-QL-wZr" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="rBD-0y-dlf"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Dje-GM-AyB" secondAttribute="trailing" constant="16" id="xE1-oI-8XY"/>
+                <constraint firstAttribute="trailing" secondItem="342-rh-c2I" secondAttribute="trailing" constant="19" id="xsm-qw-EVg"/>
                 <constraint firstItem="JF6-6z-IDG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="40" id="yA8-ki-95w"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -206,15 +156,19 @@
         </view>
     </objects>
     <resources>
+        <image name="icon_flip" width="18" height="18"/>
         <image name="meetu_addFriendCard" width="162" height="41"/>
         <namedColor name="black1">
             <color red="0.082352941176470587" green="0.082352941176470587" blue="0.082352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="gray2">
+            <color red="0.51764705882352946" green="0.51764705882352946" blue="0.51764705882352946" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemBrownColor">
-            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="tintColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

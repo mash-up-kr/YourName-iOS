@@ -14,8 +14,7 @@
             <connections>
                 <outlet property="addButton" destination="g1F-3T-Oga" id="m3N-88-iFj"/>
                 <outlet property="cardBackView" destination="u16-zQ-o3q" id="Cfb-Vo-rav"/>
-                <outlet property="cardView" destination="qlf-5c-7sP" id="23W-cW-lbN"/>
-                <outlet property="flipButton" destination="GR2-3O-9EE" id="zR6-qP-tF4"/>
+                <outlet property="cardFrontView" destination="qlf-5c-7sP" id="23W-cW-lbN"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -27,22 +26,10 @@
                     <rect key="frame" x="32" y="0.0" width="350" height="789"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qlf-5c-7sP" customClass="MyCardView" customModule="MEETU" customModuleProvider="target">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qlf-5c-7sP" customClass="CardFrontView" customModule="MEETU" customModuleProvider="target">
                     <rect key="frame" x="32" y="0.0" width="350" height="789"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GR2-3O-9EE">
-                    <rect key="frame" x="311" y="12" width="52" height="24"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="52" id="Jfc-Co-YxC"/>
-                        <constraint firstAttribute="height" constant="24" id="XaW-Aj-mJE"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="6" maxY="0.0"/>
-                    <state key="normal" title="뒷면" image="icon_flip">
-                        <color key="titleColor" name="gray2"/>
-                    </state>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g1F-3T-Oga">
                     <rect key="frame" x="24" y="809" width="366" height="56"/>
                     <color key="backgroundColor" name="black1"/>
@@ -69,13 +56,11 @@
                 <constraint firstItem="qlf-5c-7sP" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="32" id="AyT-d1-n3H"/>
                 <constraint firstItem="u16-zQ-o3q" firstAttribute="leading" secondItem="qlf-5c-7sP" secondAttribute="leading" id="Gjj-oW-akt"/>
                 <constraint firstItem="u16-zQ-o3q" firstAttribute="bottom" secondItem="qlf-5c-7sP" secondAttribute="bottom" id="NaR-RT-1qj"/>
-                <constraint firstItem="GR2-3O-9EE" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="12" id="VV2-dc-68K"/>
                 <constraint firstAttribute="bottom" secondItem="g1F-3T-Oga" secondAttribute="bottom" constant="31" id="W2k-CZ-TGd"/>
                 <constraint firstItem="qlf-5c-7sP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="adm-cU-1fk"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="g1F-3T-Oga" secondAttribute="trailing" constant="24" id="dhZ-6a-0hB"/>
                 <constraint firstItem="u16-zQ-o3q" firstAttribute="trailing" secondItem="qlf-5c-7sP" secondAttribute="trailing" id="gXQ-Fg-4BX"/>
                 <constraint firstItem="u16-zQ-o3q" firstAttribute="top" secondItem="qlf-5c-7sP" secondAttribute="top" id="jft-DX-mgL"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="GR2-3O-9EE" secondAttribute="trailing" constant="51" id="kNb-34-80q"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="qlf-5c-7sP" secondAttribute="trailing" constant="32" id="xXj-V8-N6v"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -83,12 +68,8 @@
         </view>
     </objects>
     <resources>
-        <image name="icon_flip" width="18" height="18"/>
         <namedColor name="black1">
             <color red="0.082352941176470587" green="0.082352941176470587" blue="0.082352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="gray2">
-            <color red="0.51764705882352946" green="0.51764705882352946" blue="0.51764705882352946" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

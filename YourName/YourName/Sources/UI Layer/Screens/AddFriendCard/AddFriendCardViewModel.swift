@@ -10,23 +10,25 @@ import RxSwift
 import RxCocoa
 
 final class AddFriendCardViewModel {
+    typealias FrontCardItem = CardFrontView.Item
+    typealias BackCardItem = AddFriendCardBackView.Item
     
-    enum CardState {
-        case success(frontItem: MyCardView.Item,
-                     backItem: AddFriendCardBackView.Item)
+    enum FriendCardState {
+        case success(frontCardItem: FrontCardItem,
+                     backCardItem: BackCardItem)
         case noResult
-        case alreadyAdded(frontItem: MyCardView.Item,
-                          backItem: AddFriendCardBackView.Item)
+        case alreadyAdded(frontCardItem: FrontCardItem,
+                          backCardItem: BackCardItem)
         case none
     }
     
     private var dummyId = ["abcd", "1234"]
     private var alreadyId = ["aaa"]
-    let addFriendCardResult = PublishRelay<CardState>()
+    let addFriendCardResult = PublishRelay<FriendCardState>()
     
     func didTapSearchButton(with id: String) {
         if dummyId.contains(id) {
-            self.addFriendCardResult.accept(.success(frontItem: .init(image: "",
+            self.addFriendCardResult.accept(.success(frontCardItem: .init(image: "",
                                                                  name: "성공적으로 추가됨",
                                                                  role: "역할은 서영입니다.",
                                                                  skills: [
@@ -34,21 +36,21 @@ final class AddFriendCardViewModel {
                                                                     .init(title: "인싸력", level: 1)
                                                                  ],
                                                                  backgroundColor: Palette.skyBlue),
-                                                     backItem: .init(contacts: [ .init(image: "", type: "Email. ", value: "djm07245@gmail.com") ],
+                                                     backCardItem: .init(contacts: [ .init(image: "", type: "Email. ", value: "djm07245@gmail.com") ],
                                                                      personality: "ESTJ/모두가 날 I N 이라고하지",
                                                                      introduce: "안녕하세용!~! 반갑습니다.",
                                                                     backgroundColor: Palette.skyBlue)))
             
         }
         else if alreadyId.contains(id) {
-            self.addFriendCardResult.accept(.alreadyAdded(frontItem: .init(image: "",
+            self.addFriendCardResult.accept(.alreadyAdded(frontCardItem: .init(image: "",
                                                                  name: "이미존재하는 카드",
                                                                  role: "역할은 서영입니다.",
                                                                  skills: [
                                                                     .init(title: "드립력", level: 3)
                                                                  ],
                                                                  backgroundColor: Palette.orange),
-                                                          backItem: .init(contacts: [.init(image: "", type: "Facebook. ", value: "페북도 아이디가있었나.."),
+                                                          backCardItem: .init(contacts: [.init(image: "", type: "Facebook. ", value: "페북도 아이디가있었나.."),
                                                                                      .init(image: "", type: "Instagram. ", value: "@se0_p"),
                                                                                      .init(image: "", type: "Github. ", value: "@SongSeoYoung"),
                                                                                      .init(image: "", type: "Email. ", value: "djm07245@gmail.com"),
