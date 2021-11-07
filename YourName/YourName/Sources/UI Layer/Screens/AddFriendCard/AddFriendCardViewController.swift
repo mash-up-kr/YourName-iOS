@@ -120,23 +120,25 @@ extension AddFriendCardViewController {
                     self.configure(self.searchTextField)
                     
                     // MARK: 결과가 있는 경우
-                case .success(let item):
+                case .success(let frontItem, let backItem):
                     self.noResultView.isHidden = true
                     self.resultView.isHidden = false
                     self.validationLabel.isHidden = true
                     
                     self.resultViewTopConstraints.constant = 20
-                    self.resultView.configureCardView(item: item)
+                    self.resultView.configureCardView(frontItem: frontItem,
+                                                      backItem: backItem)
                     self.configure(self.searchTextField)
                     
                     // MARK: 이미 추가된 경우
-                case .alreadyAdded(let item):
+                case .alreadyAdded(let frontItem, let backItem):
                     self.noResultView.isHidden = true
                     self.resultView.isHidden = false
                     self.validationLabel.isHidden = false
                     
                     self.resultViewTopConstraints.constant = 37
-                    self.resultView.configureCardView(item: item)
+                    self.resultView.configureCardView(frontItem: frontItem,
+                                                      backItem: backItem)
                     self.configure(self.searchTextField, state: state)
                 default:
                     break

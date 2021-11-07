@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddFriendCardResultView" customModule="MEETU" customModuleProvider="target">
             <connections>
                 <outlet property="addButton" destination="g1F-3T-Oga" id="m3N-88-iFj"/>
+                <outlet property="cardBackView" destination="u16-zQ-o3q" id="Cfb-Vo-rav"/>
                 <outlet property="cardView" destination="qlf-5c-7sP" id="23W-cW-lbN"/>
                 <outlet property="flipButton" destination="GR2-3O-9EE" id="zR6-qP-tF4"/>
             </connections>
@@ -22,6 +23,10 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u16-zQ-o3q" customClass="AddFriendCardBackView" customModule="MEETU" customModuleProvider="target">
+                    <rect key="frame" x="32" y="0.0" width="350" height="789"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qlf-5c-7sP" customClass="MyCardView" customModule="MEETU" customModuleProvider="target">
                     <rect key="frame" x="32" y="0.0" width="350" height="789"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -62,10 +67,14 @@
                 <constraint firstItem="g1F-3T-Oga" firstAttribute="top" secondItem="qlf-5c-7sP" secondAttribute="bottom" constant="20" id="2jd-NN-9ii"/>
                 <constraint firstItem="g1F-3T-Oga" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="608-3M-wSy"/>
                 <constraint firstItem="qlf-5c-7sP" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="32" id="AyT-d1-n3H"/>
+                <constraint firstItem="u16-zQ-o3q" firstAttribute="leading" secondItem="qlf-5c-7sP" secondAttribute="leading" id="Gjj-oW-akt"/>
+                <constraint firstItem="u16-zQ-o3q" firstAttribute="bottom" secondItem="qlf-5c-7sP" secondAttribute="bottom" id="NaR-RT-1qj"/>
                 <constraint firstItem="GR2-3O-9EE" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="12" id="VV2-dc-68K"/>
                 <constraint firstAttribute="bottom" secondItem="g1F-3T-Oga" secondAttribute="bottom" constant="31" id="W2k-CZ-TGd"/>
                 <constraint firstItem="qlf-5c-7sP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="adm-cU-1fk"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="g1F-3T-Oga" secondAttribute="trailing" constant="24" id="dhZ-6a-0hB"/>
+                <constraint firstItem="u16-zQ-o3q" firstAttribute="trailing" secondItem="qlf-5c-7sP" secondAttribute="trailing" id="gXQ-Fg-4BX"/>
+                <constraint firstItem="u16-zQ-o3q" firstAttribute="top" secondItem="qlf-5c-7sP" secondAttribute="top" id="jft-DX-mgL"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="GR2-3O-9EE" secondAttribute="trailing" constant="51" id="kNb-34-80q"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="qlf-5c-7sP" secondAttribute="trailing" constant="32" id="xXj-V8-N6v"/>
             </constraints>
