@@ -154,11 +154,18 @@ extension AddFriendCardViewController {
     }
     private func didTapAddButton() {
         let alertController = AlertViewController.instantiate()
+        
+        let selectCardBookAction: () -> Void = {
+            self.dismiss(animated: true)
+            let controller = SelectCardBookViewController.instantiate()
+            controller.viewModel = SelectCardBookViewModel()
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
         alertController.configure(item: .init(title: "친구 미츄 추가완료!",
                                          message: "미츄를 추가할 도감을 선택하시겠츄?",
                                          image: UIImage(named: "meetu_addFriendCardAlert")!,
                                          emphasisAction: .init(title: "도감 선택하기",
-                                                               action: { print("도감 선택하기") }),
+                                                               action: selectCardBookAction),
                                          defaultAction: .init(title: "건너뛰기",
                                                               action: { self.dismiss(animated: true)} )))
         self.present(alertController, animated: true)
