@@ -20,6 +20,11 @@ final class CardBookListDependencyContainer {
             let dependencyContainer = self.createCardDetailDependencyContainer()
             return dependencyContainer.createCardBookDetailViewController(cardBookID: id)
         }
+        viewController.addCardBookFactory = {
+            let viewController = AddFriendCardViewController.instantiate()
+            viewController.viewModel = AddFriendCardViewModel()
+            return viewController
+        }
         let naviController = UINavigationController(rootViewController: viewController)
         naviController.navigationBar.isHidden = true
         return naviController

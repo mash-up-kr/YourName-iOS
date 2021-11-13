@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Select Card Book View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="SelectCardBookViewController" customModule="MEETU" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bM1-qa-yRT">
+                                <rect key="frame" x="11" y="58" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="bp3-Me-Fka"/>
+                                    <constraint firstAttribute="height" constant="50" id="ldY-jB-KQX"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="icon_back_black"/>
+                                <connections>
+                                    <action selector="backbutton:" destination="bBX-bc-jgg" eventType="touchUpInside" id="JOD-8y-0O2"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="도감 선택하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t22-Vi-u6r">
+                                <rect key="frame" x="158" y="74" width="98" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <color key="textColor" name="black1"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lxs-QS-xJW">
+                                <rect key="frame" x="330" y="59" width="64" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="Lqe-bW-5iE"/>
+                                    <constraint firstAttribute="height" constant="48" id="yLp-Xc-ez4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="6" maxY="0.0"/>
+                                <state key="normal" title="도감" image="btn_add_grey_bold">
+                                    <color key="titleColor" name="gray2"/>
+                                </state>
+                            </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="k7z-cf-Elm">
+                                <rect key="frame" x="0.0" y="114" width="414" height="748"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="n2n-c0-zHU">
+                                    <size key="itemSize" width="413" height="71"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="10" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Tnf-ZI-8PE">
+                                        <rect key="frame" x="0.5" y="10" width="413" height="71"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Z6y-M0-Vzq">
+                                            <rect key="frame" x="0.0" y="0.0" width="413" height="71"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="413" height="71"/>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="Y6W-OH-hqX" id="paW-mB-SWI"/>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="6hr-Du-bRI"/>
+                                </connections>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GVn-WT-382">
+                                <rect key="frame" x="24" y="796" width="366" height="56"/>
+                                <color key="backgroundColor" name="black1"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="6SN-kr-QmX"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="완료">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <state key="selected" title="완료"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="GVn-WT-382" secondAttribute="bottom" constant="44" id="0CW-tG-h8i"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="k7z-cf-Elm" secondAttribute="trailing" id="Bod-wX-ITT"/>
+                            <constraint firstItem="bM1-qa-yRT" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="11" id="CWA-wo-x0G"/>
+                            <constraint firstItem="t22-Vi-u6r" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="30" id="Fds-i1-zZ5"/>
+                            <constraint firstItem="bM1-qa-yRT" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="14" id="IS5-vF-dLm"/>
+                            <constraint firstItem="lxs-QS-xJW" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="15" id="Wtd-Fx-Yjf"/>
+                            <constraint firstItem="GVn-WT-382" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="24" id="YKA-0y-R7n"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="GVn-WT-382" secondAttribute="trailing" constant="24" id="ZCA-2b-9d9"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="k7z-cf-Elm" secondAttribute="bottom" id="dsr-nH-coo"/>
+                            <constraint firstItem="k7z-cf-Elm" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="h87-WP-s1F"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="lxs-QS-xJW" secondAttribute="trailing" constant="20" id="i3p-Q6-DvL"/>
+                            <constraint firstItem="k7z-cf-Elm" firstAttribute="top" secondItem="bM1-qa-yRT" secondAttribute="bottom" constant="6" id="p9S-SF-80S"/>
+                            <constraint firstItem="t22-Vi-u6r" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="rRf-qX-cNY"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="addCardBookButton" destination="lxs-QS-xJW" id="of0-qK-cv1"/>
+                        <outlet property="backButton" destination="bM1-qa-yRT" id="yTi-Uk-SBK"/>
+                        <outlet property="cardBookCollectionView" destination="k7z-cf-Elm" id="Za9-Cg-hjD"/>
+                        <outlet property="completeButton" destination="GVn-WT-382" id="XeH-Tl-99w"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="bBX-bc-jgg" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="95.758928571428569"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="btn_add_grey_bold" width="20" height="20"/>
+        <image name="icon_back_black" width="24" height="24"/>
+        <namedColor name="black1">
+            <color red="0.082352941176470587" green="0.082352941176470587" blue="0.082352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="gray2">
+            <color red="0.51764705882352946" green="0.51764705882352946" blue="0.51764705882352946" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

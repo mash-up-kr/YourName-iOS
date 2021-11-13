@@ -19,7 +19,7 @@ final class CardBookListViewController: UIViewController, Storyboarded {
 
     var viewModel: CardBookListViewModel!
     
-    var addFriendFactory: (() -> UIViewController)!
+    var addFriendFactory: (() -> AddFriendCardViewController)!
     var addCardBookFactory: (() -> UIViewController)!
     var cardBookDetailFactory: ((String) -> UIViewController)!
     

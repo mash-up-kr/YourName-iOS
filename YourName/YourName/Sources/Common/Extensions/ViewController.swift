@@ -24,7 +24,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.isHidden = true
         print(" 🐳 \(String(describing: self)) view did load")
     }
     

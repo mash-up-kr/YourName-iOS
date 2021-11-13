@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyCardView" customModule="YourName" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CardFrontView" customModule="MEETU" customModuleProvider="target">
             <connections>
                 <outlet property="skillStackView" destination="U0M-mr-k0h" id="YeZ-0A-1Nc"/>
                 <outlet property="userNameLabel" destination="9xB-Cg-2DP" id="wL4-Cb-KB9"/>
@@ -50,15 +50,15 @@
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="U0M-mr-k0h">
                     <rect key="frame" x="73.5" y="388.5" width="260" height="105"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5zv-r5-KOb" customClass="MySkillProgressView" customModule="YourName" customModuleProvider="target">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5zv-r5-KOb" customClass="MySkillProgressView" customModule="MEETU" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="260" height="30"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7eZ-2c-dKp" customClass="MySkillProgressView" customModule="YourName" customModuleProvider="target">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7eZ-2c-dKp" customClass="MySkillProgressView" customModule="MEETU" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="38" width="260" height="29.5"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U06-8r-UKo" customClass="MySkillProgressView" customModule="YourName" customModuleProvider="target">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U06-8r-UKo" customClass="MySkillProgressView" customModule="MEETU" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="75.5" width="260" height="29.5"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
@@ -66,7 +66,7 @@
                 </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="9SB-35-rwy"/>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="9xB-Cg-2DP" firstAttribute="centerX" secondItem="nEZ-cL-CmB" secondAttribute="centerX" id="1gf-Rv-714"/>
                 <constraint firstItem="U06-8r-UKo" firstAttribute="height" secondItem="nEZ-cL-CmB" secondAttribute="height" multiplier="0.05" id="Fdt-JF-KES"/>
