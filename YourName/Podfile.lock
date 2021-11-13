@@ -144,6 +144,7 @@ PODS:
     - RxSwift (~> 5.0)
   - SnapKit (5.0.1)
   - Then (2.7.0)
+  - Toast-Swift (5.0.1)
 
 DEPENDENCIES:
   - Firebase/Analytics
@@ -162,6 +163,7 @@ DEPENDENCIES:
   - RxViewController (~> 1.0)
   - SnapKit
   - Then
+  - Toast-Swift
 
 SPEC REPOS:
   trunk:
@@ -199,6 +201,7 @@ SPEC REPOS:
     - RxViewController
     - SnapKit
     - Then
+    - Toast-Swift
 
 SPEC CHECKSUMS:
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
@@ -235,7 +238,8 @@ SPEC CHECKSUMS:
   RxViewController: 7330a46e5c31cd680db169da4c9fc8676e975a81
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
+  Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: a0da1f3fc26e05dc07fdcb0ff36f65ee3dd24f0d
+PODFILE CHECKSUM: a9b222883047f10415de3947e073acff240608b8
 
 COCOAPODS: 1.11.2

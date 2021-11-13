@@ -8,6 +8,8 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import Toast_Swift
+import SnapKit
 
 final class SelectCardBookViewController: ViewController, Storyboarded {
 
@@ -46,6 +48,13 @@ extension SelectCardBookViewController {
                 self?.viewModel.didTapAddCardButton()
             })
             .disposed(by: disposeBag)
+        
+        self.completeButton.rx.throttleTap
+            .bind(onNext: { [weak self] in
+                self?.navigationController?.popViewController(animated: true)
+                self?.viewModel.didTapCompleteButton()
+            })
+            .disposed(by: disposeBag)
     }
     
     private func configureUI() {
@@ -60,6 +69,12 @@ extension SelectCardBookViewController {
                 } else {
                     self?.completeButton.backgroundColor = Palette.gray1
                 }
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.toastView
+            .bind(onNext: { [weak self] in
+                self?.navigationController?.view.showToast($0, position: .top, completion: nil)
             })
             .disposed(by: disposeBag)
     }
