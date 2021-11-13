@@ -19,7 +19,8 @@
 		A23921032736BDF90069E418 /* AddFriendCardBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23921022736BDF90069E418 /* AddFriendCardBackView.swift */; };
 		A23921052737B8F10069E418 /* ContactView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A23921042737B8F10069E418 /* ContactView.xib */; };
 		A23921072737B9220069E418 /* ContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23921062737B9220069E418 /* ContactView.swift */; };
-		A23921092737C8770069E418 /* AddFriendCardFrontView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A23921082737C8770069E418 /* AddFriendCardFrontView.xib */; };
+		A239210B2737ED1B0069E418 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A239210A2737ED1B0069E418 /* AlertViewController.swift */; };
+		A239210D2737FA9B0069E418 /* AlertViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A239210C2737FA9B0069E418 /* AlertViewController.storyboard */; };
 		A28A9B12271175A80063692D /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A9B11271175A70063692D /* SettingViewModel.swift */; };
 		A28A9B14271178360063692D /* Reactive+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A9B13271178360063692D /* Reactive+.swift */; };
 		A28A9B1627117ACA0063692D /* SettingDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A9B1527117ACA0063692D /* SettingDependencyContainer.swift */; };
@@ -238,7 +239,8 @@
 		A23921022736BDF90069E418 /* AddFriendCardBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendCardBackView.swift; sourceTree = "<group>"; };
 		A23921042737B8F10069E418 /* ContactView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactView.xib; sourceTree = "<group>"; };
 		A23921062737B9220069E418 /* ContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactView.swift; sourceTree = "<group>"; };
-		A23921082737C8770069E418 /* AddFriendCardFrontView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddFriendCardFrontView.xib; sourceTree = "<group>"; };
+		A239210A2737ED1B0069E418 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		A239210C2737FA9B0069E418 /* AlertViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AlertViewController.storyboard; sourceTree = "<group>"; };
 		A28A9B11271175A70063692D /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		A28A9B13271178360063692D /* Reactive+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+.swift"; sourceTree = "<group>"; };
 		A28A9B1527117ACA0063692D /* SettingDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDependencyContainer.swift; sourceTree = "<group>"; };
@@ -502,7 +504,6 @@
 				A23921022736BDF90069E418 /* AddFriendCardBackView.swift */,
 				A23921042737B8F10069E418 /* ContactView.xib */,
 				A23921062737B9220069E418 /* ContactView.swift */,
-				A23921082737C8770069E418 /* AddFriendCardFrontView.xib */,
 			);
 			path = AddFriendCard;
 			sourceTree = "<group>";
@@ -612,6 +613,8 @@
 			children = (
 				CE4D4EAE2708780A00081A2B /* PageSheetController.swift */,
 				A2B10175270F424800CAE013 /* AlertController.swift */,
+				A239210A2737ED1B0069E418 /* AlertViewController.swift */,
+				A239210C2737FA9B0069E418 /* AlertViewController.storyboard */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1249,6 +1252,7 @@
 			files = (
 				CE4D4ECB27090D5200081A2B /* ColorSourceCollectionViewCell.xib in Resources */,
 				CE4D4E842707A91900081A2B /* Items.xcassets in Resources */,
+				A239210D2737FA9B0069E418 /* AlertViewController.storyboard in Resources */,
 				CE6BABA22704D9520006D26B /* SettingViewController.storyboard in Resources */,
 				CE6D1481270AF04500AF4C5C /* TipInfoView.xib in Resources */,
 				CE94ABBE270F68C1005D2E80 /* GoogleService-Info.plist in Resources */,
@@ -1265,7 +1269,6 @@
 				CEB6583826EB15AC00C11F33 /* LaunchScreen.storyboard in Resources */,
 				A2CC655E27075C8900610C49 /* MyCardListEmptyCollectionViewCell.xib in Resources */,
 				A23920FB273692DD0069E418 /* AddFriendCardResultView.xib in Resources */,
-				A23921092737C8770069E418 /* AddFriendCardFrontView.xib in Resources */,
 				CE4D4ED7270A0CE200081A2B /* SkillSettingView.xib in Resources */,
 				CE8ECC0D270A63D900E5B038 /* SkillInputView.xib in Resources */,
 				A23920F7273683070069E418 /* AddFriendCardNoResultView.xib in Resources */,
@@ -1489,6 +1492,7 @@
 				CEB6588426EC814C00C11F33 /* API.swift in Sources */,
 				CE94AB9D270ECED4005D2E80 /* InterestRepository.swift in Sources */,
 				CE94AB97270ECB8E005D2E80 /* StrongPointRepository.swift in Sources */,
+				A239210B2737ED1B0069E418 /* AlertViewController.swift in Sources */,
 				CEB6588726EC817A00C11F33 /* HTTP.swift in Sources */,
 				A29DA249271DCF3100B1E647 /* AboutProductionTeamViewController.swift in Sources */,
 				CE94ABA6270ED4B7005D2E80 /* TMIContentCollectionViewCell.swift in Sources */,

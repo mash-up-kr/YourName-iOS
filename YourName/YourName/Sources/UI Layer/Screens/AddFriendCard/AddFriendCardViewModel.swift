@@ -36,7 +36,7 @@ final class AddFriendCardViewModel {
                                                                     .init(title: "인싸력", level: 1)
                                                                  ],
                                                                  backgroundColor: Palette.skyBlue),
-                                                     backCardItem: .init(contacts: [ .init(image: "", type: "Email. ", value: "djm07245@gmail.com") ],
+                                                     backCardItem: .init(contacts: [],
                                                                      personality: "ESTJ/모두가 날 I N 이라고하지",
                                                                      introduce: "안녕하세용!~! 반갑습니다.",
                                                                     backgroundColor: Palette.skyBlue)))
@@ -55,8 +55,8 @@ final class AddFriendCardViewModel {
                                                                                      .init(image: "", type: "Github. ", value: "@SongSeoYoung"),
                                                                                      .init(image: "", type: "Email. ", value: "djm07245@gmail.com"),
                                                                                      .init(image: "", type: "Phone. ", value: "010-3222-2222")],
-                                                                          personality: "ESTJ/뭐엿지..",
-                                                                          introduce: "하이루",
+                                                                          personality: nil,
+                                                                          introduce: "#인싸력",
                                                                          backgroundColor: Palette.orange)))
         }
         else {

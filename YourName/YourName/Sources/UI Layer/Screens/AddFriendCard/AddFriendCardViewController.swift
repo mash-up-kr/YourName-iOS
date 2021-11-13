@@ -130,7 +130,8 @@ extension AddFriendCardViewController {
                     self.resultViewTopConstraints.constant = 20
                     self.resultView.configure(frontCardItem: frontItem,
                                               backCardItem: backItem,
-                                              friendCardState: state)
+                                              friendCardState: state,
+                                              didTapAddButton: self.didTapAddButton)
                     self.configure(self.searchTextField)
                     
                     // MARK: 이미 추가된 경우
@@ -142,12 +143,24 @@ extension AddFriendCardViewController {
                     self.resultViewTopConstraints.constant = 37
                     self.resultView.configure(frontCardItem: frontItem,
                                               backCardItem: backItem,
-                                              friendCardState: state)
+                                              friendCardState: state,
+                                              didTapAddButton: self.didTapAddButton)
                     self.configure(self.searchTextField, state: state)
                 default:
                     break
                 }
             })
             .disposed(by: disposeBag)
+    }
+    private func didTapAddButton() {
+        let alertController = AlertViewController.instantiate()
+        alertController.configure(item: .init(title: "친구 미츄 추가완료!",
+                                         message: "미츄를 추가할 도감을 선택하시겠츄?",
+                                         image: UIImage(named: "meetu_addFriendCardAlert")!,
+                                         emphasisAction: .init(title: "도감 선택하기",
+                                                               action: { print("도감 선택하기") }),
+                                         defaultAction: .init(title: "건너뛰기",
+                                                              action: { self.dismiss(animated: true)} )))
+        self.present(alertController, animated: true)
     }
 }

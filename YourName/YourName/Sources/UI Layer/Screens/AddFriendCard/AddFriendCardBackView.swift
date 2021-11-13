@@ -12,8 +12,8 @@ final class AddFriendCardBackView: NibLoadableView {
     
     struct Item {
         let contacts: [Contact]
-        let personality: String
-        let introduce: String
+        let personality: String?
+        let introduce: String?
         let backgroundColor: UIColor
         
         struct Contact {
@@ -23,14 +23,21 @@ final class AddFriendCardBackView: NibLoadableView {
         }
     }
 
+    // MARK: - Properties
+    @IBOutlet private unowned var personalityHeaderLabel: UILabel!
+    @IBOutlet private unowned var contactHeaderLabel: UILabel!
     @IBOutlet private unowned var flipButton: UIButton!
     @IBOutlet private unowned var contactStackView: UIStackView!
     @IBOutlet private unowned var personalityLabel: UILabel!
     @IBOutlet private unowned var introduceLabel: UILabel!
+    @IBOutlet private unowned var personalityView: UIStackView!
+    @IBOutlet private unowned var personalityStackView: UIStackView!
+    @IBOutlet private unowned var personalityViewTopConstraints: NSLayoutConstraint!
     
     var didTapFlipButton: ((AddFriendCardResultView.CardState) -> Void)!
     private let disposeBag = DisposeBag()
     
+    // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupFromNib()
@@ -43,6 +50,46 @@ final class AddFriendCardBackView: NibLoadableView {
         configureUI()
         bind()
     }
+    
+    // MARK: - Methods
+    func configure(item: Item) {
+        self.personalityStackView.arrangedSubviews.forEach { $0.isHidden = true }
+        self.contactStackView.arrangedSubviews.forEach { $0.isHidden = true }
+        self.contactHeaderLabel.isHidden = false
+        self.personalityHeaderLabel.isHidden = false
+        self.personalityStackView.isHidden = false
+        self.contactStackView.isHidden = false
+        self.personalityLabel.isHidden = false
+        self.introduceLabel.isHidden = false
+        self.personalityLabel.text = ""
+        self.introduceLabel.text = ""
+        self.personalityViewTopConstraints.constant = 32
+        
+        self.contentView.backgroundColor = item.backgroundColor
+       
+        if item.contacts.count == 0 {
+            self.contactHeaderLabel.isHidden = true
+            self.contactStackView.isHidden = true
+            self.personalityViewTopConstraints.constant = 0
+        }
+
+        item.contacts.enumerated().forEach { index, contact in
+            guard let subView = self.contactStackView.arrangedSubviews[safe: index] as? ContactView else { return }
+            subView.isHidden = false
+            subView.configure(contact: contact)
+        }
+        
+        if item.personality == nil && item.introduce == nil {
+            self.personalityHeaderLabel.isHidden = true
+            self.personalityStackView.isHidden = true
+        }
+        if let personality = item.personality {
+            self.personalityLabel.text = personality
+        }
+        if let introduce = item.introduce {
+            self.introduceLabel.text = introduce
+        }
+    }
 }
 
 extension AddFriendCardBackView {
@@ -51,20 +98,10 @@ extension AddFriendCardBackView {
         self.contentView.layer.cornerRadius = 12
         self.contactStackView.isLayoutMarginsRelativeArrangement = true
         self.contactStackView.layoutMargins = .init(top: 23, left: 20, bottom: 23, right: 20)
+        self.personalityView.isLayoutMarginsRelativeArrangement = true
+        self.personalityView.layoutMargins = .init(top: 23, left: 20, bottom: 23, right: 20)
     }
     
-    func configure(item: Item) {
-        self.contactStackView.arrangedSubviews.forEach { $0.isHidden = true }
-        self.personalityLabel.text = item.personality
-        self.introduceLabel.text = item.introduce
-        self.contentView.backgroundColor = item.backgroundColor
-        
-        item.contacts.enumerated().forEach { index, contact in
-            guard let subView = self.contactStackView.arrangedSubviews[safe: index] as? ContactView else { return }
-            subView.isHidden = false
-            subView.configure(contact: contact)
-        }
-    }
     private func bind() {
         self.flipButton.rx.throttleTap
             .bind(onNext: { [weak self] _ in

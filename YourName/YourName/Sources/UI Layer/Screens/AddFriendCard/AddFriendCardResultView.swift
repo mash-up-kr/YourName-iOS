@@ -26,17 +26,20 @@ final class AddFriendCardResultView: UIView, NibLoadable {
     
     private let viewModel = AddFriendCardResultViewModel()
     private let disposeBag = DisposeBag()
+    var didTapAddButton: (() -> Void)!
     
     // MARK: - Initializers
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupFromNib()
+        bind()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupFromNib()
+        bind()
     }
 }
 
@@ -45,10 +48,12 @@ final class AddFriendCardResultView: UIView, NibLoadable {
 extension AddFriendCardResultView {
     func configure(frontCardItem: FrontCardItem,
                    backCardItem: BackCardItem,
-                   friendCardState: FriendCardState) {
+                   friendCardState: FriendCardState,
+                   didTapAddButton: @escaping (() -> Void)) {
         self.configureCardView(frontCardItem: frontCardItem,
                                backCardItem: backCardItem)
         self.configureButton(friendCardState)
+        self.didTapAddButton = didTapAddButton
     }
     
     private func configureCardView(frontCardItem: FrontCardItem,
@@ -79,5 +84,13 @@ extension AddFriendCardResultView {
             self.addButton.backgroundColor = Palette.black1
             self.addButton.isEnabled = true
         }
+    }
+    
+    private func bind() {
+        self.addButton.rx.throttleTap
+            .bind(onNext: { [weak self] _ in
+                self?.didTapAddButton()
+            })
+            .disposed(by: disposeBag)
     }
 }
