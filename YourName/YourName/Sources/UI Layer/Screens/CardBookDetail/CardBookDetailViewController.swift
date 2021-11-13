@@ -8,14 +8,9 @@
 import UIKit
 import RxSwift
 import RxCocoa
-
+ 
 final class CardBookDetailViewController: ViewController, Storyboarded {
    
-    
-    @IBOutlet private weak var cardBookTitleLabel: UILabel!
-    @IBOutlet private weak var addCardButton: UIButton!
-    @IBOutlet private weak var cardBookCollectionView: UICollectionView!
-
     private enum Constant {
         static let collectionViewSectionInset = 24
         static let collectionViewCellSpacing = 19
@@ -23,7 +18,6 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
     var dummyDataNumber = 10 // dummy
     var viewModel: CardBookDetailViewModel!
     var addFriendCardViewControllerFactory: (() -> AddFriendCardViewController)!
-    private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         self.navigationController?.navigationBar.isHidden = true
@@ -31,60 +25,119 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
         configureCollectionView()
         bind()
     }
+    
+    private let disposeBag = DisposeBag()
+    
+    private var cards: [Card] = []
+    
+    @IBOutlet private weak var backButton: UIButton?
+    @IBOutlet private weak var moreButton: UIButton?
+    @IBOutlet private weak var cardBookTitleLabel: UILabel?
+    @IBOutlet private weak var friendCardCollectionView: UICollectionView?
 }
 extension CardBookDetailViewController {
+    
+    private func bind() {
+        dispatch(to: viewModel)
+        render(viewModel)
+    }
+    
     private func dispatch(to viewModel: CardBookDetailViewModel) {
-        self.rx.viewDidAppear.flatMapFirst { _ in self.viewModel.navigation}
+        self.viewModel.didLoad()
+        
+        self.rx.viewDidAppear
+            .flatMapFirst { _ in self.viewModel.navigation }
             .subscribe(onNext: { [weak self] action in
                 guard let self = self else { return }
                 self.navigate(action)
             }).disposed(by: disposeBag)
         
-        addCardButton.rx.throttleTap
-            .subscribe(onNext: { [weak self] _ in
-                self?.viewModel.tapSearchButton()
+        self.backButton?.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.viewModel.tapBack()
             })
-            .disposed(by: disposeBag)
+            .disposed(by: self.disposeBag)
+        
+        self.moreButton?.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.viewModel.tapMore()
+            })
+            .disposed(by: self.disposeBag)
     }
-    private func bind() {
-        dispatch(to: viewModel)
-        render(viewModel)
-    }
+    
     private func render(_ veiwModel: CardBookDetailViewModel) {
-        // render함수의 용도..?
+        self.viewModel.cardBookTitle.distinctUntilChanged()
+            .subscribe(onNext: { [weak self] cardBookTitle in
+                self?.cardBookTitleLabel?.text = cardBookTitle
+            })
+            .disposed(by: self.disposeBag)
+        
+        self.viewModel.cards.distinctUntilChanged()
+            .subscribe(onNext: { [weak self] cards in
+                self?.cards = cards
+                self?.friendCardCollectionView?.reloadData()
+            })
+            .disposed(by: self.disposeBag)
+        
+        self.viewModel.shouldClose
+            .subscribe(onNext: { [weak self] in
+                self?.navigationController?.popViewController(animated: true)
+            })
+            .disposed(by: self.disposeBag)
     }
+    
     private func navigate(_ navigation: CardBookDetailNavigation) {
         let viewController = createViewController(navigation.destination)
         navigate(viewController, action: navigation.action)
     }
+    
     private func createViewController(_ next: CardBookDetailDestination) -> UIViewController {
+        return UIViewController()
         switch next {
-        case .addCard:
-            return addFriendCardViewControllerFactory()
         }
     }
+    
     private func configureCollectionView() {
-        cardBookCollectionView.registerNib(FriendCardCollectionViewCell.self)
-        cardBookCollectionView.registerNib(FriendCardEmptyCollectionViewCell.self)
+        friendCardCollectionView?.registerNib(FriendCardCollectionViewCell.self)
+        friendCardCollectionView?.registerNib(FriendCardEmptyCollectionViewCell.self)
+        friendCardCollectionView?.dataSource = self
+        friendCardCollectionView?.delegate = self
     }
 }
 
 // TODO: rx datasource로 추후 교체예정
 extension CardBookDetailViewController: UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        1
+        return self.cards.count
     }
     
-    func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(FriendCardEmptyCollectionViewCell.self, for: indexPath)
-        else { return .init() }
-        
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if cards.isEmpty {
+            return emptyCell(indexPath: indexPath)
+        } else {
+            return friendCardCell(indexPath: indexPath)
+        }
+    }
+    
+    private func friendCardCell(indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = self.friendCardCollectionView?.dequeueReusableCell(FriendCardCollectionViewCell.self, for: indexPath) else {
+            return UICollectionViewCell()
+        }
         return cell
     }
+    
+    private func emptyCell(indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = self.friendCardCollectionView?.dequeueReusableCell(FriendCardEmptyCollectionViewCell.self, for: indexPath) else {
+            return UICollectionViewCell()
+        }
+        return cell
+    }
+    
 }
-extension CardBookDetailViewController: UICollectionViewDelegate {
-}
+
+extension CardBookDetailViewController: UICollectionViewDelegate {}
+
 extension CardBookDetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
