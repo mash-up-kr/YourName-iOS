@@ -28,7 +28,7 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
     
     private let disposeBag = DisposeBag()
     
-    private var cards: [Card] = []
+    private var cellViewModels: [FriendCardCellViewModel] = []
     
     @IBOutlet private weak var backButton: UIButton?
     @IBOutlet private weak var moreButton: UIButton?
@@ -72,9 +72,9 @@ extension CardBookDetailViewController {
             })
             .disposed(by: self.disposeBag)
         
-        self.viewModel.cards.distinctUntilChanged()
-            .subscribe(onNext: { [weak self] cards in
-                self?.cards = cards
+        self.viewModel.cellViewModels.distinctUntilChanged()
+            .subscribe(onNext: { [weak self] cellViewModels in
+                self?.cellViewModels = cellViewModels
                 self?.friendCardCollectionView?.reloadData()
             })
             .disposed(by: self.disposeBag)
@@ -109,11 +109,11 @@ extension CardBookDetailViewController {
 extension CardBookDetailViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.cards.count
+        return self.cellViewModels.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if cards.isEmpty {
+        if self.cellViewModels.isEmpty {
             return emptyCell(indexPath: indexPath)
         } else {
             return friendCardCell(indexPath: indexPath)
@@ -124,6 +124,8 @@ extension CardBookDetailViewController: UICollectionViewDataSource {
         guard let cell = self.friendCardCollectionView?.dequeueReusableCell(FriendCardCollectionViewCell.self, for: indexPath) else {
             return UICollectionViewCell()
         }
+        guard let cellViewModel = self.cellViewModels[safe: indexPath.row] else { return cell }
+        cell.configure(with: cellViewModel)
         return cell
     }
     

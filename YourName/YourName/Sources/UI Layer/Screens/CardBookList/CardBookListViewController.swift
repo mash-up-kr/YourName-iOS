@@ -112,6 +112,7 @@ extension CardBookListViewController: UITableViewDataSource {
 extension CardBookListViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
         self.viewModel.selectCardBook(at: indexPath)
     }
 

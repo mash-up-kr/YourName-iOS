@@ -22,6 +22,7 @@ final class SettingViewController: ViewController, Storyboarded {
     private let disposeBag = DisposeBag()
     var viewModel: SettingViewModel!
     var aboutProductionTeamFactory: (() -> AboutProductionTeamViewController)!
+    var questViewControllerFactory: (() -> QuestViewController)!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,7 +103,7 @@ extension SettingViewController {
         switch next {
         case .onboardingQuest:
             // TODO: 수정필요
-            return .init()
+            return questViewControllerFactory()
         case .aboutProductionTeam:
             return aboutProductionTeamFactory()
         default:

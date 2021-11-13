@@ -150,6 +150,7 @@
 		CEA4D2EC270D34C3008189FE /* DisplayCharacterItemsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4D2EB270D34C3008189FE /* DisplayCharacterItemsViewModel.swift */; };
 		CEA4D2EE270D35A2008189FE /* DisplayCharacterItemsDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4D2ED270D35A2008189FE /* DisplayCharacterItemsDependencyContainer.swift */; };
 		CEAE3972274002F90010F8F0 /* CardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAE3971274002F90010F8F0 /* CardRepository.swift */; };
+		CEAE397527405D3C0010F8F0 /* CardBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAE397427405D3C0010F8F0 /* CardBook.swift */; };
 		CEB6582C26EB15A600C11F33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6582B26EB15A600C11F33 /* AppDelegate.swift */; };
 		CEB6583026EB15A600C11F33 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6582F26EB15A600C11F33 /* ViewController.swift */; };
 		CEB6583526EB15AC00C11F33 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEB6583426EB15AC00C11F33 /* Images.xcassets */; };
@@ -368,6 +369,7 @@
 		CEA4D2EB270D34C3008189FE /* DisplayCharacterItemsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayCharacterItemsViewModel.swift; sourceTree = "<group>"; };
 		CEA4D2ED270D35A2008189FE /* DisplayCharacterItemsDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayCharacterItemsDependencyContainer.swift; sourceTree = "<group>"; };
 		CEAE3971274002F90010F8F0 /* CardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRepository.swift; sourceTree = "<group>"; };
+		CEAE397427405D3C0010F8F0 /* CardBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBook.swift; sourceTree = "<group>"; };
 		CEB6582826EB15A600C11F33 /* MEETU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MEETU.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB6582B26EB15A600C11F33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEB6582F26EB15A600C11F33 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -497,6 +499,7 @@
 			isa = PBXGroup;
 			children = (
 				A2CC65852708F17A00610C49 /* CardBookRepository.swift */,
+				CEAE397427405D3C0010F8F0 /* CardBook.swift */,
 			);
 			path = CardBook;
 			sourceTree = "<group>";
@@ -1427,6 +1430,7 @@
 				CEB6588E26EC821300C11F33 /* Network.swift in Sources */,
 				CED16DF726F3A5540076565F /* SettingViewController.swift in Sources */,
 				CE6312CF26F9B82600B2E69B /* Card.swift in Sources */,
+				CEAE397527405D3C0010F8F0 /* CardBook.swift in Sources */,
 				CEB6583026EB15A600C11F33 /* ViewController.swift in Sources */,
 				CE63125726F5E2A100B2E69B /* FakeAccessTokenRepository.swift in Sources */,
 				CE6312A926F8CB2F00B2E69B /* SignedOutDependencyContainer.swift in Sources */,
