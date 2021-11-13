@@ -29,8 +29,8 @@
 		A2CC656C2708877E00610C49 /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CC656B2708877E00610C49 /* NibLoadable.swift */; };
 		A2CC656E27088E9C00610C49 /* MyCardListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CC656D27088E9C00610C49 /* MyCardListCollectionViewCell.swift */; };
 		A2CC657027088ED100610C49 /* MyCardListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2CC656F27088ED100610C49 /* MyCardListCollectionViewCell.xib */; };
-		A2CC65722708AAF900610C49 /* SkillLevelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2CC65712708AAF900610C49 /* SkillLevelView.xib */; };
-		A2CC65742708AB2C00610C49 /* SkillLevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CC65732708AB2C00610C49 /* SkillLevelView.swift */; };
+		A2CC65722708AAF900610C49 /* MySkillProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2CC65712708AAF900610C49 /* MySkillProgressView.xib */; };
+		A2CC65742708AB2C00610C49 /* MySkillProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CC65732708AB2C00610C49 /* MySkillProgressView.swift */; };
 		A2CC65772708DAD900610C49 /* FriendCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CC65752708DAD800610C49 /* FriendCardCollectionViewCell.swift */; };
 		A2CC65782708DAD900610C49 /* FriendCardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2CC65762708DAD800610C49 /* FriendCardCollectionViewCell.xib */; };
 		A2CC657A2708DAEA00610C49 /* FriendCardEmptyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CC65792708DAEA00610C49 /* FriendCardEmptyCollectionViewCell.swift */; };
@@ -246,8 +246,8 @@
 		A2CC656B2708877E00610C49 /* NibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
 		A2CC656D27088E9C00610C49 /* MyCardListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardListCollectionViewCell.swift; sourceTree = "<group>"; };
 		A2CC656F27088ED100610C49 /* MyCardListCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCardListCollectionViewCell.xib; sourceTree = "<group>"; };
-		A2CC65712708AAF900610C49 /* SkillLevelView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SkillLevelView.xib; sourceTree = "<group>"; };
-		A2CC65732708AB2C00610C49 /* SkillLevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillLevelView.swift; sourceTree = "<group>"; };
+		A2CC65712708AAF900610C49 /* MySkillProgressView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MySkillProgressView.xib; sourceTree = "<group>"; };
+		A2CC65732708AB2C00610C49 /* MySkillProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySkillProgressView.swift; sourceTree = "<group>"; };
 		A2CC65752708DAD800610C49 /* FriendCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCardCollectionViewCell.swift; sourceTree = "<group>"; };
 		A2CC65762708DAD800610C49 /* FriendCardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendCardCollectionViewCell.xib; sourceTree = "<group>"; };
 		A2CC65792708DAEA00610C49 /* FriendCardEmptyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCardEmptyCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -1096,15 +1096,15 @@
 				A2CC656D27088E9C00610C49 /* MyCardListCollectionViewCell.swift */,
 				A2CC656F27088ED100610C49 /* MyCardListCollectionViewCell.xib */,
 				CE6312BB26F9A04800B2E69B /* MyCardListDependencyContainer.swift */,
+				CED16DF826F3A55D0076565F /* MyCardListViewController.swift */,
 				A2CC65612707622D00610C49 /* MyCardListEmptyCollectionViewCell.swift */,
 				A2CC655D27075C8900610C49 /* MyCardListEmptyCollectionViewCell.xib */,
 				CE6BAB992704D6E30006D26B /* MyCardListViewController.storyboard */,
-				CED16DF826F3A55D0076565F /* MyCardListViewController.swift */,
 				CE6312BF26F9AB4A00B2E69B /* MyCardListViewModel.swift */,
 				A2CC656727082EAB00610C49 /* MyCardView.swift */,
 				A2CC65632708229C00610C49 /* MyCardView.xib */,
-				A2CC65732708AB2C00610C49 /* SkillLevelView.swift */,
-				A2CC65712708AAF900610C49 /* SkillLevelView.xib */,
+				A2CC65732708AB2C00610C49 /* MySkillProgressView.swift */,
+				A2CC65712708AAF900610C49 /* MySkillProgressView.xib */,
 			);
 			path = MyCardList;
 			sourceTree = "<group>";
@@ -1276,7 +1276,7 @@
 				CE2BB2C727074F4600936148 /* Colors.xcassets in Resources */,
 				CE6BABA02704D7BF0006D26B /* SplashViewController.storyboard in Resources */,
 				CE94ABA7270ED4B7005D2E80 /* TMIContentCollectionViewCell.xib in Resources */,
-				A2CC65722708AAF900610C49 /* SkillLevelView.xib in Resources */,
+				A2CC65722708AAF900610C49 /* MySkillProgressView.xib in Resources */,
 				CE4D4EB72708E9F400081A2B /* PaletteView.xib in Resources */,
 				CE6BAB9C2704D7170006D26B /* QuestViewController.storyboard in Resources */,
 				A29DA247271DCE4E00B1E647 /* AboutProductionTeamViewController.storyboard in Resources */,
@@ -1433,7 +1433,7 @@
 				CE4D4ECA27090D5200081A2B /* ColorSourceCollectionViewCell.swift in Sources */,
 				CEB6589126EC826300C11F33 /* Enviorment.swift in Sources */,
 				A2CC656E27088E9C00610C49 /* MyCardListCollectionViewCell.swift in Sources */,
-				A2CC65742708AB2C00610C49 /* SkillLevelView.swift in Sources */,
+				A2CC65742708AB2C00610C49 /* MySkillProgressView.swift in Sources */,
 				CE63123A26F59C7800B2E69B /* RootViewController.swift in Sources */,
 				CE6312AA26F8CB2F00B2E69B /* RootDependencyContainer.swift in Sources */,
 				A2B10127270AD44C00CAE013 /* ObservableType+.swift in Sources */,

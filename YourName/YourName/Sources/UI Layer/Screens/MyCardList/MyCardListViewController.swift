@@ -12,48 +12,72 @@ import UIKit
 
 final class MyCardListViewController: ViewController, Storyboarded {
     
-    var viewModel: MyCardListViewModel!
-    var cardDetailViewControllerFactory: ((String) -> CardDetailViewController)!
-    @IBOutlet private weak var userNameLabel: UILabel!
-    @IBOutlet private weak var myCardListCollectionview: UICollectionView!
-    @IBOutlet private weak var pageControl: UIPageControl!
-    var cardCreationViewControllerFactory: (() -> CardCreationViewController)!
-    lazy var collectionViewWidth = ( 312 * self.myCardListCollectionview.bounds.height ) / 512
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        myCardListCollectionview.decelerationRate = .fast
-        myCardListCollectionview.isPagingEnabled = false
-        let cellNib = UINib(nibName: "MyCardListCollectionViewCell", bundle: Bundle(path: "MyCardListCollectionViewCell"))
-        
-        myCardListCollectionview.register(cellNib, forCellWithReuseIdentifier: "MyCardListCollectionViewCell")
-        self.navigationController?.navigationBar.isHidden = true
-        
-        bind()
-        pageControl.numberOfPages = colors.count
-        pageControl.currentPage = 0 // viewModel에서 받아오게 수정필요
+    private enum Constant {
+        static let collectionViewSectionInset: CGFloat = 24
     }
     
-    private func bind() {
-        dispatch(to: viewModel)
-        render(viewModel)
+    // MARK: - UIComponents
+    
+    @IBOutlet private unowned var userNameLabel: UILabel!
+    @IBOutlet private unowned var myCardListCollectionView: UICollectionView!
+    @IBOutlet private unowned var pageControl: UIPageControl!
+    @IBOutlet private unowned var addCardButton: UIButton!
+    
+    // MARK: - Properties
+    
+    var cardCreationViewControllerFactory: (() -> CardCreationViewController)!
+    var cardDetailViewControllerFactory: ((String) -> CardDetailViewController)!
+    var viewModel: MyCardListViewModel!
+    private let disposeBag = DisposeBag()
+    private lazy var collectionViewWidth = ( 312 * self.myCardListCollectionView.bounds.height ) / 512
+    
+    /* Dummy */
+    private let dummyData = [Palette.lightGreen, Palette.orange, Palette.pink]
+    private let content = [
+        [MySkillProgressView.Item(title: "이게 너무 길면 어떻게보일지 테스트해볼까싶은데 과연", level: 3),
+         MySkillProgressView.Item(title: "인싸력", level: 10)],
+        [MySkillProgressView.Item(title: "드립력", level: 3),
+         MySkillProgressView.Item(title: "인싸력", level: 10),
+         MySkillProgressView.Item(title: "재력", level: 5)],
+        [MySkillProgressView.Item(title: "드립력", level: 2)]
+    ]
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+     
+        self.configure(colletionView: myCardListCollectionView)
+        self.dispatch(to: viewModel)
+    }
+}
+
+// MARK: - Methods
+extension MyCardListViewController {
+    
+    private func configure(colletionView: UICollectionView) {
+        colletionView.decelerationRate = .fast
+        colletionView.isPagingEnabled = false
+        colletionView.registerNib(MyCardListEmptyCollectionViewCell.self)
+        colletionView.registerNib(MyCardListCollectionViewCell.self)
     }
     
     private func dispatch(to viewModel: MyCardListViewModel) {
         viewModel.load()
         
-        self.rx.viewDidAppear.flatMapFirst { _ in self.viewModel.navigation}
-            .subscribe(onNext: { [weak self] action in
-                guard let self = self else { return }
-                self.navigate(action)
-            }).disposed(by: disposeBag)
+        self.rx.viewDidAppear.flatMapFirst { _ in self.viewModel.navigation }
+        .bind(onNext: { [weak self] action in
+            guard let self = self else { return }
+            self.navigate(action)
+        }).disposed(by: disposeBag)
         
-        addCardButton?.rx.tap
-            .subscribe(onNext: { [weak self] _ in self?.viewModel.tapCardCreation() })
+        self.addCardButton.rx.throttleTap
+            .bind(onNext: { [weak self] _ in
+                self?.viewModel.tapCardCreation()
+            })
             .disposed(by: disposeBag)
-    }
-    
-    private func render(_ viewModel: MyCardListViewModel) {
-         
+        
+        // TODO: ViewModel observe하는 방식으로 수정
+        self.pageControl.numberOfPages = content.count
+        self.pageControl.currentPage = 0
     }
     
     private func navigate(_ navigation: MyCardListNavigation) {
@@ -69,65 +93,81 @@ final class MyCardListViewController: ViewController, Storyboarded {
             return cardCreationViewControllerFactory()
         }
     }
-    
-    private let disposeBag = DisposeBag()
-    @IBOutlet private weak var addCardButton: UIButton?
-    
-    let colors = [Palette.lightGreen,
-                  Palette.vilolet,
-                  Palette.skyBlue,
-                  Palette.orange,
-                  Palette.pink,
-                  Palette.yellow]
 }
 
-// rxdatasource로 교체필요
+//MARK: - UICollectionViewDataSource
 extension MyCardListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        colors.count
+        content.count
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(MyCardListCollectionViewCell.self,
-                                                            for: indexPath) else { return .init() }
-        guard let myCardView = cell.contentView as? MyCardView else { return .init() }
-
-        myCardView.backgroundColor = colors[indexPath.row]
-        return cell
+        // TODO: API 연결 이후 enum타입으로 정의할 예정
+        if content.count == 1 {
+            guard let cell = collectionView.dequeueReusableCell(MyCardListEmptyCollectionViewCell.self,
+                                                                for: indexPath)
+            else { return .init() }
+            
+            let didSelect: (() -> Void) = { [weak self] in
+                self?.viewModel.tapCardCreation()
+            }
+            cell.didSelect = didSelect
+            return cell
+        } else {
+            guard let cell = collectionView.dequeueReusableCell(MyCardListCollectionViewCell.self,
+                                                                for: indexPath),
+                  let myCardView = cell.contentView as? MyCardView else { return .init() }
+            myCardView.configure(skills: content[indexPath.row])
+            myCardView.backgroundColor = dummyData[safe: indexPath.row]
+            return cell
+        }
     }
 }
+
+// MARK: - UICollectionViewDelegate
+
 extension MyCardListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: (312 * collectionView.bounds.height) / 512,
+
+        return CGSize(width: (312 * collectionView.bounds.height) / 512,
                height: collectionView.bounds.height)
     }
 }
+
+// MARK: - UICollectionViewDelegateFlowLayout
+
 extension MyCardListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
         
-        if colors.count == 1 {
+        if dummyData.count == 1 {
             let edges = UIScreen.main.bounds.width - collectionViewWidth
-            return UIEdgeInsets(top: 0, left: edges / 2, bottom: 0, right: edges / 2)
+            return UIEdgeInsets(top: 0,
+                                left: edges / 2,
+                                bottom: 0,
+                                right: edges / 2)
         } else {
-            return UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
+            return UIEdgeInsets(top: 0,
+                                left: Constant.collectionViewSectionInset,
+                                bottom: 0,
+                                right: Constant.collectionViewSectionInset)
         }
     }
-    
 }
+
 extension MyCardListViewController: UIScrollViewDelegate {
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView,
                                    withVelocity velocity: CGPoint,
                                    targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-
-        guard let layout = myCardListCollectionview.collectionViewLayout as? UICollectionViewFlowLayout else { return }
-
+        
+        guard let layout = myCardListCollectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
+        
         // cell width + item사이거리
         let cellWidthIncludingSpacing = collectionViewWidth + layout.minimumInteritemSpacing
         

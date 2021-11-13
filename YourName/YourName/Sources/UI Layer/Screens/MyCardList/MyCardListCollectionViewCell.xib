@@ -18,6 +18,11 @@
                 <autoresizingMask key="autoresizingMask"/>
             </collectionViewCellContentView>
             <size key="customSize" width="603" height="957"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                    <real key="value" value="12"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
             <point key="canvasLocation" x="-502.17391304347831" y="156.36160714285714"/>
         </collectionViewCell>
     </objects>
