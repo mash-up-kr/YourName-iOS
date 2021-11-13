@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RxSwift
 import RxRelay
 
 enum CardBookDetailDestination: Equatable {
@@ -20,12 +21,20 @@ final class CardBookDetailViewModel {
     let navigation = PublishRelay<CardBookDetailNavigation>()
     let shouldClose = PublishRelay<Void>()
     
-    init(cardRepository: CardRepository) {
+    init(
+        cardBookID: String,
+        cardRepository: CardRepository
+    ) {
+        self.cardBookID = cardBookID
         self.cardRepository = cardRepository
     }
-
+    
     func didLoad() {
-        
+        cardRepository.fetchCards(cardBookID: self.cardBookID)
+            .subscribe(onNext: { [weak self] cards in
+                self?.cards.accept(cards)
+            })
+            .disposed(by: self.disposeBag)
     }
     
     func tapMore() {
@@ -36,5 +45,8 @@ final class CardBookDetailViewModel {
         shouldClose.accept(Void())
     }
     
+    private let disposeBag = DisposeBag()
+    
+    private let cardBookID: String
     private let cardRepository: CardRepository
 }

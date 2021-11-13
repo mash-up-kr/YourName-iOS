@@ -8,10 +8,9 @@
 import UIKit
 import RxSwift
 import RxCocoa
-
+ 
 final class CardBookDetailViewController: ViewController, Storyboarded {
    
-
     private enum Constant {
         static let collectionViewSectionInset = 24
         static let collectionViewCellSpacing = 19
@@ -34,7 +33,7 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
     @IBOutlet private weak var backButton: UIButton?
     @IBOutlet private weak var moreButton: UIButton?
     @IBOutlet private weak var cardBookTitleLabel: UILabel?
-    @IBOutlet private weak var cardBookCollectionView: UICollectionView?
+    @IBOutlet private weak var friendCardCollectionView: UICollectionView?
 }
 extension CardBookDetailViewController {
     
@@ -44,6 +43,8 @@ extension CardBookDetailViewController {
     }
     
     private func dispatch(to viewModel: CardBookDetailViewModel) {
+        self.viewModel.didLoad()
+        
         self.rx.viewDidAppear
             .flatMapFirst { _ in self.viewModel.navigation }
             .subscribe(onNext: { [weak self] action in
@@ -74,6 +75,7 @@ extension CardBookDetailViewController {
         self.viewModel.cards.distinctUntilChanged()
             .subscribe(onNext: { [weak self] cards in
                 self?.cards = cards
+                self?.friendCardCollectionView?.reloadData()
             })
             .disposed(by: self.disposeBag)
         
@@ -96,27 +98,46 @@ extension CardBookDetailViewController {
     }
     
     private func configureCollectionView() {
-        cardBookCollectionView?.registerNib(FriendCardCollectionViewCell.self)
-        cardBookCollectionView?.registerNib(FriendCardEmptyCollectionViewCell.self)
+        friendCardCollectionView?.registerNib(FriendCardCollectionViewCell.self)
+        friendCardCollectionView?.registerNib(FriendCardEmptyCollectionViewCell.self)
+        friendCardCollectionView?.dataSource = self
+        friendCardCollectionView?.delegate = self
     }
 }
 
 // TODO: rx datasource로 추후 교체예정
 extension CardBookDetailViewController: UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return self.cards.count
     }
     
-    func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(FriendCardEmptyCollectionViewCell.self, for: indexPath)
-        else { return .init() }
-        
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if cards.isEmpty {
+            return emptyCell(indexPath: indexPath)
+        } else {
+            return friendCardCell(indexPath: indexPath)
+        }
+    }
+    
+    private func friendCardCell(indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = self.friendCardCollectionView?.dequeueReusableCell(FriendCardCollectionViewCell.self, for: indexPath) else {
+            return UICollectionViewCell()
+        }
         return cell
     }
+    
+    private func emptyCell(indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = self.friendCardCollectionView?.dequeueReusableCell(FriendCardEmptyCollectionViewCell.self, for: indexPath) else {
+            return UICollectionViewCell()
+        }
+        return cell
+    }
+    
 }
-extension CardBookDetailViewController: UICollectionViewDelegate {
-}
+
+extension CardBookDetailViewController: UICollectionViewDelegate {}
+
 extension CardBookDetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,

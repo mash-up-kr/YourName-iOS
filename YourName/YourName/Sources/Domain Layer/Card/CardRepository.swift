@@ -20,6 +20,6 @@ final class CardRepositoryImpl: CardRepository {
 
 final class MockCardRepository: CardRepository {
     func fetchCards(cardBookID: String) -> Observable<[Card]> {
-        .empty()
+        .just(Card.dummyList)
     }
 }

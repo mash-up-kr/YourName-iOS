@@ -16,13 +16,13 @@ final class CardBookDetailDependencyContainer {
     
     func createCardBookDetailViewController(cardBookID: String) -> UIViewController {
         let viewController = CardBookDetailViewController.instantiate()
-        let viewModel = createCardBookDetailViewModel()
+        let viewModel = createCardBookDetailViewModel(cardBookID: cardBookID)
         viewController.viewModel = viewModel
         return viewController
     }
     
-    private func createCardBookDetailViewModel() -> CardBookDetailViewModel {
+    private func createCardBookDetailViewModel(cardBookID: String) -> CardBookDetailViewModel {
         let cardRepository = MockCardRepository()
-        return CardBookDetailViewModel(cardRepository: cardRepository)
+        return CardBookDetailViewModel(cardBookID: cardBookID, cardRepository: cardRepository)
     }
 }

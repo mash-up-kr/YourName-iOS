@@ -54,7 +54,7 @@ final class CardBookListViewController: UIViewController, Storyboarded {
                 self?.cardBookTableView?.reloadData()
             }).disposed(by: self.disposeBag)
         
-        viewModel.navigation.distinctUntilChanged()
+        viewModel.navigation
             .subscribe(onNext: { [weak self] navigation in
                 self?.navigate(navigation)
             })

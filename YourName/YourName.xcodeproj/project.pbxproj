@@ -776,12 +776,19 @@
 			path = DisplayCharacterItems;
 			sourceTree = "<group>";
 		};
-		CEAE3970274002E30010F8F0 /* aR */ = {
+		CEAE3970274002E30010F8F0 /* Card */ = {
 			isa = PBXGroup;
 			children = (
 				CEAE3971274002F90010F8F0 /* CardRepository.swift */,
 			);
-			path = aR;
+			path = Card;
+			sourceTree = "<group>";
+		};
+		CEAE3973274005870010F8F0 /* CardDetailMore */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CardDetailMore;
 			sourceTree = "<group>";
 		};
 		CEB6581F26EB15A600C11F33 = {
@@ -907,7 +914,7 @@
 		CEB6586426EB2BC100C11F33 /* Domain Layer */ = {
 			isa = PBXGroup;
 			children = (
-				CEAE3970274002E30010F8F0 /* aR */,
+				CEAE3970274002E30010F8F0 /* Card */,
 				CEB6586D26EB2C8800C11F33 /* Auth */,
 				A2CC65842708F16E00610C49 /* CardBook */,
 				CE4D4E732707A70000081A2B /* Character */,
@@ -935,6 +942,7 @@
 		CEB6586926EB2C5F00C11F33 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				CEAE3973274005870010F8F0 /* CardDetailMore */,
 				A2CC657D2708E90400610C49 /* AddFriendCard */,
 				CEB8408C272AED90000E527B /* CardBookList */,
 				CED16DED26F3A4F70076565F /* CardBookDetail */,

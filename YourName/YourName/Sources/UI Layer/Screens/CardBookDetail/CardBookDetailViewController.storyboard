@@ -99,8 +99,8 @@
                     </view>
                     <connections>
                         <outlet property="backButton" destination="For-5t-EE5" id="Veh-4a-YDF"/>
-                        <outlet property="cardBookCollectionView" destination="tuy-nF-s5N" id="UbL-1U-dHY"/>
                         <outlet property="cardBookTitleLabel" destination="a2W-3m-JUJ" id="fEZ-pa-grd"/>
+                        <outlet property="friendCardCollectionView" destination="tuy-nF-s5N" id="UbL-1U-dHY"/>
                         <outlet property="moreButton" destination="aQ1-Vj-3yS" id="oM0-1i-132"/>
                     </connections>
                 </viewController>
