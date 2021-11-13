@@ -27,6 +27,7 @@ extension NibLoadable where Self: UIView {
 }
 
 class NibLoadableView: UIView, NibLoadable {
+    lazy var contentView = self.subviews.first ?? UIView()
     override var backgroundColor: UIColor? {
         get { self.subviews.first?.backgroundColor }
         set { self.subviews.first?.backgroundColor = newValue }

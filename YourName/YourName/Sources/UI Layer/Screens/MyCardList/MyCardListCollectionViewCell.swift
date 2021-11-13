@@ -8,8 +8,12 @@
 import UIKit
 
 final class MyCardListCollectionViewCell: UICollectionViewCell {
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        guard let myCard = self.contentView as? CardFrontView else { return }
+        myCard.userNameLabel = nil
+        myCard.userProfileImage = nil
+        myCard.userRoleLabel = nil
     }
 }

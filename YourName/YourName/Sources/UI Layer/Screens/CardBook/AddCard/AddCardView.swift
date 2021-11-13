@@ -9,7 +9,6 @@ import UIKit
 import RxSwift
 import RxCocoa
 import SnapKit
-import RxGesture
 
 typealias AddCardViewController = PageSheetController<AddCardView>
 
@@ -29,7 +28,13 @@ final class AddCardView: UIView, NibLoadable {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupFromNib()
-        configureEmptyResultView()
+        self.searchResultEmptyView.snp.makeConstraints {
+            let deviceHeight = UIScreen.main.bounds.height
+            let topSpacing = 44
+            let topContentHeight = 132
+            $0.height.equalTo(Int(deviceHeight) - topSpacing - topContentHeight)
+        }
+        searchResultEmptyView.isHidden = true
         
         bind()
     }
@@ -47,31 +52,7 @@ extension AddCardView: PageSheetContentView {
 
 extension AddCardView {
     
-    private func configureEmptyResultView() {
-        self.searchResultEmptyView.snp.makeConstraints {
-            let deviceHeight = UIScreen.main.bounds.height
-            let topSpacing = 44
-            let topContentHeight = 132
-            $0.height.equalTo(Int(deviceHeight) - topSpacing - topContentHeight)
-        }
-        searchResultEmptyView.isHidden = true
-    }
-    
     private func bind() {
-        
-        Observable.merge(
-            searchTextField.rx.controlEvent([.editingDidEndOnExit])
-                .mapToVoid(),
-            searchResultEmptyView.rx.tapGesture()
-                .when(.recognized)
-                .mapToVoid()
-        )
-            .bind(onNext: { [weak self] _ in
-                self?.endEditing(true)
-            })
-            .disposed(by: disposeBag)
-        
-        
         searchButton.rx.throttleTap
             .bind(onNext: { [weak self] in
                 // TODO: 로직 수정 필요.
