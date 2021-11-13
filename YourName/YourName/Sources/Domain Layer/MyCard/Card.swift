@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Card {
+struct Card: Equatable {
     let id: String
 }
 #warning("⚠️ TODO: 개발완료 후, Test Target으로 옮겨야합니다") // Booung

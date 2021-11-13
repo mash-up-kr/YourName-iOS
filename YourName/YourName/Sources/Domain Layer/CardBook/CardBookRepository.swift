@@ -44,13 +44,14 @@ extension CardBook {
             title: "도감명1",
             count: 0,
             description: "설명은 딱 한줄만 설명 설명 설명 설명",
-            backgroundColor: "#323232"
+            backgroundColor: "#32FFFFF"
         ),
         CardBook(
             id: "2",
             title: "도감명2",
             count: 4,
-            description: "설명은 딱 한줄만 설명 설명 설명 설명", backgroundColor: nil
+            description: "설명은 딱 한줄만 설명 설명 설명 설명",
+            backgroundColor: nil
         ),
         CardBook(
             id: "3",

@@ -37,4 +37,5 @@ final class CardBookCoverTableViewCell: UITableViewCell {
     @IBOutlet private weak var titleLabel: UILabel?
     @IBOutlet private weak var cardCountLabel: UILabel?
     @IBOutlet private weak var descriptionLabel: UILabel?
+    
 }

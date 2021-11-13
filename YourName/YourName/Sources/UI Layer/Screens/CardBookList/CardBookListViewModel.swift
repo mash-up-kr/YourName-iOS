@@ -10,19 +10,18 @@ import RxRelay
 import RxSwift
 
 
-enum CardBookDestination: Equatable {
+enum CardBookListDestination: Equatable {
     case addFriend
     case addCardBook
     case cardBookDetail(cardBookID: String)
 }
 
-typealias CardBookNavigation = Navigation<CardBookDestination>
+typealias CardBookListNavigation = Navigation<CardBookListDestination>
 
 
-final class CardBookViewModel {
+final class CardBookListViewModel {
     
-    let navigation = PublishRelay<CardBookNavigation>()
-    
+    let navigation = PublishRelay<CardBookListNavigation>()
     let cardBooks = BehaviorRelay<[CardBook]>(value: [])
     
     init(cardBookRepository: CardBookRepository) {

@@ -15,9 +15,13 @@ enum CardBookSection: Int, CaseIterable {
     case empty
 }
 
-final class CardBookViewController: UIViewController, Storyboarded {
+final class CardBookListViewController: UIViewController, Storyboarded {
 
-    var viewModel: CardBookViewModel!
+    var viewModel: CardBookListViewModel!
+    
+    var addFriendFactory: (() -> UIViewController)!
+    var addCardBookFactory: (() -> UIViewController)!
+    var cardBookDetailFactory: ((String) -> UIViewController)!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,12 +30,12 @@ final class CardBookViewController: UIViewController, Storyboarded {
         bind(to: viewModel)
     }
     
-    private func bind(to viewModel: CardBookViewModel) {
+    private func bind(to viewModel: CardBookListViewModel) {
         dispatch(to: viewModel)
         render(viewModel)
     }
     
-    private func dispatch(to viewModel: CardBookViewModel) {
+    private func dispatch(to viewModel: CardBookListViewModel) {
         self.viewModel.didLoad()
         
         self.addFriendButton?.rx.tap.subscribe(onNext: { [weak self] in
@@ -43,11 +47,36 @@ final class CardBookViewController: UIViewController, Storyboarded {
         }).disposed(by: self.disposeBag)
     }
     
-    private func render(_ viewModel: CardBookViewModel) {
-        viewModel.cardBooks.distinctUntilChanged().subscribe(onNext: { [weak self] cardBooks in
-            self?.cardBooks = cardBooks
-            self?.cardBookTableView?.reloadData()
-        }).disposed(by: self.disposeBag)
+    private func render(_ viewModel: CardBookListViewModel) {
+        viewModel.cardBooks.distinctUntilChanged()
+            .subscribe(onNext: { [weak self] cardBooks in
+                self?.cardBooks = cardBooks
+                self?.cardBookTableView?.reloadData()
+            }).disposed(by: self.disposeBag)
+        
+        viewModel.navigation.distinctUntilChanged()
+            .subscribe(onNext: { [weak self] navigation in
+                self?.navigate(navigation)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func navigate(_ navigation: CardBookListNavigation) {
+        let viewController = createViewController(navigation.destination)
+        navigate(viewController, action: navigation.action)
+    }
+    
+    private func createViewController(_ next: CardBookListDestination) -> UIViewController {
+        switch next {
+        case .addFriend:
+            return self.addFriendFactory()
+            
+        case .addCardBook:
+            return self.addCardBookFactory()
+            
+        case .cardBookDetail(let cardBookID):
+            return self.cardBookDetailFactory(cardBookID)
+        }
     }
     
     private func setupUI() {
@@ -65,7 +94,7 @@ final class CardBookViewController: UIViewController, Storyboarded {
     
 }
 
-extension CardBookViewController: UITableViewDataSource {
+extension CardBookListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cardBooks.count
@@ -80,7 +109,7 @@ extension CardBookViewController: UITableViewDataSource {
     }
 }
 
-extension CardBookViewController: UITableViewDelegate {
+extension CardBookListViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.viewModel.selectCardBook(at: indexPath)

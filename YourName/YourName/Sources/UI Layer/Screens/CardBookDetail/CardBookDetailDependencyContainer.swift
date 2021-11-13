@@ -10,22 +10,14 @@ import UIKit
 
 final class CardBookDetailDependencyContainer {
     
-    init(signedInDependencyContainer: SignedInDependencyContainer) {
+    init(cardBookListDependencyContainer: CardBookListDependencyContainer) {
         
     }
     
-    func createCardBookViewController() -> UIViewController {
+    func createCardBookDetailViewController(cardBookID: String) -> UIViewController {
         let viewController = CardBookDetailViewController.instantiate()
         let viewModel = createCardBookDetailViewModel()
-        let addCardViewControllerFactory: () -> AddFriendCardViewController = {
-            let viewModel = AddFriendCardViewModel()
-            let contentView = AddFriendCardView()
-            contentView.viewModel = viewModel
-            let viewController = PageSheetController(contentView: contentView)
-            return viewController
-        }
         viewController.viewModel = viewModel
-        viewController.addFriendCardViewControllerFactory = addCardViewControllerFactory
         return viewController
     }
     
