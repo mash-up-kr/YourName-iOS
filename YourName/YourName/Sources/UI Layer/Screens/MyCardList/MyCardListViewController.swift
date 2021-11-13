@@ -54,6 +54,7 @@ final class MyCardListViewController: ViewController, Storyboarded {
         
         self.configure(colletionView: myCardListCollectionView)
         self.dispatch(to: viewModel)
+        self.navigationController?.navigationBar.isHidden = true
     }
 }
 
