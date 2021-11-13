@@ -18,6 +18,7 @@ final class SelectCardBookViewController: ViewController, Storyboarded {
     
     private let disposeBag = DisposeBag()
     var viewModel: SelectCardBookViewModel!
+    private let checkedIndex = BehaviorRelay<[IndexPath]>(value: [])
     
     override var hidesBottomBarWhenPushed: Bool {
         get { self.navigationController?.topViewController == self }
@@ -28,6 +29,7 @@ final class SelectCardBookViewController: ViewController, Storyboarded {
         super.viewDidLoad()
         self.bind()
         self.configureUI()
+        self.render(viewModel)
     }
 }
 
@@ -49,6 +51,18 @@ extension SelectCardBookViewController {
     private func configureUI() {
         self.cardBookCollectionView.registerNib(SelectCardBookCollectionViewCell.self)
     }
+    private func render(_ viewModel: SelectCardBookViewModel) {
+        viewModel.isEnabledCompleteButton
+            .bind(onNext: { [weak self] isEnabled in
+                self?.completeButton.isEnabled = isEnabled
+                if isEnabled {
+                    self?.completeButton.backgroundColor = Palette.black1
+                } else {
+                    self?.completeButton.backgroundColor = Palette.gray1
+                }
+            })
+            .disposed(by: disposeBag)
+    }
 }
 
 // MARK: - UICollectionViewDataSource
@@ -64,7 +78,10 @@ extension SelectCardBookViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(SelectCardBookCollectionViewCell.self, for: indexPath) else { return .init() }
         
         guard let item = self.viewModel.cellForItem(at: indexPath) else { return .init() }
-        cell.bind(item: item)
+        cell.configure(item: item)
+        cell.checkboxDidTap = { [weak self] in
+            self?.viewModel.didSelectCardBook(at: indexPath)
+        }
         return cell
     }
 }
@@ -72,7 +89,6 @@ extension SelectCardBookViewController: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 
 extension SelectCardBookViewController: UICollectionViewDelegate {
-    
 }
 
 extension SelectCardBookViewController: UICollectionViewDelegateFlowLayout {

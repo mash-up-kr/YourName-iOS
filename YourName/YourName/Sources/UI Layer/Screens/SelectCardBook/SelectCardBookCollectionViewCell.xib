@@ -32,10 +32,19 @@
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jj3-9R-7fc">
                         <rect key="frame" x="474" y="28.5" width="20" height="20"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_check_origin" translatesAutoresizingMaskIntoConstraints="NO" id="GeE-PG-AMd">
+                                <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="GeE-PG-AMd" secondAttribute="bottom" id="AFA-Lr-1uf"/>
+                            <constraint firstItem="GeE-PG-AMd" firstAttribute="leading" secondItem="Jj3-9R-7fc" secondAttribute="leading" id="J40-Le-gH7"/>
                             <constraint firstAttribute="height" constant="20" id="K0z-2n-94S"/>
+                            <constraint firstAttribute="trailing" secondItem="GeE-PG-AMd" secondAttribute="trailing" id="PeL-Hb-ouM"/>
                             <constraint firstAttribute="width" constant="20" id="Q7n-6a-mcY"/>
+                            <constraint firstItem="GeE-PG-AMd" firstAttribute="top" secondItem="Jj3-9R-7fc" secondAttribute="top" id="Uhj-P2-cQ9"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -94,12 +103,13 @@
                 <outlet property="cardBookCount" destination="IDc-d6-lnb" id="kLe-JX-qZy"/>
                 <outlet property="cardBookName" destination="WaI-CQ-4MQ" id="QJP-9O-jRq"/>
                 <outlet property="cardbookIconView" destination="oJF-EP-0V9" id="7ra-Uf-cVa"/>
-                <outlet property="checkView" destination="Jj3-9R-7fc" id="clb-Xb-b5w"/>
+                <outlet property="checkbox" destination="Jj3-9R-7fc" id="clb-Xb-b5w"/>
             </connections>
             <point key="canvasLocation" x="294.20289855072468" y="69.977678571428569"/>
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="ic_check_origin" width="28" height="28"/>
         <image name="meetu_cardbook" width="21" height="25"/>
         <namedColor name="black1">
             <color red="0.082352941176470587" green="0.082352941176470587" blue="0.082352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
