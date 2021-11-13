@@ -30,7 +30,7 @@ final class CardBookDetailDependencyContainer {
     }
     
     private func createCardBookDetailViewModel() -> CardBookDetailViewModel {
-        let cardBookRepository = CardBookRepository()
+        let cardBookRepository = MockCardBookRepository()
         return CardBookDetailViewModel(cardBookRepository: cardBookRepository)
     }
 }

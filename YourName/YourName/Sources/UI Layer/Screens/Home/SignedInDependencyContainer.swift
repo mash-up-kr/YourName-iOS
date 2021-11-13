@@ -38,7 +38,7 @@ final class SignedInDependencyContainer {
             let dependencyContainer = createMyCardListDependencyContainer()
             viewController = dependencyContainer.createMyCardListViewController()
         case .cardBook:
-            let dependencyContainer = createCardDependencyContainer()
+            let dependencyContainer = createCardBookDependencyContainer()
             viewController = dependencyContainer.createCardBookViewController()
         case .setting:
             let dependencyContainer = createSettingDependencyContainer()
@@ -52,12 +52,13 @@ final class SignedInDependencyContainer {
     private func createMyCardListDependencyContainer() -> MyCardListDependencyContainer {
         return MyCardListDependencyContainer(signedInDependencyContainer: self)
     }
-    private func createSettingDependencyContainer() -> SettingDependencyContainer {
-        return SettingDependencyContainer(signedInDependencyContainer: self)
+    
+    private func createCardBookDependencyContainer() -> CardBookDependencyContainer {
+        return CardBookDependencyContainer(signedInDependencyContainer: self)
     }
     
-    private func createCardDependencyContainer() -> CardBookDetailDependencyContainer {
-        return CardBookDetailDependencyContainer(signedInDependencyContainer: self)
+    private func createSettingDependencyContainer() -> SettingDependencyContainer {
+        return SettingDependencyContainer(signedInDependencyContainer: self)
     }
     
     private func createCreateViewController() -> UIViewController {

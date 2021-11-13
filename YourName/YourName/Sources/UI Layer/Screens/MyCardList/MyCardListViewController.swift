@@ -53,7 +53,7 @@ final class MyCardListViewController: ViewController, Storyboarded {
     }
     
     private func render(_ viewModel: MyCardListViewModel) {
-        
+         
     }
     
     private func navigate(_ navigation: MyCardListNavigation) {
