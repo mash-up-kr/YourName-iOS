@@ -5,7 +5,7 @@
 //  Created by seori on 2021/11/13.
 //
 
-import Foundation
+import UIKit
 import RxSwift
 import RxRelay
 
@@ -21,6 +21,7 @@ final class SelectCardBookViewModel {
     
     private var selectedIndex: [IndexPath] = []
     let isEnabledCompleteButton = BehaviorRelay<Bool>(value: false)
+    let toastView = PublishRelay<ToastView>()
     var items: [SelectCardBookCollectionViewCell.Item] = [.init(name: "도감명", count: 24, backgroundColor: Palette.pink),
                                                           .init(name: "도감명", count: 24, backgroundColor: Palette.pink),
                                                           .init(name: "도감명", count: 24, backgroundColor: Palette.pink),.init(name: "도감명", count: 24, backgroundColor: Palette.pink)
@@ -53,5 +54,9 @@ final class SelectCardBookViewModel {
         } else {
             self.isEnabledCompleteButton.accept(true)
         }
+    }
+    func didTapCompleteButton() {
+        let toastView = ToastView(text: "성공적으로 추가됐츄!")
+        self.toastView.accept(toastView)
     }
 }
