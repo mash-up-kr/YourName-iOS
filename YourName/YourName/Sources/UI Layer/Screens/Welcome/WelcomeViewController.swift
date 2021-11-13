@@ -28,6 +28,7 @@ final class WelcomeViewController: ViewController, Storyboarded {
         ).subscribe(onNext: { [weak self] provider in
             self?.viewModel.signIn(with: provider)
         }).disposed(by: disposeBag)
+      
     }
     
     
