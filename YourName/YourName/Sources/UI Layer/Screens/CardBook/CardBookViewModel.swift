@@ -47,7 +47,9 @@ final class CardBookViewModel {
     
     func selectCardBook(at indexPath: IndexPath) {
         guard let selectedCardBook = self.cardBooks.value[safe: indexPath.row] else { return }
-        navigation.accept(.push(.cardBookDetail(cardBookID: selectedCardBook.id)))
+        guard let cardBookID = selectedCardBook.id else{ return }
+        
+        navigation.accept(.push(.cardBookDetail(cardBookID: cardBookID)))
     }
     
     private func transform() {

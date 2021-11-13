@@ -124,6 +124,7 @@
 		CE74D356270A8B1200BF36C9 /* CharacterSettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE74D355270A8B1200BF36C9 /* CharacterSettingView.xib */; };
 		CE74D358270A8B3200BF36C9 /* CharacterSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74D357270A8B3200BF36C9 /* CharacterSettingView.swift */; };
 		CE8500F9273FA5C3002341DC /* UIScrollView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8500F8273FA5C3002341DC /* UIScrollView+Rx.swift */; };
+		CE8500FB273FAE41002341DC /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8500FA273FAE41002341DC /* UIColor+.swift */; };
 		CE8ECC0B270A635C00E5B038 /* SkillInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8ECC0A270A635C00E5B038 /* SkillInputView.swift */; };
 		CE8ECC0D270A63D900E5B038 /* SkillInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8ECC0C270A63D900E5B038 /* SkillInputView.xib */; };
 		CE94AB97270ECB8E005D2E80 /* StrongPointRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94AB96270ECB8E005D2E80 /* StrongPointRepository.swift */; };
@@ -340,6 +341,7 @@
 		CE74D355270A8B1200BF36C9 /* CharacterSettingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterSettingView.xib; sourceTree = "<group>"; };
 		CE74D357270A8B3200BF36C9 /* CharacterSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSettingView.swift; sourceTree = "<group>"; };
 		CE8500F8273FA5C3002341DC /* UIScrollView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Rx.swift"; sourceTree = "<group>"; };
+		CE8500FA273FAE41002341DC /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		CE8ECC0A270A635C00E5B038 /* SkillInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillInputView.swift; sourceTree = "<group>"; };
 		CE8ECC0C270A63D900E5B038 /* SkillInputView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SkillInputView.xib; sourceTree = "<group>"; };
 		CE94AB96270ECB8E005D2E80 /* StrongPointRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrongPointRepository.swift; sourceTree = "<group>"; };
@@ -1139,6 +1141,7 @@
 				CEB6582F26EB15A600C11F33 /* ViewController.swift */,
 				CEB6589A26EC987800C11F33 /* Rx */,
 				CE4D4EE2270A1AF800081A2B /* Optional+.swift */,
+				CE8500FA273FAE41002341DC /* UIColor+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1444,6 +1447,7 @@
 				CE94AB99270ECC32005D2E80 /* StrongPoint.swift in Sources */,
 				CEA4D2EE270D35A2008189FE /* DisplayCharacterItemsDependencyContainer.swift in Sources */,
 				CE94ABBA270F4114005D2E80 /* ColorSource.swift in Sources */,
+				CE8500FB273FAE41002341DC /* UIColor+.swift in Sources */,
 				CE63126026F6281800B2E69B /* SplashViewModel.swift in Sources */,
 				CE4D4E862707AE1700081A2B /* CharacterSettingViewModel.swift in Sources */,
 				CE4D4E8A2707AEDD00081A2B /* CharacterItem.swift in Sources */,

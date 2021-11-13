@@ -29,15 +29,35 @@ final class CardBookRepositoryImpl: CardBookRepository {
 }
 
 struct CardBook: Equatable {
-    let id: String
-    let title: String
-    let count: Int
-    let description: String
+    let id: String?
+    let title: String?
+    let count: Int?
+    let description: String?
+    let backgroundColor: String?
 }
 
 
 extension CardBook {
-    static let dummy = [CardBook(id: "1", title: "도감명1", count: 0, description: "설명은 딱 한줄만 설명 설명 설명 설명"),
-                        CardBook(id: "2", title: "도감명2", count: 4, description: "설명은 딱 한줄만 설명 설명 설명 설명"),
-                        CardBook(id: "3", title: "도감명3", count: 20, description: "설명은 딱 한줄만 설명 설명 설명 설명"),]
+    static let dummy = [
+        CardBook(
+            id: "1",
+            title: "도감명1",
+            count: 0,
+            description: "설명은 딱 한줄만 설명 설명 설명 설명",
+            backgroundColor: "#323232"
+        ),
+        CardBook(
+            id: "2",
+            title: "도감명2",
+            count: 4,
+            description: "설명은 딱 한줄만 설명 설명 설명 설명", backgroundColor: nil
+        ),
+        CardBook(
+            id: "3",
+            title: "도감명3",
+            count: 20,
+            description: "설명은 딱 한줄만 설명 설명 설명 설명",
+            backgroundColor: nil
+        )
+    ]
 }

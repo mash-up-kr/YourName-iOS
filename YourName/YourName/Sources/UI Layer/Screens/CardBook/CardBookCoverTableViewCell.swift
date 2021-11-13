@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 final class CardBookCoverTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
@@ -23,8 +22,15 @@ final class CardBookCoverTableViewCell: UITableViewCell {
 
     func configure(with cardBook: CardBook) {
         self.titleLabel?.text = cardBook.title
-        self.cardCountLabel?.text = "(\(cardBook.count))"
+        self.cardCountLabel?.text = "(\(cardBook.count ?? .zero))"
         self.descriptionLabel?.text = cardBook.description
+        if let hexString = cardBook.backgroundColor {
+            self.coverImageview?.backgroundColor = UIColor(hexString: hexString)
+            self.coverImageview?.image = UIImage(named: "card_book_logo")
+        } else {
+            self.coverImageview?.backgroundColor = .white
+            self.coverImageview?.image = UIImage(named: "card_book_cover_all")
+        }
     }
     
     @IBOutlet private weak var coverImageview: UIImageView?
