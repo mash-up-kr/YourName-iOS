@@ -10,27 +10,19 @@ import UIKit
 
 final class CardBookDetailDependencyContainer {
     
-    init(signedInDependencyContainer: SignedInDependencyContainer) {
+    init(cardBookListDependencyContainer: CardBookListDependencyContainer) {
         
     }
     
-    func createCardBookViewController() -> UIViewController {
+    func createCardBookDetailViewController(cardBookID: String) -> UIViewController {
         let viewController = CardBookDetailViewController.instantiate()
-        let viewModel = createCardBookDetailViewModel()
-        let addCardViewControllerFactory: () -> AddFriendCardViewController = {
-            let viewModel = AddFriendCardViewModel()
-            let contentView = AddFriendCardView()
-            contentView.viewModel = viewModel
-            let viewController = PageSheetController(contentView: contentView)
-            return viewController
-        }
+        let viewModel = createCardBookDetailViewModel(cardBookID: cardBookID)
         viewController.viewModel = viewModel
-        viewController.addFriendCardViewControllerFactory = addCardViewControllerFactory
         return viewController
     }
     
-    private func createCardBookDetailViewModel() -> CardBookDetailViewModel {
-        let cardBookRepository = CardBookRepository()
-        return CardBookDetailViewModel(cardBookRepository: cardBookRepository)
+    private func createCardBookDetailViewModel(cardBookID: String) -> CardBookDetailViewModel {
+        let cardRepository = MockCardRepository()
+        return CardBookDetailViewModel(cardBookID: cardBookID, cardRepository: cardRepository)
     }
 }

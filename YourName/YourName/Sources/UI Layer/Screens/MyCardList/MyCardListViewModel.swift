@@ -36,7 +36,8 @@ final class MyCardListViewModel {
     
     func tapCard(at index: Int) {
         guard let selectedCard = myCardList.value[safe: index] else { return }
-        navigation.accept(.push(.cardDetail(cardID: selectedCard.id)))
+        guard let selectedCardID = selectedCard.id else { return }
+        navigation.accept(.push(.cardDetail(cardID: selectedCardID)))
     }
     
     private let myCardList = BehaviorRelay<[Card]>(value: [])
