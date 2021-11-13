@@ -18,8 +18,13 @@ final class CardBookDetailViewModel {
     let cardBookTitle = PublishRelay<String>()
     let cards = BehaviorRelay<[Card]>(value: [])
     let navigation = PublishRelay<CardBookDetailNavigation>()
+    let shouldClose = PublishRelay<Void>()
     
-    init(cardBookRepository: CardBookRepository) {
+    init(cardRepository: CardRepository) {
+        self.cardRepository = cardRepository
+    }
+
+    func didLoad() {
         
     }
     
@@ -28,6 +33,8 @@ final class CardBookDetailViewModel {
     }
     
     func tapBack() {
-        
+        shouldClose.accept(Void())
     }
+    
+    private let cardRepository: CardRepository
 }

@@ -76,6 +76,12 @@ extension CardBookDetailViewController {
                 self?.cards = cards
             })
             .disposed(by: self.disposeBag)
+        
+        self.viewModel.shouldClose
+            .subscribe(onNext: { [weak self] in
+                self?.navigationController?.popViewController(animated: true)
+            })
+            .disposed(by: self.disposeBag)
     }
     
     private func navigate(_ navigation: CardBookDetailNavigation) {
