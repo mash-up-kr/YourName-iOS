@@ -23,68 +23,15 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dge-rB-wNx">
                                         <rect key="frame" x="16" y="15" width="151.5" height="38.5"/>
                                         <attributedString key="attributedText">
-                                            <fragment content="퀘스트를">
-                                                <attributes>
-                                                    <color key="NSColor" name="gray3"/>
-                                                    <font key="NSFont" size="16" name=".AppleSDGothicNeoI-Regular"/>
-                                                </attributes>
-                                            </fragment>
-                                            <fragment content=" ">
-                                                <attributes>
-                                                    <color key="NSColor" name="gray3"/>
-                                                    <font key="NSFont" metaFont="system" size="16"/>
-                                                </attributes>
-                                            </fragment>
-                                            <fragment content="클리어하고">
-                                                <attributes>
-                                                    <color key="NSColor" name="gray3"/>
-                                                    <font key="NSFont" size="16" name=".AppleSDGothicNeoI-Regular"/>
-                                                </attributes>
-                                            </fragment>
                                             <fragment>
-                                                <string key="content">,
+                                                <string key="content">퀘스트를 클리어하고,
 </string>
                                                 <attributes>
                                                     <color key="NSColor" name="gray3"/>
                                                     <font key="NSFont" metaFont="system" size="16"/>
                                                 </attributes>
                                             </fragment>
-                                            <fragment content="유니크">
-                                                <attributes>
-                                                    <color key="NSColor" name="gray3"/>
-                                                    <font key="NSFont" size="16" name=".AppleSDGothicNeoI-Regular"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                </attributes>
-                                            </fragment>
-                                            <fragment content=" ">
-                                                <attributes>
-                                                    <color key="NSColor" name="gray3"/>
-                                                    <font key="NSFont" metaFont="system" size="16"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                </attributes>
-                                            </fragment>
-                                            <fragment content="컬러를">
-                                                <attributes>
-                                                    <color key="NSColor" name="gray3"/>
-                                                    <font key="NSFont" size="16" name=".AppleSDGothicNeoI-Regular"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                </attributes>
-                                            </fragment>
-                                            <fragment content=" ">
-                                                <attributes>
-                                                    <color key="NSColor" name="gray3"/>
-                                                    <font key="NSFont" metaFont="system" size="16"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                </attributes>
-                                            </fragment>
-                                            <fragment content="획득하츄">
-                                                <attributes>
-                                                    <color key="NSColor" name="gray3"/>
-                                                    <font key="NSFont" size="16" name=".AppleSDGothicNeoI-Regular"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                </attributes>
-                                            </fragment>
-                                            <fragment content="!">
+                                            <fragment content="유니크 컬러를 획득하츄!">
                                                 <attributes>
                                                     <color key="NSColor" name="gray3"/>
                                                     <font key="NSFont" metaFont="system" size="16"/>
