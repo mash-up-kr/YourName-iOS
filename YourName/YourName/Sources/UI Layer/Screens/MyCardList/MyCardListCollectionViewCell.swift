@@ -11,7 +11,7 @@ final class MyCardListCollectionViewCell: UICollectionViewCell {
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        guard let myCard = self.contentView as? MyCardView else { return }
+        guard let myCard = self.contentView as? CardFrontView else { return }
         myCard.userNameLabel = nil
         myCard.userProfileImage = nil
         myCard.userRoleLabel = nil

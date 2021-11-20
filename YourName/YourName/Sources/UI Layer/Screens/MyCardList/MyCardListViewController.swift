@@ -33,20 +33,28 @@ final class MyCardListViewController: ViewController, Storyboarded {
     
     /* Dummy */
     private let dummyData = [Palette.lightGreen, Palette.orange, Palette.pink]
-    private let content = [
-        [MySkillProgressView.Item(title: "이게 너무 길면 어떻게보일지 테스트해볼까싶은데 과연", level: 3),
-         MySkillProgressView.Item(title: "인싸력", level: 10)],
-        [MySkillProgressView.Item(title: "드립력", level: 3),
-         MySkillProgressView.Item(title: "인싸력", level: 10),
-         MySkillProgressView.Item(title: "재력", level: 5)],
-        [MySkillProgressView.Item(title: "드립력", level: 2)]
+    private let content = [ CardFrontView.Item(image: "",
+                                            name: "서영부캐1",
+                                            role: "역할이 길면 짤려야합니다.짤려야한다고!!!",
+                                            skills: [.init(title: "인사력", level: 10),
+                                                     .init(title: "잠만보", level: 1)],
+                                            backgroundColor: Palette.vilolet),
+                            CardFrontView.Item(image: "",
+                                            name: "서영 본캐입니다.",
+                                            role: "역할",
+                                            skills: [
+                                                .init(title: "뭐하지", level: 3),
+                                                .init(title: "스킬은", level: 5)
+                                                ],
+                                            backgroundColor: Palette.yellow),
     ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-     
+        
         self.configure(colletionView: myCardListCollectionView)
         self.dispatch(to: viewModel)
+        self.navigationController?.navigationBar.isHidden = true
     }
 }
 
@@ -118,9 +126,8 @@ extension MyCardListViewController: UICollectionViewDataSource {
         } else {
             guard let cell = collectionView.dequeueReusableCell(MyCardListCollectionViewCell.self,
                                                                 for: indexPath),
-                  let myCardView = cell.contentView as? MyCardView else { return .init() }
-            myCardView.configure(skills: content[indexPath.row])
-            myCardView.backgroundColor = dummyData[safe: indexPath.row]
+                  let myCardView = cell.contentView as? CardFrontView else { return .init() }
+            myCardView.configure(item: content[indexPath.row])
             return cell
         }
     }
@@ -132,9 +139,9 @@ extension MyCardListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-
+        
         return CGSize(width: (312 * collectionView.bounds.height) / 512,
-               height: collectionView.bounds.height)
+                      height: collectionView.bounds.height)
     }
 }
 

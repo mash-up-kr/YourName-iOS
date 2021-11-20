@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Add Friend Card View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="AddFriendCardViewController" customModule="MEETU" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="REX-NW-Pwq">
+                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A3r-Vk-fGQ">
+                                        <rect key="frame" x="24" y="16" width="24" height="24"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="icon_back_black"/>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="친구 미츄 추가하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k7F-UV-Qr3">
+                                        <rect key="frame" x="140.5" y="17" width="133" height="22"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <color key="textColor" name="black1"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="A3r-Vk-fGQ" firstAttribute="centerY" secondItem="REX-NW-Pwq" secondAttribute="centerY" id="0Fy-MU-uDc"/>
+                                    <constraint firstItem="k7F-UV-Qr3" firstAttribute="centerX" secondItem="REX-NW-Pwq" secondAttribute="centerX" id="JOB-gK-9E1"/>
+                                    <constraint firstAttribute="height" constant="56" id="f0e-2I-4tO"/>
+                                    <constraint firstItem="k7F-UV-Qr3" firstAttribute="centerY" secondItem="REX-NW-Pwq" secondAttribute="centerY" id="nvu-Fh-v47"/>
+                                    <constraint firstItem="A3r-Vk-fGQ" firstAttribute="leading" secondItem="REX-NW-Pwq" secondAttribute="leading" constant="24" id="tA7-zx-sqJ"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gAf-tz-zag">
+                                <rect key="frame" x="336" y="112" width="54" height="48"/>
+                                <color key="backgroundColor" name="black1"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="nfU-oG-2eL"/>
+                                    <constraint firstAttribute="width" constant="54" id="ufN-Yk-aRJ"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="icon_search">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이미 추가된 친구 미츄입니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TUs-eg-zeS">
+                                <rect key="frame" x="24" y="166" width="138.5" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" name="red"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gxC-BM-4BK" customClass="AddFriendCardNoResultView" customModule="MEETU" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="180" width="414" height="716"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bvg-hL-8Uw" customClass="AddFriendCardResultView" customModule="MEETU" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="197" width="414" height="699"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="코드명을 입력하세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JGO-dx-r1T">
+                                <rect key="frame" x="24" y="112" width="296" height="48"/>
+                                <color key="backgroundColor" name="lightGray1"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="REX-NW-Pwq" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="0kz-KW-e9O"/>
+                            <constraint firstAttribute="trailing" secondItem="gxC-BM-4BK" secondAttribute="trailing" id="38G-XZ-j2K"/>
+                            <constraint firstItem="JGO-dx-r1T" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="24" id="3Ob-rb-Xcu"/>
+                            <constraint firstItem="gAf-tz-zag" firstAttribute="height" secondItem="JGO-dx-r1T" secondAttribute="height" id="9wB-5A-IAa"/>
+                            <constraint firstItem="TUs-eg-zeS" firstAttribute="leading" secondItem="JGO-dx-r1T" secondAttribute="leading" id="F31-5i-0jp"/>
+                            <constraint firstAttribute="bottom" secondItem="bvg-hL-8Uw" secondAttribute="bottom" id="K0j-Sf-80M"/>
+                            <constraint firstItem="REX-NW-Pwq" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="NJj-lx-PVA"/>
+                            <constraint firstItem="REX-NW-Pwq" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Oct-vl-ueO"/>
+                            <constraint firstItem="gxC-BM-4BK" firstAttribute="top" secondItem="JGO-dx-r1T" secondAttribute="bottom" constant="20" id="TGH-4P-awc"/>
+                            <constraint firstItem="gxC-BM-4BK" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="TvN-u3-9Xd"/>
+                            <constraint firstItem="JGO-dx-r1T" firstAttribute="top" secondItem="REX-NW-Pwq" secondAttribute="bottom" constant="12" id="Xtk-t8-zbd"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="gAf-tz-zag" secondAttribute="trailing" constant="24" id="YFn-ZC-htD"/>
+                            <constraint firstItem="gAf-tz-zag" firstAttribute="top" secondItem="REX-NW-Pwq" secondAttribute="bottom" constant="12" id="fE6-TB-iAG"/>
+                            <constraint firstItem="gAf-tz-zag" firstAttribute="leading" secondItem="JGO-dx-r1T" secondAttribute="trailing" constant="16" id="fYq-AF-8uT"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="bvg-hL-8Uw" secondAttribute="trailing" id="gsC-W0-fS6"/>
+                            <constraint firstItem="TUs-eg-zeS" firstAttribute="top" secondItem="JGO-dx-r1T" secondAttribute="bottom" constant="6" id="i0s-gG-7iw"/>
+                            <constraint firstAttribute="bottom" secondItem="gxC-BM-4BK" secondAttribute="bottom" id="lX6-Uq-BwG"/>
+                            <constraint firstItem="bvg-hL-8Uw" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="npj-GJ-MZR"/>
+                            <constraint firstItem="bvg-hL-8Uw" firstAttribute="top" secondItem="JGO-dx-r1T" secondAttribute="bottom" constant="37" id="tq3-Kk-hHh"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backButton" destination="A3r-Vk-fGQ" id="KKi-Fu-oDs"/>
+                        <outlet property="noResultView" destination="gxC-BM-4BK" id="BCR-wj-NNT"/>
+                        <outlet property="resultView" destination="bvg-hL-8Uw" id="ZwG-qj-Hr0"/>
+                        <outlet property="resultViewTopConstraints" destination="tq3-Kk-hHh" id="sw4-Kp-qaA"/>
+                        <outlet property="searchButton" destination="gAf-tz-zag" id="fSP-O7-1ia"/>
+                        <outlet property="searchTextField" destination="JGO-dx-r1T" id="DHw-an-vQR"/>
+                        <outlet property="validationLabel" destination="TUs-eg-zeS" id="4Uv-45-x37"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="60.869565217391312" y="85.714285714285708"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icon_back_black" width="24" height="24"/>
+        <image name="icon_search" width="24" height="24"/>
+        <namedColor name="black1">
+            <color red="0.082352941176470587" green="0.082352941176470587" blue="0.082352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="lightGray1">
+            <color red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="red">
+            <color red="0.92156862745098034" green="0.086274509803921567" blue="0.086274509803921567" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

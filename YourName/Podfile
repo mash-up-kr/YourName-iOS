@@ -13,6 +13,9 @@ target 'MEETU' do
   pod 'RxSwift','~>5.0'
   pod 'RxViewController','~>1.0'
 
+  # ❗️ Toast
+  pod 'Toast-Swift'
+
   # 🖼 Image Cache
   pod 'Kingfisher'
 
