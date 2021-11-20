@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -78,6 +78,11 @@
                                                                 <constraint firstAttribute="height" constant="64" id="PDw-qN-4Ri"/>
                                                                 <constraint firstAttribute="width" constant="64" id="cEO-Mz-V3q"/>
                                                             </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <real key="value" value="12"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
                                                         </imageView>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="p1I-yl-Yac">
                                                             <rect key="frame" x="346" y="33" width="8" height="16"/>
@@ -85,6 +90,11 @@
                                                                 <constraint firstAttribute="width" constant="8" id="9xL-3a-wq7"/>
                                                                 <constraint firstAttribute="height" constant="16" id="b4W-4G-Aio"/>
                                                             </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <real key="value" value="12"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
                                                         </imageView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QoO-7r-uhu">
                                                             <rect key="frame" x="102" y="17.5" width="200.5" height="47"/>
@@ -140,16 +150,16 @@
                                                             <real key="value" value="12"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                                            <real key="value" value="12"/>
+                                                            <real key="value" value="4"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                                            <size key="value" width="4" height="4"/>
+                                                            <size key="value" width="0.0" height="0.0"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                                            <real key="value" value="0.0"/>
+                                                            <real key="value" value="0.20000000000000001"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                                            <color key="value" name="gray1"/>
+                                                            <color key="value" name="gray2"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
@@ -161,7 +171,6 @@
                                                 <constraint firstAttribute="trailing" secondItem="0Oe-aZ-SGk" secondAttribute="trailing" constant="18" id="unq-kx-Hdt"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" name="yellow2"/>
                                         <connections>
                                             <outlet property="cardCountLabel" destination="n9Y-r5-khC" id="g6e-HD-l7o"/>
                                             <outlet property="coverImageview" destination="TyB-X5-fgO" id="rV4-TL-bfn"/>
@@ -179,13 +188,18 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h9O-0J-2X1">
                                                     <rect key="frame" x="18" y="8" width="378" height="82"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="card_book_logo" translatesAutoresizingMaskIntoConstraints="NO" id="wRQ-Us-Y4b">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ghost_cover" translatesAutoresizingMaskIntoConstraints="NO" id="wRQ-Us-Y4b">
                                                             <rect key="frame" x="18" y="9" width="64" height="64"/>
                                                             <color key="backgroundColor" name="gray3"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="64" id="K4n-Dm-RzA"/>
                                                                 <constraint firstAttribute="height" constant="64" id="cuZ-ix-nVJ"/>
                                                             </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <real key="value" value="12"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
                                                         </imageView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p6f-eZ-GRV">
                                                             <rect key="frame" x="102" y="17.5" width="206.5" height="47"/>
@@ -241,7 +255,6 @@
                                                 <constraint firstItem="h9O-0J-2X1" firstAttribute="top" secondItem="qL4-ou-AMs" secondAttribute="top" constant="8" id="rTB-oz-pgn"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" name="vilolet"/>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -272,25 +285,16 @@
     <resources>
         <image name="add" width="20" height="20"/>
         <image name="card_book_cover_all" width="64" height="64"/>
-        <image name="card_book_logo" width="32" height="38"/>
+        <image name="ghost_cover" width="64" height="64"/>
         <image name="icon_arrow" width="11" height="19"/>
         <namedColor name="black1">
             <color red="0.082352941176470587" green="0.082352941176470587" blue="0.082352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="gray1">
-            <color red="0.7686274509803922" green="0.7686274509803922" blue="0.7686274509803922" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="gray2">
             <color red="0.51764705882352946" green="0.51764705882352946" blue="0.51764705882352946" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="gray3">
             <color red="0.33725490196078434" green="0.33725490196078434" blue="0.33725490196078434" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="vilolet">
-            <color red="0.83921568627450982" green="0.74901960784313726" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="yellow2">
-            <color red="1" green="0.89411764705882357" blue="0.22352941176470589" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

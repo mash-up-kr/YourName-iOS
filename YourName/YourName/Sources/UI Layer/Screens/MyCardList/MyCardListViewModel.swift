@@ -40,7 +40,7 @@ final class MyCardListViewModel {
         navigation.accept(.push(.cardDetail(cardID: selectedCardID)))
     }
     
-    private let myCardList = BehaviorRelay<[Card]>(value: [])
+    private let myCardList = BehaviorRelay<[NameCard]>(value: [])
     private let myCardRepository: MyCardRepository
     private let disposeBag = DisposeBag()
 }

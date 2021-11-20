@@ -9,17 +9,17 @@ import Foundation
 import RxSwift
 
 protocol CardRepository {
-    func fetchCards(cardBookID: String) -> Observable<[Card]>
+    func fetchCards(cardBookID: String) -> Observable<[NameCard]>
 }
 
 final class CardRepositoryImpl: CardRepository {
-    func fetchCards(cardBookID: String) -> Observable<[Card]> {
+    func fetchCards(cardBookID: String) -> Observable<[NameCard]> {
         .empty()
     }
 }
 
 final class MockCardRepository: CardRepository {
-    func fetchCards(cardBookID: String) -> Observable<[Card]> {
-        .just(Card.dummyList)
+    func fetchCards(cardBookID: String) -> Observable<[NameCard]> {
+        .just(NameCard.dummyList)
     }
 }

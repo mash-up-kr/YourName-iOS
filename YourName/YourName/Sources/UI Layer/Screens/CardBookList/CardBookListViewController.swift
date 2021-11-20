@@ -19,7 +19,7 @@ final class CardBookListViewController: UIViewController, Storyboarded {
 
     var viewModel: CardBookListViewModel!
     
-    var addFriendFactory: (() -> AddFriendCardViewController)!
+    var addFriendFactory: (() -> UIViewController)!
     var addCardBookFactory: (() -> UIViewController)!
     var cardBookDetailFactory: ((String) -> UIViewController)!
     
@@ -112,6 +112,7 @@ extension CardBookListViewController: UITableViewDataSource {
 extension CardBookListViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
         self.viewModel.selectCardBook(at: indexPath)
     }
 

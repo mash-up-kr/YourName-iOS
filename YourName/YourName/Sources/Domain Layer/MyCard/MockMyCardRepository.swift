@@ -11,9 +11,9 @@ import RxRelay
 #warning("⚠️ TODO: 개발완료 후, Test Target으로 옮겨야합니다") // Booung
 final class MockMyCardRepository: MyCardRepository {
     var calledFetchList = BehaviorRelay<Bool>(value: false)
-    var stubedList: [Card] = []
+    var stubedList: [NameCard] = []
     
-    func fetchList() -> Observable<[Card]> {
+    func fetchList() -> Observable<[NameCard]> {
         calledFetchList.accept(true)
         return .just(stubedList)
     }

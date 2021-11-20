@@ -13,6 +13,15 @@ final class CardBookCoverTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        gradientLayer.frame = coverImageview?.bounds ?? .zero
+        gradientLayer.startPoint = .zero
+        gradientLayer.endPoint = CGPoint(x: 1, y: 1)
+        coverImageview?.layer.insertSublayer(gradientLayer, at: 0)
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -24,14 +33,19 @@ final class CardBookCoverTableViewCell: UITableViewCell {
         self.titleLabel?.text = cardBook.title
         self.cardCountLabel?.text = "(\(cardBook.count ?? .zero))"
         self.descriptionLabel?.text = cardBook.description
-        if let hexString = cardBook.backgroundColor {
-            self.coverImageview?.backgroundColor = UIColor(hexString: hexString)
-            self.coverImageview?.image = UIImage(named: "card_book_logo")
+        if let hexStrings = cardBook.backgroundColor {
+            let colors = hexStrings.compactMap { UIColor(hexString: $0) }
+//            if colors.count > 1 { gradientLayer.colors = colors }
+//            else { gradientLayer.colors = colors + colors }
+            self.coverImageview?.backgroundColor = colors.first
+            self.coverImageview?.image = UIImage(named: "ghost_cover")
         } else {
             self.coverImageview?.backgroundColor = .white
             self.coverImageview?.image = UIImage(named: "card_book_cover_all")
         }
     }
+    
+    private let gradientLayer = CAGradientLayer()
     
     @IBOutlet private weak var coverImageview: UIImageView?
     @IBOutlet private weak var titleLabel: UILabel?
