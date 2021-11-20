@@ -37,6 +37,11 @@ target 'MEETU' do
   # 💛 KaKao
   pod 'RxKakaoSDKUser'
   
+  # 🌏 Network
+  pod 'Moya', '~>14.0'
+  pod 'Moya/RxSwift'
+  
+  
   target 'YourNameTests' do
     pod 'RxTest','~>5.0'
     pod 'RxBlocking','~>5.0'

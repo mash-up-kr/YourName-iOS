@@ -10,3 +10,4 @@ import Foundation
 public protocol API: URLRequestConvertible {
     associatedtype Response: Decodable
 }
+

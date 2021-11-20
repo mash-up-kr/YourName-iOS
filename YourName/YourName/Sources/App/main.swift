@@ -18,5 +18,5 @@ setupEnviorment()
 )
 
 private func setupEnviorment() {
-    Enviorment.current.network = Network.shared
+    Enviorment.current.network = NetworkService()
 }
