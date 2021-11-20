@@ -34,7 +34,6 @@ final class FriendCardCollectionViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.gradientLayer.frame = self.contentView.bounds
     }
     
     func configure(with viewModel: FriendCardCellViewModel) {
@@ -45,11 +44,15 @@ final class FriendCardCollectionViewCell: UICollectionViewCell {
         guard let colorSource = viewModel.bgColor else { return }
         switch colorSource {
         case .monotone(let color):
-            self.contentView.backgroundColor = color
-//            gradientLayer.colors = [color, color]
+//            self.contentView.backgroundColor = color
+            self.contentView.backgroundColor = nil
+            gradientLayer.colors = [color, color]
         case .gradient(let colors):
+            self.contentView.backgroundColor = nil
             gradientLayer.colors = colors
         }
+        self.gradientLayer.frame = self.contentView.bounds
+        self.layer.insertSublayer(gradientLayer, at: 0)
     }
     
     @objc

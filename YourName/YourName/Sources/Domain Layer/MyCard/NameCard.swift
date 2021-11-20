@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Card: Equatable {
+struct NameCard: Equatable {
     let id: String?
     let name: String?
     let role: String?
@@ -16,9 +16,9 @@ struct Card: Equatable {
     let profileURL: String?
 }
 #warning("⚠️ TODO: 개발완료 후, Test Target으로 옮겨야합니다") // Booung
-extension Card {
-    static let dummyList: [Card] = [
-        Card(
+extension NameCard {
+    static let dummyList: [NameCard] = [
+        NameCard(
             id: "test-0",
             name: "김윤혜",
             role: "디자이너",
@@ -26,7 +26,7 @@ extension Card {
             bgColors: ["#FFF197"],
             profileURL: nil
         ),
-        Card(
+        NameCard(
             id: "test-1",
             name: "송서영",
             role: "iOS",
@@ -34,7 +34,7 @@ extension Card {
             bgColors: ["#FFB9AA"],
             profileURL: nil
         ),
-        Card(
+        NameCard(
             id: "test-2",
             name: "김건회",
             role: "마피아",
@@ -42,7 +42,7 @@ extension Card {
             bgColors: ["#B4ECFE"],
             profileURL: nil
         ),
-        Card(
+        NameCard(
             id: "test-3",
             name: "주성민",
             role: "의사",
@@ -50,7 +50,7 @@ extension Card {
             bgColors: ["#D6BFFF"],
             profileURL: nil
         ),
-        Card(
+        NameCard(
             id: "test-4",
             name: "김가영",
             role: "호주 푸들 🐶",
@@ -58,7 +58,7 @@ extension Card {
             bgColors: ["#D6BFFF"],
             profileURL: nil
         ),
-        Card(
+        NameCard(
             id: "test-5",
             name: "김경훈",
             role: "라이어",
@@ -66,7 +66,7 @@ extension Card {
             bgColors: ["#FFCBFD"],
             profileURL: nil
         ),
-        Card(
+        NameCard(
             id: "test-6",
             name: "이연중",
             role: "감독",

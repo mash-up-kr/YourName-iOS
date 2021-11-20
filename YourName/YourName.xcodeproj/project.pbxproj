@@ -43,6 +43,7 @@
 		CE2BB2C92707560800936148 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2BB2C82707560800936148 /* Palette.swift */; };
 		CE2EC99327073453006B9852 /* CardCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2EC99227073453006B9852 /* CardCreationViewModel.swift */; };
 		CE2EC99627073493006B9852 /* CardCreationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2EC99527073493006B9852 /* CardCreationViewModelTests.swift */; };
+		CE472B682748B67F001A5E5F /* YNBackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE472B672748B67F001A5E5F /* YNBackgroundColor.swift */; };
 		CE4D4E6D2707883600081A2B /* ContactInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E6C2707883600081A2B /* ContactInputView.swift */; };
 		CE4D4E842707A91900081A2B /* Items.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE4D4E832707A91900081A2B /* Items.xcassets */; };
 		CE4D4E862707AE1700081A2B /* CharacterSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E852707AE1700081A2B /* CharacterSettingViewModel.swift */; };
@@ -100,7 +101,7 @@
 		CE6312C526F9B05700B2E69B /* MyCardListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6312C426F9B05700B2E69B /* MyCardListViewModelTests.swift */; };
 		CE6312C826F9B3B000B2E69B /* MyCardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6312C726F9B3B000B2E69B /* MyCardRepository.swift */; };
 		CE6312CC26F9B4FC00B2E69B /* MockMyCardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6312CA26F9B4BD00B2E69B /* MockMyCardRepository.swift */; };
-		CE6312CF26F9B82600B2E69B /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6312CE26F9B82600B2E69B /* Card.swift */; };
+		CE6312CF26F9B82600B2E69B /* NameCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6312CE26F9B82600B2E69B /* NameCard.swift */; };
 		CE6312D126F9BD6B00B2E69B /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6312D026F9BD6B00B2E69B /* Array+.swift */; };
 		CE6BAB942704D0990006D26B /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6BAB932704D0990006D26B /* Storyboarded.swift */; };
 		CE6BAB962704D3C40006D26B /* CardBookDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6BAB952704D3C30006D26B /* CardBookDetailViewController.storyboard */; };
@@ -262,6 +263,7 @@
 		CE2BB2C82707560800936148 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		CE2EC99227073453006B9852 /* CardCreationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCreationViewModel.swift; sourceTree = "<group>"; };
 		CE2EC99527073493006B9852 /* CardCreationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCreationViewModelTests.swift; sourceTree = "<group>"; };
+		CE472B672748B67F001A5E5F /* YNBackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YNBackgroundColor.swift; sourceTree = "<group>"; };
 		CE4D4E6C2707883600081A2B /* ContactInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInputView.swift; sourceTree = "<group>"; };
 		CE4D4E832707A91900081A2B /* Items.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Items.xcassets; sourceTree = "<group>"; };
 		CE4D4E852707AE1700081A2B /* CharacterSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSettingViewModel.swift; sourceTree = "<group>"; };
@@ -319,7 +321,7 @@
 		CE6312C426F9B05700B2E69B /* MyCardListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardListViewModelTests.swift; sourceTree = "<group>"; };
 		CE6312C726F9B3B000B2E69B /* MyCardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardRepository.swift; sourceTree = "<group>"; };
 		CE6312CA26F9B4BD00B2E69B /* MockMyCardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMyCardRepository.swift; sourceTree = "<group>"; };
-		CE6312CE26F9B82600B2E69B /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		CE6312CE26F9B82600B2E69B /* NameCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameCard.swift; sourceTree = "<group>"; };
 		CE6312D026F9BD6B00B2E69B /* Array+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+.swift"; sourceTree = "<group>"; };
 		CE6BAB932704D0990006D26B /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
 		CE6BAB952704D3C30006D26B /* CardBookDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CardBookDetailViewController.storyboard; sourceTree = "<group>"; };
@@ -510,6 +512,14 @@
 				CE2EC99527073493006B9852 /* CardCreationViewModelTests.swift */,
 			);
 			path = CardCreationTests;
+			sourceTree = "<group>";
+		};
+		CE472B662748B657001A5E5F /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				CE472B672748B67F001A5E5F /* YNBackgroundColor.swift */,
+			);
+			path = Colors;
 			sourceTree = "<group>";
 		};
 		CE4D4E6E2707A0CB00081A2B /* CharacterCreation */ = {
@@ -706,7 +716,7 @@
 			children = (
 				CE6312C726F9B3B000B2E69B /* MyCardRepository.swift */,
 				CE6312CA26F9B4BD00B2E69B /* MockMyCardRepository.swift */,
-				CE6312CE26F9B82600B2E69B /* Card.swift */,
+				CE6312CE26F9B82600B2E69B /* NameCard.swift */,
 			);
 			path = MyCard;
 			sourceTree = "<group>";
@@ -908,6 +918,7 @@
 		CEB6586326EB2BB500C11F33 /* Data Layer */ = {
 			isa = PBXGroup;
 			children = (
+				CE472B662748B657001A5E5F /* Colors */,
 				CE63125326F5E1B600B2E69B /* Local */,
 				CEB6588C26EC81F700C11F33 /* Network */,
 			);
@@ -1429,7 +1440,7 @@
 				CE6312B926F99F7A00B2E69B /* CardDetailViewModel.swift in Sources */,
 				CEB6588E26EC821300C11F33 /* Network.swift in Sources */,
 				CED16DF726F3A5540076565F /* SettingViewController.swift in Sources */,
-				CE6312CF26F9B82600B2E69B /* Card.swift in Sources */,
+				CE6312CF26F9B82600B2E69B /* NameCard.swift in Sources */,
 				CEAE397527405D3C0010F8F0 /* CardBook.swift in Sources */,
 				CEB6583026EB15A600C11F33 /* ViewController.swift in Sources */,
 				CE63125726F5E2A100B2E69B /* FakeAccessTokenRepository.swift in Sources */,
@@ -1470,6 +1481,7 @@
 				CE4D4E882707AE3800081A2B /* CharacterCreationDependencyContainer.swift in Sources */,
 				CE94AB99270ECC32005D2E80 /* StrongPoint.swift in Sources */,
 				CEA4D2EE270D35A2008189FE /* DisplayCharacterItemsDependencyContainer.swift in Sources */,
+				CE472B682748B67F001A5E5F /* YNBackgroundColor.swift in Sources */,
 				CE94ABBA270F4114005D2E80 /* ColorSource.swift in Sources */,
 				CE8500FB273FAE41002341DC /* UIColor+.swift in Sources */,
 				CE63126026F6281800B2E69B /* SplashViewModel.swift in Sources */,

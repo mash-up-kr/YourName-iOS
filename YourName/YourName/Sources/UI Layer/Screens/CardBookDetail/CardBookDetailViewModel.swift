@@ -23,7 +23,7 @@ final class CardBookDetailViewModel {
     let shouldClose = PublishRelay<Void>()
     let selectedIDs = BehaviorRelay<Set<String>>(value: [])
     
-    let cards = BehaviorRelay<[Card]>(value: [])
+    let cards = BehaviorRelay<[NameCard]>(value: [])
     
     init(
         cardBookID: String,
@@ -43,7 +43,7 @@ final class CardBookDetailViewModel {
             .disposed(by: self.disposeBag)
     }
     
-    private func transform(card: Card) -> FriendCardCellViewModel {
+    private func transform(card: NameCard) -> FriendCardCellViewModel {
         let colors = card.bgColors?.compactMap { UIColor(hexString: $0) }
         
         return FriendCardCellViewModel(

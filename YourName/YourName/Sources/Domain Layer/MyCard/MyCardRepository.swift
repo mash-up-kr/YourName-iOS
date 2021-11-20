@@ -9,5 +9,5 @@ import Foundation
 import RxSwift
 
 protocol MyCardRepository {
-    func fetchList() -> Observable<[Card]>
+    func fetchList() -> Observable<[NameCard]>
 }

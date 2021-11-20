@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="267" height="342"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Frame 87" translatesAutoresizingMaskIntoConstraints="NO" id="eh8-ef-uUV">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eh8-ef-uUV">
                         <rect key="frame" x="29.5" y="16" width="208" height="229"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -102,7 +102,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="Frame 87" width="251" height="252"/>
         <image name="ic_check_origin" width="28" height="28"/>
         <namedColor name="black1">
             <color red="0.082352941176470587" green="0.082352941176470587" blue="0.082352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
