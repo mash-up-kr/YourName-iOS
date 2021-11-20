@@ -89,6 +89,13 @@ PODS:
   - KakaoSDKUser (2.7.1):
     - KakaoSDKAuth (= 2.7.1)
   - Kingfisher (6.3.1)
+  - Moya (14.0.0):
+    - Moya/Core (= 14.0.0)
+  - Moya/Core (14.0.0):
+    - Alamofire (~> 5.0)
+  - Moya/RxSwift (14.0.0):
+    - Moya/Core
+    - RxSwift (~> 5.0)
   - nanopb (2.30908.0):
     - nanopb/decode (= 2.30908.0)
     - nanopb/encode (= 2.30908.0)
@@ -150,6 +157,8 @@ DEPENDENCIES:
   - Firebase/Analytics
   - FLEX
   - Kingfisher
+  - Moya (~> 14.0)
+  - Moya/RxSwift
   - Nimble
   - Quick
   - RxBlocking (~> 5.0)
@@ -182,6 +191,7 @@ SPEC REPOS:
     - KakaoSDKCommon
     - KakaoSDKUser
     - Kingfisher
+    - Moya
     - nanopb
     - Nimble
     - PromisesObjC
@@ -219,6 +229,7 @@ SPEC CHECKSUMS:
   KakaoSDKCommon: 48fe293e8970a8db8d10d5ca63600a7a8cc5f74c
   KakaoSDKUser: 5609a2679b6beda86298d63c45961953c7203101
   Kingfisher: 016c8b653a35add51dd34a3aba36b580041acc74
+  Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   Nimble: e7e615c0335ee4bf5b0d786685451e62746117d5
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
@@ -240,6 +251,6 @@ SPEC CHECKSUMS:
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: a9b222883047f10415de3947e073acff240608b8
+PODFILE CHECKSUM: 0126c20e740abaa2153842a518b6621772d513fd
 
 COCOAPODS: 1.11.2

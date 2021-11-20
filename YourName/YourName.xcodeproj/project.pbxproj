@@ -52,7 +52,7 @@
 		A2CC65782708DAD900610C49 /* FriendCardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2CC65762708DAD800610C49 /* FriendCardCollectionViewCell.xib */; };
 		A2CC657A2708DAEA00610C49 /* FriendCardEmptyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CC65792708DAEA00610C49 /* FriendCardEmptyCollectionViewCell.swift */; };
 		A2CC657C2708DAF900610C49 /* FriendCardEmptyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2CC657B2708DAF900610C49 /* FriendCardEmptyCollectionViewCell.xib */; };
-		A2CC657F2708E93900610C49 /* AddFriendCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CC657E2708E93900610C49 /* AddFriendCardView.swift */; };
+		A2CC657F2708E93900610C49 /* AddFriendCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CC657E2708E93900610C49 /* AddFriendCardViewController.swift */; };
 		A2CC65832708F06800610C49 /* CardBookDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CC65822708F06800610C49 /* CardBookDetailViewModel.swift */; };
 		A2CC65862708F17A00610C49 /* CardBookRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CC65852708F17A00610C49 /* CardBookRepository.swift */; };
 		A2D875DF26EE295C00ED5949 /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D875DE26EE295C00ED5949 /* AuthResponse.swift */; };
@@ -67,6 +67,9 @@
 		CE472B712748C0B4001A5E5F /* Entity.TMI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE472B702748C0B4001A5E5F /* Entity.TMI.swift */; };
 		CE472B732748C0D3001A5E5F /* Entity.Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE472B722748C0D3001A5E5F /* Entity.Skill.swift */; };
 		CE472B752748C1E9001A5E5F /* Entity.Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE472B742748C1E9001A5E5F /* Entity.Contact.swift */; };
+		CE472B7A2748CF26001A5E5F /* ServiceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE472B792748CF26001A5E5F /* ServiceAPI.swift */; };
+		CE472B7C2748D575001A5E5F /* MeetuResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE472B7B2748D575001A5E5F /* MeetuResponse.swift */; };
+		CE472B7E2748D5A1001A5E5F /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE472B7D2748D5A1001A5E5F /* NetworkService.swift */; };
 		CE4D4E6D2707883600081A2B /* ContactInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E6C2707883600081A2B /* ContactInputView.swift */; };
 		CE4D4E842707A91900081A2B /* Items.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE4D4E832707A91900081A2B /* Items.xcassets */; };
 		CE4D4E862707AE1700081A2B /* CharacterSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E852707AE1700081A2B /* CharacterSettingViewModel.swift */; };
@@ -294,7 +297,6 @@
 		A2CC65762708DAD800610C49 /* FriendCardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendCardCollectionViewCell.xib; sourceTree = "<group>"; };
 		A2CC65792708DAEA00610C49 /* FriendCardEmptyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCardEmptyCollectionViewCell.swift; sourceTree = "<group>"; };
 		A2CC657B2708DAF900610C49 /* FriendCardEmptyCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendCardEmptyCollectionViewCell.xib; sourceTree = "<group>"; };
-		A2CC65822708F06800610C49 /* CardBookDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBookDetailViewModel.swift; sourceTree = "<group>"; };
 		A2CC657E2708E93900610C49 /* AddFriendCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendCardViewController.swift; sourceTree = "<group>"; };
 		A2CC65822708F06800610C49 /* CardBookDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBookDetailViewModel.swift; sourceTree = "<group>"; };
 		A2CC65852708F17A00610C49 /* CardBookRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBookRepository.swift; sourceTree = "<group>"; };
@@ -311,6 +313,9 @@
 		CE472B702748C0B4001A5E5F /* Entity.TMI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.TMI.swift; sourceTree = "<group>"; };
 		CE472B722748C0D3001A5E5F /* Entity.Skill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.Skill.swift; sourceTree = "<group>"; };
 		CE472B742748C1E9001A5E5F /* Entity.Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.Contact.swift; sourceTree = "<group>"; };
+		CE472B792748CF26001A5E5F /* ServiceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceAPI.swift; sourceTree = "<group>"; };
+		CE472B7B2748D575001A5E5F /* MeetuResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetuResponse.swift; sourceTree = "<group>"; };
+		CE472B7D2748D5A1001A5E5F /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		CE4D4E6C2707883600081A2B /* ContactInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInputView.swift; sourceTree = "<group>"; };
 		CE4D4E832707A91900081A2B /* Items.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Items.xcassets; sourceTree = "<group>"; };
 		CE4D4E852707AE1700081A2B /* CharacterSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSettingViewModel.swift; sourceTree = "<group>"; };
@@ -594,6 +599,16 @@
 				CE472B742748C1E9001A5E5F /* Entity.Contact.swift */,
 			);
 			path = Entity;
+			sourceTree = "<group>";
+		};
+		CE472B782748CF04001A5E5F /* MeetuNetwork */ = {
+			isa = PBXGroup;
+			children = (
+				CE472B7B2748D575001A5E5F /* MeetuResponse.swift */,
+				CE472B7D2748D5A1001A5E5F /* NetworkService.swift */,
+				CE472B792748CF26001A5E5F /* ServiceAPI.swift */,
+			);
+			path = MeetuNetwork;
 			sourceTree = "<group>";
 		};
 		CE4D4E6E2707A0CB00081A2B /* CharacterCreation */ = {
@@ -1115,12 +1130,13 @@
 		CEB6588C26EC81F700C11F33 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				CEB6587E26EC80D700C11F33 /* Extensions */,
-				CEB6588526EC816600C11F33 /* HTTP */,
-				CEB6587026EB2C9F00C11F33 /* Protocols */,
 				CEB6589426EC838000C11F33 /* HTTPClient.swift */,
 				CEB6588D26EC821300C11F33 /* Network.swift */,
 				CEB658BB26ECC90600C11F33 /* NoContent.swift */,
+				CEB6587E26EC80D700C11F33 /* Extensions */,
+				CEB6588526EC816600C11F33 /* HTTP */,
+				CE472B782748CF04001A5E5F /* MeetuNetwork */,
+				CEB6587026EB2C9F00C11F33 /* Protocols */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1500,6 +1516,7 @@
 				CE6312C026F9AB4A00B2E69B /* MyCardListViewModel.swift in Sources */,
 				CE4D4ED9270A0D1400081A2B /* SkillSettingView.swift in Sources */,
 				CE472B752748C1E9001A5E5F /* Entity.Contact.swift in Sources */,
+				CE472B7C2748D575001A5E5F /* MeetuResponse.swift in Sources */,
 				CE4D4EC52709044D00081A2B /* ImageSourceTypePickerView.swift in Sources */,
 				CEF8C55726EDFB6F009BA9C2 /* UIStackView+.swift in Sources */,
 				CEB84096272AF389000E527B /* CardBookCoverTableViewCell.swift in Sources */,
@@ -1567,6 +1584,7 @@
 				CEB6589726EC844D00C11F33 /* main.swift in Sources */,
 				A2CC656C2708877E00610C49 /* NibLoadable.swift in Sources */,
 				A2BFC11D274002CA002FFF01 /* SelectCardBookCollectionViewCell.swift in Sources */,
+				CE472B7A2748CF26001A5E5F /* ServiceAPI.swift in Sources */,
 				A2CC65622707622D00610C49 /* MyCardListEmptyCollectionViewCell.swift in Sources */,
 				CE94AB9F270ECEED005D2E80 /* MockInterestRepository.swift in Sources */,
 				A23920FF2736B2FC0069E418 /* AddFriendCardResultViewModel.swift in Sources */,
@@ -1642,6 +1660,7 @@
 				CE8500F9273FA5C3002341DC /* UIScrollView+Rx.swift in Sources */,
 				CE63129E26F8618000B2E69B /* AuthenticationDelegate.swift in Sources */,
 				CE63125E26F6270B00B2E69B /* SplashViewController.swift in Sources */,
+				CE472B7E2748D5A1001A5E5F /* NetworkService.swift in Sources */,
 				CED16DF926F3A55D0076565F /* MyCardListViewController.swift in Sources */,
 				CE4D4EAF2708780A00081A2B /* PageSheetController.swift in Sources */,
 				A23920FD273695B30069E418 /* AddFriendCardResultView.swift in Sources */,
