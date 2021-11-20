@@ -43,7 +43,13 @@
 		CE2BB2C92707560800936148 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2BB2C82707560800936148 /* Palette.swift */; };
 		CE2EC99327073453006B9852 /* CardCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2EC99227073453006B9852 /* CardCreationViewModel.swift */; };
 		CE2EC99627073493006B9852 /* CardCreationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2EC99527073493006B9852 /* CardCreationViewModelTests.swift */; };
-		CE472B682748B67F001A5E5F /* YNBackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE472B672748B67F001A5E5F /* YNBackgroundColor.swift */; };
+		CE472B682748B67F001A5E5F /* Entity.BackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE472B672748B67F001A5E5F /* Entity.BackgroundColor.swift */; };
+		CE472B6A2748B6F9001A5E5F /* EntityNameSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE472B692748B6F9001A5E5F /* EntityNameSpace.swift */; };
+		CE472B6D2748B76B001A5E5F /* Entity.User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE472B6C2748B76B001A5E5F /* Entity.User.swift */; };
+		CE472B6F2748C0A5001A5E5F /* Entity.Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE472B6E2748C0A5001A5E5F /* Entity.Level.swift */; };
+		CE472B712748C0B4001A5E5F /* Entity.TMI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE472B702748C0B4001A5E5F /* Entity.TMI.swift */; };
+		CE472B732748C0D3001A5E5F /* Entity.Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE472B722748C0D3001A5E5F /* Entity.Skill.swift */; };
+		CE472B752748C1E9001A5E5F /* Entity.Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE472B742748C1E9001A5E5F /* Entity.Contact.swift */; };
 		CE4D4E6D2707883600081A2B /* ContactInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E6C2707883600081A2B /* ContactInputView.swift */; };
 		CE4D4E842707A91900081A2B /* Items.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE4D4E832707A91900081A2B /* Items.xcassets */; };
 		CE4D4E862707AE1700081A2B /* CharacterSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E852707AE1700081A2B /* CharacterSettingViewModel.swift */; };
@@ -263,7 +269,13 @@
 		CE2BB2C82707560800936148 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		CE2EC99227073453006B9852 /* CardCreationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCreationViewModel.swift; sourceTree = "<group>"; };
 		CE2EC99527073493006B9852 /* CardCreationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCreationViewModelTests.swift; sourceTree = "<group>"; };
-		CE472B672748B67F001A5E5F /* YNBackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YNBackgroundColor.swift; sourceTree = "<group>"; };
+		CE472B672748B67F001A5E5F /* Entity.BackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.BackgroundColor.swift; sourceTree = "<group>"; };
+		CE472B692748B6F9001A5E5F /* EntityNameSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityNameSpace.swift; sourceTree = "<group>"; };
+		CE472B6C2748B76B001A5E5F /* Entity.User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.User.swift; sourceTree = "<group>"; };
+		CE472B6E2748C0A5001A5E5F /* Entity.Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.Level.swift; sourceTree = "<group>"; };
+		CE472B702748C0B4001A5E5F /* Entity.TMI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.TMI.swift; sourceTree = "<group>"; };
+		CE472B722748C0D3001A5E5F /* Entity.Skill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.Skill.swift; sourceTree = "<group>"; };
+		CE472B742748C1E9001A5E5F /* Entity.Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.Contact.swift; sourceTree = "<group>"; };
 		CE4D4E6C2707883600081A2B /* ContactInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInputView.swift; sourceTree = "<group>"; };
 		CE4D4E832707A91900081A2B /* Items.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Items.xcassets; sourceTree = "<group>"; };
 		CE4D4E852707AE1700081A2B /* CharacterSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSettingViewModel.swift; sourceTree = "<group>"; };
@@ -514,12 +526,18 @@
 			path = CardCreationTests;
 			sourceTree = "<group>";
 		};
-		CE472B662748B657001A5E5F /* Colors */ = {
+		CE472B6B2748B730001A5E5F /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				CE472B672748B67F001A5E5F /* YNBackgroundColor.swift */,
+				CE472B692748B6F9001A5E5F /* EntityNameSpace.swift */,
+				CE472B672748B67F001A5E5F /* Entity.BackgroundColor.swift */,
+				CE472B6C2748B76B001A5E5F /* Entity.User.swift */,
+				CE472B6E2748C0A5001A5E5F /* Entity.Level.swift */,
+				CE472B702748C0B4001A5E5F /* Entity.TMI.swift */,
+				CE472B722748C0D3001A5E5F /* Entity.Skill.swift */,
+				CE472B742748C1E9001A5E5F /* Entity.Contact.swift */,
 			);
-			path = Colors;
+			path = Entity;
 			sourceTree = "<group>";
 		};
 		CE4D4E6E2707A0CB00081A2B /* CharacterCreation */ = {
@@ -918,7 +936,7 @@
 		CEB6586326EB2BB500C11F33 /* Data Layer */ = {
 			isa = PBXGroup;
 			children = (
-				CE472B662748B657001A5E5F /* Colors */,
+				CE472B6B2748B730001A5E5F /* Entity */,
 				CE63125326F5E1B600B2E69B /* Local */,
 				CEB6588C26EC81F700C11F33 /* Network */,
 			);
@@ -1411,8 +1429,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE472B6F2748C0A5001A5E5F /* Entity.Level.swift in Sources */,
 				CE6312C026F9AB4A00B2E69B /* MyCardListViewModel.swift in Sources */,
 				CE4D4ED9270A0D1400081A2B /* SkillSettingView.swift in Sources */,
+				CE472B752748C1E9001A5E5F /* Entity.Contact.swift in Sources */,
 				CE4D4EC52709044D00081A2B /* ImageSourceTypePickerView.swift in Sources */,
 				CEF8C55726EDFB6F009BA9C2 /* UIStackView+.swift in Sources */,
 				CEB84096272AF389000E527B /* CardBookCoverTableViewCell.swift in Sources */,
@@ -1437,6 +1457,7 @@
 				CE6D1487270C952900AF4C5C /* CharacterItemFactory.swift in Sources */,
 				CEB6586F26EB2C9400C11F33 /* Auth.swift in Sources */,
 				CE94ABB5270F2C81005D2E80 /* Skill.swift in Sources */,
+				CE472B712748C0B4001A5E5F /* Entity.TMI.swift in Sources */,
 				CE6312B926F99F7A00B2E69B /* CardDetailViewModel.swift in Sources */,
 				CEB6588E26EC821300C11F33 /* Network.swift in Sources */,
 				CED16DF726F3A5540076565F /* SettingViewController.swift in Sources */,
@@ -1479,9 +1500,10 @@
 				A2CC65622707622D00610C49 /* MyCardListEmptyCollectionViewCell.swift in Sources */,
 				CE94AB9F270ECEED005D2E80 /* MockInterestRepository.swift in Sources */,
 				CE4D4E882707AE3800081A2B /* CharacterCreationDependencyContainer.swift in Sources */,
+				CE472B6A2748B6F9001A5E5F /* EntityNameSpace.swift in Sources */,
 				CE94AB99270ECC32005D2E80 /* StrongPoint.swift in Sources */,
 				CEA4D2EE270D35A2008189FE /* DisplayCharacterItemsDependencyContainer.swift in Sources */,
-				CE472B682748B67F001A5E5F /* YNBackgroundColor.swift in Sources */,
+				CE472B682748B67F001A5E5F /* Entity.BackgroundColor.swift in Sources */,
 				CE94ABBA270F4114005D2E80 /* ColorSource.swift in Sources */,
 				CE8500FB273FAE41002341DC /* UIColor+.swift in Sources */,
 				CE63126026F6281800B2E69B /* SplashViewModel.swift in Sources */,
@@ -1495,6 +1517,7 @@
 				CEB6587B26EC809800C11F33 /* URLRequestConvertible.swift in Sources */,
 				A2D875DF26EE295C00ED5949 /* AuthResponse.swift in Sources */,
 				CE4D4ECE2709ECDF00081A2B /* ColorSourceRepository.swift in Sources */,
+				CE472B6D2748B76B001A5E5F /* Entity.User.swift in Sources */,
 				CE4D4EB52708E9EC00081A2B /* PaletteView.swift in Sources */,
 				CEB84094272AF143000E527B /* CardBookListDependencyContainer.swift in Sources */,
 				CE6BABAF2704EE9C0006D26B /* UICollectionView+.swift in Sources */,
@@ -1506,6 +1529,7 @@
 				CE63124926F5A30200B2E69B /* Navigation.swift in Sources */,
 				CEB6587726EB2CFE00C11F33 /* HomeViewModel.swift in Sources */,
 				CEFA037A26EFB76D00D12AAB /* SnapshotService.swift in Sources */,
+				CE472B732748C0D3001A5E5F /* Entity.Skill.swift in Sources */,
 				CEA4D2D7270C9B1D008189FE /* CharacterEntity.swift in Sources */,
 				CE4D4E8E2707AF6E00081A2B /* FakeCharacterItemRepository.swift in Sources */,
 				CEB84092272AF120000E527B /* CardBookListViewController.swift in Sources */,
