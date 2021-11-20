@@ -9,12 +9,12 @@ import UIKit
 
 setupEnviorment()
 
- UIApplicationMain(
- CommandLine.argc,
- UnsafeMutableRawPointer(CommandLine.unsafeArgv)
-   .bindMemory(to: UnsafeMutablePointer<Int8>.self, capacity: Int(CommandLine.argc)),
- NSStringFromClass(UIApplication.self),
- NSStringFromClass(AppDelegate.self)
+UIApplicationMain(
+    CommandLine.argc,
+    UnsafeMutableRawPointer(CommandLine.unsafeArgv)
+        .bindMemory(to: UnsafeMutablePointer<Int8>.self, capacity: Int(CommandLine.argc)),
+    NSStringFromClass(UIApplication.self),
+    NSStringFromClass(AppDelegate.self)
 )
 
 private func setupEnviorment() {
