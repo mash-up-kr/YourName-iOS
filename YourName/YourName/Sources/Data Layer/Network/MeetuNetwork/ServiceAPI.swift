@@ -15,7 +15,7 @@ protocol ServiceAPI: TargetType {
 }
 extension ServiceAPI {
     
-    var baseURL: URL { URL(string: "meetyou.co.kr")! }
+    var baseURL: URL { URL(string: "http://meetyou.co.kr")! }
     
     var sampleData: Data { Data() }
 }

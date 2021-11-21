@@ -56,6 +56,9 @@
 		A2CC65832708F06800610C49 /* CardBookDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CC65822708F06800610C49 /* CardBookDetailViewModel.swift */; };
 		A2CC65862708F17A00610C49 /* CardBookRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CC65852708F17A00610C49 /* CardBookRepository.swift */; };
 		A2D875DF26EE295C00ED5949 /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D875DE26EE295C00ED5949 /* AuthResponse.swift */; };
+		A2DA3B3B274A162400E68F23 /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B3A274A162400E68F23 /* LoginAPI.swift */; };
+		A2DA3B3D274A1A2500E68F23 /* Entity.Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B3C274A1A2500E68F23 /* Entity.Login.swift */; };
+		A2DA3B3F274A368D00E68F23 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B3E274A368D00E68F23 /* UserDefault.swift */; };
 		CE2BB2C727074F4600936148 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE2BB2C627074F4600936148 /* Colors.xcassets */; };
 		CE2BB2C92707560800936148 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2BB2C82707560800936148 /* Palette.swift */; };
 		CE2EC99327073453006B9852 /* CardCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2EC99227073453006B9852 /* CardCreationViewModel.swift */; };
@@ -302,6 +305,9 @@
 		A2CC65822708F06800610C49 /* CardBookDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBookDetailViewModel.swift; sourceTree = "<group>"; };
 		A2CC65852708F17A00610C49 /* CardBookRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBookRepository.swift; sourceTree = "<group>"; };
 		A2D875DE26EE295C00ED5949 /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
+		A2DA3B3A274A162400E68F23 /* LoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
+		A2DA3B3C274A1A2500E68F23 /* Entity.Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.Login.swift; sourceTree = "<group>"; };
+		A2DA3B3E274A368D00E68F23 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDefault.swift; path = "YourName/Sources/Data Layer/Entity/UserDefault.swift"; sourceTree = SOURCE_ROOT; };
 		A3E561B79C6998E82DB447DF /* Pods-YourName-YourNameTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourName-YourNameTests.debug.xcconfig"; path = "Target Support Files/Pods-YourName-YourNameTests/Pods-YourName-YourNameTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CE2BB2C627074F4600936148 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		CE2BB2C82707560800936148 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
@@ -599,6 +605,7 @@
 				CE472B702748C0B4001A5E5F /* Entity.TMI.swift */,
 				CE472B722748C0D3001A5E5F /* Entity.Skill.swift */,
 				CE472B742748C1E9001A5E5F /* Entity.Contact.swift */,
+				A2DA3B3C274A1A2500E68F23 /* Entity.Login.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -617,6 +624,7 @@
 			isa = PBXGroup;
 			children = (
 				CE472B802748DAF0001A5E5F /* MakeCardAPI.swift */,
+				A2DA3B3A274A162400E68F23 /* LoginAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -762,6 +770,7 @@
 		CE63125326F5E1B600B2E69B /* Local */ = {
 			isa = PBXGroup;
 			children = (
+				A2DA3B3E274A368D00E68F23 /* UserDefault.swift */,
 			);
 			path = Local;
 			sourceTree = "<group>";
@@ -1567,6 +1576,7 @@
 				CE4D4ECA27090D5200081A2B /* ColorSourceCollectionViewCell.swift in Sources */,
 				CEB6589126EC826300C11F33 /* Enviorment.swift in Sources */,
 				A2CC656E27088E9C00610C49 /* MyCardListCollectionViewCell.swift in Sources */,
+				A2DA3B3D274A1A2500E68F23 /* Entity.Login.swift in Sources */,
 				A2CC65742708AB2C00610C49 /* MySkillProgressView.swift in Sources */,
 				CE63123A26F59C7800B2E69B /* RootViewController.swift in Sources */,
 				CE6312AA26F8CB2F00B2E69B /* RootDependencyContainer.swift in Sources */,
@@ -1607,6 +1617,8 @@
 				CEA4D2EE270D35A2008189FE /* DisplayCharacterItemsDependencyContainer.swift in Sources */,
 				CE472B682748B67F001A5E5F /* Entity.BackgroundColor.swift in Sources */,
 				CE94ABBA270F4114005D2E80 /* ColorSource.swift in Sources */,
+				A2DA3B3B274A162400E68F23 /* LoginAPI.swift in Sources */,
+				A2DA3B3F274A368D00E68F23 /* UserDefault.swift in Sources */,
 				CE8500FB273FAE41002341DC /* UIColor+.swift in Sources */,
 				CE63126026F6281800B2E69B /* SplashViewModel.swift in Sources */,
 				CE4D4E862707AE1700081A2B /* CharacterSettingViewModel.swift in Sources */,

@@ -7,44 +7,47 @@
 
 import Foundation
 import RxSwift
-import RxKakaoSDKAuth
-import RxKakaoSDKUser
+import KakaoSDKAuth
+import KakaoSDKUser
 import KakaoSDKUser
 
 struct KakaoAuth: OAuth {
-    private typealias SingleObserver = (SingleEvent<OAuthResponse>) -> Void
+    
+    private enum KakaoAuthError: Error {
+        case invalidToken
+    }
+    
     private let disposeBag = DisposeBag()
     
     func authorize() -> Single<OAuthResponse> {
         return Single<OAuthResponse>.create { observer in
-            if UserApi.isKakaoTalkLoginAvailable() {
-                self.loginWithKakaoTalk(observer: observer)
-            } else {
-                loginWithWebView(observer: observer)
+            
+            if UserApi.isKakaoTalkLoginAvailable() {  // 카카오톡이 깔려있는 경우
+                UserApi.shared.loginWithKakaoTalk { response, error in
+                    if let error = error {
+                        observer(.error(error))
+                    }
+                    guard let accessToken = response?.accessToken else {
+                        observer(.error(KakaoAuthError.invalidToken))
+                        return
+                    }
+                    observer(.success(.init(accessToken: accessToken,
+                                            provider: .kakao)))
+                }
+            } else {   // 카카오톡이 깔려있지않아서 웹뷰를 띄워야하는 경우
+                UserApi.shared.loginWithKakaoAccount() { response, error in
+                    if let error = error {
+                        observer(.error(error))
+                    }
+                    guard let accessToken = response?.accessToken else {
+                        observer(.error(KakaoAuthError.invalidToken))
+                        return
+                    }
+                    observer(.success(.init(accessToken: accessToken,
+                                            provider: .kakao)))
+                }
             }
             return Disposables.create()
         }
-    }
-    
-    private func loginWithKakaoTalk(observer: @escaping SingleObserver) {
-        UserApi.shared.rx.loginWithKakaoTalk()
-            .subscribe(onNext: { oauthToken in
-                observer(.success(OAuthResponse(accessToken: oauthToken.accessToken,
-                                                provider: .kakao)))
-            }, onError: {error in
-                observer(.error(error))
-            })
-        .disposed(by: disposeBag)
-    }
-    
-    private func loginWithWebView(observer: @escaping SingleObserver) {
-        UserApi.shared.rx.loginWithKakaoAccount()
-            .subscribe(onNext: { oauthToken in
-                observer(.success(OAuthResponse(accessToken: oauthToken.accessToken,
-                                                provider: .kakao)))
-            }, onError: {error in
-                observer(.error(error))
-            })
-            .disposed(by: disposeBag)
     }
 }
