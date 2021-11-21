@@ -8,9 +8,9 @@
 import Foundation
 
 enum UserDefaultManager {
-    @UserDefault(key: "accessToken", defaultValue: nil)
+    @UserDefault<String>(key: "accessToken")
     static var accessToken: String?
     
-    @UserDefault(key: "refreshToken", defaultValue: nil)
+    @UserDefault<String>(key: "refreshToken")
     static var refreshToken: String?
 }

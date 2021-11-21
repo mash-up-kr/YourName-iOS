@@ -16,7 +16,11 @@ protocol AccessTokenRepository {
 
 final class YourNameAccessTokenRepository: AccessTokenRepository {
     func fetchAccessToken() -> Observable<AccessToken?> {
-        #warning("⚠️ TODO: 로직 구현 해야함") // Booung
-        fatalError()
+        Observable<AccessToken?>.create { observer in
+            observer.onNext(UserDefaultManager.accessToken)
+            observer.onCompleted()
+            
+            return Disposables.create()
+        }
     }
 }

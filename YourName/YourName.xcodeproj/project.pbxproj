@@ -114,7 +114,6 @@
 		CE63125026F5DE6800B2E69B /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63124F26F5DE6800B2E69B /* WelcomeViewModel.swift */; };
 		CE63125226F5E19700B2E69B /* AccessTokenRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63125126F5E19700B2E69B /* AccessTokenRepository.swift */; };
 		CE63125526F5E25200B2E69B /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63125426F5E25200B2E69B /* String+.swift */; };
-		CE63125726F5E2A100B2E69B /* FakeAccessTokenRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63125626F5E2A100B2E69B /* FakeAccessTokenRepository.swift */; };
 		CE63125E26F6270B00B2E69B /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63125D26F6270B00B2E69B /* SplashViewController.swift */; };
 		CE63126026F6281800B2E69B /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63125F26F6281800B2E69B /* SplashViewModel.swift */; };
 		CE63129E26F8618000B2E69B /* AuthenticationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63129D26F8618000B2E69B /* AuthenticationDelegate.swift */; };
@@ -365,7 +364,6 @@
 		CE63124F26F5DE6800B2E69B /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
 		CE63125126F5E19700B2E69B /* AccessTokenRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenRepository.swift; sourceTree = "<group>"; };
 		CE63125426F5E25200B2E69B /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
-		CE63125626F5E2A100B2E69B /* FakeAccessTokenRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAccessTokenRepository.swift; sourceTree = "<group>"; };
 		CE63125D26F6270B00B2E69B /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		CE63125F26F6281800B2E69B /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 		CE63129D26F8618000B2E69B /* AuthenticationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationDelegate.swift; sourceTree = "<group>"; };
@@ -1112,7 +1110,6 @@
 				CEB6586E26EB2C9400C11F33 /* Auth.swift */,
 				CE63129D26F8618000B2E69B /* AuthenticationDelegate.swift */,
 				A2D875DE26EE295C00ED5949 /* AuthResponse.swift */,
-				CE63125626F5E2A100B2E69B /* FakeAccessTokenRepository.swift */,
 				A2A5C83726FB17D0005D2849 /* KakaoAuth.swift */,
 			);
 			path = Auth;
@@ -1573,7 +1570,6 @@
 				CE6312CF26F9B82600B2E69B /* NameCard.swift in Sources */,
 				CEAE397527405D3C0010F8F0 /* CardBook.swift in Sources */,
 				CEB6583026EB15A600C11F33 /* ViewController.swift in Sources */,
-				CE63125726F5E2A100B2E69B /* FakeAccessTokenRepository.swift in Sources */,
 				CE472B812748DAF0001A5E5F /* MakeCardAPI.swift in Sources */,
 				CE6312A926F8CB2F00B2E69B /* SignedOutDependencyContainer.swift in Sources */,
 				CE4D4ECA27090D5200081A2B /* ColorSourceCollectionViewCell.swift in Sources */,
