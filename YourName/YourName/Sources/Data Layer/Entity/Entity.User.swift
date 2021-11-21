@@ -9,12 +9,6 @@ import Foundation
 
 extension Entity {
     
-    struct UserSession: Decodable {
-        let accessToken: String?
-        let refreshToken: String?
-        let user: User?
-    }
-    
     struct User: Decodable {
         let id: String?
         let name: String?

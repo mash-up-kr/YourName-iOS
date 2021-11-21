@@ -14,7 +14,7 @@ protocol AccessTokenRepository {
     func fetchAccessToken() -> Observable<AccessToken?>
 }
 
-final class YourNameAccessTokenRepository: AccessTokenRepository {
+struct YourNameAccessTokenRepository: AccessTokenRepository {
     func fetchAccessToken() -> Observable<AccessToken?> {
         Observable<AccessToken?>.create { observer in
             observer.onNext(UserDefaultManager.accessToken)
