@@ -10,13 +10,13 @@ import Moya
 
 struct LoginAPI: ServiceAPI {
 
-    let accessToken: AccessToken
-    let provider: Provider
+    private let accessToken: AccessToken
+    private let provider: Provider
     
-    init(accesToken: AccessToken,
+    init(accessToken: AccessToken,
          provider: Provider) {
         
-        self.accessToken = accesToken
+        self.accessToken = accessToken
         self.provider = provider
     }
     
