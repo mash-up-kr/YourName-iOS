@@ -44,17 +44,17 @@ extension WelcomeViewModel {
     private func loginRequest(accessToken: AccessToken, provider: Provider) {
         Enviorment.current.network.request(LoginAPI(accesToken: accessToken,
                                                     provider: provider))
-            .compactMap { $0.accessToken }
-            .subscribe(onNext: { accessToken in
-                UserDefaults.standard.set(accessToken, forKey: "accessToken")
+            .compactMap { response -> (String, String)? in
+                guard let accessToken = response.accessToken,
+                      let refreshToken = response.refreshToken else { return nil }
+                return (accessToken, refreshToken)
+            }
+            .bind(onNext: { accessToken, refreshToken in
+                UserDefaultManager.accessToken = accessToken
+                UserDefaultManager.refreshToken = refreshToken
+                
                 delegate.signIn(withAccessToken: accessToken)
             })
             .disposed(by: disposeBag)
-    }
-}
-
-extension UserDefaults {
-    static func setValue(_ value: Any, forKey: String) {
-        
     }
 }
