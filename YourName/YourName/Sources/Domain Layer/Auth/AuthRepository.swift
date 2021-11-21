@@ -10,6 +10,7 @@ import RxSwift
 
 protocol AuthRepository {
     func requestLogin(accessToken: AccessToken, provider: Provider) -> Observable<(AccessToken, RefreshToken)>
+    func requestLogout(accessToken: AccessToken) -> Observable<Void>
 }
 
 final class YourNameAuthRepository: AuthRepository {
@@ -21,5 +22,10 @@ final class YourNameAuthRepository: AuthRepository {
                       let refreshToken = response.refreshToken else { return nil }
                 return (accessToken, refreshToken)
             }
+    }
+    
+    func requestLogout(accessToken: AccessToken) -> Observable<Void> {
+        return Environment.current.network.request(LogoutAPI(accessToken: accessToken))
+            .mapToVoid()
     }
 }

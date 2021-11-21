@@ -76,8 +76,14 @@ extension SettingViewController {
             .disposed(by: disposeBag)
         
         logoutButton.rx.throttleTap
-            .bind(onNext: { [weak self] in
-                self?.viewModel.tapLogOut()
+            .asObservable()
+            .flatMap { [weak self] _ -> Observable<Void> in
+                guard let self = self else { return .empty() }
+                return self.viewModel.tapLogOut()
+            }
+            .bind(onNext: {
+                let appDelegate = UIApplication.shared.delegate as? AppDelegate
+                appDelegate?.window?.rootViewController = RootDependencyContainer().createRootViewController()
             })
             .disposed(by: disposeBag)
         

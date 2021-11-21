@@ -13,14 +13,9 @@ final class SettingDependencyContainer {
         
     }
     
-    init(mycardListDependencyContainer: MyCardListDependencyContainer) {
-        
-    }
-    
     func settingViewController() -> UIViewController {
-        let viewModel = SettingViewModel()
         let viewController = SettingViewController.instantiate()
-        viewController.viewModel = viewModel
+        viewController.viewModel = self.createSettingViewModel()
         
         let aboutProductionTeamFactory: () -> AboutProductionTeamViewController = {
             return AboutProductionTeamViewController.instantiate()
@@ -30,5 +25,9 @@ final class SettingDependencyContainer {
       
         let navigationController = UINavigationController(rootViewController: viewController)
         return navigationController
+    }
+    
+    private func createSettingViewModel() -> SettingViewModel {
+        return SettingViewModel(authRepository: YourNameAuthRepository())
     }
 }

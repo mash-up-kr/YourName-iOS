@@ -12,11 +12,11 @@ struct LogoutAPI: ServiceAPI {
 
     private let accessToken: AccessToken
     
-    init(accesToken: AccessToken) {
-        self.accessToken = accesToken
+    init(accessToken: AccessToken) {
+        self.accessToken = accessToken
     }
     
-    typealias Response = Entity.Login
+    typealias Response = Entity.Empty
     var path: String { "/logout" }
     var method: Moya.Method { .post }
     var task: Task { .requestPlain }
