@@ -8,7 +8,7 @@
 import Foundation
 import RxSwift
 
-struct WelcomeViewModel {
+final class WelcomeViewModel {
     
     private let delegate: AuthenticationDelegate
     private let disposeBag = DisposeBag()
@@ -29,12 +29,12 @@ struct WelcomeViewModel {
         }
         
         auth.authorize()
-            .subscribe { response in
-                self.loginRequest(accessToken: response.accessToken,
+            .subscribe { [weak self] response in
+                self?.loginRequest(accessToken: response.accessToken,
                                    provider: response.provider)
             } onError: { error in
                 //TODO: ??에러 핸들링 어떻게할건지
-                print(error.localizedDescription, "error")
+                print(error.localizedDescription)
             }
             .disposed(by: disposeBag)
     }
@@ -49,11 +49,16 @@ extension WelcomeViewModel {
                       let refreshToken = response.refreshToken else { return nil }
                 return (accessToken, refreshToken)
             }
-            .bind(onNext: { accessToken, refreshToken in
+            .catchError({ error in
+                //TODO: error핸들링
+                print(error.localizedDescription)
+                return .empty()
+            })
+            .bind(onNext: { [weak self] accessToken, refreshToken in
                 UserDefaultManager.accessToken = accessToken
                 UserDefaultManager.refreshToken = refreshToken
                 
-                delegate.signIn(withAccessToken: accessToken)
+                self?.delegate.signIn(withAccessToken: accessToken)
             })
             .disposed(by: disposeBag)
     }
