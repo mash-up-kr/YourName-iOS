@@ -1,5 +1,5 @@
 //
-//  AuthResponse.swift
+//  OAuthResponse.swift
 //  YourName
 //
 //  Created by 송서영 on 2021/09/12.
@@ -13,6 +13,7 @@ enum Provider: String {
 }
 
 struct OAuthResponse {
-    let accessToken: String
+    let accessToken: AccessToken
     let provider: Provider
 }
+

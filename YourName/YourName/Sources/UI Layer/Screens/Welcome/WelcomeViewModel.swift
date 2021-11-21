@@ -2,56 +2,45 @@
 //  SignInViewModel.swift
 //  YourName
 //
-//  Created by Booung on 2021/09/18.
+//  Created by 송서영 on 2021/09/18.
 //
 
 import Foundation
 import RxSwift
+import RxRelay
 
 final class WelcomeViewModel {
     
     private let delegate: AuthenticationDelegate
+    private let authRepository: AuthRepository
+    private let OAuthRepository: OAuthRepository
+
     private let disposeBag = DisposeBag()
     
-    init(delegate: AuthenticationDelegate) {
+    init(delegate: AuthenticationDelegate,
+         authRepository: AuthRepository,
+         OAuthRepository: OAuthRepository) {
         self.delegate = delegate
+        self.authRepository = authRepository
+        self.OAuthRepository = OAuthRepository
+    }
+    
+    deinit {
+        print("💀 \(String(describing: self)) deinit")
     }
     
     func signIn(with provider: Provider) {
 
-        var auth: OAuth
-        switch provider {
-        case .kakao:
-            auth = KakaoAuth()
-        case .apple:
-            //TODO: Apple Auth 로 교체 필요
-            auth = KakaoAuth()
-        }
-        
-        auth.authorize()
-            .subscribe { [weak self] response in
-                self?.loginRequest(accessToken: response.accessToken,
-                                   provider: response.provider)
-            } onError: { error in
-                //TODO: ??에러 핸들링 어떻게할건지
-                print(error.localizedDescription)
-            }
-            .disposed(by: disposeBag)
-    }
-}
-
-extension WelcomeViewModel {
-    private func loginRequest(accessToken: AccessToken, provider: Provider) {
-        Enviorment.current.network.request(LoginAPI(accesToken: accessToken,
-                                                    provider: provider))
-            .compactMap { response -> (String, String)? in
-                guard let accessToken = response.accessToken,
-                      let refreshToken = response.refreshToken else { return nil }
-                return (accessToken, refreshToken)
+        self.OAuthRepository.authorize(provider: provider)
+            .asObservable()
+            .flatMapLatest { [weak self] response -> Observable<(AccessToken, RefreshToken)> in
+                guard let self = self else { return .empty() }
+                return self.authRepository.requestLogin(accessToken: response.accessToken,
+                                                        provider: response.provider)
             }
             .catchError({ error in
-                //TODO: error핸들링
-                print(error.localizedDescription)
+                //TODO: error handling
+                print(error)
                 return .empty()
             })
             .bind(onNext: { [weak self] accessToken, refreshToken in
