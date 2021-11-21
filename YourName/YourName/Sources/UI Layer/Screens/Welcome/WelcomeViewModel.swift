@@ -52,7 +52,7 @@ extension WelcomeViewModel {
             .bind(onNext: { accessToken, refreshToken in
                 UserDefaultManager.accessToken = accessToken
                 UserDefaultManager.refreshToken = refreshToken
-                print(UserDefaultManager.accessToken, "서영")
+                
                 delegate.signIn(withAccessToken: accessToken)
             })
             .disposed(by: disposeBag)

@@ -10,7 +10,6 @@ import Moya
 
 struct LoginAPI: ServiceAPI {
 
-
     let accessToken: AccessToken
     let provider: Provider
     
@@ -19,8 +18,6 @@ struct LoginAPI: ServiceAPI {
         
         self.accessToken = accesToken
         self.provider = provider
-        print(accessToken, "서영")
-        print(provider, "서영")
     }
     
     typealias Response = Entity.Login
@@ -33,7 +30,7 @@ struct LoginAPI: ServiceAPI {
         }
     }
     var method: Moya.Method { .post }
-    var task: Task { .requestParameters(parameters: [:], encoding: JSONEncoding.default) }
+    var task: Task { .requestPlain }
     var headers: [String : String]? {
         return ["authorization": self.accessToken]
     }
