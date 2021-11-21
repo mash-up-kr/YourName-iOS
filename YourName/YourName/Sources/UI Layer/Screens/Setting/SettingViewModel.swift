@@ -20,10 +20,7 @@ typealias SettingNavigation = Navigation<SettingDestination>
 final class SettingViewModel {
     private(set) var navigation = PublishRelay<SettingNavigation>()
     
-    func tapUserSetting() {
-        print(#function)
-//        navigation.accept(.push(.userSetting))
-    }
+    
     func tapOnboardingQuest() {
         navigation.accept(.show(.onboardingQuest))
     }
@@ -33,5 +30,11 @@ final class SettingViewModel {
     }
     func tapAboutProductionTeam() {
         navigation.accept(.push(.aboutProductionTeam))
+    }
+    func tapLogOut() {
+        
+    }
+    func tapResign() {
+        
     }
 }

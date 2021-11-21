@@ -62,17 +62,13 @@ extension AddFriendCardViewController {
     private func bind() {
         
         Observable.merge(
-            self.searchTextField.rx.controlEvent([.editingDidEndOnExit])
-                .mapToVoid(),
-            self.resultView.rx.tapWhenRecognized()
-                .mapToVoid(),
-            self.noResultView.rx.tapWhenRecognized()
-                .mapToVoid(),
-            self.view.rx.tapWhenRecognized()
-                .mapToVoid()
+            self.searchTextField.rx.controlEvent([.editingDidEndOnExit]).mapToVoid(),
+            self.resultView.rx.tapWhenRecognized.asObservable(),
+            self.noResultView.rx.tapWhenRecognized.asObservable(),
+            self.view.rx.tapWhenRecognized.asObservable()
             )
             .bind(onNext: { [weak self] _ in
-                self?.view.endEditing(true)
+                self?.searchTextField.resignFirstResponder()
             })
             .disposed(by: disposeBag)
         

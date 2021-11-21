@@ -57,39 +57,33 @@ extension SettingViewController {
     
     private func bind() {
         
-        questView.rx.tapWhenRecognized()
+        questView.rx.tapWhenRecognized
             .bind(onNext: { [weak self] in
                 self?.viewModel.tapOnboardingQuest()
             })
             .disposed(by: disposeBag)
         
-        noticeView.rx.tapWhenRecognized()
+        noticeView.rx.tapWhenRecognized
             .bind(onNext: { [weak self] in
                 self?.viewModel.tapNotice()
             })
             .disposed(by: disposeBag)
         
-        aboutProductionTeamView.rx.tapWhenRecognized()
+        aboutProductionTeamView.rx.tapWhenRecognized
             .bind(onNext: { [weak self] in
                 self?.viewModel.tapAboutProductionTeam()
             })
             .disposed(by: disposeBag)
         
-        logoutButton.rx.tap
-            .throttle(.microseconds(400),
-                      latest: false,
-                      scheduler: MainScheduler.instance)
-            .bind(onNext: {
-                print("logout")
+        logoutButton.rx.throttleTap
+            .bind(onNext: { [weak self] in
+                self?.viewModel.tapLogOut()
             })
             .disposed(by: disposeBag)
         
-        resignButton.rx.tap
-            .throttle(.microseconds(400),
-                      latest: false,
-                      scheduler: MainScheduler.instance)
-            .bind (onNext:{
-                print("탈퇴하기")
+        resignButton.rx.throttleTap
+            .bind (onNext:{ [weak self] in
+                self?.viewModel.tapResign()
             })
             .disposed(by: disposeBag)
             

@@ -11,19 +11,18 @@ import RxCocoa
 import RxGesture
 
 extension Reactive where Base: View {
-    func tapWhenRecognized() -> Observable<Void> {
-        return tapGesture().when(.recognized).map { _ in return }
+    var tapWhenRecognized: ControlEvent<Void> {
+        let source = tapGesture().when(.recognized).mapToVoid()
+        return ControlEvent(events: source)
     }
 }
 
 extension Reactive where Base: UIButton {
     var throttleTap: ControlEvent<Void> {
         let source = tap
-            .throttle(
-                .milliseconds(400),
-                latest: false,
-                scheduler: MainScheduler.instance
-            )
+            .throttle(.milliseconds(400),
+                      latest: false,
+                      scheduler: MainScheduler.instance)
         return ControlEvent(events: source)
     }
 }
