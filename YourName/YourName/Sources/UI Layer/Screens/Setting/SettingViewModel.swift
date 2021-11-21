@@ -32,7 +32,7 @@ final class SettingViewModel {
         navigation.accept(.push(.aboutProductionTeam))
     }
     func tapLogOut() {
-        
+        UserDefaultManager.accessToken = nil
     }
     func tapResign() {
         

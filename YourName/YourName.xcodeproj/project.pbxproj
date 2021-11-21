@@ -61,6 +61,7 @@
 		A2DA3B3F274A368D00E68F23 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B3E274A368D00E68F23 /* UserDefault.swift */; };
 		A2DA3B41274A4BDA00E68F23 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B40274A4BDA00E68F23 /* UserDefaultManager.swift */; };
 		A2DA3B43274A536700E68F23 /* Entity.UserOnboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B42274A536700E68F23 /* Entity.UserOnboarding.swift */; };
+		A2DA3B45274A5BE000E68F23 /* LogoutAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B44274A5BE000E68F23 /* LogoutAPI.swift */; };
 		CE2BB2C727074F4600936148 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE2BB2C627074F4600936148 /* Colors.xcassets */; };
 		CE2BB2C92707560800936148 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2BB2C82707560800936148 /* Palette.swift */; };
 		CE2EC99327073453006B9852 /* CardCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2EC99227073453006B9852 /* CardCreationViewModel.swift */; };
@@ -311,6 +312,7 @@
 		A2DA3B3E274A368D00E68F23 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDefault.swift; path = "YourName/Sources/Data Layer/Entity/UserDefault.swift"; sourceTree = SOURCE_ROOT; };
 		A2DA3B40274A4BDA00E68F23 /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDefaultManager.swift; path = "YourName/Sources/Data Layer/Entity/UserDefaultManager.swift"; sourceTree = SOURCE_ROOT; };
 		A2DA3B42274A536700E68F23 /* Entity.UserOnboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.UserOnboarding.swift; sourceTree = "<group>"; };
+		A2DA3B44274A5BE000E68F23 /* LogoutAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutAPI.swift; sourceTree = "<group>"; };
 		A3E561B79C6998E82DB447DF /* Pods-YourName-YourNameTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourName-YourNameTests.debug.xcconfig"; path = "Target Support Files/Pods-YourName-YourNameTests/Pods-YourName-YourNameTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CE2BB2C627074F4600936148 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		CE2BB2C82707560800936148 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
@@ -628,6 +630,7 @@
 			children = (
 				CE472B802748DAF0001A5E5F /* MakeCardAPI.swift */,
 				A2DA3B3A274A162400E68F23 /* LoginAPI.swift */,
+				A2DA3B44274A5BE000E68F23 /* LogoutAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -1693,6 +1696,7 @@
 				CE4D4EAF2708780A00081A2B /* PageSheetController.swift in Sources */,
 				A23920FD273695B30069E418 /* AddFriendCardResultView.swift in Sources */,
 				CED16DF526F3A5480076565F /* QuestViewController.swift in Sources */,
+				A2DA3B45274A5BE000E68F23 /* LogoutAPI.swift in Sources */,
 				A2B10121270AA80900CAE013 /* AddFriendCardViewModel.swift in Sources */,
 				CEB6588926EC818900C11F33 /* HTTPError.swift in Sources */,
 				CE6BAB942704D0990006D26B /* Storyboarded.swift in Sources */,
