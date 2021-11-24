@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct NameCard: Equatable {
+struct NameCard: Equatable, Hashable {
     let id: String?
     let name: String?
     let role: String?

@@ -53,16 +53,12 @@ final class TMISettingViewModel {
     }
     
     func tapInterest(at index: Int) {
-        guard let selecectedInterest = self.interestes.value[safe: index] else { return }
-        guard var selecectedInteresteForDisplay = self.interestesForDisplay.value[safe: index] else { return }
+        guard let selectedInterest = self.interestes.value[safe: index] else { return }
+        guard var selectedInteresteForDisplay = self.interestesForDisplay.value[safe: index] else { return }
         
-        if self.selectedInterestes.contains(selecectedInterest) {
-            self.selectedInterestes.remove(selecectedInterest)
-        } else {
-            self.selectedInterestes.insert(selecectedInterest)
-        }
-        selecectedInteresteForDisplay.isSelected.toggle()
-        let updateInterestes = self.interestesForDisplay.value.with { $0[index] = selecectedInteresteForDisplay }
+        selectedInterestes.toggle(selectedInterest)
+        selectedInteresteForDisplay.isSelected.toggle()
+        let updateInterestes = self.interestesForDisplay.value.with { $0[index] = selectedInteresteForDisplay }
         self.interestesForDisplay.accept(updateInterestes)
     }
     
@@ -70,11 +66,7 @@ final class TMISettingViewModel {
         guard let selectedStrongPoint = self.strongPoints.value[safe: index] else { return }
         guard var selectedStrongPointForDisplay = self.strongPointsForDisplay.value[safe: index] else { return }
         
-        if self.selectedStrongPoints.contains(selectedStrongPoint) {
-            self.selectedStrongPoints.remove(selectedStrongPoint)
-        } else {
-            self.selectedStrongPoints.insert(selectedStrongPoint)
-        }
+        self.selectedStrongPoints.toggle(selectedStrongPoint)
         selectedStrongPointForDisplay.isSelected.toggle()
         let updateStrongPoints = self.strongPointsForDisplay.value.with { $0[index] = selectedStrongPointForDisplay }
         self.strongPointsForDisplay.accept(updateStrongPoints)

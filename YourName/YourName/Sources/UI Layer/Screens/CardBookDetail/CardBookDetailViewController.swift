@@ -72,7 +72,7 @@ extension CardBookDetailViewController {
             })
             .disposed(by: self.disposeBag)
         
-        self.viewModel.cellViewModels.distinctUntilChanged()
+        self.viewModel.friendCardsForDisplay.distinctUntilChanged()
             .subscribe(onNext: { [weak self] cellViewModels in
                 self?.cellViewModels = cellViewModels
                 self?.friendCardCollectionView?.reloadData()
@@ -138,7 +138,13 @@ extension CardBookDetailViewController: UICollectionViewDataSource {
     
 }
 
-extension CardBookDetailViewController: UICollectionViewDelegate {}
+extension CardBookDetailViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.viewModel.tapCheck(at: indexPath.item)
+    }
+    
+}
 
 extension CardBookDetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
