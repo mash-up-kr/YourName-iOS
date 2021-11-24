@@ -15,6 +15,17 @@ final class QuestDependencyContainer {
     
     func createQuestViewController() -> QuestViewController {
         let viewController = QuestViewController.instantiate()
+        let viewModel = self.createQuestViewModel()
+        viewController.viewModel = viewModel
         return viewController
+    }
+    
+    private func createQuestViewModel() -> QuestViewModel {
+        let repository = self.createQuestRepository()
+        return QuestViewModel(questRepository: repository)
+    }
+    
+    private func createQuestRepository() -> QuestRepository {
+        return MockQuestRepository()
     }
 }

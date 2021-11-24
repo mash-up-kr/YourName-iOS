@@ -233,6 +233,8 @@
 		CEDA4B7F274ECB000011D0CA /* StrongPointAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDA4B7E274ECB000011D0CA /* StrongPointAPI.swift */; };
 		CEDA4B81274ECBAE0011D0CA /* QuestsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDA4B80274ECBAE0011D0CA /* QuestsAPI.swift */; };
 		CEDA4B83274ECC4E0011D0CA /* Entity.Quest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDA4B82274ECC4E0011D0CA /* Entity.Quest.swift */; };
+		CEDA4B86274ECECC0011D0CA /* QuestRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDA4B85274ECECC0011D0CA /* QuestRepository.swift */; };
+		CEDA4B88274ED0710011D0CA /* QuestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDA4B87274ED0710011D0CA /* QuestViewModel.swift */; };
 		CEF8C55326EDF8D5009BA9C2 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF8C55226EDF8D5009BA9C2 /* UIView+.swift */; };
 		CEF8C55726EDFB6F009BA9C2 /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF8C55626EDFB6F009BA9C2 /* UIStackView+.swift */; };
 		CEFA037A26EFB76D00D12AAB /* SnapshotService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFA037926EFB76D00D12AAB /* SnapshotService.swift */; };
@@ -492,6 +494,8 @@
 		CEDA4B7E274ECB000011D0CA /* StrongPointAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrongPointAPI.swift; sourceTree = "<group>"; };
 		CEDA4B80274ECBAE0011D0CA /* QuestsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestsAPI.swift; sourceTree = "<group>"; };
 		CEDA4B82274ECC4E0011D0CA /* Entity.Quest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.Quest.swift; sourceTree = "<group>"; };
+		CEDA4B85274ECECC0011D0CA /* QuestRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestRepository.swift; sourceTree = "<group>"; };
+		CEDA4B87274ED0710011D0CA /* QuestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestViewModel.swift; sourceTree = "<group>"; };
 		CEF8C55226EDF8D5009BA9C2 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		CEF8C55626EDFB6F009BA9C2 /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 		CEFA037926EFB76D00D12AAB /* SnapshotService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotService.swift; sourceTree = "<group>"; };
@@ -1272,6 +1276,7 @@
 				CEDA4B7C274EC4900011D0CA /* QuestDepencyContainer.swift */,
 				CEDA4B7A274EC2EE0011D0CA /* QuestTableViewCell.swift */,
 				CED16DF426F3A5480076565F /* QuestViewController.swift */,
+				CEDA4B87274ED0710011D0CA /* QuestViewModel.swift */,
 			);
 			path = Quest;
 			sourceTree = "<group>";
@@ -1291,6 +1296,7 @@
 		CEDA4B84274ECEA70011D0CA /* Quest */ = {
 			isa = PBXGroup;
 			children = (
+				CEDA4B85274ECECC0011D0CA /* QuestRepository.swift */,
 			);
 			path = Quest;
 			sourceTree = "<group>";
@@ -1599,6 +1605,7 @@
 				CE472B812748DAF0001A5E5F /* MakeCardAPI.swift in Sources */,
 				CE6312A926F8CB2F00B2E69B /* SignedOutDependencyContainer.swift in Sources */,
 				CE4D4ECA27090D5200081A2B /* ColorSourceCollectionViewCell.swift in Sources */,
+				CEDA4B88274ED0710011D0CA /* QuestViewModel.swift in Sources */,
 				CEB6589126EC826300C11F33 /* Enviorment.swift in Sources */,
 				A2CC656E27088E9C00610C49 /* MyCardListCollectionViewCell.swift in Sources */,
 				A2CC65742708AB2C00610C49 /* MySkillProgressView.swift in Sources */,
@@ -1693,6 +1700,7 @@
 				CEB6588726EC817A00C11F33 /* HTTP.swift in Sources */,
 				A29DA249271DCF3100B1E647 /* AboutProductionTeamViewController.swift in Sources */,
 				CE94ABA6270ED4B7005D2E80 /* TMIContentCollectionViewCell.swift in Sources */,
+				CEDA4B86274ECECC0011D0CA /* QuestRepository.swift in Sources */,
 				A2A5C83826FB17D0005D2849 /* KakaoAuth.swift in Sources */,
 				CE4D4EDD270A0F9900081A2B /* TMISettingView.swift in Sources */,
 				CE6BABAB2704E2480006D26B /* UIVIewController+.swift in Sources */,

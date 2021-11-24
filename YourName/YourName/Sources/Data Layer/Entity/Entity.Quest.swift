@@ -10,12 +10,14 @@ import KakaoSDKAuth
 
 extension Entity {
     
-    struct Quest: Decodable {
+    struct Quest: Decodable, Equatable {
+        let id: String?
         let title: String?
         let status: Status?
         let rewardImageURL: String?
         
         enum CodingKeys: String, CodingKey {
+            case id
             case title
             case status
             case rewardImageURL = "imageUrl"
@@ -24,7 +26,7 @@ extension Entity {
 }
 
 extension Entity.Quest {
-    enum Status: String, Decodable {
+    enum Status: String, Decodable, Equatable {
         case wait = "WAIT"
         case archieve = "DONE_WAIT"
         case done = "DONE"
