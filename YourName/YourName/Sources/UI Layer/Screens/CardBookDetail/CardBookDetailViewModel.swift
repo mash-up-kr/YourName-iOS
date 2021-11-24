@@ -50,16 +50,9 @@ final class CardBookDetailViewModel {
     }
     
     func tapEdit() {
-        var isEditing = self.isEditing.value
-        defer {
-            isEditing.toggle()
-            self.isEditing.accept(isEditing)
-        }
-        if self.isEditing.value {
-//            cellViewModels
-        } else {
-            
-        }
+        guard self.isEditing.value == false else { return }
+        
+        self.isEditing.accept(true)
     }
     
     func tapCheck(id: String) {
@@ -73,6 +66,7 @@ final class CardBookDetailViewModel {
     }
     
     func tapCheck(at index: Int) {
+        guard self.isEditing.value else { return }
         guard var selectedCardForDisplay = self.friendCardsForDisplay.value[safe: index] else { return }
         
         self.checkedCardIndice.toggle(index)
@@ -83,10 +77,10 @@ final class CardBookDetailViewModel {
     }
     
     func tapRemove() {
+        guard self.isEditing.value              else { return }
         guard self.checkedCardIndice.isNotEmpty else { return }
         
         let checkedCardIDs = self.checkedCardIndice.compactMap { index in self.friendCards.value[safe: index]?.id }
-        
         self.cardRepository.remove(cardIDs: checkedCardIDs)
             .subscribe(onNext: { [weak self] deletedCardIDs in
                 guard let self = self           else { return }
@@ -99,6 +93,7 @@ final class CardBookDetailViewModel {
                 self.friendCards.accept(updatedCards)
                 self.friendCardsForDisplay.accept(updatedCards.compactMap(self.transform(card:)))
                 self.checkedCardIndice.removeAll()
+                self.isEditing.accept(false)
             })
             .disposed(by: self.disposeBag)
     }
@@ -114,10 +109,6 @@ final class CardBookDetailViewModel {
             isEditing: false,
             isChecked: false
         )
-    }
-    
-    private func updateCards(cardIDs: [String]) {
-        
     }
     
     private let friendCards = BehaviorRelay<[NameCard]>(value: [])

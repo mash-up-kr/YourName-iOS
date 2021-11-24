@@ -32,6 +32,7 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
     
     @IBOutlet private weak var backButton: UIButton?
     @IBOutlet private weak var moreButton: UIButton?
+    @IBOutlet private weak var removeButton: UIButton?
     @IBOutlet private weak var cardBookTitleLabel: UILabel?
     @IBOutlet private weak var friendCardCollectionView: UICollectionView?
 }
@@ -60,7 +61,13 @@ extension CardBookDetailViewController {
         
         self.moreButton?.rx.tap
             .subscribe(onNext: { [weak self] in
-                self?.viewModel.tapMore()
+                self?.viewModel.tapEdit()
+            })
+            .disposed(by: self.disposeBag)
+        
+        self.removeButton?.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.viewModel.tapRemove()
             })
             .disposed(by: self.disposeBag)
     }
@@ -76,6 +83,13 @@ extension CardBookDetailViewController {
             .subscribe(onNext: { [weak self] cellViewModels in
                 self?.cellViewModels = cellViewModels
                 self?.friendCardCollectionView?.reloadData()
+            })
+            .disposed(by: self.disposeBag)
+        
+        self.viewModel.isEditing.distinctUntilChanged()
+            .subscribe(onNext: { [weak self] isEditing in
+                self?.moreButton?.isHidden = isEditing
+                self?.removeButton?.isHidden = isEditing == false
             })
             .disposed(by: self.disposeBag)
         

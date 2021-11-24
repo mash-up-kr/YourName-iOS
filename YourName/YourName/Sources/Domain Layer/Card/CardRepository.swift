@@ -34,6 +34,6 @@ final class MockCardRepository: CardRepository {
     }
     
     func remove(cardIDs: [CardID]) -> Observable<[CardID]> {
-        .empty()
+        return .just(cardIDs)
     }
 }

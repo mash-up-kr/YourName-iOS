@@ -48,12 +48,25 @@
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="btn_more"/>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cme-Mm-jan">
+                                        <rect key="frame" x="356" y="6" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="44" id="c0L-ex-Cr0"/>
+                                            <constraint firstAttribute="width" secondItem="Cme-Mm-jan" secondAttribute="height" multiplier="1:1" id="zZZ-gZ-eY4"/>
+                                        </constraints>
+                                        <color key="tintColor" name="black1"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="ic_delete"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="Cme-Mm-jan" firstAttribute="centerX" secondItem="aQ1-Vj-3yS" secondAttribute="centerX" id="Lhe-qm-gbM"/>
+                                    <constraint firstItem="Cme-Mm-jan" firstAttribute="width" secondItem="Cme-Mm-jan" secondAttribute="height" multiplier="1:1" id="VCs-sl-z4h"/>
                                     <constraint firstItem="a2W-3m-JUJ" firstAttribute="centerY" secondItem="awy-nx-T1a" secondAttribute="centerY" id="XB9-YG-J8E"/>
                                     <constraint firstItem="a2W-3m-JUJ" firstAttribute="centerX" secondItem="awy-nx-T1a" secondAttribute="centerX" id="a3n-Li-iFZ"/>
                                     <constraint firstAttribute="height" constant="56" id="cvJ-Eh-0ck"/>
+                                    <constraint firstItem="Cme-Mm-jan" firstAttribute="centerY" secondItem="aQ1-Vj-3yS" secondAttribute="centerY" id="eyH-18-Cpk"/>
                                     <constraint firstItem="For-5t-EE5" firstAttribute="centerY" secondItem="awy-nx-T1a" secondAttribute="centerY" id="hNp-jC-drE"/>
                                     <constraint firstItem="aQ1-Vj-3yS" firstAttribute="trailing" secondItem="awy-nx-T1a" secondAttribute="trailing" constant="-14" id="kPC-94-JPj"/>
                                     <constraint firstItem="For-5t-EE5" firstAttribute="leading" secondItem="awy-nx-T1a" secondAttribute="leading" constant="14" id="uDM-4r-FDC"/>
@@ -102,6 +115,7 @@
                         <outlet property="cardBookTitleLabel" destination="a2W-3m-JUJ" id="fEZ-pa-grd"/>
                         <outlet property="friendCardCollectionView" destination="tuy-nF-s5N" id="UbL-1U-dHY"/>
                         <outlet property="moreButton" destination="aQ1-Vj-3yS" id="oM0-1i-132"/>
+                        <outlet property="removeButton" destination="Cme-Mm-jan" id="eBC-Jo-lu6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -112,6 +126,7 @@
     <resources>
         <image name="arrow_left_back" width="24" height="24"/>
         <image name="btn_more" width="24" height="24"/>
+        <image name="ic_delete" width="28" height="28"/>
         <namedColor name="black1">
             <color red="0.082352941176470587" green="0.082352941176470587" blue="0.082352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

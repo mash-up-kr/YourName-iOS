@@ -34,6 +34,8 @@ final class FriendCardCollectionViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
+        self.contentView.borderColor = .clear
+        self.contentView.borderWidth = 3
     }
     
     func configure(with viewModel: FriendCardCellViewModel) {
@@ -41,6 +43,7 @@ final class FriendCardCollectionViewCell: UICollectionViewCell {
         self.roleLabel?.text = viewModel.role
         self.checkBoxView?.isHidden = viewModel.isEditing
         self.checkBoxView?.backgroundColor = viewModel.isChecked ? .black : .white
+        self.contentView.borderColor = viewModel.isChecked ? .black : .white
         guard let colorSource = viewModel.bgColor else { return }
         switch colorSource {
         case .monotone(let color):
