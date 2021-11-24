@@ -20,7 +20,7 @@ final class StrongPointRepositoryImpl: StrongPointRepository {
     }
     
     func fetchAll() -> Observable<[StrongPoint]> {
-        return network.request(BehaviorsAPI())
+        return network.request(StrongPointsAPI())
             .compactMap { [weak self] behaviors in
                 guard let self = self else { return nil }
                 return behaviors.compactMap(self.translate(fromTMI:))

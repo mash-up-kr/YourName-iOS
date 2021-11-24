@@ -25,7 +25,7 @@ final class SettingViewModel {
 //        navigation.accept(.push(.userSetting))
     }
     func tapOnboardingQuest() {
-        navigation.accept(.show(.onboardingQuest))
+        navigation.accept(.present(.onboardingQuest))
     }
     func tapNotice() {
         print(#function)

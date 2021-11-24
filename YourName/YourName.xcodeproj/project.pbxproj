@@ -226,8 +226,15 @@
 		CED16DF926F3A55D0076565F /* MyCardListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED16DF826F3A55D0076565F /* MyCardListViewController.swift */; };
 		CED16DFB26F3A5690076565F /* CardBookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED16DFA26F3A5690076565F /* CardBookDetailViewController.swift */; };
 		CEDA4B75274E85C80011D0CA /* Meetu+Moya.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDA4B74274E85C80011D0CA /* Meetu+Moya.swift */; };
-		CEDA4B77274E87A20011D0CA /* BehaviorsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDA4B76274E87A20011D0CA /* BehaviorsAPI.swift */; };
+		CEDA4B77274E87A20011D0CA /* InterestesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDA4B76274E87A20011D0CA /* InterestesAPI.swift */; };
 		CEDA4B79274E9C910011D0CA /* Set+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDA4B78274E9C910011D0CA /* Set+.swift */; };
+		CEDA4B7B274EC2EF0011D0CA /* QuestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDA4B7A274EC2EE0011D0CA /* QuestTableViewCell.swift */; };
+		CEDA4B7D274EC4900011D0CA /* QuestDepencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDA4B7C274EC4900011D0CA /* QuestDepencyContainer.swift */; };
+		CEDA4B7F274ECB000011D0CA /* StrongPointAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDA4B7E274ECB000011D0CA /* StrongPointAPI.swift */; };
+		CEDA4B81274ECBAE0011D0CA /* QuestsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDA4B80274ECBAE0011D0CA /* QuestsAPI.swift */; };
+		CEDA4B83274ECC4E0011D0CA /* Entity.Quest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDA4B82274ECC4E0011D0CA /* Entity.Quest.swift */; };
+		CEDA4B86274ECECC0011D0CA /* QuestRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDA4B85274ECECC0011D0CA /* QuestRepository.swift */; };
+		CEDA4B88274ED0710011D0CA /* QuestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDA4B87274ED0710011D0CA /* QuestViewModel.swift */; };
 		CEF8C55326EDF8D5009BA9C2 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF8C55226EDF8D5009BA9C2 /* UIView+.swift */; };
 		CEF8C55726EDFB6F009BA9C2 /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF8C55626EDFB6F009BA9C2 /* UIStackView+.swift */; };
 		CEFA037A26EFB76D00D12AAB /* SnapshotService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFA037926EFB76D00D12AAB /* SnapshotService.swift */; };
@@ -480,8 +487,15 @@
 		CED16DF826F3A55D0076565F /* MyCardListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardListViewController.swift; sourceTree = "<group>"; };
 		CED16DFA26F3A5690076565F /* CardBookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBookDetailViewController.swift; sourceTree = "<group>"; };
 		CEDA4B74274E85C80011D0CA /* Meetu+Moya.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Meetu+Moya.swift"; sourceTree = "<group>"; };
-		CEDA4B76274E87A20011D0CA /* BehaviorsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BehaviorsAPI.swift; sourceTree = "<group>"; };
+		CEDA4B76274E87A20011D0CA /* InterestesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestesAPI.swift; sourceTree = "<group>"; };
 		CEDA4B78274E9C910011D0CA /* Set+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Set+.swift"; sourceTree = "<group>"; };
+		CEDA4B7A274EC2EE0011D0CA /* QuestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestTableViewCell.swift; sourceTree = "<group>"; };
+		CEDA4B7C274EC4900011D0CA /* QuestDepencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestDepencyContainer.swift; sourceTree = "<group>"; };
+		CEDA4B7E274ECB000011D0CA /* StrongPointAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrongPointAPI.swift; sourceTree = "<group>"; };
+		CEDA4B80274ECBAE0011D0CA /* QuestsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestsAPI.swift; sourceTree = "<group>"; };
+		CEDA4B82274ECC4E0011D0CA /* Entity.Quest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.Quest.swift; sourceTree = "<group>"; };
+		CEDA4B85274ECECC0011D0CA /* QuestRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestRepository.swift; sourceTree = "<group>"; };
+		CEDA4B87274ED0710011D0CA /* QuestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestViewModel.swift; sourceTree = "<group>"; };
 		CEF8C55226EDF8D5009BA9C2 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		CEF8C55626EDFB6F009BA9C2 /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 		CEFA037926EFB76D00D12AAB /* SnapshotService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotService.swift; sourceTree = "<group>"; };
@@ -605,6 +619,7 @@
 				CE472B702748C0B4001A5E5F /* Entity.TMI.swift */,
 				CE472B722748C0D3001A5E5F /* Entity.Skill.swift */,
 				CE472B742748C1E9001A5E5F /* Entity.Contact.swift */,
+				CEDA4B82274ECC4E0011D0CA /* Entity.Quest.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -624,7 +639,9 @@
 			isa = PBXGroup;
 			children = (
 				CE472B802748DAF0001A5E5F /* MakeCardAPI.swift */,
-				CEDA4B76274E87A20011D0CA /* BehaviorsAPI.swift */,
+				CEDA4B76274E87A20011D0CA /* InterestesAPI.swift */,
+				CEDA4B7E274ECB000011D0CA /* StrongPointAPI.swift */,
+				CEDA4B80274ECBAE0011D0CA /* QuestsAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -1039,6 +1056,7 @@
 		CEB6586426EB2BC100C11F33 /* Domain Layer */ = {
 			isa = PBXGroup;
 			children = (
+				CEDA4B84274ECEA70011D0CA /* Quest */,
 				CEAE3970274002E30010F8F0 /* Card */,
 				CEB6586D26EB2C8800C11F33 /* Auth */,
 				A2CC65842708F16E00610C49 /* CardBook */,
@@ -1255,7 +1273,10 @@
 			isa = PBXGroup;
 			children = (
 				CE6BAB9B2704D7160006D26B /* QuestViewController.storyboard */,
+				CEDA4B7C274EC4900011D0CA /* QuestDepencyContainer.swift */,
+				CEDA4B7A274EC2EE0011D0CA /* QuestTableViewCell.swift */,
 				CED16DF426F3A5480076565F /* QuestViewController.swift */,
+				CEDA4B87274ED0710011D0CA /* QuestViewModel.swift */,
 			);
 			path = Quest;
 			sourceTree = "<group>";
@@ -1270,6 +1291,14 @@
 				A28A9B11271175A70063692D /* SettingViewModel.swift */,
 			);
 			path = Setting;
+			sourceTree = "<group>";
+		};
+		CEDA4B84274ECEA70011D0CA /* Quest */ = {
+			isa = PBXGroup;
+			children = (
+				CEDA4B85274ECECC0011D0CA /* QuestRepository.swift */,
+			);
+			path = Quest;
 			sourceTree = "<group>";
 		};
 		CEF8C55526EDF8F7009BA9C2 /* Extensions */ = {
@@ -1537,6 +1566,7 @@
 				CE4D4ED9270A0D1400081A2B /* SkillSettingView.swift in Sources */,
 				CE472B752748C1E9001A5E5F /* Entity.Contact.swift in Sources */,
 				CE472B7C2748D575001A5E5F /* MeetuResponse.swift in Sources */,
+				CEDA4B83274ECC4E0011D0CA /* Entity.Quest.swift in Sources */,
 				CE4D4EC52709044D00081A2B /* ImageSourceTypePickerView.swift in Sources */,
 				CEF8C55726EDFB6F009BA9C2 /* UIStackView+.swift in Sources */,
 				CEB84096272AF389000E527B /* CardBookCoverTableViewCell.swift in Sources */,
@@ -1575,6 +1605,7 @@
 				CE472B812748DAF0001A5E5F /* MakeCardAPI.swift in Sources */,
 				CE6312A926F8CB2F00B2E69B /* SignedOutDependencyContainer.swift in Sources */,
 				CE4D4ECA27090D5200081A2B /* ColorSourceCollectionViewCell.swift in Sources */,
+				CEDA4B88274ED0710011D0CA /* QuestViewModel.swift in Sources */,
 				CEB6589126EC826300C11F33 /* Enviorment.swift in Sources */,
 				A2CC656E27088E9C00610C49 /* MyCardListCollectionViewCell.swift in Sources */,
 				A2CC65742708AB2C00610C49 /* MySkillProgressView.swift in Sources */,
@@ -1599,6 +1630,7 @@
 				CEB6587926EC806F00C11F33 /* Connectable.swift in Sources */,
 				CE6D1480270AF04500AF4C5C /* TipInfoView.swift in Sources */,
 				A28A9B14271178360063692D /* Reactive+.swift in Sources */,
+				CEDA4B7B274EC2EF0011D0CA /* QuestTableViewCell.swift in Sources */,
 				A2CC65832708F06800610C49 /* CardBookDetailViewModel.swift in Sources */,
 				CEFA037D26EFBACE00D12AAB /* QRGenerater.swift in Sources */,
 				A2A5C83A26FB1A3D005D2849 /* AppKey.swift in Sources */,
@@ -1610,6 +1642,7 @@
 				CE472B7A2748CF26001A5E5F /* ServiceAPI.swift in Sources */,
 				A2CC65622707622D00610C49 /* MyCardListEmptyCollectionViewCell.swift in Sources */,
 				CE94AB9F270ECEED005D2E80 /* MockInterestRepository.swift in Sources */,
+				CEDA4B7F274ECB000011D0CA /* StrongPointAPI.swift in Sources */,
 				A23920FF2736B2FC0069E418 /* AddFriendCardResultViewModel.swift in Sources */,
 				A2BFC115273FFA12002FFF01 /* SelectCardBookViewController.swift in Sources */,
 				CE4D4E882707AE3800081A2B /* CharacterCreationDependencyContainer.swift in Sources */,
@@ -1629,6 +1662,7 @@
 				A2CC656A27084BF300610C49 /* CALayer+.swift in Sources */,
 				CE6D1483270C927E00AF4C5C /* CharacterMeta.swift in Sources */,
 				CEB6587226EB2CAB00C11F33 /* Networking.swift in Sources */,
+				CEDA4B81274ECBAE0011D0CA /* QuestsAPI.swift in Sources */,
 				CEB6587B26EC809800C11F33 /* URLRequestConvertible.swift in Sources */,
 				A2D875DF26EE295C00ED5949 /* AuthResponse.swift in Sources */,
 				CE4D4ECE2709ECDF00081A2B /* ColorSourceRepository.swift in Sources */,
@@ -1662,9 +1696,11 @@
 				CE94AB9D270ECED4005D2E80 /* InterestRepository.swift in Sources */,
 				CE94AB97270ECB8E005D2E80 /* StrongPointRepository.swift in Sources */,
 				A239210B2737ED1B0069E418 /* AlertViewController.swift in Sources */,
+				CEDA4B7D274EC4900011D0CA /* QuestDepencyContainer.swift in Sources */,
 				CEB6588726EC817A00C11F33 /* HTTP.swift in Sources */,
 				A29DA249271DCF3100B1E647 /* AboutProductionTeamViewController.swift in Sources */,
 				CE94ABA6270ED4B7005D2E80 /* TMIContentCollectionViewCell.swift in Sources */,
+				CEDA4B86274ECECC0011D0CA /* QuestRepository.swift in Sources */,
 				A2A5C83826FB17D0005D2849 /* KakaoAuth.swift in Sources */,
 				CE4D4EDD270A0F9900081A2B /* TMISettingView.swift in Sources */,
 				CE6BABAB2704E2480006D26B /* UIVIewController+.swift in Sources */,
@@ -1693,7 +1729,7 @@
 				CE6BAB942704D0990006D26B /* Storyboarded.swift in Sources */,
 				CE4D4E8C2707AF0500081A2B /* CharacterItemRepository.swift in Sources */,
 				CEA4D2E4270CD24A008189FE /* DisplayCharacterItemCollectionViewCell.swift in Sources */,
-				CEDA4B77274E87A20011D0CA /* BehaviorsAPI.swift in Sources */,
+				CEDA4B77274E87A20011D0CA /* InterestesAPI.swift in Sources */,
 				CE6312BE26F9A4C700B2E69B /* CardDetailDependencyContainer.swift in Sources */,
 				A28A9B1627117ACA0063692D /* SettingDependencyContainer.swift in Sources */,
 				CEB6588026EC80F500C11F33 /* Foundation+Network.swift in Sources */,
