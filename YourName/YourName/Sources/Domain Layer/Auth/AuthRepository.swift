@@ -9,17 +9,22 @@ import Foundation
 import RxSwift
 
 protocol AuthRepository {
-    func requestLogin(accessToken: AccessToken, provider: Provider) -> Observable<(AccessToken, RefreshToken)>
+    func requestLogin(accessToken: AccessToken, provider: Provider) -> Observable<(AccessToken)>
 }
 
 final class YourNameAuthRepository: AuthRepository {
 
-    func requestLogin(accessToken: AccessToken, provider: Provider) -> Observable<(AccessToken, RefreshToken)> {
+    func requestLogin(accessToken: AccessToken, provider: Provider) -> Observable<(AccessToken)> {
         return Environment.current.network.request(LoginAPI(accessToken: accessToken, provider: provider))
-            .compactMap { response -> (String, String)? in
+            .compactMap { response -> String? in
                 guard let accessToken = response.accessToken,
-                      let refreshToken = response.refreshToken else { return nil }
-                return (accessToken, refreshToken)
+                      let refreshToken = response.refreshToken,
+                      let userOnboarding = response.userOnboarding else { return nil }
+                
+                UserDefaultManager.accessToken = accessToken
+                UserDefaultManager.refreshToken = refreshToken
+                UserDefaultManager.userOnboarding = userOnboarding
+                return accessToken
             }
     }
 }

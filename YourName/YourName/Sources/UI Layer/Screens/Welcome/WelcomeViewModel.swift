@@ -33,7 +33,7 @@ final class WelcomeViewModel {
 
         self.OAuthRepository.authorize(provider: provider)
             .asObservable()
-            .flatMapLatest { [weak self] response -> Observable<(AccessToken, RefreshToken)> in
+            .flatMapLatest { [weak self] response -> Observable<AccessToken> in
                 guard let self = self else { return .empty() }
                 return self.authRepository.requestLogin(accessToken: response.accessToken,
                                                         provider: response.provider)
@@ -43,10 +43,7 @@ final class WelcomeViewModel {
                 print(error)
                 return .empty()
             })
-            .bind(onNext: { [weak self] accessToken, refreshToken in
-                UserDefaultManager.accessToken = accessToken
-                UserDefaultManager.refreshToken = refreshToken
-                
+            .bind(onNext: { [weak self] accessToken in
                 self?.delegate.signIn(withAccessToken: accessToken)
             })
             .disposed(by: disposeBag)

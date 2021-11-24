@@ -13,4 +13,7 @@ enum UserDefaultManager {
     
     @UserDefault<String>(key: "refreshToken")
     static var refreshToken: String?
+    
+    @UserDefault<[Entity.UserOnboarding]>(key: "userOnboarding")
+    static var userOnboarding: [Entity.UserOnboarding]?
 }
