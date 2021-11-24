@@ -22,6 +22,7 @@ final class NetworkService: NetworkServing {
             .asObservable()
             .map(MeetuResponse<API.Response>.self)
             .map { $0.data }
+            .do { print($0) }
             .filterNil()
     }
     
