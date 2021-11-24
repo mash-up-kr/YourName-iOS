@@ -11,10 +11,6 @@ struct BehaviorsAPI: ServiceAPI {
     var path: String { "/tmis/behaviors" }
     var method: Method { .get }
     var task: NetworkingTask { .requestPlain }
-}
-
-extension BehaviorsAPI {
-    struct Response: Decodable {
-        let list: [Entity.TMI]
-    }
+    
+    typealias Response = [Entity.TMI]
 }

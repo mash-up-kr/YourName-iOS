@@ -10,6 +10,7 @@ import Foundation
 extension Entity {
     
     struct TMI: Decodable {
+        let id: String?
         let type: String?
         let value: String?
     }

@@ -22,13 +22,14 @@ final class InterestRepositoryImpl: InterestRepository {
         return network.request(BehaviorsAPI())
             .compactMap { [weak self] behaviors in
                 guard let self = self else { return nil }
-                return behaviors.list.compactMap(self.translate(fromTMI:))
+                return behaviors.compactMap(self.translate(fromTMI:))
             }
     }
     
     private func translate(fromTMI tmi: Entity.TMI) -> Interest? {
+        guard let id = tmi.id else { return nil }
         guard let content = tmi.value else { return nil }
-        return Interest(content: content)
+        return Interest(id: id, content: content)
     }
     
     private let network: NetworkServing

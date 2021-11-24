@@ -23,13 +23,15 @@ final class StrongPointRepositoryImpl: StrongPointRepository {
         return network.request(BehaviorsAPI())
             .compactMap { [weak self] behaviors in
                 guard let self = self else { return nil }
-                return behaviors.list.compactMap(self.translate(fromTMI:))
+                return behaviors.compactMap(self.translate(fromTMI:))
             }
     }
     
     private func translate(fromTMI tmi: Entity.TMI) -> StrongPoint? {
+        guard let id = tmi.id         else { return nil }
         guard let content = tmi.value else { return nil }
-        return StrongPoint(content: content)
+        
+        return StrongPoint(id: id, content: content)
     }
     
     private let network: NetworkServing
