@@ -1,14 +1,15 @@
 //
-//  BehaviorsAPI.swift
+//  TMICharacterAPI.swift
 //  MEETU
 //
-//  Created by Booung on 2021/11/24.
+//  Created by Booung on 2021/11/25.
 //
 
 import Foundation
 
-struct BehaviorsAPI: ServiceAPI {
-    var path: String { "/tmis/behavior" }
+
+struct StrongPointsAPI: ServiceAPI {
+    var path: String { "/tmis/character" }
     var method: Method { .get }
     var task: NetworkingTask { .requestPlain }
     

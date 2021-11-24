@@ -19,7 +19,7 @@ final class InterestRepositoryImpl: InterestRepository {
     }
     
     func fetchAll() -> Observable<[Interest]> {
-        return network.request(BehaviorsAPI())
+        return network.request(InterestesAPI())
             .compactMap { [weak self] behaviors in
                 guard let self = self else { return nil }
                 return behaviors.compactMap(self.translate(fromTMI:))
