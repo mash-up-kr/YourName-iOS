@@ -37,6 +37,7 @@ final class FriendCardCollectionViewCell: UICollectionViewCell {
         
         self.clipsToBounds = true
         self.borderWidth = 3
+        self.checkBoxView?.clipsToBounds = true
         self.checkBoxView?.borderWidth = 3
     }
     
@@ -45,7 +46,6 @@ final class FriendCardCollectionViewCell: UICollectionViewCell {
         self.roleLabel?.text = viewModel.role
         self.checkBoxView?.isHidden = viewModel.isEditing == false
         self.checkBoxView?.backgroundColor = viewModel.isChecked ? .black : .white
-        self.checkBoxView?.borderColor = viewModel.isChecked ? .black : .white
         guard let colorSource = viewModel.bgColor else { return }
         switch colorSource {
         case .monotone(let color):

@@ -17,6 +17,7 @@ typealias CardBookDetailNavigation = Navigation<CardBookDetailDestination>
 final class CardBookDetailViewModel {
     
     let navigation = PublishRelay<CardBookDetailNavigation>()
+    let shouldShowRemoveReconfirmAlert = PublishRelay<Void>()
     let cardBookTitle = PublishRelay<String>()
     let friendCardsForDisplay = BehaviorRelay<[FriendCardCellViewModel]>(value: [])
     let isEditing = BehaviorRelay<Bool>(value: false)
@@ -79,6 +80,10 @@ final class CardBookDetailViewModel {
     }
     
     func tapRemove() {
+        self.shouldShowRemoveReconfirmAlert.accept(Void())
+    }
+    
+    func tapRemoveConfirm() {
         guard self.isEditing.value else { return }
         
         guard self.checkedCardIndice.isNotEmpty else {
@@ -103,10 +108,21 @@ final class CardBookDetailViewModel {
                 let updatedFriendCardsForDisplay = updatedCards.compactMap(self.transform(card:)).map { $0.with { $0.isEditing = false } }
                 self.friendCardsForDisplay.accept(updatedFriendCardsForDisplay)
                 
-                
                 self.checkedCardIndice.removeAll()
             })
             .disposed(by: self.disposeBag)
+    }
+    
+    func tapRemoveCancel() {
+        self.isEditing.accept(false)
+        self.checkedCardIndice.removeAll()
+        let updatedFriendCardsForDisplay = self.friendCardsForDisplay.value.map {
+            $0.with {
+                $0.isEditing = false
+                $0.isChecked = false
+            }
+        }
+        self.friendCardsForDisplay.accept(updatedFriendCardsForDisplay)
     }
     
     private func transform(card: NameCard) -> FriendCardCellViewModel {

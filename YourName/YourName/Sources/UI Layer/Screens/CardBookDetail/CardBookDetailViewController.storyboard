@@ -14,7 +14,7 @@
         <!--Card Book Detail View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="CardBookDetailViewController" customModule="MEETU" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="Y6W-OH-hqX" customClass="CardBookDetailViewController" customModule="MEETU" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -80,7 +80,7 @@
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="24" minY="24" maxX="24" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="24" minY="24" maxX="24" maxY="100"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="cqe-ut-2bG">
@@ -97,21 +97,51 @@
                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="snB-7p-tVd"/>
                                 </connections>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e0N-wh-vu5">
+                                <rect key="frame" x="0.0" y="824" width="414" height="72"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dAz-wk-ajK">
+                                <rect key="frame" x="24" y="796" width="366" height="56"/>
+                                <color key="backgroundColor" name="black1"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="e2D-bX-xih"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="삭제하기">
+                                    <color key="titleColor" name="grey5"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="e0N-wh-vu5" firstAttribute="top" secondItem="dAz-wk-ajK" secondAttribute="bottom" constant="-28" id="0UD-be-CjU"/>
                             <constraint firstAttribute="bottom" secondItem="tuy-nF-s5N" secondAttribute="bottom" id="3aC-5T-KNN"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="e0N-wh-vu5" secondAttribute="trailing" id="6L9-31-SlA"/>
+                            <constraint firstItem="e0N-wh-vu5" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="7ib-TD-PU8"/>
+                            <constraint firstItem="dAz-wk-ajK" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" constant="-10" id="9la-JL-Cux"/>
                             <constraint firstItem="tuy-nF-s5N" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="ABe-VZ-q7M"/>
+                            <constraint firstAttribute="bottom" secondItem="e0N-wh-vu5" secondAttribute="bottom" id="FiT-a0-PRR"/>
                             <constraint firstItem="tuy-nF-s5N" firstAttribute="top" secondItem="awy-nx-T1a" secondAttribute="bottom" id="K7N-4V-2Qh"/>
                             <constraint firstItem="awy-nx-T1a" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="44" id="Roo-Ab-QGy"/>
                             <constraint firstItem="awy-nx-T1a" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="gqy-sK-UAt"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="tuy-nF-s5N" secondAttribute="trailing" id="gsY-oG-goX"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="awy-nx-T1a" secondAttribute="trailing" id="h8U-iZ-e2l"/>
+                            <constraint firstItem="dAz-wk-ajK" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="24" id="jDA-7x-Br6"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="dAz-wk-ajK" secondAttribute="trailing" constant="24" id="yCn-Fx-fFl"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="backButton" destination="For-5t-EE5" id="Veh-4a-YDF"/>
+                        <outlet property="bottomBarView" destination="e0N-wh-vu5" id="zVb-oz-bQI"/>
+                        <outlet property="bottomRemoveButton" destination="dAz-wk-ajK" id="fLM-Mu-OOe"/>
                         <outlet property="cardBookTitleLabel" destination="a2W-3m-JUJ" id="fEZ-pa-grd"/>
                         <outlet property="friendCardCollectionView" destination="tuy-nF-s5N" id="UbL-1U-dHY"/>
                         <outlet property="moreButton" destination="aQ1-Vj-3yS" id="oM0-1i-132"/>
@@ -129,6 +159,9 @@
         <image name="ic_delete" width="28" height="28"/>
         <namedColor name="black1">
             <color red="0.082352941176470587" green="0.082352941176470587" blue="0.082352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="grey5">
+            <color red="0.94824248552322388" green="0.94824248552322388" blue="0.94824248552322388" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
