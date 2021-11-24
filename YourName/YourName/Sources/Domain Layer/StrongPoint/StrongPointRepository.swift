@@ -29,7 +29,7 @@ final class StrongPointRepositoryImpl: StrongPointRepository {
     
     private func translate(fromTMI tmi: Entity.TMI) -> StrongPoint? {
         guard let id = tmi.id         else { return nil }
-        guard let content = tmi.value else { return nil }
+        guard let content = tmi.name  else { return nil }
         
         return StrongPoint(id: id, content: content)
     }

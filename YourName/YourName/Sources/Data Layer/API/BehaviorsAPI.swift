@@ -8,7 +8,7 @@
 import Foundation
 
 struct BehaviorsAPI: ServiceAPI {
-    var path: String { "/tmis/behaviors" }
+    var path: String { "/tmis/behavior" }
     var method: Method { .get }
     var task: NetworkingTask { .requestPlain }
     

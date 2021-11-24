@@ -27,8 +27,9 @@ final class InterestRepositoryImpl: InterestRepository {
     }
     
     private func translate(fromTMI tmi: Entity.TMI) -> Interest? {
-        guard let id = tmi.id else { return nil }
-        guard let content = tmi.value else { return nil }
+        guard let id = tmi.id        else { return nil }
+        guard let content = tmi.name else { return nil }
+        
         return Interest(id: id, content: content)
     }
     
