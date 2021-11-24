@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct StrongPoint: Equatable {
+struct StrongPoint: Equatable, Hashable {
     let id: Int
     let content: String
 }

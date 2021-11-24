@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Interest: Equatable {
+struct Interest: Equatable, Hashable {
     let id: Int
     let content: String
 }

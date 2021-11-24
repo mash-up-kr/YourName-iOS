@@ -25,30 +25,30 @@ extension CardBook {
             description: "설명은 딱 한줄만 설명 설명 설명 설명",
             backgroundColor: nil
         ),
-        CardBook(
-            id: "1",
-            title: "도감명1",
-            count: 0,
-            description: "설명은 딱 한줄만 설명 설명 설명 설명",
-            backgroundColor: ["#CFFDBA"]
-        ),
-        CardBook(
-            id: "2",
-            title: "도감명2",
-            count: 4,
-            description: "설명은 딱 한줄만 설명 설명 설명 설명",
-            backgroundColor: ["#B4ECFE"]
-        ),
-        CardBook(
-            id: "3",
-            title: "도감명3",
-            count: 20,
-            description: "설명은 딱 한줄만 설명 설명 설명 설명",
-            backgroundColor: ["#DDB3FF",
-                              "#FFD1F5",
-                              "#FFCFCF",
-                              "#FFF4AB",
-                              "#D9FFC8"]
-        )
+//        CardBook(
+//            id: "1",
+//            title: "도감명1",
+//            count: 0,
+//            description: "설명은 딱 한줄만 설명 설명 설명 설명",
+//            backgroundColor: ["#CFFDBA"]
+//        ),
+//        CardBook(
+//            id: "2",
+//            title: "도감명2",
+//            count: 4,
+//            description: "설명은 딱 한줄만 설명 설명 설명 설명",
+//            backgroundColor: ["#B4ECFE"]
+//        ),
+//        CardBook(
+//            id: "3",
+//            title: "도감명3",
+//            count: 20,
+//            description: "설명은 딱 한줄만 설명 설명 설명 설명",
+//            backgroundColor: ["#DDB3FF",
+//                              "#FFD1F5",
+//                              "#FFCFCF",
+//                              "#FFF4AB",
+//                              "#D9FFC8"]
+//        )
     ]
 }
