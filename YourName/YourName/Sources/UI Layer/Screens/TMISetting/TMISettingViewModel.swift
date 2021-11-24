@@ -53,38 +53,47 @@ final class TMISettingViewModel {
     }
     
     func tapInterest(at index: Int) {
-        guard var selectedInterest = interestesForDisplay.value[safe: index] else { return }
-        selectedInterest.isSelected.toggle()
+        guard let selecectedInterest = self.interestes.value[safe: index] else { return }
+        guard var selecectedInteresteForDisplay = self.interestesForDisplay.value[safe: index] else { return }
         
-        let updateInterestes = interestesForDisplay.value.with { $0[index] = selectedInterest }
-        interestesForDisplay.accept(updateInterestes)
+        if self.selectedInterestes.contains(selecectedInterest) {
+            self.selectedInterestes.remove(selecectedInterest)
+        } else {
+            self.selectedInterestes.insert(selecectedInterest)
+        }
+        selecectedInteresteForDisplay.isSelected.toggle()
+        let updateInterestes = self.interestesForDisplay.value.with { $0[index] = selecectedInteresteForDisplay }
+        self.interestesForDisplay.accept(updateInterestes)
     }
     
     func tapPersonality(at index: Int) {
-        guard var selectedPersonality = strongPointsForDisplay.value[safe: index] else { return }
-        selectedPersonality.isSelected.toggle()
+        guard let selectedStrongPoint = self.strongPoints.value[safe: index] else { return }
+        guard var selectedStrongPointForDisplay = self.strongPointsForDisplay.value[safe: index] else { return }
         
-        let updatedPersonalities = strongPointsForDisplay.value.with { $0[index] = selectedPersonality }
-        strongPointsForDisplay.accept(updatedPersonalities)
+        if self.selectedStrongPoints.contains(selectedStrongPoint) {
+            self.selectedStrongPoints.remove(selectedStrongPoint)
+        } else {
+            self.selectedStrongPoints.insert(selectedStrongPoint)
+        }
+        selectedStrongPointForDisplay.isSelected.toggle()
+        let updateStrongPoints = self.strongPointsForDisplay.value.with { $0[index] = selectedStrongPointForDisplay }
+        self.strongPointsForDisplay.accept(updateStrongPoints)
     }
     
     func tapComplete() {
-        let selectedInterestes = interestesForDisplay.value
-            .enumerated()
-            .filter { $0.element.isSelected }
-            .compactMap { self.interestes.value[safe: $0.offset] }
-        let selectedStrongPoints = strongPointsForDisplay.value
-            .enumerated()
-            .filter { $0.element.isSelected }
-            .compactMap { self.strongPoints.value[safe: $0.offset] }
+        let interests = Array(self.selectedInterestes)
+        let strongPoints = Array(self.selectedStrongPoints)
         
-        tmiSettingResponder.tmiSettingDidComplete(interests: selectedInterestes, strongPoints: selectedStrongPoints)
+        tmiSettingResponder.tmiSettingDidComplete(interests: interests, strongPoints: strongPoints)
     }
     
     private let disposeBag = DisposeBag()
     
     private let interestes = BehaviorRelay<[Interest]>(value: [])
     private let strongPoints = BehaviorRelay<[StrongPoint]>(value: [])
+    
+    private var selectedInterestes = Set<Interest>()
+    private var selectedStrongPoints = Set<StrongPoint>()
     
     private let interestRepository: InterestRepository
     private let strongPointRepository: StrongPointRepository
