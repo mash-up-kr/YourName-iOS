@@ -10,10 +10,13 @@ import RxSwift
 import Moya
 
 protocol NetworkServing {
+    var headers: [String: String] { get }
     func request<API>(_ api: API) -> Observable<API.Response> where API: ServiceAPI
 }
 
 final class NetworkService: NetworkServing {
+    
+    var headers: [String: String] = [:]
     
     func request<API>(_ api: API) -> Observable<API.Response> where API : ServiceAPI {
         let endpoint = MultiTarget.target(api)

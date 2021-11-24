@@ -14,14 +14,12 @@ final class TMISettingDependencyContainer {
     init(cardCreationDependencyContainer: CardCreationDependencyContainer) {
         
         func createInterestRepository() -> InterestRepository {
-            let interestRepository = MockInterestRepository()
-            interestRepository.stubedData = Interest.dummy
+            let interestRepository = InterestRepositoryImpl()
             return interestRepository
         }
         
         func createStrongPointRepository() -> StrongPointRepository {
-            let strongPointRepository = MockStrongPointRepository()
-            strongPointRepository.stubedData = StrongPoint.dummy
+            let strongPointRepository = StrongPointRepositoryImpl()
             return strongPointRepository
         }
         

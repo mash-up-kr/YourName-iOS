@@ -70,11 +70,13 @@ final class TMISettingViewModel {
     
     func tapComplete() {
         let selectedInterestes = interestesForDisplay.value
-            .filter { $0.isSelected }
-            .map { Interest(content: $0.content) }
+            .enumerated()
+            .filter { $0.element.isSelected }
+            .compactMap { self.interestes.value[safe: $0.offset] }
         let selectedStrongPoints = strongPointsForDisplay.value
-            .filter { $0.isSelected }
-            .map { StrongPoint(content: $0.content) }
+            .enumerated()
+            .filter { $0.element.isSelected }
+            .compactMap { self.strongPoints.value[safe: $0.offset] }
         
         tmiSettingResponder.tmiSettingDidComplete(interests: selectedInterestes, strongPoints: selectedStrongPoints)
     }

@@ -8,37 +8,37 @@
 import Foundation
 
 struct Interest: Equatable {
+    let id: Int
     let content: String
 }
 extension Interest {
     static let dummy: [Interest] = [
-        Interest(content: "🎧 음악"),
-        Interest(content: "🎮 게임"),
-        Interest(content: "📼 영상"),
-        Interest(content: "💪 운동"),
-        Interest(content: "🍗 음식"),
-        Interest(content: "🍽 요리"),
-        Interest(content: "☕️ 카페"),
-        Interest(content: "🍺 술"),
-        Interest(content: "🌿 자연"),
-        Interest(content: "⛺️️ 야외활동"),
-        Interest(content: "💚️ 봉사"),
-        Interest(content: "✈️ 여행"),
-        Interest(content: "🐶 동물"),
-        Interest(content: "📱 기술"),
-        Interest(content: "🎻 공연"),
-        Interest(content: "🎤 덕질"),
-        Interest(content: "🛍 쇼핑"),
-        Interest(content: "🎨️ 예술"),
-        Interest(content: "💄️ 뷰티"),
-        Interest(content: "👗 패션"),
-        Interest(content: "🏠 인테리어 "),
-        Interest(content: "📚 독서"),
-        Interest(content: "💭 만화"),
-        Interest(content: "🤣 개그"),
-        Interest(content: "🚗 자동차"),
-        Interest(content: "🗣 외국어"),
-        Interest(content: "📈 경제")
+        Interest(id: 0, content: "🎧 음악"),
+        Interest(id: 0, content: "🎮 게임"),
+        Interest(id: 0, content: "📼 영상"),
+        Interest(id: 0, content: "💪 운동"),
+        Interest(id: 0, content: "🍗 음식"),
+        Interest(id: 0, content: "🍽 요리"),
+        Interest(id: 0, content: "☕️ 카페"),
+        Interest(id: 0, content: "🍺 술"),
+        Interest(id: 0, content: "🌿 자연"),
+        Interest(id: 0, content: "⛺️️ 야외활동"),
+        Interest(id: 0, content: "💚️ 봉사"),
+        Interest(id: 0, content: "✈️ 여행"),
+        Interest(id: 0, content: "🐶 동물"),
+        Interest(id: 0, content: "📱 기술"),
+        Interest(id: 0, content: "🎻 공연"),
+        Interest(id: 0, content: "🎤 덕질"),
+        Interest(id: 0, content: "🛍 쇼핑"),
+        Interest(id: 0, content: "🎨️ 예술"),
+        Interest(id: 0, content: "💄️ 뷰티"),
+        Interest(id: 0, content: "👗 패션"),
+        Interest(id: 0, content: "🏠 인테리어 "),
+        Interest(id: 0, content: "📚 독서"),
+        Interest(id: 0, content: "💭 만화"),
+        Interest(id: 0, content: "🤣 개그"),
+        Interest(id: 0, content: "🚗 자동차"),
+        Interest(id: 0, content: "🗣 외국어"),
+        Interest(id: 0, content: "📈 경제")
     ]
 }
-
