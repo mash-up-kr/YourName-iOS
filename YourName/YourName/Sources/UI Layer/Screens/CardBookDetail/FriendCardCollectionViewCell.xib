@@ -21,7 +21,7 @@
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eh8-ef-uUV">
                         <rect key="frame" x="29.5" y="16" width="208" height="229"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="eh8-ef-uUV" secondAttribute="height" multiplier="1:1.1" id="mkM-l5-1Mn"/>
                         </constraints>
@@ -68,6 +68,11 @@
                             <constraint firstAttribute="width" constant="24" id="gsR-tl-D5r"/>
                             <constraint firstAttribute="height" constant="24" id="zo1-Jh-fvD"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="6"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
                 </subviews>
             </view>

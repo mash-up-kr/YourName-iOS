@@ -53,6 +53,8 @@ final class CardBookDetailViewModel {
         guard self.isEditing.value == false else { return }
         
         self.isEditing.accept(true)
+        let updatedFriendCardsForDisplay = self.friendCardsForDisplay.value.map { $0.with { $0.isEditing = true } }
+        self.friendCardsForDisplay.accept(updatedFriendCardsForDisplay)
     }
     
     func tapCheck(id: String) {
@@ -77,8 +79,14 @@ final class CardBookDetailViewModel {
     }
     
     func tapRemove() {
-        guard self.isEditing.value              else { return }
-        guard self.checkedCardIndice.isNotEmpty else { return }
+        guard self.isEditing.value else { return }
+        
+        guard self.checkedCardIndice.isNotEmpty else {
+            self.isEditing.accept(false)
+            let updatedFriendCardsForDisplay = self.friendCardsForDisplay.value.map { $0.with { $0.isEditing = false } }
+            self.friendCardsForDisplay.accept(updatedFriendCardsForDisplay)
+            return
+        }
         
         let checkedCardIDs = self.checkedCardIndice.compactMap { index in self.friendCards.value[safe: index]?.id }
         self.cardRepository.remove(cardIDs: checkedCardIDs)
@@ -90,10 +98,13 @@ final class CardBookDetailViewModel {
                 let updatedCards = self.friendCards.value.with { cards in
                     cards.removeAll(where: { deletedCardIDSet.contains($0.id ?? .empty) })
                 }
-                self.friendCards.accept(updatedCards)
-                self.friendCardsForDisplay.accept(updatedCards.compactMap(self.transform(card:)))
-                self.checkedCardIndice.removeAll()
                 self.isEditing.accept(false)
+                self.friendCards.accept(updatedCards)
+                let updatedFriendCardsForDisplay = updatedCards.compactMap(self.transform(card:)).map { $0.with { $0.isEditing = false } }
+                self.friendCardsForDisplay.accept(updatedFriendCardsForDisplay)
+                
+                
+                self.checkedCardIndice.removeAll()
             })
             .disposed(by: self.disposeBag)
     }
