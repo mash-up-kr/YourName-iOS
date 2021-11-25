@@ -16,7 +16,7 @@ final class CardFrontView: NibLoadableView {
         let name: String
         let role: String
         let skills: [MySkillProgressView.Item]
-        let backgroundColor: UIColor
+        let backgroundColor: ColorSource
     }
     
     @IBOutlet unowned var userProfileImage: UIImageView!

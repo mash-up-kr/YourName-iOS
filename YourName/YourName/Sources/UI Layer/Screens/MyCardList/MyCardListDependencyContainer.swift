@@ -32,9 +32,7 @@ final class MyCardListDependencyContainer {
     }
     
     private func createMyCardListViewModel() -> MyCardListViewModel {
-        #warning("⚠️ TODO: Mock객체를 추후에 구현 객체로 변경해야합니다") // Booung
-        let myCardRepository = MockMyCardRepository()
-        myCardRepository.stubedList = NameCard.dummyList
+        let myCardRepository = YourNameMyCardRepository()
         return MyCardListViewModel(myCardRepository: myCardRepository)
     }
     

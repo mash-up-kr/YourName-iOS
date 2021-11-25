@@ -8,24 +8,35 @@
 import RxRelay
 import RxSwift
 
-enum MyCardListDesitination: Equatable {
+enum MyCardListDestination: Equatable {
     case cardCreation
-    case cardDetail(cardID: String)
+    case cardDetail(cardID: Int)
 }
 
-typealias MyCardListNavigation = Navigation<MyCardListDesitination>
+typealias MyCardListNavigation = Navigation<MyCardListDestination>
 
 final class MyCardListViewModel {
     
+    typealias MyCard = CardFrontView.Item
+    
     let navigation = PublishRelay<MyCardListNavigation>()
+    private let myCardList = BehaviorRelay<[MyCard]>(value: [])
+    private let myCardRepository: MyCardRepository
+    private let disposeBag = DisposeBag()
     
     init(myCardRepository: MyCardRepository) {
         self.myCardRepository = myCardRepository
     }
     
+    deinit {
+        print("💀 \(String(describing: self))")
+    }
+    
+    // MARK: - Methods
+    
     func load() {
-        #warning("⚠️ TODO: 레포지토리로부터 로드한 후, 화면에 맞게 포맷팅하는 로직 추가하고 테스트해야합니다.") // Booung
-        myCardRepository.fetchList()
+        
+        myCardRepository.fetchMyFrontCard()
             .bind(to: myCardList)
             .disposed(by: disposeBag)
     }
@@ -39,8 +50,17 @@ final class MyCardListViewModel {
         guard let selectedCardID = selectedCard.id else { return }
         navigation.accept(.push(.cardDetail(cardID: selectedCardID)))
     }
-    
-    private let myCardList = BehaviorRelay<[NameCard]>(value: [])
-    private let myCardRepository: MyCardRepository
-    private let disposeBag = DisposeBag()
+}
+
+extension MyCardListViewModel {
+    var myCardIsEmpty: Bool {
+        return self.myCardList.value.isEmpty
+    }
+    func cellForItem(at row: Int) -> CardFrontView.Item? {
+        
+        return self.myCardList.value[safe: row]?
+    }
+    var numberOfMyCards: Int {
+        return self.myCardList.value.count
+    }
 }
