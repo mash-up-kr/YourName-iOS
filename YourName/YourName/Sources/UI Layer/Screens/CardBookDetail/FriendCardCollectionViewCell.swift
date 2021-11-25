@@ -6,12 +6,13 @@
 //
 
 import UIKit
+import Then
 
 protocol FriendCardCollectionViewCellDelegate: AnyObject {
     func friendCardCollectionViewCell(didTapCheck id: String)
 }
 
-struct FriendCardCellViewModel: Equatable {
+struct FriendCardCellViewModel: Equatable, Then {
     let id: String?
     let name: String?
     let role: String?
@@ -34,25 +35,25 @@ final class FriendCardCollectionViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
+        self.clipsToBounds = true
+        self.borderWidth = 3
+        self.checkBoxView?.clipsToBounds = true
+        self.checkBoxView?.borderWidth = 3
     }
     
     func configure(with viewModel: FriendCardCellViewModel) {
         self.nameLabel?.text = viewModel.name
         self.roleLabel?.text = viewModel.role
-        self.checkBoxView?.isHidden = viewModel.isEditing
+        self.checkBoxView?.isHidden = viewModel.isEditing == false
         self.checkBoxView?.backgroundColor = viewModel.isChecked ? .black : .white
         guard let colorSource = viewModel.bgColor else { return }
         switch colorSource {
         case .monotone(let color):
-//            self.contentView.backgroundColor = color
-            self.contentView.backgroundColor = nil
-            gradientLayer.colors = [color, color]
+            self.backgroundColor = color
         case .gradient(let colors):
-            self.contentView.backgroundColor = nil
-            gradientLayer.colors = colors
+            self.backgroundColor = nil
         }
-        self.gradientLayer.frame = self.contentView.bounds
-        self.layer.insertSublayer(gradientLayer, at: 0)
+        self.borderColor = viewModel.isChecked ? .black : .clear
     }
     
     @objc
@@ -63,7 +64,6 @@ final class FriendCardCollectionViewCell: UICollectionViewCell {
     }
     
     private let cardID: String? = nil
-    private let gradientLayer = CAGradientLayer()
     
     @IBOutlet private weak var profileImageView: UIImageView?
     @IBOutlet private weak var roleLabel: UILabel?

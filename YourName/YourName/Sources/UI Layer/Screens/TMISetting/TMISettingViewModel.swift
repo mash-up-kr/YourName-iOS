@@ -53,36 +53,39 @@ final class TMISettingViewModel {
     }
     
     func tapInterest(at index: Int) {
-        guard var selectedInterest = interestesForDisplay.value[safe: index] else { return }
-        selectedInterest.isSelected.toggle()
+        guard let selectedInterest = self.interestes.value[safe: index] else { return }
+        guard var selectedInteresteForDisplay = self.interestesForDisplay.value[safe: index] else { return }
         
-        let updateInterestes = interestesForDisplay.value.with { $0[index] = selectedInterest }
-        interestesForDisplay.accept(updateInterestes)
+        selectedInterestes.toggle(selectedInterest)
+        selectedInteresteForDisplay.isSelected.toggle()
+        let updateInterestes = self.interestesForDisplay.value.with { $0[index] = selectedInteresteForDisplay }
+        self.interestesForDisplay.accept(updateInterestes)
     }
     
     func tapPersonality(at index: Int) {
-        guard var selectedPersonality = strongPointsForDisplay.value[safe: index] else { return }
-        selectedPersonality.isSelected.toggle()
+        guard let selectedStrongPoint = self.strongPoints.value[safe: index] else { return }
+        guard var selectedStrongPointForDisplay = self.strongPointsForDisplay.value[safe: index] else { return }
         
-        let updatedPersonalities = strongPointsForDisplay.value.with { $0[index] = selectedPersonality }
-        strongPointsForDisplay.accept(updatedPersonalities)
+        self.selectedStrongPoints.toggle(selectedStrongPoint)
+        selectedStrongPointForDisplay.isSelected.toggle()
+        let updateStrongPoints = self.strongPointsForDisplay.value.with { $0[index] = selectedStrongPointForDisplay }
+        self.strongPointsForDisplay.accept(updateStrongPoints)
     }
     
     func tapComplete() {
-        let selectedInterestes = interestesForDisplay.value
-            .filter { $0.isSelected }
-            .map { Interest(content: $0.content) }
-        let selectedStrongPoints = strongPointsForDisplay.value
-            .filter { $0.isSelected }
-            .map { StrongPoint(content: $0.content) }
+        let interests = Array(self.selectedInterestes)
+        let strongPoints = Array(self.selectedStrongPoints)
         
-        tmiSettingResponder.tmiSettingDidComplete(interests: selectedInterestes, strongPoints: selectedStrongPoints)
+        tmiSettingResponder.tmiSettingDidComplete(interests: interests, strongPoints: strongPoints)
     }
     
     private let disposeBag = DisposeBag()
     
     private let interestes = BehaviorRelay<[Interest]>(value: [])
     private let strongPoints = BehaviorRelay<[StrongPoint]>(value: [])
+    
+    private var selectedInterestes = Set<Interest>()
+    private var selectedStrongPoints = Set<StrongPoint>()
     
     private let interestRepository: InterestRepository
     private let strongPointRepository: StrongPointRepository

@@ -10,12 +10,12 @@ import UIKit
 final class MyCardListDependencyContainer {
     
     init(signedInDependencyContainer: SignedInDependencyContainer) {
-        guard let userOnboarding = UserDefaultManager.userOnboarding,
-              let index = userOnboarding.firstIndex(where: { $0.title == "나의 첫 미츄 만들기" }),
-              let makeFirstMeetU = userOnboarding[safe: index] else { return }
-        if makeFirstMeetU.status == .WAIT {
-            
-        }
+//        guard let userOnboarding = UserDefaultManager.userOnboarding,
+//              let index = userOnboarding.firstIndex(where: { $0.title == "나의 첫 미츄 만들기" }),
+//              let makeFirstMeetU = userOnboarding[safe: index] else { return }
+//        if makeFirstMeetU.status == .WAIT {
+//
+//        }
     }
     
     func createMyCardListViewController() -> UIViewController {

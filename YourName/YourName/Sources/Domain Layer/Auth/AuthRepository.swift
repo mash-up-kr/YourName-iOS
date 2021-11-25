@@ -23,7 +23,6 @@ final class YourNameAuthRepository: AuthRepository {
                 
                 UserDefaultManager.accessToken = accessToken
                 UserDefaultManager.refreshToken = refreshToken
-                UserDefaultManager.userOnboarding = userOnboarding
                 return accessToken
             }
     }

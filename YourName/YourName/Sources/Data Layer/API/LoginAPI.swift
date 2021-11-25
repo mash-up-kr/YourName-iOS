@@ -31,7 +31,4 @@ struct LoginAPI: ServiceAPI {
     }
     var method: Moya.Method { .post }
     var task: Task { .requestPlain }
-    var headers: [String : String]? {
-        return ["authorization": self.accessToken]
-    }
 }

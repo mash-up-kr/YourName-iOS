@@ -16,7 +16,7 @@ protocol ServiceAPI: TargetType {
 extension ServiceAPI {
     
     var baseURL: URL { URL(string: "http://meetyou.co.kr")! }
-    
+    var headers: [String : String]? { Environment.current.network.headers }
     var sampleData: Data { Data() }
 }
 
