@@ -23,13 +23,31 @@ final class QuestTableViewCell: UITableViewCell {
         }
         switch presentable.status {
         case .wait:
-            self.achieveButton?.setTitle("미획득", for: .normal)
+            self.achieveButton?.do {
+                $0.setTitle("미획득", for: .normal)
+                $0.setTitleColor(Palette.gray1, for: .normal)
+                $0.backgroundColor = .white
+                $0.borderColor = Palette.gray1
+                $0.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+            }
             self.lockCoverView?.isHidden = false
         case .archieve:
-            self.achieveButton?.setTitle("획득하기", for: .normal)
+            self.achieveButton?.do {
+                $0.setTitle("획득하기", for: .normal)
+                $0.setTitleColor(.white, for: .normal)
+                $0.backgroundColor = Palette.black1
+                $0.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+                $0.borderColor = .black
+            }
             self.lockCoverView?.isHidden = false
         case .done:
-            self.achieveButton?.setTitle("획득완료", for: .normal)
+            self.achieveButton?.do {
+                $0.setTitle("획득완료", for: .normal)
+                $0.setTitleColor(.white, for: .normal)
+                $0.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+                $0.backgroundColor = Palette.gray1
+                $0.borderColor = Palette.gray1
+            }
             self.lockCoverView?.isHidden = true
         case .none: ()
         }

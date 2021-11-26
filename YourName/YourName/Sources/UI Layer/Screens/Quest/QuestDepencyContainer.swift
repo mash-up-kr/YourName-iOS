@@ -26,6 +26,7 @@ final class QuestDependencyContainer {
     }
     
     private func createQuestRepository() -> QuestRepository {
-        return MockQuestRepository()
+        return QuestRepositoryImpl()
     }
+    
 }
