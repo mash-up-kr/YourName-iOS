@@ -64,7 +64,7 @@ final class MyCardListViewModel {
         navigation.accept(.push(.cardDetail(cardID: selectedCardID)))
     }
     
-    private func myCardCellViewModel(_ cards: [Entity.MyNameCard.NameCard]) -> [MyCard] {
+    private func myCardCellViewModel(_ cards: [Entity.NameCard]) -> [MyCard] {
         return cards.compactMap { card -> MyCard? in
             guard let personalSkills = card.personalSkills,
                   let bgColors = card.bgColor?.value else { return nil }

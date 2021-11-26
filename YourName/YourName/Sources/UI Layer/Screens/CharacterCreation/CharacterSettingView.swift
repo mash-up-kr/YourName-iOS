@@ -107,7 +107,7 @@ final class CharacterSettingView: UIView, NibLoadable {
         guard let characterFittingView = self.characterFittingView else { return }
         characterFittingView.backgroundColor = captureColor
         
-        guard let data = SnapshotServiceImpl.capture(characterFittingView) else { return }
+        guard let data = YourNameSnapshotService.capture(characterFittingView) else { return }
         
         viewModel.updateCharacterData(data)
         characterFittingView.backgroundColor = originalColor

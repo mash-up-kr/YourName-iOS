@@ -14,7 +14,7 @@ final class CharacterCreationDependencyContainer {
     
     init(cardCreationDependencyContainer: CardCreationDependencyContainer) {
         func createCharacterItemRepository() -> CharacterItemRepository {
-            return CharacterItemRepositoryImpl(factory: CharacterItemFactoryImpl())
+            return YourNameCharacterItemRepository(factory: YourNameCharacterItemFactory())
         }
         
         func createCharaterSettingViewModel(

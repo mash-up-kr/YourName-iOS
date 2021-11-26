@@ -15,7 +15,7 @@ protocol CardRepository {
     func remove(cardIDs: [CardID]) -> Observable<[CardID]>
 }
 
-final class CardRepositoryImpl: CardRepository {
+final class YourNameCardRepository: CardRepository {
     
     func fetchCards(cardBookID: String) -> Observable<[NameCard]> {
         .empty()
