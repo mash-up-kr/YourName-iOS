@@ -59,7 +59,7 @@ final class MyCardListViewModel {
     }
     
     func tapCard(at index: Int) {
-        guard let selectedCard = myCardList.value[safe: index] else { return }
+        guard let selectedCard = myCardList.value[safe: 0] else { return }
         let selectedCardID = selectedCard.id
         navigation.accept(.push(.cardDetail(cardID: selectedCardID)))
     }
