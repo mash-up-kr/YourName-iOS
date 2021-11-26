@@ -16,7 +16,7 @@ protocol NetworkServing {
 
 final class NetworkService: NetworkServing {
     
-    var headers: [String: String] = [:]
+    var headers: [String: String] = ["authorization": " Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUsIm5pY2tOYW1lIjoi7J207Jew7KSRIiwiaWF0IjoxNjM3ODM5MjQxLCJleHAiOjE2Mzg0MzkyNDF9.629okopRQ14ek0oX-2-phAJ03nfZEEpKCKWRjxiv9yA"]
     
     func request<API>(_ api: API) -> Observable<API.Response> where API : ServiceAPI {
         let endpoint = MultiTarget.target(api)
@@ -25,9 +25,9 @@ final class NetworkService: NetworkServing {
             .asObservable()
             .map(MeetuResponse<API.Response>.self)
             .map { $0.data }
+            .do { print($0) }
             .filterNil()
     }   
-    
     private let provider = MoyaProvider<MultiTarget>()
     
 }
