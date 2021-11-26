@@ -17,6 +17,7 @@ final class CharacterSettingView: UIView, NibLoadable {
     var viewModel: CharacterSettingViewModel! {
         didSet { bind(to: viewModel) }
     }
+    var parent: ViewController?
     var displayCharacterItemsViewControllerFactory: (([ItemCategory]) -> [DisplayCharacterItemsViewController])!
     var onComplete: (() -> Void)?
     

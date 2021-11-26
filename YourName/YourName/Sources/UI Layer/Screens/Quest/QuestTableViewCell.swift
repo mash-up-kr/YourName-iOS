@@ -21,10 +21,13 @@ final class QuestTableViewCell: UITableViewCell {
         self.rewardImageView?.setImageSource(.url(presentable.rewardImageURL ?? .empty))
         switch presentable.status {
         case .wait:
+            self.achieveButton?.setTitle("미획득", for: .normal)
             self.lockCoverView?.isHidden = false
         case .archieve:
+            self.achieveButton?.setTitle("획득하기", for: .normal)
             self.lockCoverView?.isHidden = false
         case .done:
+            self.achieveButton?.setTitle("획득완료", for: .normal)
             self.lockCoverView?.isHidden = true
         case .none: ()
         }

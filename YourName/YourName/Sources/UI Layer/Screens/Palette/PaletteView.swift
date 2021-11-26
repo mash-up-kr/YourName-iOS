@@ -12,7 +12,7 @@ import UIKit
 typealias PaletteViewController = PageSheetController<PaletteView>
 
 final class PaletteView: UIView, NibLoadable {
-    
+    var parent: ViewController?
     var viewModel: PaletteViewModel! {
         didSet { bind(to: viewModel) }
     }
