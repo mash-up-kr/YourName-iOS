@@ -67,6 +67,7 @@
 		A2DA3B65274FDA4700E68F23 /* Entity.MyNameCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B64274FDA4700E68F23 /* Entity.MyNameCard.swift */; };
 		A2DA3B67274FDB5800E68F23 /* Entity.Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B66274FDB5800E68F23 /* Entity.Image.swift */; };
 		A2DA3B69274FDDAA00E68F23 /* MyCardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B68274FDDAA00E68F23 /* MyCardRepository.swift */; };
+		A2DA3B6B2751406E00E68F23 /* Notification.Name+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B6A2751406E00E68F23 /* Notification.Name+.swift */; };
 		CE2BB2C727074F4600936148 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE2BB2C627074F4600936148 /* Colors.xcassets */; };
 		CE2BB2C92707560800936148 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2BB2C82707560800936148 /* Palette.swift */; };
 		CE2EC99327073453006B9852 /* CardCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2EC99227073453006B9852 /* CardCreationViewModel.swift */; };
@@ -332,6 +333,7 @@
 		A2DA3B64274FDA4700E68F23 /* Entity.MyNameCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.MyNameCard.swift; sourceTree = "<group>"; };
 		A2DA3B66274FDB5800E68F23 /* Entity.Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.Image.swift; sourceTree = "<group>"; };
 		A2DA3B68274FDDAA00E68F23 /* MyCardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardRepository.swift; sourceTree = "<group>"; };
+		A2DA3B6A2751406E00E68F23 /* Notification.Name+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification.Name+.swift"; sourceTree = "<group>"; };
 		A3E561B79C6998E82DB447DF /* Pods-YourName-YourNameTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourName-YourNameTests.debug.xcconfig"; path = "Target Support Files/Pods-YourName-YourNameTests/Pods-YourName-YourNameTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CE2BB2C627074F4600936148 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		CE2BB2C82707560800936148 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
@@ -1345,6 +1347,7 @@
 				CE6BABAA2704E2480006D26B /* UIVIewController+.swift */,
 				CEB6582F26EB15A600C11F33 /* ViewController.swift */,
 				CEB6589A26EC987800C11F33 /* Rx */,
+				A2DA3B6A2751406E00E68F23 /* Notification.Name+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1603,6 +1606,7 @@
 				CE63125526F5E25200B2E69B /* String+.swift in Sources */,
 				CE4D4EA22707BBBA00081A2B /* TMISettingDependencyContainer.swift in Sources */,
 				CE6BABAD2704ED700006D26B /* UITableView+.swift in Sources */,
+				A2DA3B6B2751406E00E68F23 /* Notification.Name+.swift in Sources */,
 				CE63124026F59E6700B2E69B /* RootViewModel.swift in Sources */,
 				CEB6589526EC838000C11F33 /* HTTPClient.swift in Sources */,
 				CEDA4B79274E9C910011D0CA /* Set+.swift in Sources */,
@@ -1634,7 +1638,7 @@
 				CE6312A926F8CB2F00B2E69B /* SignedOutDependencyContainer.swift in Sources */,
 				CE4D4ECA27090D5200081A2B /* ColorSourceCollectionViewCell.swift in Sources */,
 				CEDA4B88274ED0710011D0CA /* QuestViewModel.swift in Sources */,
-				CEB6589126EC826300C11F33 /* Enviorment.swift in Sources */,
+				CEB6589126EC826300C11F33 /* Environment.swift in Sources */,
 				A2CC656E27088E9C00610C49 /* MyCardListCollectionViewCell.swift in Sources */,
 				A2DA3B3D274A1A2500E68F23 /* Entity.Login.swift in Sources */,
 				A2CC65742708AB2C00610C49 /* MySkillProgressView.swift in Sources */,

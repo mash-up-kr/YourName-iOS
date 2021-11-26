@@ -30,14 +30,11 @@ final class MyCardListViewController: ViewController, Storyboarded {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.bind()
         self.configure(collectionView: myCardListCollectionView)
         self.dispatch(to: viewModel)
         self.render(viewModel)
         self.navigationController?.navigationBar.isHidden = true
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-       
     }
 }
 
@@ -50,6 +47,7 @@ extension MyCardListViewController {
         collectionView.registerNib(MyCardListEmptyCollectionViewCell.self)
         collectionView.registerNib(MyCardListCollectionViewCell.self)
     }
+    
     private func render(_ viewModel: MyCardListViewModel) {
         self.viewModel.load()
         viewModel.isLoading.distinctUntilChanged()
@@ -92,6 +90,12 @@ extension MyCardListViewController {
             return cardDetailViewControllerFactory(cardID)
         case .cardCreation:
             return cardCreationViewControllerFactory()
+        }
+    }
+    
+    private func bind() {
+        NotificationCenter.default.addObserver(forName: .myCardsDidChange, object: nil, queue: nil) { [weak self] _ in
+            self?.viewModel.load()
         }
     }
 }

@@ -40,16 +40,18 @@ final class CardFrontView: NibLoadableView {
     }
 
     private func configureUI() {
-        skillStackView.subviews.forEach {
+        self.skillStackView.subviews.forEach {
             $0.isHidden = true
         }
-        contentView.layer.cornerRadius = 12
+        self.contentView.layer.cornerRadius = 12
     }
 
     func configure(item: Item) {
-        self.userProfileImage.setImageSource(.url("profile/apple.png"))
+        guard let url = URL(string: "https://erme.s3.ap-northeast-2.amazonaws.com/\(item.image)") else { return }
+        self.userProfileImage.setImageSource(.url(url))
         self.userNameLabel.text = item.name
         self.userRoleLabel.text = item.role
+        
         let gradientLayer = CAGradientLayer()
         switch item.backgroundColor {
         case .gradient(let colors):
@@ -60,6 +62,7 @@ final class CardFrontView: NibLoadableView {
             self.backgroundColor = color
         }
         self.layer.addSublayer(gradientLayer)
+        
         self.configure(skills: item.skills)
     }
     

@@ -38,10 +38,32 @@ final class MyCardListViewModel {
     
     func load() {
         self.isLoading.accept(true)
-        myCardRepository.fetchMyFrontCard()
+        self.myCardRepository.fetchMyCards()
             .catchError { error in
                 print(error)
                 return .empty()
+            }
+            .compactMap { cards -> [MyCard]? in
+                return cards.compactMap { card -> MyCard? in
+                    
+                    guard let personalSkills = card.personalSkills,
+                          let bgColors = card.bgColor?.value else { return nil }
+                    let skills = personalSkills.map { MySkillProgressView.Item(title: $0.name, level: $0.level?.rawValue ?? 0) }
+                    
+                    let bgColor: ColorSource!
+                    
+                    if bgColors.count == 1 {
+                        bgColor = .monotone(UIColor(hexString: bgColors.first!))
+                    } else {
+                        bgColor = .gradient(bgColors.map { UIColor(hexString: $0) })
+                    }
+                    return MyCard(id: card.id ?? 0,
+                                  image: card.image?.key ?? "",
+                                  name: card.name ?? "",
+                                  role: card.role ?? "",
+                                  skills: skills,
+                                  backgroundColor: bgColor)
+                }
             }
             .bind(onNext: { [weak self] in
                 self?.myCardList.accept($0)

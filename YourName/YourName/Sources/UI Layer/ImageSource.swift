@@ -9,6 +9,6 @@ import UIKit
 
 enum ImageSource: Equatable {
     case image(UIImage)
-    case url(String)
+    case url(URL)
     case data(Data)
 }

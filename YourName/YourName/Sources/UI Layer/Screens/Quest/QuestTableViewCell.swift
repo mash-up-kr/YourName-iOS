@@ -18,7 +18,9 @@ final class QuestTableViewCell: UITableViewCell {
     
     func configure(with presentable: QuestTableViewCellPresentable) {
         self.titleLabel?.text = presentable.title
-        self.rewardImageView?.setImageSource(.url(presentable.rewardImageURL ?? .empty))
+        if let rewardURL = URL(string: presentable.rewardImageURL ?? .empty) {
+            self.rewardImageView?.setImageSource(.url(rewardURL))
+        }
         switch presentable.status {
         case .wait:
             self.achieveButton?.setTitle("미획득", for: .normal)
