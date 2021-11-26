@@ -31,7 +31,7 @@ final class QuestRepositoryImpl: QuestRepository {
 final class MockQuestRepository: QuestRepository {
     
     func fetchAll() -> Observable<[Quest]> {
-        return .just(Quest.dummyList)
+        return .just(Quest.dummyList).delay(.seconds(1), scheduler: ConcurrentMainScheduler.instance)
     }
     
 }

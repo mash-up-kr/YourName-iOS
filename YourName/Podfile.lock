@@ -89,6 +89,7 @@ PODS:
   - KakaoSDKUser (2.7.1):
     - KakaoSDKAuth (= 2.7.1)
   - Kingfisher (6.3.1)
+  - lottie-ios (3.2.3)
   - Moya (14.0.0):
     - Moya/Core (= 14.0.0)
   - Moya/Core (14.0.0):
@@ -157,6 +158,7 @@ DEPENDENCIES:
   - Firebase/Analytics
   - FLEX
   - Kingfisher
+  - lottie-ios
   - Moya (~> 14.0)
   - Moya/RxSwift
   - Nimble
@@ -191,6 +193,7 @@ SPEC REPOS:
     - KakaoSDKCommon
     - KakaoSDKUser
     - Kingfisher
+    - lottie-ios
     - Moya
     - nanopb
     - Nimble
@@ -229,6 +232,7 @@ SPEC CHECKSUMS:
   KakaoSDKCommon: 48fe293e8970a8db8d10d5ca63600a7a8cc5f74c
   KakaoSDKUser: 5609a2679b6beda86298d63c45961953c7203101
   Kingfisher: 016c8b653a35add51dd34a3aba36b580041acc74
+  lottie-ios: c058aeafa76daa4cf64d773554bccc8385d0150e
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   Nimble: e7e615c0335ee4bf5b0d786685451e62746117d5
@@ -251,6 +255,6 @@ SPEC CHECKSUMS:
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: 0126c20e740abaa2153842a518b6621772d513fd
+PODFILE CHECKSUM: ec07abde427688e5ff1b9c30cf3305130ddd075b
 
 COCOAPODS: 1.11.2
