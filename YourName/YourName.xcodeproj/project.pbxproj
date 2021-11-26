@@ -235,6 +235,7 @@
 		CEDA4B83274ECC4E0011D0CA /* Entity.Quest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDA4B82274ECC4E0011D0CA /* Entity.Quest.swift */; };
 		CEDA4B86274ECECC0011D0CA /* QuestRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDA4B85274ECECC0011D0CA /* QuestRepository.swift */; };
 		CEDA4B88274ED0710011D0CA /* QuestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDA4B87274ED0710011D0CA /* QuestViewModel.swift */; };
+		CEDA4B8A2750F1630011D0CA /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = CEDA4B892750F1630011D0CA /* loading.json */; };
 		CEF8C55326EDF8D5009BA9C2 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF8C55226EDF8D5009BA9C2 /* UIView+.swift */; };
 		CEF8C55726EDFB6F009BA9C2 /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF8C55626EDFB6F009BA9C2 /* UIStackView+.swift */; };
 		CEFA037A26EFB76D00D12AAB /* SnapshotService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFA037926EFB76D00D12AAB /* SnapshotService.swift */; };
@@ -496,6 +497,7 @@
 		CEDA4B82274ECC4E0011D0CA /* Entity.Quest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.Quest.swift; sourceTree = "<group>"; };
 		CEDA4B85274ECECC0011D0CA /* QuestRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestRepository.swift; sourceTree = "<group>"; };
 		CEDA4B87274ED0710011D0CA /* QuestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestViewModel.swift; sourceTree = "<group>"; };
+		CEDA4B892750F1630011D0CA /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		CEF8C55226EDF8D5009BA9C2 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		CEF8C55626EDFB6F009BA9C2 /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 		CEFA037926EFB76D00D12AAB /* SnapshotService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotService.swift; sourceTree = "<group>"; };
@@ -991,6 +993,7 @@
 		CEB6585C26EB296A00C11F33 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CEDA4B892750F1630011D0CA /* loading.json */,
 				CEB6583626EB15AC00C11F33 /* LaunchScreen.storyboard */,
 				CEB6583426EB15AC00C11F33 /* Images.xcassets */,
 				CE2BB2C627074F4600936148 /* Colors.xcassets */,
@@ -1454,6 +1457,7 @@
 				A2CC65642708229C00610C49 /* CardFrontView.xib in Resources */,
 				CEA4D2E7270CD401008189FE /* DisplayCharacterItemsViewController.storyboard in Resources */,
 				CE94ABB3270EFCA3005D2E80 /* TMISectionHeaderView.xib in Resources */,
+				CEDA4B8A2750F1630011D0CA /* loading.json in Resources */,
 				CEB6583526EB15AC00C11F33 /* Images.xcassets in Resources */,
 				CE6BAB982704D69F0006D26B /* CardDetailViewController.storyboard in Resources */,
 				A23921052737B8F10069E418 /* ContactView.xib in Resources */,

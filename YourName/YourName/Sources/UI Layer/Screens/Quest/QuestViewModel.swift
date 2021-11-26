@@ -11,6 +11,8 @@ import RxRelay
 
 final class QuestViewModel {
     
+    let isLoading = BehaviorRelay<Bool>(value: false)
+    let shouldClose = PublishRelay<Void>()
     let quests = BehaviorRelay<[Quest]>(value: [])
     
     init(questRepository: QuestRepository) {
@@ -18,13 +20,20 @@ final class QuestViewModel {
     }
     
     func didLoad() {
+        self.isLoading.accept(true)
         questRepository.fetchAll()
-            .subscribe(onNext: { [weak self] in self?.quests.accept($0) })
+            .subscribe(onNext: { [weak self] in
+                self?.quests.accept($0)
+                self?.isLoading.accept(false)
+            })
             .disposed(by: self.disposeBag)
     }
     
-    private let disposeBag = DisposeBag()
+    func tapClose() {
+        self.shouldClose.accept(Void())
+    }
     
+    private let disposeBag = DisposeBag()
     private let questRepository: QuestRepository
 }
 
