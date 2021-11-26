@@ -21,6 +21,8 @@ final class MyCardListViewModel {
     
     let navigation = PublishRelay<MyCardListNavigation>()
     let myCardList = BehaviorRelay<[MyCard]>(value: [])
+    let isLoading = BehaviorRelay<Bool>(value: false)
+    
     private let myCardRepository: MyCardRepository
     private let disposeBag = DisposeBag()
     
@@ -35,10 +37,17 @@ final class MyCardListViewModel {
     // MARK: - Methods
     
     func load() {
-        
+        self.isLoading.accept(true)
         myCardRepository.fetchMyFrontCard()
-            .bind(to: myCardList)
-            .disposed(by: disposeBag)
+            .catchError { error in
+                print(error)
+                return .empty()
+            }
+            .bind(onNext: { [weak self] in
+                self?.myCardList.accept($0)
+                self?.isLoading.accept(false)
+            })
+            .disposed(by: self.disposeBag)
     }
     
     func tapCardCreation() {

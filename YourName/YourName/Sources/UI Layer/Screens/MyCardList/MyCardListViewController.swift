@@ -32,11 +32,12 @@ final class MyCardListViewController: ViewController, Storyboarded {
         
         self.configure(collectionView: myCardListCollectionView)
         self.dispatch(to: viewModel)
+        self.render(viewModel)
         self.navigationController?.navigationBar.isHidden = true
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.viewModel.load()
+       
     }
 }
 
@@ -49,8 +50,11 @@ extension MyCardListViewController {
         collectionView.registerNib(MyCardListEmptyCollectionViewCell.self)
         collectionView.registerNib(MyCardListCollectionViewCell.self)
     }
-    
-    private func dispatch(to viewModel: MyCardListViewModel) {
+    private func render(_ viewModel: MyCardListViewModel) {
+        self.viewModel.load()
+        viewModel.isLoading.distinctUntilChanged()
+            .bind(to: self.isLoading)
+            .disposed(by: disposeBag)
   
         viewModel.myCardList
             .bind(onNext: { [weak self] _ in
@@ -60,7 +64,10 @@ extension MyCardListViewController {
                 self.pageControl.numberOfPages = self.viewModel.numberOfMyCards
             })
             .disposed(by: disposeBag)
-        
+    }
+    
+    private func dispatch(to viewModel: MyCardListViewModel) {
+      
         self.rx.viewDidAppear.flatMapFirst { _ in self.viewModel.navigation }
         .bind(onNext: { [weak self] action in
             guard let self = self else { return }
@@ -90,6 +97,7 @@ extension MyCardListViewController {
 }
 
 //MARK: - UICollectionViewDataSource
+
 extension MyCardListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
