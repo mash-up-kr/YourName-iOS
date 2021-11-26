@@ -21,12 +21,17 @@ final class QuestDependencyContainer {
     }
     
     private func createQuestViewModel() -> QuestViewModel {
+        let useCase = self.createQuestUseCase()
+        return QuestViewModel(questUseCase: useCase)
+    }
+    
+    private func createQuestUseCase() -> QuestUseCase {
         let repository = self.createQuestRepository()
-        return QuestViewModel(questRepository: repository)
+        return YourNameQuestUseCase(questRepository: repository)
     }
     
     private func createQuestRepository() -> QuestRepository {
-        return QuestRepositoryImpl()
+        return YourNameQuestRepository()
     }
     
 }

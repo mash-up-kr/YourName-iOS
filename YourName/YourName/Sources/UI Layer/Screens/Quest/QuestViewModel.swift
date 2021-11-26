@@ -15,13 +15,41 @@ final class QuestViewModel {
     let shouldClose = PublishRelay<Void>()
     let quests = BehaviorRelay<[Quest]>(value: [])
     
-    init(questRepository: QuestRepository) {
-        self.questRepository = questRepository
+    init(questUseCase: QuestUseCase) {
+        self.questUseCase = questUseCase
     }
     
     func didLoad() {
         self.isLoading.accept(true)
-        questRepository.fetchAll()
+        self.loadQuests()
+    }
+    
+    func tapClose() {
+        self.shouldClose.accept(Void())
+    }
+    
+    func tapAchieve(at index: Int) {
+        guard let quest = self.quests.value[safe: index] else { return }
+        guard let questStatus = quest.status             else { return }
+        guard let questMeta = quest.meta                 else { return }
+        
+        switch questStatus {
+        case .notAchieved:
+            self.questUseCase.waitDoneQuest(questMeta)
+                .subscribe(onNext: { [weak self] in self?.loadQuests() })
+                .disposed(by: self.disposeBag)
+            
+        case .waitingDone:
+            self.questUseCase.doneQuest(questMeta)
+                .subscribe(onNext: { [weak self] in self?.loadQuests() })
+                .disposed(by: self.disposeBag)
+            
+        case .done: ()
+        }
+    }
+    
+    private func loadQuests() {
+        self.questUseCase.fetchAllQuests()
             .subscribe(onNext: { [weak self] in
                 self?.quests.accept($0)
                 self?.isLoading.accept(false)
@@ -29,13 +57,8 @@ final class QuestViewModel {
             .disposed(by: self.disposeBag)
     }
     
-    func tapClose() {
-        self.shouldClose.accept(Void())
-    }
-    
+    private let shouldUpdateQuest = PublishRelay<Void>()
     private let disposeBag = DisposeBag()
-    private let questRepository: QuestRepository
+    private let questUseCase: QuestUseCase
+    
 }
-
-extension Quest: QuestTableViewCellPresentable {}
-

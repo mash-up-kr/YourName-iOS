@@ -1,17 +1,16 @@
 //
-//  QuestDoneAPI.swift
+//  QuestWaitingDoneAPI.swift
 //  MEETU
 //
-//  Created by Booung on 2021/11/26.
+//  Created by Booung on 2021/11/27.
 //
 
 import Foundation
 
-struct QuestDoneAPI: ServiceAPI {
-    
+struct QuestWaitingDoneAPI: ServiceAPI {
     typealias Response = Entity.Empty
     
-    var path: String { "/users/onboarding/\(questCode)/done" }
+    var path: String { "/users/onboarding/\(questCode)/done-wait" }
     var method: Method { .put }
     var task: NetworkingTask { .requestPlain }
     
@@ -20,5 +19,4 @@ struct QuestDoneAPI: ServiceAPI {
     }
     
     private let questCode: String
-    
 }
