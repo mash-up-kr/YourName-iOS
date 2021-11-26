@@ -12,7 +12,7 @@ protocol CharacterItemRepository {
     func fetchItems(type: ItemCategory) -> Observable<[CharacterItem]>
 }
 
-final class CharacterItemRepositoryImpl: CharacterItemRepository {
+final class YourNameCharacterItemRepository: CharacterItemRepository {
     
     init(factory: CharacterItemFactory) {
         self.factory = factory

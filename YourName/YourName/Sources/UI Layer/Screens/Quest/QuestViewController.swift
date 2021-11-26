@@ -70,7 +70,12 @@ extension QuestViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(QuestTableViewCell.self, for: indexPath) else { return .init() }
         guard let quest = self.quests[safe: indexPath.row] else { return cell }
+        
+        cell.achieveButtonDidTap = { [weak self] in
+            self?.viewModel.tapAchieve(at: indexPath.row)
+        }
         cell.configure(with: quest)
+        
         return cell
     }
     

@@ -10,13 +10,19 @@ import RxSwift
 import UIKit
 
 protocol MyCardRepository {
-    func fetchMyCards() -> Observable<[Entity.MyNameCard.NameCard]>
+    func createMyCard(_ nameCard: Entity.NameCard) -> Observable<Void>
+    func fetchMyCards() -> Observable<[Entity.NameCard]>
 }
 
 final class YourNameMyCardRepository: MyCardRepository {
     
-    func fetchMyCards() -> Observable<[Entity.MyNameCard.NameCard]> {
+    func createMyCard(_ nameCard: Entity.NameCard) -> Observable<Void> {
+        return .empty()
+    }
+    
+    func fetchMyCards() -> Observable<[Entity.NameCard]> {
         return Environment.current.network.request(MyNameCardsAPI())
             .compactMap { $0.list }
     }
+    
 }

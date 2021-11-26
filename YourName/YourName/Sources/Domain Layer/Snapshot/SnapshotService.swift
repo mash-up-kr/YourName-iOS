@@ -11,7 +11,7 @@ protocol SnapshotService {
     static func capture(_ view: UIView) -> Data?
 }
 
-enum SnapshotServiceImpl: SnapshotService {
+enum YourNameSnapshotService: SnapshotService {
     static func capture(_ view: UIView) -> Data? {
         let renderer = UIGraphicsImageRenderer(bounds: view.bounds)
         return renderer.image { rendererContext in
