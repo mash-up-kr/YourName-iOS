@@ -16,7 +16,7 @@ protocol QuestRepository {
 
 final class QuestRepositoryImpl: QuestRepository {
     
-    init(network: NetworkServing = Enviorment.current.network) {
+    init(network: NetworkServing = Environment.current.network) {
         self.network = network
     }
     

@@ -14,7 +14,7 @@ protocol InterestRepository {
 
 final class InterestRepositoryImpl: InterestRepository {
     
-    init(network: NetworkServing = Enviorment.current.network) {
+    init(network: NetworkServing = Environment.current.network) {
         self.network = network
     }
     

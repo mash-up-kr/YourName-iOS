@@ -28,7 +28,7 @@ final class TMISettingView: UIView, NibLoadable {
     var viewModel: TMISettingViewModel! {
         didSet { bind(to: viewModel) }
     }
-    
+    var parent: ViewController?
     var onComplete: (() -> Void)?
     
     override init(frame: CGRect) {

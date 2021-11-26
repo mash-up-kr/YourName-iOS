@@ -13,9 +13,6 @@ import UIKit
 import Lottie
 import SnapKit
 
-extension AnimationView {
-}
-
 class ViewController: UIViewController {
     
     let loadingIndicator = LoadingIndicator()
