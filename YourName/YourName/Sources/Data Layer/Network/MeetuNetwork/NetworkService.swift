@@ -26,10 +26,8 @@ final class NetworkService: NetworkServing {
             .map(MeetuResponse<API.Response>.self)
             .map { $0.data }
             .filterNil()
-    }
+    }   
     
     private let provider = MoyaProvider<MultiTarget>()
     
 }
-
-

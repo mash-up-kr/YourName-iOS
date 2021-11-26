@@ -1,5 +1,5 @@
 //
-//  AuthResponse.swift
+//  OAuthResponse.swift
 //  YourName
 //
 //  Created by 송서영 on 2021/09/12.
@@ -7,12 +7,13 @@
 
 import Foundation
 
-enum Provider: String {
+enum Provider: String, Decodable {
     case apple
     case kakao
 }
 
 struct OAuthResponse {
-    let accessToken: String
+    let accessToken: AccessToken
     let provider: Provider
 }
+

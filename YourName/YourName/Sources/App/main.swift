@@ -18,5 +18,5 @@ UIApplicationMain(
 )
 
 private func setupEnviorment() {
-    Enviorment.current.network = NetworkService()
+    Environment.current.network = NetworkService()
 }
