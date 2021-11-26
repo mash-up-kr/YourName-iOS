@@ -19,6 +19,14 @@ final class CardDetailViewController: ViewController, Storyboarded {
         //붙여야 되는 부분
 
     }
+    override var hidesBottomBarWhenPushed: Bool {
+        get {
+            return navigationController?.topViewController == self
+        }
+        set {
+            super.hidesBottomBarWhenPushed = newValue
+        }
+    }
     
     @IBAction private func frontButtonClick(_ sender: Any) {
         UIView.animate(withDuration: 0.2) {
