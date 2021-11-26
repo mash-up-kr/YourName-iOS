@@ -27,8 +27,8 @@ extension Entity {
 
 extension Entity.Quest {
     enum Status: String, Decodable, Equatable {
-        case wait = "WAIT"
-        case archieve = "DONE_WAIT"
+        case notAchieved = "WAIT"
+        case waitingDone = "DONE_WAIT"
         case done = "DONE"
     }
 }

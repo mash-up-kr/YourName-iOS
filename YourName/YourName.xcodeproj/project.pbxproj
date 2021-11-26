@@ -242,6 +242,9 @@
 		CEDA4B86274ECECC0011D0CA /* QuestRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDA4B85274ECECC0011D0CA /* QuestRepository.swift */; };
 		CEDA4B88274ED0710011D0CA /* QuestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDA4B87274ED0710011D0CA /* QuestViewModel.swift */; };
 		CEDA4B8A2750F1630011D0CA /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = CEDA4B892750F1630011D0CA /* loading.json */; };
+		CEDA4B8C275123210011D0CA /* QuestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDA4B8B275123200011D0CA /* QuestManager.swift */; };
+		CEDA4B8E275125C30011D0CA /* QuestDoneAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDA4B8D275125C30011D0CA /* QuestDoneAPI.swift */; };
+		CEDA4B90275126030011D0CA /* Entity.Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDA4B8F275126030011D0CA /* Entity.Empty.swift */; };
 		CEF8C55326EDF8D5009BA9C2 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF8C55226EDF8D5009BA9C2 /* UIView+.swift */; };
 		CEF8C55726EDFB6F009BA9C2 /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF8C55626EDFB6F009BA9C2 /* UIStackView+.swift */; };
 		CEFA037A26EFB76D00D12AAB /* SnapshotService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFA037926EFB76D00D12AAB /* SnapshotService.swift */; };
@@ -510,6 +513,9 @@
 		CEDA4B85274ECECC0011D0CA /* QuestRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestRepository.swift; sourceTree = "<group>"; };
 		CEDA4B87274ED0710011D0CA /* QuestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestViewModel.swift; sourceTree = "<group>"; };
 		CEDA4B892750F1630011D0CA /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
+		CEDA4B8B275123200011D0CA /* QuestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestManager.swift; sourceTree = "<group>"; };
+		CEDA4B8D275125C30011D0CA /* QuestDoneAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestDoneAPI.swift; sourceTree = "<group>"; };
+		CEDA4B8F275126030011D0CA /* Entity.Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.Empty.swift; sourceTree = "<group>"; };
 		CEF8C55226EDF8D5009BA9C2 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		CEF8C55626EDFB6F009BA9C2 /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 		CEFA037926EFB76D00D12AAB /* SnapshotService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotService.swift; sourceTree = "<group>"; };
@@ -636,6 +642,7 @@
 				CEDA4B82274ECC4E0011D0CA /* Entity.Quest.swift */,
 				A2DA3B3C274A1A2500E68F23 /* Entity.Login.swift */,
 				A2DA3B42274A536700E68F23 /* Entity.UserOnboarding.swift */,
+				CEDA4B8F275126030011D0CA /* Entity.Empty.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -654,11 +661,12 @@
 		CE472B7F2748DA47001A5E5F /* API */ = {
 			isa = PBXGroup;
 			children = (
-				CE472B802748DAF0001A5E5F /* MakeCardAPI.swift */,
 				CEDA4B76274E87A20011D0CA /* InterestesAPI.swift */,
-				CEDA4B7E274ECB000011D0CA /* StrongPointAPI.swift */,
-				CEDA4B80274ECBAE0011D0CA /* QuestsAPI.swift */,
 				A2DA3B3A274A162400E68F23 /* LoginAPI.swift */,
+				CE472B802748DAF0001A5E5F /* MakeCardAPI.swift */,
+				CEDA4B8D275125C30011D0CA /* QuestDoneAPI.swift */,
+				CEDA4B80274ECBAE0011D0CA /* QuestsAPI.swift */,
+				CEDA4B7E274ECB000011D0CA /* StrongPointAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -1318,6 +1326,7 @@
 			isa = PBXGroup;
 			children = (
 				CEDA4B85274ECECC0011D0CA /* QuestRepository.swift */,
+				CEDA4B8B275123200011D0CA /* QuestManager.swift */,
 			);
 			path = Quest;
 			sourceTree = "<group>";
@@ -1605,6 +1614,7 @@
 				CEA4D2EC270D34C3008189FE /* DisplayCharacterItemsViewModel.swift in Sources */,
 				A28A9B12271175A80063692D /* SettingViewModel.swift in Sources */,
 				CE6BABA72704DB0A0006D26B /* CardCreationViewController.swift in Sources */,
+				CEDA4B8C275123210011D0CA /* QuestManager.swift in Sources */,
 				CEB6588226EC811E00C11F33 /* DataLoading.swift in Sources */,
 				A23921072737B9220069E418 /* ContactView.swift in Sources */,
 				CE4D4EDB270A0D2000081A2B /* SkillSettingViewModel.swift in Sources */,
@@ -1627,10 +1637,11 @@
 				CE6312A926F8CB2F00B2E69B /* SignedOutDependencyContainer.swift in Sources */,
 				CE4D4ECA27090D5200081A2B /* ColorSourceCollectionViewCell.swift in Sources */,
 				CEDA4B88274ED0710011D0CA /* QuestViewModel.swift in Sources */,
-				CEB6589126EC826300C11F33 /* Enviorment.swift in Sources */,
+				CEB6589126EC826300C11F33 /* Environment.swift in Sources */,
 				A2CC656E27088E9C00610C49 /* MyCardListCollectionViewCell.swift in Sources */,
 				A2DA3B3D274A1A2500E68F23 /* Entity.Login.swift in Sources */,
 				A2CC65742708AB2C00610C49 /* MySkillProgressView.swift in Sources */,
+				CEDA4B90275126030011D0CA /* Entity.Empty.swift in Sources */,
 				CE63123A26F59C7800B2E69B /* RootViewController.swift in Sources */,
 				CE6312AA26F8CB2F00B2E69B /* RootDependencyContainer.swift in Sources */,
 				A2B10127270AD44C00CAE013 /* ObservableType+.swift in Sources */,
@@ -1741,6 +1752,7 @@
 				CEB6582C26EB15A600C11F33 /* AppDelegate.swift in Sources */,
 				CE4D4E6D2707883600081A2B /* ContactInputView.swift in Sources */,
 				A2DA3B49274A683A00E68F23 /* OAuthRepository.swift in Sources */,
+				CEDA4B8E275125C30011D0CA /* QuestDoneAPI.swift in Sources */,
 				CE4D4E9B2707BB2500081A2B /* PaletteDependencyContainer.swift in Sources */,
 				CE94ABB2270EFCA3005D2E80 /* TMISectionHeaderView.swift in Sources */,
 				A2CC65772708DAD900610C49 /* FriendCardCollectionViewCell.swift in Sources */,
