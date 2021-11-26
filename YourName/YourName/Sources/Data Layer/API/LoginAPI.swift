@@ -29,6 +29,7 @@ struct LoginAPI: ServiceAPI {
             return "/apple-login"
         }
     }
+    var headers: [String: String]? { ["authorization": "Bearer \(accessToken)"] }
     var method: Moya.Method { .post }
     var task: Task { .requestPlain }
 }

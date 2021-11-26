@@ -10,15 +10,21 @@ import Foundation
 extension Entity {
     
     struct User: Decodable {
-        let id: String?
-        let name: String?
+        let id: Int?
+        let nickName: String?
         let role: String?
-        let skills: [Skill]
-        let contacts: [Contact]
+        let skills: [Skill]?
+        let contacts: [Contact]?
         let personality: String?
         let bgColor: BackgroundColor?
         let tmis: [TMI]?
         let introduce: String?
+        let providerName: Provider?
     }
     
+    
+    enum Provider: String, Decodable {
+        case kakao = "Kakao"
+        case apple = "Apple"
+    }
 }

@@ -11,6 +11,7 @@ extension Entity {
     struct Login: Decodable {
         let accessToken: String?
         let refreshToken: String?
+        let user: User?
         let userOnboarding: [Quest]?
     }
 }
