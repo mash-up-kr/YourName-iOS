@@ -39,8 +39,6 @@ final class WelcomeViewModel {
                                                         provider: response.provider)
             }
             .catchError({ error in
-                //TODO: error handling
-                print(error)
                 return .empty()
             })
             .bind(onNext: { [weak self] accessToken in
