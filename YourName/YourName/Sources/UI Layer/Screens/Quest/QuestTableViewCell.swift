@@ -18,9 +18,7 @@ final class QuestTableViewCell: UITableViewCell {
     
     func configure(with presentable: QuestTableViewCellPresentable) {
         self.titleLabel?.text = presentable.title
-        if let rewardURL = URL(string: presentable.rewardImageURL ?? .empty) {
-            self.rewardImageView?.setImageSource(.url(rewardURL))
-        }
+        self.rewardImageView?.setImageSource(.url(presentable.rewardImageURL ?? .empty))
         switch presentable.status {
         case .wait:
             self.lockCoverView?.isHidden = false

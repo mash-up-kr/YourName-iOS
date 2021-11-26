@@ -9,6 +9,7 @@ import Foundation
 
 extension Entity {
     struct Image: Decodable {
+        let id: Int?
         let key: String?
     }
 }

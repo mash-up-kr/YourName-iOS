@@ -47,6 +47,7 @@ final class CardFrontView: NibLoadableView {
     }
 
     func configure(item: Item) {
+        self.userProfileImage.setImageSource(.url("profile/apple.png"))
         self.userNameLabel.text = item.name
         self.userRoleLabel.text = item.role
         let gradientLayer = CAGradientLayer()

@@ -20,7 +20,7 @@ final class MyCardListViewModel {
     typealias MyCard = CardFrontView.Item
     
     let navigation = PublishRelay<MyCardListNavigation>()
-    private let myCardList = BehaviorRelay<[MyCard]>(value: [])
+    let myCardList = BehaviorRelay<[MyCard]>(value: [])
     private let myCardRepository: MyCardRepository
     private let disposeBag = DisposeBag()
     

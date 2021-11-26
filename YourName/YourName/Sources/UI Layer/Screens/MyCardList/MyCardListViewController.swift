@@ -34,6 +34,10 @@ final class MyCardListViewController: ViewController, Storyboarded {
         self.dispatch(to: viewModel)
         self.navigationController?.navigationBar.isHidden = true
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.viewModel.load()
+    }
 }
 
 // MARK: - Methods
@@ -47,7 +51,15 @@ extension MyCardListViewController {
     }
     
     private func dispatch(to viewModel: MyCardListViewModel) {
-        viewModel.load()
+  
+        viewModel.myCardList
+            .bind(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.myCardListCollectionView.reloadData()
+                self.userNameLabel.text = "나의 미츄 (\(self.viewModel.numberOfMyCards))"
+                self.pageControl.numberOfPages = self.viewModel.numberOfMyCards
+            })
+            .disposed(by: disposeBag)
         
         self.rx.viewDidAppear.flatMapFirst { _ in self.viewModel.navigation }
         .bind(onNext: { [weak self] action in
@@ -60,9 +72,6 @@ extension MyCardListViewController {
                 self?.viewModel.tapCardCreation()
             })
             .disposed(by: disposeBag)
-        
-        self.pageControl.numberOfPages = self.viewModel.numberOfMyCards
-        self.pageControl.currentPage = 0
     }
     
     private func navigate(_ navigation: MyCardListNavigation) {
@@ -104,6 +113,8 @@ extension MyCardListViewController: UICollectionViewDataSource {
                                                                 for: indexPath),
                   let myCardView = cell.contentView as? CardFrontView,
                   let item = self.viewModel.cellForItem(at: indexPath.item) else { return .init() }
+            
+            myCardView.configure(item: item)
             return cell
         }
     }
@@ -136,6 +147,8 @@ extension MyCardListViewController: UICollectionViewDelegateFlowLayout {
         }
     }
 }
+
+// MARK: - UIScrollViewDelegate
 
 extension MyCardListViewController: UIScrollViewDelegate {
     
