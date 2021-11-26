@@ -83,6 +83,12 @@ extension MyCardListViewController {
             })
             .disposed(by: disposeBag)
         
+        self.myCardListCollectionView.rx.itemSelected
+            .bind(onNext: { [weak self] indexPath in
+                self?.viewModel.tapCard(at: indexPath.row)
+            })
+            .disposed(by: disposeBag)
+        
         // TODO: ViewModel observe하는 방식으로 수정
         self.pageControl.numberOfPages = content.count
         self.pageControl.currentPage = 0
