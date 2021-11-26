@@ -9,10 +9,10 @@ import Foundation
 
 final class CardDetailDependencyContainer {
     
-    let cardID: String
+    let cardID: Int
     
     init(
-        cardID: String,
+        cardID: Int,
         myCardListDependencyContainer: MyCardListDependencyContainer
     ) {
         // do something

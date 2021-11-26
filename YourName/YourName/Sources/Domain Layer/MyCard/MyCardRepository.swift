@@ -27,18 +27,20 @@ final class YourNameMyCardRepository: MyCardRepository {
             .compactMap { $0.list }
             .compactMap { cards -> [FrontCardItem]? in
                 return cards.compactMap { card -> FrontCardItem? in
+                    
                     guard let personalSkills = card.personalSkills,
                           let bgColors = card.bgColor?.value else { return nil }
                     let skills = personalSkills.map { MySkillProgressView.Item(title: $0.name, level: $0.level?.rawValue ?? 0) }
-                    let bgColor: ColorSource!
                     
+                    let bgColor: ColorSource!
                     
                     if bgColors.count == 1 {
                         bgColor = .monotone(UIColor(hexString: bgColors.first!))
                     } else {
                         bgColor = .gradient(bgColors.map { UIColor(hexString: $0) })
                     }
-                    return FrontCardItem(image: card.image?.key ?? "",
+                    return FrontCardItem(id: card.id ?? 0,
+                                         image: card.image?.key ?? "",
                                          name: card.name ?? "",
                                          role: card.role ?? "",
                                          skills: skills,

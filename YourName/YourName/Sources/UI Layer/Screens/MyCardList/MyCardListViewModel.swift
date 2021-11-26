@@ -47,7 +47,7 @@ final class MyCardListViewModel {
     
     func tapCard(at index: Int) {
         guard let selectedCard = myCardList.value[safe: index] else { return }
-        guard let selectedCardID = selectedCard.id else { return }
+        let selectedCardID = selectedCard.id
         navigation.accept(.push(.cardDetail(cardID: selectedCardID)))
     }
 }
@@ -57,8 +57,7 @@ extension MyCardListViewModel {
         return self.myCardList.value.isEmpty
     }
     func cellForItem(at row: Int) -> CardFrontView.Item? {
-        
-        return self.myCardList.value[safe: row]?
+        return self.myCardList.value[safe: row]
     }
     var numberOfMyCards: Int {
         return self.myCardList.value.count

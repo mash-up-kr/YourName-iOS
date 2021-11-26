@@ -12,6 +12,7 @@ import RxSwift
 final class CardFrontView: NibLoadableView {
     
     struct Item {
+        let id: Int
         let image: String
         let name: String
         let role: String
@@ -48,7 +49,16 @@ final class CardFrontView: NibLoadableView {
     func configure(item: Item) {
         self.userNameLabel.text = item.name
         self.userRoleLabel.text = item.role
-        self.contentView.backgroundColor = item.backgroundColor
+        let gradientLayer = CAGradientLayer()
+        switch item.backgroundColor {
+        case .gradient(let colors):
+            self.backgroundColor = nil
+            gradientLayer.colors = colors.compactMap { $0.cgColor }
+        case .monotone(let color):
+            gradientLayer.colors = nil
+            self.backgroundColor = color
+        }
+        self.layer.addSublayer(gradientLayer)
         self.configure(skills: item.skills)
     }
     
