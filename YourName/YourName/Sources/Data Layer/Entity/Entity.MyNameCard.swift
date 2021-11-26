@@ -25,6 +25,9 @@ extension Entity {
         let bgColor: BackgroundColor?
         let contacts: [Contact]?
         let personalSkills: [Skill]?
+        
+        // for update
+        let bgColorId: Int?
     }
 
 }

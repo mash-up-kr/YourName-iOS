@@ -10,7 +10,7 @@ import Foundation
 extension Entity {
     
     struct Contact: Decodable {
-        let category: ContactCategory?
+        let category: ContactType?
         let value: String?
         let iconURL: String?
         
