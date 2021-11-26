@@ -7,7 +7,7 @@
 
 import UIKit
 
-setupEnviorment()
+setupEnviornment()
 
 UIApplicationMain(
     CommandLine.argc,
@@ -17,6 +17,6 @@ UIApplicationMain(
     NSStringFromClass(AppDelegate.self)
 )
 
-private func setupEnviorment() {
-    Enviorment.current.network = NetworkService()
+private func setupEnviornment() {
+    Environment.current.network = NetworkService()
 }

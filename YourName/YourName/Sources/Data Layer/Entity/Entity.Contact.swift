@@ -12,14 +12,20 @@ extension Entity {
     struct Contact: Decodable {
         let category: ContactCategory?
         let value: String?
+        let iconURL: String?
+        
+        enum CodingKeys: String, CodingKey {
+            case category, value
+            case iconURL = "iconUrl"
+        }
     }
     
-    enum ContactCategory: Decodable {
-        case phone
-        case email
-        case instagram
-        case facebook
-        case youtube
+    enum ContactCategory: String, Decodable {
+        case phone = "Phone."
+        case email = "Email."
+        case instagram = "Instagram."
+        case facebook = "Facebook."
+        case youtube = "Youtube."
     }
     
 }

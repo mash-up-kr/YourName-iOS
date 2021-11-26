@@ -1,5 +1,5 @@
 //
-//  YNAuth.swift
+//  AccessTokenRepository.swift
 //  YourName
 //
 //  Created by Booung on 2021/09/18.
@@ -9,14 +9,19 @@ import Foundation
 import RxSwift
 
 typealias AccessToken = String
+typealias RefreshToken = String
 
 protocol AccessTokenRepository {
     func fetchAccessToken() -> Observable<AccessToken?>
 }
 
-final class YourNameAccessTokenRepository: AccessTokenRepository {
+struct YourNameAccessTokenRepository: AccessTokenRepository {
     func fetchAccessToken() -> Observable<AccessToken?> {
-        #warning("⚠️ TODO: 로직 구현 해야함") // Booung
-        fatalError()
+        Observable<AccessToken?>.create { observer in
+            observer.onNext(UserDefaultManager.accessToken)
+            observer.onCompleted()
+            
+            return Disposables.create()
+        }
     }
 }

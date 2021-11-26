@@ -12,10 +12,6 @@ import UIKit
 
 final class MyCardListViewController: ViewController, Storyboarded {
     
-    private enum Constant {
-        static let collectionViewSectionInset: CGFloat = 24
-    }
-    
     // MARK: - UIComponents
     
     @IBOutlet private unowned var userNameLabel: UILabel!
@@ -26,34 +22,18 @@ final class MyCardListViewController: ViewController, Storyboarded {
     // MARK: - Properties
     
     var cardCreationViewControllerFactory: (() -> CardCreationViewController)!
-    var cardDetailViewControllerFactory: ((String) -> CardDetailViewController)!
+    var cardDetailViewControllerFactory: ((Int) -> CardDetailViewController)!
     var viewModel: MyCardListViewModel!
     private let disposeBag = DisposeBag()
     private lazy var collectionViewWidth = ( 312 * self.myCardListCollectionView.bounds.height ) / 512
     
-    /* Dummy */
-    private let dummyData = [Palette.lightGreen, Palette.orange, Palette.pink]
-    private let content = [ CardFrontView.Item(image: "",
-                                            name: "서영부캐1",
-                                            role: "역할이 길면 짤려야합니다.짤려야한다고!!!",
-                                            skills: [.init(title: "인사력", level: 10),
-                                                     .init(title: "잠만보", level: 1)],
-                                            backgroundColor: Palette.vilolet),
-                            CardFrontView.Item(image: "",
-                                            name: "서영 본캐입니다.",
-                                            role: "역할",
-                                            skills: [
-                                                .init(title: "뭐하지", level: 3),
-                                                .init(title: "스킬은", level: 5)
-                                                ],
-                                            backgroundColor: Palette.yellow),
-    ]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.configure(colletionView: myCardListCollectionView)
+        self.bind()
+        self.configure(collectionView: myCardListCollectionView)
         self.dispatch(to: viewModel)
+        self.render(viewModel)
         self.navigationController?.navigationBar.isHidden = true
     }
 }
@@ -61,16 +41,31 @@ final class MyCardListViewController: ViewController, Storyboarded {
 // MARK: - Methods
 extension MyCardListViewController {
     
-    private func configure(colletionView: UICollectionView) {
-        colletionView.decelerationRate = .fast
-        colletionView.isPagingEnabled = false
-        colletionView.registerNib(MyCardListEmptyCollectionViewCell.self)
-        colletionView.registerNib(MyCardListCollectionViewCell.self)
+    private func configure(collectionView: UICollectionView) {
+        collectionView.decelerationRate = .fast
+        collectionView.isPagingEnabled = false
+        collectionView.registerNib(MyCardListEmptyCollectionViewCell.self)
+        collectionView.registerNib(MyCardListCollectionViewCell.self)
+    }
+    
+    private func render(_ viewModel: MyCardListViewModel) {
+        self.viewModel.load()
+        viewModel.isLoading.distinctUntilChanged()
+            .bind(to: self.isLoading)
+            .disposed(by: disposeBag)
+  
+        viewModel.myCardList
+            .bind(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.myCardListCollectionView.reloadData()
+                self.userNameLabel.text = "나의 미츄 (\(self.viewModel.numberOfMyCards))"
+                self.pageControl.numberOfPages = self.viewModel.numberOfMyCards
+            })
+            .disposed(by: disposeBag)
     }
     
     private func dispatch(to viewModel: MyCardListViewModel) {
-        viewModel.load()
-        
+      
         self.rx.viewDidAppear.flatMapFirst { _ in self.viewModel.navigation }
         .bind(onNext: { [weak self] action in
             guard let self = self else { return }
@@ -85,13 +80,10 @@ extension MyCardListViewController {
         
         self.myCardListCollectionView.rx.itemSelected
             .bind(onNext: { [weak self] indexPath in
-                self?.viewModel.tapCard(at: indexPath.row)
+                
+                self?.viewModel.tapCard(at: 1)
             })
             .disposed(by: disposeBag)
-        
-        // TODO: ViewModel observe하는 방식으로 수정
-        self.pageControl.numberOfPages = content.count
-        self.pageControl.currentPage = 0
     }
     
     private func navigate(_ navigation: MyCardListNavigation) {
@@ -99,7 +91,7 @@ extension MyCardListViewController {
         navigate(viewController, action: navigation.action)
     }
     
-    private func createViewController(_ next: MyCardListDesitination) -> UIViewController {
+    private func createViewController(_ next: MyCardListDestination) -> UIViewController {
         switch next {
         case .cardDetail(let cardID):
             return cardDetailViewControllerFactory(cardID)
@@ -107,19 +99,25 @@ extension MyCardListViewController {
             return cardCreationViewControllerFactory()
         }
     }
+    
+    private func bind() {
+        NotificationCenter.default.addObserver(forName: .myCardsDidChange, object: nil, queue: nil) { [weak self] _ in
+            self?.viewModel.load()
+        }
+    }
 }
 
 //MARK: - UICollectionViewDataSource
+
 extension MyCardListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        content.count
+        1
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        // TODO: API 연결 이후 enum타입으로 정의할 예정
-        if content.count == 1 {
+        if self.viewModel.myCardIsEmpty {
             guard let cell = collectionView.dequeueReusableCell(MyCardListEmptyCollectionViewCell.self,
                                                                 for: indexPath)
             else { return .init() }
@@ -132,8 +130,10 @@ extension MyCardListViewController: UICollectionViewDataSource {
         } else {
             guard let cell = collectionView.dequeueReusableCell(MyCardListCollectionViewCell.self,
                                                                 for: indexPath),
-                  let myCardView = cell.contentView as? CardFrontView else { return .init() }
-            myCardView.configure(item: content[indexPath.row])
+                  let myCardView = cell.contentView as? CardFrontView,
+                  let item = self.viewModel.cellForItem(at: indexPath.item) else { return .init() }
+            
+            myCardView.configure(item: item)
             return cell
         }
     }
@@ -158,20 +158,16 @@ extension MyCardListViewController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
         
-        if dummyData.count == 1 {
+        if self.viewModel.myCardIsEmpty {
             let edges = UIScreen.main.bounds.width - collectionViewWidth
-            return UIEdgeInsets(top: 0,
-                                left: edges / 2,
-                                bottom: 0,
-                                right: edges / 2)
+            return UIEdgeInsets(top: 0, left: edges / 2, bottom: 0, right: edges / 2)
         } else {
-            return UIEdgeInsets(top: 0,
-                                left: Constant.collectionViewSectionInset,
-                                bottom: 0,
-                                right: Constant.collectionViewSectionInset)
+            return UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
         }
     }
 }
+
+// MARK: - UIScrollViewDelegate
 
 extension MyCardListViewController: UIScrollViewDelegate {
     

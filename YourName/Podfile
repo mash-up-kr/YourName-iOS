@@ -41,6 +41,9 @@ target 'MEETU' do
   pod 'Moya', '~>14.0'
   pod 'Moya/RxSwift'
   
+  # 🎨 UI
+  pod 'lottie-ios'
+
   
   target 'YourNameTests' do
     pod 'RxTest','~>5.0'

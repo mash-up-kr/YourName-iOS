@@ -12,9 +12,9 @@ protocol InterestRepository {
     func fetchAll() -> Observable<[Interest]>
 }
 
-final class InterestRepositoryImpl: InterestRepository {
+final class YourNameInterestRepository: InterestRepository {
     
-    init(network: NetworkServing = Enviorment.current.network) {
+    init(network: NetworkServing = Environment.current.network) {
         self.network = network
     }
     

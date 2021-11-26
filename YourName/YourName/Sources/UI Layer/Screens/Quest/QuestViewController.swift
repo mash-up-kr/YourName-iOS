@@ -27,9 +27,25 @@ final class QuestViewController: ViewController, Storyboarded {
     
     private func dispatch(to viewModel: QuestViewModel) {
         self.viewModel.didLoad()
+        
+        self.backButton?.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.viewModel.tapClose()
+            })
+            .disposed(by: self.disposeBag)
     }
     
     private func render(_ viewModel: QuestViewModel) {
+        viewModel.isLoading.distinctUntilChanged()
+            .bind(to: self.isLoading)
+            .disposed(by: self.disposeBag)
+        
+        viewModel.shouldClose
+            .subscribe(onNext: { [weak self] in
+                self?.dismiss(animated: true, completion: nil)
+            })
+            .disposed(by: self.disposeBag)
+        
         viewModel.quests.distinctUntilChanged()
             .subscribe(onNext: { [weak self] in
                 self?.quests = $0
@@ -54,7 +70,12 @@ extension QuestViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(QuestTableViewCell.self, for: indexPath) else { return .init() }
         guard let quest = self.quests[safe: indexPath.row] else { return cell }
+        
+        cell.achieveButtonDidTap = { [weak self] in
+            self?.viewModel.tapAchieve(at: indexPath.row)
+        }
         cell.configure(with: quest)
+        
         return cell
     }
     
