@@ -32,7 +32,6 @@ final class WelcomeViewModel {
     func signIn(with provider: Provider) {
 
         self.OAuthRepository.authorize(provider: provider)
-            .asObservable()
             .flatMapLatest { [weak self] response -> Observable<AccessToken> in
                 guard let self = self else { return .empty() }
                 return self.authRepository.requestLogin(accessToken: response.accessToken,
