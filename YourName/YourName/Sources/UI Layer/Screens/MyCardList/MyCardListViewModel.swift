@@ -59,7 +59,7 @@ final class MyCardListViewModel {
     }
     
     func tapCard(at index: Int) {
-        guard let selectedCard = myCardList.value[safe: index] else { return }
+        guard let selectedCard = myCardList.value[safe: 0] else { return }
         let selectedCardID = selectedCard.id
         navigation.accept(.push(.cardDetail(cardID: selectedCardID)))
     }
@@ -68,7 +68,7 @@ final class MyCardListViewModel {
         return cards.compactMap { card -> MyCard? in
             guard let personalSkills = card.personalSkills,
                   let bgColors = card.bgColor?.value else { return nil }
-            let skills = personalSkills.map { MySkillProgressView.Item(title: $0.name, level: $0.level?.rawValue ?? 0) }
+            let skills = personalSkills.map { MySkillProgressView.Item(title: $0.name, level: $0.level ?? 0) }
             
             let bgColor: ColorSource!
             

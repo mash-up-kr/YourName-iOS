@@ -77,6 +77,13 @@ extension MyCardListViewController {
                 self?.viewModel.tapCardCreation()
             })
             .disposed(by: disposeBag)
+        
+        self.myCardListCollectionView.rx.itemSelected
+            .bind(onNext: { [weak self] indexPath in
+                
+                self?.viewModel.tapCard(at: 1)
+            })
+            .disposed(by: disposeBag)
     }
     
     private func navigate(_ navigation: MyCardListNavigation) {

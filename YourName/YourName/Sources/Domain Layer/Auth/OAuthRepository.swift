@@ -9,11 +9,11 @@ import Foundation
 import RxSwift
 
 protocol OAuthRepository {
-    func authorize(provider: Provider) -> Single<OAuthResponse>
+    func authorize(provider: Provider) -> Observable<OAuthResponse>
 }
 
 final class YourNameOAuthRepository: OAuthRepository {
-    func authorize(provider: Provider) -> Single<OAuthResponse> {
+    func authorize(provider: Provider) -> Observable<OAuthResponse> {
         var OAuth: OAuth
         switch provider {
         case .kakao:
