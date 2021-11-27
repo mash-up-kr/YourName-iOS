@@ -81,10 +81,10 @@ final class CardFrontView: NibLoadableView {
         
         self.contentView.addSubviews(button)
         button.snp.makeConstraints {
-            $0.trailing.equalToSuperview().inset(19)
-            $0.top.equalToSuperview().offset(12)
-            $0.width.equalTo(52)
-            $0.height.equalTo(24)
+            $0.trailing.equalToSuperview().inset(7)
+            $0.top.equalToSuperview()
+            $0.width.equalTo(72)
+            $0.height.equalTo(48)
         }
     }
 

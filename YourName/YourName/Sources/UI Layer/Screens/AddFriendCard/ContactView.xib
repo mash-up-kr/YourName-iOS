@@ -22,13 +22,13 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jlJ-0S-CeL">
-                    <rect key="frame" x="0.0" y="0.0" width="10" height="42"/>
+                    <rect key="frame" x="0.0" y="0.0" width="20" height="42"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="10" id="Pxw-de-oco"/>
+                        <constraint firstAttribute="width" constant="20" id="Pxw-de-oco"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone. 010-3333-4444" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pUm-8j-LIQ">
-                    <rect key="frame" x="20" y="0.0" width="194" height="42"/>
+                    <rect key="frame" x="30" y="12.5" width="184" height="17"/>
                     <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
                     <color key="textColor" name="black1"/>
                     <nil key="highlightedColor"/>
@@ -37,13 +37,12 @@
             <viewLayoutGuide key="safeArea" id="f3i-06-NGk"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="pUm-8j-LIQ" firstAttribute="top" secondItem="T0E-j0-oGi" secondAttribute="top" id="ERK-xM-KRG"/>
+                <constraint firstItem="jlJ-0S-CeL" firstAttribute="top" secondItem="T0E-j0-oGi" secondAttribute="top" id="9d6-cr-qjK"/>
                 <constraint firstItem="pUm-8j-LIQ" firstAttribute="leading" secondItem="jlJ-0S-CeL" secondAttribute="trailing" constant="10" id="I6q-AX-D9D"/>
                 <constraint firstItem="f3i-06-NGk" firstAttribute="bottom" secondItem="jlJ-0S-CeL" secondAttribute="bottom" id="Z76-QK-Tzj"/>
                 <constraint firstItem="jlJ-0S-CeL" firstAttribute="leading" secondItem="T0E-j0-oGi" secondAttribute="leading" id="Zjx-oq-0JF"/>
-                <constraint firstItem="f3i-06-NGk" firstAttribute="bottom" secondItem="pUm-8j-LIQ" secondAttribute="bottom" id="lqb-ak-fmt"/>
+                <constraint firstItem="pUm-8j-LIQ" firstAttribute="centerY" secondItem="jlJ-0S-CeL" secondAttribute="centerY" id="kMT-z7-kO4"/>
                 <constraint firstAttribute="trailing" secondItem="pUm-8j-LIQ" secondAttribute="trailing" id="u25-Eh-jmM"/>
-                <constraint firstItem="jlJ-0S-CeL" firstAttribute="top" secondItem="T0E-j0-oGi" secondAttribute="top" id="vof-SE-bN8"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="-13.043478260869566" y="155.35714285714286"/>
