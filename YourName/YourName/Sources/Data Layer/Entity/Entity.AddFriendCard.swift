@@ -9,7 +9,8 @@ import Foundation
 
 extension Entity {
     struct AddFriendCard: Decodable {
-        typealias NameCard = Entity.MyNameCard.NameCard
+        typealias NameCard = Entity.NameCard
+        
         let nameCard: NameCard?
         let isAdded: Bool?
     }

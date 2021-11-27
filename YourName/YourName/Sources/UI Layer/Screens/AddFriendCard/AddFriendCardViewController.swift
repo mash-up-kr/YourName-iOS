@@ -25,12 +25,8 @@ final class AddFriendCardViewController: ViewController, Storyboarded {
     var viewModel: AddFriendCardViewModel!
     
     override var hidesBottomBarWhenPushed: Bool {
-        get {
-            return navigationController?.topViewController == self
-        }
-        set {
-            super.hidesBottomBarWhenPushed = newValue
-        }
+        get { return navigationController?.topViewController == self }
+        set { super.hidesBottomBarWhenPushed = newValue }
     }
     
     // MARK: - LifeCycles
@@ -41,6 +37,7 @@ final class AddFriendCardViewController: ViewController, Storyboarded {
         self.render(self.viewModel)
         self.bind()
     }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         self.configureTextFieldLeftView()
@@ -72,7 +69,7 @@ extension AddFriendCardViewController {
                 .mapToVoid()
             )
             .bind(onNext: { [weak self] _ in
-                self?.view.endEditing(true)
+                self?.searchTextField.resignFirstResponder()
             })
             .disposed(by: disposeBag)
         
@@ -101,7 +98,7 @@ extension AddFriendCardViewController {
                            state: FriendCardState = .none) {
         textField.layer.borderWidth = 1
         switch state {
-        case .alreadyAdded:
+        case .isAdded:
             textField.layer.borderColor = Palette.red.cgColor
         default:
             textField.layer.borderColor = Palette.gray1.cgColor
@@ -110,7 +107,12 @@ extension AddFriendCardViewController {
     
     private func render(_ viewModel: AddFriendCardViewModel) {
         
-        self.viewModel.addFriendCardResult
+        viewModel.isLoading
+            .distinctUntilChanged()
+            .bind(to: self.isLoading)
+            .disposed(by: self.disposeBag)
+        
+        viewModel.addFriendCardResult
             .bind(onNext: { [weak self] state in
                 guard let self = self else { return }
                 switch state {
@@ -135,7 +137,7 @@ extension AddFriendCardViewController {
                     self.configure(self.searchTextField)
                     
                     // MARK: 이미 추가된 경우
-                case .alreadyAdded(let frontItem, let backItem):
+                case .isAdded(let frontItem, let backItem):
                     self.noResultView.isHidden = true
                     self.resultView.isHidden = false
                     self.validationLabel.isHidden = false

@@ -20,7 +20,7 @@ extension Entity {
         let personality: String?
         let introduce: String?
         let uniqueCode: String?
-        let image: Image?
+        let image: String?
         let user: User?
         let bgColor: BackgroundColor?
         let contacts: [Contact]?

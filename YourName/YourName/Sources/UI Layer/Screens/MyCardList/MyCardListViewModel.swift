@@ -78,7 +78,7 @@ final class MyCardListViewModel {
                 bgColor = .gradient(bgColors.map { UIColor(hexString: $0) })
             }
             return MyCard(id: card.id ?? 0,
-                          image: card.image?.key ?? "",
+                          image: card.image ?? "",
                           name: card.name ?? "",
                           role: card.role ?? "",
                           skills: skills,

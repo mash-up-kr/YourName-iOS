@@ -17,50 +17,104 @@ final class AddFriendCardViewModel {
         case success(frontCardItem: FrontCardItem,
                      backCardItem: BackCardItem)
         case noResult
-        case alreadyAdded(frontCardItem: FrontCardItem,
-                          backCardItem: BackCardItem)
+        case isAdded(frontCardItem: FrontCardItem,
+                    backCardItem: BackCardItem)
         case none
     }
     
-    private var dummyId = ["abcd", "1234"]
-    private var alreadyId = ["aaa"]
-    let addFriendCardResult = PublishRelay<FriendCardState>()
+    // MARK: - Properties
     
-    func didTapSearchButton(with id: String) {
-//        if dummyId.contains(id) {
-//            self.addFriendCardResult.accept(.success(frontCardItem: .init(image: "",
-//                                                                 name: "성공적으로 추가됨",
-//                                                                 role: "역할은 서영입니다.",
-//                                                                 skills: [
-//                                                                    .init(title: "드립력", level: 3),
-//                                                                    .init(title: "인싸력", level: 1)
-//                                                                 ],
-//                                                                 backgroundColor: Palette.skyBlue),
-//                                                     backCardItem: .init(contacts: [],
-//                                                                     personality: "ESTJ/모두가 날 I N 이라고하지",
-//                                                                     introduce: "안녕하세용!~! 반갑습니다.",
-//                                                                    backgroundColor: Palette.skyBlue)))
-//
-//        }
-//        else if alreadyId.contains(id) {
-//            self.addFriendCardResult.accept(.alreadyAdded(frontCardItem: .init(image: "",
-//                                                                 name: "이미존재하는 카드",
-//                                                                 role: "역할은 서영입니다.",
-//                                                                 skills: [
-//                                                                    .init(title: "드립력", level: 3)
-//                                                                 ],
-//                                                                 backgroundColor: Palette.orange),
-//                                                          backCardItem: .init(contacts: [.init(image: "", type: "Facebook. ", value: "페북도 아이디가있었나.."),
-//                                                                                     .init(image: "", type: "Instagram. ", value: "@se0_p"),
-//                                                                                     .init(image: "", type: "Github. ", value: "@SongSeoYoung"),
-//                                                                                     .init(image: "", type: "Email. ", value: "djm07245@gmail.com"),
-//                                                                                     .init(image: "", type: "Phone. ", value: "010-3222-2222")],
-//                                                                          personality: nil,
-//                                                                          introduce: "#인싸력",
-//                                                                         backgroundColor: Palette.orange)))
-//        }
-//        else {
-//            self.addFriendCardResult.accept(.noResult)
-//        }
+    let isLoading = PublishRelay<Bool>()
+    let addFriendCardResult = PublishRelay<FriendCardState>()
+    let repository: AddFriendCardRepository!
+    private let disposeBag = DisposeBag()
+    
+    // MARK: - Init
+    
+    init(repository: AddFriendCardRepository) {
+        self.repository = repository
+    }
+    deinit {
+        print(" 💀 \(String(describing: self)) deinit")
+    }
+}
+
+// MARK: - Methods
+
+extension AddFriendCardViewModel {
+    func didTapSearchButton(with uniqueCode: String) {
+        self.isLoading.accept(true)
+        let result = self.repository.searchFriendCard(uniqueCode: uniqueCode)
+            .do { [weak self] _ in
+                self?.isLoading.accept(false)
+            }
+            .catchError { error in
+                print(error)
+                return .empty()
+            }
+            .share()
+        
+        // 해당 아이디가 없는 경우
+        result
+            .filter { $0.nameCard == nil }
+            .mapToVoid()
+            .map { FriendCardState.noResult }
+            .bind(to: addFriendCardResult)
+            .disposed(by: disposeBag)
+        
+        
+        // 결과가 있는 경우
+        let cardItem = result
+            .filter { $0.nameCard != nil}
+            .compactMap { response -> (front: FrontCardItem, back: BackCardItem, isAdded: Bool)? in
+                guard let nameCard = response.nameCard,
+                      let personalSkills = nameCard.personalSkills,
+                      let contacts = nameCard.contacts,
+                      let bgColor = nameCard.bgColor?.value,
+                      let isAdded = response.isAdded else { return nil }
+                
+                let bgColors: ColorSource!
+                if bgColor.count == 1 { bgColors = .monotone(UIColor(hexString: bgColor.first!))}
+                else { bgColors = .gradient(bgColor.map { UIColor(hexString: $0) } ) }
+                
+                let skills = personalSkills.map { MySkillProgressView.Item(title: $0.name,
+                                                                           level: $0.level?.rawValue ?? 0 ) }
+                let _contacts = contacts.map { AddFriendCardBackView.Item.Contact(image: $0.iconURL ?? "",
+                                                                                 type: $0.category?.rawValue ?? "",
+                                                                                 value: $0.value ?? "") }
+                
+                return (FrontCardItem(id: nameCard.id ?? 0 ,
+                                      image: nameCard.image ?? "",
+                                      name: nameCard.name ?? "",
+                                      role: nameCard.role ?? "",
+                                      skills: skills,
+                                      backgroundColor: bgColors),
+                        BackCardItem(contacts: _contacts,
+                                     personality: nameCard.personality ?? "",
+                                     introduce: nameCard.introduce ?? "",
+                                     backgroundColor: bgColors),
+                        isAdded)
+            }
+            .share()
+        
+        // 이미 추가된 경우가 아님 (성공)
+        cardItem
+            .filter { !$0.isAdded }
+            .map { frontCard, backCard, _ -> FriendCardState in
+                return .success(frontCardItem: frontCard,
+                                backCardItem: backCard)
+            }
+            .bind(to: addFriendCardResult)
+            .disposed(by: self.disposeBag)
+        
+        // 이미 추가된 경우
+        cardItem
+            .filter { $0.isAdded }
+            .map { frontCard, backCard, _ -> FriendCardState in
+                return .isAdded(frontCardItem: frontCard,
+                                    backCardItem: backCard)
+            }
+            .bind(to: addFriendCardResult)
+            .disposed(by: disposeBag)
     }
 }

@@ -77,7 +77,7 @@ extension AddFriendCardResultView {
     
     private func configureButton(_ state: FriendCardState) {
         switch state {
-        case .alreadyAdded:
+        case .isAdded:
             self.addButton.backgroundColor = Palette.gray1
             self.addButton.isEnabled = false
         default:

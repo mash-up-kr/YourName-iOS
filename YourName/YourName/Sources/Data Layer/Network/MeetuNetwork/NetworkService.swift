@@ -24,8 +24,8 @@ final class NetworkService: NetworkServing {
         return self.provider.rx.request(endpoint)
             .asObservable()
             .map(MeetuResponse<API.Response>.self)
-            .map { $0.data }
             .do { print($0) }
+            .map { $0.data }
             .filterNil()
     }   
     private let provider = MoyaProvider<MultiTarget>()

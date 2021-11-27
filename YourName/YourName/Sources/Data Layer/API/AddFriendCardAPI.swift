@@ -9,7 +9,7 @@ import Foundation
 
 struct AddFriendCardAPI: ServiceAPI {
     typealias Response = Entity.AddFriendCard
-    let uniqueCode: String!
+    private let uniqueCode: String
     
     init(uniqueCode: String) {
         self.uniqueCode = uniqueCode

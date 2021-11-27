@@ -14,7 +14,7 @@ final class AddFriendCardBackView: NibLoadableView {
         let contacts: [Contact]
         let personality: String?
         let introduce: String?
-        let backgroundColor: UIColor
+        let backgroundColor: ColorSource
         
         struct Contact {
             let image: String
@@ -65,8 +65,17 @@ final class AddFriendCardBackView: NibLoadableView {
         self.introduceLabel.text = ""
         self.personalityViewTopConstraints.constant = 32
         
-        self.contentView.backgroundColor = item.backgroundColor
-       
+        let gradientLayer = CAGradientLayer()
+        switch item.backgroundColor {
+        case .gradient(let colors):
+            self.contentView.backgroundColor = nil
+            gradientLayer.colors = colors.compactMap { $0.cgColor }
+        case .monotone(let color):
+            gradientLayer.colors = nil
+            self.contentView.backgroundColor = color
+        }
+        self.contentView.layer.addSublayer(gradientLayer)
+        
         if item.contacts.count == 0 {
             self.contactHeaderLabel.isHidden = true
             self.contactStackView.isHidden = true

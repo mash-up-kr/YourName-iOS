@@ -70,6 +70,8 @@
 		A2DA3B6B2751406E00E68F23 /* Notification.Name+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B6A2751406E00E68F23 /* Notification.Name+.swift */; };
 		A2DA3B6D27514EE000E68F23 /* AddFriendCardAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B6C27514EE000E68F23 /* AddFriendCardAPI.swift */; };
 		A2DA3B6F27514F4D00E68F23 /* Entity.AddFriendCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B6E27514F4D00E68F23 /* Entity.AddFriendCard.swift */; };
+		A2DA3B7627516F2F00E68F23 /* AddFriendCardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B7527516F2F00E68F23 /* AddFriendCardRepository.swift */; };
+		A2DA3B782751745D00E68F23 /* AddFriendCardDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B772751745D00E68F23 /* AddFriendCardDependencyContainer.swift */; };
 		CE2BB2C727074F4600936148 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE2BB2C627074F4600936148 /* Colors.xcassets */; };
 		CE2BB2C92707560800936148 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2BB2C82707560800936148 /* Palette.swift */; };
 		CE2EC99327073453006B9852 /* CardCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2EC99227073453006B9852 /* CardCreationViewModel.swift */; };
@@ -344,6 +346,8 @@
 		A2DA3B6A2751406E00E68F23 /* Notification.Name+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification.Name+.swift"; sourceTree = "<group>"; };
 		A2DA3B6C27514EE000E68F23 /* AddFriendCardAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendCardAPI.swift; sourceTree = "<group>"; };
 		A2DA3B6E27514F4D00E68F23 /* Entity.AddFriendCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.AddFriendCard.swift; sourceTree = "<group>"; };
+		A2DA3B7527516F2F00E68F23 /* AddFriendCardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendCardRepository.swift; sourceTree = "<group>"; };
+		A2DA3B772751745D00E68F23 /* AddFriendCardDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendCardDependencyContainer.swift; sourceTree = "<group>"; };
 		A3E561B79C6998E82DB447DF /* Pods-YourName-YourNameTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourName-YourNameTests.debug.xcconfig"; path = "Target Support Files/Pods-YourName-YourNameTests/Pods-YourName-YourNameTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CE2BB2C627074F4600936148 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		CE2BB2C82707560800936148 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
@@ -624,6 +628,7 @@
 				A23921022736BDF90069E418 /* AddFriendCardBackView.swift */,
 				A23921042737B8F10069E418 /* ContactView.xib */,
 				A23921062737B9220069E418 /* ContactView.swift */,
+				A2DA3B772751745D00E68F23 /* AddFriendCardDependencyContainer.swift */,
 			);
 			path = AddFriendCard;
 			sourceTree = "<group>";
@@ -635,6 +640,14 @@
 				CEAE397427405D3C0010F8F0 /* CardBook.swift */,
 			);
 			path = CardBook;
+			sourceTree = "<group>";
+		};
+		A2DA3B7427516ED400E68F23 /* AddFriendCard */ = {
+			isa = PBXGroup;
+			children = (
+				A2DA3B7527516F2F00E68F23 /* AddFriendCardRepository.swift */,
+			);
+			path = AddFriendCard;
 			sourceTree = "<group>";
 		};
 		CE2EC9942707347E006B9852 /* CardCreationTests */ = {
@@ -681,10 +694,8 @@
 			isa = PBXGroup;
 			children = (
 				CEDA4B76274E87A20011D0CA /* InterestesAPI.swift */,
-				A2DA3B3A274A162400E68F23 /* LoginAPI.swift */,
 				CE472B802748DAF0001A5E5F /* MakeCardAPI.swift */,
 				CEDA4B8D275125C30011D0CA /* QuestDoneAPI.swift */,
-				CEDA4B80274ECBAE0011D0CA /* QuestsAPI.swift */,
 				CEDA4B7E274ECB000011D0CA /* StrongPointAPI.swift */,
 				CEDA4B93275138350011D0CA /* QuestWaitingDoneAPI.swift */,
 				CEDA4B80274ECBAE0011D0CA /* QuestsAPI.swift */,
@@ -1107,6 +1118,7 @@
 		CEB6586426EB2BC100C11F33 /* Domain Layer */ = {
 			isa = PBXGroup;
 			children = (
+				A2DA3B7427516ED400E68F23 /* AddFriendCard */,
 				CEDA4B84274ECEA70011D0CA /* Quest */,
 				CEAE3970274002E30010F8F0 /* Card */,
 				CEB6586D26EB2C8800C11F33 /* Auth */,
@@ -1720,6 +1732,7 @@
 				CE4D4E862707AE1700081A2B /* CharacterSettingViewModel.swift in Sources */,
 				CE4D4E8A2707AEDD00081A2B /* CharacterItem.swift in Sources */,
 				A2BFC117273FFA81002FFF01 /* SelectCardBookViewModel.swift in Sources */,
+				A2DA3B7627516F2F00E68F23 /* AddFriendCardRepository.swift in Sources */,
 				CE4D4EBD2709022800081A2B /* ImageSourceDedencyContainer.swift in Sources */,
 				A23920F92736835F0069E418 /* AddFriendCardNoResultView.swift in Sources */,
 				CE2EC99327073453006B9852 /* CardCreationViewModel.swift in Sources */,
@@ -1743,6 +1756,7 @@
 				CE2BB2C92707560800936148 /* Palette.swift in Sources */,
 				CE63124926F5A30200B2E69B /* Navigation.swift in Sources */,
 				CEB6587726EB2CFE00C11F33 /* HomeViewModel.swift in Sources */,
+				A2DA3B782751745D00E68F23 /* AddFriendCardDependencyContainer.swift in Sources */,
 				CEFA037A26EFB76D00D12AAB /* SnapshotService.swift in Sources */,
 				CE472B732748C0D3001A5E5F /* Entity.Skill.swift in Sources */,
 				CEA4D2D7270C9B1D008189FE /* CharacterEntity.swift in Sources */,
