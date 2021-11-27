@@ -19,7 +19,6 @@ final class YourNameOAuthRepository: OAuthRepository {
         case .kakao:
             OAuth = KakaoAuth()
         case .apple:
-            // TODO: apple auth 로 수정 필요
             OAuth = AppleAuth()
         }
         return OAuth.authorize()
