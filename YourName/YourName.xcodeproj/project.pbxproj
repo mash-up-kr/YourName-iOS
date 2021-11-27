@@ -293,6 +293,7 @@
 		649ABC24275108A9005F50E8 /* CardDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDetailViewModel.swift; sourceTree = "<group>"; };
 		64E6EF1C2751738C00082673 /* AppleAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuth.swift; sourceTree = "<group>"; };
 		64E6EF1E27517C2300082673 /* RxASAuthorizationControllerDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxASAuthorizationControllerDelegateProxy.swift; sourceTree = "<group>"; };
+		64E6EF20275205F300082673 /* MEETU.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MEETU.entitlements; sourceTree = "<group>"; };
 		70E446189D6231860211802E /* Pods-MEETU-YourNameTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MEETU-YourNameTests.release.xcconfig"; path = "Target Support Files/Pods-MEETU-YourNameTests/Pods-MEETU-YourNameTests.release.xcconfig"; sourceTree = "<group>"; };
 		8EB93BC30EE6D9B49A59296C /* Pods-MEETU-YourNameTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MEETU-YourNameTests.debug.xcconfig"; path = "Target Support Files/Pods-MEETU-YourNameTests/Pods-MEETU-YourNameTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8F8380609FFFABDCA6489AAA /* Pods-MEETU.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MEETU.release.xcconfig"; path = "Target Support Files/Pods-MEETU/Pods-MEETU.release.xcconfig"; sourceTree = "<group>"; };
@@ -998,6 +999,7 @@
 		CEB6581F26EB15A600C11F33 = {
 			isa = PBXGroup;
 			children = (
+				64E6EF20275205F300082673 /* MEETU.entitlements */,
 				CEB6582A26EB15A600C11F33 /* YourName */,
 				CEB6584126EB15AD00C11F33 /* YourNameTests */,
 				CEB6582926EB15A600C11F33 /* Products */,
@@ -2000,6 +2002,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MEETU.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8BQHKQSA4Y;
 				INFOPLIST_FILE = "YourName/Support Files/Info.plist";
@@ -2020,6 +2023,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MEETU.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8BQHKQSA4Y;
 				INFOPLIST_FILE = "YourName/Support Files/Info.plist";

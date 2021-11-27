@@ -20,7 +20,7 @@ final class YourNameOAuthRepository: OAuthRepository {
             OAuth = KakaoAuth()
         case .apple:
             // TODO: apple auth 로 수정 필요
-            OAuth = KakaoAuth()
+            OAuth = AppleAuth()
         }
         return OAuth.authorize()
     }
