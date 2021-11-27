@@ -9,5 +9,5 @@ import Foundation
 import RxSwift
 
 protocol OAuth {
-    func authorize() -> Single<OAuthResponse>
+    func authorize() -> Observable<OAuthResponse>
 }
