@@ -10,7 +10,7 @@ import Foundation
 extension Entity {
     
     struct BackgroundColor: Decodable {
-        let id: String?
+        let id: Int?
         let value: [String]?
     }
     

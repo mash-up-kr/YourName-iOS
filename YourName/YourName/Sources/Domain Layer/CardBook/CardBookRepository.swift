@@ -20,7 +20,7 @@ final class MockCardBookRepository: CardBookRepository {
 }
 
 
-final class CardBookRepositoryImpl: CardBookRepository {
+final class YourNameCardBookRepository: CardBookRepository {
     
     func fetchAll() -> Observable<[CardBook]> {
         return .empty()

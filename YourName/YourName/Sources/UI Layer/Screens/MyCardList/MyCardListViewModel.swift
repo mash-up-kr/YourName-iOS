@@ -8,26 +8,50 @@
 import RxRelay
 import RxSwift
 
-enum MyCardListDesitination: Equatable {
+enum MyCardListDestination: Equatable {
     case cardCreation
-    case cardDetail(cardID: String)
+    case cardDetail(cardID: Int)
 }
 
-typealias MyCardListNavigation = Navigation<MyCardListDesitination>
+typealias MyCardListNavigation = Navigation<MyCardListDestination>
 
 final class MyCardListViewModel {
     
+    typealias MyCard = CardFrontView.Item
+    
     let navigation = PublishRelay<MyCardListNavigation>()
+    let myCardList = BehaviorRelay<[MyCard]>(value: [])
+    let isLoading = BehaviorRelay<Bool>(value: false)
+    
+    private let myCardRepository: MyCardRepository
+    private let disposeBag = DisposeBag()
     
     init(myCardRepository: MyCardRepository) {
         self.myCardRepository = myCardRepository
     }
     
+    deinit {
+        print("💀 \(String(describing: self))")
+    }
+    
+    // MARK: - Methods
+    
     func load() {
-        #warning("⚠️ TODO: 레포지토리로부터 로드한 후, 화면에 맞게 포맷팅하는 로직 추가하고 테스트해야합니다.") // Booung
-        myCardRepository.fetchList()
-            .bind(to: myCardList)
-            .disposed(by: disposeBag)
+        self.isLoading.accept(true)
+        self.myCardRepository.fetchMyCards()
+            .catchError { error in
+                print(error)
+                return .empty()
+            }
+            .compactMap { [weak self] cards -> [MyCard]? in
+                guard let self = self else { return nil }
+                return self.myCardCellViewModel(cards)
+            }
+            .bind(onNext: { [weak self] in
+                self?.myCardList.accept($0)
+                self?.isLoading.accept(false)
+            })
+            .disposed(by: self.disposeBag)
     }
     
     func tapCardCreation() {
@@ -35,12 +59,42 @@ final class MyCardListViewModel {
     }
     
     func tapCard(at index: Int) {
-        guard let selectedCard = myCardList.value[safe: index] else { return }
-        guard let selectedCardID = selectedCard.id else { return }
+        guard let selectedCard = myCardList.value[safe: 0] else { return }
+        let selectedCardID = selectedCard.id
         navigation.accept(.push(.cardDetail(cardID: selectedCardID)))
     }
     
-    private let myCardList = BehaviorRelay<[NameCard]>(value: [])
-    private let myCardRepository: MyCardRepository
-    private let disposeBag = DisposeBag()
+    private func myCardCellViewModel(_ cards: [Entity.NameCard]) -> [MyCard] {
+        return cards.compactMap { card -> MyCard? in
+            guard let personalSkills = card.personalSkills,
+                  let bgColors = card.bgColor?.value else { return nil }
+            let skills = personalSkills.map { MySkillProgressView.Item(title: $0.name, level: $0.level ?? 0) }
+            
+            let bgColor: ColorSource!
+            
+            if bgColors.count == 1 {
+                bgColor = .monotone(UIColor(hexString: bgColors.first!))
+            } else {
+                bgColor = .gradient(bgColors.map { UIColor(hexString: $0) })
+            }
+            return MyCard(id: card.id ?? 0,
+                          image: card.image?.key ?? "",
+                          name: card.name ?? "",
+                          role: card.role ?? "",
+                          skills: skills,
+                          backgroundColor: bgColor)
+        }
+    }
+}
+
+extension MyCardListViewModel {
+    var myCardIsEmpty: Bool {
+        return self.myCardList.value.isEmpty
+    }
+    func cellForItem(at row: Int) -> CardFrontView.Item? {
+        return self.myCardList.value[safe: row]
+    }
+    var numberOfMyCards: Int {
+        return self.myCardList.value.count
+    }
 }

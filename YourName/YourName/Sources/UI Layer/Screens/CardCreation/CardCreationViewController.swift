@@ -95,16 +95,10 @@ final class CardCreationViewController: ViewController, Storyboarded {
                 .disposed(by: disposeBag)
         }
         
-        personalityTitleField?.rx.text
+        personalityTextView?.rx.text
             .distinctUntilChanged()
             .filterNil()
-            .subscribe(onNext: { [weak self] in self?.viewModel.typePersonalityTitle($0) })
-            .disposed(by: disposeBag)
-        
-        personalityKeywordField?.rx.text
-            .distinctUntilChanged()
-            .filterNil()
-            .subscribe(onNext: { [weak self] in self?.viewModel.typePersonalityKeyword($0) })
+            .subscribe(onNext: { [weak self] in self?.viewModel.typePersonality($0) })
             .disposed(by: disposeBag)
         
         myTMISettingButton?.rx.tap
@@ -121,7 +115,7 @@ final class CardCreationViewController: ViewController, Storyboarded {
             .subscribe(onNext: { [weak self] in
                 guard let indexOfContactTypeBeingSelected = self?.indexOfContactTypeBeingSelected   else { return }
                 guard let selectedIndex = self?.contactTypePickerView?.selectedRow(inComponent: 0)  else { return }
-                guard let contactType = ContactType(rawValue: selectedIndex)                        else { return }
+                guard let contactType = ContactType.allCases[safe: selectedIndex]                   else { return }
                 
                 self?.viewModel.selectContactType(contactType, index: indexOfContactTypeBeingSelected)
             })
@@ -131,14 +125,14 @@ final class CardCreationViewController: ViewController, Storyboarded {
             .subscribe(onNext: { [weak self] in self?.viewModel.tapCompletion()
                 self?.dismiss(animated: true, completion: nil)
             })
-            .disposed(by: disposeBag)
+            .disposed(by: self.disposeBag)
         
         self.view.rx.tapGesture()
             .when(.recognized)
             .subscribe(onNext: { [weak self] _ in
                 self?.view.endEditing(true)
             })
-            .disposed(by: disposeBag)
+            .disposed(by: self.disposeBag)
     }
     
     private func render(_ viewModel: CardCreationViewModel) {
@@ -147,14 +141,14 @@ final class CardCreationViewController: ViewController, Storyboarded {
             viewModel.shouldHideProfilePlaceholder
                 .distinctUntilChanged()
                 .bind(to: profilePlaceholderView.rx.isHidden)
-                .disposed(by: disposeBag)
+                .disposed(by: self.disposeBag)
         }
         
         if let profileImageView = self.profileImageView {
             viewModel.profileImageSource
                 .distinctUntilChanged()
                 .bind(to: profileImageView.rx.imageSource)
-                .disposed(by: disposeBag)
+                .disposed(by: self.disposeBag)
         }
         
         viewModel.profileBackgroundColor
@@ -184,17 +178,10 @@ final class CardCreationViewController: ViewController, Storyboarded {
                 .disposed(by: disposeBag)
         }
         
-        if let personalityTitleField = self.personalityTitleField {
-            viewModel.personalityTitle
+        if let personalityTextView = self.personalityTextView {
+            viewModel.personality
                 .distinctUntilChanged()
-                .bind(to: personalityTitleField.rx.text)
-                .disposed(by: disposeBag)
-        }
-        
-        if let personalityKeywordField = self.personalityKeywordField {
-            viewModel.personalityKeyword
-                .distinctUntilChanged()
-                .bind(to: personalityKeywordField.rx.text)
+                .bind(to: personalityTextView.rx.text)
                 .disposed(by: disposeBag)
         }
         
@@ -339,12 +326,13 @@ final class CardCreationViewController: ViewController, Storyboarded {
     @IBOutlet private weak var skillCompleteImageView: UIImageView?
     @IBOutlet private weak var mySkillSettingButton: UIButton?
     @IBOutlet private var contactInputViews: [ContactInputView]?
-    @IBOutlet private weak var personalityTitleField: UITextField?
-    @IBOutlet private weak var personalityKeywordField: UITextField?
     
+    @IBOutlet private weak var personalityTextView: UITextView?
+    @IBOutlet private weak var personalityTextCountLabel: UILabel?
     @IBOutlet private weak var tmiCompleteImageView: UIImageView?
     @IBOutlet private weak var myTMISettingButton: UIButton?
     @IBOutlet private weak var aboutMeTextView: UITextView?
+    @IBOutlet private weak var aboutMeTextCountLabel: UILabel?
     @IBOutlet private weak var aboutMePlaceholderLabel: UILabel?
     @IBOutlet private weak var keyboardFrameViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var contactTypePickerView: UIPickerView?

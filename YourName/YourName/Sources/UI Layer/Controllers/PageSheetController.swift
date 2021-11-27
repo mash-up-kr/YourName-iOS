@@ -11,6 +11,7 @@ import UIKit
 import FLEX
 
 protocol PageSheetContentView: UIView {
+    var parent: ViewController? { get set }
     var title: String { get }
     var isModal: Bool { get }
     var onComplete: (() -> Void)? { get }
@@ -67,16 +68,17 @@ final class PageSheetController<ContentView: PageSheetContentView>: ViewControll
                 dimmedView?.removeFromSuperview()
                 overlaiedViewController?.view.backgroundColor = dimmedColor
                 self.onDismiss?(self.contentView)
+                self.contentView.parent = nil
             })
         } else {
             self.dismiss(animated: true, completion: {
                 self.onDismiss?(self.contentView)
+                self.contentView.parent = nil
             })
         }
     }
     
     private func configureUI() {
-        
         backgroundView.backgroundColor = .clear
         self.view.addSubviews(backgroundView, stackView)
         backgroundView.snp.makeConstraints {

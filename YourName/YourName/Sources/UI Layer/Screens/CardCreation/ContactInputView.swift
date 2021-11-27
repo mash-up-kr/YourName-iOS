@@ -9,17 +9,21 @@ import RxSwift
 import RxCocoa
 import UIKit
 
-enum ContactType: Int, CaseIterable {
-    case phone
-    case email
-    case sns
+enum ContactType: String, CaseIterable, Decodable {
+    case phone = "Phone."
+    case email = "Email."
+    case instagram = "Instagram."
+    case facebook = "Facebook."
+    case youtube = "Youtube."
 }
 extension ContactType: CustomStringConvertible {
     var description: String {
         switch self {
         case .phone: return "전화번호"
         case .email: return "이메일"
-        case .sns: return "SNS"
+        case .instagram: return "인스타그램"
+        case .facebook: return "페이스북"
+        case .youtube: return "유투브"
         }
     }
 }
