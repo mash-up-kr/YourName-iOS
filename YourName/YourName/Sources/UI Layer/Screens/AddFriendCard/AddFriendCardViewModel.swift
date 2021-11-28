@@ -163,9 +163,9 @@ extension AddFriendCardViewModel {
                                            defaultAction: .init(title: "검색으로 돌아가기", action: { [weak self] in
                     alertController.dismiss()
                     self?.toastView.accept(ToastView(text: "성공적으로 추가됐츄!"))
-                    NotificationCenter.default.post(name: .friendCardDidAdded, object: nil)
                 }))
                 
+                NotificationCenter.default.post(name: .friendCardDidAdded, object: nil)
                 alertController.configure(item: alertItem)
                 return alertController
             }

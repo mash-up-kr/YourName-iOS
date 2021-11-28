@@ -20,6 +20,11 @@ final class CardDetailDependencyContainer {
         self.cardID = cardID
     }
     
+    init(cardID: Int,
+         addFriendCardDependencyContainer: AddFriendCardDependencyContainer) {
+        self.cardID = cardID
+    }
+    
     func createCardDetailViewController() -> CardDetailViewController {
         let viewModel = createCardViewModel()
         let viewController = CardDetailViewController.instantiate()

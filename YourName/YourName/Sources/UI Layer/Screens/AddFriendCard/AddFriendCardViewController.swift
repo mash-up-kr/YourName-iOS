@@ -25,6 +25,7 @@ final class AddFriendCardViewController: ViewController, Storyboarded {
     private let disposeBag = DisposeBag()
     private let searchId = PublishRelay<String>()
     var viewModel: AddFriendCardViewModel!
+    var cardDetailViewControllerFactory: ((Int) -> CardDetailViewController)!
     
     override var hidesBottomBarWhenPushed: Bool {
         get { return navigationController?.topViewController == self }
@@ -37,6 +38,7 @@ final class AddFriendCardViewController: ViewController, Storyboarded {
         
         self.configureInitialUI()
         self.render(self.viewModel)
+        self.dispatch(to: self.viewModel)
         self.bind()
     }
 }
@@ -202,5 +204,25 @@ extension AddFriendCardViewController {
                 }
             })
             .disposed(by: disposeBag)
+    }
+    
+    private func dispatch(to vieWModel: AddFriendCardViewModel) {
+        self.rx.viewDidAppear.flatMapFirst { _ in self.viewModel.navigation }
+        .bind(onNext: { [weak self] action in
+            guard let self = self else { return }
+            self.navigate(action)
+        }).disposed(by: disposeBag)
+    }
+    
+    private func navigate(_ navigation: AddFriendCardNavigation) {
+        let viewController = createViewController(navigation.destination)
+        navigate(viewController, action: navigation.action)
+    }
+    
+    private func createViewController(_ next: AddFriendCardDestination) -> UIViewController {
+        switch next {
+        case .cardDetail(let cardID):
+            return cardDetailViewControllerFactory(cardID)
+        }
     }
 }
