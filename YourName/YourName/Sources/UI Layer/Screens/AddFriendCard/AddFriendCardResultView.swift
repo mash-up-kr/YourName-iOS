@@ -22,24 +22,20 @@ final class AddFriendCardResultView: UIView, NibLoadable {
     
     @IBOutlet private unowned var cardFrontView: CardFrontView!
     @IBOutlet private unowned var cardBackView: AddFriendCardBackView!
-    @IBOutlet private unowned var addButton: UIButton!
     
     private let viewModel = AddFriendCardResultViewModel()
     private let disposeBag = DisposeBag()
-    var didTapAddButton: (() -> Void)!
     
     // MARK: - Initializers
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupFromNib()
-        bind()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupFromNib()
-        bind()
     }
 }
 
@@ -48,49 +44,28 @@ final class AddFriendCardResultView: UIView, NibLoadable {
 extension AddFriendCardResultView {
     func configure(frontCardItem: FrontCardItem,
                    backCardItem: BackCardItem,
-                   friendCardState: FriendCardState,
-                   didTapAddButton: @escaping (() -> Void)) {
+                   friendCardState: FriendCardState) {
         self.configureCardView(frontCardItem: frontCardItem,
                                backCardItem: backCardItem)
-        self.configureButton(friendCardState)
-        self.didTapAddButton = didTapAddButton
     }
     
     private func configureCardView(frontCardItem: FrontCardItem,
                                    backCardItem: BackCardItem) {
-        let didTapFlipButton: ((CardState) -> Void) = { state in
-            switch state {
-            case .front:
-                self.cardFrontView.isHidden = true
-                self.cardBackView.isHidden = false
-            case .back:
-                self.cardFrontView.isHidden = false
-                self.cardBackView.isHidden = true
-            }
-        }
-        
         self.cardFrontView.configure(item: frontCardItem)
-        self.cardFrontView.setupFlipButton(didTap: didTapFlipButton)
+        self.cardFrontView.setupFlipButton(didTapFlipButton: self.didTapFlipButton(state:))
         self.cardBackView.configure(item: backCardItem)
-        self.cardBackView.didTapFlipButton = didTapFlipButton
+        self.cardBackView.didTapFlipButton = self.didTapFlipButton(state:)
+        
     }
     
-    private func configureButton(_ state: FriendCardState) {
+    private func didTapFlipButton(state: CardState) {
         switch state {
-        case .isAdded:
-            self.addButton.backgroundColor = Palette.gray1
-            self.addButton.isEnabled = false
-        default:
-            self.addButton.backgroundColor = Palette.black1
-            self.addButton.isEnabled = true
+        case .front:
+            UIView.transition(from: self.cardFrontView, to: self.cardBackView,
+                              duration: 0.5, options: [.showHideTransitionViews, .transitionFlipFromLeft])
+        case .back:
+            UIView.transition(from: self.cardBackView, to: self.cardFrontView,
+                              duration: 0.5, options: [.showHideTransitionViews, .transitionFlipFromLeft])
         }
-    }
-    
-    private func bind() {
-        self.addButton.rx.throttleTap
-            .bind(onNext: { [weak self] _ in
-                self?.didTapAddButton()
-            })
-            .disposed(by: disposeBag)
     }
 }

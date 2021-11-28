@@ -19,15 +19,17 @@ final class AddFriendCardViewModel {
         case noResult
         case isAdded(frontCardItem: FrontCardItem,
                     backCardItem: BackCardItem)
-        case none
     }
     
     // MARK: - Properties
     
     let isLoading = PublishRelay<Bool>()
     let addFriendCardResult = PublishRelay<FriendCardState>()
+    let toastView = PublishRelay<ToastView>()
+    let alertController = PublishRelay<AlertViewController>()
     let repository: AddFriendCardRepository!
     private let disposeBag = DisposeBag()
+    private let nameCard = PublishRelay<(Id: Int, uniqueCode: String)>()
     
     // MARK: - Init
     
@@ -66,12 +68,16 @@ extension AddFriendCardViewModel {
         // 결과가 있는 경우
         let cardItem = result
             .filter { $0.nameCard != nil}
-            .compactMap { response -> (front: FrontCardItem, back: BackCardItem, isAdded: Bool)? in
-                guard let nameCard = response.nameCard,
+            .compactMap { [weak self] response -> (front: FrontCardItem, back: BackCardItem, isAdded: Bool)? in
+                guard let self = self,
+                      let nameCard = response.nameCard,
                       let personalSkills = nameCard.personalSkills,
                       let contacts = nameCard.contacts,
                       let bgColor = nameCard.bgColor?.value,
                       let isAdded = response.isAdded else { return nil }
+                
+                self.nameCard.accept((Id: nameCard.id ?? 0,
+                                      uniqueCode: nameCard.uniqueCode ?? ""))
                 
                 let bgColors: ColorSource!
                 if bgColor.count == 1 { bgColors = .monotone(UIColor(hexString: bgColor.first!))}
@@ -116,5 +122,24 @@ extension AddFriendCardViewModel {
             }
             .bind(to: addFriendCardResult)
             .disposed(by: disposeBag)
+    }
+    
+    func didTapAddButton() {
+        let alertController = AlertViewController.instantiate()
+        let selectCardBookAction: () -> Void = {
+            alertController.dismiss()
+            self.navigationController?.popViewController(animated: true)
+        }
+        let defaultAction = { [weak self] in
+            self?.toastView.accept(ToastView(text: "성공적으로 추가됐츄!"))
+            alertController.dismiss()
+        }
+        alertController.configure(item: .init(title: "친구 미츄 추가완료!",
+                                         message: "친구 미츄가 성공적으로 추가되었습니다.",
+                                         image: UIImage(named: "meetu_addFriendCardAlert")!,
+                                         emphasisAction: .init(title: "친구 미츄 상세보기",
+                                                               action: selectCardBookAction),
+                                         defaultAction: .init(title: "검색으로 돌아가기",
+                                                              action: { self.dismiss(animated: true)} )))
     }
 }

@@ -114,7 +114,8 @@ extension AddFriendCardBackView {
     private func bind() {
         self.flipButton.rx.throttleTap
             .bind(onNext: { [weak self] _ in
-                self?.didTapFlipButton(.back)
+                guard let self =  self else { return }
+                self.didTapFlipButton(.back)
             })
             .disposed(by: disposeBag)
     }
