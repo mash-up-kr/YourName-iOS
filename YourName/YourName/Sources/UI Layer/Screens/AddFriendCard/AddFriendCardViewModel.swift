@@ -36,16 +36,20 @@ final class AddFriendCardViewModel {
     let navigation = PublishRelay<AddFriendCardNavigation>()
     let popViewController = PublishRelay<Void>()
     
-    let repository: AddFriendCardRepository!
+    let addFriendCardRepository: AddFriendCardRepository!
+    let cardRepository: CardRepository!
     
     private let disposeBag = DisposeBag()
     private let nameCard = BehaviorRelay<(id: Int?, uniqueCode: String?)>(value: (id: nil, uniqueCode: nil))
     
     // MARK: - Init
     
-    init(repository: AddFriendCardRepository) {
-        self.repository = repository
+    init(addFriendCardRepository: AddFriendCardRepository,
+         cardRepository: CardRepository) {
+        self.addFriendCardRepository = addFriendCardRepository
+        self.cardRepository = cardRepository
     }
+    
     deinit {
         print(" 💀 \(String(describing: self)) deinit")
     }
@@ -56,7 +60,7 @@ final class AddFriendCardViewModel {
 extension AddFriendCardViewModel {
     func didTapSearchButton(with uniqueCode: String) {
         self.isLoading.accept(true)
-        let result = self.repository.searchFriendCard(uniqueCode: uniqueCode)
+        let result = self.cardRepository.fetchCard(uniqueCode: uniqueCode)
             .do { [weak self] _ in
                 self?.isLoading.accept(false)
             }
@@ -138,7 +142,7 @@ extension AddFriendCardViewModel {
         self.isLoading.accept(true)
         
         guard let uniqueCode = self.nameCard.value.uniqueCode else { return }
-        self.repository.addFriendCard(uniqueCode: uniqueCode)
+        self.addFriendCardRepository.addFriendCard(uniqueCode: uniqueCode)
             .catchError { error in
                 print(error)
                 return .empty()
@@ -153,18 +157,16 @@ extension AddFriendCardViewModel {
                     guard let self = self,
                           let nameCardId = self.nameCard.value.id else { return }
                     alertController.dismiss()
-                    self.toastView.accept(ToastView(text: "성공적으로 추가됐츄!"))
+                    
                     self.navigation.accept(.push(.cardDetail(cardID: nameCardId)))
                 }
                 let alertItem = AlertItem(title: "친구 미츄 추가완료!",
                                            message: "친구 미츄가 성공적으로 추가되었습니다.",
                                            image: UIImage(named: "meetu_addFriendCardAlert")!,
                                            emphasisAction: .init(title: "친구 미츄 상세보기", action: cardDetailAction),
-                                           defaultAction: .init(title: "검색으로 돌아가기", action: { [weak self] in
-                    alertController.dismiss()
-                    self?.toastView.accept(ToastView(text: "성공적으로 추가됐츄!"))
-                }))
+                                           defaultAction: .init(title: "검색으로 돌아가기", action: { alertController.dismiss() }))
                 
+                self.toastView.accept(ToastView(text: "성공적으로 추가됐츄!"))
                 NotificationCenter.default.post(name: .friendCardDidAdded, object: nil)
                 alertController.configure(item: alertItem)
                 return alertController

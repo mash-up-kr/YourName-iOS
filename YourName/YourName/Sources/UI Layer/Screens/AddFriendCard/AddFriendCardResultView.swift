@@ -23,7 +23,6 @@ final class AddFriendCardResultView: UIView, NibLoadable {
     @IBOutlet private unowned var cardFrontView: CardFrontView!
     @IBOutlet private unowned var cardBackView: AddFriendCardBackView!
     
-    private let viewModel = AddFriendCardResultViewModel()
     private let disposeBag = DisposeBag()
     
     // MARK: - Initializers
@@ -36,6 +35,10 @@ final class AddFriendCardResultView: UIView, NibLoadable {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupFromNib()
+    }
+    
+    deinit {
+        print("💀 \(String(describing: self)) deinit")
     }
 }
 
@@ -62,10 +65,10 @@ extension AddFriendCardResultView {
         switch state {
         case .front:
             UIView.transition(from: self.cardFrontView, to: self.cardBackView,
-                              duration: 0.5, options: [.showHideTransitionViews, .transitionFlipFromLeft])
+                              duration: 0.5, options: [.showHideTransitionViews, .transitionFlipFromRight])
         case .back:
             UIView.transition(from: self.cardBackView, to: self.cardFrontView,
-                              duration: 0.5, options: [.showHideTransitionViews, .transitionFlipFromLeft])
+                              duration: 0.5, options: [.showHideTransitionViews, .transitionFlipFromRight])
         }
     }
 }

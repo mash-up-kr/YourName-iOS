@@ -11,29 +11,28 @@ import UIKit
 final class AddFriendCardDependencyContainer {
     
     let addFriendCardRepository: AddFriendCardRepository
+    let cardRepository: CardRepository
     
     init() {
         self.addFriendCardRepository = YourNameAddFriendCardRepository()
+        self.cardRepository = YourNameCardRepository()
     }
     
     deinit {
-        print("\(String(describing: self)) deinit")
+        print(" 💀 \(String(describing: self)) deinit")
     }
     
     func createAddFriendCardViewController() -> AddFriendCardViewController {
         let viewController = AddFriendCardViewController.instantiate()
         
         let cardDetailVieWControllerFactory: (Int) -> CardDetailViewController = { cardID  in
-            let dependencyContainer = self.createCardDetailDependencyContainer(cardID: cardID)
+            let dependencyContainer = CardDetailDependencyContainer(cardID: cardID)
             return dependencyContainer.createCardDetailViewController()
         }
-        viewController.viewModel = AddFriendCardViewModel(repository: addFriendCardRepository)
+        viewController.viewModel = AddFriendCardViewModel(addFriendCardRepository: self.addFriendCardRepository,
+                                                          cardRepository: self.cardRepository)
         viewController.cardDetailViewControllerFactory = cardDetailVieWControllerFactory
         
         return viewController
-    }
-    
-    private func createCardDetailDependencyContainer(cardID: Int) -> CardDetailDependencyContainer {
-        return CardDetailDependencyContainer(cardID: cardID, addFriendCardDependencyContainer: self)
     }
 }

@@ -18,7 +18,8 @@ class ViewController: UIViewController {
     let loadingIndicator = LoadingIndicator()
     
     var isLoading: Binder<Bool> {
-        Binder(self) { viewController, isLoading in
+        Binder(self) { [weak self] viewController, isLoading in
+            guard let self = self else { return }
             if isLoading {
                 viewController.view.bringSubviewToFront(self.loadingIndicator)
                 self.loadingIndicator.isLoading = true

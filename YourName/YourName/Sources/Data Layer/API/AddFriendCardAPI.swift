@@ -17,7 +17,8 @@ struct AddFriendCardAPI: ServiceAPI {
     var path: String { "/collections/namecards/\(uniqueCode)"}
     var method: Method { .post }
     var task: NetworkingTask {
-        return .requestParameters(parameters: ["collectionIds" : [self.collectionId]], encoding: JSONEncoding.default)
+        return .requestParameters(parameters: ["collectionIds" : [self.collectionId]],
+                                  encoding: JSONEncoding.default)
     }
     
     init(uniqueCode: String,

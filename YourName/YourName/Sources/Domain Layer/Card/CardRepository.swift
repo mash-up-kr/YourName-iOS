@@ -13,6 +13,7 @@ typealias CardID = String
 protocol CardRepository {
     func fetchCards(cardBookID: String) -> Observable<[NameCard]>
     func remove(cardIDs: [CardID]) -> Observable<[CardID]>
+    func fetchCard(uniqueCode: String) -> Observable<Entity.FriendCard>
 }
 
 final class YourNameCardRepository: CardRepository {
@@ -23,6 +24,10 @@ final class YourNameCardRepository: CardRepository {
     
     func remove(cardIDs: [CardID]) -> Observable<[CardID]> {
         .empty()
+    }
+    
+    func fetchCard(uniqueCode: String) -> Observable<Entity.FriendCard> {
+        return Environment.current.network.request(FriendCardAPI(uniqueCode: uniqueCode))
     }
     
 }
@@ -36,4 +41,8 @@ final class MockCardRepository: CardRepository {
     func remove(cardIDs: [CardID]) -> Observable<[CardID]> {
         return .just(cardIDs)
     }
+    func fetchCard(uniqueCode: String) -> Observable<Entity.FriendCard> {
+        return Environment.current.network.request(FriendCardAPI(uniqueCode: uniqueCode))
+    }
+    
 }
