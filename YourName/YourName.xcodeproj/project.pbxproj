@@ -55,7 +55,6 @@
 		A2CC65832708F06800610C49 /* CardBookDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CC65822708F06800610C49 /* CardBookDetailViewModel.swift */; };
 		A2CC65862708F17A00610C49 /* CardBookRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CC65852708F17A00610C49 /* CardBookRepository.swift */; };
 		A2D875DF26EE295C00ED5949 /* OAuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D875DE26EE295C00ED5949 /* OAuthResponse.swift */; };
-		A2DA3B3B274A162400E68F23 /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B3A274A162400E68F23 /* LoginAPI.swift */; };
 		A2DA3B3D274A1A2500E68F23 /* Entity.Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B3C274A1A2500E68F23 /* Entity.Login.swift */; };
 		A2DA3B3F274A368D00E68F23 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B3E274A368D00E68F23 /* UserDefault.swift */; };
 		A2DA3B41274A4BDA00E68F23 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B40274A4BDA00E68F23 /* UserDefaultManager.swift */; };
@@ -73,6 +72,7 @@
 		A2DA3B782751745D00E68F23 /* AddFriendCardDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B772751745D00E68F23 /* AddFriendCardDependencyContainer.swift */; };
 		A2DA3B7A2753685B00E68F23 /* AddFriendCardAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B792753685B00E68F23 /* AddFriendCardAPI.swift */; };
 		A2DA3B8027537E2B00E68F23 /* Entity.NameCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B7F27537E2B00E68F23 /* Entity.NameCard.swift */; };
+		A2DA3B8E2753984900E68F23 /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B8D2753984900E68F23 /* LoginAPI.swift */; };
 		CE2BB2C727074F4600936148 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE2BB2C627074F4600936148 /* Colors.xcassets */; };
 		CE2BB2C92707560800936148 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2BB2C82707560800936148 /* Palette.swift */; };
 		CE2EC99327073453006B9852 /* CardCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2EC99227073453006B9852 /* CardCreationViewModel.swift */; };
@@ -332,7 +332,6 @@
 		A2CC65822708F06800610C49 /* CardBookDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBookDetailViewModel.swift; sourceTree = "<group>"; };
 		A2CC65852708F17A00610C49 /* CardBookRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBookRepository.swift; sourceTree = "<group>"; };
 		A2D875DE26EE295C00ED5949 /* OAuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthResponse.swift; sourceTree = "<group>"; };
-		A2DA3B3A274A162400E68F23 /* LoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
 		A2DA3B3C274A1A2500E68F23 /* Entity.Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.Login.swift; sourceTree = "<group>"; };
 		A2DA3B3E274A368D00E68F23 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDefault.swift; path = "YourName/Sources/Data Layer/Entity/UserDefault.swift"; sourceTree = SOURCE_ROOT; };
 		A2DA3B40274A4BDA00E68F23 /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDefaultManager.swift; path = "YourName/Sources/Data Layer/Entity/UserDefaultManager.swift"; sourceTree = SOURCE_ROOT; };
@@ -350,6 +349,7 @@
 		A2DA3B772751745D00E68F23 /* AddFriendCardDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendCardDependencyContainer.swift; sourceTree = "<group>"; };
 		A2DA3B792753685B00E68F23 /* AddFriendCardAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendCardAPI.swift; sourceTree = "<group>"; };
 		A2DA3B7F27537E2B00E68F23 /* Entity.NameCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.NameCard.swift; sourceTree = "<group>"; };
+		A2DA3B8D2753984900E68F23 /* LoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
 		A3E561B79C6998E82DB447DF /* Pods-YourName-YourNameTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourName-YourNameTests.debug.xcconfig"; path = "Target Support Files/Pods-YourName-YourNameTests/Pods-YourName-YourNameTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CE2BB2C627074F4600936148 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		CE2BB2C82707560800936148 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
@@ -693,10 +693,10 @@
 		CE472B7F2748DA47001A5E5F /* API */ = {
 			isa = PBXGroup;
 			children = (
+				A2DA3B8D2753984900E68F23 /* LoginAPI.swift */,
 				A2DA3B792753685B00E68F23 /* AddFriendCardAPI.swift */,
 				A2DA3B6C27514EE000E68F23 /* FriendCardAPI.swift */,
 				CEDA4B76274E87A20011D0CA /* InterestesAPI.swift */,
-				A2DA3B3A274A162400E68F23 /* LoginAPI.swift */,
 				CE472B802748DAF0001A5E5F /* MakeCardAPI.swift */,
 				A2DA3B62274FDA2200E68F23 /* MyNameCardsAPI.swift */,
 				CEDA4B8D275125C30011D0CA /* QuestDoneAPI.swift */,
@@ -1727,7 +1727,6 @@
 				CEA4D2EE270D35A2008189FE /* DisplayCharacterItemsDependencyContainer.swift in Sources */,
 				CE472B682748B67F001A5E5F /* Entity.BackgroundColor.swift in Sources */,
 				CE94ABBA270F4114005D2E80 /* ColorSource.swift in Sources */,
-				A2DA3B3B274A162400E68F23 /* LoginAPI.swift in Sources */,
 				A2DA3B3F274A368D00E68F23 /* UserDefault.swift in Sources */,
 				CE8500FB273FAE41002341DC /* UIColor+.swift in Sources */,
 				CE63126026F6281800B2E69B /* SplashViewModel.swift in Sources */,
@@ -1770,6 +1769,7 @@
 				CEB6587D26EC80BF00C11F33 /* DataTask.swift in Sources */,
 				CEDA4B92275132E20011D0CA /* QuestMeta.swift in Sources */,
 				CE6BABA92704DB2A0006D26B /* CardCreationDependencyContainer.swift in Sources */,
+				A2DA3B8E2753984900E68F23 /* LoginAPI.swift in Sources */,
 				CE6312BC26F9A04800B2E69B /* MyCardListDependencyContainer.swift in Sources */,
 				CEB6589C26EC988F00C11F33 /* ObserverType+.swift in Sources */,
 				CED16DFB26F3A5690076565F /* CardBookDetailViewController.swift in Sources */,
