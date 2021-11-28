@@ -1,5 +1,5 @@
 //
-//  AddFriendCardAPI.swift
+//  SearchFriendCardAPI.swift
 //  MEETU
 //
 //  Created by seori on 2021/11/27.
@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct AddFriendCardAPI: ServiceAPI {
-    typealias Response = Entity.AddFriendCard
+struct SearchFriendCardAPI: ServiceAPI {
+    typealias Response = Entity.SearchFriendCard
     private let uniqueCode: String
     
     init(uniqueCode: String) {

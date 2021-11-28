@@ -68,8 +68,8 @@
 		A2DA3B67274FDB5800E68F23 /* Entity.Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B66274FDB5800E68F23 /* Entity.Image.swift */; };
 		A2DA3B69274FDDAA00E68F23 /* MyCardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B68274FDDAA00E68F23 /* MyCardRepository.swift */; };
 		A2DA3B6B2751406E00E68F23 /* Notification.Name+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B6A2751406E00E68F23 /* Notification.Name+.swift */; };
-		A2DA3B6D27514EE000E68F23 /* AddFriendCardAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B6C27514EE000E68F23 /* AddFriendCardAPI.swift */; };
-		A2DA3B6F27514F4D00E68F23 /* Entity.AddFriendCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B6E27514F4D00E68F23 /* Entity.AddFriendCard.swift */; };
+		A2DA3B6D27514EE000E68F23 /* SearchFriendCardAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B6C27514EE000E68F23 /* SearchFriendCardAPI.swift */; };
+		A2DA3B6F27514F4D00E68F23 /* Entity.SearchFriendCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B6E27514F4D00E68F23 /* Entity.SearchFriendCard.swift */; };
 		A2DA3B7627516F2F00E68F23 /* AddFriendCardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B7527516F2F00E68F23 /* AddFriendCardRepository.swift */; };
 		A2DA3B782751745D00E68F23 /* AddFriendCardDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B772751745D00E68F23 /* AddFriendCardDependencyContainer.swift */; };
 		CE2BB2C727074F4600936148 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE2BB2C627074F4600936148 /* Colors.xcassets */; };
@@ -344,8 +344,8 @@
 		A2DA3B66274FDB5800E68F23 /* Entity.Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.Image.swift; sourceTree = "<group>"; };
 		A2DA3B68274FDDAA00E68F23 /* MyCardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardRepository.swift; sourceTree = "<group>"; };
 		A2DA3B6A2751406E00E68F23 /* Notification.Name+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification.Name+.swift"; sourceTree = "<group>"; };
-		A2DA3B6C27514EE000E68F23 /* AddFriendCardAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendCardAPI.swift; sourceTree = "<group>"; };
-		A2DA3B6E27514F4D00E68F23 /* Entity.AddFriendCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.AddFriendCard.swift; sourceTree = "<group>"; };
+		A2DA3B6C27514EE000E68F23 /* SearchFriendCardAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFriendCardAPI.swift; sourceTree = "<group>"; };
+		A2DA3B6E27514F4D00E68F23 /* Entity.SearchFriendCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.SearchFriendCard.swift; sourceTree = "<group>"; };
 		A2DA3B7527516F2F00E68F23 /* AddFriendCardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendCardRepository.swift; sourceTree = "<group>"; };
 		A2DA3B772751745D00E68F23 /* AddFriendCardDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendCardDependencyContainer.swift; sourceTree = "<group>"; };
 		A3E561B79C6998E82DB447DF /* Pods-YourName-YourNameTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourName-YourNameTests.debug.xcconfig"; path = "Target Support Files/Pods-YourName-YourNameTests/Pods-YourName-YourNameTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -674,7 +674,7 @@
 				A2DA3B64274FDA4700E68F23 /* Entity.MyNameCard.swift */,
 				A2DA3B66274FDB5800E68F23 /* Entity.Image.swift */,
 				CEDA4B8F275126030011D0CA /* Entity.Empty.swift */,
-				A2DA3B6E27514F4D00E68F23 /* Entity.AddFriendCard.swift */,
+				A2DA3B6E27514F4D00E68F23 /* Entity.SearchFriendCard.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -701,7 +701,7 @@
 				CEDA4B80274ECBAE0011D0CA /* QuestsAPI.swift */,
 				A2DA3B3A274A162400E68F23 /* LoginAPI.swift */,
 				A2DA3B62274FDA2200E68F23 /* MyNameCardsAPI.swift */,
-				A2DA3B6C27514EE000E68F23 /* AddFriendCardAPI.swift */,
+				A2DA3B6C27514EE000E68F23 /* SearchFriendCardAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -1746,7 +1746,7 @@
 				CE4D4ECE2709ECDF00081A2B /* ColorSourceRepository.swift in Sources */,
 				CE472B6D2748B76B001A5E5F /* Entity.User.swift in Sources */,
 				CE4D4EB52708E9EC00081A2B /* PaletteView.swift in Sources */,
-				A2DA3B6D27514EE000E68F23 /* AddFriendCardAPI.swift in Sources */,
+				A2DA3B6D27514EE000E68F23 /* SearchFriendCardAPI.swift in Sources */,
 				CEB84094272AF143000E527B /* CardBookListDependencyContainer.swift in Sources */,
 				CE6BABAF2704EE9C0006D26B /* UICollectionView+.swift in Sources */,
 				CEF8C55326EDF8D5009BA9C2 /* UIView+.swift in Sources */,
@@ -1817,7 +1817,7 @@
 				CE4D4E8C2707AF0500081A2B /* CharacterItemRepository.swift in Sources */,
 				CEA4D2E4270CD24A008189FE /* DisplayCharacterItemCollectionViewCell.swift in Sources */,
 				CEDA4B77274E87A20011D0CA /* InterestesAPI.swift in Sources */,
-				A2DA3B6F27514F4D00E68F23 /* Entity.AddFriendCard.swift in Sources */,
+				A2DA3B6F27514F4D00E68F23 /* Entity.SearchFriendCard.swift in Sources */,
 				CE6312BE26F9A4C700B2E69B /* CardDetailDependencyContainer.swift in Sources */,
 				A28A9B1627117ACA0063692D /* SettingDependencyContainer.swift in Sources */,
 				CEB6588026EC80F500C11F33 /* Foundation+Network.swift in Sources */,
