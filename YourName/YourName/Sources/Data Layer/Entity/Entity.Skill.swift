@@ -12,7 +12,7 @@ extension Entity {
     
     struct Skill: Decodable {
         let name: String
-        let level: Level?
+        let level: Int?
     }
     
 }

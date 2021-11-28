@@ -98,7 +98,7 @@ extension AddFriendCardViewModel {
                 else { bgColors = .gradient(bgColor.map { UIColor(hexString: $0) } ) }
                 
                 let skills = personalSkills.map { MySkillProgressView.Item(title: $0.name,
-                                                                           level: $0.level?.rawValue ?? 0 ) }
+                                                                           level: $0.level ?? 0 ) }
                 let _contacts = contacts.map { AddFriendCardBackView.Item.Contact(image: $0.iconURL ?? "",
                                                                                  type: $0.category?.rawValue ?? "",
                                                                                  value: $0.value ?? "") }

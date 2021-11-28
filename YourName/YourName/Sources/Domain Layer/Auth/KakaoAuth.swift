@@ -19,32 +19,34 @@ struct KakaoAuth: OAuth {
     
     private let disposeBag = DisposeBag()
     
-    func authorize() -> Single<OAuthResponse> {
-        return Single<OAuthResponse>.create { observer in
+    func authorize() -> Observable<OAuthResponse> {
+        return Observable<OAuthResponse>.create { observer in
             
             if UserApi.isKakaoTalkLoginAvailable() {  // 카카오톡이 깔려있는 경우
                 UserApi.shared.loginWithKakaoTalk { response, error in
                     if let error = error {
-                        observer(.error(error))
+                        observer.onError(error)
                     }
                     guard let accessToken = response?.accessToken else {
-                        observer(.error(KakaoAuthError.invalidToken))
+                        observer.onError(KakaoAuthError.invalidToken)
                         return
                     }
-                    observer(.success(.init(accessToken: accessToken,
-                                            provider: .kakao)))
+                    observer.onNext(.init(accessToken: accessToken,
+                                            provider: .kakao))
+                    observer.onCompleted()
                 }
             } else {   // 카카오톡이 깔려있지않아서 웹뷰를 띄워야하는 경우
                 UserApi.shared.loginWithKakaoAccount() { response, error in
                     if let error = error {
-                        observer(.error(error))
+                        observer.onError(error)
                     }
                     guard let accessToken = response?.accessToken else {
-                        observer(.error(KakaoAuthError.invalidToken))
+                        observer.onError(KakaoAuthError.invalidToken)
                         return
                     }
-                    observer(.success(.init(accessToken: accessToken,
-                                            provider: .kakao)))
+                    observer.onNext(.init(accessToken: accessToken,
+                                            provider: .kakao))
+                    observer.onCompleted()
                 }
             }
             return Disposables.create()

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RxSwift
 import RxRelay
 
 enum CardCreationDestination: Equatable {
@@ -35,21 +36,20 @@ final class CardCreationViewModel {
     let name = BehaviorRelay<String>(value: .empty)
     let role = BehaviorRelay<String>(value: .empty)
     let contactInfos = BehaviorRelay<[ContactInfo]>(value: [])
-    let personalityTitle = BehaviorRelay<String>(value: .empty)
-    let personalityKeyword = BehaviorRelay<String>(value: .empty)
+    let personality = BehaviorRelay<String>(value: .empty)
     let interestes = BehaviorRelay<[Interest]>(value: [])
     let strongPoints = BehaviorRelay<[StrongPoint]>(value: [])
     let aboutMe = BehaviorRelay<String>(value: .empty)
     
     let navigation = PublishRelay<CardCreationNavigation>()
     
+    init(myCardRepsitory: MyCardRepository) {
+        self.myCardRepository = myCardRepsitory
+    }
+    
     // Event
     func didLoad() {
-        let defaultContactInfos = [ContactInfo(type: .phone, value: .empty),
-                                   ContactInfo(type: .email, value: .empty),
-                                   ContactInfo(type: .sns, value: .empty),
-                                   ContactInfo(type: .sns, value: .empty),
-                                   ContactInfo(type: .sns, value: .empty)]
+        let defaultContactInfos = ContactType.allCases.map { ContactInfo(type: $0, value: .empty) }
         self.contactInfos.accept(defaultContactInfos)
     }
     
@@ -102,12 +102,8 @@ final class CardCreationViewModel {
         self.contactInfos.accept(updatedContactInfos)
     }
     
-    func typePersonalityTitle(_ text: String) {
-        self.personalityTitle.accept(text)
-    }
-    
-    func typePersonalityKeyword(_ text: String) {
-        self.personalityKeyword.accept(text)
+    func typePersonality(_ text: String) {
+        self.personality.accept(text)
     }
     
     func tapTMISetting() {
@@ -119,9 +115,30 @@ final class CardCreationViewModel {
     }
     
     func tapCompletion() {
-        self.shouldDismiss.accept(Void())
+        let nameCard = Entity.NameCard(
+            id: nil,
+            name: self.name.value,
+            role: self.role.value,
+            personality: self.personality.value,
+            introduce: self.aboutMe.value,
+            uniqueCode: nil,
+            image: nil,
+            user: nil,
+            bgColor: nil,
+            contacts: self.contactInfos.value.map { Entity.Contact(category: $0.type, value: $0.value, iconURL: nil) },
+            personalSkills: self.skills.value.map { Entity.Skill(name: $0.title, level: $0.level) },
+            bgColorId: nil
+        )
+        
+        self.myCardRepository.createMyCard(nameCard)
+            .subscribe(onNext: { [weak self] _ in
+                self?.shouldDismiss.accept(Void())
+            })
+            .disposed(by: self.disposeBag)
     }
     
+    private let disposeBag = DisposeBag()
+    private let myCardRepository: MyCardRepository
 }
 
 extension CardCreationViewModel: ImageSourcePickerResponder {
