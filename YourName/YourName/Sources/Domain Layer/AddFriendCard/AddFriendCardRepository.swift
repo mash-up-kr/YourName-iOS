@@ -19,6 +19,6 @@ final class YourNameAddFriendCardRepository: AddFriendCardRepository {
     }
     
     func addFriendCard(uniqueCode: String) -> Observable<Entity.Empty> {
-        return Environment.current.network.request(<#T##api: ServiceAPI##ServiceAPI#>)
+        return Environment.current.network.request(AddFriendCardAPI(uniqueCode: uniqueCode))
     }
 }

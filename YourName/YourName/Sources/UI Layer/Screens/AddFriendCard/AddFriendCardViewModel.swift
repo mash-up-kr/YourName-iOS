@@ -9,6 +9,12 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+enum AddFriendCardDestination: Equatable {
+    case cardDetail(cardID: Int)
+}
+
+typealias AddFriendCardNavigation = Navigation<AddFriendCardDestination>
+
 final class AddFriendCardViewModel {
     typealias FrontCardItem = CardFrontView.Item
     typealias BackCardItem = AddFriendCardBackView.Item
@@ -27,9 +33,13 @@ final class AddFriendCardViewModel {
     let addFriendCardResult = PublishRelay<FriendCardState>()
     let toastView = PublishRelay<ToastView>()
     let alertController = PublishRelay<AlertViewController>()
+    let navigation = PublishRelay<AddFriendCardNavigation>()
+    let popViewController = PublishRelay<Void>()
+    
     let repository: AddFriendCardRepository!
+    
     private let disposeBag = DisposeBag()
-    private let nameCard = PublishRelay<(Id: Int, uniqueCode: String)>()
+    private let nameCard = BehaviorRelay<(id: Int?, uniqueCode: String?)>(value: (id: nil, uniqueCode: nil))
     
     // MARK: - Init
     
@@ -76,7 +86,7 @@ extension AddFriendCardViewModel {
                       let bgColor = nameCard.bgColor?.value,
                       let isAdded = response.isAdded else { return nil }
                 
-                self.nameCard.accept((Id: nameCard.id ?? 0,
+                self.nameCard.accept((id: nameCard.id ?? 0,
                                       uniqueCode: nameCard.uniqueCode ?? ""))
                 
                 let bgColors: ColorSource!
@@ -125,21 +135,41 @@ extension AddFriendCardViewModel {
     }
     
     func didTapAddButton() {
-        let alertController = AlertViewController.instantiate()
-        let selectCardBookAction: () -> Void = {
-            alertController.dismiss()
-            self.navigationController?.popViewController(animated: true)
-        }
-        let defaultAction = { [weak self] in
-            self?.toastView.accept(ToastView(text: "성공적으로 추가됐츄!"))
-            alertController.dismiss()
-        }
-        alertController.configure(item: .init(title: "친구 미츄 추가완료!",
-                                         message: "친구 미츄가 성공적으로 추가되었습니다.",
-                                         image: UIImage(named: "meetu_addFriendCardAlert")!,
-                                         emphasisAction: .init(title: "친구 미츄 상세보기",
-                                                               action: selectCardBookAction),
-                                         defaultAction: .init(title: "검색으로 돌아가기",
-                                                              action: { self.dismiss(animated: true)} )))
+        self.isLoading.accept(true)
+        
+        guard let uniqueCode = self.nameCard.value.uniqueCode else { return }
+        self.repository.addFriendCard(uniqueCode: uniqueCode)
+            .catchError { error in
+                print(error)
+                return .empty()
+            }
+            .compactMap { [weak self] _ -> AlertViewController? in
+                guard let self = self else { return nil }
+                self.isLoading.accept(false)
+                
+                let alertController = AlertViewController.instantiate()
+                
+                let cardDetailAction = { [weak self] in
+                    guard let self = self,
+                          let nameCardId = self.nameCard.value.id else { return }
+                    alertController.dismiss()
+                    self.toastView.accept(ToastView(text: "성공적으로 추가됐츄!"))
+                    self.navigation.accept(.push(.cardDetail(cardID: nameCardId)))
+                }
+                let alertItem = AlertItem(title: "친구 미츄 추가완료!",
+                                           message: "친구 미츄가 성공적으로 추가되었습니다.",
+                                           image: UIImage(named: "meetu_addFriendCardAlert")!,
+                                           emphasisAction: .init(title: "친구 미츄 상세보기", action: cardDetailAction),
+                                           defaultAction: .init(title: "검색으로 돌아가기", action: { [weak self] in
+                    alertController.dismiss()
+                    self?.toastView.accept(ToastView(text: "성공적으로 추가됐츄!"))
+                    NotificationCenter.default.post(name: .friendCardDidAdded, object: nil)
+                }))
+                
+                alertController.configure(item: alertItem)
+                return alertController
+            }
+            .bind(to: alertController)
+            .disposed(by: disposeBag)
     }
 }

@@ -72,6 +72,8 @@
 		A2DA3B6F27514F4D00E68F23 /* Entity.SearchFriendCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B6E27514F4D00E68F23 /* Entity.SearchFriendCard.swift */; };
 		A2DA3B7627516F2F00E68F23 /* AddFriendCardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B7527516F2F00E68F23 /* AddFriendCardRepository.swift */; };
 		A2DA3B782751745D00E68F23 /* AddFriendCardDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B772751745D00E68F23 /* AddFriendCardDependencyContainer.swift */; };
+		A2DA3B7A2753685B00E68F23 /* AddFriendCardAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B792753685B00E68F23 /* AddFriendCardAPI.swift */; };
+		A2DA3B7C2753706C00E68F23 /* Entity.AddFriendCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B7B2753706C00E68F23 /* Entity.AddFriendCard.swift */; };
 		CE2BB2C727074F4600936148 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE2BB2C627074F4600936148 /* Colors.xcassets */; };
 		CE2BB2C92707560800936148 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2BB2C82707560800936148 /* Palette.swift */; };
 		CE2EC99327073453006B9852 /* CardCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2EC99227073453006B9852 /* CardCreationViewModel.swift */; };
@@ -348,6 +350,8 @@
 		A2DA3B6E27514F4D00E68F23 /* Entity.SearchFriendCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.SearchFriendCard.swift; sourceTree = "<group>"; };
 		A2DA3B7527516F2F00E68F23 /* AddFriendCardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendCardRepository.swift; sourceTree = "<group>"; };
 		A2DA3B772751745D00E68F23 /* AddFriendCardDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendCardDependencyContainer.swift; sourceTree = "<group>"; };
+		A2DA3B792753685B00E68F23 /* AddFriendCardAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendCardAPI.swift; sourceTree = "<group>"; };
+		A2DA3B7B2753706C00E68F23 /* Entity.AddFriendCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.AddFriendCard.swift; sourceTree = "<group>"; };
 		A3E561B79C6998E82DB447DF /* Pods-YourName-YourNameTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourName-YourNameTests.debug.xcconfig"; path = "Target Support Files/Pods-YourName-YourNameTests/Pods-YourName-YourNameTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CE2BB2C627074F4600936148 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		CE2BB2C82707560800936148 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
@@ -675,6 +679,7 @@
 				A2DA3B66274FDB5800E68F23 /* Entity.Image.swift */,
 				CEDA4B8F275126030011D0CA /* Entity.Empty.swift */,
 				A2DA3B6E27514F4D00E68F23 /* Entity.SearchFriendCard.swift */,
+				A2DA3B7B2753706C00E68F23 /* Entity.AddFriendCard.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -702,6 +707,7 @@
 				A2DA3B3A274A162400E68F23 /* LoginAPI.swift */,
 				A2DA3B62274FDA2200E68F23 /* MyNameCardsAPI.swift */,
 				A2DA3B6C27514EE000E68F23 /* SearchFriendCardAPI.swift */,
+				A2DA3B792753685B00E68F23 /* AddFriendCardAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -1803,6 +1809,7 @@
 				CE8500F9273FA5C3002341DC /* UIScrollView+Rx.swift in Sources */,
 				CE63129E26F8618000B2E69B /* AuthenticationDelegate.swift in Sources */,
 				CE63125E26F6270B00B2E69B /* SplashViewController.swift in Sources */,
+				A2DA3B7C2753706C00E68F23 /* Entity.AddFriendCard.swift in Sources */,
 				CE472B7E2748D5A1001A5E5F /* NetworkService.swift in Sources */,
 				CEDA4B94275138350011D0CA /* QuestWaitingDoneAPI.swift in Sources */,
 				CED16DF926F3A55D0076565F /* MyCardListViewController.swift in Sources */,
@@ -1815,6 +1822,7 @@
 				CEB6588926EC818900C11F33 /* HTTPError.swift in Sources */,
 				CE6BAB942704D0990006D26B /* Storyboarded.swift in Sources */,
 				CE4D4E8C2707AF0500081A2B /* CharacterItemRepository.swift in Sources */,
+				A2DA3B7A2753685B00E68F23 /* AddFriendCardAPI.swift in Sources */,
 				CEA4D2E4270CD24A008189FE /* DisplayCharacterItemCollectionViewCell.swift in Sources */,
 				CEDA4B77274E87A20011D0CA /* InterestesAPI.swift in Sources */,
 				A2DA3B6F27514F4D00E68F23 /* Entity.SearchFriendCard.swift in Sources */,

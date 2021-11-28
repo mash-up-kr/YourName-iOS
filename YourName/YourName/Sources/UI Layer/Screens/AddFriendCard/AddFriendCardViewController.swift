@@ -23,6 +23,7 @@ final class AddFriendCardViewController: ViewController, Storyboarded {
     @IBOutlet private unowned var addButton: UIButton!
     
     private let disposeBag = DisposeBag()
+    private let searchId = PublishRelay<String>()
     var viewModel: AddFriendCardViewModel!
     
     override var hidesBottomBarWhenPushed: Bool {
@@ -100,13 +101,11 @@ extension AddFriendCardViewController {
             })
             .disposed(by: disposeBag)
         
-        let searchId = PublishRelay<String>()
-        
         self.searchTextField.rx.text
             .distinctUntilChanged()
             .compactMap { $0 }
             .bind(onNext: { [weak self] id in
-                searchId.accept(id)
+                self?.searchId.accept(id)
                 [self?.noResultView, self?.resultView, self?.validationLabel, self?.addButton].forEach { $0?.isHidden = true }
             })
             .disposed(by: disposeBag)
@@ -130,9 +129,28 @@ extension AddFriendCardViewController {
             })
             .disposed(by: disposeBag)
         
+        NotificationCenter.default.rx.notification(.friendCardDidAdded)
+            .withLatestFrom(self.searchId)
+            .bind(onNext: { [weak self] in
+                self?.viewModel.didTapSearchButton(with: $0)
+            })
+            .disposed(by: disposeBag)
+        
     }
     
     private func render(_ viewModel: AddFriendCardViewModel) {
+        
+        viewModel.popViewController
+            .bind(onNext: { [weak self] in
+                self?.navigationController?.popViewController(animated: true)
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.alertController
+            .bind(onNext: { [weak self] in
+                self?.present($0, animated: true)
+            })
+            .disposed(by: disposeBag)
         
         viewModel.toastView
             .bind(onNext: { [weak self]  in
