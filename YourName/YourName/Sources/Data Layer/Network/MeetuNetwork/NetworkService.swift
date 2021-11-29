@@ -16,7 +16,7 @@ protocol NetworkServing {
 
 final class NetworkService: NetworkServing {
     
-    var headers: [String: String] = ["authorization": "Bearer \(AccessToken.dummy)"]
+    var headers: [String: String] = ["authorization": "Bearer \(AccessToken.dummyAccessToken)"]
     
     func request<API>(_ api: API) -> Observable<API.Response> where API : ServiceAPI {
         return self._request(api)
@@ -63,11 +63,15 @@ final class NetworkService: NetworkServing {
     }
     
     private let provider = MoyaProvider<MultiTarget>()
-    private var refreshToken: String? = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUsIm5pY2tOYW1lIjoi7J207Jew7KSRIiwiaWF0IjoxNjM3ODM5MjQxLCJleHAiOjE2Mzg0MzkyNDF9.629okopRQ14ek0oX-2-phAJ03nfZEEpKCKWRjxiv9yA"
+    private var refreshToken: String? = AccessToken.dummyRefreshDummy
+    
 }
 
 private extension AccessToken {
-    static let dummy = "" //"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUsIm5pY2tOYW1lIjoi7J207Jew7KSRIiwiaWF0IjoxNjM3ODM5MjQxLCJleHAiOjE2Mzg0MzkyNDF9.629okopRQ14ek0oX-2-phAJ03nfZEEpKCKWRjxiv9yA"
+    static let dummyAccessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUsIm5pY2tOYW1lIjoi7J207Jew7KSRIiwiaWF0IjoxNjM3ODM5MjQxLCJleHAiOjE2Mzg0MzkyNDF9.629okopRQ14ek0oX-2-phAJ03nfZEEpKCKWRjxiv9yA"
+}
+private extension AccessToken {
+    static let dummyRefreshDummy = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjExLCJ1c2VySWRlbnRpZmllciI6IjIwMDg1OTY5NjciLCJpYXQiOjE2MzgyMDAzNjEsImV4cCI6MTY0MDc5MjM2MX0.HqdUBL_9y5wZY3g0AmXJuX4jRPIa4Q6lDMHba2ixWho"
 }
 
 typealias Authentication = Entity.Authentication
