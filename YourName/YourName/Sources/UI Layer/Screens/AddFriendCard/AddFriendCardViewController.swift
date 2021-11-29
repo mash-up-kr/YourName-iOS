@@ -131,13 +131,6 @@ extension AddFriendCardViewController {
             })
             .disposed(by: disposeBag)
         
-        NotificationCenter.default.rx.notification(.friendCardDidAdded)
-            .withLatestFrom(self.searchId)
-            .bind(onNext: { [weak self] in
-                self?.viewModel.didTapSearchButton(with: $0)
-            })
-            .disposed(by: disposeBag)
-        
     }
     
     private func render(_ viewModel: AddFriendCardViewModel) {

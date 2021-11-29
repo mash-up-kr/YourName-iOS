@@ -143,13 +143,15 @@ extension AddFriendCardViewModel {
         
         guard let uniqueCode = self.nameCard.value.uniqueCode else { return }
         self.addFriendCardRepository.addFriendCard(uniqueCode: uniqueCode)
+            .do { [weak self] _ in
+                self?.isLoading.accept(false)
+            }
             .catchError { error in
                 print(error)
                 return .empty()
             }
             .compactMap { [weak self] _ -> AlertViewController? in
                 guard let self = self else { return nil }
-                self.isLoading.accept(false)
                 
                 let alertController = AlertViewController.instantiate()
                 
@@ -167,7 +169,7 @@ extension AddFriendCardViewModel {
                                            defaultAction: .init(title: "검색으로 돌아가기", action: { alertController.dismiss() }))
                 
                 self.toastView.accept(ToastView(text: "성공적으로 추가됐츄!"))
-                NotificationCenter.default.post(name: .friendCardDidAdded, object: nil)
+                self.didTapSearchButton(with: uniqueCode)
                 alertController.configure(item: alertItem)
                 return alertController
             }

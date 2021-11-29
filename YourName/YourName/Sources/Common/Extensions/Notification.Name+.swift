@@ -9,5 +9,4 @@ import Foundation
 
 extension NSNotification.Name {
     static let myCardsDidChange = NSNotification.Name(rawValue: "myCardsDidChange")
-    static let friendCardDidAdded = NSNotification.Name(rawValue: "friendCardDidAdded")
 }
