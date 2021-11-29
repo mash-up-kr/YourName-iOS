@@ -43,9 +43,10 @@ extension Reactive where Base: ASAuthorizationController {
       .methodInvoked(#selector(ASAuthorizationControllerDelegate.authorizationController(controller:didCompleteWithAuthorization:)))
       .map { parameters in
         guard let authorization = parameters[1] as? ASAuthorization,
-              let credential = authorization.credential as? ASAuthorizationAppleIDCredential
+              let credential = authorization.credential as? ASAuthorizationAppleIDCredential,
+              let identityToken = credential.identityToken
         else { return nil }
-        return credential.user
+        return String(data: identityToken, encoding: .utf8)
       }
   }
 }
