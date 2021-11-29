@@ -52,6 +52,3 @@ extension CardDetailBackViewController: UICollectionViewDelegate {
         collectionView.reloadData()
     }
 }
-
-
-// 전체 Stack뷰하고 헤더 포함을 뷰로 하고 그 속의 내용 내부를 스택뷰로 하면 된다.. 그 속에 이제 컬렉션뷰나 테이블뷰 같은걸로 만들면 된다.

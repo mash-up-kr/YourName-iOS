@@ -59,21 +59,25 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="arrow_left_back" title=""/>
                                     </button>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tbO-4J-LxF">
-                                        <rect key="frame" x="163" y="37" width="23" height="3"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tbO-4J-LxF">
+                                        <rect key="frame" x="153" y="34" width="40" height="3"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="8S8-gH-evI"/>
+                                            <constraint firstAttribute="height" constant="3" id="A8S-0u-Hyi"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="tbO-4J-LxF" secondAttribute="trailing" constant="228" id="Jzd-zE-w4j"/>
+                                    <constraint firstItem="tbO-4J-LxF" firstAttribute="centerX" secondItem="WWP-Oe-lP8" secondAttribute="centerX" placeholder="YES" id="4tT-BL-aYr"/>
                                     <constraint firstAttribute="height" constant="48" id="NDe-EQ-Yub"/>
                                     <constraint firstItem="Vuu-Id-SBO" firstAttribute="centerY" secondItem="QNt-qY-d1c" secondAttribute="centerY" id="ecN-13-5dq"/>
                                     <constraint firstAttribute="trailing" secondItem="Ar2-X3-D4l" secondAttribute="trailing" constant="24" id="fiZ-Wa-Xhm"/>
                                     <constraint firstItem="Ar2-X3-D4l" firstAttribute="centerY" secondItem="QNt-qY-d1c" secondAttribute="centerY" id="fmT-Wr-0eb"/>
-                                    <constraint firstItem="tbO-4J-LxF" firstAttribute="leading" secondItem="QNt-qY-d1c" secondAttribute="leading" constant="163" id="gNX-N9-qrb"/>
                                     <constraint firstItem="Vuu-Id-SBO" firstAttribute="leading" secondItem="QNt-qY-d1c" secondAttribute="leading" constant="32" id="lvL-z9-UbG"/>
                                     <constraint firstItem="yzT-y3-8bS" firstAttribute="centerX" secondItem="QNt-qY-d1c" secondAttribute="centerX" id="uqX-1C-QwW"/>
+                                    <constraint firstAttribute="bottom" secondItem="tbO-4J-LxF" secondAttribute="bottom" constant="11" id="xgQ-o4-PN7"/>
                                     <constraint firstItem="yzT-y3-8bS" firstAttribute="centerY" secondItem="QNt-qY-d1c" secondAttribute="centerY" id="zil-k1-NcB"/>
                                 </constraints>
                             </view>
