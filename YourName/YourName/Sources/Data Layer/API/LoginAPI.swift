@@ -9,7 +9,7 @@ import Foundation
 import Moya
 
 struct LoginAPI: ServiceAPI {
-    typealias Response = Entity.Login
+    typealias Response = Entity.Authentication
     
     private let accessToken: AccessToken
     private let provider: Provider
@@ -25,13 +25,11 @@ struct LoginAPI: ServiceAPI {
     var headers: [String: String]? { nil }
     var method: Method { .post }
     var task: NetworkingTask {
-        return .requestParameters(parameters: ["accessToken": "Bearer \(accessToken)"],
+        return .requestParameters(parameters: ["accessToken": accessToken],
                                   encoding: JSONEncoding.default)
     }
     
-    init(accessToken: AccessToken,
-         provider: Provider) {
-        
+    init(accessToken: AccessToken, provider: Provider) {
         self.accessToken = accessToken
         self.provider = provider
     }
