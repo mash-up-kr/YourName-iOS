@@ -13,6 +13,7 @@ typealias CardDetailMoreViewController = PageSheetController<CardDetailMoreView>
 
 final class CardDetailMoreView: UIView, NibLoadable {
     
+
     @IBOutlet private unowned var imageSaveView: UIView!
     @IBOutlet private unowned var shareLinkView: UIView!
     @IBOutlet private unowned var editView: UIView!
@@ -26,14 +27,45 @@ final class CardDetailMoreView: UIView, NibLoadable {
         super.init(frame: frame)
         self.setupFromNib()
     }
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         self.setupFromNib()
+        
+        self.bind()
+        self.configureUI()
+    }
+    
+    convenience init(viewModel: CardDetailMoreViewModel,
+                     parent: ViewController?) {
+        self.init(frame: .zero)
+        self.viewModel = viewModel
+        self.parent = parent
+        self.bind()
+        self.configureUI()
+    }
+    
+    deinit {
+        print(" 💀 \(String(describing: self)) deinit")
     }
 }
 
 extension CardDetailMoreView {
+    
+    private func configureUI() {
+        [self.imageSaveView, self.editView].forEach { view in
+            view?.layer.cornerRadius = 12
+            view?.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        }
+        [self.shareLinkView, self.deleteView].forEach { view in
+            view?.layer.cornerRadius = 12
+            view?.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+        }
+    }
     private func bind() {
+        self.render(self.viewModel)
+        self.dispatch(to: self.viewModel)
+        
         self.imageSaveView.rx.tapWhenRecognized()
             .bind(onNext: { [weak self] in
                 print("image save button tapped")

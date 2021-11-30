@@ -28,12 +28,10 @@ final class CardDetailDependencyContainer {
         let viewController = CardDetailViewController.instantiate()
         viewController.viewModel = viewModel
         viewController.cardDetailMoreViewFactory = { cardID -> CardDetailMoreViewController in
-            let view = CardDetailMoreView()
-            
             let viewModel = CardDetailMoreViewModel(repository: self.myCardRepository,
                                                     id: self.cardID)
-            view.viewModel = viewModel
-            view.parent = viewController
+            let view = CardDetailMoreView(viewModel: viewModel,
+                                          parent: viewController)
             return PageSheetController(contentView: view)
         }
         return viewController
