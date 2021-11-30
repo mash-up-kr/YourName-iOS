@@ -16,7 +16,11 @@ protocol NetworkServing {
 
 final class NetworkService: NetworkServing {
     
-    var headers: [String: String] = ["authorization": "Bearer \(AccessToken.dummyAccessToken)"]
+    var headers: [String: String] {
+        guard let accessToken = self.accessToken else { return [:] }
+        
+        return ["authorization": "Bearer \(accessToken)"]
+    }
     
     func request<API>(_ api: API) -> Observable<API.Response> where API : ServiceAPI {
         return self._request(api)
@@ -24,9 +28,9 @@ final class NetworkService: NetworkServing {
                 guard let self = self else { throw error }
                 
                 return self.refreshAuthentication()
-                    .do { authentication in
+                    .do { [weak self] authentication in
                         guard let accessToken = authentication.accessToken else { return }
-                        self.headers = ["authorization" : "Bearer \(accessToken)"]
+                        self?.accessToken = accessToken
                     }.flatMap { [weak self] _ -> Observable<MeetuResponse<API.Response>> in
                         guard let self = self else { return .empty() }
                         return self._request(api)
@@ -64,6 +68,7 @@ final class NetworkService: NetworkServing {
     
     private let provider = MoyaProvider<MultiTarget>()
     private var refreshToken: String? = AccessToken.dummyRefreshDummy
+    private var accessToken: String? = AccessToken.dummyAccessToken
     
 }
 
@@ -82,3 +87,5 @@ enum NetworkError: Error {
     case denyAuthentication
     case unknown
 }
+
+

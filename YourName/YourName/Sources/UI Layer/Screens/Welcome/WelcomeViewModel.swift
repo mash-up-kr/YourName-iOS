@@ -34,7 +34,7 @@ final class WelcomeViewModel {
         self.OAuthRepository.authorize(provider: provider)
             .flatMapLatest { [weak self] response -> Observable<AccessToken> in
                 guard let self = self else { return .empty() }
-                return self.authRepository.requestLogin(accessToken: response.accessToken,
+                return self.authRepository.fetchAccessToken(withProviderToken: response.accessToken,
                                                         provider: response.provider)
             }
             .catchError({ error in

@@ -22,7 +22,8 @@ final class SignedOutDependencyContainer {
     }
     
     private func createWelcomeViewModel() -> WelcomeViewModel {
-        let authRepository = YourNameAuthRepository()
+        let authRepository = YourNameAuthRepository(localStorage: UserDefaults.standard,
+                                                    network: Environment.current.network)
         let OAuthRepository = YourNameOAuthRepository()
         return WelcomeViewModel(delegate: rootViewModel,
                                 authRepository: authRepository,

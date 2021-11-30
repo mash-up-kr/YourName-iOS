@@ -70,8 +70,6 @@
 		A2D875DF26EE295C00ED5949 /* OAuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D875DE26EE295C00ED5949 /* OAuthResponse.swift */; };
 		A2DA3B3B274A162400E68F23 /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B3A274A162400E68F23 /* LoginAPI.swift */; };
 		A2DA3B3D274A1A2500E68F23 /* Entity.Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B3C274A1A2500E68F23 /* Entity.Login.swift */; };
-		A2DA3B3F274A368D00E68F23 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B3E274A368D00E68F23 /* UserDefault.swift */; };
-		A2DA3B41274A4BDA00E68F23 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B40274A4BDA00E68F23 /* UserDefaultManager.swift */; };
 		A2DA3B43274A536700E68F23 /* Entity.UserOnboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B42274A536700E68F23 /* Entity.UserOnboarding.swift */; };
 		A2DA3B47274A611B00E68F23 /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B46274A611B00E68F23 /* AuthRepository.swift */; };
 		A2DA3B49274A683A00E68F23 /* OAuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B48274A683A00E68F23 /* OAuthRepository.swift */; };
@@ -238,6 +236,7 @@
 		CEB84094272AF143000E527B /* CardBookListDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB84093272AF143000E527B /* CardBookListDependencyContainer.swift */; };
 		CEB84096272AF389000E527B /* CardBookCoverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB84095272AF389000E527B /* CardBookCoverTableViewCell.swift */; };
 		CEC5998E27551B3B00405DEA /* RefreshAuthenticationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5998D27551B3B00405DEA /* RefreshAuthenticationAPI.swift */; };
+		CEC599D127568E6800405DEA /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC599D027568E6800405DEA /* LocalStorage.swift */; };
 		CED16DE926F39F700076565F /* HomeTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED16DE826F39F700076565F /* HomeTab.swift */; };
 		CED16DF526F3A5480076565F /* QuestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED16DF426F3A5480076565F /* QuestViewController.swift */; };
 		CED16DF726F3A5540076565F /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED16DF626F3A5540076565F /* SettingViewController.swift */; };
@@ -352,8 +351,6 @@
 		A2D875DE26EE295C00ED5949 /* OAuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthResponse.swift; sourceTree = "<group>"; };
 		A2DA3B3A274A162400E68F23 /* LoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
 		A2DA3B3C274A1A2500E68F23 /* Entity.Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.Login.swift; sourceTree = "<group>"; };
-		A2DA3B3E274A368D00E68F23 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDefault.swift; path = "YourName/Sources/Data Layer/Entity/UserDefault.swift"; sourceTree = SOURCE_ROOT; };
-		A2DA3B40274A4BDA00E68F23 /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDefaultManager.swift; path = "YourName/Sources/Data Layer/Entity/UserDefaultManager.swift"; sourceTree = SOURCE_ROOT; };
 		A2DA3B42274A536700E68F23 /* Entity.UserOnboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.UserOnboarding.swift; sourceTree = "<group>"; };
 		A2DA3B46274A611B00E68F23 /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
 		A2DA3B48274A683A00E68F23 /* OAuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthRepository.swift; sourceTree = "<group>"; };
@@ -525,6 +522,7 @@
 		CEB84093272AF143000E527B /* CardBookListDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBookListDependencyContainer.swift; sourceTree = "<group>"; };
 		CEB84095272AF389000E527B /* CardBookCoverTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBookCoverTableViewCell.swift; sourceTree = "<group>"; };
 		CEC5998D27551B3B00405DEA /* RefreshAuthenticationAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshAuthenticationAPI.swift; sourceTree = "<group>"; };
+		CEC599D027568E6800405DEA /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
 		CED16DE826F39F700076565F /* HomeTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTab.swift; sourceTree = "<group>"; };
 		CED16DF426F3A5480076565F /* QuestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestViewController.swift; sourceTree = "<group>"; };
 		CED16DF626F3A5540076565F /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -845,15 +843,6 @@
 			path = Welcome;
 			sourceTree = "<group>";
 		};
-		CE63125326F5E1B600B2E69B /* Local */ = {
-			isa = PBXGroup;
-			children = (
-				A2DA3B3E274A368D00E68F23 /* UserDefault.swift */,
-				A2DA3B40274A4BDA00E68F23 /* UserDefaultManager.swift */,
-			);
-			path = Local;
-			sourceTree = "<group>";
-		};
 		CE63125C26F626F600B2E69B /* Splash */ = {
 			isa = PBXGroup;
 			children = (
@@ -1115,9 +1104,9 @@
 		CEB6586326EB2BB500C11F33 /* Data Layer */ = {
 			isa = PBXGroup;
 			children = (
+				CEC599CF27568E5500405DEA /* LocalStorage */,
 				CE472B7F2748DA47001A5E5F /* API */,
 				CE472B6B2748B730001A5E5F /* Entity */,
-				CE63125326F5E1B600B2E69B /* Local */,
 				CEB6588C26EC81F700C11F33 /* Network */,
 			);
 			path = "Data Layer";
@@ -1306,6 +1295,14 @@
 				CEB84095272AF389000E527B /* CardBookCoverTableViewCell.swift */,
 			);
 			path = CardBookList;
+			sourceTree = "<group>";
+		};
+		CEC599CF27568E5500405DEA /* LocalStorage */ = {
+			isa = PBXGroup;
+			children = (
+				CEC599D027568E6800405DEA /* LocalStorage.swift */,
+			);
+			path = LocalStorage;
 			sourceTree = "<group>";
 		};
 		CED16DEC26F3A4C30076565F /* MyCardList */ = {
@@ -1680,6 +1677,7 @@
 				CE6D1487270C952900AF4C5C /* CharacterItemFactory.swift in Sources */,
 				CEB6586F26EB2C9400C11F33 /* OAuth.swift in Sources */,
 				CE94ABB5270F2C81005D2E80 /* Skill.swift in Sources */,
+				CEC599D127568E6800405DEA /* LocalStorage.swift in Sources */,
 				CE472B712748C0B4001A5E5F /* Entity.TMI.swift in Sources */,
 				CEB6588E26EC821300C11F33 /* Network.swift in Sources */,
 				CED16DF726F3A5540076565F /* SettingViewController.swift in Sources */,
@@ -1740,7 +1738,6 @@
 				CE472B682748B67F001A5E5F /* Entity.BackgroundColor.swift in Sources */,
 				CE94ABBA270F4114005D2E80 /* ColorSource.swift in Sources */,
 				A2DA3B3B274A162400E68F23 /* LoginAPI.swift in Sources */,
-				A2DA3B3F274A368D00E68F23 /* UserDefault.swift in Sources */,
 				CE8500FB273FAE41002341DC /* UIColor+.swift in Sources */,
 				CE63126026F6281800B2E69B /* SplashViewModel.swift in Sources */,
 				CE4D4E862707AE1700081A2B /* CharacterSettingViewModel.swift in Sources */,
@@ -1795,7 +1792,6 @@
 				CE94ABA6270ED4B7005D2E80 /* TMIContentCollectionViewCell.swift in Sources */,
 				CEDA4B86274ECECC0011D0CA /* QuestRepository.swift in Sources */,
 				A2A5C83826FB17D0005D2849 /* KakaoAuth.swift in Sources */,
-				A2DA3B41274A4BDA00E68F23 /* UserDefaultManager.swift in Sources */,
 				CE4D4EDD270A0F9900081A2B /* TMISettingView.swift in Sources */,
 				CE6BABAB2704E2480006D26B /* UIVIewController+.swift in Sources */,
 				A2CC65862708F17A00610C49 /* CardBookRepository.swift in Sources */,
