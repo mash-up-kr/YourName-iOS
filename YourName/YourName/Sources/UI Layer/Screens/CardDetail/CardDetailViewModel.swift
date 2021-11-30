@@ -6,12 +6,34 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
+
+enum CardDetailDestination: Equatable {
+    case cardDetailMore(cardID: String)
+}
+
+typealias CardDetailNavigation = Navigation<CardDetailDestination>
 
 final class CardDetailViewModel {
     
-    init(cardID: Int) {
+    private let cardID: String
+    private let disposeBag = DisposeBag()
+    let isLoading = PublishRelay<Bool>()
+    let navigation = PublishRelay<CardDetailNavigation>()
+    
+    // MARK: - LifeCycle
+    init(cardID: String) {
         self.cardID = cardID
     }
     
-    private let cardID: Int
+    deinit {
+        print(" 💀 \(String(describing: self)) deinit")
+    }
+    
+    // MARK: - Methods
+    
+    func didTapMore() {
+        navigation.accept(.show(.cardDetailMore(cardID: self.cardID)))
+    }
 }

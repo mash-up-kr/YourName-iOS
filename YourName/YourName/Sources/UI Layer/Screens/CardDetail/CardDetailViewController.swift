@@ -9,11 +9,12 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-
+typealias cardID = String
 final class CardDetailViewController: ViewController, Storyboarded {
     
-    var cardDetailMoreViewFactory: ((Int) -> CardDetailMoreViewController)!
-
+    var cardDetailMoreViewFactory: ((cardID) -> CardDetailMoreViewController)!
+    private let disposeBag = DisposeBag()
+    
     @IBOutlet private weak var detailMoreButton: UIButton!
     @IBOutlet weak var bubbleBottom: UIView!
     @IBOutlet private weak var underlineView: UIView!
@@ -56,6 +57,11 @@ final class CardDetailViewController: ViewController, Storyboarded {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.bind()
+        self.render(self.viewModel)
+        self.dispatch(to: self.viewModel)
+        
         initPageViewController()
         bubbleBottom.transform = CGAffineTransform(rotationAngle: 45/360 * Double.pi)
     }
@@ -123,12 +129,38 @@ class CardDetailFrontViewController: UIViewController {}
 extension CardDetailViewController {
     private func bind() {
         self.detailMoreButton.rx.throttleTap
-            .map { [weak self] -> CardDetailMoreViewController? in
-                guard let self = self else { return nil }
-                return self.cardDetailMoreViewFactory
-            }
             .bind(onNext: { [weak self] in
-                self?.
+                self?.viewModel.didTapMore()
             })
+            .disposed(by: disposeBag)
+    }
+    
+    private func render(_ viewModel: CardDetailViewModel) {
+        
+    }
+    
+    private func dispatch(to viewModel: CardDetailViewModel) {
+        self.rx.viewDidAppear
+            .flatMapFirst { [weak self] _ -> Observable<CardDetailNavigation> in
+                guard let self = self else { return .empty() }
+                return self.viewModel.navigation.asObservable()
+            }
+            .bind(onNext: { [weak self] action in
+                guard let self = self else { return }
+                self.navigate(action)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func navigate(_ navigation: CardDetailNavigation) {
+        let viewController = createViewController(navigation.destination)
+        navigate(viewController, action: navigation.action)
+    }
+    
+    private func createViewController(_ next: CardDetailDestination) -> UIViewController {
+        switch next {
+        case .cardDetailMore(let cardId):
+            return cardDetailMoreViewFactory(cardId)
+        }
     }
 }
