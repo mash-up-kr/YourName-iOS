@@ -264,9 +264,9 @@ final class CardCreationViewController: ViewController, Storyboarded {
             })
             .disposed(by: disposeBag)
         
-        viewModel.shouldDismiss
+        viewModel.shouldClose
             .subscribe(onNext: { [weak self] in
-                self?.dismiss(animated: true, completion: nil)
+                self?.navigationController?.popViewController(animated: true)
             })
             .disposed(by: disposeBag)
         
@@ -315,6 +315,7 @@ final class CardCreationViewController: ViewController, Storyboarded {
     private let profileBackgroundColorButtonLayer = CAGradientLayer()
     private var indexOfContactTypeBeingSelected: Int? = nil
     
+    @IBOutlet private weak var backButton: UIButton?
     @IBOutlet private weak var scrollView: UIScrollView?
     @IBOutlet private weak var profileClearButton: UIButton?
     @IBOutlet private weak var profilePlaceholderView: UIView?

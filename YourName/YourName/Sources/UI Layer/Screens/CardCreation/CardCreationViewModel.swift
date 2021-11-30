@@ -27,7 +27,7 @@ final class CardCreationViewModel {
     let hasCompletedSkillInput = BehaviorRelay<Bool>(value: false)
     let hasCompletedTMIInput = BehaviorRelay<Bool>(value: false)
     let canComplete = BehaviorRelay<Bool>(value: false)
-    let shouldDismiss = PublishRelay<Void>()
+    let shouldClose = PublishRelay<Void>()
     let shouldDismissOverlays = PublishRelay<Void>()
     let indexOfContactTypeBeingSelected = BehaviorRelay<Int?>(value: nil)
     let profileImageSource = BehaviorRelay<ImageSource?>(value: nil)
@@ -114,6 +114,10 @@ final class CardCreationViewModel {
         self.aboutMe.accept(text)
     }
     
+    func tapBack() {
+        self.shouldClose.accept(Void())
+    }
+    
     func tapCompletion() {
         let nameCard = Entity.NameCard(
             id: nil,
@@ -132,7 +136,7 @@ final class CardCreationViewModel {
         
         self.myCardRepository.createMyCard(nameCard)
             .subscribe(onNext: { [weak self] _ in
-                self?.shouldDismiss.accept(Void())
+                self?.shouldClose.accept(Void())
             })
             .disposed(by: self.disposeBag)
     }
