@@ -1,21 +1,20 @@
 //
-//  LogoutAPI.swift
+//  ResignAPI.swift
 //  MEETU
 //
-//  Created by seori on 2021/11/21.
+//  Created by seori on 2021/11/30.
 //
 
 import Foundation
-import Moya
 
-struct LogoutAPI: ServiceAPI {
+struct ResignAPI: ServiceAPI {
     
     typealias Response = Entity.Empty
-    var path: String { "/logout" }
-    var method: Moya.Method { .post }
-    var task: Task { .requestPlain }
+    
+    var path: String { "/users" }
+    var method: Method { .delete }
+    var task: NetworkingTask { .requestPlain }
     var headers: [String : String]? {
         return ["authorization": "Bearer \(UserDefaultManager.accessToken ?? "")"]
     }
 }
-

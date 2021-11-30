@@ -20,12 +20,17 @@ enum SettingDestination: Equatable {
 typealias SettingNavigation = Navigation<SettingDestination>
 
 final class SettingViewModel {
-    private(set) var navigation = PublishRelay<SettingNavigation>()
+    let navigation = PublishRelay<SettingNavigation>()
+    let backToFirst = PublishRelay<Void>()   // 네이밍.. 모르겠어요 추천받습니다.
+    let isLoading = PublishRelay<Bool>()
+    let alert = PublishRelay<AlertViewController>()
+    
     private let authRepository: AuthRepository
     private let disposeBag = DisposeBag()
     
     init(authRepository: AuthRepository) {
         self.authRepository = authRepository
+        self.bind()
     }
     
     deinit {
@@ -44,26 +49,61 @@ final class SettingViewModel {
         self.navigation.accept(.push(.aboutProductionTeam))
     }
     
-    func tapLogOut() -> Observable<Void> {
-        guard let accessToken = UserDefaultManager.accessToken else { return .empty() }
-        return self.authRepository.requestLogout(accessToken: accessToken)
+    func tapLogOut() {
+        self.isLoading.accept(true)
+        self.authRepository.requestLogout()
+            .do { [weak self] _ in
+                self?.isLoading.accept(false)
+            }
             .catchError({ error in
                 //TODO:
                 print(error)
                 return .empty()
             })
-            .flatMap({ () -> Observable<Void> in
+            .bind(to: self.backToFirst)
+            .disposed(by: self.disposeBag)
+    }
+    
+    func tapResign() {
+        
+        let alertController = AlertViewController.instantiate()
+        let resignAction = { [weak self] in
+            guard let self = self else { return }
+            
+            alertController.dismiss(animated: true)
+            self.isLoading.accept(true)
+            self.authRepository.requestResign()
+                .do { [weak self] _ in
+                    self?.isLoading.accept(false)
+                }
+                .catchError { error in
+                    print(error)
+                    return .empty()
+                }
+                .bind(to: self.backToFirst)
+                .disposed(by: self.disposeBag)
+        }
+        
+        let cancelAction = {
+            alertController.dismiss(animated: true)
+        }
+        alertController.configure(item: AlertItem(title: "정말 탈퇴하시겠츄?",
+                                                  message: "나의 모든 미츄 카드와 정보가 삭제되며\n귀여운 미츄를 더 이상 만날 수 없어요",
+                                                  image: UIImage(named: "resign_meetu")!,
+                                                  emphasisAction: .init(title: "삭제하기", action: resignAction),
+                                                  defaultAction: .init(title: "삭제 안할래요", action: cancelAction)))
+        self.alert.accept(alertController)
+    }
+}
+
+extension SettingViewModel {
+
+    private func bind() {
+        self.backToFirst
+            .bind(onNext: {
                 UserDefaultManager.accessToken = nil
                 UserDefaultManager.refreshToken = nil
-                return Observable<Void>.create { observer in
-                    observer.onNext(())
-                    observer.onCompleted()
-                    
-                    return Disposables.create()
-                }
             })
-    }
-    func tapResign() {
-        // TODO: API가 안나온듯하다~
+            .disposed(by: disposeBag)
     }
 }

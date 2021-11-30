@@ -27,84 +27,106 @@ final class SettingViewController: ViewController, Storyboarded {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureUI()
-        dispatch(to: viewModel)
-        bind()
+        
+        self.configureUI()
+        self.bind()
+        self.dispatch(to: viewModel)
+        self.render(viewModel)
     }
 }
 
 // MARK: - Method
+
 extension SettingViewController {
     
     private func configureUI() {
         self.navigationController?.navigationBar.isHidden = true
-        noticeView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        aboutProductionTeamView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        self.noticeView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        self.aboutProductionTeamView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
     }
     
     private func dispatch(to viewModel: SettingViewModel) {
-        self.rx.viewDidAppear.flatMapFirst { _ in
-                self.viewModel.navigation
-            }
+        self.rx.viewDidAppear
+            .flatMapFirst ({ [weak self] _ -> Observable<SettingNavigation> in
+                guard let self = self else { return .empty() }
+                return self.viewModel.navigation.asObservable()
+            })
             .bind(onNext: { [weak self] action in
                 self?.navigate(action)
             })
-            .disposed(by: disposeBag)
+            .disposed(by: self.disposeBag)
     }
     
-    private func bind() {
+    private func render(_ viewModel: SettingViewModel) {
         
-        questView.rx.tapWhenRecognized
-            .bind(onNext: { [weak self] in
-                self?.viewModel.tapOnboardingQuest()
-            })
-            .disposed(by: disposeBag)
+        viewModel.isLoading
+            .distinctUntilChanged()
+            .bind(to: self.isLoading)
+            .disposed(by: self.disposeBag)
         
-        noticeView.rx.tapWhenRecognized
-            .bind(onNext: { [weak self] in
-                self?.viewModel.tapNotice()
-            })
-            .disposed(by: disposeBag)
-        
-        aboutProductionTeamView.rx.tapWhenRecognized
-            .bind(onNext: { [weak self] in
-                self?.viewModel.tapAboutProductionTeam()
-            })
-            .disposed(by: disposeBag)
-        
-        logoutButton.rx.throttleTap
-            .asObservable()
-            .flatMap { [weak self] _ -> Observable<Void> in
-                guard let self = self else { return .empty() }
-                return self.viewModel.tapLogOut()
-            }
+        viewModel.backToFirst
             .bind(onNext: {
                 let appDelegate = UIApplication.shared.delegate as? AppDelegate
                 appDelegate?.window?.rootViewController = RootDependencyContainer().createRootViewController()
             })
-            .disposed(by: disposeBag)
+            .disposed(by: self.disposeBag)
         
-        resignButton.rx.throttleTap
+        viewModel.alert
+            .bind(onNext: { [weak self] in
+                self?.present($0, animated: true)
+            })
+            .disposed(by: self.disposeBag)
+    }
+    
+    private func bind() {
+        
+        self.questView.rx.tapWhenRecognized
+            .bind(onNext: { [weak self] in
+                self?.viewModel.tapOnboardingQuest()
+            })
+            .disposed(by: self.disposeBag)
+        
+        self.noticeView.rx.tapWhenRecognized
+            .bind(onNext: { [weak self] in
+                self?.viewModel.tapNotice()
+            })
+            .disposed(by: self.disposeBag)
+        
+        self.aboutProductionTeamView.rx.tapWhenRecognized
+            .bind(onNext: { [weak self] in
+                self?.viewModel.tapAboutProductionTeam()
+            })
+            .disposed(by: self.disposeBag)
+        
+        self.logoutButton.rx.throttleTap
+            .asObservable()
+            .bind(onNext: { [weak self] in
+                self?.viewModel.tapLogOut()
+            })
+            .disposed(by: self.disposeBag)
+        
+        self.resignButton.rx.throttleTap
             .bind (onNext:{ [weak self] in
                 self?.viewModel.tapResign()
             })
-            .disposed(by: disposeBag)
-            
+            .disposed(by: self.disposeBag)
     }
-    
+}
+
+// MARK: - Navigation
+extension SettingViewController {
     private func navigate(_ navigation: SettingNavigation) {
         let viewController = createViewController(navigation.destination)
-        navigate(viewController, action: navigation.action)
+        self.navigate(viewController, action: navigation.action)
     }
     private func createViewController(_ next: SettingDestination) -> UIViewController {
         switch next {
         case .onboardingQuest:
-            // TODO: 수정필요
-            return questViewControllerFactory()
+            return self.questViewControllerFactory()
         case .aboutProductionTeam:
-            return aboutProductionTeamFactory()
+            return self.aboutProductionTeamFactory()
         case .notice:
-            return noticeViewControllerFactory()
+            return self.noticeViewControllerFactory()
         default:
             return .init()
         }
