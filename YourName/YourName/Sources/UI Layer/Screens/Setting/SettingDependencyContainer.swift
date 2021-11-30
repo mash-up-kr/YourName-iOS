@@ -13,6 +13,10 @@ final class SettingDependencyContainer {
         
     }
     
+    deinit {
+        print(" 💀 \(String(describing: self)) deinit")
+    }
+    
     func settingViewController() -> UIViewController {
         let viewController = SettingViewController.instantiate()
         viewController.viewModel = self.createSettingViewModel()
@@ -23,16 +27,17 @@ final class SettingDependencyContainer {
         
         viewController.aboutProductionTeamFactory = aboutProductionTeamFactory
         viewController.questViewControllerFactory = {
-            let depencyContainer = self.createQuestDependencyContainer()
+            let depencyContainer = QuestDependencyContainer(settingDependencyContainer: self)
             return depencyContainer.createQuestViewController()
+        }
+        
+        viewController.noticeViewControllerFactory = {
+            let viewController = NoticeViewController.instantiate()
+            return viewController
         }
       
         let navigationController = UINavigationController(rootViewController: viewController)
         return navigationController
-    }
-    
-    private func createQuestDependencyContainer() -> QuestDependencyContainer {
-        return QuestDependencyContainer(settingDependencyContainer: self)
     }
     
     private func createSettingViewModel() -> SettingViewModel {

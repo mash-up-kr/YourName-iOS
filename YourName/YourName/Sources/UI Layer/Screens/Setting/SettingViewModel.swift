@@ -28,15 +28,20 @@ final class SettingViewModel {
         self.authRepository = authRepository
     }
     
+    deinit {
+        print(" 💀 \(String(describing: self))")
+    }
+    
+    // MARK: - Methods
+    
     func tapOnboardingQuest() {
-        navigation.accept(.present(.onboardingQuest))
+        self.navigation.accept(.present(.onboardingQuest))
     }
     func tapNotice() {
-        print(#function)
-//        navigation.accept(.push(.notice))
+        self.navigation.accept(.push(.notice))
     }
     func tapAboutProductionTeam() {
-        navigation.accept(.push(.aboutProductionTeam))
+        self.navigation.accept(.push(.aboutProductionTeam))
     }
     
     func tapLogOut() -> Observable<Void> {

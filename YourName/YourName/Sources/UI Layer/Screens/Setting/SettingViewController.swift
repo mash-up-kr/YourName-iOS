@@ -23,6 +23,7 @@ final class SettingViewController: ViewController, Storyboarded {
     var viewModel: SettingViewModel!
     var aboutProductionTeamFactory: (() -> AboutProductionTeamViewController)!
     var questViewControllerFactory: (() -> QuestViewController)!
+    var noticeViewControllerFactory: (() -> NoticeViewController)!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -106,6 +107,8 @@ extension SettingViewController {
             return questViewControllerFactory()
         case .aboutProductionTeam:
             return aboutProductionTeamFactory()
+        case .notice:
+            return noticeViewControllerFactory()
         default:
             return .init()
         }
