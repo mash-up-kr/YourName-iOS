@@ -112,7 +112,7 @@ extension MyCardListViewController {
 extension MyCardListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        1
+        return self.viewModel.numberOfMyCards
     }
     
     func collectionView(_ collectionView: UICollectionView,
