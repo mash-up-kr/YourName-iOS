@@ -11,7 +11,7 @@ protocol CharacterItemFactory {
     func create(by category: ItemCategory) -> [CharacterItem]
 }
 
-final class CharacterItemFactoryImpl: CharacterItemFactory {
+final class YourNameCharacterItemFactory: CharacterItemFactory {
     
     func create(by category: ItemCategory) -> [CharacterItem] {
         var items = [Int](1...category.numberOfItems).map { index in

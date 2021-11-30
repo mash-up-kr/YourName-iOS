@@ -22,9 +22,17 @@ final class SettingDependencyContainer {
         }
         
         viewController.aboutProductionTeamFactory = aboutProductionTeamFactory
+        viewController.questViewControllerFactory = {
+            let depencyContainer = self.createQuestDependencyContainer()
+            return depencyContainer.createQuestViewController()
+        }
       
         let navigationController = UINavigationController(rootViewController: viewController)
         return navigationController
+    }
+    
+    private func createQuestDependencyContainer() -> QuestDependencyContainer {
+        return QuestDependencyContainer(settingDependencyContainer: self)
     }
     
     private func createSettingViewModel() -> SettingViewModel {

@@ -18,6 +18,7 @@ final class ImageSourceTypePickerView: UIView, NibLoadable {
             dispatch(to: viewModel)
         }
     }
+    var parent: ViewController?
     
     override init(frame: CGRect) {
         super.init(frame: frame)

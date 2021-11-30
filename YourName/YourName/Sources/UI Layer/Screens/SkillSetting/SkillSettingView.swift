@@ -16,6 +16,7 @@ final class SkillSettingView: UIView, NibLoadable {
     var viewModel: SkillSettingViewModel! {
         didSet { bind(to: viewModel) }
     }
+    var parent: ViewController?
     
     override init(frame: CGRect) {
         super.init(frame: frame)

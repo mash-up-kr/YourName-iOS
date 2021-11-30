@@ -17,6 +17,7 @@ final class CharacterSettingView: UIView, NibLoadable {
     var viewModel: CharacterSettingViewModel! {
         didSet { bind(to: viewModel) }
     }
+    var parent: ViewController?
     var displayCharacterItemsViewControllerFactory: (([ItemCategory]) -> [DisplayCharacterItemsViewController])!
     var onComplete: (() -> Void)?
     
@@ -106,7 +107,7 @@ final class CharacterSettingView: UIView, NibLoadable {
         guard let characterFittingView = self.characterFittingView else { return }
         characterFittingView.backgroundColor = captureColor
         
-        guard let data = SnapshotServiceImpl.capture(characterFittingView) else { return }
+        guard let data = YourNameSnapshotService.capture(characterFittingView) else { return }
         
         viewModel.updateCharacterData(data)
         characterFittingView.backgroundColor = originalColor
@@ -119,14 +120,25 @@ final class CharacterSettingView: UIView, NibLoadable {
             label.textColor = isSelected ? Palette.black1 : Palette.gray2
         }
         guard let selectedCategoryView = self.categoryStackview?.arrangedSubviews[safe: selectedIndex] else { return }
+        print("🐛 - ", selectedCategoryView.constraints.count)
+        print("🐛 - ", selectedCategoryUnderLine?.constraints.count ?? 0)
+        print("🐛 - ", selectedCategoryLineStart)
         selectedCategoryLineStart?.isActive = false
         selectedCategoryLineEnd?.isActive = false
         selectedCategoryLineStart = nil
         selectedCategoryLineEnd = nil
+        print("----------------")
+        print("🐛 - ", selectedCategoryView.constraints.count)
+        print("🐛 - ", selectedCategoryUnderLine?.constraints.count ?? 0)
+        print("🐛 - ", selectedCategoryLineStart)
         selectedCategoryLineStart = selectedCategoryUnderLine?.leadingAnchor.constraint(equalTo: selectedCategoryView.leadingAnchor, constant: 3)
         selectedCategoryLineEnd = selectedCategoryUnderLine?.trailingAnchor.constraint(equalTo: selectedCategoryView.trailingAnchor, constant: -3)
         selectedCategoryLineStart?.isActive = true
         selectedCategoryLineEnd?.isActive = true
+        print("----------------")
+        print("🐛 - ", selectedCategoryView.constraints.count)
+        print("🐛 - ", selectedCategoryUnderLine?.constraints.count ?? 0)
+        print("🐛 - ", selectedCategoryLineStart)
         
         UIView.animate(withDuration: 0.2, animations: {
             self.layoutIfNeeded()

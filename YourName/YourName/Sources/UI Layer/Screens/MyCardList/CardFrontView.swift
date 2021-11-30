@@ -12,11 +12,12 @@ import RxSwift
 final class CardFrontView: NibLoadableView {
     
     struct Item {
+        let id: Int
         let image: String
         let name: String
         let role: String
         let skills: [MySkillProgressView.Item]
-        let backgroundColor: UIColor
+        let backgroundColor: ColorSource
     }
     
     @IBOutlet unowned var userProfileImage: UIImageView!
@@ -39,16 +40,29 @@ final class CardFrontView: NibLoadableView {
     }
 
     private func configureUI() {
-        skillStackView.subviews.forEach {
+        self.skillStackView.subviews.forEach {
             $0.isHidden = true
         }
-        contentView.layer.cornerRadius = 12
+        self.contentView.layer.cornerRadius = 12
     }
 
     func configure(item: Item) {
+        guard let url = URL(string: "https://erme.s3.ap-northeast-2.amazonaws.com/\(item.image)") else { return }
+        self.userProfileImage.setImageSource(.url(url))
         self.userNameLabel.text = item.name
         self.userRoleLabel.text = item.role
-        self.contentView.backgroundColor = item.backgroundColor
+        
+        let gradientLayer = CAGradientLayer()
+        switch item.backgroundColor {
+        case .gradient(let colors):
+            self.backgroundColor = nil
+            gradientLayer.colors = colors.compactMap { $0.cgColor }
+        case .monotone(let color):
+            gradientLayer.colors = nil
+            self.backgroundColor = color
+        }
+        self.layer.addSublayer(gradientLayer)
+        
         self.configure(skills: item.skills)
     }
     

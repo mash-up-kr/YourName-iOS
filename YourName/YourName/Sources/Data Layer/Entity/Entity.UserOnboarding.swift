@@ -9,19 +9,12 @@ import Foundation
 
 extension Entity {
     struct UserOnboarding: Decodable {
-        let id: Int?
-        let userId: Int?
-        let makeFirstNameCard: Bool?
-        let shareNameCard: Bool?
-        let addNameCollectionNameCard: Bool?
-        let makeCollection: Bool?
-        let makeNameCards: Bool?
-        let user: User?
-        
-        struct User: Decodable {
-            let id: Int?
-            let nickName: String?
-            let providerName: String?
+        enum Status: String, Decodable {
+            case WAIT
+            case DONE_WAIT
+            case DONE
         }
+        let title: String
+        let status: Status
     }
 }

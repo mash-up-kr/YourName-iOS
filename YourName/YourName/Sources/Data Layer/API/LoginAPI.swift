@@ -9,18 +9,11 @@ import Foundation
 import Moya
 
 struct LoginAPI: ServiceAPI {
-
+    typealias Response = Entity.Authentication
+    
     private let accessToken: AccessToken
     private let provider: Provider
     
-    init(accessToken: AccessToken,
-         provider: Provider) {
-        
-        self.accessToken = accessToken
-        self.provider = provider
-    }
-    
-    typealias Response = Entity.Login
     var path: String {
         switch provider {
         case .kakao:
@@ -29,9 +22,16 @@ struct LoginAPI: ServiceAPI {
             return "/apple-login"
         }
     }
-    var method: Moya.Method { .post }
-    var task: Task { .requestPlain }
-    var headers: [String : String]? {
-        return ["authorization": self.accessToken]
+    var headers: [String: String]? { nil }
+    var method: Method { .post }
+    var task: NetworkingTask {
+        return .requestParameters(parameters: ["accessToken": accessToken],
+                                  encoding: JSONEncoding.default)
     }
+    
+    init(accessToken: AccessToken, provider: Provider) {
+        self.accessToken = accessToken
+        self.provider = provider
+    }
+    
 }

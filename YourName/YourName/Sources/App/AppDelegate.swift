@@ -9,6 +9,7 @@ import UIKit
 import KakaoSDKCommon
 import KakaoSDKAuth
 import Firebase
+import FLEX
 
 final class AppDelegate: UIResponder, UIApplicationDelegate {
     
@@ -24,7 +25,9 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         
         kakaoSDKInit()
         FirebaseApp.configure()
-        
+        #if DEBUG
+        FLEXManager.shared.showExplorer()
+        #endif
         return true
     }
     

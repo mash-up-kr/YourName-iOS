@@ -8,8 +8,3 @@
 import Foundation
 
 enum Entity {}
-
-extension Entity {
-    struct Empty: Decodable {
-    }
-}

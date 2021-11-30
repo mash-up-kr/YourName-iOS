@@ -10,8 +10,9 @@ import Foundation
 extension Entity {
     
     struct TMI: Decodable {
+        let id: Int?
         let type: String?
-        let value: String?
+        let name: String?
     }
     
 }

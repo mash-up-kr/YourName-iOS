@@ -26,17 +26,6 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
         bind()
     }
     
-    private let disposeBag = DisposeBag()
-    
-    private var cellViewModels: [FriendCardCellViewModel] = []
-    
-    @IBOutlet private weak var backButton: UIButton?
-    @IBOutlet private weak var moreButton: UIButton?
-    @IBOutlet private weak var cardBookTitleLabel: UILabel?
-    @IBOutlet private weak var friendCardCollectionView: UICollectionView?
-}
-extension CardBookDetailViewController {
-    
     private func bind() {
         dispatch(to: viewModel)
         render(viewModel)
@@ -60,7 +49,19 @@ extension CardBookDetailViewController {
         
         self.moreButton?.rx.tap
             .subscribe(onNext: { [weak self] in
-                self?.viewModel.tapMore()
+                self?.viewModel.tapEdit()
+            })
+            .disposed(by: self.disposeBag)
+        
+        self.removeButton?.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.viewModel.tapRemove()
+            })
+            .disposed(by: self.disposeBag)
+        
+        self.bottomRemoveButton?.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.viewModel.tapRemove()
             })
             .disposed(by: self.disposeBag)
     }
@@ -72,10 +73,31 @@ extension CardBookDetailViewController {
             })
             .disposed(by: self.disposeBag)
         
-        self.viewModel.cellViewModels.distinctUntilChanged()
+        self.viewModel.friendCardsForDisplay.distinctUntilChanged()
             .subscribe(onNext: { [weak self] cellViewModels in
                 self?.cellViewModels = cellViewModels
                 self?.friendCardCollectionView?.reloadData()
+            })
+            .disposed(by: self.disposeBag)
+        
+        self.viewModel.isEditing.distinctUntilChanged()
+            .subscribe(onNext: { [weak self] isEditing in
+                self?.moreButton?.isHidden = isEditing
+                self?.removeButton?.isHidden = isEditing == false
+                self?.bottomBarView?.isHidden = isEditing == false
+                self?.bottomRemoveButton?.isHidden = isEditing == false
+            })
+            .disposed(by: self.disposeBag)
+        
+        self.viewModel.shouldShowRemoveReconfirmAlert
+            .subscribe(onNext: {
+                // 디자인 개선
+               let alertController = UIAlertController(title: "정말 삭제하시겠츄?", message: "삭제한 미츄와 도감은 복구할 수 없어요.", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "삭제하기", style: .default, handler: { _ in self.viewModel.tapRemoveConfirm() })
+                let cancel = UIAlertAction(title: "삭제 안할래요", style: .cancel, handler: { _ in self.viewModel.tapRemoveCancel() })
+                alertController.addAction(ok)
+                alertController.addAction(cancel)
+                self.present(alertController, animated: true, completion: nil)
             })
             .disposed(by: self.disposeBag)
         
@@ -103,6 +125,19 @@ extension CardBookDetailViewController {
         friendCardCollectionView?.dataSource = self
         friendCardCollectionView?.delegate = self
     }
+    
+    private let disposeBag = DisposeBag()
+    
+    private var cellViewModels: [FriendCardCellViewModel] = []
+    
+    @IBOutlet private weak var backButton: UIButton?
+    @IBOutlet private weak var moreButton: UIButton?
+    @IBOutlet private weak var removeButton: UIButton?
+    @IBOutlet private weak var cardBookTitleLabel: UILabel?
+    @IBOutlet private weak var friendCardCollectionView: UICollectionView?
+    @IBOutlet private weak var bottomRemoveButton: UIButton?
+    @IBOutlet private weak var bottomBarView: UIView?
+
 }
 
 // TODO: rx datasource로 추후 교체예정
@@ -138,7 +173,13 @@ extension CardBookDetailViewController: UICollectionViewDataSource {
     
 }
 
-extension CardBookDetailViewController: UICollectionViewDelegate {}
+extension CardBookDetailViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.viewModel.tapCheck(at: indexPath.item)
+    }
+    
+}
 
 extension CardBookDetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,

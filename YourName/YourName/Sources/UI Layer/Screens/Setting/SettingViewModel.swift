@@ -29,7 +29,7 @@ final class SettingViewModel {
     }
     
     func tapOnboardingQuest() {
-        navigation.accept(.show(.onboardingQuest))
+        navigation.accept(.present(.onboardingQuest))
     }
     func tapNotice() {
         print(#function)
