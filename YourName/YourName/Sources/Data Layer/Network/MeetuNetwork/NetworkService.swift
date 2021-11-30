@@ -22,9 +22,7 @@ final class NetworkService: NetworkServing {
         return ["authorization": "Bearer \(accessToken)"]
     }
     
-    init(authenticationRepository: AuthenticationRepository) {
-        self.authenticationRepository = authenticationRepository
-    }
+    weak var authenticationRepository: AuthenticationRepository?
     
     func request<API>(_ api: API) -> Observable<API.Response> where API : ServiceAPI {
         return self._request(api)
@@ -84,7 +82,6 @@ final class NetworkService: NetworkServing {
     private let disposeBag = DisposeBag()
     
     private let provider = MoyaProvider<MultiTarget>()
-    private weak var authenticationRepository: AuthenticationRepository?
 }
 
 private extension Secret {

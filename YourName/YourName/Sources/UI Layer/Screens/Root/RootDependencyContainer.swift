@@ -18,6 +18,7 @@ final class RootDependencyContainer {
             localStorage: UserDefaults.standard,
             network: Environment.current.network
         )
+        (Environment.current.network as? NetworkService)?.authenticationRepository = self.authenticationRepository
     }
     
     func createRootViewController() -> RootViewController {

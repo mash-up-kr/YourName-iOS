@@ -12,16 +12,16 @@ import RxRelay
 final class WelcomeViewModel {
     
     private let delegate: AuthenticationDelegate
-    private let authRepository: AuthenticationRepository
+    private let authenticationRepository: AuthenticationRepository
     private let oauthRepository: OAuthRepository
 
     private let disposeBag = DisposeBag()
     
     init(delegate: AuthenticationDelegate,
-         authRepository: AuthenticationRepository,
+         authenticationRepository: AuthenticationRepository,
          oauthRepository: OAuthRepository) {
         self.delegate = delegate
-        self.authRepository = authRepository
+        self.authenticationRepository = authenticationRepository
         self.oauthRepository = oauthRepository
     }
     
@@ -34,7 +34,7 @@ final class WelcomeViewModel {
         self.oauthRepository.authorize(provider: provider)
             .flatMapLatest { [weak self] response -> Observable<Secret> in
                 guard let self = self else { return .empty() }
-                return self.authRepository
+                return self.authenticationRepository
                     .fetch(withProviderToken: response.accessToken, provider: response.provider)
                     .compactMap { $0?.accessToken }
             }
