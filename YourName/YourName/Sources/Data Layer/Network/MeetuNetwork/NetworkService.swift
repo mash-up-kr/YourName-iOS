@@ -67,19 +67,18 @@ final class NetworkService: NetworkServing {
     }
     
     private let provider = MoyaProvider<MultiTarget>()
-    private var refreshToken: String? = AccessToken.dummyRefreshDummy
-    private var accessToken: String? = AccessToken.dummyAccessToken
+    private var accessToken: String? = Secret.dummyAccessToken
+    private var refreshToken: String? = Secret.dummyRefreshToken
     
 }
 
-private extension AccessToken {
+private extension Secret {
+    
     static let dummyAccessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUsIm5pY2tOYW1lIjoi7J207Jew7KSRIiwiaWF0IjoxNjM3ODM5MjQxLCJleHAiOjE2Mzg0MzkyNDF9.629okopRQ14ek0oX-2-phAJ03nfZEEpKCKWRjxiv9yA"
-}
-private extension AccessToken {
-    static let dummyRefreshDummy = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjExLCJ1c2VySWRlbnRpZmllciI6IjIwMDg1OTY5NjciLCJpYXQiOjE2MzgyMDAzNjEsImV4cCI6MTY0MDc5MjM2MX0.HqdUBL_9y5wZY3g0AmXJuX4jRPIa4Q6lDMHba2ixWho"
+    
+    static let dummyRefreshToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjExLCJ1c2VySWRlbnRpZmllciI6IjIwMDg1OTY5NjciLCJpYXQiOjE2MzgyMDAzNjEsImV4cCI6MTY0MDc5MjM2MX0.HqdUBL_9y5wZY3g0AmXJuX4jRPIa4Q6lDMHba2ixWho"
 }
 
-typealias Authentication = Entity.Authentication
 
 enum NetworkError: Error {
     case hasNotRefreshToken

@@ -10,11 +10,14 @@ import Foundation
 final class RootDependencyContainer {
     
     let rootViewModel: RootViewModel
-    let accessTokenRepository: AccessTokenRepository
+    let authenticationRepository: AuthenticationRepository
     
     init() {
         self.rootViewModel = RootViewModel()
-        self.accessTokenRepository = YourNameAccessTokenRepository()
+        self.authenticationRepository = YourNameAuthenticationRepository(
+            localStorage: UserDefaults.standard,
+            network: Environment.current.network
+        )
     }
     
     func createRootViewController() -> RootViewController {
@@ -26,7 +29,7 @@ final class RootDependencyContainer {
             let dependencyContainer = self.createSignedOutDependencyContainer()
             return dependencyContainer.createWelcomeViewController()
         }
-        let homeTabBarControllerFactory: (AccessToken) -> HomeTabBarController = { accessToken in
+        let homeTabBarControllerFactory: (Secret) -> HomeTabBarController = { accessToken in
             let dependencyContainer = self.createSignedInDependencyContainer(accessToken: accessToken)
             return dependencyContainer.createHomeViewController()
         }
@@ -44,7 +47,7 @@ final class RootDependencyContainer {
         return SplashDependencyContainer(rootDependencyContainer: self)
     }
     
-    private func createSignedInDependencyContainer(accessToken: AccessToken) -> SignedInDependencyContainer {
+    private func createSignedInDependencyContainer(accessToken: Secret) -> SignedInDependencyContainer {
         return SignedInDependencyContainer(accessToken: accessToken, rootDependencyContainer: self)
     }
     
