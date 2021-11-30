@@ -12,10 +12,10 @@ import RxSwift
 final class CardDetailMoreViewModel {
     
     private let myCardRepository: MyCardRepository!
-    private let cardId: Int
+    private let cardId: CardID
     private let disposeBag = DisposeBag()
     init(repository: MyCardRepository,
-         id: Int) {
+         id: CardID) {
         self.cardId = id
         self.myCardRepository = repository
     }
@@ -40,13 +40,14 @@ final class CardDetailMoreViewModel {
         self.alertController.accept(alertController)
     }
     
-    private func deleteMyCard(id: Int) {
+    private func deleteMyCard(id: CardID) {
         self.myCardRepository.removeMyCard(id: cardId)
             .catchError { error in
                 print(error)
                 return .empty()
             }
             .bind(onNext: { [weak self] _ in
+                print("card delete success")
                 self?.popToRootViewController.accept(())
             })
             .disposed(by: self.disposeBag)

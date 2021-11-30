@@ -10,7 +10,7 @@ import RxSwift
 
 enum MyCardListDestination: Equatable {
     case cardCreation
-    case cardDetail(cardID: Int)
+    case cardDetail(cardID: CardID)
 }
 
 typealias MyCardListNavigation = Navigation<MyCardListDestination>
@@ -77,7 +77,7 @@ final class MyCardListViewModel {
             } else {
                 bgColor = .gradient(bgColors.map { UIColor(hexString: $0) })
             }
-            return MyCard(id: card.id ?? 0,
+            return MyCard(id: card.uniqueCode ?? "",
                           image: card.image?.key ?? "",
                           name: card.name ?? "",
                           role: card.role ?? "",

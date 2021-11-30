@@ -22,7 +22,7 @@ final class MyCardListViewController: ViewController, Storyboarded {
     // MARK: - Properties
     
     var cardCreationViewControllerFactory: (() -> CardCreationViewController)!
-    var cardDetailViewControllerFactory: ((Int) -> CardDetailViewController)!
+    var cardDetailViewControllerFactory: ((CardID) -> CardDetailViewController)!
     var viewModel: MyCardListViewModel!
     private let disposeBag = DisposeBag()
     private lazy var collectionViewWidth = ( 312 * self.myCardListCollectionView.bounds.height ) / 512

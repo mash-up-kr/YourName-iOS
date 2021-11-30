@@ -9,12 +9,12 @@ import Foundation
 
 struct RemoveMyNameCardAPI: ServiceAPI {
     typealias Response = Entity.Empty
-    private let id: Int
+    private let id: CardID
     var path: String { "/namecards\(id)" }
     var method: Method { .delete }
     var task: NetworkingTask { .requestPlain }
     
-    init(id: Int) {
+    init(id: CardID) {
         self.id = id
     }
 }

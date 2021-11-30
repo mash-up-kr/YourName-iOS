@@ -9,11 +9,11 @@ import Foundation
 
 final class CardDetailDependencyContainer {
     
-    let cardID: Int
+    let cardID: CardID
     let myCardRepository: MyCardRepository
     
     init(
-        cardID: Int,
+        cardID: CardID,
         myCardListDependencyContainer: MyCardListDependencyContainer,
         myCardRepository: MyCardRepository
     ) {
