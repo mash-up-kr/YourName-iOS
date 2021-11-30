@@ -8,11 +8,18 @@
 import Foundation
 import RxSwift
 
-protocol AuthenticationRepository {
+struct AuthenticationOption: OptionSet {
+    let rawValue: Int
     
-    func fetch() -> Observable<Authentication?>
-    
+    static let accessToken =  AuthenticationOption(rawValue: 1 << 0)
+    static let refreshToken = AuthenticationOption(rawValue: 1 << 1)
+}
+
+protocol AuthenticationRepository: AnyObject {
+    func fetch(option: AuthenticationOption) -> Observable<Authentication?>
     func fetch(withProviderToken providerToken: Secret, provider: Provider) -> Observable<Authentication?>
+    func write(authentication: Authentication) -> Observable<Void>
+    func remove(option: AuthenticationOption) -> Observable<Void>
 }
 
 final class YourNameAuthenticationRepository: AuthenticationRepository {
@@ -22,13 +29,17 @@ final class YourNameAuthenticationRepository: AuthenticationRepository {
         self.network = network
     }
     
-    func fetch() -> Observable<Authentication?> {
-        return Observable.zip(
-            self.localStorage.read(.accessToken),
-            self.localStorage.read(.refreshToken)
-        ).map { accessToken, refreshToken in
-            Authentication(accessToken: accessToken, refreshToken: refreshToken, user: nil, userOnboarding: nil)
-        }
+    func fetch(option: AuthenticationOption = [.accessToken, .refreshToken]) -> Observable<Authentication?> {
+        var screams: [Observable<Secret?>] = []
+        
+        if option.contains(.accessToken)  { screams.append(self.localStorage.read(.accessToken)) }
+        if option.contains(.refreshToken) { screams.append(self.localStorage.read(.refreshToken)) }
+        
+        return Observable.zip(screams).map { authentication -> Authentication? in
+                let accessToken = authentication[safe: 0] ?? nil
+                let refreshToken = authentication[safe: 1] ?? nil
+                return Authentication(accessToken: accessToken, refreshToken: refreshToken, user: nil, userOnboarding: nil)
+            }
     }
     
     func fetch(withProviderToken providerToken: Secret, provider: Provider) -> Observable<Authentication?> {
@@ -41,7 +52,23 @@ final class YourNameAuthenticationRepository: AuthenticationRepository {
             }
     }
     
-    private func save(accessToken: String) {
+    func write(authentication: Authentication) -> Observable<Void> {
+        var screams: [Observable<Bool>] = []
+        if let accessToken = authentication.accessToken   { screams.append(self.localStorage.write(.accessToken, value: accessToken))   }
+        if let refreshToken = authentication.refreshToken { screams.append(self.localStorage.write(.refreshToken, value: refreshToken)) }
+        
+        return Observable.zip(screams).map { _ in Void() }
+    }
+    
+    func remove(option: AuthenticationOption) -> Observable<Void> {
+        var screams: [Observable<Bool>] = []
+        if option.contains(.accessToken)  { screams.append(self.localStorage.delete(.accessToken))  }
+        if option.contains(.refreshToken) { screams.append(self.localStorage.delete(.refreshToken)) }
+        
+        return Observable.zip(screams).map { _ in Void() }
+    }
+    
+    private func save(accessToken: String)  {
         self.localStorage.write(.accessToken, value: accessToken)
             .subscribe { print("access token save success \($0)") }
             .disposed(by: self.disposeBag)

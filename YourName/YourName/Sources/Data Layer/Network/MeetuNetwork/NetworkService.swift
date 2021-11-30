@@ -22,6 +22,10 @@ final class NetworkService: NetworkServing {
         return ["authorization": "Bearer \(accessToken)"]
     }
     
+    init(authenticationRepository: AuthenticationRepository) {
+        self.authenticationRepository = authenticationRepository
+    }
+    
     func request<API>(_ api: API) -> Observable<API.Response> where API : ServiceAPI {
         return self._request(api)
             .catchError { [weak self] error -> Observable<MeetuResponse<API.Response>> in
@@ -29,8 +33,16 @@ final class NetworkService: NetworkServing {
                 
                 return self.refreshAuthentication()
                     .do { [weak self] authentication in
+                        guard let self = self else { return }
                         guard let accessToken = authentication.accessToken else { return }
-                        self?.accessToken = accessToken
+                        let authentication = Authentication(accessToken: accessToken,
+                                                            refreshToken: self.refreshToken,
+                                                            user: nil,
+                                                            userOnboarding: nil)
+                        self.accessToken = accessToken
+                        self.authenticationRepository?.write(authentication: authentication)
+                            .subscribe(onNext: { })
+                            .disposed(by: self.disposeBag)
                     }.flatMap { [weak self] _ -> Observable<MeetuResponse<API.Response>> in
                         guard let self = self else { return .empty() }
                         return self._request(api)
@@ -66,10 +78,13 @@ final class NetworkService: NetworkServing {
         }
     }
     
-    private let provider = MoyaProvider<MultiTarget>()
     private var accessToken: String? = Secret.dummyAccessToken
     private var refreshToken: String? = Secret.dummyRefreshToken
     
+    private let disposeBag = DisposeBag()
+    
+    private let provider = MoyaProvider<MultiTarget>()
+    private weak var authenticationRepository: AuthenticationRepository?
 }
 
 private extension Secret {
