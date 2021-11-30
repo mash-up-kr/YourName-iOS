@@ -18,6 +18,7 @@ final class SignedOutDependencyContainer {
     func createWelcomeViewController() -> WelcomeViewController {
         let viewController = WelcomeViewController.instantiate()
         viewController.viewModel = createWelcomeViewModel()
+        print(UserDefaultManager.refreshToken)
         return viewController
     }
     

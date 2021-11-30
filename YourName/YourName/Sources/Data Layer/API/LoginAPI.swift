@@ -25,7 +25,7 @@ struct LoginAPI: ServiceAPI {
     var headers: [String: String]? { nil }
     var method: Method { .post }
     var task: NetworkingTask {
-        return .requestParameters(parameters: ["accessToken": "Bearer \(accessToken)"],
+        return .requestParameters(parameters: ["accessToken": "\(accessToken)"],
                                   encoding: JSONEncoding.default)
     }
     

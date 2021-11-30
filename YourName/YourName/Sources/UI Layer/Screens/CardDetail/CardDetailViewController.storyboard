@@ -293,6 +293,7 @@
                     <connections>
                         <outlet property="backButton" destination="DMr-HV-lzB" id="USK-LA-7CU"/>
                         <outlet property="bubbleBottom" destination="HnK-O0-Q1Q" id="LwP-QQ-OYB"/>
+                        <outlet property="detailMoreButton" destination="Ar2-X3-D4l" id="D2H-a4-pH8"/>
                         <outlet property="frontButton" destination="WWP-Oe-lP8" id="pAu-pT-ynM"/>
                         <outlet property="mainView" destination="dkS-4s-anS" id="acg-Pu-N9a"/>
                         <outlet property="underlineView" destination="tbO-4J-LxF" id="vod-EJ-FuA"/>

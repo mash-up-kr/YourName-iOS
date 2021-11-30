@@ -6,11 +6,15 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 
 final class CardDetailViewController: ViewController, Storyboarded {
     
+    var cardDetailMoreViewFactory: ((Int) -> CardDetailMoreViewController)!
 
+    @IBOutlet private weak var detailMoreButton: UIButton!
     @IBOutlet weak var bubbleBottom: UIView!
     @IBOutlet private weak var underlineView: UIView!
     @IBOutlet private weak var frontButton: UIButton!
@@ -114,3 +118,17 @@ extension CardDetailViewController: UIPageViewControllerDelegate {
     }
 }
 class CardDetailFrontViewController: UIViewController {}
+
+
+extension CardDetailViewController {
+    private func bind() {
+        self.detailMoreButton.rx.throttleTap
+            .map { [weak self] -> CardDetailMoreViewController? in
+                guard let self = self else { return nil }
+                return self.cardDetailMoreViewFactory
+            }
+            .bind(onNext: { [weak self] in
+                self?.
+            })
+    }
+}
