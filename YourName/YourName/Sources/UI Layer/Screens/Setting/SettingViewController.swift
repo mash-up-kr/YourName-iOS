@@ -12,10 +12,10 @@ import RxCocoa
 
 final class SettingViewController: ViewController, Storyboarded {
     
+    @IBOutlet private unowned var questNotiView: UIView!
     @IBOutlet private unowned var resignButton: UIButton!
     @IBOutlet private unowned var logoutButton: UIButton!
     @IBOutlet private unowned var questView: UIView!
-    @IBOutlet private unowned var questProgressView: UIProgressView!
     @IBOutlet private unowned var noticeView: UIView!
     @IBOutlet private unowned var aboutProductionTeamView: UIView!
     
@@ -37,10 +37,6 @@ extension SettingViewController {
     
     private func configureUI() {
         self.navigationController?.navigationBar.isHidden = true
-        questProgressView.layer.cornerRadius = 6
-        questProgressView.layer.masksToBounds = true
-        questProgressView.layer.sublayers![1].cornerRadius = 6
-        questProgressView.subviews[1].layer.masksToBounds = true
         noticeView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         aboutProductionTeamView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
     }
