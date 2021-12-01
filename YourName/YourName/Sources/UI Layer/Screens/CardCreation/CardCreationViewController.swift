@@ -49,6 +49,10 @@ final class CardCreationViewController: ViewController, Storyboarded {
     private func dispatch(to viewModel: CardCreationViewModel) {
         viewModel.didLoad()
         
+        backButton?.rx.tap
+            .subscribe(onNext: { [weak self] in self?.viewModel?.tapBack() })
+            .disposed(by: self.disposeBag)
+        
         profileClearButton?.rx.tap
             .subscribe(onNext: { [weak self] in self?.viewModel.tapProfileClear() })
             .disposed(by: disposeBag)
@@ -122,8 +126,8 @@ final class CardCreationViewController: ViewController, Storyboarded {
             .disposed(by: disposeBag)
         
         completeButton?.rx.tap
-            .subscribe(onNext: { [weak self] in self?.viewModel.tapCompletion()
-                self?.dismiss(animated: true, completion: nil)
+            .subscribe(onNext: { [weak self] in
+                self?.viewModel.tapCompletion()
             })
             .disposed(by: self.disposeBag)
         
@@ -136,7 +140,6 @@ final class CardCreationViewController: ViewController, Storyboarded {
     }
     
     private func render(_ viewModel: CardCreationViewModel) {
-        
         if let profilePlaceholderView = self.profilePlaceholderView {
             viewModel.shouldHideProfilePlaceholder
                 .distinctUntilChanged()
@@ -185,12 +188,23 @@ final class CardCreationViewController: ViewController, Storyboarded {
                 .disposed(by: disposeBag)
         }
         
+        if let personalityPlaceholder = self.personalityPlaceholder {
+            viewModel.shouldHidePersonalityPlaceholder
+                .distinctUntilChanged()
+                .bind(to: personalityPlaceholder.rx.isHidden)
+                .disposed(by: self.disposeBag)
+        }
+        
         if let aboutMeTextView = self.aboutMeTextView {
             viewModel.aboutMe
                 .distinctUntilChanged()
                 .bind(to: aboutMeTextView.rx.text)
                 .disposed(by: disposeBag)
         }
+        
+        viewModel.isLoading.distinctUntilChanged()
+            .bind(to: self.isLoading)
+            .disposed(by: disposeBag)
         
         viewModel.hasCompletedSkillInput
             .distinctUntilChanged()
@@ -233,6 +247,15 @@ final class CardCreationViewController: ViewController, Storyboarded {
                 .disposed(by: disposeBag)
         }
         
+        if let completeButton = self.completeButton {
+            viewModel.canComplete.distinctUntilChanged()
+                .do { [weak self] canComplete in
+                    self?.completeButton?.backgroundColor = canComplete ? Palette.black1 : Palette.gray1
+                }
+                .bind(to: completeButton.rx.isEnabled)
+                .disposed(by: disposeBag)
+        }
+        
         viewModel.contactInfos
             .subscribe(onNext: { [weak self] contactInfos in
                 contactInfos.enumerated().forEach { index, contactInfo in
@@ -264,9 +287,9 @@ final class CardCreationViewController: ViewController, Storyboarded {
             })
             .disposed(by: disposeBag)
         
-        viewModel.shouldDismiss
+        viewModel.shouldClose
             .subscribe(onNext: { [weak self] in
-                self?.dismiss(animated: true, completion: nil)
+                self?.navigationController?.popViewController(animated: true)
             })
             .disposed(by: disposeBag)
         
@@ -315,6 +338,7 @@ final class CardCreationViewController: ViewController, Storyboarded {
     private let profileBackgroundColorButtonLayer = CAGradientLayer()
     private var indexOfContactTypeBeingSelected: Int? = nil
     
+    @IBOutlet private weak var backButton: UIButton?
     @IBOutlet private weak var scrollView: UIScrollView?
     @IBOutlet private weak var profileClearButton: UIButton?
     @IBOutlet private weak var profilePlaceholderView: UIView?
@@ -328,6 +352,7 @@ final class CardCreationViewController: ViewController, Storyboarded {
     @IBOutlet private var contactInputViews: [ContactInputView]?
     
     @IBOutlet private weak var personalityTextView: UITextView?
+    @IBOutlet private weak var personalityPlaceholder: UILabel?
     @IBOutlet private weak var personalityTextCountLabel: UILabel?
     @IBOutlet private weak var tmiCompleteImageView: UIImageView?
     @IBOutlet private weak var myTMISettingButton: UIButton?

@@ -23,7 +23,7 @@ final class YourNameStrongPointRepository: StrongPointRepository {
         return network.request(StrongPointsAPI())
             .compactMap { [weak self] behaviors in
                 guard let self = self else { return nil }
-                return behaviors.compactMap(self.translate(fromTMI:))
+                return behaviors.list?.compactMap(self.translate(fromTMI:))
             }
     }
     

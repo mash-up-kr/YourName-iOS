@@ -120,25 +120,14 @@ final class CharacterSettingView: UIView, NibLoadable {
             label.textColor = isSelected ? Palette.black1 : Palette.gray2
         }
         guard let selectedCategoryView = self.categoryStackview?.arrangedSubviews[safe: selectedIndex] else { return }
-        print("🐛 - ", selectedCategoryView.constraints.count)
-        print("🐛 - ", selectedCategoryUnderLine?.constraints.count ?? 0)
-        print("🐛 - ", selectedCategoryLineStart)
         selectedCategoryLineStart?.isActive = false
         selectedCategoryLineEnd?.isActive = false
         selectedCategoryLineStart = nil
         selectedCategoryLineEnd = nil
-        print("----------------")
-        print("🐛 - ", selectedCategoryView.constraints.count)
-        print("🐛 - ", selectedCategoryUnderLine?.constraints.count ?? 0)
-        print("🐛 - ", selectedCategoryLineStart)
         selectedCategoryLineStart = selectedCategoryUnderLine?.leadingAnchor.constraint(equalTo: selectedCategoryView.leadingAnchor, constant: 3)
         selectedCategoryLineEnd = selectedCategoryUnderLine?.trailingAnchor.constraint(equalTo: selectedCategoryView.trailingAnchor, constant: -3)
         selectedCategoryLineStart?.isActive = true
         selectedCategoryLineEnd?.isActive = true
-        print("----------------")
-        print("🐛 - ", selectedCategoryView.constraints.count)
-        print("🐛 - ", selectedCategoryUnderLine?.constraints.count ?? 0)
-        print("🐛 - ", selectedCategoryLineStart)
         
         UIView.animate(withDuration: 0.2, animations: {
             self.layoutIfNeeded()

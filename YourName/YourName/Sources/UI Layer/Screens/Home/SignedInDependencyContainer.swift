@@ -9,10 +9,10 @@ import UIKit
 
 final class SignedInDependencyContainer {
     
-    let accessToken: AccessToken
+    let accessToken: Secret
     
     init(
-        accessToken: AccessToken,
+        accessToken: Secret,
         rootDependencyContainer: RootDependencyContainer
     ) {
         // do something

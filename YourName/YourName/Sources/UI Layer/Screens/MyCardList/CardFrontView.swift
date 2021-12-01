@@ -38,30 +38,47 @@ final class CardFrontView: NibLoadableView {
         setupFromNib()
         configureUI()
     }
-
+    
     private func configureUI() {
         self.skillStackView.subviews.forEach {
             $0.isHidden = true
         }
         self.contentView.layer.cornerRadius = 12
     }
-
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        self.updateBackgroundColor()
+    }
+    
     func configure(item: Item) {
-        guard let url = URL(string: "https://erme.s3.ap-northeast-2.amazonaws.com/\(item.image)") else { return }
+        guard let url = URL(string: item.image) else { return }
         self.userProfileImage.setImageSource(.url(url))
         self.userNameLabel.text = item.name
         self.userRoleLabel.text = item.role
         
-        let gradientLayer = CAGradientLayer()
-        switch item.backgroundColor {
-        case .gradient(let colors):
-            self.backgroundColor = nil
-            gradientLayer.colors = colors.compactMap { $0.cgColor }
-        case .monotone(let color):
-            gradientLayer.colors = nil
-            self.backgroundColor = color
-        }
-        self.layer.addSublayer(gradientLayer)
+        self.colorSource = item.backgroundColor
+        self.updateBackgroundColor()
+//        self.layoutSubviews()
+//        switch item.backgroundColor {
+//        case .gradient(let colors):
+//            self.removeGradientLayer(name: Self.gradientLayerKey)
+//            let gradientLayer = CAGradientLayer().then {
+//                $0.name = Self.gradientLayerKey
+//                $0.colors = colors
+//                $0.frame = self.contentView.bounds
+//            }
+//            self.contentView.layer.insertSublayer(gradientLayer, at: 0)
+//        case .monotone(let color):
+//            self.contentView.removeGradientLayer(name: Self.gradientLayerKey)
+//            let gradientLayer = CAGradientLayer().then {
+//                $0.name = Self.gradientLayerKey
+//                $0.colors = [color, color]
+//                $0.frame = self.contentView.bounds
+//            }
+//            self.contentView.layer.insertSublayer(gradientLayer, at: 0)
+//        }
         
         self.configure(skills: item.skills)
     }
@@ -87,7 +104,6 @@ final class CardFrontView: NibLoadableView {
             $0.height.equalTo(24)
         }
     }
-
     //TODO: viewModel생성 이후 수정필요
     private func configure(skills: [MySkillProgressView.Item]) {
         skills.enumerated().forEach { index, skill in
@@ -96,4 +112,36 @@ final class CardFrontView: NibLoadableView {
             skillView.configure(skill: skill)
         }
     }
+    
+    private func updateBackgroundColor() {
+        guard let colorSource = self.colorSource else { return }
+        
+        switch colorSource {
+        case .monotone(let color):
+            self.contentView.removeGradientLayer(name: Self.gradientLayerKey)
+            let gradientLayer = CAGradientLayer().then {
+                $0.name = Self.gradientLayerKey
+                $0.colors = [color, color].map { $0.cgColor }
+                $0.startPoint = .zero
+                $0.endPoint = CGPoint(x: 1, y: 1)
+                $0.frame = self.contentView.bounds
+            }
+            self.contentView.layer.insertSublayer(gradientLayer, at: 0)
+            
+        case .gradient(let colors):
+            self.contentView.removeGradientLayer(name: Self.gradientLayerKey)
+            let gradientLayer = CAGradientLayer().then {
+                $0.name = Self.gradientLayerKey
+                $0.startPoint = .zero
+                $0.endPoint = CGPoint(x: 1, y: 1)
+                $0.colors = colors.map { $0.cgColor }
+                $0.frame = self.contentView.bounds
+            }
+            self.contentView.layer.insertSublayer(gradientLayer, at: 0)
+        }
+    }
+    
+    private var colorSource: ColorSource?
+    private static let gradientLayerKey = "gradientLayer"
+    
 }

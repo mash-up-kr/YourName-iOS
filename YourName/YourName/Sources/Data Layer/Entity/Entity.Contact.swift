@@ -9,7 +9,7 @@ import Foundation
 
 extension Entity {
     
-    struct Contact: Decodable {
+    struct Contact: Codable {
         let category: ContactType?
         let value: String?
         let iconURL: String?
@@ -20,7 +20,7 @@ extension Entity {
         }
     }
     
-    enum ContactCategory: String, Decodable {
+    enum ContactCategory: String, Codable {
         case phone = "Phone."
         case email = "Email."
         case instagram = "Instagram."
