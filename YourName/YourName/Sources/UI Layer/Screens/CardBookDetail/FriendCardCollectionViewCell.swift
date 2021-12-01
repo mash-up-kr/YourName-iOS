@@ -9,11 +9,11 @@ import UIKit
 import Then
 
 protocol FriendCardCollectionViewCellDelegate: AnyObject {
-    func friendCardCollectionViewCell(didTapCheck id: String)
+    func friendCardCollectionViewCell(didTapCheck id: NameCardID)
 }
 
 struct FriendCardCellViewModel: Equatable, Then {
-    let id: String?
+    let id: NameCardID?
     let name: String?
     let role: String?
     let bgColor: ColorSource?
@@ -42,18 +42,41 @@ final class FriendCardCollectionViewCell: UICollectionViewCell {
     }
     
     func configure(with viewModel: FriendCardCellViewModel) {
+        self.cardID = viewModel.id
         self.nameLabel?.text = viewModel.name
         self.roleLabel?.text = viewModel.role
         self.checkBoxView?.isHidden = viewModel.isEditing == false
         self.checkBoxView?.backgroundColor = viewModel.isChecked ? .black : .white
         guard let colorSource = viewModel.bgColor else { return }
+        
+        self.updateBackgroundColor(colorSource: colorSource)
+        self.borderColor = viewModel.isChecked ? .black : .clear
+    }
+    
+    private func updateBackgroundColor(colorSource: ColorSource) {
         switch colorSource {
         case .monotone(let color):
-            self.backgroundColor = color
+            self.contentView.removeGradientLayer(name: Self.gradientLayerKey)
+            let gradientLayer = CAGradientLayer().then {
+                $0.name = Self.gradientLayerKey
+                $0.colors = [color, color].map { $0.cgColor }
+                $0.startPoint = .zero
+                $0.endPoint = CGPoint(x: 1, y: 1)
+                $0.frame = self.contentView.bounds
+            }
+            self.contentView.layer.insertSublayer(gradientLayer, at: 0)
+            
         case .gradient(let colors):
-            self.backgroundColor = nil
+            self.contentView.removeGradientLayer(name: Self.gradientLayerKey)
+            let gradientLayer = CAGradientLayer().then {
+                $0.name = Self.gradientLayerKey
+                $0.startPoint = .zero
+                $0.endPoint = CGPoint(x: 1, y: 1)
+                $0.colors = colors.map { $0.cgColor }
+                $0.frame = self.contentView.bounds
+            }
+            self.contentView.layer.insertSublayer(gradientLayer, at: 0)
         }
-        self.borderColor = viewModel.isChecked ? .black : .clear
     }
     
     @objc
@@ -63,7 +86,8 @@ final class FriendCardCollectionViewCell: UICollectionViewCell {
         self.delegate?.friendCardCollectionViewCell(didTapCheck: cardID)
     }
     
-    private let cardID: String? = nil
+    private static let gradientLayerKey = "gradientLayer"
+    private var cardID: NameCardID? = nil
     
     @IBOutlet private weak var profileImageView: UIImageView?
     @IBOutlet private weak var roleLabel: UILabel?

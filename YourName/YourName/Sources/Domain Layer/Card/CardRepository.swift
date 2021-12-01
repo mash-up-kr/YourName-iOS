@@ -8,32 +8,45 @@
 import Foundation
 import RxSwift
 
-typealias CardID = String
-
 protocol CardRepository {
-    func fetchCards(cardBookID: String) -> Observable<[NameCard]>
-    func remove(cardIDs: [CardID]) -> Observable<[CardID]>
+    func fetchAll() -> Observable<[NameCard]>
+    func fetchCards(cardBookID: CardBookID) -> Observable<[NameCard]>
+    func remove(cardIDs: [NameCardID]) -> Observable<[NameCardID]>
 }
 
 final class YourNameCardRepository: CardRepository {
     
-    func fetchCards(cardBookID: String) -> Observable<[NameCard]> {
+    init(network: NetworkServing = Environment.current.network) {
+        self.network = network
+    }
+    
+    func fetchAll() -> Observable<[NameCard]> {
         .empty()
     }
     
-    func remove(cardIDs: [CardID]) -> Observable<[CardID]> {
+    func fetchCards(cardBookID: Int) -> Observable<[NameCard]> {
         .empty()
     }
+    
+    func remove(cardIDs: [NameCardID]) -> Observable<[NameCardID]> {
+        .empty()
+    }
+    
+    private let network: NetworkServing
     
 }
 
 final class MockCardRepository: CardRepository {
     
-    func fetchCards(cardBookID: String) -> Observable<[NameCard]> {
+    func fetchAll() -> Observable<[NameCard]> {
         .just(NameCard.dummyList)
     }
     
-    func remove(cardIDs: [CardID]) -> Observable<[CardID]> {
+    func fetchCards(cardBookID: Int) -> Observable<[NameCard]> {
+        .just(NameCard.dummyList)
+    }
+    
+    func remove(cardIDs: [NameCardID]) -> Observable<[NameCardID]> {
         return .just(cardIDs)
     }
 }
