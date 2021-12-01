@@ -13,8 +13,6 @@
 		649ABC27275108A9005F50E8 /* CardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649ABC1D275108A8005F50E8 /* CardDetailViewController.swift */; };
 		649ABC28275108A9005F50E8 /* CardDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 649ABC1E275108A8005F50E8 /* CardDetailViewController.storyboard */; };
 		649ABC2E275108A9005F50E8 /* CardDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649ABC24275108A9005F50E8 /* CardDetailViewModel.swift */; };
-		64B1C5FA2757BF6F00029216 /* CardDetailTMICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B1C5F82757BF6F00029216 /* CardDetailTMICollectionViewCell.swift */; };
-		64B1C5FB2757BF6F00029216 /* CardDetailTMICollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64B1C5F92757BF6F00029216 /* CardDetailTMICollectionViewCell.xib */; };
 		64E6EF1D2751738C00082673 /* AppleAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E6EF1C2751738C00082673 /* AppleAuth.swift */; };
 		64E6EF1F27517C2300082673 /* RxASAuthorizationControllerDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E6EF1E27517C2300082673 /* RxASAuthorizationControllerDelegateProxy.swift */; };
 		A210ACB3274070580014AA1D /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A210ACB2274070580014AA1D /* ToastView.swift */; };
@@ -295,8 +293,6 @@
 		649ABC1D275108A8005F50E8 /* CardDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDetailViewController.swift; sourceTree = "<group>"; };
 		649ABC1E275108A8005F50E8 /* CardDetailViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CardDetailViewController.storyboard; sourceTree = "<group>"; };
 		649ABC24275108A9005F50E8 /* CardDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDetailViewModel.swift; sourceTree = "<group>"; };
-		64B1C5F82757BF6F00029216 /* CardDetailTMICollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailTMICollectionViewCell.swift; sourceTree = "<group>"; };
-		64B1C5F92757BF6F00029216 /* CardDetailTMICollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardDetailTMICollectionViewCell.xib; sourceTree = "<group>"; };
 		64E6EF1C2751738C00082673 /* AppleAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuth.swift; sourceTree = "<group>"; };
 		64E6EF1E27517C2300082673 /* RxASAuthorizationControllerDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxASAuthorizationControllerDelegateProxy.swift; sourceTree = "<group>"; };
 		64E6EF20275205F300082673 /* MEETU.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MEETU.entitlements; sourceTree = "<group>"; };
@@ -359,8 +355,8 @@
 		A2D875DE26EE295C00ED5949 /* OAuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthResponse.swift; sourceTree = "<group>"; };
 		A2DA3B3C274A1A2500E68F23 /* Entity.Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.Login.swift; sourceTree = "<group>"; };
 		A2DA3B42274A536700E68F23 /* Entity.UserOnboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.UserOnboarding.swift; sourceTree = "<group>"; };
-		A2DA3B46274A611B00E68F23 /* AuthenticationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationRepository.swift; sourceTree = "<group>"; };
 		A2DA3B44274A5BE000E68F23 /* LogoutAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutAPI.swift; sourceTree = "<group>"; };
+		A2DA3B46274A611B00E68F23 /* AuthenticationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationRepository.swift; sourceTree = "<group>"; };
 		A2DA3B48274A683A00E68F23 /* OAuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthRepository.swift; sourceTree = "<group>"; };
 		A2DA3B62274FDA2200E68F23 /* MyNameCardsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNameCardsAPI.swift; sourceTree = "<group>"; };
 		A2DA3B64274FDA4700E68F23 /* Entity.MyNameCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.MyNameCard.swift; sourceTree = "<group>"; };
@@ -699,12 +695,9 @@
 				CE472B692748B6F9001A5E5F /* EntityNameSpace.swift */,
 				CE472B672748B67F001A5E5F /* Entity.BackgroundColor.swift */,
 				CE472B742748C1E9001A5E5F /* Entity.Contact.swift */,
-				CEDA4B8F275126030011D0CA /* Entity.Empty.swift */,
 				A2DA3B6E27514F4D00E68F23 /* Entity.FriendCard.swift */,
-				A2DA3B66274FDB5800E68F23 /* Entity.Image.swift */,
 				CE472B6E2748C0A5001A5E5F /* Entity.Level.swift */,
 				A2DA3B3C274A1A2500E68F23 /* Entity.Login.swift */,
-				A2DA3B64274FDA4700E68F23 /* Entity.MyNameCard.swift */,
 				A2DA3B7F27537E2B00E68F23 /* Entity.NameCard.swift */,
 				CEDA4B82274ECC4E0011D0CA /* Entity.Quest.swift */,
 				CE472B722748C0D3001A5E5F /* Entity.Skill.swift */,
@@ -738,14 +731,10 @@
 				A2DA3B6C27514EE000E68F23 /* FriendCardAPI.swift */,
 				CEDA4B76274E87A20011D0CA /* InterestesAPI.swift */,
 				CE472B802748DAF0001A5E5F /* MakeCardAPI.swift */,
-				A2DA3B62274FDA2200E68F23 /* MyNameCardsAPI.swift */,
 				CEDA4B8D275125C30011D0CA /* QuestDoneAPI.swift */,
-				CEDA4B80274ECBAE0011D0CA /* QuestsAPI.swift */,
-				CEDA4B93275138350011D0CA /* QuestWaitingDoneAPI.swift */,
 				CEDA4B7E274ECB000011D0CA /* StrongPointAPI.swift */,
 				CEDA4B93275138350011D0CA /* QuestWaitingDoneAPI.swift */,
 				CEDA4B80274ECBAE0011D0CA /* QuestsAPI.swift */,
-				A2DA3B3A274A162400E68F23 /* LoginAPI.swift */,
 				A2DA3B62274FDA2200E68F23 /* MyNameCardsAPI.swift */,
 				CEC5998D27551B3B00405DEA /* RefreshAuthenticationAPI.swift */,
 				CEC599D22756B0EC00405DEA /* ImageUploadAPI.swift */,
@@ -932,8 +921,6 @@
 				649ABC1E275108A8005F50E8 /* CardDetailViewController.storyboard */,
 				649ABC1D275108A8005F50E8 /* CardDetailViewController.swift */,
 				649ABC24275108A9005F50E8 /* CardDetailViewModel.swift */,
-				64B1C5F82757BF6F00029216 /* CardDetailTMICollectionViewCell.swift */,
-				64B1C5F92757BF6F00029216 /* CardDetailTMICollectionViewCell.xib */,
 			);
 			path = CardDetail;
 			sourceTree = "<group>";
@@ -1574,7 +1561,6 @@
 				CE94ABBE270F68C1005D2E80 /* GoogleService-Info.plist in Resources */,
 				CE6BABA52704DAFB0006D26B /* CardCreationViewController.storyboard in Resources */,
 				A2CC65782708DAD900610C49 /* FriendCardCollectionViewCell.xib in Resources */,
-				64B1C5FB2757BF6F00029216 /* CardDetailTMICollectionViewCell.xib in Resources */,
 				CE2BB2C727074F4600936148 /* Colors.xcassets in Resources */,
 				A2BFC11B273FFD54002FFF01 /* SelectCardBookCollectionViewCell.xib in Resources */,
 				CE6BABA02704D7BF0006D26B /* SplashViewController.storyboard in Resources */,
@@ -1806,7 +1792,6 @@
 				CEA4D2EE270D35A2008189FE /* DisplayCharacterItemsDependencyContainer.swift in Sources */,
 				CE472B682748B67F001A5E5F /* Entity.BackgroundColor.swift in Sources */,
 				CE94ABBA270F4114005D2E80 /* ColorSource.swift in Sources */,
-				A2DA3B3B274A162400E68F23 /* LoginAPI.swift in Sources */,
 				CE8500FB273FAE41002341DC /* UIColor+.swift in Sources */,
 				CE63126026F6281800B2E69B /* SplashViewModel.swift in Sources */,
 				CE4D4E862707AE1700081A2B /* CharacterSettingViewModel.swift in Sources */,
@@ -1832,7 +1817,6 @@
 				CEB84094272AF143000E527B /* CardBookListDependencyContainer.swift in Sources */,
 				CE6BABAF2704EE9C0006D26B /* UICollectionView+.swift in Sources */,
 				CEF8C55326EDF8D5009BA9C2 /* UIView+.swift in Sources */,
-				64B1C5FA2757BF6F00029216 /* CardDetailTMICollectionViewCell.swift in Sources */,
 				A2CC657A2708DAEA00610C49 /* FriendCardEmptyCollectionViewCell.swift in Sources */,
 				CED16DE926F39F700076565F /* HomeTab.swift in Sources */,
 				CE4D4ED52709F9E700081A2B /* Keyboard.swift in Sources */,
@@ -1908,7 +1892,6 @@
 				CEA4D2E4270CD24A008189FE /* DisplayCharacterItemCollectionViewCell.swift in Sources */,
 				CEDA4B77274E87A20011D0CA /* InterestesAPI.swift in Sources */,
 				A2DA3B6F27514F4D00E68F23 /* Entity.FriendCard.swift in Sources */,
-				CE6312BE26F9A4C700B2E69B /* CardDetailDependencyContainer.swift in Sources */,
 				A28A9B1627117ACA0063692D /* SettingDependencyContainer.swift in Sources */,
 				CEB6588026EC80F500C11F33 /* Foundation+Network.swift in Sources */,
 				A2B1011F270AA1C000CAE013 /* CardBookDetailDependencyContainer.swift in Sources */,
