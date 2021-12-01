@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,7 +11,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddFriendCardResultView" customModule="MEETU" customModuleProvider="target">
             <connections>
-                <outlet property="addButton" destination="g1F-3T-Oga" id="m3N-88-iFj"/>
                 <outlet property="cardBackView" destination="u16-zQ-o3q" id="Cfb-Vo-rav"/>
                 <outlet property="cardFrontView" destination="qlf-5c-7sP" id="23W-cW-lbN"/>
             </connections>
@@ -23,54 +21,31 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u16-zQ-o3q" customClass="AddFriendCardBackView" customModule="MEETU" customModuleProvider="target">
-                    <rect key="frame" x="32" y="0.0" width="350" height="789"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qlf-5c-7sP" customClass="CardFrontView" customModule="MEETU" customModuleProvider="target">
-                    <rect key="frame" x="32" y="0.0" width="350" height="789"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g1F-3T-Oga">
-                    <rect key="frame" x="24" y="809" width="366" height="56"/>
-                    <color key="backgroundColor" name="black1"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="56" id="1TM-BP-2zh"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                    <state key="normal" title="추가하기">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                            <real key="value" value="12"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="g1F-3T-Oga" firstAttribute="top" secondItem="qlf-5c-7sP" secondAttribute="bottom" constant="20" id="2jd-NN-9ii"/>
-                <constraint firstItem="g1F-3T-Oga" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="608-3M-wSy"/>
-                <constraint firstItem="qlf-5c-7sP" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="32" id="AyT-d1-n3H"/>
+                <constraint firstItem="qlf-5c-7sP" firstAttribute="bottom" secondItem="u16-zQ-o3q" secondAttribute="bottom" id="0Kb-PR-Osg"/>
+                <constraint firstItem="qlf-5c-7sP" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="AyT-d1-n3H"/>
                 <constraint firstItem="u16-zQ-o3q" firstAttribute="leading" secondItem="qlf-5c-7sP" secondAttribute="leading" id="Gjj-oW-akt"/>
-                <constraint firstItem="u16-zQ-o3q" firstAttribute="bottom" secondItem="qlf-5c-7sP" secondAttribute="bottom" id="NaR-RT-1qj"/>
-                <constraint firstAttribute="bottom" secondItem="g1F-3T-Oga" secondAttribute="bottom" constant="31" id="W2k-CZ-TGd"/>
+                <constraint firstAttribute="bottom" secondItem="u16-zQ-o3q" secondAttribute="bottom" id="ZS1-7J-E7D"/>
                 <constraint firstItem="qlf-5c-7sP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="adm-cU-1fk"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="g1F-3T-Oga" secondAttribute="trailing" constant="24" id="dhZ-6a-0hB"/>
                 <constraint firstItem="u16-zQ-o3q" firstAttribute="trailing" secondItem="qlf-5c-7sP" secondAttribute="trailing" id="gXQ-Fg-4BX"/>
                 <constraint firstItem="u16-zQ-o3q" firstAttribute="top" secondItem="qlf-5c-7sP" secondAttribute="top" id="jft-DX-mgL"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="qlf-5c-7sP" secondAttribute="trailing" constant="32" id="xXj-V8-N6v"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="qlf-5c-7sP" secondAttribute="trailing" id="xXj-V8-N6v"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="139" y="101"/>
         </view>
     </objects>
     <resources>
-        <namedColor name="black1">
-            <color red="0.082352941176470587" green="0.082352941176470587" blue="0.082352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

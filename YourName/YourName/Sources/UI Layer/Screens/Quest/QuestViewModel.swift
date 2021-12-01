@@ -14,9 +14,14 @@ final class QuestViewModel {
     let isLoading = BehaviorRelay<Bool>(value: false)
     let shouldClose = PublishRelay<Void>()
     let quests = BehaviorRelay<[Quest]>(value: [])
+    let progress = BehaviorRelay<Float>(value: 0)
     
     init(questUseCase: QuestUseCase) {
         self.questUseCase = questUseCase
+        
+        self.quests.map { [weak self] in self?.progress(ofQuests: $0) ?? 0 }
+        .bind(to: progress)
+        .disposed(by: self.disposeBag)
     }
     
     func didLoad() {
@@ -31,21 +36,12 @@ final class QuestViewModel {
     func tapAchieve(at index: Int) {
         guard let quest = self.quests.value[safe: index] else { return }
         guard let questStatus = quest.status             else { return }
+        guard case .waitingDone = questStatus            else { return }
         guard let questMeta = quest.meta                 else { return }
         
-        switch questStatus {
-        case .notAchieved:
-            self.questUseCase.waitDoneQuest(questMeta)
+        self.questUseCase.doneQuest(questMeta)
                 .subscribe(onNext: { [weak self] in self?.loadQuests() })
                 .disposed(by: self.disposeBag)
-            
-        case .waitingDone:
-            self.questUseCase.doneQuest(questMeta)
-                .subscribe(onNext: { [weak self] in self?.loadQuests() })
-                .disposed(by: self.disposeBag)
-            
-        case .done: ()
-        }
     }
     
     private func loadQuests() {
@@ -55,6 +51,12 @@ final class QuestViewModel {
                 self?.isLoading.accept(false)
             })
             .disposed(by: self.disposeBag)
+    }
+    
+    private func progress(ofQuests quests: [Quest]) -> Float {
+        let totalQuestCount = Float(quests.count)
+        let doneQuestCount = Float(quests.filter { $0.status == .done }.count)
+        return doneQuestCount / totalQuestCount
     }
     
     private let shouldUpdateQuest = PublishRelay<Void>()

@@ -34,7 +34,11 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nwu-22-9h8">
-                                        <rect key="frame" x="56" y="133" width="211" height="114"/>
+                                        <rect key="frame" x="56" y="127" width="211" height="120"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="211" id="0lB-AA-Fr8"/>
+                                            <constraint firstAttribute="height" constant="120" id="qLl-83-UM0"/>
+                                        </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SDZ-BV-cMS">
                                         <rect key="frame" x="16" y="268" width="291" height="56"/>
@@ -80,7 +84,6 @@
                                     <constraint firstAttribute="trailing" secondItem="Nwu-22-9h8" secondAttribute="trailing" constant="56" id="b59-8P-fcP"/>
                                     <constraint firstAttribute="trailing" secondItem="SDZ-BV-cMS" secondAttribute="trailing" constant="16" id="cr1-5z-GaU"/>
                                     <constraint firstItem="GYa-UJ-Gvf" firstAttribute="leading" secondItem="LoT-Z4-p2L" secondAttribute="leading" constant="16" id="dPp-i3-tCN"/>
-                                    <constraint firstItem="Nwu-22-9h8" firstAttribute="top" secondItem="QbV-t6-hfK" secondAttribute="bottom" constant="46" id="e7M-0s-0FO"/>
                                     <constraint firstItem="QbV-t6-hfK" firstAttribute="top" secondItem="fco-0M-ozl" secondAttribute="bottom" constant="12" id="fIQ-Mc-gic"/>
                                     <constraint firstItem="fco-0M-ozl" firstAttribute="top" secondItem="LoT-Z4-p2L" secondAttribute="top" constant="37" id="jA2-nm-Zmx"/>
                                     <constraint firstAttribute="trailing" secondItem="GYa-UJ-Gvf" secondAttribute="trailing" constant="16" id="jym-Bj-Aza"/>

@@ -8,7 +8,7 @@
 import Foundation
 
 extension Entity {
-    struct Image: Decodable {
+    struct Image: Codable {
         let id: Int?
         let key: String?
     }

@@ -76,7 +76,7 @@ final class PaletteView: UIView, NibLoadable {
     private let disposeBag = DisposeBag()
     
     private var selectedIndex: Int?
-    private var profileColors: [ProfileColor] = []
+    private var profileColors: [YourNameColor] = []
     
     @IBOutlet private weak var colorsCollectionView: UICollectionView?
     @IBOutlet private weak var completeButton: UIButton?

@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct ProfileColor: Equatable {
+struct YourNameColor: Equatable {
+    let id: Int
     let colorSource: ColorSource
     var status: ColorSourceStatus
 }

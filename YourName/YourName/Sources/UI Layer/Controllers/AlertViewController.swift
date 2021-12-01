@@ -59,6 +59,7 @@ final class AlertViewController: ViewController, Storyboarded {
         self.modalTransitionStyle = .crossDissolve
         self.item = item
     }
-    
-
+    func dismiss(animate: Bool = true, completion: (() -> Void)? = nil) {
+        self.dismiss(animated: animate, completion: completion)
+    }
 }

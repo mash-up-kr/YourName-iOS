@@ -32,4 +32,7 @@ class NibLoadableView: UIView, NibLoadable {
         get { self.subviews.first?.backgroundColor }
         set { self.subviews.first?.backgroundColor = newValue }
     }
+    deinit {
+        print(" 💀 \(String(describing: self)) deinit")
+    }
 }

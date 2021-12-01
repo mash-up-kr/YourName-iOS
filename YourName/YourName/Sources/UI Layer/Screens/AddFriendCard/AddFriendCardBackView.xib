@@ -29,7 +29,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="fiN-BH-c9p">
-                    <rect key="frame" x="16" y="40" width="309" height="162.5"/>
+                    <rect key="frame" x="16" y="40" width="309" height="168.5"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JF6-6z-IDG">
                             <rect key="frame" x="0.0" y="0.0" width="309" height="19.5"/>
@@ -37,42 +37,42 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="X4l-xU-fjG">
-                            <rect key="frame" x="0.0" y="32.5" width="309" height="130"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="X4l-xU-fjG">
+                            <rect key="frame" x="0.0" y="32.5" width="309" height="136"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f0s-EL-BUL" customClass="ContactView" customModule="MEETU" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="309" height="14"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="309" height="20"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="14" id="tTL-89-5Bb"/>
+                                        <constraint firstAttribute="height" constant="20" id="tTL-89-5Bb"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L8W-WO-xLF" customClass="ContactView" customModule="MEETU" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="29" width="309" height="14"/>
+                                    <rect key="frame" x="0.0" y="29" width="309" height="20"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="14" id="G5z-PQ-FPX"/>
+                                        <constraint firstAttribute="height" constant="20" id="G5z-PQ-FPX"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WVc-5K-QvA" customClass="ContactView" customModule="MEETU" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="58" width="309" height="14"/>
+                                    <rect key="frame" x="0.0" y="58" width="309" height="20"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="14" id="4jT-1y-pEn"/>
+                                        <constraint firstAttribute="height" constant="20" id="4jT-1y-pEn"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dbK-Hj-fWQ" customClass="ContactView" customModule="MEETU" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="87" width="309" height="14"/>
+                                    <rect key="frame" x="0.0" y="87" width="309" height="20"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="14" id="g2C-xN-XBq"/>
+                                        <constraint firstAttribute="height" constant="20" id="g2C-xN-XBq"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gOV-Ep-0eX" customClass="ContactView" customModule="MEETU" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="116" width="309" height="14"/>
+                                    <rect key="frame" x="0.0" y="116" width="309" height="20"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="14" id="Em4-HT-dyG"/>
+                                        <constraint firstAttribute="height" constant="20" id="Em4-HT-dyG"/>
                                     </constraints>
                                 </view>
                             </subviews>
@@ -86,7 +86,7 @@
                     </subviews>
                 </stackView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="3Tm-5h-SEv">
-                    <rect key="frame" x="16" y="234.5" width="309" height="70.5"/>
+                    <rect key="frame" x="16" y="240.5" width="309" height="70.5"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Personality" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qFo-QL-wZr">
                             <rect key="frame" x="0.0" y="0.0" width="309" height="19.5"/>
@@ -127,10 +127,10 @@
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="342-rh-c2I">
-                    <rect key="frame" x="270" y="12" width="52" height="24"/>
+                    <rect key="frame" x="262" y="0.0" width="72" height="48"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="52" id="8Mx-J0-VeS"/>
-                        <constraint firstAttribute="height" constant="24" id="pDj-hu-eF9"/>
+                        <constraint firstAttribute="width" constant="72" id="8Mx-J0-VeS"/>
+                        <constraint firstAttribute="height" constant="48" id="pDj-hu-eF9"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="6" maxY="0.0"/>
@@ -148,10 +148,10 @@
                 <constraint firstItem="fiN-BH-c9p" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="GhW-QJ-HOD"/>
                 <constraint firstAttribute="bottom" secondItem="OnE-uk-hgf" secondAttribute="bottom" constant="36" id="Hj3-Ea-8cI"/>
                 <constraint firstItem="fiN-BH-c9p" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="40" id="c2M-7e-i0C"/>
-                <constraint firstItem="342-rh-c2I" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="12" id="h2h-N8-bDt"/>
+                <constraint firstItem="342-rh-c2I" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="h2h-N8-bDt"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="fiN-BH-c9p" secondAttribute="trailing" constant="16" id="ksF-4k-ksB"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="3Tm-5h-SEv" secondAttribute="trailing" constant="16" id="lf1-Db-F8b"/>
-                <constraint firstAttribute="trailing" secondItem="342-rh-c2I" secondAttribute="trailing" constant="19" id="xsm-qw-EVg"/>
+                <constraint firstAttribute="trailing" secondItem="342-rh-c2I" secondAttribute="trailing" constant="7" id="xsm-qw-EVg"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="84.782608695652186" y="488.50446428571428"/>

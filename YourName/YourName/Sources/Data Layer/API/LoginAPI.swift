@@ -1,5 +1,5 @@
 //
-//  KaKaoLoginAPI.swift
+//  LoginAPI.swift
 //  MEETU
 //
 //  Created by seori on 2021/11/21.
@@ -9,18 +9,11 @@ import Foundation
 import Moya
 
 struct LoginAPI: ServiceAPI {
-
-    private let accessToken: AccessToken
+    typealias Response = Entity.Authentication
+    
+    private let accessToken: Secret
     private let provider: Provider
     
-    init(accessToken: AccessToken,
-         provider: Provider) {
-        
-        self.accessToken = accessToken
-        self.provider = provider
-    }
-    
-    typealias Response = Entity.Login
     var path: String {
         switch provider {
         case .kakao:
@@ -29,7 +22,16 @@ struct LoginAPI: ServiceAPI {
             return "/apple-login"
         }
     }
-    var headers: [String: String]? { ["authorization": "Bearer \(accessToken)"] }
-    var method: Moya.Method { .post }
-    var task: Task { .requestPlain }
+    var headers: [String: String]? { nil }
+    var method: Method { .post }
+    var task: NetworkingTask {
+        return .requestParameters(parameters: ["accessToken": accessToken],
+                                  encoding: JSONEncoding.default)
+    }
+    
+    init(accessToken: Secret, provider: Provider) {
+        self.accessToken = accessToken
+        self.provider = provider
+    }
+    
 }

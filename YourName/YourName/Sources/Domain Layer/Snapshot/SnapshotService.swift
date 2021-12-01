@@ -16,6 +16,6 @@ enum YourNameSnapshotService: SnapshotService {
         let renderer = UIGraphicsImageRenderer(bounds: view.bounds)
         return renderer.image { rendererContext in
             view.layer.render(in: rendererContext.cgContext)
-        }.pngData()
+        }.jpegData(compressionQuality: 0)
     }
 }

@@ -55,7 +55,7 @@ extension SelectCardBookCollectionViewCell {
     }
     
     private func bind() {
-        self.checkbox.rx.tapWhenRecognized()
+        self.checkbox.rx.tapWhenRecognized
             .bind(onNext: { [weak self] in
                 guard let self = self else { return }
                 self.checkboxDidTap()
