@@ -32,7 +32,6 @@ final class CardBookCoverTableViewCell: UITableViewCell {
             self.coverImageview?.image = UIImage(named: "card_book_cover_all")
         }
     }
-    
     @IBOutlet private weak var coverImageContainerView: UIStackView?
     @IBOutlet private weak var coverImageview: UIImageView?
     @IBOutlet private weak var titleLabel: UILabel?

@@ -55,6 +55,7 @@ final class CardFrontView: NibLoadableView {
         self.userProfileImage.setImageSource(.url(url))
         self.userNameLabel.text = item.name
         self.userRoleLabel.text = item.role
+      
         switch item.backgroundColor {
         case .gradient(let colors):
             self.updateGradientLayer(colors: colors)
@@ -86,7 +87,7 @@ final class CardFrontView: NibLoadableView {
             $0.height.equalTo(24)
         }
     }
-    
+  
     //TODO: viewModel생성 이후 수정필요
     private func configure(skills: [MySkillProgressView.Item]) {
         skills.enumerated().forEach { index, skill in
@@ -95,5 +96,4 @@ final class CardFrontView: NibLoadableView {
             skillView.configure(skill: skill)
         }
     }
-    
 }

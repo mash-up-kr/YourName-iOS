@@ -24,7 +24,6 @@ extension UIView {
             .forEach { $0.removeFromSuperlayer() }
     }
     
-    
     func updateGradientLayer(hexStrings: [String], name: String = UIView.gradientKey) {
         let colors = hexStrings.compactMap { UIColor(hexString: $0) }
         self.updateGradientLayer(colors: colors)
@@ -51,7 +50,7 @@ extension UIView {
     }
     
     static private let gradientKey = "gradientLayerKey"
-    
+   
 }
 extension UIView {
     
