@@ -12,6 +12,7 @@ extension Entity {
     struct BackgroundColor: Codable {
         let id: Int?
         let value: [String]?
+        var isLocked: Bool?
     }
     
 }

@@ -48,7 +48,7 @@ final class NetworkService: NetworkServing {
                     .catchError { [weak self] error in
                         self?.refreshToken = nil
                         print("🐛 - ", error.localizedDescription)
-                        return .error(NetworkError.denyAuthentication)
+                        return .error(error)
                     }
             }
             .compactMap { $0.data }
@@ -60,10 +60,12 @@ final class NetworkService: NetworkServing {
         return self.provider.rx.request(endpoint)
             .asObservable()
             .map(MeetuResponse<API.Response>.self)
-            .do { response in
-                guard let statusCode = response.statusCode else { throw NetworkError.unknown }
-                if statusCode == 401 { throw NetworkError.accessTokenInvalidate }
-                else if statusCode > 400 { throw NetworkError.unknown }
+            .map { response -> MeetuResponse<API.Response> in
+                guard let statusCode = response.statusCode else { throw NetworkError.unknown(-1, response.message) }
+                guard statusCode != 401                    else { throw NetworkError.accessTokenInvalidate }
+                guard statusCode < 400                     else { throw NetworkError.unknown(statusCode, response.message) }
+                
+                return response
             }
     }
     
@@ -72,7 +74,7 @@ final class NetworkService: NetworkServing {
         
         let refreshAPI = RefreshAuthenticationAPI(refreshToken: refreshToken)
         return self._request(refreshAPI).compactMap { response -> Authentication? in
-            if response.statusCode == 401 { throw NetworkError.denyAuthentication }
+            guard response.statusCode != 401 else { throw NetworkError.denyAuthentication }
             return response.data
         }
     }
@@ -97,7 +99,7 @@ enum NetworkError: Error {
     case hasNotRefreshToken
     case accessTokenInvalidate
     case denyAuthentication
-    case unknown
+    case unknown(_ code: Int, _ message: String?)
 }
 
 

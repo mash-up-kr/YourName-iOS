@@ -198,6 +198,10 @@ final class CardCreationViewController: ViewController, Storyboarded {
                 .disposed(by: disposeBag)
         }
         
+        viewModel.isLoading.distinctUntilChanged()
+            .bind(to: self.isLoading)
+            .disposed(by: disposeBag)
+        
         viewModel.hasCompletedSkillInput
             .distinctUntilChanged()
             .subscribe(onNext: { [weak self] hasCompleted in

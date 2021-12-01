@@ -22,6 +22,7 @@ typealias CardCreationNavigation = Navigation<CardCreationDestination>
 final class CardCreationViewModel {
     
     // State
+    let isLoading = BehaviorRelay<Bool>(value: false)
     let shouldHideClear = BehaviorRelay<Bool>(value: true)
     let shouldHideProfilePlaceholder = BehaviorRelay<Bool>(value: false)
     let hasCompletedSkillInput = BehaviorRelay<Bool>(value: false)
@@ -31,6 +32,7 @@ final class CardCreationViewModel {
     let shouldDismissOverlays = PublishRelay<Void>()
     let indexOfContactTypeBeingSelected = BehaviorRelay<Int?>(value: nil)
     let profileImageSource = BehaviorRelay<ImageSource?>(value: nil)
+    let profileImageKey = BehaviorRelay<ImageKey?>(value: nil)
     let profileBackgroundColor = BehaviorRelay<ColorSource>(value: .monotone(Palette.black1))
     let skills = BehaviorRelay<[Skill]>(value: [])
     let name = BehaviorRelay<String>(value: .empty)
@@ -44,10 +46,11 @@ final class CardCreationViewModel {
     
     let navigation = PublishRelay<CardCreationNavigation>()
     
-    init(myCardRepsitory: MyCardRepository) {
+    init(myCardRepsitory: MyCardRepository, imageUploader: ImageUploader) {
         self.myCardRepository = myCardRepsitory
+        self.imageUploader = imageUploader
         
-        self.updateCanComplete()
+        self.transform()
     }
     
     // Event
@@ -140,42 +143,54 @@ final class CardCreationViewModel {
             contacts: contacts,
             personality: self.personality.value,
             introduce: self.aboutMe.value,
-            tmiIds: tmiIDs
+            tmiIds: tmiIDs,
+            imageKey: self.profileImageKey.value ?? "profile/B0BBD1E8-2219-4C15-8CE5-A0A8A80C986E"
         )
         
+        self.isLoading.accept(true)
         self.myCardRepository.createMyCard(nameCard)
             .subscribe(onNext: { [weak self] _ in
                 NotificationCenter.default.post(name: .myCardsDidChange, object: nil)
+                self?.isLoading.accept(false)
                 self?.shouldClose.accept(Void())
             }, onError: { [weak self] _ in
+                self?.isLoading.accept(false)
                 self?.shouldClose.accept(Void())
             }, onDisposed: { [weak self] in
+                self?.isLoading.accept(false)
                 self?.shouldClose.accept(Void())
             })
             .disposed(by: self.disposeBag)
     }
     
-    private func updateCanComplete() {
-        let hasTMIs = Observable.combineLatest(
-            self.interestes.map { $0.isNotEmpty },
-            self.strongPoints.map { $0.isNotEmpty }
-        ).map { $0.0 || $0.1 }
+    private func transform() {
+        let hasName = self.name.map { $0.isNotEmpty }
+        let hasRole = self.role.map { $0.isNotEmpty }
+        let hasSkills = self.skills.map { $0.isNotEmpty }
+        let hasContacts = self.contactInfos.map { $0.isNotEmpty }
+        let hasPersonality = self.personality.map { $0.isNotEmpty }
+        let hasIntroduce = self.aboutMe.map { $0.isNotEmpty }
+        let hasInterests = self.interestes.map { $0.isNotEmpty }
+        let hasStrongPoints = self.strongPoints.map { $0.isNotEmpty }
+        let hasTMIs = Observable.combineLatest(hasInterests, hasStrongPoints).map { $0.0 || $0.1 }
         
         Observable.combineLatest([
-            self.name.map { $0.isNotEmpty },
-            self.role.map { $0.isNotEmpty },
-            self.skills.map { $0.isNotEmpty },
-            self.contactInfos.map { $0.isNotEmpty },
-            self.personality.map { $0.isNotEmpty },
-            self.aboutMe.map { $0.isNotEmpty },
+            hasName,
+            hasRole,
+            hasSkills,
+            hasContacts,
+            hasContacts,
+            hasPersonality,
+            hasIntroduce,
             hasTMIs
-        ]).map { $0.reduce(true) { $0 && $1 } }
+        ]).map { predicates in predicates.allSatisfy { $0 } }
         .bind(to: self.canComplete)
         .disposed(by: self.disposeBag)
     }
     
     private let disposeBag = DisposeBag()
     private let myCardRepository: MyCardRepository
+    private let imageUploader: ImageUploader
 }
 
 extension CardCreationViewModel: ImageSourcePickerResponder {
@@ -193,9 +208,16 @@ extension CardCreationViewModel: ImageSourcePickerResponder {
 extension CardCreationViewModel: CharacterSettingResponder {
     
     func characterSettingDidComplete(characterMeta: CharacterMeta, characterData: Data) {
-        self.shouldHideClear.accept(false)
-        self.shouldHideProfilePlaceholder.accept(true)
-        self.profileImageSource.accept(.data(characterData))
+        self.isLoading.accept(true)
+        self.imageUploader.upload(imageData: characterData)
+            .subscribe(onNext: { [weak self] imageKey in
+                self?.isLoading.accept(false)
+                self?.shouldHideClear.accept(false)
+                self?.shouldHideProfilePlaceholder.accept(true)
+                self?.profileImageSource.accept(.data(characterData))
+                self?.profileImageKey.accept(imageKey)
+            })
+            .disposed(by: self.disposeBag)
     }
     
 }
@@ -224,7 +246,7 @@ extension CardCreationViewModel: TMISettingResponder {
 }
 extension CardCreationViewModel: PaletteResponder {
     
-    func profileColorSettingDidComplete(selectedColor: ProfileColor) {
+    func profileColorSettingDidComplete(selectedColor: YourNameColor) {
         self.profileBackgroundColor.accept(selectedColor.colorSource)
         self.shouldDismissOverlays.accept(Void())
     }

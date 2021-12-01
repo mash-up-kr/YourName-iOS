@@ -38,5 +38,6 @@ extension Entity {
         let personality: String?
         let introduce: String?
         let tmiIds: [Int]?
+        let imageKey: ImageKey?
     }
 }

@@ -10,16 +10,16 @@ import RxRelay
 import RxSwift
 
 protocol PaletteResponder {
-    func profileColorSettingDidComplete(selectedColor: ProfileColor)
+    func profileColorSettingDidComplete(selectedColor: YourNameColor)
 }
 
 final class PaletteViewModel {
     
-    let profileColors = BehaviorRelay<[ProfileColor]>(value: [])
+    let profileColors = BehaviorRelay<[YourNameColor]>(value: [])
     let canBeCompleted = BehaviorRelay<Bool>(value: false)
     
     init(
-        profileColorRepository: ProfileColorRepository,
+        profileColorRepository: ColorRepository,
         paletteResponder: PaletteResponder
     ) {
         self.profileColorRepository = profileColorRepository
@@ -27,14 +27,14 @@ final class PaletteViewModel {
     }
     
     func didLoad() {
-        profileColorRepository.fetchAll()
+        self.profileColorRepository.fetchAll()
             .bind(to: profileColors)
             .disposed(by: disposeBag)
     }
 
     func selectColor(at selectedIndex: Int) {
         let updatedColors = self.profileColors.value.indices
-            .compactMap { index -> ProfileColor? in
+            .compactMap { index -> YourNameColor? in
                 guard var color = self.profileColors.value[safe: index] else { return nil }
                 if index == selectedIndex { color.status = .selected }
                 else if color.status == .selected { color.status = .normal }
@@ -55,7 +55,7 @@ final class PaletteViewModel {
     }
     
     private let disposeBag = DisposeBag()
-    private let profileColorRepository: ProfileColorRepository
+    private let profileColorRepository: ColorRepository
     private let paletteResponder: PaletteResponder
     
 }
