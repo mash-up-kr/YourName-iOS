@@ -34,6 +34,7 @@ final class CardCreationViewModel {
     let profileImageSource = BehaviorRelay<ImageSource?>(value: nil)
     let profileImageKey = BehaviorRelay<ImageKey?>(value: nil)
     let profileBackgroundColor = BehaviorRelay<ColorSource>(value: .monotone(Palette.black1))
+    let profileYourNameColorID = BehaviorRelay<Int?>(value: nil)
     let skills = BehaviorRelay<[Skill]>(value: [])
     let name = BehaviorRelay<String>(value: .empty)
     let role = BehaviorRelay<String>(value: .empty)
@@ -136,7 +137,7 @@ final class CardCreationViewModel {
         
         let nameCard = Entity.NameCardCreation(
             imgUrl: nil,
-            bgColorId: nil,
+            bgColorId: self.profileYourNameColorID.value ?? 1,
             name: self.name.value,
             role: self.role.value,
             skills: skills,

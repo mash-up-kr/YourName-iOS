@@ -35,7 +35,7 @@ final class YourNameColorRepository: ColorRepository {
         return YourNameColor(
             id: id,
             colorSource: colorSource,
-            status: entity.isLocked.isTrueOrNil ? .locked : .normal
+            status: entity.isLock.isTrueOrNil ? .locked : .normal
         )
     }
     

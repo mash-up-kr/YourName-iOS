@@ -49,6 +49,10 @@ final class CardCreationViewController: ViewController, Storyboarded {
     private func dispatch(to viewModel: CardCreationViewModel) {
         viewModel.didLoad()
         
+        backButton?.rx.tap
+            .subscribe(onNext: { [weak self] in self?.viewModel?.tapBack() })
+            .disposed(by: self.disposeBag)
+        
         profileClearButton?.rx.tap
             .subscribe(onNext: { [weak self] in self?.viewModel.tapProfileClear() })
             .disposed(by: disposeBag)

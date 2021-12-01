@@ -9,6 +9,7 @@ import Foundation
 
 struct ColorsAPI: ServiceAPI {
     var method: Method { .get }
+    var task: NetworkingTask { .requestPlain }
     var path: String { "/users/bgcolors" }
 }
 extension ColorsAPI {
