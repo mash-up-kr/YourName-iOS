@@ -9,9 +9,10 @@ import Foundation
 
 extension Entity {
     
-    struct BackgroundColor: Decodable {
+    struct BackgroundColor: Codable {
         let id: Int?
         let value: [String]?
+        var isLock: Bool?
     }
     
 }

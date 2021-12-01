@@ -34,18 +34,19 @@ final class PaletteDependencyContainer {
         return viewModel
     }
     
-    private func createProfileColorRepository() -> ProfileColorRepository {
-        let repository = FakeProfileColorRepository()
-        repository.stubedProfileColors = [
-            ProfileColor(colorSource: .monotone(Palette.vilolet), status: .normal),
-            ProfileColor(colorSource: .monotone(Palette.pink), status: .normal),
-            ProfileColor(colorSource: .monotone(Palette.orange), status: .normal),
-            ProfileColor(colorSource: .monotone(Palette.yellow), status: .normal),
-            ProfileColor(colorSource: .monotone(Palette.lightGreen), status: .normal),
-            ProfileColor(colorSource: .monotone(Palette.skyBlue), status: .normal),
-            ProfileColor(colorSource: .gradient([Palette.yellow, Palette.lightGreen, Palette.orange, Palette.pink, Palette.vilolet]), status: .locked),
-            ProfileColor(colorSource: .gradient([Palette.skyBlue, Palette.pink, Palette.yellow]), status: .normal),
-        ]
+    private func createProfileColorRepository() -> ColorRepository {
+        let repository = YourNameColorRepository()
+//        FakeColorRepository()
+//        repository.stubedProfileColors = [
+//            YourNameColor(id: 1, colorSource: .monotone(Palette.vilolet), status: .normal),
+//            YourNameColor(id: 2, colorSource: .monotone(Palette.pink), status: .normal),
+//            YourNameColor(id: 3, colorSource: .monotone(Palette.orange), status: .normal),
+//            YourNameColor(id: 4, colorSource: .monotone(Palette.yellow), status: .normal),
+//            YourNameColor(id: 5, colorSource: .monotone(Palette.lightGreen), status: .normal),
+//            YourNameColor(id: 6, colorSource: .monotone(Palette.skyBlue), status: .normal),
+//            YourNameColor(id: 7, colorSource: .gradient([Palette.yellow, Palette.lightGreen, Palette.orange, Palette.pink, Palette.vilolet]), status: .locked),
+//            YourNameColor(id: 8, colorSource: .gradient([Palette.skyBlue, Palette.pink, Palette.yellow]), status: .normal),
+//        ]
         return repository
     }
     

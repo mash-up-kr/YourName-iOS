@@ -20,9 +20,9 @@ final class YourNameInterestRepository: InterestRepository {
     
     func fetchAll() -> Observable<[Interest]> {
         return network.request(InterestesAPI())
-            .compactMap { [weak self] behaviors in
+            .compactMap { [weak self] characters in
                 guard let self = self else { return nil }
-                return behaviors.compactMap(self.translate(fromTMI:))
+                return characters.list?.compactMap(self.translate(fromTMI:))
             }
     }
     

@@ -9,25 +9,22 @@ import Foundation
 import Moya
 
 struct MakeCardAPI {
+    let nameCard: Entity.NameCardCreation
+    
+    var path: String { "/namecards" }
+    var method: Moya.Method { .post }
+    var task: Moya.Task {
+        return .requestJSONEncodable(nameCard)
+    }
+}
+extension MakeCardAPI: ServiceAPI {
     
     struct Response: Decodable {
-        let nameCardID: String?
+        let nameCardID: NameCardID?
         
         enum CodingKeys: String, CodingKey {
             case nameCardID = "nameCardId"
         }
     }
-    
-}
-
-extension MakeCardAPI: ServiceAPI {
-    
-    var path: String { "/namecards" }
-    
-    var method: Moya.Method { .post }
-    
-    var task: Moya.Task { .requestPlain }
-    
-    var headers: [String : String]? { nil }
     
 }

@@ -24,6 +24,8 @@ final class MyCardListViewController: ViewController, Storyboarded {
     var cardCreationViewControllerFactory: (() -> CardCreationViewController)!
     var cardDetailViewControllerFactory: ((Int) -> CardDetailViewController)!
     var viewModel: MyCardListViewModel!
+    
+    private var myCardList: [MyCardCellViewModel] = []
     private let disposeBag = DisposeBag()
     private lazy var collectionViewWidth = ( 312 * self.myCardListCollectionView.bounds.height ) / 512
     
@@ -55,11 +57,12 @@ extension MyCardListViewController {
             .disposed(by: disposeBag)
   
         viewModel.myCardList
-            .bind(onNext: { [weak self] _ in
+            .bind(onNext: { [weak self] myCardList in
                 guard let self = self else { return }
+                self.myCardList = myCardList
                 self.myCardListCollectionView.reloadData()
-                self.userNameLabel.text = "나의 미츄 (\(self.viewModel.numberOfMyCards))"
-                self.pageControl.numberOfPages = self.viewModel.numberOfMyCards
+                self.userNameLabel.text = "나의 미츄 (\(myCardList.count))"
+                self.pageControl.numberOfPages = myCardList.count
             })
             .disposed(by: disposeBag)
     }
@@ -112,12 +115,12 @@ extension MyCardListViewController {
 extension MyCardListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return self.viewModel.numberOfMyCards
+        return self.myCardList.isNotEmpty ? self.myCardList.count : 1
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if self.viewModel.myCardIsEmpty {
+        if self.myCardList.isEmpty {
             guard let cell = collectionView.dequeueReusableCell(MyCardListEmptyCollectionViewCell.self,
                                                                 for: indexPath)
             else { return .init() }
@@ -131,7 +134,7 @@ extension MyCardListViewController: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(MyCardListCollectionViewCell.self,
                                                                 for: indexPath),
                   let myCardView = cell.contentView as? CardFrontView,
-                  let item = self.viewModel.cellForItem(at: indexPath.item) else { return .init() }
+                  let item = myCardList[safe: indexPath.item] else { return .init() }
             
             myCardView.configure(item: item)
             return cell
@@ -158,7 +161,7 @@ extension MyCardListViewController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
         
-        if self.viewModel.myCardIsEmpty {
+        if self.myCardList.isEmpty {
             let edges = UIScreen.main.bounds.width - collectionViewWidth
             return UIEdgeInsets(top: 0, left: edges / 2, bottom: 0, right: edges / 2)
         } else {

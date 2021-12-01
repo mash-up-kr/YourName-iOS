@@ -10,11 +10,11 @@ import Foundation
 final class SplashDependencyContainer {
     
     let rootViewModel: RootViewModel
-    let accessTokenRepository: AccessTokenRepository
+    let authenticationRepository: AuthenticationRepository
     
     init(rootDependencyContainer: RootDependencyContainer) {
         self.rootViewModel = rootDependencyContainer.rootViewModel
-        self.accessTokenRepository = rootDependencyContainer.accessTokenRepository
+        self.authenticationRepository = rootDependencyContainer.authenticationRepository
     }
     
     func createSplashViewController() -> SplashViewController {
@@ -25,7 +25,7 @@ final class SplashDependencyContainer {
     
     private func createSplashViewModel() -> SplashViewModel {
         let viewModel = SplashViewModel(
-            accessTokenRepository: accessTokenRepository,
+            authenticationRepository: authenticationRepository,
             authenticationDelegate: rootViewModel
         )
         return viewModel
