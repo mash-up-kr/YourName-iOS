@@ -9,7 +9,7 @@ import RxSwift
 import RxCocoa
 import UIKit
 
-enum ContactType: String, CaseIterable, Decodable {
+enum ContactType: String, CaseIterable, Codable {
     case phone = "Phone."
     case email = "Email."
     case instagram = "Instagram."

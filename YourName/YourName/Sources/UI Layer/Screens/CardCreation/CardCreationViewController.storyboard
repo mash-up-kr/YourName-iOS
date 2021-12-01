@@ -13,7 +13,7 @@
         <!--Card Creation View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="CardCreationViewController" customModule="MEETU" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="Y6W-OH-hqX" customClass="CardCreationViewController" customModule="MEETU" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="413" height="3000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1277,7 +1277,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZAC-I2-7S3">
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZAC-I2-7S3">
                                                 <rect key="frame" x="24" y="272" width="365" height="56"/>
                                                 <color key="backgroundColor" name="black1"/>
                                                 <constraints>
@@ -1350,6 +1350,7 @@
                         <outlet property="mySkillSettingButton" destination="bIt-jS-wNf" id="4wO-E0-ntG"/>
                         <outlet property="myTMISettingButton" destination="cmX-IZ-yLn" id="QOD-tG-2mL"/>
                         <outlet property="nameField" destination="xiS-L4-Ase" id="VhF-OP-cw8"/>
+                        <outlet property="personalityPlaceholder" destination="7Pd-Z1-EnY" id="eff-Lc-h1o"/>
                         <outlet property="personalityTextCountLabel" destination="QWF-5l-xhz" id="zWp-De-bUb"/>
                         <outlet property="personalityTextView" destination="icn-O2-pbb" id="8sI-ht-Shq"/>
                         <outlet property="profileClearButton" destination="DMH-dt-DZ7" id="Kjx-E5-fWF"/>

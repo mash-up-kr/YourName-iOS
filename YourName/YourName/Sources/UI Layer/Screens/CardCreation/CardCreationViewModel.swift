@@ -37,6 +37,7 @@ final class CardCreationViewModel {
     let role = BehaviorRelay<String>(value: .empty)
     let contactInfos = BehaviorRelay<[ContactInfo]>(value: [])
     let personality = BehaviorRelay<String>(value: .empty)
+    let shouldHidePersonalityPlaceholder = BehaviorRelay<Bool>(value: false)
     let interestes = BehaviorRelay<[Interest]>(value: [])
     let strongPoints = BehaviorRelay<[StrongPoint]>(value: [])
     let aboutMe = BehaviorRelay<String>(value: .empty)
@@ -45,6 +46,8 @@ final class CardCreationViewModel {
     
     init(myCardRepsitory: MyCardRepository) {
         self.myCardRepository = myCardRepsitory
+        
+        self.updateCanComplete()
     }
     
     // Event
@@ -74,7 +77,7 @@ final class CardCreationViewModel {
     func typeRole(_ text: String) {
         self.role.accept(text)
     }
-   
+    
     func tapSkillSetting() {
         self.navigation.accept(.show(.settingSkill))
     }
@@ -104,6 +107,7 @@ final class CardCreationViewModel {
     
     func typePersonality(_ text: String) {
         self.personality.accept(text)
+        self.shouldHidePersonalityPlaceholder.accept(text.isNotEmpty)
     }
     
     func tapTMISetting() {
@@ -119,26 +123,55 @@ final class CardCreationViewModel {
     }
     
     func tapCompletion() {
-        let nameCard = Entity.NameCard(
-            id: nil,
+        let tmiIDs = self.interestes.value.compactMap { $0.id } + self.strongPoints.value.compactMap { $0.id }
+        let skills = self.skills.value
+            .filter { $0.title.isNotEmpty == true }
+            .map { Entity.Skill(name: $0.title, level: $0.level) }
+        let contacts = self.contactInfos.value
+            .filter { $0.value.isNotEmpty == true }
+            .map { Entity.Contact(category: $0.type, value: $0.value, iconURL: nil) }
+        
+        let nameCard = Entity.NameCardCreation(
+            imgUrl: nil,
+            bgColorId: nil,
             name: self.name.value,
             role: self.role.value,
+            skills: skills,
+            contacts: contacts,
             personality: self.personality.value,
             introduce: self.aboutMe.value,
-            uniqueCode: nil,
-            image: nil,
-            user: nil,
-            bgColor: nil,
-            contacts: self.contactInfos.value.map { Entity.Contact(category: $0.type, value: $0.value, iconURL: nil) },
-            personalSkills: self.skills.value.map { Entity.Skill(name: $0.title, level: $0.level) },
-            bgColorId: nil
+            tmiIds: tmiIDs
         )
         
         self.myCardRepository.createMyCard(nameCard)
             .subscribe(onNext: { [weak self] _ in
+                NotificationCenter.default.post(name: .myCardsDidChange, object: nil)
+                self?.shouldClose.accept(Void())
+            }, onError: { [weak self] _ in
+                self?.shouldClose.accept(Void())
+            }, onDisposed: { [weak self] in
                 self?.shouldClose.accept(Void())
             })
             .disposed(by: self.disposeBag)
+    }
+    
+    private func updateCanComplete() {
+        let hasTMIs = Observable.combineLatest(
+            self.interestes.map { $0.isNotEmpty },
+            self.strongPoints.map { $0.isNotEmpty }
+        ).map { $0.0 || $0.1 }
+        
+        Observable.combineLatest([
+            self.name.map { $0.isNotEmpty },
+            self.role.map { $0.isNotEmpty },
+            self.skills.map { $0.isNotEmpty },
+            self.contactInfos.map { $0.isNotEmpty },
+            self.personality.map { $0.isNotEmpty },
+            self.aboutMe.map { $0.isNotEmpty },
+            hasTMIs
+        ]).map { $0.reduce(true) { $0 && $1 } }
+        .bind(to: self.canComplete)
+        .disposed(by: self.disposeBag)
     }
     
     private let disposeBag = DisposeBag()

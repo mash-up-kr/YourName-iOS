@@ -33,6 +33,7 @@
                                             <constraint firstAttribute="height" constant="44" id="Cli-Ql-iub"/>
                                             <constraint firstAttribute="width" constant="44" id="M1D-6p-VwR"/>
                                         </constraints>
+                                        <color key="tintColor" name="black1"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="icon_back_black"/>
                                     </button>
@@ -219,6 +220,9 @@
         <image name="icon_back_black" width="24" height="24"/>
         <image name="icon_lock" width="24" height="24"/>
         <image name="quest_namee" width="90" height="100"/>
+        <namedColor name="black1">
+            <color red="0.082352941176470587" green="0.082352941176470587" blue="0.082352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="gray1">
             <color red="0.7686274509803922" green="0.7686274509803922" blue="0.7686274509803922" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

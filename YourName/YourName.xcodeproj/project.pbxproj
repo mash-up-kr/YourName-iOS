@@ -237,6 +237,7 @@
 		CEB84096272AF389000E527B /* CardBookCoverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB84095272AF389000E527B /* CardBookCoverTableViewCell.swift */; };
 		CEC5998E27551B3B00405DEA /* RefreshAuthenticationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5998D27551B3B00405DEA /* RefreshAuthenticationAPI.swift */; };
 		CEC599D127568E6800405DEA /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC599D027568E6800405DEA /* LocalStorage.swift */; };
+		CEC599D32756B0EC00405DEA /* ImageUploadAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC599D22756B0EC00405DEA /* ImageUploadAPI.swift */; };
 		CED16DE926F39F700076565F /* HomeTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED16DE826F39F700076565F /* HomeTab.swift */; };
 		CED16DF526F3A5480076565F /* QuestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED16DF426F3A5480076565F /* QuestViewController.swift */; };
 		CED16DF726F3A5540076565F /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED16DF626F3A5540076565F /* SettingViewController.swift */; };
@@ -523,6 +524,7 @@
 		CEB84095272AF389000E527B /* CardBookCoverTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBookCoverTableViewCell.swift; sourceTree = "<group>"; };
 		CEC5998D27551B3B00405DEA /* RefreshAuthenticationAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshAuthenticationAPI.swift; sourceTree = "<group>"; };
 		CEC599D027568E6800405DEA /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
+		CEC599D22756B0EC00405DEA /* ImageUploadAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploadAPI.swift; sourceTree = "<group>"; };
 		CED16DE826F39F700076565F /* HomeTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTab.swift; sourceTree = "<group>"; };
 		CED16DF426F3A5480076565F /* QuestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestViewController.swift; sourceTree = "<group>"; };
 		CED16DF626F3A5540076565F /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -701,6 +703,7 @@
 				A2DA3B3A274A162400E68F23 /* LoginAPI.swift */,
 				A2DA3B62274FDA2200E68F23 /* MyNameCardsAPI.swift */,
 				CEC5998D27551B3B00405DEA /* RefreshAuthenticationAPI.swift */,
+				CEC599D22756B0EC00405DEA /* ImageUploadAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -1115,6 +1118,7 @@
 		CEB6586426EB2BC100C11F33 /* Domain Layer */ = {
 			isa = PBXGroup;
 			children = (
+				CEC599D42756B7AE00405DEA /* Notification */,
 				CEDA4B84274ECEA70011D0CA /* Quest */,
 				CEAE3970274002E30010F8F0 /* Card */,
 				CEB6586D26EB2C8800C11F33 /* Auth */,
@@ -1303,6 +1307,13 @@
 				CEC599D027568E6800405DEA /* LocalStorage.swift */,
 			);
 			path = LocalStorage;
+			sourceTree = "<group>";
+		};
+		CEC599D42756B7AE00405DEA /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Notification;
 			sourceTree = "<group>";
 		};
 		CED16DEC26F3A4C30076565F /* MyCardList */ = {
@@ -1756,6 +1767,7 @@
 				CE4D4ECE2709ECDF00081A2B /* ColorSourceRepository.swift in Sources */,
 				CE472B6D2748B76B001A5E5F /* Entity.User.swift in Sources */,
 				CE4D4EB52708E9EC00081A2B /* PaletteView.swift in Sources */,
+				CEC599D32756B0EC00405DEA /* ImageUploadAPI.swift in Sources */,
 				CEB84094272AF143000E527B /* CardBookListDependencyContainer.swift in Sources */,
 				CE6BABAF2704EE9C0006D26B /* UICollectionView+.swift in Sources */,
 				CEF8C55326EDF8D5009BA9C2 /* UIView+.swift in Sources */,

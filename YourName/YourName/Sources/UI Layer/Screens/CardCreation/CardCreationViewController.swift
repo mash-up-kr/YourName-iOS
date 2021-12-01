@@ -122,8 +122,8 @@ final class CardCreationViewController: ViewController, Storyboarded {
             .disposed(by: disposeBag)
         
         completeButton?.rx.tap
-            .subscribe(onNext: { [weak self] in self?.viewModel.tapCompletion()
-                self?.dismiss(animated: true, completion: nil)
+            .subscribe(onNext: { [weak self] in
+                self?.viewModel.tapCompletion()
             })
             .disposed(by: self.disposeBag)
         
@@ -136,7 +136,6 @@ final class CardCreationViewController: ViewController, Storyboarded {
     }
     
     private func render(_ viewModel: CardCreationViewModel) {
-        
         if let profilePlaceholderView = self.profilePlaceholderView {
             viewModel.shouldHideProfilePlaceholder
                 .distinctUntilChanged()
@@ -185,6 +184,13 @@ final class CardCreationViewController: ViewController, Storyboarded {
                 .disposed(by: disposeBag)
         }
         
+        if let personalityPlaceholder = self.personalityPlaceholder {
+            viewModel.shouldHidePersonalityPlaceholder
+                .distinctUntilChanged()
+                .bind(to: personalityPlaceholder.rx.isHidden)
+                .disposed(by: self.disposeBag)
+        }
+        
         if let aboutMeTextView = self.aboutMeTextView {
             viewModel.aboutMe
                 .distinctUntilChanged()
@@ -230,6 +236,15 @@ final class CardCreationViewController: ViewController, Storyboarded {
                 .map { $0.isEmpty == false }
                 .distinctUntilChanged()
                 .bind(to: aboutMePlaceholderLabel.rx.isHidden)
+                .disposed(by: disposeBag)
+        }
+        
+        if let completeButton = self.completeButton {
+            viewModel.canComplete.distinctUntilChanged()
+                .do { [weak self] canComplete in
+                    self?.completeButton?.backgroundColor = canComplete ? Palette.black1 : Palette.gray1
+                }
+                .bind(to: completeButton.rx.isEnabled)
                 .disposed(by: disposeBag)
         }
         
@@ -329,6 +344,7 @@ final class CardCreationViewController: ViewController, Storyboarded {
     @IBOutlet private var contactInputViews: [ContactInputView]?
     
     @IBOutlet private weak var personalityTextView: UITextView?
+    @IBOutlet private weak var personalityPlaceholder: UILabel?
     @IBOutlet private weak var personalityTextCountLabel: UILabel?
     @IBOutlet private weak var tmiCompleteImageView: UIImageView?
     @IBOutlet private weak var myTMISettingButton: UIButton?

@@ -10,7 +10,7 @@ import Foundation
 
 extension Entity {
     
-    struct Skill: Decodable {
+    struct Skill: Codable {
         let name: String
         let level: Int?
     }

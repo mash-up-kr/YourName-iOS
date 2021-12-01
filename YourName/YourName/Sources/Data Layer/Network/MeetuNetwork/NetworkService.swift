@@ -45,8 +45,9 @@ final class NetworkService: NetworkServing {
                         guard let self = self else { return .empty() }
                         return self._request(api)
                     }
-                    .catchError { [weak self] _ in
+                    .catchError { [weak self] error in
                         self?.refreshToken = nil
+                        print("🐛 - ", error.localizedDescription)
                         return .error(NetworkError.denyAuthentication)
                     }
             }
