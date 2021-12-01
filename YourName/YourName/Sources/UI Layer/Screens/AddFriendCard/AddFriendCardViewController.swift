@@ -91,11 +91,11 @@ extension AddFriendCardViewController {
         Observable.merge(
             self.searchTextField.rx.controlEvent([.editingDidEndOnExit])
                 .mapToVoid(),
-            self.resultView.rx.tapWhenRecognized()
+            self.resultView.rx.tapWhenRecognized
                 .mapToVoid(),
-            self.noResultView.rx.tapWhenRecognized()
+            self.noResultView.rx.tapWhenRecognized
                 .mapToVoid(),
-            self.view.rx.tapWhenRecognized()
+            self.view.rx.tapWhenRecognized
                 .mapToVoid()
         )
             .bind(onNext: { [weak self] _ in

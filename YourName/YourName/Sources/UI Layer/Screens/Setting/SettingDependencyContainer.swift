@@ -13,14 +13,13 @@ final class SettingDependencyContainer {
         
     }
     
-    init(mycardListDependencyContainer: MyCardListDependencyContainer) {
-        
+    deinit {
+        print(" 💀 \(String(describing: self)) deinit")
     }
     
     func settingViewController() -> UIViewController {
-        let viewModel = SettingViewModel()
         let viewController = SettingViewController.instantiate()
-        viewController.viewModel = viewModel
+        viewController.viewModel = self.createSettingViewModel()
         
         let aboutProductionTeamFactory: () -> AboutProductionTeamViewController = {
             return AboutProductionTeamViewController.instantiate()
@@ -28,15 +27,22 @@ final class SettingDependencyContainer {
         
         viewController.aboutProductionTeamFactory = aboutProductionTeamFactory
         viewController.questViewControllerFactory = {
-            let depencyContainer = self.createQuestDependencyContainer()
-            return depencyContainer.createQuestViewController()
+            let dependencyContainer = QuestDependencyContainer(settingDependencyContainer: self)
+            return dependencyContainer.createQuestViewController()
+        }
+        
+        viewController.noticeViewControllerFactory = {
+            let viewController = NoticeViewController.instantiate()
+            return viewController
         }
       
         let navigationController = UINavigationController(rootViewController: viewController)
         return navigationController
     }
     
-    private func createQuestDependencyContainer() -> QuestDependencyContainer {
-        return QuestDependencyContainer(settingDependencyContainer: self)
+    private func createSettingViewModel() -> SettingViewModel {
+        let repository = YourNameAuthenticationRepository(localStorage: UserDefaults.standard,
+                                         network: Environment.current.network)
+        return SettingViewModel(authRepository: repository)
     }
 }

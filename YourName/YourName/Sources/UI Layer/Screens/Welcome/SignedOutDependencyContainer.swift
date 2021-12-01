@@ -27,6 +27,7 @@ final class SignedOutDependencyContainer {
         let oauthRepository = YourNameOAuthRepository()
         return WelcomeViewModel(delegate: rootViewModel,
                                 authenticationRepository: authenticationRepository,
-                                oauthRepository: oauthRepository)
+                                oauthRepository: oauthRepository,
+                                localStorage: UserDefaults.standard)
     }
 }

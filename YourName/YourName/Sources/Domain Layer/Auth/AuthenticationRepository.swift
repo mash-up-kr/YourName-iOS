@@ -17,9 +17,12 @@ struct AuthenticationOption: OptionSet {
 
 protocol AuthenticationRepository: AnyObject {
     func fetch(option: AuthenticationOption) -> Observable<Authentication?>
-    func fetch(withProviderToken providerToken: Secret, provider: Provider) -> Observable<Authentication?>
+    func fetch(withProviderToken providerToken: Secret, provider: Provider) -> Observable<Authentication>
     func write(authentication: Authentication) -> Observable<Void>
     func remove(option: AuthenticationOption) -> Observable<Void>
+    
+    func logout() -> Observable<Void>
+    func resign() -> Observable<Void>
 }
 
 final class YourNameAuthenticationRepository: AuthenticationRepository {
@@ -42,9 +45,9 @@ final class YourNameAuthenticationRepository: AuthenticationRepository {
             }
     }
     
-    func fetch(withProviderToken providerToken: Secret, provider: Provider) -> Observable<Authentication?> {
+    func fetch(withProviderToken providerToken: Secret, provider: Provider) -> Observable<Authentication> {
         return network.request(LoginAPI(accessToken: providerToken, provider: provider))
-            .compactMap { [weak self] authentication -> Authentication? in
+            .map { [weak self] authentication -> Authentication in
                 if let accessToken = authentication.accessToken     { self?.save(accessToken: accessToken)   }
                 if let refreshToken = authentication.refreshToken   { self?.save(refreshToken: refreshToken) }
                 
@@ -66,6 +69,16 @@ final class YourNameAuthenticationRepository: AuthenticationRepository {
         if option.contains(.refreshToken) { screams.append(self.localStorage.delete(.refreshToken)) }
         
         return Observable.zip(screams).map { _ in Void() }
+    }
+    
+    func logout() -> Observable<Void> {
+        return Environment.current.network.request(LogoutAPI())
+                    .mapToVoid()
+    }
+    
+    func resign() -> Observable<Void> {
+        return Environment.current.network.request(ResignAPI())
+                    .mapToVoid()
     }
     
     private func save(accessToken: String)  {
