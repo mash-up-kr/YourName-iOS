@@ -47,7 +47,7 @@ final class CardFrontView: NibLoadableView {
     }
 
     func configure(item: Item) {
-        guard let url = URL(string: "https://erme.s3.ap-northeast-2.amazonaws.com/\(item.image)") else { return }
+        guard let url = URL(string: item.image) else { return }
         self.userProfileImage.setImageSource(.url(url))
         self.userNameLabel.text = item.name
         self.userRoleLabel.text = item.role

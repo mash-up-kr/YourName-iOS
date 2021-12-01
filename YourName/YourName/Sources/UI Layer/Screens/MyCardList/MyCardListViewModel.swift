@@ -67,22 +67,16 @@ final class MyCardListViewModel {
     private func myCardCellViewModel(_ cards: [Entity.NameCard]) -> [MyCardCellViewModel] {
         return cards.compactMap { card -> MyCardCellViewModel? in
             guard let personalSkills = card.personalSkills,
-                  let bgColors = card.bgColor?.value else { return nil }
+                  let bgColors = card.bgColor?.value,
+                  let colorSource = ColorSource.from(bgColors)
+            else { return nil }
             let skills = personalSkills.map { MySkillProgressView.Item(title: $0.name, level: $0.level ?? 0) }
-            
-            let bgColor: ColorSource!
-            
-            if bgColors.count == 1 {
-                bgColor = .monotone(UIColor(hexString: bgColors.first!))
-            } else {
-                bgColor = .gradient(bgColors.map { UIColor(hexString: $0) })
-            }
             return MyCardCellViewModel(id: card.id ?? 0,
-                          image: card.image?.key ?? "",
-                          name: card.name ?? "",
-                          role: card.role ?? "",
-                          skills: skills,
-                          backgroundColor: bgColor)
+                                       image: card.imgUrl ?? .empty,
+                                       name: card.name ?? .empty,
+                                       role: card.role ?? .empty,
+                                       skills: skills,
+                                       backgroundColor: colorSource)
         }
     }
 }
