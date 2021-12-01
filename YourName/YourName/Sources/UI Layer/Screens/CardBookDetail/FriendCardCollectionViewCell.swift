@@ -56,26 +56,10 @@ final class FriendCardCollectionViewCell: UICollectionViewCell {
     private func updateBackgroundColor(colorSource: ColorSource) {
         switch colorSource {
         case .monotone(let color):
-            self.contentView.removeGradientLayer(name: Self.gradientLayerKey)
-            let gradientLayer = CAGradientLayer().then {
-                $0.name = Self.gradientLayerKey
-                $0.colors = [color, color].map { $0.cgColor }
-                $0.startPoint = .zero
-                $0.endPoint = CGPoint(x: 1, y: 1)
-                $0.frame = self.contentView.bounds
-            }
-            self.contentView.layer.insertSublayer(gradientLayer, at: 0)
+            self.updateGradientLayer(colors: [color])
             
         case .gradient(let colors):
-            self.contentView.removeGradientLayer(name: Self.gradientLayerKey)
-            let gradientLayer = CAGradientLayer().then {
-                $0.name = Self.gradientLayerKey
-                $0.startPoint = .zero
-                $0.endPoint = CGPoint(x: 1, y: 1)
-                $0.colors = colors.map { $0.cgColor }
-                $0.frame = self.contentView.bounds
-            }
-            self.contentView.layer.insertSublayer(gradientLayer, at: 0)
+            self.updateGradientLayer(colors: colors)
         }
     }
     

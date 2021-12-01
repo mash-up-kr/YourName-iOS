@@ -30,7 +30,7 @@ final class YourNameCardBookRepository: CardBookRepository {
         return network.request(CardBooksAPI())
             .compactMap { [weak self] response in
                 guard let self = self else { return nil }
-                return response.list.compactMap(self.translate(fromEntity:))
+                return (response.list ?? []).compactMap(self.translate(fromEntity:))
             }
     }
     

@@ -23,6 +23,35 @@ extension UIView {
             .filter { $0 is CAGradientLayer && $0.name == name }
             .forEach { $0.removeFromSuperlayer() }
     }
+    
+    
+    func updateGradientLayer(hexStrings: [String], name: String = UIView.gradientKey) {
+        let colors = hexStrings.compactMap { UIColor(hexString: $0) }
+        self.updateGradientLayer(colors: colors)
+    }
+    
+    
+    func updateGradientLayer(colors: [UIColor], name: String = UIView.gradientKey) {
+        guard colors.isNotEmpty else { return }
+        
+        self.removeGradientLayer(name: name)
+        
+        var gradientColors = colors
+        if gradientColors.count == 1 {
+            gradientColors.append(contentsOf: colors)
+        }
+        let gradientLayer = CAGradientLayer().then {
+            $0.startPoint = .zero
+            $0.endPoint = CGPoint(x: 1, y: 1)
+            $0.name = name
+            $0.frame = self.bounds
+            $0.colors = gradientColors.map { $0.cgColor }
+        }
+        self.layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
+    static private let gradientKey = "gradientLayerKey"
+    
 }
 extension UIView {
     

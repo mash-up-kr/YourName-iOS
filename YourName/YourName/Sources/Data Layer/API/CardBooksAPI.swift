@@ -16,6 +16,6 @@ struct CardBooksAPI: ServiceAPI {
 extension CardBooksAPI {
     
     struct Response: Decodable {
-        let list: [Entity.CardBook]
+        let list: [Entity.CardBook]?
     }
 }
