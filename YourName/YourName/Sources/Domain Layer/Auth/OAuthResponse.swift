@@ -13,7 +13,7 @@ enum Provider: String, Decodable {
 }
 
 struct OAuthResponse {
-    let accessToken: AccessToken
+    let accessToken: Secret
     let provider: Provider
 }
 

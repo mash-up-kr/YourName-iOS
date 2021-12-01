@@ -52,7 +52,14 @@ final class QuestViewController: ViewController, Storyboarded {
                 self?.questsTableView?.reloadData()
             })
             .disposed(by: self.disposeBag)
+        
+        viewModel.progress.distinctUntilChanged()
+            .subscribe(onNext: { [weak self] in
+                self?.questProgressView?.progress = $0
+            })
+            .disposed(by: self.disposeBag)
     }
+    
     private let disposeBag = DisposeBag()
     
     private var quests: [Quest] = []

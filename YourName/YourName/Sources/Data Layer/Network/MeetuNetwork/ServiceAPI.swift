@@ -8,6 +8,7 @@
 import Foundation
 import Moya
 import RxSwift
+import RxOptional
 
 protocol ServiceAPI: TargetType {
     associatedtype Response: Decodable

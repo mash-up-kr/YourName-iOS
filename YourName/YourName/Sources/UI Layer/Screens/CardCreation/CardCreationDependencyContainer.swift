@@ -14,7 +14,9 @@ final class CardCreationDependencyContainer {
     init(myCardListDependencyContainer: MyCardListDependencyContainer) {
         func createCardCreationViewModel() -> CardCreationViewModel {
             let repository = YourNameMyCardRepository()
-            return CardCreationViewModel(myCardRepsitory: repository)
+            let imageUploader = YourNameImageUploader()
+            return CardCreationViewModel(myCardRepsitory: repository,
+                                         imageUploader: imageUploader)
         }
         
         self.viewModel = createCardCreationViewModel()

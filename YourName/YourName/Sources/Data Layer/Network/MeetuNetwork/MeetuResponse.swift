@@ -8,7 +8,9 @@
 import Foundation
 
 struct MeetuResponse<Wrapped: Decodable>: Decodable {
-    let code: Int?
+    let statusCode: Int?
     let data: Wrapped?
     let message: String?
+    
+    
 }

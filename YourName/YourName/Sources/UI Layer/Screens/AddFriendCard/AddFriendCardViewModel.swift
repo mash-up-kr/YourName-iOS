@@ -104,7 +104,7 @@ extension AddFriendCardViewModel {
                                                                                  value: $0.value ?? "") }
                 
                 return (FrontCardItem(id: nameCard.id ?? 0 ,
-                                      image: nameCard.image ?? "",
+                                      image: nameCard.imgUrl ?? "",
                                       name: nameCard.name ?? "",
                                       role: nameCard.role ?? "",
                                       skills: skills,

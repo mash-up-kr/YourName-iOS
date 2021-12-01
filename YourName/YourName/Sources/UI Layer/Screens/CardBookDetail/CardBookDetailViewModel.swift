@@ -25,7 +25,7 @@ final class CardBookDetailViewModel {
     let selectedIDs = BehaviorRelay<Set<String>>(value: [])
     
     init(
-        cardBookID: String,
+        cardBookID: CardBookID?,
         cardRepository: CardRepository
     ) {
         self.cardBookID = cardBookID
@@ -33,13 +33,24 @@ final class CardBookDetailViewModel {
     }
     
     func didLoad() {
-        self.cardRepository.fetchCards(cardBookID: self.cardBookID)
-            .subscribe(onNext: { [weak self] cards in
-                guard let self = self else { return }
-                self.friendCards.accept(cards)
-                self.friendCardsForDisplay.accept(cards.compactMap(self.transform(card:)))
-            })
-            .disposed(by: self.disposeBag)
+        if let cardBookID = self.cardBookID {
+            self.cardRepository.fetchCards(cardBookID: cardBookID)
+                .subscribe(onNext: { [weak self] cards in
+                    guard let self = self else { return }
+                    self.friendCards.accept(cards)
+                    self.friendCardsForDisplay.accept(cards.compactMap(self.transform(card:)))
+                })
+                .disposed(by: self.disposeBag)
+        } else {
+            self.cardRepository.fetchAll()
+                .subscribe(onNext: { [weak self] cards in
+                    guard let self = self else { return }
+                    self.friendCards.accept(cards)
+                    self.friendCardsForDisplay.accept(cards.compactMap(self.transform(card:)))
+                })
+                .disposed(by: self.disposeBag)
+        }
+        
     }
     
     func tapMore() {
@@ -58,7 +69,7 @@ final class CardBookDetailViewModel {
         self.friendCardsForDisplay.accept(updatedFriendCardsForDisplay)
     }
     
-    func tapCheck(id: String) {
+    func tapCheck(id: NameCardID) {
         var cellViewModels = self.friendCardsForDisplay.value
         guard let selectedIndex = cellViewModels.firstIndex(where: { $0.id == id }) else { return }
         guard var cellViewModel = cellViewModels[safe: selectedIndex]               else { return }
@@ -101,7 +112,10 @@ final class CardBookDetailViewModel {
 
                 let deletedCardIDSet = Set(deletedCardIDs)
                 let updatedCards = self.friendCards.value.with { cards in
-                    cards.removeAll(where: { deletedCardIDSet.contains($0.id ?? .empty) })
+                    cards.removeAll(where: { card in
+                        guard let id = card.id else { return false }
+                        return deletedCardIDSet.contains(id)
+                    })
                 }
                 self.isEditing.accept(false)
                 self.friendCards.accept(updatedCards)
@@ -142,6 +156,6 @@ final class CardBookDetailViewModel {
     private var checkedCardIndice = Set<Int>()
     private let disposeBag = DisposeBag()
     
-    private let cardBookID: String
+    private let cardBookID: CardBookID?
     private let cardRepository: CardRepository
 }

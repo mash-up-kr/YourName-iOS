@@ -8,6 +8,6 @@
 import Foundation
 
 protocol AuthenticationDelegate {
-    func signIn(withAccessToken accessToken: AccessToken)
+    func signIn(withAccessToken accessToken: Secret)
     func notSignIn()
 }

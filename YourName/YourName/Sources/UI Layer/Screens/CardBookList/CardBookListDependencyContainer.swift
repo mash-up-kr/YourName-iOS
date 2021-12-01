@@ -40,7 +40,7 @@ final class CardBookListDependencyContainer {
     }
     
     private func createCardBookRepository() -> CardBookRepository {
-        return MockCardBookRepository()
+        return YourNameCardBookRepository()
     }
     
     private func createCardDetailDependencyContainer() -> CardBookDetailDependencyContainer {

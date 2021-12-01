@@ -48,21 +48,17 @@ final class CardFrontView: NibLoadableView {
 
 extension CardFrontView {
     func configure(item: Item) {
-        guard let url = URL(string: "https://erme.s3.ap-northeast-2.amazonaws.com/\(item.image)") else { return }
+        guard let url = URL(string: item.image) else { return }
         self.userProfileImage.setImageSource(.url(url))
         self.userNameLabel.text = item.name
         self.userRoleLabel.text = item.role
-        
-        let gradientLayer = CAGradientLayer()
+      
         switch item.backgroundColor {
         case .gradient(let colors):
-            self.backgroundColor = nil
-            gradientLayer.colors = colors.compactMap { $0.cgColor }
+            self.updateGradientLayer(colors: colors)
         case .monotone(let color):
-            gradientLayer.colors = nil
-            self.backgroundColor = color
+            self.updateGradientLayer(colors: [color])
         }
-        self.layer.addSublayer(gradientLayer)
         
         self.configure(skills: item.skills)
     }
@@ -71,7 +67,7 @@ extension CardFrontView {
         self.skillStackView.subviews.forEach { $0.isHidden = true }
         self.contentView.layer.cornerRadius = 12
     }
-
+  
     //TODO: viewModel생성 이후 수정필요
     private func configure(skills: [MySkillProgressView.Item]) {
         skills.enumerated().forEach { index, skill in
