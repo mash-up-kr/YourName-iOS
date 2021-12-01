@@ -13,6 +13,8 @@
 		649ABC27275108A9005F50E8 /* CardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649ABC1D275108A8005F50E8 /* CardDetailViewController.swift */; };
 		649ABC28275108A9005F50E8 /* CardDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 649ABC1E275108A8005F50E8 /* CardDetailViewController.storyboard */; };
 		649ABC2E275108A9005F50E8 /* CardDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649ABC24275108A9005F50E8 /* CardDetailViewModel.swift */; };
+		64B1C5FA2757BF6F00029216 /* CardDetailTMICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B1C5F82757BF6F00029216 /* CardDetailTMICollectionViewCell.swift */; };
+		64B1C5FB2757BF6F00029216 /* CardDetailTMICollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64B1C5F92757BF6F00029216 /* CardDetailTMICollectionViewCell.xib */; };
 		64E6EF1D2751738C00082673 /* AppleAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E6EF1C2751738C00082673 /* AppleAuth.swift */; };
 		64E6EF1F27517C2300082673 /* RxASAuthorizationControllerDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E6EF1E27517C2300082673 /* RxASAuthorizationControllerDelegateProxy.swift */; };
 		A210ACB3274070580014AA1D /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A210ACB2274070580014AA1D /* ToastView.swift */; };
@@ -279,6 +281,8 @@
 		649ABC1D275108A8005F50E8 /* CardDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDetailViewController.swift; sourceTree = "<group>"; };
 		649ABC1E275108A8005F50E8 /* CardDetailViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CardDetailViewController.storyboard; sourceTree = "<group>"; };
 		649ABC24275108A9005F50E8 /* CardDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDetailViewModel.swift; sourceTree = "<group>"; };
+		64B1C5F82757BF6F00029216 /* CardDetailTMICollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailTMICollectionViewCell.swift; sourceTree = "<group>"; };
+		64B1C5F92757BF6F00029216 /* CardDetailTMICollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardDetailTMICollectionViewCell.xib; sourceTree = "<group>"; };
 		64E6EF1C2751738C00082673 /* AppleAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAuth.swift; sourceTree = "<group>"; };
 		64E6EF1E27517C2300082673 /* RxASAuthorizationControllerDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxASAuthorizationControllerDelegateProxy.swift; sourceTree = "<group>"; };
 		64E6EF20275205F300082673 /* MEETU.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MEETU.entitlements; sourceTree = "<group>"; };
@@ -874,6 +878,8 @@
 				649ABC1E275108A8005F50E8 /* CardDetailViewController.storyboard */,
 				649ABC1D275108A8005F50E8 /* CardDetailViewController.swift */,
 				649ABC24275108A9005F50E8 /* CardDetailViewModel.swift */,
+				64B1C5F82757BF6F00029216 /* CardDetailTMICollectionViewCell.swift */,
+				64B1C5F92757BF6F00029216 /* CardDetailTMICollectionViewCell.xib */,
 			);
 			path = CardDetail;
 			sourceTree = "<group>";
@@ -1486,6 +1492,7 @@
 				CE94ABBE270F68C1005D2E80 /* GoogleService-Info.plist in Resources */,
 				CE6BABA52704DAFB0006D26B /* CardCreationViewController.storyboard in Resources */,
 				A2CC65782708DAD900610C49 /* FriendCardCollectionViewCell.xib in Resources */,
+				64B1C5FB2757BF6F00029216 /* CardDetailTMICollectionViewCell.xib in Resources */,
 				CE2BB2C727074F4600936148 /* Colors.xcassets in Resources */,
 				A2BFC11B273FFD54002FFF01 /* SelectCardBookCollectionViewCell.xib in Resources */,
 				CE6BABA02704D7BF0006D26B /* SplashViewController.storyboard in Resources */,
@@ -1737,6 +1744,7 @@
 				CEB84094272AF143000E527B /* CardBookListDependencyContainer.swift in Sources */,
 				CE6BABAF2704EE9C0006D26B /* UICollectionView+.swift in Sources */,
 				CEF8C55326EDF8D5009BA9C2 /* UIView+.swift in Sources */,
+				64B1C5FA2757BF6F00029216 /* CardDetailTMICollectionViewCell.swift in Sources */,
 				A2CC657A2708DAEA00610C49 /* FriendCardEmptyCollectionViewCell.swift in Sources */,
 				CED16DE926F39F700076565F /* HomeTab.swift in Sources */,
 				CE4D4ED52709F9E700081A2B /* Keyboard.swift in Sources */,

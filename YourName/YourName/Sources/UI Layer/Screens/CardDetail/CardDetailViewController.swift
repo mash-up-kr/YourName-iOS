@@ -25,6 +25,11 @@ final class CardDetailViewController: ViewController, Storyboarded {
     @IBOutlet weak var mySkillProgressView1: MySkillProgressView!
     @IBOutlet weak var mySkillProgressView2: MySkillProgressView!
     @IBOutlet weak var mySkillProgressView3: MySkillProgressView!
+    
+    @IBOutlet weak var cardDetailFrontView: UIStackView!
+    
+    @IBOutlet weak var cardDetailBackView: UIStackView!
+    
     override var hidesBottomBarWhenPushed: Bool {
         get {
             return navigationController?.topViewController == self
