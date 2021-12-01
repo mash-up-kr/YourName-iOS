@@ -53,14 +53,9 @@ final class CardDetailMoreView: UIView, NibLoadable {
 extension CardDetailMoreView {
     
     private func configureUI() {
-        [self.imageSaveView, self.editView].forEach { view in
-            view?.layer.cornerRadius = 12
-            view?.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
-        }
-        [self.shareLinkView, self.deleteView].forEach { view in
-            view?.layer.cornerRadius = 12
-            view?.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
-        }
+        [self.editView, self.imageSaveView, self.deleteView].forEach { $0.layer.cornerRadius = 12 }
+        self.editView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        self.deleteView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
     }
     private func bind() {
         self.render(self.viewModel)
