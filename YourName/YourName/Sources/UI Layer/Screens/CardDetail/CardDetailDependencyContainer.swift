@@ -32,7 +32,11 @@ final class CardDetailDependencyContainer {
                                                     id: self.cardID)
             let view = CardDetailMoreView(viewModel: viewModel,
                                           parent: viewController)
-            return PageSheetController(contentView: view)
+            let pageSheetController = PageSheetController(contentView: view)
+            pageSheetController.onDismiss = { contentView in
+                
+            }
+            return pageSheetController
         }
         return viewController
     }

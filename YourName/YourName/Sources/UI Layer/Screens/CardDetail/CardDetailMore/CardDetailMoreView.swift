@@ -15,7 +15,6 @@ final class CardDetailMoreView: UIView, NibLoadable {
     
 
     @IBOutlet private unowned var imageSaveView: UIView!
-    @IBOutlet private unowned var shareLinkView: UIView!
     @IBOutlet private unowned var editView: UIView!
     @IBOutlet private unowned var deleteView: UIView!
     
@@ -78,6 +77,8 @@ extension CardDetailMoreView {
         viewModel.alertController
             .bind(onNext: { [weak self] in
                 guard let self = self else { return }
+                print(self.parent, "parent????")
+                self.parent?.dismiss(animated: true)
                 self.parent?.present($0, animated: true)
             })
             .disposed(by: disposeBag)

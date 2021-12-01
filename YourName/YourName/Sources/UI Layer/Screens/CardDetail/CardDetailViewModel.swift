@@ -34,6 +34,6 @@ final class CardDetailViewModel {
     // MARK: - Methods
     
     func didTapMore() {
-        navigation.accept(.show(.cardDetailMore(cardID: self.cardID)))
+        navigation.accept(.present(.cardDetailMore(cardID: self.cardID)))
     }
 }

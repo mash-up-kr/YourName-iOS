@@ -41,6 +41,7 @@ final class CardDetailMoreViewModel {
     }
     
     private func deleteMyCard(id: CardID) {
+        print("id!!!!!", id)
         self.myCardRepository.removeMyCard(id: cardId)
             .catchError { error in
                 print(error)
