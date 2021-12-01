@@ -31,11 +31,11 @@ final class TMISettingViewModel {
     }
     
     func didLoad() {
-        interestRepository.fetchAll()
+        interestRepository.fetchAll().debug("")
             .bind(to: interestes)
             .disposed(by: disposeBag)
         
-        strongPointRepository.fetchAll()
+        strongPointRepository.fetchAll().debug()
             .bind(to: strongPoints)
             .disposed(by: disposeBag)
     }

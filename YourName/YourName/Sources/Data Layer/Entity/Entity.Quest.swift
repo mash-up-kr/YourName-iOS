@@ -9,7 +9,6 @@ import Foundation
 import KakaoSDKAuth
 
 extension Entity {
-    
     struct Quest: Decodable, Equatable {
         let meta: QuestMeta?
         let status: Status?

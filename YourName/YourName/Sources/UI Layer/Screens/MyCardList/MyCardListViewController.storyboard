@@ -54,10 +54,10 @@
                                 <color key="currentPageIndicatorTintColor" name="gray2"/>
                             </pageControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z8U-w8-KQp">
-                                <rect key="frame" x="334" y="75" width="56" height="20"/>
+                                <rect key="frame" x="326" y="61" width="64" height="48"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="jCd-vM-HpM"/>
-                                    <constraint firstAttribute="width" constant="56" id="m3U-Fg-AZO"/>
+                                    <constraint firstAttribute="height" constant="48" id="jCd-vM-HpM"/>
+                                    <constraint firstAttribute="width" constant="64" id="m3U-Fg-AZO"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="6" maxY="0.0"/>

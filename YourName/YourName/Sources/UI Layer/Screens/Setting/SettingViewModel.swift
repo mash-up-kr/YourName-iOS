@@ -25,10 +25,10 @@ final class SettingViewModel {
     let isLoading = PublishRelay<Bool>()
     let alert = PublishRelay<AlertViewController>()
     
-    private let authRepository: AuthRepository
+    private let authRepository: AuthenticationRepository
     private let disposeBag = DisposeBag()
     
-    init(authRepository: AuthRepository) {
+    init(authRepository: AuthenticationRepository) {
         self.authRepository = authRepository
         self.bind()
     }
@@ -51,7 +51,7 @@ final class SettingViewModel {
     
     func tapLogOut() {
         self.isLoading.accept(true)
-        self.authRepository.requestLogout()
+        self.authRepository.logout()
             .do { [weak self] _ in
                 self?.isLoading.accept(false)
             }
@@ -72,7 +72,7 @@ final class SettingViewModel {
             
             alertController.dismiss(animated: true)
             self.isLoading.accept(true)
-            self.authRepository.requestResign()
+            self.authRepository.resign()
                 .do { [weak self] _ in
                     self?.isLoading.accept(false)
                 }
@@ -101,8 +101,8 @@ extension SettingViewModel {
     private func bind() {
         self.backToFirst
             .bind(onNext: {
-                UserDefaultManager.accessToken = nil
-                UserDefaultManager.refreshToken = nil
+                UserDefaults.standard.delete(.accessToken)
+                UserDefaults.standard.delete(.refreshToken)
             })
             .disposed(by: disposeBag)
     }

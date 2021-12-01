@@ -9,7 +9,7 @@ import Foundation
 
 extension Entity {
     
-    struct User: Decodable {
+    struct User: Codable {
         let id: Int?
         let nickName: String?
         let role: String?
@@ -23,7 +23,7 @@ extension Entity {
     }
     
     
-    enum Provider: String, Decodable {
+    enum Provider: String, Codable {
         case kakao = "Kakao"
         case apple = "Apple"
     }

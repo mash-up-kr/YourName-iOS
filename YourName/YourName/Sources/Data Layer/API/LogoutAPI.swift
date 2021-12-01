@@ -14,8 +14,5 @@ struct LogoutAPI: ServiceAPI {
     var path: String { "/logout" }
     var method: Moya.Method { .post }
     var task: Task { .requestPlain }
-    var headers: [String : String]? {
-        return ["authorization": "Bearer \(UserDefaultManager.accessToken ?? "")"]
-    }
 }
 

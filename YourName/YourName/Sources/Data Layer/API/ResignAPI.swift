@@ -14,7 +14,5 @@ struct ResignAPI: ServiceAPI {
     var path: String { "/users" }
     var method: Method { .delete }
     var task: NetworkingTask { .requestPlain }
-    var headers: [String : String]? {
-        return ["authorization": "Bearer \(UserDefaultManager.accessToken ?? "")"]
-    }
+
 }

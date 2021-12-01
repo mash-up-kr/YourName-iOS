@@ -22,29 +22,36 @@ typealias CardCreationNavigation = Navigation<CardCreationDestination>
 final class CardCreationViewModel {
     
     // State
+    let isLoading = BehaviorRelay<Bool>(value: false)
     let shouldHideClear = BehaviorRelay<Bool>(value: true)
     let shouldHideProfilePlaceholder = BehaviorRelay<Bool>(value: false)
     let hasCompletedSkillInput = BehaviorRelay<Bool>(value: false)
     let hasCompletedTMIInput = BehaviorRelay<Bool>(value: false)
     let canComplete = BehaviorRelay<Bool>(value: false)
-    let shouldDismiss = PublishRelay<Void>()
+    let shouldClose = PublishRelay<Void>()
     let shouldDismissOverlays = PublishRelay<Void>()
     let indexOfContactTypeBeingSelected = BehaviorRelay<Int?>(value: nil)
     let profileImageSource = BehaviorRelay<ImageSource?>(value: nil)
+    let profileImageKey = BehaviorRelay<ImageKey?>(value: nil)
     let profileBackgroundColor = BehaviorRelay<ColorSource>(value: .monotone(Palette.black1))
+    let profileYourNameColorID = BehaviorRelay<Int?>(value: nil)
     let skills = BehaviorRelay<[Skill]>(value: [])
     let name = BehaviorRelay<String>(value: .empty)
     let role = BehaviorRelay<String>(value: .empty)
     let contactInfos = BehaviorRelay<[ContactInfo]>(value: [])
     let personality = BehaviorRelay<String>(value: .empty)
+    let shouldHidePersonalityPlaceholder = BehaviorRelay<Bool>(value: false)
     let interestes = BehaviorRelay<[Interest]>(value: [])
     let strongPoints = BehaviorRelay<[StrongPoint]>(value: [])
     let aboutMe = BehaviorRelay<String>(value: .empty)
     
     let navigation = PublishRelay<CardCreationNavigation>()
     
-    init(myCardRepsitory: MyCardRepository) {
+    init(myCardRepsitory: MyCardRepository, imageUploader: ImageUploader) {
         self.myCardRepository = myCardRepsitory
+        self.imageUploader = imageUploader
+        
+        self.transform()
     }
     
     // Event
@@ -74,7 +81,7 @@ final class CardCreationViewModel {
     func typeRole(_ text: String) {
         self.role.accept(text)
     }
-   
+    
     func tapSkillSetting() {
         self.navigation.accept(.show(.settingSkill))
     }
@@ -104,6 +111,7 @@ final class CardCreationViewModel {
     
     func typePersonality(_ text: String) {
         self.personality.accept(text)
+        self.shouldHidePersonalityPlaceholder.accept(text.isNotEmpty)
     }
     
     func tapTMISetting() {
@@ -114,31 +122,76 @@ final class CardCreationViewModel {
         self.aboutMe.accept(text)
     }
     
+    func tapBack() {
+        self.shouldClose.accept(Void())
+    }
+    
     func tapCompletion() {
-        let nameCard = Entity.NameCard(
-            id: nil,
+        let tmiIDs = self.interestes.value.compactMap { $0.id } + self.strongPoints.value.compactMap { $0.id }
+        let skills = self.skills.value
+            .filter { $0.title.isNotEmpty == true }
+            .map { Entity.Skill(name: $0.title, level: $0.level) }
+        let contacts = self.contactInfos.value
+            .filter { $0.value.isNotEmpty == true }
+            .map { Entity.Contact(category: $0.type, value: $0.value, iconURL: nil) }
+        
+        let nameCard = Entity.NameCardCreation(
+            imgUrl: nil,
+            bgColorId: self.profileYourNameColorID.value ?? 1,
             name: self.name.value,
             role: self.role.value,
+            skills: skills,
+            contacts: contacts,
             personality: self.personality.value,
             introduce: self.aboutMe.value,
-            uniqueCode: nil,
-            image: nil,
-            user: nil,
-            bgColor: nil,
-            contacts: self.contactInfos.value.map { Entity.Contact(category: $0.type, value: $0.value, iconURL: nil) },
-            personalSkills: self.skills.value.map { Entity.Skill(name: $0.title, level: $0.level) },
-            bgColorId: nil
+            tmiIds: tmiIDs,
+            imageKey: self.profileImageKey.value ?? "profile/B0BBD1E8-2219-4C15-8CE5-A0A8A80C986E"
         )
         
+        self.isLoading.accept(true)
         self.myCardRepository.createMyCard(nameCard)
             .subscribe(onNext: { [weak self] _ in
-                self?.shouldDismiss.accept(Void())
+                NotificationCenter.default.post(name: .myCardsDidChange, object: nil)
+                self?.isLoading.accept(false)
+                self?.shouldClose.accept(Void())
+            }, onError: { [weak self] _ in
+                self?.isLoading.accept(false)
+                self?.shouldClose.accept(Void())
+            }, onDisposed: { [weak self] in
+                self?.isLoading.accept(false)
+                self?.shouldClose.accept(Void())
             })
             .disposed(by: self.disposeBag)
     }
     
+    private func transform() {
+        let hasName = self.name.map { $0.isNotEmpty }
+        let hasRole = self.role.map { $0.isNotEmpty }
+        let hasSkills = self.skills.map { $0.isNotEmpty }
+        let hasContacts = self.contactInfos.map { $0.isNotEmpty }
+        let hasPersonality = self.personality.map { $0.isNotEmpty }
+        let hasIntroduce = self.aboutMe.map { $0.isNotEmpty }
+        let hasInterests = self.interestes.map { $0.isNotEmpty }
+        let hasStrongPoints = self.strongPoints.map { $0.isNotEmpty }
+        let hasTMIs = Observable.combineLatest(hasInterests, hasStrongPoints).map { $0.0 || $0.1 }
+        
+        Observable.combineLatest([
+            hasName,
+            hasRole,
+            hasSkills,
+            hasContacts,
+            hasContacts,
+            hasPersonality,
+            hasIntroduce,
+            hasTMIs
+        ]).map { predicates in predicates.allSatisfy { $0 } }
+        .bind(to: self.canComplete)
+        .disposed(by: self.disposeBag)
+    }
+    
     private let disposeBag = DisposeBag()
     private let myCardRepository: MyCardRepository
+    private let imageUploader: ImageUploader
 }
 
 extension CardCreationViewModel: ImageSourcePickerResponder {
@@ -156,9 +209,16 @@ extension CardCreationViewModel: ImageSourcePickerResponder {
 extension CardCreationViewModel: CharacterSettingResponder {
     
     func characterSettingDidComplete(characterMeta: CharacterMeta, characterData: Data) {
-        self.shouldHideClear.accept(false)
-        self.shouldHideProfilePlaceholder.accept(true)
-        self.profileImageSource.accept(.data(characterData))
+        self.isLoading.accept(true)
+        self.imageUploader.upload(imageData: characterData)
+            .subscribe(onNext: { [weak self] imageKey in
+                self?.isLoading.accept(false)
+                self?.shouldHideClear.accept(false)
+                self?.shouldHideProfilePlaceholder.accept(true)
+                self?.profileImageSource.accept(.data(characterData))
+                self?.profileImageKey.accept(imageKey)
+            })
+            .disposed(by: self.disposeBag)
     }
     
 }
@@ -187,7 +247,7 @@ extension CardCreationViewModel: TMISettingResponder {
 }
 extension CardCreationViewModel: PaletteResponder {
     
-    func profileColorSettingDidComplete(selectedColor: ProfileColor) {
+    func profileColorSettingDidComplete(selectedColor: YourNameColor) {
         self.profileBackgroundColor.accept(selectedColor.colorSource)
         self.shouldDismissOverlays.accept(Void())
     }

@@ -9,7 +9,7 @@ import Foundation
 
 extension Entity {
     
-    struct TMI: Decodable {
+    struct TMI: Codable {
         let id: Int?
         let type: String?
         let name: String?

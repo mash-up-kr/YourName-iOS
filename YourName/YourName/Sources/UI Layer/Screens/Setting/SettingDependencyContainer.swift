@@ -27,8 +27,8 @@ final class SettingDependencyContainer {
         
         viewController.aboutProductionTeamFactory = aboutProductionTeamFactory
         viewController.questViewControllerFactory = {
-            let depencyContainer = QuestDependencyContainer(settingDependencyContainer: self)
-            return depencyContainer.createQuestViewController()
+            let dependencyContainer = QuestDependencyContainer(settingDependencyContainer: self)
+            return dependencyContainer.createQuestViewController()
         }
         
         viewController.noticeViewControllerFactory = {
@@ -41,6 +41,8 @@ final class SettingDependencyContainer {
     }
     
     private func createSettingViewModel() -> SettingViewModel {
-        return SettingViewModel(authRepository: YourNameAuthRepository())
+        let repository = YourNameAuthenticationRepository(localStorage: UserDefaults.standard,
+                                         network: Environment.current.network)
+        return SettingViewModel(authRepository: repository)
     }
 }

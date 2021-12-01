@@ -13,7 +13,7 @@ enum Provider: String {
 }
 
 struct OAuthResponse {
-    let accessToken: AccessToken
+    let accessToken: Secret
     let provider: Provider
 }
 

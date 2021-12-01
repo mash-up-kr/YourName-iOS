@@ -15,7 +15,7 @@ final class RootViewController: ViewController {
         viewModel: RootViewModel,
         splashViewControllerFactory: @escaping () -> SplashViewController,
         signInViewControllerFactory: @escaping () -> WelcomeViewController,
-        homeTabBarControllerFactory: @escaping (AccessToken) -> HomeTabBarController
+        homeTabBarControllerFactory: @escaping (Secret) -> HomeTabBarController
     ) {
         self.viewModel = viewModel
         self.splashViewControllerFactory = splashViewControllerFactory
@@ -59,7 +59,7 @@ final class RootViewController: ViewController {
     private let viewModel: RootViewModel
     private let splashViewControllerFactory: () -> SplashViewController
     private let signInViewControllerFactory: () -> WelcomeViewController
-    private let homeTabBarControllerFactory: (AccessToken) -> HomeTabBarController
+    private let homeTabBarControllerFactory: (Secret) -> HomeTabBarController
     private let disposeBag = DisposeBag()
     
     private let titleLabel = UILabel()
