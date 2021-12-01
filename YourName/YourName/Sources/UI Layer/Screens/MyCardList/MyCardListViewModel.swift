@@ -39,8 +39,8 @@ final class MyCardListViewModel {
     func load() {
         self.isLoading.accept(true)
         self.myCardRepository.fetchMyCards()
-            .catchError { error in
-                print(error)
+            .catchError { [weak self] error in
+                self?.isLoading.accept(false)
                 return .empty()
             }
             .compactMap { [weak self] cards -> [MyCardCellViewModel]? in

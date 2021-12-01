@@ -240,6 +240,8 @@
 		CEC599D32756B0EC00405DEA /* ImageUploadAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC599D22756B0EC00405DEA /* ImageUploadAPI.swift */; };
 		CEC599D72757150500405DEA /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC599D62757150500405DEA /* ImageUploader.swift */; };
 		CEC599D9275735F900405DEA /* ColorsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC599D8275735F900405DEA /* ColorsAPI.swift */; };
+		CEC599DB27578EC700405DEA /* CardBooksAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC599DA27578EC700405DEA /* CardBooksAPI.swift */; };
+		CEC599DD27578FAB00405DEA /* Entity.CardBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC599DC27578FAB00405DEA /* Entity.CardBook.swift */; };
 		CED16DE926F39F700076565F /* HomeTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED16DE826F39F700076565F /* HomeTab.swift */; };
 		CED16DF526F3A5480076565F /* QuestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED16DF426F3A5480076565F /* QuestViewController.swift */; };
 		CED16DF726F3A5540076565F /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED16DF626F3A5540076565F /* SettingViewController.swift */; };
@@ -529,6 +531,8 @@
 		CEC599D22756B0EC00405DEA /* ImageUploadAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploadAPI.swift; sourceTree = "<group>"; };
 		CEC599D62757150500405DEA /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
 		CEC599D8275735F900405DEA /* ColorsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsAPI.swift; sourceTree = "<group>"; };
+		CEC599DA27578EC700405DEA /* CardBooksAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBooksAPI.swift; sourceTree = "<group>"; };
+		CEC599DC27578FAB00405DEA /* Entity.CardBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.CardBook.swift; sourceTree = "<group>"; };
 		CED16DE826F39F700076565F /* HomeTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTab.swift; sourceTree = "<group>"; };
 		CED16DF426F3A5480076565F /* QuestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestViewController.swift; sourceTree = "<group>"; };
 		CED16DF626F3A5540076565F /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -680,6 +684,7 @@
 				A2DA3B64274FDA4700E68F23 /* Entity.MyNameCard.swift */,
 				A2DA3B66274FDB5800E68F23 /* Entity.Image.swift */,
 				CEDA4B8F275126030011D0CA /* Entity.Empty.swift */,
+				CEC599DC27578FAB00405DEA /* Entity.CardBook.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -709,6 +714,7 @@
 				CEC5998D27551B3B00405DEA /* RefreshAuthenticationAPI.swift */,
 				CEC599D22756B0EC00405DEA /* ImageUploadAPI.swift */,
 				CEC599D8275735F900405DEA /* ColorsAPI.swift */,
+				CEC599DA27578EC700405DEA /* CardBooksAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -1719,6 +1725,7 @@
 				A2DA3B3D274A1A2500E68F23 /* Entity.Login.swift in Sources */,
 				A2CC65742708AB2C00610C49 /* MySkillProgressView.swift in Sources */,
 				CEDA4B90275126030011D0CA /* Entity.Empty.swift in Sources */,
+				CEC599DD27578FAB00405DEA /* Entity.CardBook.swift in Sources */,
 				CE63123A26F59C7800B2E69B /* RootViewController.swift in Sources */,
 				CE6312AA26F8CB2F00B2E69B /* RootDependencyContainer.swift in Sources */,
 				A2B10127270AD44C00CAE013 /* ObservableType+.swift in Sources */,
@@ -1802,6 +1809,7 @@
 				CEB6587D26EC80BF00C11F33 /* DataTask.swift in Sources */,
 				CEDA4B92275132E20011D0CA /* QuestMeta.swift in Sources */,
 				CE6BABA92704DB2A0006D26B /* CardCreationDependencyContainer.swift in Sources */,
+				CEC599DB27578EC700405DEA /* CardBooksAPI.swift in Sources */,
 				CE6312BC26F9A04800B2E69B /* MyCardListDependencyContainer.swift in Sources */,
 				CEB6589C26EC988F00C11F33 /* ObserverType+.swift in Sources */,
 				649ABC2D275108A9005F50E8 /* PageView.swift in Sources */,

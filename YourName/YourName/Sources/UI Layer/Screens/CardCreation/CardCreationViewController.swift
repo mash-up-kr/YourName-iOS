@@ -280,7 +280,6 @@ final class CardCreationViewController: ViewController, Storyboarded {
             }).disposed(by: disposeBag)
         
         viewModel.navigation
-            .distinctUntilChanged()
             .subscribe(onNext: { [weak self] navigation in
                 guard let viewController = self?.createViewController(of: navigation.destination) else { return }
                 self?.navigate(viewController, action: navigation.action)

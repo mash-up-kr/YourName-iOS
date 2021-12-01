@@ -10,7 +10,6 @@ import Foundation
 extension Entity {
     struct MyNameCard: Decodable {
         let list: [NameCard]?
-        
     }
     
     struct NameCard: Codable {
