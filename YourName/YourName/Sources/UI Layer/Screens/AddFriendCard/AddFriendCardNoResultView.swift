@@ -19,4 +19,8 @@ final class AddFriendCardNoResultView: UIView, NibLoadable {
         super.init(coder: coder)
         setupFromNib()
     }
+    
+    deinit {
+        print(" 💀 \(String(describing: self)) deinit")
+    }
 }

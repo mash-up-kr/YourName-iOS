@@ -24,9 +24,10 @@ final class ContactView: NibLoadableView {
 
 extension ContactView {
     func configure(contact: AddFriendCardBackView.Item.Contact) {
-        //TODO: 이미지
-//        contactIcon.image = contact.image
-
+        if let imageURL = URL(string: contact.image) {
+            contactIcon.setImageSource(.url(imageURL))
+        }
+        
         let boldText = contact.type
         let boldAttributes: [NSAttributedString.Key: Any] = [
             .font: UIFont.systemFont(ofSize: 14, weight: .bold)

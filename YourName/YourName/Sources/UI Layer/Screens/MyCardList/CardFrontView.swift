@@ -6,8 +6,9 @@
 //
 
 import UIKit
-import Kingfisher
 import RxSwift
+import SnapKit
+import Then
 
 final class CardFrontView: NibLoadableView {
     
@@ -27,29 +28,25 @@ final class CardFrontView: NibLoadableView {
     
     private let disposeBag = DisposeBag()
     
+    // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupFromNib()
-        configureUI()
+        self.setupFromNib()
+        self.configureUI()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setupFromNib()
-        configureUI()
+        self.setupFromNib()
+        self.configureUI()
     }
     
-    private func configureUI() {
-        self.skillStackView.subviews.forEach {
-            $0.isHidden = true
-        }
-        self.contentView.layer.cornerRadius = 12
+    deinit {
+        print("\(String(describing: self)) deinit")
     }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-    }
-    
+}
+
+extension CardFrontView {
     func configure(item: Item) {
         guard let url = URL(string: item.image) else { return }
         self.userProfileImage.setImageSource(.url(url))
@@ -66,26 +63,9 @@ final class CardFrontView: NibLoadableView {
         self.configure(skills: item.skills)
     }
     
-    func setupFlipButton(didTap: @escaping ((AddFriendCardResultView.CardState) -> Void)) {
-        let button = UIButton()
-        button.setImage(UIImage(named: "icon_flip"), for: .normal)
-        button.setTitle("뒷면", for: .normal)
-        button.setTitleColor(Palette.gray2, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        button.imageEdgeInsets = .init(top: 0, left: 0, bottom: 0, right: 6)
-        button.rx.throttleTap
-            .bind(onNext: {
-                didTap(.front)
-            })
-            .disposed(by: disposeBag)
-        
-        self.contentView.addSubviews(button)
-        button.snp.makeConstraints {
-            $0.trailing.equalToSuperview().inset(19)
-            $0.top.equalToSuperview().offset(12)
-            $0.width.equalTo(52)
-            $0.height.equalTo(24)
-        }
+    private func configureUI() {
+        self.skillStackView.subviews.forEach { $0.isHidden = true }
+        self.contentView.layer.cornerRadius = 12
     }
   
     //TODO: viewModel생성 이후 수정필요
@@ -94,6 +74,34 @@ final class CardFrontView: NibLoadableView {
             guard let skillView = skillStackView.subviews[safe: index] as? MySkillProgressView else { return }
             skillView.isHidden = false
             skillView.configure(skill: skill)
+        }
+    }
+}
+
+
+// MARK: - 친구 미츄 추가하기에서 사용
+extension CardFrontView {
+    func setupFlipButton(didTapFlipButton: @escaping (AddFriendCardResultView.CardState) -> Void) {
+        let button = UIButton().then {
+            $0.setImage(UIImage(named: "icon_flip"), for: .normal)
+            $0.setTitle("뒷면", for: .normal)
+            $0.setTitleColor(Palette.gray2, for: .normal)
+            $0.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+            $0.imageEdgeInsets = .init(top: 0, left: 0, bottom: 0, right: 6)
+        }
+      
+        button.rx.throttleTap
+            .bind(onNext: {
+                didTapFlipButton(.front)
+            })
+            .disposed(by: disposeBag)
+        
+        self.contentView.addSubviews(button)
+        button.snp.makeConstraints {
+            $0.trailing.equalToSuperview().inset(7)
+            $0.top.equalToSuperview()
+            $0.width.equalTo(72)
+            $0.height.equalTo(48)
         }
     }
 }

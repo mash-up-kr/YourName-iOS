@@ -25,6 +25,9 @@ extension Entity {
         let contacts: [Contact]?
         let personalSkills: [Skill]?
         let tmis: [TMI]?
+        
+        // for update
+        let bgColorId: Int?
     }
 
     struct NameCardCreation: Codable {

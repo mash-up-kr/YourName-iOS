@@ -12,6 +12,7 @@ protocol CardRepository {
     func fetchAll() -> Observable<[NameCard]>
     func fetchCards(cardBookID: CardBookID) -> Observable<[NameCard]>
     func remove(cardIDs: [NameCardID]) -> Observable<[NameCardID]>
+    func fetchCard(uniqueCode: String) -> Observable<Entity.FriendCard>
 }
 
 final class YourNameCardRepository: CardRepository {
@@ -31,6 +32,9 @@ final class YourNameCardRepository: CardRepository {
     func remove(cardIDs: [NameCardID]) -> Observable<[NameCardID]> {
         .empty()
     }
+    func fetchCard(uniqueCode: String) -> Observable<Entity.FriendCard> {
+            return Environment.current.network.request(FriendCardAPI(uniqueCode: uniqueCode))
+        }
     
     private let network: NetworkServing
     
@@ -48,5 +52,8 @@ final class MockCardRepository: CardRepository {
     
     func remove(cardIDs: [NameCardID]) -> Observable<[NameCardID]> {
         return .just(cardIDs)
+    }
+    func fetchCard(uniqueCode: String) -> Observable<Entity.FriendCard> {
+        return Environment.current.network.request(FriendCardAPI(uniqueCode: uniqueCode))
     }
 }
