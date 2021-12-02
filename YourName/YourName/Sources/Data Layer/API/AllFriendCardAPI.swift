@@ -7,19 +7,6 @@
 
 import Foundation
 
-struct FriendCardsAPI: ServiceAPI {
-    var path: String { "/collections/\(cardBookID)/namecards" }
-    var method: Method { .get }
-    var task: NetworkingTask { .requestPlain }
-    
-    let cardBookID: CardBookID
-}
-extension FriendCardsAPI {
-    struct Response: Decodable {
-        let list: [Entity.NameCard]?
-    }
-}
-
 struct AllFriendCardAPI: ServiceAPI {
     var path: String { "/collections/namecards" }
     var method: Method { .get }

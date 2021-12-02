@@ -102,7 +102,8 @@ final class CardBookDetailViewModel {
     }
     
     func tapRemoveConfirm() {
-        guard self.isEditing.value else { return }
+        guard self.isEditing.value             else { return }
+        guard let cardBookID = self.cardBookID else { return }
         
         guard self.checkedCardIndice.isNotEmpty else {
             self.isEditing.accept(false)
@@ -112,12 +113,12 @@ final class CardBookDetailViewModel {
         }
         
         let checkedCardIDs = self.checkedCardIndice.compactMap { index in self.friendCards.value[safe: index]?.id }
-        self.cardRepository.remove(cardIDs: checkedCardIDs)
-            .subscribe(onNext: { [weak self] deletedCardIDs in
+        self.cardRepository.remove(cardIDs: checkedCardIDs, on: cardBookID)
+            .subscribe(onNext: { [weak self] _ in //deletedCardIDs in
                 guard let self = self           else { return }
-                guard deletedCardIDs.isNotEmpty else { return }
+                guard checkedCardIDs.isNotEmpty else { return }
 
-                let deletedCardIDSet = Set(deletedCardIDs)
+                let deletedCardIDSet = Set(checkedCardIDs)
                 let updatedCards = self.friendCards.value.with { cards in
                     cards.removeAll(where: { card in
                         guard let id = card.id else { return false }

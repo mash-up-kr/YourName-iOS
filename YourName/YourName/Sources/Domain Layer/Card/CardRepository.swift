@@ -11,7 +11,7 @@ import RxSwift
 protocol CardRepository {
     func fetchAll() -> Observable<[NameCard]>
     func fetchCards(cardBookID: CardBookID) -> Observable<[NameCard]>
-    func remove(cardIDs: [NameCardID]) -> Observable<[NameCardID]>
+    func remove(cardIDs: [NameCardID], on cardBookID: CardBookID) -> Observable<Void>
 }
 
 final class YourNameCardRepository: CardRepository {
@@ -32,8 +32,8 @@ final class YourNameCardRepository: CardRepository {
             .compactMap { [weak self] list in return list.compactMap { self?.translate(fromEntity: $0) } }
     }
     
-    func remove(cardIDs: [NameCardID]) -> Observable<[NameCardID]> {
-        .empty()
+    func remove(cardIDs: [NameCardID], on cardBookID: CardBookID) -> Observable<Void> {
+        return network.request(DeleteCardsAPI(cardBookID: cardBookID, cardIDs: cardIDs)).mapToVoid()
     }
     
     private func translate(fromEntity entity: Entity.NameCard) -> NameCard {
@@ -54,7 +54,7 @@ final class MockCardRepository: CardRepository {
         .just(NameCard.dummyList)
     }
     
-    func remove(cardIDs: [NameCardID]) -> Observable<[NameCardID]> {
-        return .just(cardIDs)
+    func remove(cardIDs: [NameCardID], on cardBookID: CardBookID) -> Observable<Void> {
+        .just(Void())
     }
 }

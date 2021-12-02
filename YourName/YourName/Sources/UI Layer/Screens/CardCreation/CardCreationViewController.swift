@@ -46,6 +46,7 @@ final class CardCreationViewController: ViewController, Storyboarded {
     private func setupUI() {
         contactTypePickerView?.dataSource = self
         contactTypePickerView?.delegate = self
+        profileImageView?.clipsToBounds = true
     }
     
     private func dispatch(to viewModel: CardCreationViewModel) {
@@ -308,6 +309,11 @@ final class CardCreationViewController: ViewController, Storyboarded {
         case .createCharacter: return characterSettingViewControllerFactory?()
         case .settingSkill: return skillSettingViewControllerFactory?()
         case .settingTMI: return tmiSettingViewControllerFactory?()
+        case .photoLibrary: return UIImagePickerController().then {
+            $0.sourceType = .photoLibrary
+            $0.allowsEditing = true
+            $0.delegate = self
+        }
         }
     }
     
@@ -356,7 +362,6 @@ final class CardCreationViewController: ViewController, Storyboarded {
         }
     }
     
-    
     private let disposeBag = DisposeBag()
     private let profileBackgroundColorButtonLayer = CAGradientLayer()
     private var indexOfContactTypeBeingSelected: Int? = nil
@@ -404,4 +409,17 @@ extension CardCreationViewController: UIPickerViewDelegate {
         return ContactType.allCases[safe: row]?.description
     }
     
+}
+
+extension CardCreationViewController: UINavigationControllerDelegate {}
+
+extension CardCreationViewController: UIImagePickerControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[.editedImage] as? UIImage, let data = image.pngData() else { return }
+        self.presentedViewController?.dismiss(animated: true, completion: {
+            self.viewModel.selectPhoto(data: data)
+        })
+    }
 }
