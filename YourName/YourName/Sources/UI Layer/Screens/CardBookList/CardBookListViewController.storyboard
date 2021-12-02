@@ -27,34 +27,40 @@
                                         <color key="textColor" name="black1"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M5J-jF-z9k">
-                                        <rect key="frame" x="236" y="11" width="72" height="34"/>
-                                        <color key="tintColor" name="gray2"/>
-                                        <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="6" maxY="0.0"/>
-                                        <inset key="titleEdgeInsets" minX="6" minY="0.0" maxX="-6" maxY="0.0"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="add" title="친구">
-                                            <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="16"/>
-                                        </buttonConfiguration>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RQr-nQ-Q55">
-                                        <rect key="frame" x="324" y="11" width="72" height="34"/>
-                                        <color key="tintColor" name="gray2"/>
-                                        <inset key="titleEdgeInsets" minX="6" minY="0.0" maxX="-6" maxY="0.0"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="6" maxY="0.0"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="add" title="도감">
-                                            <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="16"/>
-                                        </buttonConfiguration>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="cmH-5O-DwZ">
+                                        <rect key="frame" x="314" y="6" width="76" height="44"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M5J-jF-z9k">
+                                                <rect key="frame" x="0.0" y="0.0" width="76" height="44"/>
+                                                <color key="tintColor" name="gray2"/>
+                                                <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="6" maxY="0.0"/>
+                                                <inset key="titleEdgeInsets" minX="6" minY="0.0" maxX="-6" maxY="0.0"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="add" title=" 친구">
+                                                    <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="16"/>
+                                                </buttonConfiguration>
+                                            </button>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RQr-nQ-Q55">
+                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
+                                                <color key="tintColor" name="gray2"/>
+                                                <inset key="titleEdgeInsets" minX="6" minY="0.0" maxX="-6" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="6" maxY="0.0"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="add" title=" 도감">
+                                                    <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="16"/>
+                                                </buttonConfiguration>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="GlZ-GW-CUk"/>
+                                        </constraints>
+                                    </stackView>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="cmH-5O-DwZ" secondAttribute="trailing" constant="24" id="Ain-iY-RrR"/>
                                     <constraint firstItem="ElO-76-ICl" firstAttribute="centerY" secondItem="qf8-7u-Zht" secondAttribute="centerY" id="Bgg-V7-8Zv"/>
                                     <constraint firstAttribute="height" constant="56" id="JkE-3W-wVw"/>
-                                    <constraint firstAttribute="trailing" secondItem="RQr-nQ-Q55" secondAttribute="trailing" constant="18" id="Q9N-Z5-9PJ"/>
-                                    <constraint firstItem="RQr-nQ-Q55" firstAttribute="centerY" secondItem="qf8-7u-Zht" secondAttribute="centerY" id="b5r-Tq-mtB"/>
-                                    <constraint firstItem="RQr-nQ-Q55" firstAttribute="leading" secondItem="M5J-jF-z9k" secondAttribute="trailing" constant="16" id="bax-rl-MAV"/>
-                                    <constraint firstItem="M5J-jF-z9k" firstAttribute="centerY" secondItem="qf8-7u-Zht" secondAttribute="centerY" id="cWK-RA-nbC"/>
+                                    <constraint firstItem="cmH-5O-DwZ" firstAttribute="centerY" secondItem="qf8-7u-Zht" secondAttribute="centerY" id="SET-IH-sDe"/>
                                     <constraint firstItem="ElO-76-ICl" firstAttribute="leading" secondItem="qf8-7u-Zht" secondAttribute="leading" constant="24" id="h1K-K6-WTC"/>
                                 </constraints>
                             </view>

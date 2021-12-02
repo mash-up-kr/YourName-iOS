@@ -28,10 +28,12 @@ final class YourNameStrongPointRepository: StrongPointRepository {
     }
     
     private func translate(fromTMI tmi: Entity.TMI) -> StrongPoint? {
-        guard let id = tmi.id         else { return nil }
-        guard let content = tmi.name  else { return nil }
+        guard let id = tmi.id                   else { return nil }
+        guard let content = tmi.name            else { return nil }
+        guard let urlString = tmi.iconURL       else { return nil }
+        guard let url = URL(string: urlString)  else { return nil }
         
-        return StrongPoint(id: id, content: content)
+        return StrongPoint(id: id, content: content, iconURL: url)
     }
     
     private let network: NetworkServing

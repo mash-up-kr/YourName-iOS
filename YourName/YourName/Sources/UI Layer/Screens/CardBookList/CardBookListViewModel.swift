@@ -13,7 +13,7 @@ import RxSwift
 enum CardBookListDestination: Equatable {
     case addFriend
     case addCardBook
-    case cardBookDetail(cardBookID: CardBookID?)
+    case cardBookDetail(cardBookID: CardBookID?, cardBookTitle: String?)
 }
 
 typealias CardBookListNavigation = Navigation<CardBookListDestination>
@@ -47,7 +47,8 @@ final class CardBookListViewModel {
     func selectCardBook(at indexPath: IndexPath) {
         guard let selectedCardBook = self.cardBooks.value[safe: indexPath.row] else { return }
         
-        navigation.accept(.push(.cardBookDetail(cardBookID: selectedCardBook.id)))
+        navigation.accept(.push(.cardBookDetail(cardBookID: selectedCardBook.id,
+                                                cardBookTitle: selectedCardBook.title)))
     }
     
     private func transform() {

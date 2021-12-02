@@ -7,7 +7,7 @@
 
 import Foundation
 
-typealias NameCardID = Int
+typealias NameCardID = Identifier
 
 struct NameCard: Equatable, Hashable {
     let id: NameCardID?
@@ -20,8 +20,7 @@ struct NameCard: Equatable, Hashable {
 #warning("⚠️ TODO: 개발완료 후, Test Target으로 옮겨야합니다") // Booung
 extension NameCard {
     static let dummyList: [NameCard] = [
-        NameCard(
-            id: 1,
+        NameCard(id: "1",
             name: "김윤혜",
             role: "디자이너",
             introduce: "Hello world",
@@ -29,7 +28,7 @@ extension NameCard {
             profileURL: nil
         ),
         NameCard(
-            id: 1,
+            id: "2",
             name: "송서영",
             role: "iOS",
             introduce: "나 송서영 개발한다....",
@@ -39,7 +38,7 @@ extension NameCard {
             profileURL: nil
         ),
         NameCard(
-            id: 2,
+            id: "3",
             name: "김건회",
             role: "마피아",
             introduce: "ㅎ ㅡㅎ .....",
@@ -50,7 +49,7 @@ extension NameCard {
             profileURL: nil
         ),
         NameCard(
-            id: 3,
+            id: "4",
             name: "주성민",
             role: "의사",
             introduce: "자힐이 짱",
@@ -62,7 +61,7 @@ extension NameCard {
             profileURL: nil
         ),
         NameCard(
-            id: 4,
+            id: "5",
             name: "김가영",
             role: "호주 푸들 🐶",
             introduce: "호주에는 푸들이...",
@@ -70,7 +69,7 @@ extension NameCard {
             profileURL: nil
         ),
         NameCard(
-            id: 5,
+            id: "6",
             name: "김경훈",
             role: "라이어",
             introduce: "우하하",
@@ -78,7 +77,7 @@ extension NameCard {
             profileURL: nil
         ),
         NameCard(
-            id: 6,
+            id: "7",
             name: "이연중",
             role: "감독",
             introduce: "영상은 이렇게 오려ㅛㅎ거",

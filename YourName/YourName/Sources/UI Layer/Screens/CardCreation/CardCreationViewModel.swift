@@ -8,6 +8,8 @@
 import Foundation
 import RxSwift
 import RxRelay
+import UIKit
+import RxCocoa
 
 enum CardCreationDestination: Equatable {
     case imageSourceTypePicker
@@ -15,6 +17,7 @@ enum CardCreationDestination: Equatable {
     case palette
     case settingSkill
     case settingTMI
+    case photoLibrary
 }
 
 typealias CardCreationNavigation = Navigation<CardCreationDestination>
@@ -34,7 +37,7 @@ final class CardCreationViewModel {
     let profileImageSource = BehaviorRelay<ImageSource?>(value: nil)
     let profileImageKey = BehaviorRelay<ImageKey?>(value: nil)
     let profileBackgroundColor = BehaviorRelay<ColorSource>(value: .monotone(Palette.black1))
-    let profileYourNameColorID = BehaviorRelay<Int?>(value: nil)
+    let profileYourNameColorID = BehaviorRelay<Identifier?>(value: nil)
     let skills = BehaviorRelay<[Skill]>(value: [])
     let name = BehaviorRelay<String>(value: .empty)
     let role = BehaviorRelay<String>(value: .empty)
@@ -126,6 +129,20 @@ final class CardCreationViewModel {
         self.shouldClose.accept(Void())
     }
     
+    func selectPhoto(data photoData: Data) {
+        self.isLoading.accept(true)
+        self.imageUploader.upload(imageData: photoData)
+            .subscribe(onNext: { [weak self] imageKey in
+                self?.isLoading.accept(false)
+                self?.shouldHideClear.accept(false)
+                self?.shouldHideProfilePlaceholder.accept(true)
+                self?.profileImageSource.accept(.data(photoData))
+                self?.profileImageKey.accept(imageKey)
+                self?.isLoading.accept(false)
+            })
+            .disposed(by: self.disposeBag)
+    }
+    
     func tapCompletion() {
         let tmiIDs = self.interestes.value.compactMap { $0.id } + self.strongPoints.value.compactMap { $0.id }
         let skills = self.skills.value
@@ -137,7 +154,7 @@ final class CardCreationViewModel {
         
         let nameCard = Entity.NameCardCreation(
             imgUrl: nil,
-            bgColorId: self.profileYourNameColorID.value ?? 1,
+            bgColorId: self.profileYourNameColorID.value,
             name: self.name.value,
             role: self.role.value,
             skills: skills,
@@ -197,7 +214,7 @@ final class CardCreationViewModel {
 extension CardCreationViewModel: ImageSourcePickerResponder {
     
     func selectPhoto() {
-        
+        self.navigation.accept(.show(.photoLibrary))
     }
     
     func selectCharacter() {

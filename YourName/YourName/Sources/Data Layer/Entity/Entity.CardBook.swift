@@ -7,7 +7,7 @@
 
 import Foundation
 
-typealias CardBookID = Int
+typealias CardBookID = Identifier
 
 extension Entity {
     struct CardBook: Decodable {

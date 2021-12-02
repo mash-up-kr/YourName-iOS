@@ -11,6 +11,7 @@ import RxOptional
 import RxSwift
 import UIKit
 
+
 final class CardCreationViewController: ViewController, Storyboarded {
     
     var viewModel: CardCreationViewModel!
@@ -23,8 +24,9 @@ final class CardCreationViewController: ViewController, Storyboarded {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        bind()
-        setupUI()
+        self.bind()
+        self.setupUI()
+        self.setupKeyboard()
     }
     
     override func viewDidLayoutSubviews() {
@@ -44,6 +46,7 @@ final class CardCreationViewController: ViewController, Storyboarded {
     private func setupUI() {
         contactTypePickerView?.dataSource = self
         contactTypePickerView?.delegate = self
+        profileImageView?.clipsToBounds = true
     }
     
     private func dispatch(to viewModel: CardCreationViewModel) {
@@ -306,6 +309,11 @@ final class CardCreationViewController: ViewController, Storyboarded {
         case .createCharacter: return characterSettingViewControllerFactory?()
         case .settingSkill: return skillSettingViewControllerFactory?()
         case .settingTMI: return tmiSettingViewControllerFactory?()
+        case .photoLibrary: return UIImagePickerController().then {
+            $0.sourceType = .photoLibrary
+            $0.allowsEditing = true
+            $0.delegate = self
+        }
         }
     }
     
@@ -332,13 +340,34 @@ final class CardCreationViewController: ViewController, Storyboarded {
         })
     }
     
+    private func setupKeyboard() {
+        if let aboutMeTextView = self.aboutMeTextView {
+            Observable.merge(
+                aboutMeTextView.rx.didBeginEditing.map { _ in true },
+                aboutMeTextView.rx.didEndEditing.map { _ in false }
+            ).subscribe(onNext: { [weak self] isEditing in
+                if isEditing {
+                    UIView.animate(withDuration: 0.3) {
+                        let contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 250, right: 0)
+                        self?.scrollView?.contentInset = contentInset
+                        self?.scrollView?.contentOffset.y += 250
+                    }
+                }
+                else {
+                    UIView.animate(withDuration: 0.3) {
+                        self?.scrollView?.contentInset = UIEdgeInsets.zero
+                    }
+                }
+            }).disposed(by: self.disposeBag)
+        }
+    }
+    
     private let disposeBag = DisposeBag()
-    private let keyboard: Keyboard = KeyboardImpl.shared
     private let profileBackgroundColorButtonLayer = CAGradientLayer()
     private var indexOfContactTypeBeingSelected: Int? = nil
     
-    @IBOutlet private weak var backButton: UIButton?
     @IBOutlet private weak var scrollView: UIScrollView?
+    @IBOutlet private weak var backButton: UIButton?
     @IBOutlet private weak var profileClearButton: UIButton?
     @IBOutlet private weak var profilePlaceholderView: UIView?
     @IBOutlet private weak var profileImageView: UIImageView?
@@ -380,4 +409,17 @@ extension CardCreationViewController: UIPickerViewDelegate {
         return ContactType.allCases[safe: row]?.description
     }
     
+}
+
+extension CardCreationViewController: UINavigationControllerDelegate {}
+
+extension CardCreationViewController: UIImagePickerControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[.editedImage] as? UIImage, let data = image.pngData() else { return }
+        self.presentedViewController?.dismiss(animated: true, completion: {
+            self.viewModel.selectPhoto(data: data)
+        })
+    }
 }

@@ -16,9 +16,9 @@ final class CardBookListDependencyContainer {
     func createCardBookListViewController() -> UIViewController {
         let viewController = CardBookListViewController.instantiate()
         viewController.viewModel = createCardBookListViewModel()
-        viewController.cardBookDetailFactory = { id in
+        viewController.cardBookDetailFactory = { id, title in
             let dependencyContainer = self.createCardDetailDependencyContainer()
-            return dependencyContainer.createCardBookDetailViewController(cardBookID: id)
+            return dependencyContainer.createCardBookDetailViewController(cardBookID: id, cardBookTitle: title)
         }
         
         viewController.addFriendFactory = {

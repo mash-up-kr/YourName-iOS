@@ -10,6 +10,7 @@ import RxSwift
 import RxRelay
 
 enum CardBookDetailDestination: Equatable {
+    case cardDetail(id: Identifier)
 }
 
 typealias CardBookDetailNavigation = Navigation<CardBookDetailDestination>
@@ -18,39 +19,42 @@ final class CardBookDetailViewModel {
     
     let navigation = PublishRelay<CardBookDetailNavigation>()
     let shouldShowRemoveReconfirmAlert = PublishRelay<Void>()
-    let cardBookTitle = PublishRelay<String>()
+    let cardBookTitle = BehaviorRelay<String>(value: .empty)
     let friendCardsForDisplay = BehaviorRelay<[FriendCardCellViewModel]>(value: [])
+    let isLoading = BehaviorRelay<Bool>(value: false)
     let isEditing = BehaviorRelay<Bool>(value: false)
+    let isEmpty = BehaviorRelay<Bool>(value: true)
     let shouldClose = PublishRelay<Void>()
     let selectedIDs = BehaviorRelay<Set<String>>(value: [])
     
     init(
         cardBookID: CardBookID?,
+        cardBookTitle: String?,
         cardRepository: CardRepository
     ) {
         self.cardBookID = cardBookID
+        self._cardBookTitle = cardBookTitle ?? .empty
         self.cardRepository = cardRepository
+        
+        self.cardBookTitle.accept(self._cardBookTitle)
     }
     
     func didLoad() {
-        if let cardBookID = self.cardBookID {
-            self.cardRepository.fetchCards(cardBookID: cardBookID)
-                .subscribe(onNext: { [weak self] cards in
-                    guard let self = self else { return }
-                    self.friendCards.accept(cards)
-                    self.friendCardsForDisplay.accept(cards.compactMap(self.transform(card:)))
-                })
-                .disposed(by: self.disposeBag)
-        } else {
-            self.cardRepository.fetchAll()
-                .subscribe(onNext: { [weak self] cards in
-                    guard let self = self else { return }
-                    self.friendCards.accept(cards)
-                    self.friendCardsForDisplay.accept(cards.compactMap(self.transform(card:)))
-                })
-                .disposed(by: self.disposeBag)
-        }
-        
+        self.isLoading.accept(true)
+        let friendCards: Observable<[NameCard]> = { [weak self] in
+            guard let self = self else { return .empty() }
+            if let cardBookID = self.cardBookID { return self.cardRepository.fetchCards(cardBookID: cardBookID) }
+            else { return self.cardRepository.fetchAll() }
+        }()
+        friendCards.subscribe(onNext: { [weak self] cards in
+            guard let self = self else { return }
+            self.cardBookTitle.accept("\(self._cardBookTitle)(\(cards.count))")
+            self.friendCards.accept(cards)
+            self.friendCardsForDisplay.accept(cards.compactMap(self.transform(card:)))
+            self.isLoading.accept(false)
+            self.isEmpty.accept(cards.isEmpty)
+        })
+        .disposed(by: self.disposeBag)
     }
     
     func tapMore() {
@@ -62,6 +66,7 @@ final class CardBookDetailViewModel {
     }
     
     func tapEdit() {
+        guard self.isEmpty.value == false   else { return }
         guard self.isEditing.value == false else { return }
         
         self.isEditing.accept(true)
@@ -91,11 +96,14 @@ final class CardBookDetailViewModel {
     }
     
     func tapRemove() {
+        guard self.isEmpty.value == false else { return }
+        
         self.shouldShowRemoveReconfirmAlert.accept(Void())
     }
     
     func tapRemoveConfirm() {
-        guard self.isEditing.value else { return }
+        guard self.isEditing.value             else { return }
+        guard let cardBookID = self.cardBookID else { return }
         
         guard self.checkedCardIndice.isNotEmpty else {
             self.isEditing.accept(false)
@@ -105,12 +113,12 @@ final class CardBookDetailViewModel {
         }
         
         let checkedCardIDs = self.checkedCardIndice.compactMap { index in self.friendCards.value[safe: index]?.id }
-        self.cardRepository.remove(cardIDs: checkedCardIDs)
-            .subscribe(onNext: { [weak self] deletedCardIDs in
+        self.cardRepository.remove(cardIDs: checkedCardIDs, on: cardBookID)
+            .subscribe(onNext: { [weak self] _ in //deletedCardIDs in
                 guard let self = self           else { return }
-                guard deletedCardIDs.isNotEmpty else { return }
+                guard checkedCardIDs.isNotEmpty else { return }
 
-                let deletedCardIDSet = Set(deletedCardIDs)
+                let deletedCardIDSet = Set(checkedCardIDs)
                 let updatedCards = self.friendCards.value.with { cards in
                     cards.removeAll(where: { card in
                         guard let id = card.id else { return false }
@@ -157,5 +165,6 @@ final class CardBookDetailViewModel {
     private let disposeBag = DisposeBag()
     
     private let cardBookID: CardBookID?
+    private let _cardBookTitle: String
     private let cardRepository: CardRepository
 }

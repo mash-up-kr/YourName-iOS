@@ -10,7 +10,7 @@ import Foundation
 extension Entity {
     
     struct User: Codable {
-        let id: Int?
+        let id: Identifier?
         let nickName: String?
         let role: String?
         let skills: [Skill]?

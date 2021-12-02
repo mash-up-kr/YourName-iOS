@@ -21,6 +21,7 @@ final class SkillSettingView: UIView, NibLoadable {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupFromNib()
+        setupKeyboard()
     }
     
     required init?(coder: NSCoder) {
@@ -76,8 +77,37 @@ final class SkillSettingView: UIView, NibLoadable {
         }
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.endEditing(true)
+    }
+    
+    private func setupKeyboard() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc private func keyboardWillShow(notification: Notification) {
+        guard let scrollView = self.scrollView      else { return }
+        guard scrollView.contentInset.bottom < 1    else { return }
+        guard let userInfo = notification.userInfo  else { return }
+        guard let frame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        
+        UIView.animate(withDuration: 0.3) {
+            let contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 150, right: 0)
+            self.scrollView?.contentInset = contentInset
+            self.scrollView?.contentOffset.y += 150
+        }
+    }
+    
+    @objc private func keyboardWillHide(notification: Notification) {
+        UIView.animate(withDuration: 0.3) {
+            self.scrollView?.contentInset = UIEdgeInsets.zero
+        }
+    }
+    
     private let disposeBag = DisposeBag()
     
+    @IBOutlet private weak var scrollView: UIScrollView?
     @IBOutlet private var skillInputViews: [SkillInputView]?
     @IBOutlet private weak var completeButton: UIButton?
     

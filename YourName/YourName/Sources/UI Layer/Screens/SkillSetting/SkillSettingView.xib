@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -12,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SkillSettingView" customModule="MEETU" customModuleProvider="target">
             <connections>
                 <outlet property="completeButton" destination="MP7-GF-PHv" id="Txh-c7-hLu"/>
+                <outlet property="scrollView" destination="6Wy-yr-SSr" id="hZk-UZ-Rhw"/>
                 <outletCollection property="skillInputViews" destination="Xys-Xi-ajH" collectionClass="NSMutableArray" id="Hu6-s3-vZR"/>
                 <outletCollection property="skillInputViews" destination="SWO-7w-qHE" collectionClass="NSMutableArray" id="j1s-Ik-PlU"/>
                 <outletCollection property="skillInputViews" destination="ohK-JN-yvS" collectionClass="NSMutableArray" id="DHk-dv-yYh"/>

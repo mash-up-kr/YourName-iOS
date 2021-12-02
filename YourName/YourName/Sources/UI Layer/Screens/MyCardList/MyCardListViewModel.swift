@@ -10,7 +10,7 @@ import RxSwift
 
 enum MyCardListDestination: Equatable {
     case cardCreation
-    case cardDetail(cardID: Int)
+    case cardDetail(cardID: Identifier)
 }
 
 typealias MyCardListNavigation = Navigation<MyCardListDestination>
@@ -71,7 +71,7 @@ final class MyCardListViewModel {
                   let colorSource = ColorSource.from(bgColors)
             else { return nil }
             let skills = personalSkills.map { MySkillProgressView.Item(title: $0.name, level: $0.level ?? 0) }
-            return MyCardCellViewModel(id: card.id ?? 0,
+            return MyCardCellViewModel(id: card.id ?? .empty,
                                        image: card.imgUrl ?? .empty,
                                        name: card.name ?? .empty,
                                        role: card.role ?? .empty,

@@ -75,7 +75,7 @@ final class TMISettingView: UIView, NibLoadable {
     }
     
     private func render(_ viewModel: TMISettingViewModel) {
-        viewModel.interestesForDisplay.distinctUntilChanged()
+        viewModel.interestsForDisplay.distinctUntilChanged()
             .subscribe(onNext: { [weak self] list in
                 self?.interestes = list
                 self?.tmiCollectionView?.reloadData()
@@ -97,6 +97,7 @@ final class TMISettingView: UIView, NibLoadable {
     
     @IBOutlet private weak var tmiCollectionView: UICollectionView?
     @IBOutlet private weak var tmiCollectionViewHeight: NSLayoutConstraint?
+    
 }
 extension TMISettingView: PageSheetContentView {
     var title: String { "나의 TMI 입력하기" }
@@ -160,7 +161,7 @@ extension TMISettingView: UICollectionViewDelegate {
         
         switch section {
         case .interest:     viewModel.tapInterest(at: indexPath.item)
-        case .personality:  viewModel.tapPersonality(at: indexPath.item)
+        case .personality:  viewModel.tapStrongPoint(at: indexPath.item)
         }
     }
 }
@@ -168,7 +169,7 @@ extension TMISettingView: UICollectionViewDelegate {
 extension TMISettingView: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 20, left: 24, bottom: 80, right: 14)
+        return UIEdgeInsets(top: 20, left: 24, bottom: 80, right: 24)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -176,7 +177,7 @@ extension TMISettingView: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 8
+        return 3
     }
     
 }

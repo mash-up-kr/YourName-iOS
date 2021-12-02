@@ -20,7 +20,7 @@ final class MyCardListDependencyContainer {
     
     func createMyCardListViewController() -> UIViewController {
         let viewController = MyCardListViewController.instantiate()
-        let cardDetailViewControllerFactory: (Int) -> CardDetailViewController = { cardID in
+        let cardDetailViewControllerFactory: (Identifier) -> CardDetailViewController = { cardID in
             let dependencyContainer = self.createCardDetailDependencyContainer(cardID: cardID)
             return dependencyContainer.createCardDetailViewController()
         }
@@ -41,7 +41,7 @@ final class MyCardListDependencyContainer {
     }
     
     // 👼 Child Dependency Container Factory
-    private func createCardDetailDependencyContainer(cardID: Int) -> CardDetailDependencyContainer {
+    private func createCardDetailDependencyContainer(cardID: Identifier) -> CardDetailDependencyContainer {
         return CardDetailDependencyContainer(cardID: cardID, myCardListDependencyContainer: self)
     }
     
