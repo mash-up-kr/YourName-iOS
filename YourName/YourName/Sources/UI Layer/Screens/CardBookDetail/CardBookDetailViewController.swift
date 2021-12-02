@@ -15,7 +15,7 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
         static let collectionViewSectionInset = 24
         static let collectionViewCellSpacing = 19
     }
-    var dummyDataNumber = 10 // dummy
+    
     var viewModel: CardBookDetailViewModel!
     var addFriendCardViewControllerFactory: (() -> AddFriendCardViewController)!
     
@@ -73,6 +73,10 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
             })
             .disposed(by: self.disposeBag)
         
+        self.viewModel.isLoading.distinctUntilChanged()
+            .bind(to: self.isLoading)
+            .disposed(by: self.disposeBag)
+        
         self.viewModel.friendCardsForDisplay.distinctUntilChanged()
             .subscribe(onNext: { [weak self] cellViewModels in
                 self?.cellViewModels = cellViewModels
@@ -116,6 +120,7 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
     private func createViewController(_ next: CardBookDetailDestination) -> UIViewController {
         return UIViewController()
         switch next {
+        case .cardDetail(let id): return ViewController()
         }
     }
     
@@ -144,14 +149,18 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
 extension CardBookDetailViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.cellViewModels.count
+        if self.cellViewModels.isNotEmpty {
+            return self.cellViewModels.count
+        } else {
+            return 1
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if self.cellViewModels.isEmpty {
-            return emptyCell(indexPath: indexPath)
-        } else {
+        if self.cellViewModels.isNotEmpty {
             return friendCardCell(indexPath: indexPath)
+        } else {
+            return emptyCell(indexPath: indexPath)
         }
     }
     
@@ -176,6 +185,7 @@ extension CardBookDetailViewController: UICollectionViewDataSource {
 extension CardBookDetailViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard self.cellViewModels.isNotEmpty else { return }
         self.viewModel.tapCheck(at: indexPath.item)
     }
     

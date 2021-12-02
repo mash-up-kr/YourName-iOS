@@ -81,6 +81,7 @@
 		CE2BB2C727074F4600936148 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE2BB2C627074F4600936148 /* Colors.xcassets */; };
 		CE2BB2C92707560800936148 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2BB2C82707560800936148 /* Palette.swift */; };
 		CE2D1C4E275890CE00DCD2D3 /* Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2D1C4D275890CE00DCD2D3 /* Identifier.swift */; };
+		CE2D1C532758F56F00DCD2D3 /* NameCardsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2D1C522758F56F00DCD2D3 /* NameCardsAPI.swift */; };
 		CE2EC99327073453006B9852 /* CardCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2EC99227073453006B9852 /* CardCreationViewModel.swift */; };
 		CE2EC99627073493006B9852 /* CardCreationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2EC99527073493006B9852 /* CardCreationViewModelTests.swift */; };
 		CE472B682748B67F001A5E5F /* Entity.BackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE472B672748B67F001A5E5F /* Entity.BackgroundColor.swift */; };
@@ -369,6 +370,7 @@
 		CE2BB2C627074F4600936148 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		CE2BB2C82707560800936148 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		CE2D1C4D275890CE00DCD2D3 /* Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifier.swift; sourceTree = "<group>"; };
+		CE2D1C522758F56F00DCD2D3 /* NameCardsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameCardsAPI.swift; sourceTree = "<group>"; };
 		CE2EC99227073453006B9852 /* CardCreationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCreationViewModel.swift; sourceTree = "<group>"; };
 		CE2EC99527073493006B9852 /* CardCreationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCreationViewModelTests.swift; sourceTree = "<group>"; };
 		CE472B672748B67F001A5E5F /* Entity.BackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.BackgroundColor.swift; sourceTree = "<group>"; };
@@ -717,6 +719,7 @@
 				CEC599D22756B0EC00405DEA /* ImageUploadAPI.swift */,
 				CEC599D8275735F900405DEA /* ColorsAPI.swift */,
 				CEC599DA27578EC700405DEA /* CardBooksAPI.swift */,
+				CE2D1C522758F56F00DCD2D3 /* NameCardsAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -1813,6 +1816,7 @@
 				CEB6587D26EC80BF00C11F33 /* DataTask.swift in Sources */,
 				CEDA4B92275132E20011D0CA /* QuestMeta.swift in Sources */,
 				CE6BABA92704DB2A0006D26B /* CardCreationDependencyContainer.swift in Sources */,
+				CE2D1C532758F56F00DCD2D3 /* NameCardsAPI.swift in Sources */,
 				CEC599DB27578EC700405DEA /* CardBooksAPI.swift in Sources */,
 				CE6312BC26F9A04800B2E69B /* MyCardListDependencyContainer.swift in Sources */,
 				CEB6589C26EC988F00C11F33 /* ObserverType+.swift in Sources */,

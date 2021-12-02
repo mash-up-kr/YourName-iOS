@@ -161,7 +161,7 @@ extension TMISettingView: UICollectionViewDelegate {
         
         switch section {
         case .interest:     viewModel.tapInterest(at: indexPath.item)
-        case .personality:  viewModel.tapPersonality(at: indexPath.item)
+        case .personality:  viewModel.tapStrongPoint(at: indexPath.item)
         }
     }
 }

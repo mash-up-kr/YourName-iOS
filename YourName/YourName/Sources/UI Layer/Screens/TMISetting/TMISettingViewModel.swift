@@ -58,11 +58,14 @@ final class TMISettingViewModel {
         
         selectedInterestes.toggle(selectedInterest)
         selectedInteresteForDisplay.isSelected.toggle()
-        let updateInterestes = self.interestesForDisplay.value.with { $0[index] = selectedInteresteForDisplay }
+        
+        let updateInterestes = self.interestesForDisplay.value.with {
+            $0[index] = selectedInteresteForDisplay
+        }
         self.interestesForDisplay.accept(updateInterestes)
     }
     
-    func tapPersonality(at index: Int) {
+    func tapStrongPoint(at index: Int) {
         guard let selectedStrongPoint = self.strongPoints.value[safe: index] else { return }
         guard var selectedStrongPointForDisplay = self.strongPointsForDisplay.value[safe: index] else { return }
         
@@ -73,19 +76,20 @@ final class TMISettingViewModel {
     }
     
     func tapComplete() {
-        let interests = Array(self.selectedInterestes)
-        let strongPoints = Array(self.selectedStrongPoints)
+        let interests = self.selectedInterestes.asArray()
+        let strongPoints = self.selectedStrongPoints.asArray()
         
         tmiSettingResponder.tmiSettingDidComplete(interests: interests, strongPoints: strongPoints)
     }
+    
     
     private let disposeBag = DisposeBag()
     
     private let interestes = BehaviorRelay<[Interest]>(value: [])
     private let strongPoints = BehaviorRelay<[StrongPoint]>(value: [])
     
-    private var selectedInterestes = Set<Interest>()
-    private var selectedStrongPoints = Set<StrongPoint>()
+    private var selectedInterestes = OrderedSet<Interest>()
+    private var selectedStrongPoints = OrderedSet<StrongPoint>()
     
     private let interestRepository: InterestRepository
     private let strongPointRepository: StrongPointRepository

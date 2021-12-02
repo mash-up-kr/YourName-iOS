@@ -22,7 +22,7 @@ final class CardBookListViewController: UIViewController, Storyboarded {
     
     var addFriendFactory: (() -> UIViewController)!
     var addCardBookFactory: (() -> UIViewController)!
-    var cardBookDetailFactory: ((CardBookID?) -> UIViewController)!
+    var cardBookDetailFactory: ((CardBookID?, String?) -> UIViewController)!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,8 +75,8 @@ final class CardBookListViewController: UIViewController, Storyboarded {
         case .addCardBook:
             return self.addCardBookFactory()
             
-        case .cardBookDetail(let cardBookID):
-            return self.cardBookDetailFactory(cardBookID)
+        case .cardBookDetail(let cardBookID, let cardBookTitle):
+            return self.cardBookDetailFactory(cardBookID, cardBookTitle)
         }
     }
     
