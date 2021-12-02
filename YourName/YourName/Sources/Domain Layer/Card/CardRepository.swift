@@ -23,22 +23,23 @@ final class YourNameCardRepository: CardRepository {
     
     func fetchAll() -> Observable<[NameCard]> {
         return network.request(AllFriendCardAPI())
-            .compactMap { $0.list }
+            .compactMap { response in response.list?.compactMap { $0.nameCard } }
             .compactMap { [weak self] list in return list.compactMap { self?.translate(fromEntity: $0) } }
     }
     
     func fetchCards(cardBookID: CardBookID) -> Observable<[NameCard]> {
         return network.request(FriendCardsAPI(cardBookID: cardBookID))
-            .compactMap { $0.list }
+            .compactMap { response in response.list?.compactMap { $0.nameCard } }
             .compactMap { [weak self] list in return list.compactMap { self?.translate(fromEntity: $0) } }
+    }
+    
+    func fetchCard(uniqueCode: String) -> Observable<Entity.FriendCard> {
+        return Environment.current.network.request(FriendCardAPI(uniqueCode: uniqueCode))
     }
     
     func remove(cardIDs: [NameCardID], on cardBookID: CardBookID) -> Observable<Void> {
         return network.request(DeleteCardsAPI(cardBookID: cardBookID, cardIDs: cardIDs)).mapToVoid()
     }
-    func fetchCard(uniqueCode: String) -> Observable<Entity.FriendCard> {
-            return Environment.current.network.request(FriendCardAPI(uniqueCode: uniqueCode))
-        }
     
     private func translate(fromEntity entity: Entity.NameCard) -> NameCard {
         return NameCard(id: entity.id, name: entity.name, role: entity.role, introduce: entity.introduce, bgColors: entity.bgColor?.value, profileURL: entity.imgUrl)

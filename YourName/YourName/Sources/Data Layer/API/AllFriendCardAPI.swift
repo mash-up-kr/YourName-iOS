@@ -14,6 +14,6 @@ struct AllFriendCardAPI: ServiceAPI {
 }
 extension AllFriendCardAPI {
     struct Response: Decodable {
-        let list: [Entity.NameCard]?
+        let list: [Entity.FriendCard]?
     }
 }

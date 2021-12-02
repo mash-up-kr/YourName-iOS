@@ -24,6 +24,7 @@ final class CardBookDetailViewModel {
     let isLoading = BehaviorRelay<Bool>(value: false)
     let isEditing = BehaviorRelay<Bool>(value: false)
     let isEmpty = BehaviorRelay<Bool>(value: true)
+    let isAllCardBook = BehaviorRelay<Bool>(value: false)
     let shouldClose = PublishRelay<Void>()
     let selectedIDs = BehaviorRelay<Set<String>>(value: [])
     
@@ -36,6 +37,7 @@ final class CardBookDetailViewModel {
         self._cardBookTitle = cardBookTitle ?? .empty
         self.cardRepository = cardRepository
         
+        self.isAllCardBook.accept(cardBookID == nil)
         self.cardBookTitle.accept(self._cardBookTitle)
     }
     
@@ -96,14 +98,18 @@ final class CardBookDetailViewModel {
     }
     
     func tapRemove() {
-        guard self.isEmpty.value == false else { return }
+        guard self.isEmpty.value == false, self.checkedCardIndice.isNotEmpty else {
+            let updatedFriendCardsForDisplay = self.friendCardsForDisplay.value.map { $0.with { $0.isEditing = false } }
+            self.friendCardsForDisplay.accept(updatedFriendCardsForDisplay)
+            self.isEditing.accept(false)
+            return
+        }
         
         self.shouldShowRemoveReconfirmAlert.accept(Void())
     }
     
     func tapRemoveConfirm() {
         guard self.isEditing.value             else { return }
-        guard let cardBookID = self.cardBookID else { return }
         
         guard self.checkedCardIndice.isNotEmpty else {
             self.isEditing.accept(false)
@@ -113,8 +119,8 @@ final class CardBookDetailViewModel {
         }
         
         let checkedCardIDs = self.checkedCardIndice.compactMap { index in self.friendCards.value[safe: index]?.id }
-        self.cardRepository.remove(cardIDs: checkedCardIDs, on: cardBookID)
-            .subscribe(onNext: { [weak self] _ in //deletedCardIDs in
+        
+        self.cardRepository.remove(cardIDs: checkedCardIDs, on: cardBookID ?? "all").subscribe(onNext: { [weak self] _ in //deletedCardIDs in
                 guard let self = self           else { return }
                 guard checkedCardIDs.isNotEmpty else { return }
 

@@ -13,7 +13,7 @@ struct DeleteCardsAPI: ServiceAPI {
     let cardIDs: [NameCardID]
 }
 extension DeleteCardsAPI {
-    var path: String { "/collections/\(cardBookID)/namecards" }
+    var path: String { "/collections/\(cardBookID)/namecards"  }
     var method: Method { .delete }
     var task: NetworkingTask { .requestParameters(parameters: ["namecardIds": cardIDs], encoding: JSONEncoding.default) }
     

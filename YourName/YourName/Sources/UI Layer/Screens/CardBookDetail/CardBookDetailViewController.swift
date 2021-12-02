@@ -93,13 +93,21 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
             })
             .disposed(by: self.disposeBag)
         
-        self.viewModel.isEmpty.distinctUntilChanged()
-            .subscribe(onNext: { [weak self] isEmpty in
-                self?.moreButton?.isHidden = isEmpty
-                self?.removeButton?.isHidden = isEmpty
+        
+        Observable.combineLatest(self.viewModel.isEditing, self.viewModel.isEmpty)
+            .subscribe(onNext: { [weak self] isEditing, isEmpty in
+                self?.moreButton?.isHidden = isEmpty || isEditing
+                self?.removeButton?.isHidden = isEmpty || !isEditing
             })
             .disposed(by: self.disposeBag)
         
+        self.viewModel.isAllCardBook.distinctUntilChanged()
+            .map { $0 ? UIImage(named: "ic_delete") : UIImage(named: "btn_more") }
+            .subscribe(onNext: { [weak self] icon in
+                self?.moreButton?.setImage(icon, for: .normal)
+            })
+            .disposed(by: self.disposeBag)
+                
         self.viewModel.shouldShowRemoveReconfirmAlert
             .subscribe(onNext: {
                 // 디자인 개선
