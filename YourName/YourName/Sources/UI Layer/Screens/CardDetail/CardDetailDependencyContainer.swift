@@ -20,7 +20,7 @@ final class CardDetailDependencyContainer {
         self.cardID = cardID
     }
     
-    init(cardID: Int) {
+    init(cardID: Identifier) {
         self.cardID = cardID
     }
     

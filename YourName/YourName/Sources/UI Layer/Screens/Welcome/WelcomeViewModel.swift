@@ -32,7 +32,6 @@ final class WelcomeViewModel {
     }
     
     func signIn(with provider: Provider) {
-
         self.oauthRepository.authorize(provider: provider)
             .flatMapLatest { [weak self] response -> Observable<(accessToken: Secret, refreshToken: Secret)> in
                 guard let self = self else { return .empty() }
@@ -51,9 +50,15 @@ final class WelcomeViewModel {
                 return .empty()
             })
             .bind(onNext: { [weak self] authentication in
-                self?.localStorage.write(.accessToken, value: authentication.accessToken)
-                self?.localStorage.write(.refreshToken, value: authentication.refreshToken)
+                guard let self = self else { return }
+                self.localStorage.write(.accessToken, value: authentication.accessToken)
+                    .subscribe(onNext: { _ in })
+                    .disposed(by: self.disposeBag)
+                self.localStorage.write(.refreshToken, value: authentication.refreshToken)
+                    .subscribe(onNext: { _ in })
+                    .disposed(by: self.disposeBag)
+                self.delegate.signIn(accessToken: authentication.accessToken, refreshToken: authentication.refreshToken)
             })
-            .disposed(by: disposeBag)
+            .disposed(by: self.disposeBag)
     }
 }

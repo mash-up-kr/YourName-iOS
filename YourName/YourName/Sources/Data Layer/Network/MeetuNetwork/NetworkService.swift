@@ -11,6 +11,7 @@ import Moya
 
 protocol NetworkServing {
     var headers: [String: String] { get }
+    func setupAuthentication(accessToken: Secret, refreshToken: Secret)
     func request<API>(_ api: API) -> Observable<API.Response> where API: ServiceAPI
 }
 
@@ -54,6 +55,11 @@ final class NetworkService: NetworkServing {
             .compactMap { $0.data }
     }
     
+    func setupAuthentication(accessToken: Secret, refreshToken: Secret) {
+        self.accessToken = accessToken
+        self.refreshToken = refreshToken
+    }
+    
     private func _request<API>(_ api: API) -> Observable<MeetuResponse<API.Response>> where API : ServiceAPI {
         let endpoint = MultiTarget.target(api)
         
@@ -79,8 +85,8 @@ final class NetworkService: NetworkServing {
         }
     }
     
-    private var accessToken: String? = Secret.dummyAccessToken
-    private var refreshToken: String? = Secret.dummyRefreshToken
+    private var accessToken: Secret?
+    private var refreshToken: Secret?
     
     private let disposeBag = DisposeBag()
     

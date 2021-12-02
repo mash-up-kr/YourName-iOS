@@ -30,8 +30,8 @@ final class RootDependencyContainer {
             let dependencyContainer = self.createSignedOutDependencyContainer()
             return dependencyContainer.createWelcomeViewController()
         }
-        let homeTabBarControllerFactory: (Secret) -> HomeTabBarController = { accessToken in
-            let dependencyContainer = self.createSignedInDependencyContainer(accessToken: accessToken)
+        let homeTabBarControllerFactory: (Secret, Secret) -> HomeTabBarController = { accessToken, refreshToken in
+            let dependencyContainer = self.createSignedInDependencyContainer(accessToken: accessToken, refreshToken: refreshToken)
             return dependencyContainer.createHomeViewController()
         }
         
@@ -48,8 +48,8 @@ final class RootDependencyContainer {
         return SplashDependencyContainer(rootDependencyContainer: self)
     }
     
-    private func createSignedInDependencyContainer(accessToken: Secret) -> SignedInDependencyContainer {
-        return SignedInDependencyContainer(accessToken: accessToken, rootDependencyContainer: self)
+    private func createSignedInDependencyContainer(accessToken: Secret, refreshToken: Secret) -> SignedInDependencyContainer {
+        return SignedInDependencyContainer(accessToken: accessToken, refreshToken: refreshToken, rootDependencyContainer: self)
     }
     
     private func createSignedOutDependencyContainer() -> SignedOutDependencyContainer {

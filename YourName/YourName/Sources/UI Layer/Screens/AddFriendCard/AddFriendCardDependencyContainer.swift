@@ -25,7 +25,7 @@ final class AddFriendCardDependencyContainer {
     func createAddFriendCardViewController() -> AddFriendCardViewController {
         let viewController = AddFriendCardViewController.instantiate()
         
-        let cardDetailVieWControllerFactory: (Int) -> CardDetailViewController = { cardID  in
+        let cardDetailVieWControllerFactory: (Identifier) -> CardDetailViewController = { cardID  in
             let dependencyContainer = CardDetailDependencyContainer(cardID: cardID)
             return dependencyContainer.createCardDetailViewController()
         }
