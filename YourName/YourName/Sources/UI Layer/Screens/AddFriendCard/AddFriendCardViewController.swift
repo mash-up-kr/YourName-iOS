@@ -25,7 +25,7 @@ final class AddFriendCardViewController: ViewController, Storyboarded {
     private let disposeBag = DisposeBag()
     private let searchId = PublishRelay<String>()
     var viewModel: AddFriendCardViewModel!
-    var cardDetailViewControllerFactory: ((Int) -> CardDetailViewController)!
+    var cardDetailViewControllerFactory: ((Identifier) -> CardDetailViewController)!
     
     override var hidesBottomBarWhenPushed: Bool {
         get { return navigationController?.topViewController == self }

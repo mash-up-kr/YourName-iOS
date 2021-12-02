@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 
 enum AddFriendCardDestination: Equatable {
-    case cardDetail(cardID: Int)
+    case cardDetail(cardID: Identifier)
 }
 
 typealias AddFriendCardNavigation = Navigation<AddFriendCardDestination>
@@ -40,7 +40,7 @@ final class AddFriendCardViewModel {
     let cardRepository: CardRepository!
     
     private let disposeBag = DisposeBag()
-    private let nameCard = BehaviorRelay<(id: Int?, uniqueCode: String?)>(value: (id: nil, uniqueCode: nil))
+    private let nameCard = BehaviorRelay<(id: Identifier?, uniqueCode: String?)>(value: (id: nil, uniqueCode: nil))
     
     // MARK: - Init
     
@@ -90,28 +90,28 @@ extension AddFriendCardViewModel {
                       let bgColor = nameCard.bgColor?.value,
                       let isAdded = response.isAdded else { return nil }
                 
-                self.nameCard.accept((id: nameCard.id ?? 0,
-                                      uniqueCode: nameCard.uniqueCode ?? ""))
+                self.nameCard.accept((id: nameCard.id ?? .empty,
+                                      uniqueCode: nameCard.uniqueCode ?? .empty))
                 
                 let bgColors: ColorSource!
                 if bgColor.count == 1 { bgColors = .monotone(UIColor(hexString: bgColor.first!))}
                 else { bgColors = .gradient(bgColor.map { UIColor(hexString: $0) } ) }
                 
                 let skills = personalSkills.map { MySkillProgressView.Item(title: $0.name,
-                                                                           level: $0.level ?? 0 ) }
-                let _contacts = contacts.map { AddFriendCardBackView.Item.Contact(image: $0.iconURL ?? "",
-                                                                                 type: $0.category?.rawValue ?? "",
-                                                                                 value: $0.value ?? "") }
+                                                                           level: $0.level ?? 0) }
+                let _contacts = contacts.map { AddFriendCardBackView.Item.Contact(image: $0.iconURL ?? .empty,
+                                                                                 type: $0.category?.rawValue ?? .empty,
+                                                                                 value: $0.value ?? .empty) }
                 
-                return (FrontCardItem(id: nameCard.id ?? 0 ,
-                                      image: nameCard.imgUrl ?? "",
-                                      name: nameCard.name ?? "",
-                                      role: nameCard.role ?? "",
+                return (FrontCardItem(id: nameCard.id ?? .empty,
+                                      image: nameCard.imgUrl ?? .empty,
+                                      name: nameCard.name ?? .empty,
+                                      role: nameCard.role ?? .empty,
                                       skills: skills,
                                       backgroundColor: bgColors),
                         BackCardItem(contacts: _contacts,
-                                     personality: nameCard.personality ?? "",
-                                     introduce: nameCard.introduce ?? "",
+                                     personality: nameCard.personality ?? .empty,
+                                     introduce: nameCard.introduce ?? .empty,
                                      backgroundColor: bgColors),
                         isAdded)
             }

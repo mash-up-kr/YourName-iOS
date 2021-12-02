@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>194057677267-4dp9n7cvj7t15ip1u79n9mv0c6amnncl.apps.googleusercontent.com</string>
+	<string>194057677267-lqmo4tbcn9itkm2sruac98rsgold691a.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.194057677267-4dp9n7cvj7t15ip1u79n9mv0c6amnncl</string>
+	<string>com.googleusercontent.apps.194057677267-lqmo4tbcn9itkm2sruac98rsgold691a</string>
 	<key>API_KEY</key>
 	<string>AIzaSyBmfLDKWfViGF1aWuafj3iin8ourAZamjE</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.yourname.YourName</string>
+	<string>com.crew.yourname.meetu</string>
 	<key>PROJECT_ID</key>
 	<string>meetu-7b615</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:194057677267:ios:cdc5c66fdf769ba8336726</string>
+	<string>1:194057677267:ios:efbd7f5fe6307e16336726</string>
 </dict>
 </plist>

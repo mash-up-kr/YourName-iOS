@@ -26,7 +26,7 @@ target 'MEETU' do
   pod 'Then'
   
   # 🐛 Debug Tool
-  pod 'FLEX', :configurations => ['Debug']
+  pod 'FLEX'#, :configurations => ['Debug']
   
   # 🥸 Mock
   # pod "Cuckoo"
