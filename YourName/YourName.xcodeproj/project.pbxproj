@@ -119,7 +119,6 @@
 		CE4D4ECE2709ECDF00081A2B /* ColorSourceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4ECD2709ECDF00081A2B /* ColorSourceRepository.swift */; };
 		CE4D4ED02709F1F200081A2B /* SplashDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4ECF2709F1F200081A2B /* SplashDependencyContainer.swift */; };
 		CE4D4ED22709F47400081A2B /* YourNameColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4ED12709F47400081A2B /* YourNameColor.swift */; };
-		CE4D4ED52709F9E700081A2B /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4ED42709F9E700081A2B /* Keyboard.swift */; };
 		CE4D4ED7270A0CE200081A2B /* SkillSettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE4D4ED6270A0CE200081A2B /* SkillSettingView.xib */; };
 		CE4D4ED9270A0D1400081A2B /* SkillSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4ED8270A0D1400081A2B /* SkillSettingView.swift */; };
 		CE4D4EDB270A0D2000081A2B /* SkillSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4EDA270A0D2000081A2B /* SkillSettingViewModel.swift */; };
@@ -408,7 +407,6 @@
 		CE4D4ECD2709ECDF00081A2B /* ColorSourceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSourceRepository.swift; sourceTree = "<group>"; };
 		CE4D4ECF2709F1F200081A2B /* SplashDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashDependencyContainer.swift; sourceTree = "<group>"; };
 		CE4D4ED12709F47400081A2B /* YourNameColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourNameColor.swift; sourceTree = "<group>"; };
-		CE4D4ED42709F9E700081A2B /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		CE4D4ED6270A0CE200081A2B /* SkillSettingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SkillSettingView.xib; sourceTree = "<group>"; };
 		CE4D4ED8270A0D1400081A2B /* SkillSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillSettingView.swift; sourceTree = "<group>"; };
 		CE4D4EDA270A0D2000081A2B /* SkillSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillSettingViewModel.swift; sourceTree = "<group>"; };
@@ -1099,7 +1097,6 @@
 		CEB6586026EB29B000C11F33 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				CE4D4ED42709F9E700081A2B /* Keyboard.swift */,
 				CE2BB2C82707560800936148 /* Palette.swift */,
 				CEF8C55526EDF8F7009BA9C2 /* Extensions */,
 				CE6BAB922704D08D0006D26B /* Protocols */,
@@ -1802,7 +1799,6 @@
 				CEF8C55326EDF8D5009BA9C2 /* UIView+.swift in Sources */,
 				A2CC657A2708DAEA00610C49 /* FriendCardEmptyCollectionViewCell.swift in Sources */,
 				CED16DE926F39F700076565F /* HomeTab.swift in Sources */,
-				CE4D4ED52709F9E700081A2B /* Keyboard.swift in Sources */,
 				CE2BB2C92707560800936148 /* Palette.swift in Sources */,
 				CE63124926F5A30200B2E69B /* Navigation.swift in Sources */,
 				CEB6587726EB2CFE00C11F33 /* HomeViewModel.swift in Sources */,

@@ -31,7 +31,7 @@ final class TMISettingViewModel {
     }
     
     func didLoad() {
-        interestRepository.fetchAll().debug("")
+        interestRepository.fetchAll()
             .bind(to: interests)
             .disposed(by: disposeBag)
         
