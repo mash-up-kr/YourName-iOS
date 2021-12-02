@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Provider: String, Decodable {
+enum Provider: String {
     case apple
     case kakao
 }

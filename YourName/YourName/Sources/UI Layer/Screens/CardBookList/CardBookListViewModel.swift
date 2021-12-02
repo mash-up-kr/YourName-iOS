@@ -37,7 +37,7 @@ final class CardBookListViewModel {
     }
     
     func tapAddFriend() {
-        
+        navigation.accept(.push(.addFriend))
     }
     
     func tapAddCardBook() {

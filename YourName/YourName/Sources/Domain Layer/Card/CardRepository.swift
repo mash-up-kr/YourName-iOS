@@ -12,6 +12,7 @@ protocol CardRepository {
     func fetchAll() -> Observable<[NameCard]>
     func fetchCards(cardBookID: CardBookID) -> Observable<[NameCard]>
     func remove(cardIDs: [NameCardID], on cardBookID: CardBookID) -> Observable<Void>
+    func fetchCard(uniqueCode: String) -> Observable<Entity.FriendCard>
 }
 
 final class YourNameCardRepository: CardRepository {
@@ -35,6 +36,9 @@ final class YourNameCardRepository: CardRepository {
     func remove(cardIDs: [NameCardID], on cardBookID: CardBookID) -> Observable<Void> {
         return network.request(DeleteCardsAPI(cardBookID: cardBookID, cardIDs: cardIDs)).mapToVoid()
     }
+    func fetchCard(uniqueCode: String) -> Observable<Entity.FriendCard> {
+            return Environment.current.network.request(FriendCardAPI(uniqueCode: uniqueCode))
+        }
     
     private func translate(fromEntity entity: Entity.NameCard) -> NameCard {
         return NameCard(id: entity.id, name: entity.name, role: entity.role, introduce: entity.introduce, bgColors: entity.bgColor?.value, profileURL: entity.imgUrl)
@@ -56,5 +60,8 @@ final class MockCardRepository: CardRepository {
     
     func remove(cardIDs: [NameCardID], on cardBookID: CardBookID) -> Observable<Void> {
         .just(Void())
+    }
+    func fetchCard(uniqueCode: String) -> Observable<Entity.FriendCard> {
+        return Environment.current.network.request(FriendCardAPI(uniqueCode: uniqueCode))
     }
 }

@@ -20,6 +20,7 @@ protocol LocalStorage {
 }
 
 extension UserDefaults: LocalStorage {
+    #warning("수정이 필요해용")
     func read<T>(_ key: PersistanceKey) -> Observable<T?> {
         let value = self.object(forKey: key.rawValue) as? T
         return .just(value)
