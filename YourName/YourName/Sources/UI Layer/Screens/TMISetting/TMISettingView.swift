@@ -75,7 +75,7 @@ final class TMISettingView: UIView, NibLoadable {
     }
     
     private func render(_ viewModel: TMISettingViewModel) {
-        viewModel.interestesForDisplay.distinctUntilChanged()
+        viewModel.interestsForDisplay.distinctUntilChanged()
             .subscribe(onNext: { [weak self] list in
                 self?.interestes = list
                 self?.tmiCollectionView?.reloadData()

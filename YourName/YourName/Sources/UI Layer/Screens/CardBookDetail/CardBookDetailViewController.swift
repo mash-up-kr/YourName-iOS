@@ -93,6 +93,13 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
             })
             .disposed(by: self.disposeBag)
         
+        self.viewModel.isEmpty.distinctUntilChanged()
+            .subscribe(onNext: { [weak self] isEmpty in
+                self?.moreButton?.isHidden = isEmpty
+                self?.removeButton?.isHidden = isEmpty
+            })
+            .disposed(by: self.disposeBag)
+        
         self.viewModel.shouldShowRemoveReconfirmAlert
             .subscribe(onNext: {
                 // 디자인 개선

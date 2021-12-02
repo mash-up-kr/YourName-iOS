@@ -33,6 +33,14 @@ struct OrderedSet<Element: Hashable> {
         }
     }
     
+    func contains(where predicate: @escaping (Element) -> Bool) -> Bool {
+        return innerSet.contains(where: { any in
+            guard let element = any as? Element else { return false }
+            return predicate(element)
+        })
+    }
+    
+    
     func contains(_ element: Element) -> Bool {
         return innerSet.contains(element)
     }

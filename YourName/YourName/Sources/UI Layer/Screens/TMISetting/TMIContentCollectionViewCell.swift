@@ -8,6 +8,7 @@
 import UIKit
 
 struct TMIContentCellViewModel: Equatable {
+    let id: Identifier
     var isSelected: Bool
     let content: String
     let imageSource: ImageSource
