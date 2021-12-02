@@ -93,9 +93,9 @@ final class SkillSettingView: UIView, NibLoadable {
         guard let frame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
         
         UIView.animate(withDuration: 0.3) {
-            let contentInset = UIEdgeInsets(top: 0, left: 0, bottom: frame.height, right: 0)
+            let contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 150, right: 0)
             self.scrollView?.contentInset = contentInset
-            self.scrollView?.contentOffset.y += frame.height
+            self.scrollView?.contentOffset.y += 150
         }
     }
     
