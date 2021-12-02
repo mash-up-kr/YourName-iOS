@@ -22,7 +22,7 @@ final class MyCardListViewController: ViewController, Storyboarded {
     // MARK: - Properties
     
     var cardCreationViewControllerFactory: (() -> CardCreationViewController)!
-    var cardDetailViewControllerFactory: ((Int) -> CardDetailViewController)!
+    var cardDetailViewControllerFactory: ((Identifier) -> CardDetailViewController)!
     var viewModel: MyCardListViewModel!
     
     private var myCardList: [MyCardCellViewModel] = []

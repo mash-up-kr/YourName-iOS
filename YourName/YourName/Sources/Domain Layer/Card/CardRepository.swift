@@ -24,7 +24,7 @@ final class YourNameCardRepository: CardRepository {
         .empty()
     }
     
-    func fetchCards(cardBookID: Int) -> Observable<[NameCard]> {
+    func fetchCards(cardBookID: CardBookID) -> Observable<[NameCard]> {
         .empty()
     }
     
@@ -42,7 +42,7 @@ final class MockCardRepository: CardRepository {
         .just(NameCard.dummyList)
     }
     
-    func fetchCards(cardBookID: Int) -> Observable<[NameCard]> {
+    func fetchCards(cardBookID: CardBookID) -> Observable<[NameCard]> {
         .just(NameCard.dummyList)
     }
     

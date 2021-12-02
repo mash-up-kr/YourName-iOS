@@ -42,12 +42,12 @@ final class TMISettingViewModel {
     
     private func transform() {
         interestes.map { list in
-            list.map { TMIContentCellViewModel(isSelected: false, content: $0.content) }
+            list.map { TMIContentCellViewModel(isSelected: false, content: $0.content, imageSource: .url($0.iconURL)) }
         }.bind(to: interestesForDisplay)
         .disposed(by: disposeBag)
         
         strongPoints.map { list in
-            list.map { TMIContentCellViewModel(isSelected: false, content: $0.content) }
+            list.map { TMIContentCellViewModel(isSelected: false, content: $0.content, imageSource: .url($0.iconURL)) }
         }.bind(to: strongPointsForDisplay)
         .disposed(by: disposeBag)
     }

@@ -13,7 +13,7 @@ extension Entity {
     }
     
     struct NameCard: Codable {
-        let id: Int?
+        let id: Identifier?
         let name: String?
         let role: String?
         let personality: String?
@@ -29,14 +29,14 @@ extension Entity {
 
     struct NameCardCreation: Codable {
         let imgUrl: String?
-        let bgColorId: Int?
+        let bgColorId: Identifier?
         let name: String?
         let role: String?
         let skills: [Skill]?
         let contacts: [Contact]?
         let personality: String?
         let introduce: String?
-        let tmiIds: [Int]?
+        let tmiIds: [Identifier]?
         let imageKey: ImageKey?
     }
 }

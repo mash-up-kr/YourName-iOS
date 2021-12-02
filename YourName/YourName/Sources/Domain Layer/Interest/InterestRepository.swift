@@ -27,10 +27,12 @@ final class YourNameInterestRepository: InterestRepository {
     }
     
     private func translate(fromTMI tmi: Entity.TMI) -> Interest? {
-        guard let id = tmi.id        else { return nil }
-        guard let content = tmi.name else { return nil }
+        guard let id = tmi.id                   else { return nil }
+        guard let content = tmi.name            else { return nil }
+        guard let urlString = tmi.iconURL       else { return nil }
+        guard let url = URL(string: urlString)  else { return nil }
         
-        return Interest(id: id, content: content)
+        return Interest(id: id, content: content, iconURL: url)
     }
     
     private let network: NetworkServing

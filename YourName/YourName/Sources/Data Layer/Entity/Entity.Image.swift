@@ -9,7 +9,7 @@ import Foundation
 
 extension Entity {
     struct Image: Codable {
-        let id: Int?
+        let id: Identifier?
         let key: String?
     }
 }

@@ -8,7 +8,7 @@
 import Foundation
 
 struct YourNameColor: Equatable {
-    let id: Int
+    let id: Identifier
     let colorSource: ColorSource
     var status: ColorSourceStatus
 }

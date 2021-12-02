@@ -12,7 +12,7 @@ import RxSwift
 final class CardFrontView: NibLoadableView {
     
     struct Item {
-        let id: Int
+        let id: Identifier
         let image: String
         let name: String
         let role: String
