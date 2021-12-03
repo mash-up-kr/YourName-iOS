@@ -83,8 +83,7 @@ extension MyCardListViewController {
         
         self.myCardListCollectionView.rx.itemSelected
             .bind(onNext: { [weak self] indexPath in
-                
-                self?.viewModel.tapCard(at: 1)
+                self?.viewModel.tapCard(at: indexPath.row)
             })
             .disposed(by: disposeBag)
     }
@@ -178,12 +177,12 @@ extension MyCardListViewController: UIScrollViewDelegate {
                                    withVelocity velocity: CGPoint,
                                    targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         
-        guard let layout = myCardListCollectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
+        guard let layout = self.myCardListCollectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
         
         // cell width + item사이거리
-        let cellWidthIncludingSpacing = collectionViewWidth + layout.minimumInteritemSpacing
-        
+        let cellWidthIncludingSpacing = self.collectionViewWidth + layout.minimumInteritemSpacing
         let estimatedIndex = scrollView.contentOffset.x / cellWidthIncludingSpacing
+
         let index: Int
         if velocity.x > 0 {
             index = Int(ceil(estimatedIndex))
@@ -194,6 +193,6 @@ extension MyCardListViewController: UIScrollViewDelegate {
         }
         self.pageControl.currentPage = index
         
-        targetContentOffset.pointee = CGPoint(x: CGFloat(index) * cellWidthIncludingSpacing, y: 0)
+        targetContentOffset.pointee = CGPoint(x: CGFloat(index) * self.collectionViewWidth, y: 0)
     }
 }
