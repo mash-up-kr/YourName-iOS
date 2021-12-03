@@ -58,7 +58,7 @@ final class AddFriendCardViewModel {
 // MARK: - Methods
 
 extension AddFriendCardViewModel {
-    func didTapSearchButton(with uniqueCode: String) {
+    func searchMeetu(with uniqueCode: String) {
         self.isLoading.accept(true)
         let result = self.cardRepository.fetchCard(uniqueCode: uniqueCode)
             .do { [weak self] _ in
@@ -169,7 +169,7 @@ extension AddFriendCardViewModel {
                                            defaultAction: .init(title: "검색으로 돌아가기", action: { alertController.dismiss() }))
                 
                 self.toastView.accept(ToastView(text: "성공적으로 추가됐츄!"))
-                self.didTapSearchButton(with: uniqueCode)
+                self.searchMeetu(with: uniqueCode)
                 alertController.configure(item: alertItem)
                 return alertController
             }

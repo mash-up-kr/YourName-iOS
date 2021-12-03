@@ -61,23 +61,17 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이미 추가된 친구 미츄입니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TUs-eg-zeS">
-                                <rect key="frame" x="24" y="166" width="138.5" height="14.5"/>
+                                <rect key="frame" x="24" y="166" width="138.5" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="JZg-ot-j3R"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" name="red"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gxC-BM-4BK" customClass="AddFriendCardNoResultView" customModule="MEETU" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="180" width="414" height="594"/>
+                                <rect key="frame" x="0.0" y="180" width="414" height="716"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bvg-hL-8Uw" customClass="AddFriendCardResultView" customModule="MEETU" customModuleProvider="target">
-                                <rect key="frame" x="32" y="197" width="350" height="577"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="12"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="코드명을 입력하세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JGO-dx-r1T">
                                 <rect key="frame" x="24" y="112" width="296" height="48"/>
@@ -96,23 +90,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vNB-6l-6Ww">
-                                <rect key="frame" x="24" y="794" width="366" height="56"/>
-                                <color key="backgroundColor" name="black1"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="56" id="Zz4-zz-ZXr"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="추가하기">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="12"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -121,9 +98,7 @@
                             <constraint firstAttribute="trailing" secondItem="gxC-BM-4BK" secondAttribute="trailing" id="38G-XZ-j2K"/>
                             <constraint firstItem="JGO-dx-r1T" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="24" id="3Ob-rb-Xcu"/>
                             <constraint firstItem="gAf-tz-zag" firstAttribute="height" secondItem="JGO-dx-r1T" secondAttribute="height" id="9wB-5A-IAa"/>
-                            <constraint firstItem="gxC-BM-4BK" firstAttribute="bottom" secondItem="bvg-hL-8Uw" secondAttribute="bottom" id="C6q-w8-XJQ"/>
                             <constraint firstItem="TUs-eg-zeS" firstAttribute="leading" secondItem="JGO-dx-r1T" secondAttribute="leading" id="F31-5i-0jp"/>
-                            <constraint firstAttribute="bottom" secondItem="bvg-hL-8Uw" secondAttribute="bottom" constant="122" id="K0j-Sf-80M"/>
                             <constraint firstItem="REX-NW-Pwq" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="NJj-lx-PVA"/>
                             <constraint firstItem="REX-NW-Pwq" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Oct-vl-ueO"/>
                             <constraint firstItem="gxC-BM-4BK" firstAttribute="top" secondItem="JGO-dx-r1T" secondAttribute="bottom" constant="20" id="TGH-4P-awc"/>
@@ -132,21 +107,13 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="gAf-tz-zag" secondAttribute="trailing" constant="24" id="YFn-ZC-htD"/>
                             <constraint firstItem="gAf-tz-zag" firstAttribute="top" secondItem="REX-NW-Pwq" secondAttribute="bottom" constant="12" id="fE6-TB-iAG"/>
                             <constraint firstItem="gAf-tz-zag" firstAttribute="leading" secondItem="JGO-dx-r1T" secondAttribute="trailing" constant="16" id="fYq-AF-8uT"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="bvg-hL-8Uw" secondAttribute="trailing" constant="32" id="gsC-W0-fS6"/>
-                            <constraint firstItem="vNB-6l-6Ww" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="24" id="hMa-fI-2MN"/>
                             <constraint firstItem="TUs-eg-zeS" firstAttribute="top" secondItem="JGO-dx-r1T" secondAttribute="bottom" constant="6" id="i0s-gG-7iw"/>
-                            <constraint firstAttribute="bottom" secondItem="vNB-6l-6Ww" secondAttribute="bottom" constant="46" id="iIU-Rg-BvA"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="vNB-6l-6Ww" secondAttribute="trailing" constant="24" id="iTJ-0r-dWD"/>
-                            <constraint firstItem="bvg-hL-8Uw" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="32" id="npj-GJ-MZR"/>
-                            <constraint firstItem="bvg-hL-8Uw" firstAttribute="top" secondItem="JGO-dx-r1T" secondAttribute="bottom" constant="37" id="tq3-Kk-hHh"/>
+                            <constraint firstAttribute="bottom" secondItem="gxC-BM-4BK" secondAttribute="bottom" id="oKu-8K-6Bc"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="addButton" destination="vNB-6l-6Ww" id="8LV-5h-9bW"/>
                         <outlet property="backButton" destination="A3r-Vk-fGQ" id="KKi-Fu-oDs"/>
                         <outlet property="noResultView" destination="gxC-BM-4BK" id="BCR-wj-NNT"/>
-                        <outlet property="resultView" destination="bvg-hL-8Uw" id="ZwG-qj-Hr0"/>
-                        <outlet property="resultViewTopConstraints" destination="tq3-Kk-hHh" id="sw4-Kp-qaA"/>
                         <outlet property="searchButton" destination="gAf-tz-zag" id="fSP-O7-1ia"/>
                         <outlet property="searchTextField" destination="JGO-dx-r1T" id="DHw-an-vQR"/>
                         <outlet property="validationLabel" destination="TUs-eg-zeS" id="4Uv-45-x37"/>

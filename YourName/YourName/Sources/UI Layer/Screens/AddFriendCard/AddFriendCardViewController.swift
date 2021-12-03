@@ -8,19 +8,26 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import SnapKit
 
 final class AddFriendCardViewController: ViewController, Storyboarded {
     
     typealias FriendCardState = AddFriendCardViewModel.FriendCardState
     
-    @IBOutlet private unowned var resultView: AddFriendCardResultView!
     @IBOutlet private unowned var noResultView: AddFriendCardNoResultView!
     @IBOutlet private unowned var searchTextField: UITextField!
     @IBOutlet private unowned var validationLabel: UILabel!
     @IBOutlet private unowned var searchButton: UIButton!
     @IBOutlet private unowned var backButton: UIButton!
-    @IBOutlet private unowned var resultViewTopConstraints: NSLayoutConstraint!
-    @IBOutlet private unowned var addButton: UIButton!
+    private let resultView = AddFriendCardResultView()
+    private let addButton = UIButton().then {
+        $0.setTitle("추가하기", for: .normal)
+        $0.setTitleColor(.white, for: .normal)
+        $0.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+        $0.backgroundColor = Palette.black1
+        $0.cornerRadius = 12
+    }
+    
     
     private let disposeBag = DisposeBag()
     private let searchId = PublishRelay<String>()
@@ -43,16 +50,39 @@ final class AddFriendCardViewController: ViewController, Storyboarded {
     }
 }
 
+// MARK: - Configure UI Methods
 extension AddFriendCardViewController {
     
-    // MARK: - Configure UI Methods
     private func configureInitialUI() {
+        self.view.addSubviews(self.resultView, self.addButton)
+        self.resultViewLayout()
+        self.addButtonLayout()
+        
         self.searchTextField.becomeFirstResponder()
-        [self.noResultView, self.resultView, self.validationLabel].forEach { $0?.isHidden = true }
+        [self.noResultView, self.resultView, self.validationLabel, self.addButton].forEach { $0.isHidden = true }
         self.searchTextField.layer.borderColor = Palette.gray1.cgColor
-        self.addButton.isHidden = true
         self.searchTextField.leftView = UIView(frame: .init(x: 0, y: 0, width: 11, height: self.searchTextField.bounds.height))
         self.searchTextField.leftViewMode = .always
+    }
+    
+    private func resultViewLayout() {
+        self.resultView.snp.makeConstraints { [weak self] in
+            guard let self = self else { return }
+            $0.top.equalTo(self.searchTextField.snp.bottom).offset(20)
+            
+            $0.height.equalTo((UIScreen.main.bounds.height * 512 / 812))  // 명함 사이즈 비율에 맞춰 보여질 수 있도록
+            let width = (UIScreen.main.bounds.height * 512 / 812) * (312 / 512)
+            $0.width.equalTo(width)
+            $0.centerX.equalToSuperview()
+        }
+    }
+    
+    private func addButtonLayout() {
+        self.addButton.snp.makeConstraints {
+            $0.bottom.equalToSuperview().inset(44)
+            $0.height.equalTo(56)
+            $0.leading.trailing.equalToSuperview().inset(24)
+        }
     }
     
     private func configure(_ textField: UITextField,
@@ -107,15 +137,18 @@ extension AddFriendCardViewController {
             .distinctUntilChanged()
             .compactMap { $0 }
             .bind(onNext: { [weak self] id in
-                self?.searchId.accept(id)
-                [self?.noResultView, self?.resultView, self?.validationLabel, self?.addButton].forEach { $0?.isHidden = true }
+                guard let self = self else { return }
+                self.searchId.accept(id)
+                [self.noResultView, self.resultView, self.validationLabel, self.addButton].forEach { $0?.isHidden = true }
+                self.configure(self.searchTextField, for: .noResult)
             })
             .disposed(by: disposeBag)
         
         self.searchButton.rx.throttleTap
             .withLatestFrom(searchId)
             .bind(onNext: { [weak self] id in
-                self?.viewModel.didTapSearchButton(with: id)
+                self?.searchTextField.resignFirstResponder()
+                self?.viewModel.searchMeetu(with: id)
             })
             .disposed(by: disposeBag)
         
@@ -164,7 +197,7 @@ extension AddFriendCardViewController {
                 
                 self.configure(self.addButton, for: state)
                 self.configure(self.searchTextField, for: state)
-                
+                self.configureLayout(state)
                 switch state {
                     // MARK: 결과가 없는 경우
                 case .noResult:
@@ -178,22 +211,20 @@ extension AddFriendCardViewController {
                     self.resultView.isHidden = false
                     self.validationLabel.isHidden = true
                     
-                    self.resultViewTopConstraints.constant = 20
                     self.resultView.configure(frontCardItem: frontItem,
                                               backCardItem: backItem,
                                               friendCardState: state)
+                    
                     
                     // MARK: 이미 추가된 경우
                 case .isAdded(let frontItem, let backItem):
                     self.noResultView.isHidden = true
                     self.resultView.isHidden = false
                     self.validationLabel.isHidden = false
-                    
-                    self.resultViewTopConstraints.constant = 37
+
                     self.resultView.configure(frontCardItem: frontItem,
                                               backCardItem: backItem,
                                               friendCardState: state)
-                    
                 }
             })
             .disposed(by: disposeBag)
@@ -214,7 +245,7 @@ extension AddFriendCardViewController {
     
     private func navigate(_ navigation: AddFriendCardNavigation) {
         let viewController = createViewController(navigation.destination)
-        navigate(viewController, action: navigation.action)
+        self.navigate(viewController, action: navigation.action)
     }
     
     private func createViewController(_ next: AddFriendCardDestination) -> UIViewController {
@@ -222,5 +253,45 @@ extension AddFriendCardViewController {
         case .cardDetail(let cardID):
             return cardDetailViewControllerFactory(cardID)
         }
+    }
+    
+    // default layout
+    private func configureLayout(_ state: FriendCardState) {
+        self.resultView.snp.remakeConstraints { [weak self] in
+            var topOffset = 0
+            switch state {
+            case .success:
+                topOffset = 20
+            case .isAdded:
+                topOffset = 37
+            default:
+                break
+            }
+            
+            guard let self = self else { return }
+            $0.top.equalTo(self.searchTextField.snp.bottom).offset(topOffset)
+            
+            $0.height.equalTo((UIScreen.main.bounds.height * 512 / 812))  // 명함 사이즈 비율에 맞춰 보여질 수 있도록
+            let width = (UIScreen.main.bounds.height * 512 / 812) * (312 / 512)
+            $0.width.equalTo(width)
+            $0.centerX.equalToSuperview()
+        }
+
+        self.addButton.snp.remakeConstraints { 
+            var bottomInset = 0
+            switch state {
+            case .isAdded:
+                bottomInset = 31
+            case .success:
+                bottomInset = 44
+            default:
+                break
+            }
+            $0.bottom.equalToSuperview().inset(bottomInset)
+            $0.height.equalTo(56)
+            $0.leading.trailing.equalToSuperview().inset(24)
+        }
+   
+        self.view.layoutIfNeeded()
     }
 }

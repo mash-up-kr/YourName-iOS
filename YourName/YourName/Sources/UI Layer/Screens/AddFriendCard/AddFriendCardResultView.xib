@@ -32,14 +32,18 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="qlf-5c-7sP" firstAttribute="bottom" secondItem="u16-zQ-o3q" secondAttribute="bottom" id="0Kb-PR-Osg"/>
-                <constraint firstItem="qlf-5c-7sP" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="AyT-d1-n3H"/>
-                <constraint firstItem="u16-zQ-o3q" firstAttribute="leading" secondItem="qlf-5c-7sP" secondAttribute="leading" id="Gjj-oW-akt"/>
-                <constraint firstAttribute="bottom" secondItem="u16-zQ-o3q" secondAttribute="bottom" id="ZS1-7J-E7D"/>
-                <constraint firstItem="qlf-5c-7sP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="adm-cU-1fk"/>
-                <constraint firstItem="u16-zQ-o3q" firstAttribute="trailing" secondItem="qlf-5c-7sP" secondAttribute="trailing" id="gXQ-Fg-4BX"/>
-                <constraint firstItem="u16-zQ-o3q" firstAttribute="top" secondItem="qlf-5c-7sP" secondAttribute="top" id="jft-DX-mgL"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="qlf-5c-7sP" secondAttribute="trailing" id="xXj-V8-N6v"/>
+                <constraint firstItem="qlf-5c-7sP" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="2QF-1q-cQz"/>
+                <constraint firstItem="qlf-5c-7sP" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="35j-Py-7Ow"/>
+                <constraint firstItem="u16-zQ-o3q" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="IIP-vU-Ok6"/>
+                <constraint firstItem="u16-zQ-o3q" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" id="PPM-Zl-jkw"/>
+                <constraint firstItem="u16-zQ-o3q" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Ra7-ZX-9i3"/>
+                <constraint firstItem="u16-zQ-o3q" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="SVu-cU-CSX"/>
+                <constraint firstAttribute="trailing" secondItem="u16-zQ-o3q" secondAttribute="trailing" id="U1J-Ni-jiA"/>
+                <constraint firstAttribute="trailing" secondItem="qlf-5c-7sP" secondAttribute="trailing" id="UbB-sY-WIs"/>
+                <constraint firstItem="qlf-5c-7sP" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="lI3-yT-xec"/>
+                <constraint firstItem="qlf-5c-7sP" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" id="qdt-J2-euf"/>
+                <constraint firstAttribute="top" secondItem="qlf-5c-7sP" secondAttribute="top" id="u3x-dq-UqY"/>
+                <constraint firstAttribute="top" secondItem="u16-zQ-o3q" secondAttribute="top" id="vCp-1H-z0Y"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="139" y="101"/>

@@ -51,6 +51,10 @@ final class AddFriendCardBackView: NibLoadableView {
         bind()
     }
     
+    deinit {
+        print("\(String(describing: self)) deinit")
+    }
+    
     // MARK: - Methods
     func configure(item: Item) {
         self.personalityStackView.arrangedSubviews.forEach { $0.isHidden = true }
@@ -65,16 +69,12 @@ final class AddFriendCardBackView: NibLoadableView {
         self.introduceLabel.text = ""
         self.personalityViewTopConstraints.constant = 32
         
-        let gradientLayer = CAGradientLayer()
         switch item.backgroundColor {
         case .gradient(let colors):
-            self.contentView.backgroundColor = nil
-            gradientLayer.colors = colors.compactMap { $0.cgColor }
+            self.contentView.updateGradientLayer(colors: colors)
         case .monotone(let color):
-            gradientLayer.colors = nil
-            self.contentView.backgroundColor = color
+            self.contentView.updateGradientLayer(colors: [color])
         }
-        self.contentView.layer.addSublayer(gradientLayer)
         
         if item.contacts.count == 0 {
             self.contactHeaderLabel.isHidden = true
@@ -105,6 +105,7 @@ extension AddFriendCardBackView {
     
     private func configureUI() {
         self.contentView.layer.cornerRadius = 12
+        self.contentView.layer.masksToBounds = true
         self.contactStackView.isLayoutMarginsRelativeArrangement = true
         self.contactStackView.layoutMargins = .init(top: 23, left: 20, bottom: 23, right: 20)
         self.personalityView.isLayoutMarginsRelativeArrangement = true
