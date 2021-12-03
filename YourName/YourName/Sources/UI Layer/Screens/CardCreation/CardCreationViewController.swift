@@ -105,7 +105,9 @@ final class CardCreationViewController: ViewController, Storyboarded {
         personalityTextView?.rx.text
             .distinctUntilChanged()
             .filterNil()
-            .subscribe(onNext: { [weak self] in self?.viewModel.typePersonality($0) })
+            .subscribe(onNext: { [weak self] text in
+                self?.viewModel.typePersonality(text[safe: 0..<40])
+            })
             .disposed(by: disposeBag)
         
         myTMISettingButton?.rx.tap
@@ -115,7 +117,9 @@ final class CardCreationViewController: ViewController, Storyboarded {
         aboutMeTextView?.rx.text
             .distinctUntilChanged()
             .filterNil()
-            .subscribe(onNext: { [weak self] in self?.viewModel.typeAboutMe($0) })
+            .subscribe(onNext: { [weak self] text in
+                self?.viewModel.typeAboutMe(text[safe: 0..<40])
+            })
             .disposed(by: disposeBag)
         
         selectContactTypeButton?.rx.tap
@@ -186,24 +190,46 @@ final class CardCreationViewController: ViewController, Storyboarded {
         
         if let personalityTextView = self.personalityTextView {
             viewModel.personality
-                .distinctUntilChanged()
                 .bind(to: personalityTextView.rx.text)
                 .disposed(by: disposeBag)
         }
         
         if let personalityPlaceholder = self.personalityPlaceholder {
-            viewModel.shouldHidePersonalityPlaceholder
+            viewModel.personality
+                .map { $0.isNotEmpty }
                 .distinctUntilChanged()
                 .bind(to: personalityPlaceholder.rx.isHidden)
-                .disposed(by: self.disposeBag)
+                .disposed(by: disposeBag)
         }
+        viewModel.personalityTextStatus
+            .subscribe(onNext: { [weak self] status in
+                self?.personalityTextCountLabel?.text = "\(status.count)"
+                self?.personalityTextCountLabel?.textColor = status.isFull ? UIColor(hexString: "#EB1616") : Palette.black1
+                self?.personalityTextMaxCountLabel?.text = "\(status.max)"
+            })
+            .disposed(by: disposeBag)
         
         if let aboutMeTextView = self.aboutMeTextView {
             viewModel.aboutMe
-                .distinctUntilChanged()
                 .bind(to: aboutMeTextView.rx.text)
                 .disposed(by: disposeBag)
         }
+        
+        if let aboutMePlaceholderLabel = self.aboutMePlaceholderLabel {
+            viewModel.aboutMe
+                .map { $0.isNotEmpty }
+                .distinctUntilChanged()
+                .bind(to: aboutMePlaceholderLabel.rx.isHidden)
+                .disposed(by: disposeBag)
+        }
+        
+        viewModel.aboutMeTextStatus
+            .subscribe(onNext: { [weak self] status in
+                self?.aboutMeTextCountLabel?.text = "\(status.count)"
+                self?.aboutMeTextCountLabel?.textColor = status.isFull ? UIColor(hexString: "#EB1616") : Palette.black1
+                self?.aboutMeTextMaxCountLabel?.text = "\(status.max)"
+            })
+            .disposed(by: disposeBag)
         
         viewModel.isLoading.distinctUntilChanged()
             .bind(to: self.isLoading)
@@ -239,14 +265,6 @@ final class CardCreationViewController: ViewController, Storyboarded {
             viewModel.shouldHideClear
                 .distinctUntilChanged()
                 .bind(to: profileClearButton.rx.isHidden)
-                .disposed(by: disposeBag)
-        }
-        
-        if let aboutMePlaceholderLabel = self.aboutMePlaceholderLabel {
-            viewModel.aboutMe
-                .map { $0.isEmpty == false }
-                .distinctUntilChanged()
-                .bind(to: aboutMePlaceholderLabel.rx.isHidden)
                 .disposed(by: disposeBag)
         }
         
@@ -382,11 +400,16 @@ final class CardCreationViewController: ViewController, Storyboarded {
     @IBOutlet private weak var personalityTextView: UITextView?
     @IBOutlet private weak var personalityPlaceholder: UILabel?
     @IBOutlet private weak var personalityTextCountLabel: UILabel?
+    @IBOutlet private weak var personalityTextMaxCountLabel: UILabel?
+    
     @IBOutlet private weak var tmiCompleteImageView: UIImageView?
     @IBOutlet private weak var myTMISettingButton: UIButton?
+    
     @IBOutlet private weak var aboutMeTextView: UITextView?
-    @IBOutlet private weak var aboutMeTextCountLabel: UILabel?
     @IBOutlet private weak var aboutMePlaceholderLabel: UILabel?
+    @IBOutlet private weak var aboutMeTextCountLabel: UILabel?
+    @IBOutlet private weak var aboutMeTextMaxCountLabel: UILabel?
+    
     @IBOutlet private weak var keyboardFrameViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var contactTypePickerView: UIPickerView?
     @IBOutlet private weak var selectContactTypeButton: UIButton?

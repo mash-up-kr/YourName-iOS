@@ -1346,6 +1346,7 @@
                     <connections>
                         <outlet property="aboutMePlaceholderLabel" destination="NTW-8J-77N" id="mB4-4O-mvc"/>
                         <outlet property="aboutMeTextCountLabel" destination="22I-HR-rtU" id="adR-BH-poN"/>
+                        <outlet property="aboutMeTextMaxCountLabel" destination="AsB-GL-jtY" id="UXS-bO-3Vm"/>
                         <outlet property="aboutMeTextView" destination="O1J-7U-eGo" id="Nj6-hG-ew3"/>
                         <outlet property="backButton" destination="q0t-EQ-I4N" id="qbY-yO-fjH"/>
                         <outlet property="backgroundSettingButton" destination="gvE-d8-0OO" id="fVw-aZ-6Od"/>
@@ -1357,6 +1358,7 @@
                         <outlet property="nameField" destination="xiS-L4-Ase" id="VhF-OP-cw8"/>
                         <outlet property="personalityPlaceholder" destination="7Pd-Z1-EnY" id="eff-Lc-h1o"/>
                         <outlet property="personalityTextCountLabel" destination="QWF-5l-xhz" id="zWp-De-bUb"/>
+                        <outlet property="personalityTextMaxCountLabel" destination="g7Q-Jj-F3i" id="cdC-3K-426"/>
                         <outlet property="personalityTextView" destination="icn-O2-pbb" id="8sI-ht-Shq"/>
                         <outlet property="profileClearButton" destination="DMH-dt-DZ7" id="Kjx-E5-fWF"/>
                         <outlet property="profileImageView" destination="EPr-sn-CcG" id="B9i-3f-miQ"/>

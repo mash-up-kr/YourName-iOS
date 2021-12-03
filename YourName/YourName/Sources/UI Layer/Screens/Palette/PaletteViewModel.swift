@@ -33,6 +33,9 @@ final class PaletteViewModel {
     }
 
     func selectColor(at selectedIndex: Int) {
+        guard let selectedColor = self.profileColors.value[safe: selectedIndex]  else { return }
+        guard selectedColor.status != .locked                                    else { return }
+        
         let updatedColors = self.profileColors.value.indices
             .compactMap { index -> YourNameColor? in
                 guard var color = self.profileColors.value[safe: index] else { return nil }

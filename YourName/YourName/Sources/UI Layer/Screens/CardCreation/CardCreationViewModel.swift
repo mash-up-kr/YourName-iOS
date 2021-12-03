@@ -10,6 +10,8 @@ import RxSwift
 import RxRelay
 import UIKit
 import RxCocoa
+import SwiftUI
+import Then
 
 enum CardCreationDestination: Equatable {
     case imageSourceTypePicker
@@ -21,6 +23,13 @@ enum CardCreationDestination: Equatable {
 }
 
 typealias CardCreationNavigation = Navigation<CardCreationDestination>
+
+struct TextStatus: Then {
+    var isFull: Bool { self.count == max }
+    var count: Int
+    let max: Int
+}
+
 
 final class CardCreationViewModel {
     
@@ -42,11 +51,14 @@ final class CardCreationViewModel {
     let name = BehaviorRelay<String>(value: .empty)
     let role = BehaviorRelay<String>(value: .empty)
     let contactInfos = BehaviorRelay<[ContactInfo]>(value: [])
-    let personality = BehaviorRelay<String>(value: .empty)
-    let shouldHidePersonalityPlaceholder = BehaviorRelay<Bool>(value: false)
     let interestes = BehaviorRelay<[Interest]>(value: [])
     let strongPoints = BehaviorRelay<[StrongPoint]>(value: [])
+    
+    let personality = BehaviorRelay<String>(value: .empty)
+    let personalityTextStatus = BehaviorRelay<TextStatus>(value: TextStatus(count: 0, max: 40))
+    
     let aboutMe = BehaviorRelay<String>(value: .empty)
+    let aboutMeTextStatus = BehaviorRelay<TextStatus>(value: TextStatus(count: 0, max: 40))
     
     let navigation = PublishRelay<CardCreationNavigation>()
     
@@ -114,7 +126,8 @@ final class CardCreationViewModel {
     
     func typePersonality(_ text: String) {
         self.personality.accept(text)
-        self.shouldHidePersonalityPlaceholder.accept(text.isNotEmpty)
+        let status = personalityTextStatus.value.with { $0.count = text.count }
+        self.personalityTextStatus.accept(status)
     }
     
     func tapTMISetting() {
@@ -123,6 +136,8 @@ final class CardCreationViewModel {
     
     func typeAboutMe(_ text: String) {
         self.aboutMe.accept(text)
+        let status = aboutMeTextStatus.value.with { $0.count = text.count }
+        self.aboutMeTextStatus.accept(status)
     }
     
     func tapBack() {
