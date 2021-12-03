@@ -10,23 +10,24 @@ import RxSwift
 import RxCocoa
 
 enum CardDetailDestination: Equatable {
-    case cardDetailMore(cardID: String)
+    case cardDetailMore(cardID: Identifier)
 }
 
 typealias CardDetailNavigation = Navigation<CardDetailDestination>
 
 final class CardDetailViewModel {
     
-    private let cardID: String
-    private let disposeBag = DisposeBag()
     let isLoading = PublishRelay<Bool>()
     let navigation = PublishRelay<CardDetailNavigation>()
+    private let disposeBag = DisposeBag()
+    private let cardID: Identifier
+    
     
     // MARK: - LifeCycle
-    init(cardID: String) {
+    init(cardID: Identifier) {
         self.cardID = cardID
     }
-    
+     
     deinit {
         print(" 💀 \(String(describing: self)) deinit")
     }

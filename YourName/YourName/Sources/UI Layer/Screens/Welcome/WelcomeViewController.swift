@@ -31,7 +31,6 @@ final class WelcomeViewController: ViewController, Storyboarded {
       
     }
     
-    
     private let disposeBag = DisposeBag()
     @IBOutlet private weak var signInKakaoButton: UIButton?
     @IBOutlet private weak var signInAppleButton: UIButton?

@@ -15,7 +15,7 @@ protocol TMISettingResponder {
 
 final class TMISettingViewModel {
     
-    let interestesForDisplay = BehaviorRelay<[TMIContentCellViewModel]>(value: [])
+    let interestsForDisplay = BehaviorRelay<[TMIContentCellViewModel]>(value: [])
     let strongPointsForDisplay = BehaviorRelay<[TMIContentCellViewModel]>(value: [])
     
     init(
@@ -32,60 +32,77 @@ final class TMISettingViewModel {
     
     func didLoad() {
         interestRepository.fetchAll()
-            .bind(to: interestes)
+            .bind(to: interests)
             .disposed(by: disposeBag)
         
-        strongPointRepository.fetchAll()
+        strongPointRepository.fetchAll().debug()
             .bind(to: strongPoints)
             .disposed(by: disposeBag)
     }
     
     private func transform() {
-        interestes.map { list in
-            list.map { TMIContentCellViewModel(isSelected: false, content: $0.content) }
-        }.bind(to: interestesForDisplay)
+        interests.map { list in
+            list.map { TMIContentCellViewModel(id: $0.id, isSelected: false, content: $0.content, imageSource: .url($0.iconURL)) }
+        }.bind(to: interestsForDisplay)
         .disposed(by: disposeBag)
         
         strongPoints.map { list in
-            list.map { TMIContentCellViewModel(isSelected: false, content: $0.content) }
+            list.map { TMIContentCellViewModel(id: $0.id, isSelected: false, content: $0.content, imageSource: .url($0.iconURL)) }
         }.bind(to: strongPointsForDisplay)
         .disposed(by: disposeBag)
     }
     
     func tapInterest(at index: Int) {
-        guard let selectedInterest = self.interestes.value[safe: index] else { return }
-        guard var selectedInteresteForDisplay = self.interestesForDisplay.value[safe: index] else { return }
+        guard let selectedInterest = self.interests.value[safe: index] else { return }
         
-        selectedInterestes.toggle(selectedInterest)
-        selectedInteresteForDisplay.isSelected.toggle()
-        let updateInterestes = self.interestesForDisplay.value.with { $0[index] = selectedInteresteForDisplay }
-        self.interestesForDisplay.accept(updateInterestes)
+        self.selectedInterests.toggle(selectedInterest)
+        if self.selectedInterests.count > 3 { self.selectedInterests.removeFirst() }
+        self.mutateInterestViewModels()
     }
     
-    func tapPersonality(at index: Int) {
+    func tapStrongPoint(at index: Int) {
         guard let selectedStrongPoint = self.strongPoints.value[safe: index] else { return }
-        guard var selectedStrongPointForDisplay = self.strongPointsForDisplay.value[safe: index] else { return }
         
         self.selectedStrongPoints.toggle(selectedStrongPoint)
-        selectedStrongPointForDisplay.isSelected.toggle()
-        let updateStrongPoints = self.strongPointsForDisplay.value.with { $0[index] = selectedStrongPointForDisplay }
-        self.strongPointsForDisplay.accept(updateStrongPoints)
+        
+        if self.selectedStrongPoints.count > 3 { self.selectedStrongPoints.removeFirst() }
+        self.mutateStrongPointViewModels()
     }
     
     func tapComplete() {
-        let interests = Array(self.selectedInterestes)
-        let strongPoints = Array(self.selectedStrongPoints)
+        let interests = self.selectedInterests.asArray()
+        let strongPoints = self.selectedStrongPoints.asArray()
         
         tmiSettingResponder.tmiSettingDidComplete(interests: interests, strongPoints: strongPoints)
     }
     
+    private func mutateInterestViewModels() {
+        let interestsForDisplay = self.interestsForDisplay.value
+        let updatedInterests = interestsForDisplay.map { interestViewModel -> TMIContentCellViewModel in
+            var interestViewModel = interestViewModel
+            interestViewModel.isSelected = self.selectedInterests.contains(where: { $0.id == interestViewModel.id })
+            return interestViewModel
+        }
+        self.interestsForDisplay.accept(updatedInterests)
+    }
+    
+    private func mutateStrongPointViewModels() {
+        let strongPointsForDisplay = self.strongPointsForDisplay.value
+        let updatedStrongPoints = strongPointsForDisplay.map { strongPointViewModel -> TMIContentCellViewModel in
+            var strongPointViewModel = strongPointViewModel
+            strongPointViewModel.isSelected = self.selectedStrongPoints.contains(where: { $0.id == strongPointViewModel.id })
+            return strongPointViewModel
+        }
+        self.strongPointsForDisplay.accept(updatedStrongPoints)
+    }
+    
     private let disposeBag = DisposeBag()
     
-    private let interestes = BehaviorRelay<[Interest]>(value: [])
+    private let interests = BehaviorRelay<[Interest]>(value: [])
     private let strongPoints = BehaviorRelay<[StrongPoint]>(value: [])
     
-    private var selectedInterestes = Set<Interest>()
-    private var selectedStrongPoints = Set<StrongPoint>()
+    private var selectedInterests = OrderedSet<Interest>()
+    private var selectedStrongPoints = OrderedSet<StrongPoint>()
     
     private let interestRepository: InterestRepository
     private let strongPointRepository: StrongPointRepository

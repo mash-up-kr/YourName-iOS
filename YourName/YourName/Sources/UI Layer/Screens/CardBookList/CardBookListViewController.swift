@@ -15,13 +15,14 @@ enum CardBookSection: Int, CaseIterable {
     case empty
 }
 
+
 final class CardBookListViewController: UIViewController, Storyboarded {
 
     var viewModel: CardBookListViewModel!
     
-    var addFriendFactory: (() -> UIViewController)!
+    var addFriendFactory: (() -> AddFriendCardViewController)!
     var addCardBookFactory: (() -> UIViewController)!
-    var cardBookDetailFactory: ((String) -> UIViewController)!
+    var cardBookDetailFactory: ((CardBookID?, String?) -> UIViewController)!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,8 +75,8 @@ final class CardBookListViewController: UIViewController, Storyboarded {
         case .addCardBook:
             return self.addCardBookFactory()
             
-        case .cardBookDetail(let cardBookID):
-            return self.cardBookDetailFactory(cardBookID)
+        case .cardBookDetail(let cardBookID, let cardBookTitle):
+            return self.cardBookDetailFactory(cardBookID, cardBookTitle)
         }
     }
     

@@ -60,13 +60,13 @@ extension CardDetailMoreView {
         self.render(self.viewModel)
         self.dispatch(to: self.viewModel)
         
-        self.imageSaveView.rx.tapWhenRecognized()
+        self.imageSaveView.rx.tapWhenRecognized
             .bind(onNext: { [weak self] in
                 print("image save button tapped")
             })
             .disposed(by: disposeBag)
         
-        self.deleteView.rx.tapWhenRecognized()
+        self.deleteView.rx.tapWhenRecognized
             .bind(onNext: { [weak self] in
                 self?.viewModel.delete()
             })

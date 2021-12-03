@@ -8,7 +8,7 @@
 import Foundation
 
 extension Entity {
-    struct Login: Decodable {
+    struct Authentication: Decodable {
         let accessToken: String?
         let refreshToken: String?
         let user: User?

@@ -8,32 +8,61 @@
 import Foundation
 import RxSwift
 
-typealias CardID = String
-
 protocol CardRepository {
-    func fetchCards(cardBookID: String) -> Observable<[NameCard]>
-    func remove(cardIDs: [CardID]) -> Observable<[CardID]>
+    func fetchAll() -> Observable<[NameCard]>
+    func fetchCards(cardBookID: CardBookID) -> Observable<[NameCard]>
+    func remove(cardIDs: [NameCardID], on cardBookID: CardBookID) -> Observable<Void>
+    func fetchCard(uniqueCode: String) -> Observable<Entity.FriendCard>
 }
 
 final class YourNameCardRepository: CardRepository {
     
-    func fetchCards(cardBookID: String) -> Observable<[NameCard]> {
-        .empty()
+    init(network: NetworkServing = Environment.current.network) {
+        self.network = network
     }
     
-    func remove(cardIDs: [CardID]) -> Observable<[CardID]> {
-        .empty()
+    func fetchAll() -> Observable<[NameCard]> {
+        return network.request(AllFriendCardAPI())
+            .compactMap { response in response.list?.compactMap { $0.nameCard } }
+            .compactMap { [weak self] list in return list.compactMap { self?.translate(fromEntity: $0) } }
     }
+    
+    func fetchCards(cardBookID: CardBookID) -> Observable<[NameCard]> {
+        return network.request(FriendCardsAPI(cardBookID: cardBookID))
+            .compactMap { response in response.list?.compactMap { $0.nameCard } }
+            .compactMap { [weak self] list in return list.compactMap { self?.translate(fromEntity: $0) } }
+    }
+    
+    func fetchCard(uniqueCode: String) -> Observable<Entity.FriendCard> {
+        return Environment.current.network.request(FriendCardAPI(uniqueCode: uniqueCode))
+    }
+    
+    func remove(cardIDs: [NameCardID], on cardBookID: CardBookID) -> Observable<Void> {
+        return network.request(DeleteCardsAPI(cardBookID: cardBookID, cardIDs: cardIDs)).mapToVoid()
+    }
+    
+    private func translate(fromEntity entity: Entity.NameCard) -> NameCard {
+        return NameCard(id: entity.id, name: entity.name, role: entity.role, introduce: entity.introduce, bgColors: entity.bgColor?.value, profileURL: entity.imgUrl)
+    }
+    
+    private let network: NetworkServing
     
 }
 
 final class MockCardRepository: CardRepository {
     
-    func fetchCards(cardBookID: String) -> Observable<[NameCard]> {
+    func fetchAll() -> Observable<[NameCard]> {
         .just(NameCard.dummyList)
     }
     
-    func remove(cardIDs: [CardID]) -> Observable<[CardID]> {
-        return .just(cardIDs)
+    func fetchCards(cardBookID: CardBookID) -> Observable<[NameCard]> {
+        .just(NameCard.dummyList)
+    }
+    
+    func remove(cardIDs: [NameCardID], on cardBookID: CardBookID) -> Observable<Void> {
+        .just(Void())
+    }
+    func fetchCard(uniqueCode: String) -> Observable<Entity.FriendCard> {
+        return Environment.current.network.request(FriendCardAPI(uniqueCode: uniqueCode))
     }
 }

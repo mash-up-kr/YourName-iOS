@@ -9,14 +9,15 @@ import UIKit
 import Then
 
 protocol FriendCardCollectionViewCellDelegate: AnyObject {
-    func friendCardCollectionViewCell(didTapCheck id: String)
+    func friendCardCollectionViewCell(didTapCheck id: NameCardID)
 }
 
 struct FriendCardCellViewModel: Equatable, Then {
-    let id: String?
+    let id: NameCardID?
     let name: String?
     let role: String?
     let bgColor: ColorSource?
+    let profileURL: URL?
     var isEditing: Bool
     var isChecked: Bool
 }
@@ -42,18 +43,28 @@ final class FriendCardCollectionViewCell: UICollectionViewCell {
     }
     
     func configure(with viewModel: FriendCardCellViewModel) {
+        self.cardID = viewModel.id
         self.nameLabel?.text = viewModel.name
         self.roleLabel?.text = viewModel.role
         self.checkBoxView?.isHidden = viewModel.isEditing == false
         self.checkBoxView?.backgroundColor = viewModel.isChecked ? .black : .white
-        guard let colorSource = viewModel.bgColor else { return }
-        switch colorSource {
-        case .monotone(let color):
-            self.backgroundColor = color
-        case .gradient(let colors):
-            self.backgroundColor = nil
+        if let url = viewModel.profileURL {
+            self.profileImageView?.setImageSource(.url(url))
+        }
+        if let colorSource = viewModel.bgColor {
+            self.updateBackgroundColor(colorSource: colorSource)
         }
         self.borderColor = viewModel.isChecked ? .black : .clear
+    }
+    
+    private func updateBackgroundColor(colorSource: ColorSource) {
+        switch colorSource {
+        case .monotone(let color):
+            self.contentView.updateGradientLayer(colors: [color])
+            
+        case .gradient(let colors):
+            self.contentView.updateGradientLayer(colors: colors)
+        }
     }
     
     @objc
@@ -63,7 +74,7 @@ final class FriendCardCollectionViewCell: UICollectionViewCell {
         self.delegate?.friendCardCollectionViewCell(didTapCheck: cardID)
     }
     
-    private let cardID: String? = nil
+    private var cardID: NameCardID? = nil
     
     @IBOutlet private weak var profileImageView: UIImageView?
     @IBOutlet private weak var roleLabel: UILabel?

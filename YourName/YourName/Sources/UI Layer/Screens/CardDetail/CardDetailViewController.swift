@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Toast_Swift
 import RxSwift
 import RxCocoa
 
@@ -20,10 +21,20 @@ final class CardDetailViewController: ViewController, Storyboarded {
     @IBOutlet private weak var underlineView: UIView!
     @IBOutlet private weak var frontButton: UIButton!
     @IBOutlet private weak var backButton: UIButton!
+    @IBOutlet weak var speechBubble: UIView!
     @IBAction func settingButton(_ sender: Any) {
         //붙여야 되는 부분
 
     }
+    
+    @IBOutlet weak var mySkillProgressView1: MySkillProgressView!
+    @IBOutlet weak var mySkillProgressView2: MySkillProgressView!
+    @IBOutlet weak var mySkillProgressView3: MySkillProgressView!
+    
+    @IBOutlet weak var cardDetailFrontView: UIStackView!
+    
+    @IBOutlet weak var cardDetailBackView: UIStackView!
+    
     override var hidesBottomBarWhenPushed: Bool {
         get {
             return navigationController?.topViewController == self
@@ -35,95 +46,61 @@ final class CardDetailViewController: ViewController, Storyboarded {
     
     @IBAction private func frontButtonClick(_ sender: Any) {
         UIView.animate(withDuration: 0.2) {
-            self.underlineViewCenterX.isActive = false
-            self.underlineViewCenterX = nil
-            self.underlineViewCenterX = self.underlineView.centerXAnchor.constraint(equalTo: self.frontButton.centerXAnchor)
-            self.underlineViewCenterX.isActive = true
+            
+            self.underlineCenterX?.isActive = false
+            self.underlineCenterX = self.underlineView.centerXAnchor.constraint(equalTo: self.frontButton.centerXAnchor)
+            self.underlineCenterX?.isActive = true
             self.view.layoutIfNeeded()
         }
     }
+    
+    var underlineCenterX: NSLayoutConstraint?
     
     @IBAction private func backButtonClick(_ sender: Any) {
         UIView.animate(withDuration: 0.2) {
-            self.underlineViewCenterX.isActive = false
-            self.underlineViewCenterX = nil
-            self.underlineViewCenterX = self.underlineView.centerXAnchor.constraint(equalTo: self.backButton.centerXAnchor)
-            self.underlineViewCenterX.isActive = true
+            
+            self.underlineCenterX?.isActive = false
+            self.underlineCenterX = self.underlineView.centerXAnchor.constraint(equalTo: self.backButton.centerXAnchor)
+            self.underlineCenterX?.isActive = true
             self.view.layoutIfNeeded()
         }
     }
     
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.underlineCenterX?.isActive = false
+        self.underlineCenterX = self.underlineView.centerXAnchor.constraint(equalTo: self.frontButton.centerXAnchor)
+        self.underlineCenterX?.isActive = true
         
         self.bind()
         self.render(self.viewModel)
         self.dispatch(to: self.viewModel)
         
-        initPageViewController()
         bubbleBottom.transform = CGAffineTransform(rotationAngle: 45/360 * Double.pi)
+        addGesture()
     }
     
-    @IBOutlet private weak var underlineViewCenterX: NSLayoutConstraint!
+    
+    func addGesture() {
+        speechBubble.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapGetstureDetected))
+         
+         speechBubble.addGestureRecognizer(tapGesture)
+         
+     }
+
+    @objc func tapGetstureDetected() {
+        print("Touch/Tap Gesture detected!!")
+        self.navigationController?.view.showToast(ToastView(text: "코드명이 복사되었츄!"), position: .top)
+    }
     
     var viewModel: CardDetailViewModel!
     
     @IBOutlet private weak var mainView: UIView!
-    private func initPageViewController() {
-        let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
-        pageViewController.dataSource = self
-        pageViewController.delegate = self
-        
-        
-        print(mainView.frame)
-        print(pageViewController.view.frame)
-        // front 배열 추가
-        
-        let viewControllers:[UIViewController] = Array(0...0).map { _ in UIViewController() }
-//        [CardDetailBackViewController]()
-        pageViewController.setViewControllers(viewControllers, direction: .reverse, animated: true, completion: nil)
-        
-        self.addChild(pageViewController)
-        mainView.addSubview(pageViewController.view)
-        pageViewController.view.frame = mainView.bounds
-        pageViewController.didMove(toParent: self)
-    }
+
 }
 
-
-extension CardDetailViewController: UIPageViewControllerDataSource {
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        print("before")
-
-        return nil
-    }
-    
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        
-        // 만든거 호출로 구현
-        
-        if viewController as? CardDetailBackViewController != nil {
-            return nil
-        }
-
-        return nil
-    }
-}
-
-extension CardDetailViewController: UIPageViewControllerDelegate {
-    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        if completed {
-            if let currentViewController = pageViewController.viewControllers?[safe:0] as? CardDetailFrontViewController {
-//                pageControl.currentPage = currentViewController.index
-            } else if let currentViewController = pageViewController.viewControllers?[safe:0] as? CardDetailBackViewController {
-//                pageControl.currentPage = currentViewController.index
-            }
-        }
-    }
-}
-class CardDetailFrontViewController: UIViewController {}
 
 
 extension CardDetailViewController {

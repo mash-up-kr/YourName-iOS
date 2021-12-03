@@ -11,6 +11,9 @@ struct InterestesAPI: ServiceAPI {
     var path: String { "/tmis/behavior" }
     var method: Method { .get }
     var task: NetworkingTask { .requestPlain }
+    var headers: [String : String]? = nil
     
-    typealias Response = [Entity.TMI]
+    struct Response: Decodable {
+        let list: [Entity.TMI]?
+    }
 }

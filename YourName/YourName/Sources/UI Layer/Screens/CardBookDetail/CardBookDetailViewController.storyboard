@@ -38,7 +38,7 @@
                                         <color key="textColor" name="black1"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQ1-Vj-3yS">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQ1-Vj-3yS">
                                         <rect key="frame" x="356" y="6" width="44" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="aQ1-Vj-3yS" secondAttribute="height" multiplier="1:1" id="fS6-fh-OXN"/>

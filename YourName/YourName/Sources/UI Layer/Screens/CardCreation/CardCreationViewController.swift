@@ -11,6 +11,7 @@ import RxOptional
 import RxSwift
 import UIKit
 
+
 final class CardCreationViewController: ViewController, Storyboarded {
     
     var viewModel: CardCreationViewModel!
@@ -23,8 +24,9 @@ final class CardCreationViewController: ViewController, Storyboarded {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        bind()
-        setupUI()
+        self.bind()
+        self.setupUI()
+        self.setupKeyboard()
     }
     
     override func viewDidLayoutSubviews() {
@@ -44,10 +46,15 @@ final class CardCreationViewController: ViewController, Storyboarded {
     private func setupUI() {
         contactTypePickerView?.dataSource = self
         contactTypePickerView?.delegate = self
+        profileImageView?.clipsToBounds = true
     }
     
     private func dispatch(to viewModel: CardCreationViewModel) {
         viewModel.didLoad()
+        
+        backButton?.rx.tap
+            .subscribe(onNext: { [weak self] in self?.viewModel?.tapBack() })
+            .disposed(by: self.disposeBag)
         
         profileClearButton?.rx.tap
             .subscribe(onNext: { [weak self] in self?.viewModel.tapProfileClear() })
@@ -98,7 +105,9 @@ final class CardCreationViewController: ViewController, Storyboarded {
         personalityTextView?.rx.text
             .distinctUntilChanged()
             .filterNil()
-            .subscribe(onNext: { [weak self] in self?.viewModel.typePersonality($0) })
+            .subscribe(onNext: { [weak self] text in
+                self?.viewModel.typePersonality(text[safe: 0..<40])
+            })
             .disposed(by: disposeBag)
         
         myTMISettingButton?.rx.tap
@@ -108,7 +117,9 @@ final class CardCreationViewController: ViewController, Storyboarded {
         aboutMeTextView?.rx.text
             .distinctUntilChanged()
             .filterNil()
-            .subscribe(onNext: { [weak self] in self?.viewModel.typeAboutMe($0) })
+            .subscribe(onNext: { [weak self] text in
+                self?.viewModel.typeAboutMe(text[safe: 0..<40])
+            })
             .disposed(by: disposeBag)
         
         selectContactTypeButton?.rx.tap
@@ -122,8 +133,8 @@ final class CardCreationViewController: ViewController, Storyboarded {
             .disposed(by: disposeBag)
         
         completeButton?.rx.tap
-            .subscribe(onNext: { [weak self] in self?.viewModel.tapCompletion()
-                self?.dismiss(animated: true, completion: nil)
+            .subscribe(onNext: { [weak self] in
+                self?.viewModel.tapCompletion()
             })
             .disposed(by: self.disposeBag)
         
@@ -136,7 +147,6 @@ final class CardCreationViewController: ViewController, Storyboarded {
     }
     
     private func render(_ viewModel: CardCreationViewModel) {
-        
         if let profilePlaceholderView = self.profilePlaceholderView {
             viewModel.shouldHideProfilePlaceholder
                 .distinctUntilChanged()
@@ -180,17 +190,50 @@ final class CardCreationViewController: ViewController, Storyboarded {
         
         if let personalityTextView = self.personalityTextView {
             viewModel.personality
-                .distinctUntilChanged()
                 .bind(to: personalityTextView.rx.text)
                 .disposed(by: disposeBag)
         }
         
+        if let personalityPlaceholder = self.personalityPlaceholder {
+            viewModel.personality
+                .map { $0.isNotEmpty }
+                .distinctUntilChanged()
+                .bind(to: personalityPlaceholder.rx.isHidden)
+                .disposed(by: disposeBag)
+        }
+        viewModel.personalityTextStatus
+            .subscribe(onNext: { [weak self] status in
+                self?.personalityTextCountLabel?.text = "\(status.count)"
+                self?.personalityTextCountLabel?.textColor = status.isFull ? UIColor(hexString: "#EB1616") : Palette.black1
+                self?.personalityTextMaxCountLabel?.text = "\(status.max)"
+            })
+            .disposed(by: disposeBag)
+        
         if let aboutMeTextView = self.aboutMeTextView {
             viewModel.aboutMe
-                .distinctUntilChanged()
                 .bind(to: aboutMeTextView.rx.text)
                 .disposed(by: disposeBag)
         }
+        
+        if let aboutMePlaceholderLabel = self.aboutMePlaceholderLabel {
+            viewModel.aboutMe
+                .map { $0.isNotEmpty }
+                .distinctUntilChanged()
+                .bind(to: aboutMePlaceholderLabel.rx.isHidden)
+                .disposed(by: disposeBag)
+        }
+        
+        viewModel.aboutMeTextStatus
+            .subscribe(onNext: { [weak self] status in
+                self?.aboutMeTextCountLabel?.text = "\(status.count)"
+                self?.aboutMeTextCountLabel?.textColor = status.isFull ? UIColor(hexString: "#EB1616") : Palette.black1
+                self?.aboutMeTextMaxCountLabel?.text = "\(status.max)"
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.isLoading.distinctUntilChanged()
+            .bind(to: self.isLoading)
+            .disposed(by: disposeBag)
         
         viewModel.hasCompletedSkillInput
             .distinctUntilChanged()
@@ -225,11 +268,12 @@ final class CardCreationViewController: ViewController, Storyboarded {
                 .disposed(by: disposeBag)
         }
         
-        if let aboutMePlaceholderLabel = self.aboutMePlaceholderLabel {
-            viewModel.aboutMe
-                .map { $0.isEmpty == false }
-                .distinctUntilChanged()
-                .bind(to: aboutMePlaceholderLabel.rx.isHidden)
+        if let completeButton = self.completeButton {
+            viewModel.canComplete.distinctUntilChanged()
+                .do { [weak self] canComplete in
+                    self?.completeButton?.backgroundColor = canComplete ? Palette.black1 : Palette.gray1
+                }
+                .bind(to: completeButton.rx.isEnabled)
                 .disposed(by: disposeBag)
         }
         
@@ -257,16 +301,15 @@ final class CardCreationViewController: ViewController, Storyboarded {
             }).disposed(by: disposeBag)
         
         viewModel.navigation
-            .distinctUntilChanged()
             .subscribe(onNext: { [weak self] navigation in
                 guard let viewController = self?.createViewController(of: navigation.destination) else { return }
                 self?.navigate(viewController, action: navigation.action)
             })
             .disposed(by: disposeBag)
         
-        viewModel.shouldDismiss
+        viewModel.shouldClose
             .subscribe(onNext: { [weak self] in
-                self?.dismiss(animated: true, completion: nil)
+                self?.navigationController?.popViewController(animated: true)
             })
             .disposed(by: disposeBag)
         
@@ -284,6 +327,11 @@ final class CardCreationViewController: ViewController, Storyboarded {
         case .createCharacter: return characterSettingViewControllerFactory?()
         case .settingSkill: return skillSettingViewControllerFactory?()
         case .settingTMI: return tmiSettingViewControllerFactory?()
+        case .photoLibrary: return UIImagePickerController().then {
+            $0.sourceType = .photoLibrary
+            $0.allowsEditing = true
+            $0.delegate = self
+        }
         }
     }
     
@@ -310,12 +358,34 @@ final class CardCreationViewController: ViewController, Storyboarded {
         })
     }
     
+    private func setupKeyboard() {
+        if let aboutMeTextView = self.aboutMeTextView {
+            Observable.merge(
+                aboutMeTextView.rx.didBeginEditing.map { _ in true },
+                aboutMeTextView.rx.didEndEditing.map { _ in false }
+            ).subscribe(onNext: { [weak self] isEditing in
+                if isEditing {
+                    UIView.animate(withDuration: 0.3) {
+                        let contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 250, right: 0)
+                        self?.scrollView?.contentInset = contentInset
+                        self?.scrollView?.contentOffset.y += 250
+                    }
+                }
+                else {
+                    UIView.animate(withDuration: 0.3) {
+                        self?.scrollView?.contentInset = UIEdgeInsets.zero
+                    }
+                }
+            }).disposed(by: self.disposeBag)
+        }
+    }
+    
     private let disposeBag = DisposeBag()
-    private let keyboard: Keyboard = KeyboardImpl.shared
     private let profileBackgroundColorButtonLayer = CAGradientLayer()
     private var indexOfContactTypeBeingSelected: Int? = nil
     
     @IBOutlet private weak var scrollView: UIScrollView?
+    @IBOutlet private weak var backButton: UIButton?
     @IBOutlet private weak var profileClearButton: UIButton?
     @IBOutlet private weak var profilePlaceholderView: UIView?
     @IBOutlet private weak var profileImageView: UIImageView?
@@ -328,12 +398,18 @@ final class CardCreationViewController: ViewController, Storyboarded {
     @IBOutlet private var contactInputViews: [ContactInputView]?
     
     @IBOutlet private weak var personalityTextView: UITextView?
+    @IBOutlet private weak var personalityPlaceholder: UILabel?
     @IBOutlet private weak var personalityTextCountLabel: UILabel?
+    @IBOutlet private weak var personalityTextMaxCountLabel: UILabel?
+    
     @IBOutlet private weak var tmiCompleteImageView: UIImageView?
     @IBOutlet private weak var myTMISettingButton: UIButton?
+    
     @IBOutlet private weak var aboutMeTextView: UITextView?
-    @IBOutlet private weak var aboutMeTextCountLabel: UILabel?
     @IBOutlet private weak var aboutMePlaceholderLabel: UILabel?
+    @IBOutlet private weak var aboutMeTextCountLabel: UILabel?
+    @IBOutlet private weak var aboutMeTextMaxCountLabel: UILabel?
+    
     @IBOutlet private weak var keyboardFrameViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var contactTypePickerView: UIPickerView?
     @IBOutlet private weak var selectContactTypeButton: UIButton?
@@ -356,4 +432,17 @@ extension CardCreationViewController: UIPickerViewDelegate {
         return ContactType.allCases[safe: row]?.description
     }
     
+}
+
+extension CardCreationViewController: UINavigationControllerDelegate {}
+
+extension CardCreationViewController: UIImagePickerControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[.editedImage] as? UIImage, let data = image.pngData() else { return }
+        self.presentedViewController?.dismiss(animated: true, completion: {
+            self.viewModel.selectPhoto(data: data)
+        })
+    }
 }

@@ -5,6 +5,7 @@
 //  Created by Booung on 2021/09/10.
 //
 
+
 import FLEX
 import RxCocoa
 import RxSwift
@@ -18,7 +19,8 @@ class ViewController: UIViewController {
     let loadingIndicator = LoadingIndicator()
     
     var isLoading: Binder<Bool> {
-        Binder(self) { viewController, isLoading in
+        Binder(self) { [weak self] viewController, isLoading in
+            guard let self = self else { return }
             if isLoading {
                 viewController.view.bringSubviewToFront(self.loadingIndicator)
                 self.loadingIndicator.isLoading = true
@@ -53,6 +55,10 @@ class ViewController: UIViewController {
         self.loadingIndicator.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
 }

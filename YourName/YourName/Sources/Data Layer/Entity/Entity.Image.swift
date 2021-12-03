@@ -8,8 +8,8 @@
 import Foundation
 
 extension Entity {
-    struct Image: Decodable {
-        let id: Int?
+    struct Image: Codable {
+        let id: Identifier?
         let key: String?
     }
 }

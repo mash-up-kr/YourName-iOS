@@ -9,11 +9,11 @@ import Foundation
 
 final class CardDetailDependencyContainer {
     
-    let cardID: CardID
+    let cardID: Identifier
     let myCardRepository: MyCardRepository
     
     init(
-        cardID: CardID,
+        cardID: Identifier,
         myCardListDependencyContainer: MyCardListDependencyContainer,
         myCardRepository: MyCardRepository
     ) {
@@ -21,6 +21,11 @@ final class CardDetailDependencyContainer {
         // get state of myCardListDependencyContainer
         self.cardID = cardID
         self.myCardRepository = myCardRepository
+    }
+    
+    init(cardID: Identifier) {
+        self.cardID = cardID
+        self.myCardRepository = YourNameMyCardRepository()
     }
     
     func createCardDetailViewController() -> CardDetailViewController {
@@ -33,9 +38,9 @@ final class CardDetailDependencyContainer {
             let view = CardDetailMoreView(viewModel: viewModel,
                                           parent: viewController)
             let pageSheetController = PageSheetController(contentView: view)
-            pageSheetController.onDismiss = { contentView in
-                
-            }
+//            pageSheetController.onDismiss = { contentView in
+//
+//            }
             return pageSheetController
         }
         return viewController

@@ -20,17 +20,19 @@ final class YourNameInterestRepository: InterestRepository {
     
     func fetchAll() -> Observable<[Interest]> {
         return network.request(InterestesAPI())
-            .compactMap { [weak self] behaviors in
+            .compactMap { [weak self] characters in
                 guard let self = self else { return nil }
-                return behaviors.compactMap(self.translate(fromTMI:))
+                return characters.list?.compactMap(self.translate(fromTMI:))
             }
     }
     
     private func translate(fromTMI tmi: Entity.TMI) -> Interest? {
-        guard let id = tmi.id        else { return nil }
-        guard let content = tmi.name else { return nil }
+        guard let id = tmi.id                   else { return nil }
+        guard let content = tmi.name            else { return nil }
+        guard let urlString = tmi.iconURL       else { return nil }
+        guard let url = URL(string: urlString)  else { return nil }
         
-        return Interest(id: id, content: content)
+        return Interest(id: id, content: content, iconURL: url)
     }
     
     private let network: NetworkServing

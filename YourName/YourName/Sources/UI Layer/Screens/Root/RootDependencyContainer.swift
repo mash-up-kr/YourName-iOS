@@ -10,11 +10,15 @@ import Foundation
 final class RootDependencyContainer {
     
     let rootViewModel: RootViewModel
-    let accessTokenRepository: AccessTokenRepository
+    let authenticationRepository: AuthenticationRepository
     
     init() {
         self.rootViewModel = RootViewModel()
-        self.accessTokenRepository = YourNameAccessTokenRepository()
+        self.authenticationRepository = YourNameAuthenticationRepository(
+            localStorage: UserDefaults.standard,
+            network: Environment.current.network
+        )
+        (Environment.current.network as? NetworkService)?.authenticationRepository = self.authenticationRepository
     }
     
     func createRootViewController() -> RootViewController {
@@ -26,8 +30,8 @@ final class RootDependencyContainer {
             let dependencyContainer = self.createSignedOutDependencyContainer()
             return dependencyContainer.createWelcomeViewController()
         }
-        let homeTabBarControllerFactory: (AccessToken) -> HomeTabBarController = { accessToken in
-            let dependencyContainer = self.createSignedInDependencyContainer(accessToken: accessToken)
+        let homeTabBarControllerFactory: (Secret, Secret) -> HomeTabBarController = { accessToken, refreshToken in
+            let dependencyContainer = self.createSignedInDependencyContainer(accessToken: accessToken, refreshToken: refreshToken)
             return dependencyContainer.createHomeViewController()
         }
         
@@ -44,8 +48,8 @@ final class RootDependencyContainer {
         return SplashDependencyContainer(rootDependencyContainer: self)
     }
     
-    private func createSignedInDependencyContainer(accessToken: AccessToken) -> SignedInDependencyContainer {
-        return SignedInDependencyContainer(accessToken: accessToken, rootDependencyContainer: self)
+    private func createSignedInDependencyContainer(accessToken: Secret, refreshToken: Secret) -> SignedInDependencyContainer {
+        return SignedInDependencyContainer(accessToken: accessToken, refreshToken: refreshToken, rootDependencyContainer: self)
     }
     
     private func createSignedOutDependencyContainer() -> SignedOutDependencyContainer {

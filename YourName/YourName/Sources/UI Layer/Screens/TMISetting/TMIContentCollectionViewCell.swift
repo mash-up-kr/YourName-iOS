@@ -8,8 +8,10 @@
 import UIKit
 
 struct TMIContentCellViewModel: Equatable {
+    let id: Identifier
     var isSelected: Bool
     let content: String
+    let imageSource: ImageSource
 }
 
 final class TMIContentCollectionViewCell: UICollectionViewCell {
@@ -29,7 +31,9 @@ final class TMIContentCollectionViewCell: UICollectionViewCell {
     func configure(with viewModel: TMIContentCellViewModel) {
         self.contentLabel?.text = viewModel.content
         self.contentView.borderWidth = viewModel.isSelected ? 2 : 0
+        self.iconImageView?.setImageSource(viewModel.imageSource)
     }
     
+    @IBOutlet private weak var iconImageView: UIImageView?
     @IBOutlet private weak var contentLabel: UILabel?
 }

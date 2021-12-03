@@ -25,8 +25,8 @@ final class MyCardListEmptyCollectionViewCell: UICollectionViewCell {
     }
     
     private func bind() {
-        self.contentView.rx.tapWhenRecognized()
-            .bind(onNext: { [weak self] _ in
+        self.contentView.rx.tapWhenRecognized
+            .bind(onNext: { [weak self]  in
                 self?.didSelect()
             })
             .disposed(by: disposeBag)

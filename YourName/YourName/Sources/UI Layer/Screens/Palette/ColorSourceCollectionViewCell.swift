@@ -29,7 +29,7 @@ final class ColorSourceCollectionViewCell: UICollectionViewCell {
         self.contentView.layer.insertSublayer(colorLayer, at: 0)
     }
     
-    func configure(profileColor: ProfileColor) {
+    func configure(profileColor: YourNameColor) {
         self.colorSource = profileColor.colorSource
         self.status = profileColor.status
 

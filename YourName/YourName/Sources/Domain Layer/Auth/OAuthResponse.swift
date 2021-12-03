@@ -7,13 +7,13 @@
 
 import Foundation
 
-enum Provider: String, Decodable {
+enum Provider: String {
     case apple
     case kakao
 }
 
 struct OAuthResponse {
-    let accessToken: AccessToken
+    let accessToken: Secret
     let provider: Provider
 }
 

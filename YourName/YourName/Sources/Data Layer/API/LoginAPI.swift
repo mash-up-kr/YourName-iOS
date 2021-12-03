@@ -1,5 +1,5 @@
 //
-//  KaKaoLoginAPI.swift
+//  LoginAPI.swift
 //  MEETU
 //
 //  Created by seori on 2021/11/21.
@@ -9,9 +9,9 @@ import Foundation
 import Moya
 
 struct LoginAPI: ServiceAPI {
-    typealias Response = Entity.Login
+    typealias Response = Entity.Authentication
     
-    private let accessToken: AccessToken
+    private let accessToken: Secret
     private let provider: Provider
     
     var path: String {
@@ -25,13 +25,11 @@ struct LoginAPI: ServiceAPI {
     var headers: [String: String]? { nil }
     var method: Method { .post }
     var task: NetworkingTask {
-        return .requestParameters(parameters: ["accessToken": "\(accessToken)"],
+        return .requestParameters(parameters: ["accessToken": accessToken],
                                   encoding: JSONEncoding.default)
     }
     
-    init(accessToken: AccessToken,
-         provider: Provider) {
-        
+    init(accessToken: Secret, provider: Provider) {
         self.accessToken = accessToken
         self.provider = provider
     }

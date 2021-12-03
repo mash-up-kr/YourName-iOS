@@ -12,17 +12,19 @@ import RxRelay
 final class WelcomeViewModel {
     
     private let delegate: AuthenticationDelegate
-    private let authRepository: AuthRepository
-    private let OAuthRepository: OAuthRepository
-
+    private let authenticationRepository: AuthenticationRepository
+    private let oauthRepository: OAuthRepository
+    private let localStorage: LocalStorage
     private let disposeBag = DisposeBag()
     
     init(delegate: AuthenticationDelegate,
-         authRepository: AuthRepository,
-         OAuthRepository: OAuthRepository) {
+         authenticationRepository: AuthenticationRepository,
+         oauthRepository: OAuthRepository,
+         localStorage: LocalStorage) {
         self.delegate = delegate
-        self.authRepository = authRepository
-        self.OAuthRepository = OAuthRepository
+        self.authenticationRepository = authenticationRepository
+        self.oauthRepository = oauthRepository
+        self.localStorage = localStorage
     }
     
     deinit {
@@ -30,19 +32,33 @@ final class WelcomeViewModel {
     }
     
     func signIn(with provider: Provider) {
-
-        self.OAuthRepository.authorize(provider: provider)
-            .flatMapLatest { [weak self] response -> Observable<AccessToken> in
+        self.oauthRepository.authorize(provider: provider)
+            .flatMapLatest { [weak self] response -> Observable<(accessToken: Secret, refreshToken: Secret)> in
                 guard let self = self else { return .empty() }
-                return self.authRepository.requestLogin(accessToken: response.accessToken,
-                                                        provider: response.provider)
+                return self.authenticationRepository
+                    .fetch(withProviderToken: response.accessToken, provider: response.provider)
+                    .compactMap { authentication in
+                        guard let accessToken = authentication.accessToken,
+                              let refreshToken = authentication.refreshToken else { return nil }
+                        return (accessToken, refreshToken)
+                    }
+                    .compactMap { $0 }
             }
             .catchError({ error in
+                //TODO: error handling
+                print(error)
                 return .empty()
             })
-            .bind(onNext: { [weak self] accessToken in
-                self?.delegate.signIn(withAccessToken: accessToken)
+            .bind(onNext: { [weak self] authentication in
+                guard let self = self else { return }
+                self.localStorage.write(.accessToken, value: authentication.accessToken)
+                    .subscribe(onNext: { _ in })
+                    .disposed(by: self.disposeBag)
+                self.localStorage.write(.refreshToken, value: authentication.refreshToken)
+                    .subscribe(onNext: { _ in })
+                    .disposed(by: self.disposeBag)
+                self.delegate.signIn(accessToken: authentication.accessToken, refreshToken: authentication.refreshToken)
             })
-            .disposed(by: disposeBag)
+            .disposed(by: self.disposeBag)
     }
 }

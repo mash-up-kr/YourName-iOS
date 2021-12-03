@@ -6,18 +6,22 @@
 //
 
 import UIKit
+import SwiftUI
 
 final class SignedInDependencyContainer {
     
-    let accessToken: AccessToken
+    let accessToken: Secret
+    let refreshToken: Secret
     
     init(
-        accessToken: AccessToken,
+        accessToken: Secret,
+        refreshToken: Secret,
         rootDependencyContainer: RootDependencyContainer
     ) {
-        // do something
-        // get state of rootDependencyContainer
         self.accessToken = accessToken
+        self.refreshToken = refreshToken
+        
+        Environment.current.network.setupAuthentication(accessToken: accessToken, refreshToken: refreshToken)
     }
     
     func createHomeViewController() -> HomeTabBarController {
