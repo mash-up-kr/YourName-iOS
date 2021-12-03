@@ -38,7 +38,7 @@ final class YourNameCardBookRepository: CardBookRepository {
         return CardBook(
             id: entity.id,
             title: entity.name,
-            count: nil,
+            count: entity.numberOfNameCards,
             description: entity.description,
             backgroundColor: entity.bgColor?.value
         )

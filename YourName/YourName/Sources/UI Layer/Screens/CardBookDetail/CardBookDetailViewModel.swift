@@ -154,13 +154,14 @@ final class CardBookDetailViewModel {
     }
     
     private func transform(card: NameCard) -> FriendCardCellViewModel {
-        let colors = card.bgColors?.compactMap { UIColor(hexString: $0) }
+        let colors = card.bgColors?.compactMap { UIColor(hexString: $0) } ?? [.gray]
         
         return FriendCardCellViewModel(
             id: card.id,
             name: card.name,
             role: card.role,
-            bgColor: .monotone(colors?.first ?? .white),
+            bgColor: colors.count > 1 ? .gradient(colors) : .monotone(colors.first ?? .gray),
+            profileURL: URL(string: card.profileURL ?? .empty),
             isEditing: false,
             isChecked: false
         )
