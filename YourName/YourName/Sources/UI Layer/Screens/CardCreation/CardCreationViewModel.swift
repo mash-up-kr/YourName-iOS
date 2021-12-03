@@ -281,6 +281,7 @@ extension CardCreationViewModel: PaletteResponder {
     
     func profileColorSettingDidComplete(selectedColor: YourNameColor) {
         self.profileBackgroundColor.accept(selectedColor.colorSource)
+        self.profileYourNameColorID.accept(selectedColor.id)
         self.shouldDismissOverlays.accept(Void())
     }
     
