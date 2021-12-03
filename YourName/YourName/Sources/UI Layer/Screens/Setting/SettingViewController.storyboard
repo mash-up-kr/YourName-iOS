@@ -141,7 +141,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ch-4r-N2R">
-                                <rect key="frame" x="237.5" y="776" width="77" height="48"/>
+                                <rect key="frame" x="207.5" y="776" width="77" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="5gH-cM-whG"/>
                                     <constraint firstAttribute="width" constant="77" id="RdC-C3-rRg"/>
@@ -149,7 +149,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <inset key="titleEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="탈퇴하기">
+                                <state key="normal" title="계정탈퇴">
                                     <color key="titleColor" name="gray1"/>
                                 </state>
                             </button>
@@ -162,7 +162,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jUo-Gt-Kuu">
-                                <rect key="frame" x="99.5" y="776" width="77" height="48"/>
+                                <rect key="frame" x="129.5" y="776" width="77" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="77" id="8HW-ha-FSa"/>
                                     <constraint firstAttribute="height" constant="48" id="gtL-Rm-SQd"/>
@@ -222,12 +222,12 @@
                             <constraint firstItem="rdW-AF-HAC" firstAttribute="top" secondItem="9Ah-3a-ET9" secondAttribute="bottom" constant="20" id="WaE-56-KYF"/>
                             <constraint firstItem="9Ah-3a-ET9" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="24" id="ZNk-VT-ME4"/>
                             <constraint firstItem="1ch-4r-N2R" firstAttribute="centerY" secondItem="jUo-Gt-Kuu" secondAttribute="centerY" id="anX-co-GQQ"/>
-                            <constraint firstItem="1ch-4r-N2R" firstAttribute="leading" secondItem="d8b-IH-F2H" secondAttribute="trailing" constant="30" id="az6-Kx-PT3"/>
+                            <constraint firstItem="1ch-4r-N2R" firstAttribute="leading" secondItem="d8b-IH-F2H" secondAttribute="trailing" id="az6-Kx-PT3"/>
                             <constraint firstItem="9Ah-3a-ET9" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="38" id="pUS-yG-jOb"/>
                             <constraint firstItem="uwi-MC-B6n" firstAttribute="leading" secondItem="9Ah-3a-ET9" secondAttribute="trailing" constant="8" id="uAS-Hb-SQM"/>
                             <constraint firstItem="rdW-AF-HAC" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="24" id="vLC-bJ-L67"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="RKb-Rx-XrT" secondAttribute="trailing" constant="24" id="wWX-iQ-u0u"/>
-                            <constraint firstItem="d8b-IH-F2H" firstAttribute="leading" secondItem="jUo-Gt-Kuu" secondAttribute="trailing" constant="30" id="woh-hb-hJq"/>
+                            <constraint firstItem="d8b-IH-F2H" firstAttribute="leading" secondItem="jUo-Gt-Kuu" secondAttribute="trailing" id="woh-hb-hJq"/>
                         </constraints>
                     </view>
                     <connections>

@@ -15,6 +15,7 @@
 		649ABC2E275108A9005F50E8 /* CardDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649ABC24275108A9005F50E8 /* CardDetailViewModel.swift */; };
 		64E6EF1D2751738C00082673 /* AppleAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E6EF1C2751738C00082673 /* AppleAuth.swift */; };
 		64E6EF1F27517C2300082673 /* RxASAuthorizationControllerDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E6EF1E27517C2300082673 /* RxASAuthorizationControllerDelegateProxy.swift */; };
+		788F5D808F6D0BA749B0C2BD /* Pods_MEETU_YourNameTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED85170A811D0D5171474EB7 /* Pods_MEETU_YourNameTests.framework */; };
 		A210ACB3274070580014AA1D /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A210ACB2274070580014AA1D /* ToastView.swift */; };
 		A223E6D727560AD900F29FCE /* NoticeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A223E6D627560AD900F29FCE /* NoticeViewController.storyboard */; };
 		A223E6D927560B0B00F29FCE /* NoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A223E6D827560B0B00F29FCE /* NoticeViewController.swift */; };
@@ -81,6 +82,7 @@
 		A2DA3B7A2753685B00E68F23 /* AddFriendCardAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B792753685B00E68F23 /* AddFriendCardAPI.swift */; };
 		A2DA3B8027537E2B00E68F23 /* Entity.NameCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B7F27537E2B00E68F23 /* Entity.NameCard.swift */; };
 		A2DA3B8E2753984900E68F23 /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B8D2753984900E68F23 /* LoginAPI.swift */; };
+		CA4C8C92664A824E257F141A /* Pods_MEETU.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8A3FD6198F5C172E1258363 /* Pods_MEETU.framework */; };
 		CE2BB2C727074F4600936148 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE2BB2C627074F4600936148 /* Colors.xcassets */; };
 		CE2BB2C92707560800936148 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2BB2C82707560800936148 /* Palette.swift */; };
 		CE2D1C4E275890CE00DCD2D3 /* Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2D1C4D275890CE00DCD2D3 /* Identifier.swift */; };
@@ -571,7 +573,9 @@
 		CEF8C55626EDFB6F009BA9C2 /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 		CEFA037926EFB76D00D12AAB /* SnapshotService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotService.swift; sourceTree = "<group>"; };
 		CEFA037C26EFBACE00D12AAB /* QRGenerater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRGenerater.swift; sourceTree = "<group>"; };
+		D8A3FD6198F5C172E1258363 /* Pods_MEETU.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MEETU.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF1C79392C44764BDC375302 /* Pods_MEETU_YourNameTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MEETU_YourNameTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED85170A811D0D5171474EB7 /* Pods_MEETU_YourNameTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MEETU_YourNameTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -580,6 +584,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				451C17BFCC5F982A982C554D /* Pods_MEETU.framework in Frameworks */,
+				CA4C8C92664A824E257F141A /* Pods_MEETU.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -588,6 +593,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				323213B10D5A848F639AFE36 /* Pods_MEETU_YourNameTests.framework in Frameworks */,
+				788F5D808F6D0BA749B0C2BD /* Pods_MEETU_YourNameTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -622,6 +628,15 @@
 			);
 			name = Frameworks;
 			path = ../../../..;
+			sourceTree = "<group>";
+		};
+		8C6EC4F8A891B55587B56749 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D8A3FD6198F5C172E1258363 /* Pods_MEETU.framework */,
+				ED85170A811D0D5171474EB7 /* Pods_MEETU_YourNameTests.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		A223E6D527560ACB00F29FCE /* Notice */ = {
@@ -1044,6 +1059,7 @@
 				CEB6584126EB15AD00C11F33 /* YourNameTests */,
 				CEB6582926EB15A600C11F33 /* Products */,
 				1B7DF935C2432FFABC0E533E /* Pods */,
+				8C6EC4F8A891B55587B56749 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};

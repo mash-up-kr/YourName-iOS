@@ -90,8 +90,8 @@ final class SettingViewModel {
         alertController.configure(item: AlertItem(title: "정말 탈퇴하시겠츄?",
                                                   message: "나의 모든 미츄 카드와 정보가 삭제되며\n귀여운 미츄를 더 이상 만날 수 없어요",
                                                   image: UIImage(named: "resign_meetu")!,
-                                                  emphasisAction: .init(title: "삭제하기", action: resignAction),
-                                                  defaultAction: .init(title: "삭제 안할래요", action: cancelAction)))
+                                                  emphasisAction: .init(title: "탈퇴하기", action: resignAction),
+                                                  defaultAction: .init(title: "탈퇴 안할래요", action: cancelAction)))
         self.alert.accept(alertController)
     }
 }
