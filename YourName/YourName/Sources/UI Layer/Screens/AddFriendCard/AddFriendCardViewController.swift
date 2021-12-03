@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import SnapKit
+import Then
 
 final class AddFriendCardViewController: ViewController, Storyboarded {
     
@@ -212,8 +213,7 @@ extension AddFriendCardViewController {
                     self.validationLabel.isHidden = true
                     
                     self.resultView.configure(frontCardItem: frontItem,
-                                              backCardItem: backItem,
-                                              friendCardState: state)
+                                              backCardItem: backItem)
                     
                     
                     // MARK: 이미 추가된 경우
@@ -223,8 +223,7 @@ extension AddFriendCardViewController {
                     self.validationLabel.isHidden = false
 
                     self.resultView.configure(frontCardItem: frontItem,
-                                              backCardItem: backItem,
-                                              friendCardState: state)
+                                              backCardItem: backItem)
                 }
             })
             .disposed(by: disposeBag)
@@ -255,7 +254,6 @@ extension AddFriendCardViewController {
         }
     }
     
-    // default layout
     private func configureLayout(_ state: FriendCardState) {
         self.resultView.snp.remakeConstraints { [weak self] in
             var topOffset = 0
