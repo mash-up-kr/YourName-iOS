@@ -15,5 +15,6 @@ extension Entity {
         let name: String?
         let description: String?
         let bgColor: BackgroundColor?
+        let numberOfNameCards: Int?
     }
 }

@@ -17,6 +17,7 @@ struct FriendCardCellViewModel: Equatable, Then {
     let name: String?
     let role: String?
     let bgColor: ColorSource?
+    let profileURL: URL?
     var isEditing: Bool
     var isChecked: Bool
 }
@@ -47,19 +48,22 @@ final class FriendCardCollectionViewCell: UICollectionViewCell {
         self.roleLabel?.text = viewModel.role
         self.checkBoxView?.isHidden = viewModel.isEditing == false
         self.checkBoxView?.backgroundColor = viewModel.isChecked ? .black : .white
-        guard let colorSource = viewModel.bgColor else { return }
-        
-        self.updateBackgroundColor(colorSource: colorSource)
+        if let url = viewModel.profileURL {
+            self.profileImageView?.setImageSource(.url(url))
+        }
+        if let colorSource = viewModel.bgColor {
+            self.updateBackgroundColor(colorSource: colorSource)
+        }
         self.borderColor = viewModel.isChecked ? .black : .clear
     }
     
     private func updateBackgroundColor(colorSource: ColorSource) {
         switch colorSource {
         case .monotone(let color):
-            self.updateGradientLayer(colors: [color])
+            self.contentView.updateGradientLayer(colors: [color])
             
         case .gradient(let colors):
-            self.updateGradientLayer(colors: colors)
+            self.contentView.updateGradientLayer(colors: colors)
         }
     }
     
@@ -70,7 +74,6 @@ final class FriendCardCollectionViewCell: UICollectionViewCell {
         self.delegate?.friendCardCollectionViewCell(didTapCheck: cardID)
     }
     
-    private static let gradientLayerKey = "gradientLayer"
     private var cardID: NameCardID? = nil
     
     @IBOutlet private weak var profileImageView: UIImageView?
