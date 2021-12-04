@@ -113,7 +113,22 @@ extension CardDetailViewController {
     }
     
     private func render(_ viewModel: CardDetailViewModel) {
+        viewModel.navigationPop
+            .bind(onNext: { [weak self] in
+                self?.navigationController?.popViewController(animated: true)
+            })
+            .disposed(by: self.disposeBag)
         
+        viewModel.alertController
+            .bind(onNext: { [weak self] in
+                self?.present($0, animated: true)
+            })
+            .disposed(by: self.disposeBag)
+        
+        viewModel.isLoading
+            .distinctUntilChanged()
+            .bind(to: self.isLoading)
+            .disposed(by: self.disposeBag)
     }
     
     private func dispatch(to viewModel: CardDetailViewModel) {

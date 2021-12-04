@@ -29,24 +29,23 @@ final class CardDetailDependencyContainer {
     }
     
     func createCardDetailViewController() -> CardDetailViewController {
-        let viewModel = createCardViewModel()
+        let viewModel = createCardDetailViewModel()
         let viewController = CardDetailViewController.instantiate()
         viewController.viewModel = viewModel
         viewController.cardDetailMoreViewFactory = { cardID -> CardDetailMoreViewController in
-            let viewModel = CardDetailMoreViewModel(repository: self.myCardRepository,
-                                                    id: self.cardID)
-            let view = CardDetailMoreView(viewModel: viewModel,
+            let _viewModel = CardDetailMoreViewModel(id: self.cardID,
+                                                     delegate: viewModel)
+            let view = CardDetailMoreView(viewModel: _viewModel,
                                           parent: viewController)
+            
             let pageSheetController = PageSheetController(contentView: view)
-//            pageSheetController.onDismiss = { contentView in
-//
-//            }
             return pageSheetController
         }
         return viewController
     }
     
-    private func createCardViewModel() -> CardDetailViewModel {
-        return CardDetailViewModel(cardID: cardID)
+    private func createCardDetailViewModel() -> CardDetailViewModel {
+        return CardDetailViewModel(cardID: cardID,
+                                   repository: self.myCardRepository)
     }
 }

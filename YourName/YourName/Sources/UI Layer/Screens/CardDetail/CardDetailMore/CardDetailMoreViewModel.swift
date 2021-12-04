@@ -9,47 +9,32 @@ import Foundation
 import RxCocoa
 import RxSwift
 
+protocol CardDetailMoreViewDelegate: AnyObject {
+    func didTapRemoveCard(id: Identifier)
+}
+
 final class CardDetailMoreViewModel {
     
-    private let myCardRepository: MyCardRepository!
     private let cardId: Identifier
     private let disposeBag = DisposeBag()
-    init(repository: MyCardRepository,
-         id: Identifier) {
+    private weak var delegate: CardDetailMoreViewDelegate?
+    let dismiss = PublishRelay<Void>()
+    
+    // MARK: - LifeCycle
+    
+    init(id: Identifier,
+         delegate: CardDetailMoreViewDelegate) {
         self.cardId = id
-        self.myCardRepository = repository
+        self.delegate = delegate
+    }
+    deinit {
+        print("\(String(describing: self)) deinit")
     }
     
-    let alertController = PublishRelay<AlertViewController>()
-    let popToRootViewController = PublishRelay<Void>()
+    // MARK: - Methods
     
     func delete() {
-        let alertController = AlertViewController.instantiate()
-        let deleteAction = { [weak self] in
-            guard let self = self else { return }
-            self.deleteMyCard(id: self.cardId)
-        }
-        let deleteCancelAction = {
-            alertController.dismiss(animated: true)
-        }
-        alertController.configure(item: AlertItem(title: "정말 삭제하시겠츄?",
-                                                  message: "삭제한 미츄와 도감은 복구할 수 없어요.",
-                                                  image: UIImage(named: "meetu_delete")!,
-                                                  emphasisAction: .init(title: "삭제하기", action: deleteAction),
-                                                  defaultAction: .init(title: "삭제 안할래요", action: deleteCancelAction)))
-        self.alertController.accept(alertController)
-    }
-    
-    private func deleteMyCard(id: Identifier) {
-        self.myCardRepository.removeMyCard(id: cardId)
-            .catchError { error in
-                print(error)
-                return .empty()
-            }
-            .bind(onNext: { [weak self] _ in
-                print("card delete success")
-                self?.popToRootViewController.accept(())
-            })
-            .disposed(by: self.disposeBag)
+        self.dismiss.accept(())
+        self.delegate?.didTapRemoveCard(id: self.cardId)
     }
 }

@@ -107,6 +107,9 @@ extension MyCardListViewController {
         NotificationCenter.default.addObserver(forName: .myCardsDidChange, object: nil, queue: nil) { [weak self] _ in
             self?.viewModel.load()
         }
+        NotificationCenter.default.addObserver(forName: .myCardDidDelete, object: nil, queue: nil) { [weak self] _ in
+            self?.viewModel.load()
+        }
     }
 }
 

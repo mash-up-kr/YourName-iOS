@@ -74,20 +74,11 @@ extension CardDetailMoreView {
     }
     
     private func render(_ viewModel: CardDetailMoreViewModel) {
-        viewModel.alertController
+        viewModel.dismiss
             .bind(onNext: { [weak self] in
-                guard let self = self else { return }
-                print(self.parent, "parent????")
-                self.parent?.dismiss(animated: true)
-                self.parent?.present($0, animated: true)
+                self?.parent?.dismiss(animated: true)
             })
-            .disposed(by: disposeBag)
-        
-        viewModel.popToRootViewController
-            .bind(onNext: { [weak self] in
-                self?.parent?.navigationController?.popToRootViewController(animated: true)
-            })
-            .disposed(by: disposeBag)
+            .disposed(by: self.disposeBag)
     }
     private func dispatch(to viewModel: CardDetailMoreViewModel) {
         
