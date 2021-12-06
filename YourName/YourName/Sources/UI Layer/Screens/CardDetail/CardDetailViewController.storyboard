@@ -51,9 +51,6 @@
                                         <rect key="frame" x="342" y="5" width="48" height="38"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="btn_more" title=""/>
-                                        <connections>
-                                            <action selector="settingButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="KKa-6g-q1D"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vuu-Id-SBO">
                                         <rect key="frame" x="32" y="5" width="48" height="38"/>
@@ -82,13 +79,13 @@
                                     <constraint firstItem="yzT-y3-8bS" firstAttribute="centerY" secondItem="QNt-qY-d1c" secondAttribute="centerY" id="zil-k1-NcB"/>
                                 </constraints>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dkS-4s-anS">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dkS-4s-anS">
                                 <rect key="frame" x="0.0" y="92" width="414" height="2208"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="SD9-gH-rYR">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1323"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="SD9-gH-rYR">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="732"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4J3-By-pxc" userLabel="Front View">
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4J3-By-pxc" userLabel="Front View" customClass="FrontCardDetailView" customModule="MEETU" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="732"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NTh-e3-PIL">
@@ -247,8 +244,8 @@
                                                     </view>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="CGN-OQ-g2x" userLabel="Back View">
-                                                <rect key="frame" x="0.0" y="732" width="414" height="591"/>
+                                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="CGN-OQ-g2x" userLabel="Back View" customClass="BardCardDetailView" customModule="MEETU" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="87"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lqf-Tv-Q5k">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
@@ -257,16 +254,16 @@
                                                             <constraint firstAttribute="height" constant="43" id="brw-GL-04s"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J2r-RN-hxQ">
-                                                        <rect key="frame" x="0.0" y="43" width="414" height="128"/>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J2r-RN-hxQ">
+                                                        <rect key="frame" x="0.0" y="43" width="414" height="0.0"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     </view>
-                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ss8-Tp-hqp">
-                                                        <rect key="frame" x="0.0" y="171" width="414" height="120"/>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ss8-Tp-hqp">
+                                                        <rect key="frame" x="0.0" y="43" width="414" height="0.0"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     </view>
-                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bbs-6E-iLw">
-                                                        <rect key="frame" x="0.0" y="291" width="414" height="128"/>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bbs-6E-iLw">
+                                                        <rect key="frame" x="0.0" y="43" width="414" height="0.0"/>
                                                         <subviews>
                                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Frp-x4-NXu">
                                                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
@@ -292,12 +289,12 @@
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     </view>
-                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u6q-Er-nLS">
-                                                        <rect key="frame" x="0.0" y="419" width="414" height="128"/>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u6q-Er-nLS">
+                                                        <rect key="frame" x="0.0" y="43" width="414" height="0.0"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     </view>
-                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6xd-uZ-bPs">
-                                                        <rect key="frame" x="0.0" y="547" width="414" height="44"/>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6xd-uZ-bPs">
+                                                        <rect key="frame" x="0.0" y="43" width="414" height="44"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="pYb-5L-EB4"/>
@@ -339,12 +336,12 @@
                         <constraints>
                             <constraint firstItem="QNt-qY-d1c" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="3gn-HM-FK3"/>
                             <constraint firstItem="dkS-4s-anS" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Bgm-At-M2K"/>
+                            <constraint firstItem="dkS-4s-anS" firstAttribute="top" secondItem="QNt-qY-d1c" secondAttribute="bottom" id="DOY-RT-64z"/>
                             <constraint firstAttribute="bottom" secondItem="dkS-4s-anS" secondAttribute="bottom" id="DTq-cb-SpW"/>
                             <constraint firstItem="QNt-qY-d1c" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="Pi8-IR-aWG"/>
                             <constraint firstItem="dkS-4s-anS" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="SXY-Bo-KHO"/>
                             <constraint firstItem="QNt-qY-d1c" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="cc8-xJ-hT1"/>
                             <constraint firstItem="SD9-gH-rYR" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" id="hJz-bW-FCk"/>
-                            <constraint firstItem="dkS-4s-anS" firstAttribute="top" secondItem="QNt-qY-d1c" secondAttribute="bottom" id="mnU-14-rtT"/>
                         </constraints>
                     </view>
                     <toolbarItems/>

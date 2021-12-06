@@ -90,6 +90,13 @@
 		CE2D1C55275924F800DCD2D3 /* FriendCardsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2D1C54275924F800DCD2D3 /* FriendCardsAPI.swift */; };
 		CE2D1C572759252300DCD2D3 /* DeleteCardsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2D1C562759252300DCD2D3 /* DeleteCardsAPI.swift */; };
 		CE2D1C592759310100DCD2D3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE2D1C582759310100DCD2D3 /* GoogleService-Info.plist */; };
+		CE2D1C5C275E88CA00DCD2D3 /* NameCardDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2D1C5B275E88CA00DCD2D3 /* NameCardDetailViewModel.swift */; };
+		CE2D1C5E275E88F800DCD2D3 /* NameCardDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE2D1C5D275E88F800DCD2D3 /* NameCardDetailViewController.storyboard */; };
+		CE2D1C60275E892000DCD2D3 /* NameCardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2D1C5F275E892000DCD2D3 /* NameCardDetailViewController.swift */; };
+		CE2D1C63275E897700DCD2D3 /* FrontCardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2D1C62275E897700DCD2D3 /* FrontCardDetailView.swift */; };
+		CE2D1C65275E898200DCD2D3 /* BackCardDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2D1C64275E898200DCD2D3 /* BackCardDetailView.swift */; };
+		CE2D1C67275E8BFB00DCD2D3 /* FrondCardDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE2D1C66275E8BFB00DCD2D3 /* FrondCardDetailView.xib */; };
+		CE2D1C69275E8DC100DCD2D3 /* BackCardDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE2D1C68275E8DC100DCD2D3 /* BackCardDetailView.xib */; };
 		CE2EC99327073453006B9852 /* CardInfoInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2EC99227073453006B9852 /* CardInfoInputViewModel.swift */; };
 		CE2EC99627073493006B9852 /* CardCreationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2EC99527073493006B9852 /* CardCreationViewModelTests.swift */; };
 		CE472B682748B67F001A5E5F /* Entity.BackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE472B672748B67F001A5E5F /* Entity.BackgroundColor.swift */; };
@@ -383,6 +390,13 @@
 		CE2D1C54275924F800DCD2D3 /* FriendCardsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCardsAPI.swift; sourceTree = "<group>"; };
 		CE2D1C562759252300DCD2D3 /* DeleteCardsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteCardsAPI.swift; sourceTree = "<group>"; };
 		CE2D1C582759310100DCD2D3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CE2D1C5B275E88CA00DCD2D3 /* NameCardDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameCardDetailViewModel.swift; sourceTree = "<group>"; };
+		CE2D1C5D275E88F800DCD2D3 /* NameCardDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NameCardDetailViewController.storyboard; sourceTree = "<group>"; };
+		CE2D1C5F275E892000DCD2D3 /* NameCardDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameCardDetailViewController.swift; sourceTree = "<group>"; };
+		CE2D1C62275E897700DCD2D3 /* FrontCardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontCardDetailView.swift; sourceTree = "<group>"; };
+		CE2D1C64275E898200DCD2D3 /* BackCardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackCardDetailView.swift; sourceTree = "<group>"; };
+		CE2D1C66275E8BFB00DCD2D3 /* FrondCardDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FrondCardDetailView.xib; sourceTree = "<group>"; };
+		CE2D1C68275E8DC100DCD2D3 /* BackCardDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BackCardDetailView.xib; sourceTree = "<group>"; };
 		CE2EC99227073453006B9852 /* CardInfoInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfoInputViewModel.swift; sourceTree = "<group>"; };
 		CE2EC99527073493006B9852 /* CardCreationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCreationViewModelTests.swift; sourceTree = "<group>"; };
 		CE472B672748B67F001A5E5F /* Entity.BackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.BackgroundColor.swift; sourceTree = "<group>"; };
@@ -701,6 +715,28 @@
 				A2DA3B7527516F2F00E68F23 /* AddFriendCardRepository.swift */,
 			);
 			path = AddFriendCard;
+			sourceTree = "<group>";
+		};
+		CE2D1C5A275E88B900DCD2D3 /* NameCardDetail */ = {
+			isa = PBXGroup;
+			children = (
+				CE2D1C61275E896400DCD2D3 /* Components */,
+				CE2D1C5B275E88CA00DCD2D3 /* NameCardDetailViewModel.swift */,
+				CE2D1C5D275E88F800DCD2D3 /* NameCardDetailViewController.storyboard */,
+				CE2D1C5F275E892000DCD2D3 /* NameCardDetailViewController.swift */,
+			);
+			path = NameCardDetail;
+			sourceTree = "<group>";
+		};
+		CE2D1C61275E896400DCD2D3 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				CE2D1C62275E897700DCD2D3 /* FrontCardDetailView.swift */,
+				CE2D1C66275E8BFB00DCD2D3 /* FrondCardDetailView.xib */,
+				CE2D1C64275E898200DCD2D3 /* BackCardDetailView.swift */,
+				CE2D1C68275E8DC100DCD2D3 /* BackCardDetailView.xib */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		CE2EC9942707347E006B9852 /* CardCreationTests */ = {
@@ -1210,6 +1246,7 @@
 		CEB6586926EB2C5F00C11F33 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				CE2D1C5A275E88B900DCD2D3 /* NameCardDetail */,
 				CEAE3973274005870010F8F0 /* CardDetailMore */,
 				A2BFC113273FF98C002FFF01 /* SelectCardBook */,
 				A2CC657D2708E90400610C49 /* AddFriendCard */,
@@ -1596,6 +1633,7 @@
 				CE4D4EB72708E9F400081A2B /* PaletteView.xib in Resources */,
 				CE6BAB9C2704D7170006D26B /* QuestViewController.storyboard in Resources */,
 				A2BFC119273FFAA5002FFF01 /* SelectCardBookViewController.storyboard in Resources */,
+				CE2D1C5E275E88F800DCD2D3 /* NameCardDetailViewController.storyboard in Resources */,
 				A29DA247271DCE4E00B1E647 /* AboutProductionTeamViewController.storyboard in Resources */,
 				CEB6583826EB15AC00C11F33 /* LaunchScreen.storyboard in Resources */,
 				A2CC655E27075C8900610C49 /* MyCardListEmptyCollectionViewCell.xib in Resources */,
@@ -1612,6 +1650,8 @@
 				CEA4D2E7270CD401008189FE /* DisplayCharacterItemsViewController.storyboard in Resources */,
 				649ABC28275108A9005F50E8 /* CardDetailViewController.storyboard in Resources */,
 				CE94ABB3270EFCA3005D2E80 /* TMISectionHeaderView.xib in Resources */,
+				CE2D1C67275E8BFB00DCD2D3 /* FrondCardDetailView.xib in Resources */,
+				CE2D1C69275E8DC100DCD2D3 /* BackCardDetailView.xib in Resources */,
 				CEDA4B8A2750F1630011D0CA /* loading.json in Resources */,
 				CEB6583526EB15AC00C11F33 /* Images.xcassets in Resources */,
 				A23921052737B8F10069E418 /* ContactView.xib in Resources */,
@@ -1769,6 +1809,7 @@
 				CE472B812748DAF0001A5E5F /* MakeCardAPI.swift in Sources */,
 				CE6312A926F8CB2F00B2E69B /* SignedOutDependencyContainer.swift in Sources */,
 				CE4D4ECA27090D5200081A2B /* ColorSourceCollectionViewCell.swift in Sources */,
+				CE2D1C60275E892000DCD2D3 /* NameCardDetailViewController.swift in Sources */,
 				CEDA4B88274ED0710011D0CA /* QuestViewModel.swift in Sources */,
 				CEB6589126EC826300C11F33 /* Environment.swift in Sources */,
 				A2CC656E27088E9C00610C49 /* MyCardListCollectionViewCell.swift in Sources */,
@@ -1836,11 +1877,13 @@
 				CEB6587B26EC809800C11F33 /* URLRequestConvertible.swift in Sources */,
 				A2DA3B8027537E2B00E68F23 /* Entity.NameCard.swift in Sources */,
 				A2D875DF26EE295C00ED5949 /* OAuthResponse.swift in Sources */,
+				CE2D1C65275E898200DCD2D3 /* BackCardDetailView.swift in Sources */,
 				A2DA3B43274A536700E68F23 /* Entity.UserOnboarding.swift in Sources */,
 				CE4D4ECE2709ECDF00081A2B /* ColorSourceRepository.swift in Sources */,
 				CE472B6D2748B76B001A5E5F /* Entity.User.swift in Sources */,
 				CE4D4EB52708E9EC00081A2B /* PaletteView.swift in Sources */,
 				CEC599D32756B0EC00405DEA /* ImageUploadAPI.swift in Sources */,
+				CE2D1C63275E897700DCD2D3 /* FrontCardDetailView.swift in Sources */,
 				A2DA3B6D27514EE000E68F23 /* FriendCardAPI.swift in Sources */,
 				CEB84094272AF143000E527B /* CardBookListDependencyContainer.swift in Sources */,
 				CE6BABAF2704EE9C0006D26B /* UICollectionView+.swift in Sources */,
@@ -1914,6 +1957,7 @@
 				CED16DF526F3A5480076565F /* QuestViewController.swift in Sources */,
 				A2DA3B45274A5BE000E68F23 /* LogoutAPI.swift in Sources */,
 				A2B10121270AA80900CAE013 /* AddFriendCardViewModel.swift in Sources */,
+				CE2D1C5C275E88CA00DCD2D3 /* NameCardDetailViewModel.swift in Sources */,
 				CEB6588926EC818900C11F33 /* HTTPError.swift in Sources */,
 				CE6BAB942704D0990006D26B /* Storyboarded.swift in Sources */,
 				CE4D4E8C2707AF0500081A2B /* CharacterItemRepository.swift in Sources */,

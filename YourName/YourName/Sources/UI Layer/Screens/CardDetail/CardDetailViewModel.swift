@@ -9,7 +9,10 @@ import Foundation
 
 final class CardDetailViewModel {
     
-    init(cardID: Identifier) {
+    init(
+        cardID: Identifier,
+        cardRepository: CardRepository
+    ) {
         self.cardID = cardID
     }
     
