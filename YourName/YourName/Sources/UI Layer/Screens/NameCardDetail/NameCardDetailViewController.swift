@@ -101,10 +101,6 @@ final class NameCardDetailViewController: ViewController, Storyboarded {
         
         self.underlineLeading?.isActive  = true
         self.underlineTrailing?.isActive = true
-        
-        UIView.animate(withDuration: 0.2) {
-            self.view.layoutIfNeeded()
-        }
     }
     
     private let disposeBag = DisposeBag()

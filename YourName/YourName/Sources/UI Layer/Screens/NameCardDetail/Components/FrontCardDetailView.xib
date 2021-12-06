@@ -114,11 +114,12 @@
                                         <constraint firstAttribute="bottom" secondItem="raV-L4-6Aq" secondAttribute="bottom" constant="4" id="1Vs-Ue-Ryh"/>
                                         <constraint firstItem="raV-L4-6Aq" firstAttribute="top" secondItem="Zih-Qm-1xE" secondAttribute="top" constant="4" id="6Xb-dv-jJA"/>
                                         <constraint firstItem="Uiq-MJ-M3V" firstAttribute="leading" secondItem="raV-L4-6Aq" secondAttribute="trailing" constant="6" id="Vjv-ZX-fje"/>
+                                        <constraint firstAttribute="height" constant="28" id="e3L-Xr-OAS"/>
                                         <constraint firstItem="Uiq-MJ-M3V" firstAttribute="centerY" secondItem="Zih-Qm-1xE" secondAttribute="centerY" id="iGW-aL-yvV"/>
                                     </constraints>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                            <real key="value" value="20"/>
+                                            <real key="value" value="14"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </view>
