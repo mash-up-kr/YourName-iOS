@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Name Card Detail View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="NameCardDetailViewController" customModule="MEETU" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qk8-M5-T60">
+                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="hQH-fM-cW3">
+                                        <rect key="frame" x="155" y="4" width="104" height="48"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vUy-OQ-jsj">
+                                                <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="48" id="wyk-W1-6tc"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="앞면">
+                                                    <color key="titleColor" name="black1"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BHy-Mw-pgn">
+                                                <rect key="frame" x="56" y="0.0" width="48" height="48"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="48" id="CgT-ij-gAE"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="뒷면">
+                                                    <color key="titleColor" name="black1"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="Qvn-Sx-L1W"/>
+                                        </constraints>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uwn-OA-qUW">
+                                        <rect key="frame" x="24" y="4" width="48" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="aN9-HV-MAT"/>
+                                            <constraint firstAttribute="width" constant="48" id="rwC-Pq-o9s"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="arrow_left_back"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wxe-7L-iC3">
+                                        <rect key="frame" x="342" y="4" width="48" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="HnT-Wu-fJE"/>
+                                            <constraint firstAttribute="width" constant="48" id="W2z-hE-nhO"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="ic_delete"/>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xGS-gb-soA">
+                                        <rect key="frame" x="155" y="42" width="48" height="3"/>
+                                        <color key="backgroundColor" name="black1"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="3" id="m1S-sh-lod"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="hQH-fM-cW3" firstAttribute="centerY" secondItem="Qk8-M5-T60" secondAttribute="centerY" id="3gT-BM-2CR"/>
+                                    <constraint firstItem="xGS-gb-soA" firstAttribute="leading" secondItem="vUy-OQ-jsj" secondAttribute="leading" id="EKv-Tk-bVR"/>
+                                    <constraint firstAttribute="height" constant="56" id="F1M-GN-7tb"/>
+                                    <constraint firstItem="xGS-gb-soA" firstAttribute="trailing" secondItem="vUy-OQ-jsj" secondAttribute="trailing" id="G3Q-Aw-ILB"/>
+                                    <constraint firstItem="Uwn-OA-qUW" firstAttribute="centerY" secondItem="Qk8-M5-T60" secondAttribute="centerY" id="JkU-1k-vay"/>
+                                    <constraint firstItem="Uwn-OA-qUW" firstAttribute="leading" secondItem="Qk8-M5-T60" secondAttribute="leading" constant="24" id="YwR-LA-Qhw"/>
+                                    <constraint firstItem="hQH-fM-cW3" firstAttribute="centerX" secondItem="Qk8-M5-T60" secondAttribute="centerX" id="Z7q-XW-w8q"/>
+                                    <constraint firstItem="wxe-7L-iC3" firstAttribute="centerY" secondItem="Qk8-M5-T60" secondAttribute="centerY" id="eOh-KG-LlG"/>
+                                    <constraint firstAttribute="trailing" secondItem="wxe-7L-iC3" secondAttribute="trailing" constant="24" id="ffi-De-48y"/>
+                                    <constraint firstItem="xGS-gb-soA" firstAttribute="bottom" secondItem="hQH-fM-cW3" secondAttribute="bottom" constant="-7" id="ozC-e6-Aff"/>
+                                </constraints>
+                            </view>
+                            <stackView contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="YVe-h8-HSJ">
+                                <rect key="frame" x="0.0" y="100" width="414" height="762"/>
+                                <subviews>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8mH-fq-9BH" customClass="BackCardDetailView" customModule="MEETU" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DYY-yz-nRL" customClass="FrontCardDetailView" customModule="MEETU" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="762"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="YVe-h8-HSJ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="4Ka-og-ZEm"/>
+                            <constraint firstItem="Qk8-M5-T60" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="8EG-6O-cL5"/>
+                            <constraint firstItem="Qk8-M5-T60" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="CSS-fY-FJE"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="YVe-h8-HSJ" secondAttribute="bottom" id="Giy-ft-HSR"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="YVe-h8-HSJ" secondAttribute="trailing" id="Yu6-ZM-7vP"/>
+                            <constraint firstItem="YVe-h8-HSJ" firstAttribute="top" secondItem="Qk8-M5-T60" secondAttribute="bottom" id="fhF-PL-0ZD"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Qk8-M5-T60" secondAttribute="trailing" id="rmX-1j-brk"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backButton" destination="Uwn-OA-qUW" id="Xbm-qK-6mY"/>
+                        <outlet property="backCardButton" destination="BHy-Mw-pgn" id="RTI-Pz-h2Q"/>
+                        <outlet property="backCardDetailView" destination="8mH-fq-9BH" id="4uc-gX-zB5"/>
+                        <outlet property="frontCardButton" destination="vUy-OQ-jsj" id="kff-jC-YgS"/>
+                        <outlet property="frontCardDetailView" destination="DYY-yz-nRL" id="7yL-9B-4Yd"/>
+                        <outlet property="moreButton" destination="wxe-7L-iC3" id="FKI-F5-GL4"/>
+                        <outlet property="underlineLeading" destination="EKv-Tk-bVR" id="eXY-iu-7j4"/>
+                        <outlet property="underlineTrailing" destination="G3Q-Aw-ILB" id="Ycg-mk-61Y"/>
+                        <outlet property="underlineView" destination="xGS-gb-soA" id="8pB-Db-Bb1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="21.739130434782609" y="138.61607142857142"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="arrow_left_back" width="24" height="24"/>
+        <image name="ic_delete" width="28" height="28"/>
+        <namedColor name="black1">
+            <color red="0.082352941176470587" green="0.082352941176470587" blue="0.082352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
