@@ -9,9 +9,16 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-final class NameCardDetailViewController: ViewController {
+final class NameCardDetailViewController: ViewController, Storyboarded {
     
     var viewModel: NameCardDetailViewModel!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.bind(to: viewModel)
+        self.viewModel.didLoad()
+    }
     
     func bind(to viewModel: NameCardDetailViewModel) {
         self.dispatch(to: viewModel)
@@ -47,6 +54,17 @@ final class NameCardDetailViewController: ViewController {
     }
     
     private func render(_ viewModel: NameCardDetailViewModel) {
+        viewModel.isLoading
+            .bind(to: self.isLoading)
+            .disposed(by: self.disposeBag)
+        
+        viewModel.backgroundColor.filterNil()
+            .subscribe(onNext: { [weak self] colorSource in
+                self?.view.layoutSubviews()
+                self?.view.setColorSource(colorSource)
+            })
+            .disposed(by: self.disposeBag)
+        
         viewModel.state
             .filterNil()
             .subscribe(onNext: { [weak self] state in
@@ -112,5 +130,5 @@ final class NameCardDetailViewController: ViewController {
     
     
     @IBOutlet private weak var frontCardDetailView: FrontCardDetailView?
-    @IBOutlet private weak var backCardDetailView: BarkCardDetailView?
+    @IBOutlet private weak var backCardDetailView: BackCardDetailView?
 }

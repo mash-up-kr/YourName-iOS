@@ -22,7 +22,7 @@ final class MyCardListViewController: ViewController, Storyboarded {
     // MARK: - Properties
     
     var newCardCreationViewControllerFactory: (() -> CardInfoInputViewController)!
-    var cardDetailViewControllerFactory: ((Identifier) -> CardDetailViewController)!
+    var cardDetailViewControllerFactory: ((Identifier) -> NameCardDetailViewController)!
     var viewModel: MyCardListViewModel!
     
     private var myCardList: [MyCardCellViewModel] = []
@@ -56,7 +56,7 @@ extension MyCardListViewController {
             .bind(to: self.isLoading)
             .disposed(by: disposeBag)
   
-        viewModel.myCardList
+        viewModel.myCardViewModels
             .bind(onNext: { [weak self] myCardList in
                 guard let self = self else { return }
                 self.myCardList = myCardList

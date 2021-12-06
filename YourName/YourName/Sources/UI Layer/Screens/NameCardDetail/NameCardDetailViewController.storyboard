@@ -6,7 +6,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qk8-M5-T60">
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qk8-M5-T60">
                                 <rect key="frame" x="0.0" y="44" width="414" height="56"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="hQH-fM-cW3">
@@ -26,6 +25,7 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vUy-OQ-jsj">
                                                 <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="48" id="wyk-W1-6tc"/>
                                                 </constraints>
@@ -37,6 +37,7 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BHy-Mw-pgn">
                                                 <rect key="frame" x="56" y="0.0" width="48" height="48"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="48" id="CgT-ij-gAE"/>
                                                 </constraints>
@@ -47,6 +48,7 @@
                                                 </state>
                                             </button>
                                         </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="Qvn-Sx-L1W"/>
                                         </constraints>
@@ -77,7 +79,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="hQH-fM-cW3" firstAttribute="centerY" secondItem="Qk8-M5-T60" secondAttribute="centerY" id="3gT-BM-2CR"/>
                                     <constraint firstItem="xGS-gb-soA" firstAttribute="leading" secondItem="vUy-OQ-jsj" secondAttribute="leading" id="EKv-Tk-bVR"/>
@@ -91,22 +93,23 @@
                                     <constraint firstItem="xGS-gb-soA" firstAttribute="bottom" secondItem="hQH-fM-cW3" secondAttribute="bottom" constant="-7" id="ozC-e6-Aff"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="YVe-h8-HSJ">
+                            <stackView contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="YVe-h8-HSJ">
                                 <rect key="frame" x="0.0" y="100" width="414" height="762"/>
                                 <subviews>
-                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8mH-fq-9BH" customClass="BarkCardDetailView" customModule="MEETU" customModuleProvider="target">
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8mH-fq-9BH" customClass="BackCardDetailView" customModule="MEETU" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DYY-yz-nRL" customClass="FrontCardDetailView" customModule="MEETU" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="762"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                 </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="YVe-h8-HSJ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="4Ka-og-ZEm"/>
                             <constraint firstItem="Qk8-M5-T60" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="8EG-6O-cL5"/>
@@ -119,8 +122,8 @@
                     </view>
                     <connections>
                         <outlet property="backButton" destination="Uwn-OA-qUW" id="Xbm-qK-6mY"/>
-                        <outlet property="backCardButton" destination="BHy-Mw-pgn" id="Udt-9e-6hd"/>
-                        <outlet property="backCardDetailView" destination="8mH-fq-9BH" id="v0Z-q3-yTa"/>
+                        <outlet property="backCardButton" destination="BHy-Mw-pgn" id="RTI-Pz-h2Q"/>
+                        <outlet property="backCardDetailView" destination="8mH-fq-9BH" id="4uc-gX-zB5"/>
                         <outlet property="frontCardButton" destination="vUy-OQ-jsj" id="kff-jC-YgS"/>
                         <outlet property="frontCardDetailView" destination="DYY-yz-nRL" id="7yL-9B-4Yd"/>
                         <outlet property="moreButton" destination="wxe-7L-iC3" id="FKI-F5-GL4"/>
@@ -140,11 +143,5 @@
         <namedColor name="black1">
             <color red="0.082352941176470587" green="0.082352941176470587" blue="0.082352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
     </resources>
 </document>

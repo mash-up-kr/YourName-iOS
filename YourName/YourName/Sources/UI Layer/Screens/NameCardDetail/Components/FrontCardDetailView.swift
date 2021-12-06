@@ -23,6 +23,11 @@ final class FrontCardDetailView: UIView, NibLoadable {
     
     weak var delegate: FrontCardDetailViewDelegate?
     
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setupFromNib()
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -32,7 +37,7 @@ final class FrontCardDetailView: UIView, NibLoadable {
     
     func configure(with viewModel: FrontCardDetailViewModel) {
         self.profileImageView?.setImageSource(viewModel.profileImageSource)
-        self.cardIDLabel?.text = viewModel.cardID
+        self.cardIDLabel?.text = "#\(viewModel.cardID ?? .empty)"
         self.nameLabel?.text = viewModel.name
         self.roleLabel?.text = viewModel.role
         self.cardID = viewModel.cardID

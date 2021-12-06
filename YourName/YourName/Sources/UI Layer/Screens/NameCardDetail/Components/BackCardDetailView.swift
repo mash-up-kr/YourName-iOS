@@ -14,7 +14,12 @@ struct BackCardDetailViewModel {
     let aboutMe: String?
 }
 
-final class BarkCardDetailView: UIView, NibLoadable {
+final class BackCardDetailView: UIView, NibLoadable {
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setupFromNib()
+    }
     
     func configure(with viewModel: BackCardDetailViewModel) {
         self.personalityLabel?.text = viewModel.personality
