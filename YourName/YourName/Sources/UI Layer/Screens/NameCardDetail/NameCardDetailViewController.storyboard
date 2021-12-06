@@ -70,10 +70,9 @@
                                         <state key="normal" image="ic_delete"/>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xGS-gb-soA">
-                                        <rect key="frame" x="183" y="42" width="48" height="3"/>
+                                        <rect key="frame" x="155" y="42" width="48" height="3"/>
                                         <color key="backgroundColor" name="black1"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="48" placeholder="YES" id="RRl-kM-rGJ"/>
                                             <constraint firstAttribute="height" constant="3" id="m1S-sh-lod"/>
                                         </constraints>
                                     </view>
@@ -81,9 +80,10 @@
                                 <color key="backgroundColor" systemColor="systemBlueColor"/>
                                 <constraints>
                                     <constraint firstItem="hQH-fM-cW3" firstAttribute="centerY" secondItem="Qk8-M5-T60" secondAttribute="centerY" id="3gT-BM-2CR"/>
+                                    <constraint firstItem="xGS-gb-soA" firstAttribute="leading" secondItem="vUy-OQ-jsj" secondAttribute="leading" id="EKv-Tk-bVR"/>
                                     <constraint firstAttribute="height" constant="56" id="F1M-GN-7tb"/>
+                                    <constraint firstItem="xGS-gb-soA" firstAttribute="trailing" secondItem="vUy-OQ-jsj" secondAttribute="trailing" id="G3Q-Aw-ILB"/>
                                     <constraint firstItem="Uwn-OA-qUW" firstAttribute="centerY" secondItem="Qk8-M5-T60" secondAttribute="centerY" id="JkU-1k-vay"/>
-                                    <constraint firstItem="xGS-gb-soA" firstAttribute="centerX" secondItem="Qk8-M5-T60" secondAttribute="centerX" id="QRY-Li-Jp4"/>
                                     <constraint firstItem="Uwn-OA-qUW" firstAttribute="leading" secondItem="Qk8-M5-T60" secondAttribute="leading" constant="24" id="YwR-LA-Qhw"/>
                                     <constraint firstItem="hQH-fM-cW3" firstAttribute="centerX" secondItem="Qk8-M5-T60" secondAttribute="centerX" id="Z7q-XW-w8q"/>
                                     <constraint firstItem="wxe-7L-iC3" firstAttribute="centerY" secondItem="Qk8-M5-T60" secondAttribute="centerY" id="eOh-KG-LlG"/>
@@ -124,7 +124,9 @@
                         <outlet property="frontCardButton" destination="vUy-OQ-jsj" id="kff-jC-YgS"/>
                         <outlet property="frontCardDetailView" destination="DYY-yz-nRL" id="7yL-9B-4Yd"/>
                         <outlet property="moreButton" destination="wxe-7L-iC3" id="FKI-F5-GL4"/>
-                        <outlet property="underLineView" destination="xGS-gb-soA" id="Gjg-Sa-Yxp"/>
+                        <outlet property="underlineLeading" destination="EKv-Tk-bVR" id="eXY-iu-7j4"/>
+                        <outlet property="underlineTrailing" destination="G3Q-Aw-ILB" id="Ycg-mk-61Y"/>
+                        <outlet property="underlineView" destination="xGS-gb-soA" id="8pB-Db-Bb1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

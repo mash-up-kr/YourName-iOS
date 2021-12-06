@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct BarkCardDetailViewModel {
+struct BackCardDetailViewModel {
     let personality: String?
     let contacts: [Entity.Contact]
     let tmis: [Entity.TMI]
@@ -16,7 +16,7 @@ struct BarkCardDetailViewModel {
 
 final class BarkCardDetailView: UIView, NibLoadable {
     
-    func configure(with viewModel: BarkCardDetailViewModel) {
+    func configure(with viewModel: BackCardDetailViewModel) {
         self.personalityLabel?.text = viewModel.personality
         self.aboutMeLabel?.text = viewModel.aboutMe
     }
