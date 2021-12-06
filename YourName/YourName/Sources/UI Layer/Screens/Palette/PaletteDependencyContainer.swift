@@ -10,9 +10,14 @@ import Foundation
 
 final class PaletteDependencyContainer {
     
+    let selectedColorID: Identifier?
     let paletteResponder: PaletteResponder
     
-    init(cardCreationDependencyContainer: CardCreationDependencyContainer) {
+    
+    init(
+        selectedColorID: Identifier?,
+        cardCreationDependencyContainer: CardInfoInputDependencyContainer) {
+            self.selectedColorID = selectedColorID
         self.paletteResponder = cardCreationDependencyContainer.viewModel
     }
     

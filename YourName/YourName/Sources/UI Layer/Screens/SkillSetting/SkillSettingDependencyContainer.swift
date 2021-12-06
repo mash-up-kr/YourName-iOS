@@ -11,9 +11,9 @@ import Foundation
 
 final class SkillSettingDependencyContainer {
     
-    let cardCreationViewModel: CardCreationViewModel
+    let cardCreationViewModel: CardInfoInputViewModel
     
-    init(cardCreationDependencyContainer: CardCreationDependencyContainer) {
+    init(cardCreationDependencyContainer: CardInfoInputDependencyContainer) {
         self.cardCreationViewModel = cardCreationDependencyContainer.viewModel
     }
     

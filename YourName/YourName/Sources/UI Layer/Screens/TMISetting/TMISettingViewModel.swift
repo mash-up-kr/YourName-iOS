@@ -19,6 +19,8 @@ final class TMISettingViewModel {
     let strongPointsForDisplay = BehaviorRelay<[TMIContentCellViewModel]>(value: [])
     
     init(
+        interests: [Interest],
+        strongPoints: [StrongPoint],
         interestRepository: InterestRepository,
         strongPointRepository: StrongPointRepository,
         tmiSettingResponder: TMISettingResponder
@@ -27,7 +29,9 @@ final class TMISettingViewModel {
         self.strongPointRepository = strongPointRepository
         self.tmiSettingResponder = tmiSettingResponder
         
-        transform()
+        self.transform()
+        self.interests.accept(interests)
+        self.strongPoints.accept(strongPoints)
     }
     
     func didLoad() {
