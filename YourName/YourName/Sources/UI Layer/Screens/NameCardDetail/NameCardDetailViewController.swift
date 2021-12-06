@@ -26,7 +26,7 @@ final class NameCardDetailViewController: ViewController, Storyboarded {
     }
     
     private func dispatch(to viewModel: NameCardDetailViewModel) {
-        self.highlightFrontButton()
+        if let frontCardButton = self.frontCardButton { self.highlight(frontCardButton) }
         
         self.backButton?.rx.tap
             .subscribe(onNext: { [weak viewModel] in
@@ -60,7 +60,7 @@ final class NameCardDetailViewController: ViewController, Storyboarded {
         
         viewModel.backgroundColor.filterNil()
             .subscribe(onNext: { [weak self] colorSource in
-                self?.view.layoutSubviews()
+                self?.view.layoutIfNeeded()
                 self?.view.setColorSource(colorSource)
             })
             .disposed(by: self.disposeBag)
@@ -68,53 +68,43 @@ final class NameCardDetailViewController: ViewController, Storyboarded {
         viewModel.state
             .filterNil()
             .subscribe(onNext: { [weak self] state in
+                guard let self = self else { return }
                 switch state {
                 case .front(let viewModel):
-                    self?.frontCardDetailView?.isHidden = false
-                    self?.backCardDetailView?.isHidden = true
-                    self?.frontCardDetailView?.configure(with: viewModel)
-                    self?.highlightFrontButton()
+                    self.view.layoutIfNeeded()
+                    self.frontCardDetailView?.isHidden = false
+                    self.backCardDetailView?.isHidden = true
+                    self.frontCardDetailView?.configure(with: viewModel)
+                    if let frontCardButton = self.frontCardButton { self.highlight(frontCardButton) }
+                    
                     
                 case .back(let viewModel):
-                    self?.frontCardDetailView?.isHidden = true
-                    self?.backCardDetailView?.isHidden = false
-                    self?.backCardDetailView?.configure(with: viewModel)
-                    self?.highlightBackButton()
+                    self.view.layoutIfNeeded()
+                    self.frontCardDetailView?.isHidden = true
+                    self.backCardDetailView?.isHidden = false
+                    self.backCardDetailView?.configure(with: viewModel)
+                    if let backCardButton = self.backCardButton { self.highlight(backCardButton) }
                 }
             })
             .disposed(by: self.disposeBag)
     }
     
-    private func highlightFrontButton() {
-        guard let frontCardButton = self.frontCardButton else { return }
-        
+    private func highlight(_ view: UIView) {
         self.underlineLeading?.isActive  = false
         self.underlineTrailing?.isActive = false
         
         self.underlineLeading  = nil
         self.underlineTrailing = nil
         
-        self.underlineLeading = underlineView?.leadingAnchor.constraint(equalTo: frontCardButton.leadingAnchor)
-        self.underlineTrailing = underlineView?.trailingAnchor.constraint(equalTo: frontCardButton.trailingAnchor)
+        self.underlineLeading = underlineView?.leadingAnchor.constraint(equalTo: view.leadingAnchor)
+        self.underlineTrailing = underlineView?.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         
         self.underlineLeading?.isActive  = true
         self.underlineTrailing?.isActive = true
-    }
-    
-    private func highlightBackButton() {
-        guard let backCardButton = self.backCardButton   else { return }
         
-        self.underlineLeading?.isActive  = false
-        self.underlineTrailing?.isActive = false
-        
-        self.underlineLeading  = nil
-        self.underlineTrailing = nil
-        
-        self.underlineLeading = underlineView?.leadingAnchor.constraint(equalTo: backCardButton.leadingAnchor)
-        self.underlineTrailing = underlineView?.trailingAnchor.constraint(equalTo: backCardButton.trailingAnchor)
-        
-        self.underlineLeading?.isActive  = true
-        self.underlineTrailing?.isActive = true
+        UIView.animate(withDuration: 0.2) {
+            self.view.layoutIfNeeded()
+        }
     }
     
     private let disposeBag = DisposeBag()

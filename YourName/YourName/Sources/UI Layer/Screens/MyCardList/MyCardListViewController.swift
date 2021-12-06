@@ -83,8 +83,7 @@ extension MyCardListViewController {
         
         self.myCardListCollectionView.rx.itemSelected
             .bind(onNext: { [weak self] indexPath in
-                
-                self?.viewModel.tapCard(at: 1)
+                self?.viewModel.tapCard(at: indexPath.item)
             })
             .disposed(by: disposeBag)
     }
