@@ -13,11 +13,11 @@ final class CardInfoInputDependencyContainer {
     
     init(myCardListDependencyContainer: MyCardListDependencyContainer) {
         func createCardInfoInputViewModel() -> CardInfoInputViewModel {
-            let repository = YourNameMyCardRepository()
+            let myCardRepository = YourNameMyCardRepository()
             let imageUploader = YourNameImageUploader()
             return CardInfoInputViewModel(state: .new,
                                           cardRepository: nil,
-                                          myCardRepository: repository,
+                                          myCardRepository: myCardRepository,
                                           imageUploader: imageUploader)
         }
         
