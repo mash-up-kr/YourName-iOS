@@ -22,6 +22,7 @@ final class NameCardDetailViewController: ViewController, Storyboarded {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.frontCardDetailView?.delegate = self
         self.bind(to: viewModel)
         self.viewModel.didLoad()
     }
@@ -110,8 +111,15 @@ final class NameCardDetailViewController: ViewController, Storyboarded {
             })
             .disposed(by: self.disposeBag)
         
+        viewModel.shouldShowCopyToast
+            .subscribe(onNext: { [weak self] in
+                let toast = ToastView(text: "코드명이 복사되었츄!")
+                self?.view.showToast(toast, position: .top)
+            })
+            .disposed(by: self.disposeBag)
+        
         viewModel.shouldClose
-            .bind(onNext: { [weak self] in
+            .subscribe(onNext: { [weak self] in
                 self?.navigationController?.popViewController(animated: true)
             })
             .disposed(by: self.disposeBag)
@@ -183,4 +191,11 @@ final class NameCardDetailViewController: ViewController, Storyboarded {
     
     @IBOutlet private weak var frontCardDetailView: FrontCardDetailView?
     @IBOutlet private weak var backCardDetailView: BackCardDetailView?
+}
+extension NameCardDetailViewController: FrontCardDetailViewDelegate {
+    
+    func frontCardDetailView(_ frontCardDetailView: FrontCardDetailView, didTapCopy id: Identifier) {
+        self.viewModel.tapCopy()
+    }
+    
 }

@@ -17,11 +17,17 @@ final class SkillSettingViewModel {
     
     let shouldDismiss = PublishRelay<Void>()
     let canComplete = BehaviorRelay<Bool>(value: false)
-    let skillsForDisplay = BehaviorRelay<[SkillInputViewModel]>(value: [.empty, .empty, .empty])
+    let skillsForDisplay = BehaviorRelay<[SkillInputViewModel]>(value: [])
     
-    init(skillSettingResponder: SkillSettingResponder) {
+    init(skills: [Skill], skillSettingResponder: SkillSettingResponder) {
         self.skillSettingResponder = skillSettingResponder
         transform()
+        if skills.isNotEmpty {
+            let skillViewModels = skills.map { SkillInputViewModel(title: $0.title, level: $0.level) }
+            self.skillsForDisplay.accept(skillViewModels)
+        } else {
+            self.skillsForDisplay.accept([.empty, .empty, .empty])
+        }
     }
     
     func typeSkillName(_ skillName: String?, at index: Int) {

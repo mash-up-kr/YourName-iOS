@@ -19,6 +19,10 @@ final class NameCardDetailDependencyContainer {
         self.cardID = cardID
     }
     
+    init(cardID: Identifier, cardBookDetailDependencyContainer: CardBookDetailDependencyContainer) {
+        self.cardID = cardID
+    }
+    
     init(cardID: Identifier, addFriendCardDependencyContainer: AddFriendCardDependencyContainer) {
         self.cardID = cardID
     }
@@ -45,12 +49,22 @@ final class NameCardDetailDependencyContainer {
     
     private func createNameCardDetailViewModel() -> NameCardDetailViewModel {
         let cardRepository = self.createCardRepository()
-        return NameCardDetailViewModel(cardID: cardID, cardRepository: cardRepository, myCardRepository: createMyCardRepository(), questRepository: YourNameQuestRepository())
+        let clipboardService = self.createClipboardService()
+        return NameCardDetailViewModel(cardID: cardID,
+                                       cardRepository: cardRepository,
+                                       myCardRepository: self.createMyCardRepository(),
+                                       clipboardService: clipboardService,
+                                       questRepository: YourNameQuestRepository())
     }
     
     private func createCardRepository() -> CardRepository {
         return YourNameCardRepository()
     }
+    
+    private func createClipboardService() -> ClipboardService {
+        return YourNameClipboardService()
+    }
+    
     private func createMyCardRepository() -> MyCardRepository {
         return YourNameMyCardRepository()
     }

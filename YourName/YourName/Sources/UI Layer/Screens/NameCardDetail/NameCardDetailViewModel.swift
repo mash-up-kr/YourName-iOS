@@ -30,6 +30,7 @@ final class NameCardDetailViewModel {
     let backgroundColor = BehaviorRelay<ColorSource?>(value: nil)
     let isLoading = BehaviorRelay<Bool>(value: false)
     let shouldClose = PublishRelay<Void>()
+    let shouldShowCopyToast = PublishRelay<Void>()
     let card = BehaviorRelay<Entity.NameCard?>(value: nil)
     let captureBackCard = PublishRelay<Void>()
     let captureFrontCard = PublishRelay<Void>()
@@ -38,11 +39,13 @@ final class NameCardDetailViewModel {
     init(cardID: Identifier,
          cardRepository: CardRepository,
          myCardRepository: MyCardRepository,
+         clipboardService: ClipboardService,
          questRepository: QuestRepository) {
         self.cardID = cardID
         self.cardRepository = cardRepository
         self.myCardRepository = myCardRepository
         self.questRepository = questRepository
+        self.clipboardService = clipboardService
     }
     
     deinit {
@@ -69,6 +72,11 @@ final class NameCardDetailViewModel {
     
     func tapBack() {
         self.shouldClose.accept(Void())
+    }
+    
+    func tapCopy() {
+        self.clipboardService.copy(self.cardID)
+        self.shouldShowCopyToast.accept(Void())
     }
     
     func tapMore() {
@@ -120,6 +128,7 @@ final class NameCardDetailViewModel {
     
     private let cardID: Identifier
     private let cardRepository: CardRepository
+    private let clipboardService: ClipboardService
     private let myCardRepository: MyCardRepository
     private let questRepository: QuestRepository
 }

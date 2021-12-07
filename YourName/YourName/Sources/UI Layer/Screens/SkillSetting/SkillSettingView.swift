@@ -36,11 +36,13 @@ final class SkillSettingView: UIView, NibLoadable {
     
     private func dispatch(to viewModel: SkillSettingViewModel) {
         skillInputViews?.enumerated().forEach { index, view in
-            view.rx.skillName?.distinctUntilChanged()
+            view.rx.skillName?.skip(1)
+                .distinctUntilChanged()
                 .subscribe(onNext: { [weak self] in self?.viewModel.typeSkillName($0, at: index) })
                 .disposed(by: disposeBag)
             
-            view.rx.level.distinctUntilChanged()
+            view.rx.level.skip(1)
+                .distinctUntilChanged()
                 .subscribe(onNext: { [weak self] in self?.viewModel.changeSkillLevel($0, at: index) })
                 .disposed(by: disposeBag)
         }
@@ -52,7 +54,6 @@ final class SkillSettingView: UIView, NibLoadable {
     
     private func render(_ viewModel: SkillSettingViewModel) {
         viewModel.skillsForDisplay.distinctUntilChanged()
-            .observeOn(MainScheduler.asyncInstance)
             .subscribe(onNext: { [weak self] skills in self?.updateUI(for: skills) })
             .disposed(by: disposeBag)
         

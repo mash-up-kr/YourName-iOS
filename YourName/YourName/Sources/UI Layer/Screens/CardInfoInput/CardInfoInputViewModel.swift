@@ -105,7 +105,7 @@ final class CardInfoInputViewModel {
     private func setupCard(_ card: Entity.NameCard) {
         let colorID = card.bgColor?.id
         let colorSource = ColorSource.from(card.bgColor?.value ?? [])
-        let profileSource: ImageSource? = {
+        let imageSource: ImageSource? = {
             guard let urlString = card.imgUrl      else { return nil }
             guard let url = URL(string: urlString) else { return nil }
             return .url(url)
@@ -115,15 +115,17 @@ final class CardInfoInputViewModel {
         let contacts = card.contacts?.compactMap { contact in ContactInfo(type: contact.category ?? .email, value: contact.value ?? .empty) }
         let skills = card.personalSkills?.compactMap { skill in Skill(title: skill.name, level: skill.level ?? 0) }
         let interests = card.tmis?.filter { $0.type == "취미 / 관심사" }.compactMap { entity -> Interest? in
-            guard let id = entity.id else { return nil }
-            guard let name = entity.name else { return nil }
+            guard let id = entity.id                                  else { return nil }
+            guard let name = entity.name                              else { return nil }
             guard let iconURL = URL(string: entity.iconURL ?? .empty) else { return nil }
+            
             return Interest(id: id, content: name, iconURL: iconURL)
         }
         let strongPoints = card.tmis?.filter { $0.type == "성격" }.compactMap { entity -> StrongPoint? in
-            guard let id = entity.id else { return nil }
-            guard let name = entity.name else { return nil }
+            guard let id = entity.id                                  else { return nil }
+            guard let name = entity.name                              else { return nil }
             guard let iconURL = URL(string: entity.iconURL ?? .empty) else { return nil }
+            
             return StrongPoint(id: id, content: name, iconURL: iconURL)
         }
         let personality = card.personality
@@ -131,7 +133,7 @@ final class CardInfoInputViewModel {
         
         if let colorID = colorID             { self.profileYourNameColorID.accept(colorID)      }
         if let colorSource = colorSource     { self.profileBackgroundColor.accept(colorSource)  }
-        if let profileSource = profileSource { self.profileImageSource.accept(profileSource)    }
+        if let imageSource = imageSource     { self.profileImageSource.accept(imageSource)      }
         if let name = name                   { self.name.accept(name)                           }
         if let role = role                   { self.role.accept(role)                           }
         if let contacts = contacts           { self.contactInfos.accept(contacts)               }
@@ -141,6 +143,10 @@ final class CardInfoInputViewModel {
         if let strongPoints = strongPoints   { self.strongPoints.accept(strongPoints)           }
         if let personality = personality     { self.personality.accept(personality)             }
         if let aboutMe = aboutMe             { self.aboutMe.accept(aboutMe)                     }
+        
+        self.shouldHideProfilePlaceholder.accept(imageSource != nil)
+        self.hasCompletedSkillInput.accept(skills.isEmptyOrNil == false)
+        self.hasCompletedTMIInput.accept(interests?.isNotEmpty == true || strongPoints?.isNotEmpty == true)
     }
     
     func tapProfileClear() {

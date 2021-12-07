@@ -13,12 +13,12 @@ final class CardInfoInputDependencyContainer {
     
     init(myCardListDependencyContainer: MyCardListDependencyContainer) {
         func createCardInfoInputViewModel() -> CardInfoInputViewModel {
-            let repository = YourNameMyCardRepository()
+            let myCardRepository = YourNameMyCardRepository()
             let imageUploader = YourNameImageUploader()
             return CardInfoInputViewModel(state: .new,
-                                         cardRepository: nil,
-                                         myCardRepository: repository,
-                                         imageUploader: imageUploader)
+                                          cardRepository: nil,
+                                          myCardRepository: myCardRepository,
+                                          imageUploader: imageUploader)
         }
         
         self.viewModel = createCardInfoInputViewModel()
@@ -56,7 +56,7 @@ final class CardInfoInputDependencyContainer {
             return dependencyContainer.createTMISettingViewController()
         }
         viewContorller.skillSettingViewControllerFactory = { skills in
-            let dependencyContainer = self.createSkillSettingDependencyContainer()
+            let dependencyContainer = self.createSkillSettingDependencyContainer(skills: skills)
             return dependencyContainer.createSkillSettingViewController()
         }
         return viewContorller
@@ -86,8 +86,8 @@ final class CardInfoInputDependencyContainer {
         )
     }
     
-    private func createSkillSettingDependencyContainer() -> SkillSettingDependencyContainer {
-        return SkillSettingDependencyContainer(cardCreationDependencyContainer: self)
+    private func createSkillSettingDependencyContainer(skills: [Skill]) -> SkillSettingDependencyContainer {
+        return SkillSettingDependencyContainer(skills: skills, cardCreationDependencyContainer: self)
     }
     
 }
