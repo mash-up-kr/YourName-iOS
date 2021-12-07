@@ -10,10 +10,10 @@ import Toast_Swift
 import RxSwift
 import RxCocoa
 
-typealias cardID = String
 final class CardDetailViewController: ViewController, Storyboarded {
     
-    var cardDetailMoreViewFactory: ((cardID) -> CardDetailMoreViewController)!
+    var cardEditViewFactory: ((Identifier) -> CardCreationViewController)!
+    var cardDetailMoreViewFactory: ((Identifier) -> CardDetailMoreViewController)!
     private let disposeBag = DisposeBag()
     
     @IBOutlet private weak var detailMoreButton: UIButton!
@@ -153,6 +153,8 @@ extension CardDetailViewController {
         switch next {
         case .cardDetailMore(let cardId):
             return cardDetailMoreViewFactory(cardId)
+        case .cardEdit(let cardId):
+            return cardEditViewFactory(cardId)
         }
     }
 }

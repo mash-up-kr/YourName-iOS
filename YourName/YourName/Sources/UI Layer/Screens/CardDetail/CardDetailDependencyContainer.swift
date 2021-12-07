@@ -5,7 +5,7 @@
 //  Created by Booung on 2021/09/21.
 //
 
-import Foundation
+import UIKit
 
 final class CardDetailDependencyContainer {
     
@@ -32,6 +32,8 @@ final class CardDetailDependencyContainer {
         let viewModel = createCardDetailViewModel()
         let viewController = CardDetailViewController.instantiate()
         viewController.viewModel = viewModel
+        
+        // MARK: cardDetailMoreViewFactory
         viewController.cardDetailMoreViewFactory = { cardID -> CardDetailMoreViewController in
             let _viewModel = CardDetailMoreViewModel(id: self.cardID,
                                                      delegate: viewModel)
@@ -41,6 +43,17 @@ final class CardDetailDependencyContainer {
             let pageSheetController = PageSheetController(contentView: view)
             return pageSheetController
         }
+        
+        // MARK: cardDetailMoreViewFactory
+        viewController.cardEditViewFactory = { cardID -> CardCreationViewController in
+            let viewModel = CardCreationViewModel(myCardRepsitory: self.myCardRepository, imageUploader:  YourNameImageUploader())
+            let viewController = CardCreationViewController.instantiate()
+            viewController.viewModel = viewModel
+            
+            return viewController
+        }
+        
+        
         return viewController
     }
     

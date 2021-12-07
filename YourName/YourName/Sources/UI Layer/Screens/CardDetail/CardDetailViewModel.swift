@@ -11,6 +11,7 @@ import RxCocoa
 
 enum CardDetailDestination: Equatable {
     case cardDetailMore(cardID: Identifier)
+    case cardEdit(cardID: Identifier)
 }
 
 typealias CardDetailNavigation = Navigation<CardDetailDestination>
@@ -64,9 +65,13 @@ extension CardDetailViewModel: CardDetailMoreViewDelegate {
         self.alertController.accept(alertController)
     }
     
+    func didTapEditCard(id: Identifier) {
+        self.navigation.accept(.push(.cardEdit(cardID: id)))
+    }
+    
     private func removeCard(id: Identifier) {
         self.isLoading.accept(true)
-        self.myCardRepository.removeMyCard(id: "Sn0dLh")
+        self.myCardRepository.removeMyCard(id: id)
             .do { [weak self] in
                 self?.isLoading.accept(false)
             }

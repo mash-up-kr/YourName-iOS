@@ -11,6 +11,7 @@ import RxSwift
 
 protocol CardDetailMoreViewDelegate: AnyObject {
     func didTapRemoveCard(id: Identifier)
+    func didTapEditCard(id: Identifier)
 }
 
 final class CardDetailMoreViewModel {
@@ -28,7 +29,7 @@ final class CardDetailMoreViewModel {
         self.delegate = delegate
     }
     deinit {
-        print("\(String(describing: self)) deinit")
+        print(" 💀 \(String(describing: self)) deinit")
     }
     
     // MARK: - Methods
@@ -36,5 +37,9 @@ final class CardDetailMoreViewModel {
     func delete() {
         self.dismiss.accept(())
         self.delegate?.didTapRemoveCard(id: self.cardId)
+    }
+    
+    func edit() {
+        self.dismiss.accept(())
     }
 }

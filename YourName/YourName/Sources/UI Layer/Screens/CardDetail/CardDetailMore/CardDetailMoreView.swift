@@ -70,7 +70,13 @@ extension CardDetailMoreView {
             .bind(onNext: { [weak self] in
                 self?.viewModel.delete()
             })
-            .disposed(by: disposeBag)
+            .disposed(by: self.disposeBag)
+        
+        self.editView.rx.tapWhenRecognized
+            .bind(onNext: { [weak self] in
+                self?.viewModel.edit()
+            })
+            .disposed(by: self.disposeBag)
     }
     
     private func render(_ viewModel: CardDetailMoreViewModel) {
