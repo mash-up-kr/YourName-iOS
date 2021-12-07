@@ -12,6 +12,9 @@ final class QuestDependencyContainer {
     init(settingDependencyContainer: SettingDependencyContainer) {
         
     }
+    init() {
+        
+    }
     
     func createQuestViewController() -> QuestViewController {
         let viewController = QuestViewController.instantiate()

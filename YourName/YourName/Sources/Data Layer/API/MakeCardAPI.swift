@@ -8,7 +8,8 @@
 import Foundation
 import Moya
 
-struct MakeCardAPI {
+struct MakeCardAPI: ServiceAPI {
+    typealias Response = Entity.Empty
     let nameCard: Entity.NameCardCreation
     
     var path: String { "/namecards" }
@@ -16,15 +17,4 @@ struct MakeCardAPI {
     var task: Moya.Task {
         return .requestJSONEncodable(nameCard)
     }
-}
-extension MakeCardAPI: ServiceAPI {
-    
-    struct Response: Decodable {
-        let nameCardID: NameCardID?
-        
-        enum CodingKeys: String, CodingKey {
-            case nameCardID = "nameCardId"
-        }
-    }
-    
 }

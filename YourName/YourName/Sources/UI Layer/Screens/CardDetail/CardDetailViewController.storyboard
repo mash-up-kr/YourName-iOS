@@ -355,6 +355,7 @@
                         <outlet property="bubbleBottom" destination="HnK-O0-Q1Q" id="LwP-QQ-OYB"/>
                         <outlet property="cardDetailBackView" destination="CGN-OQ-g2x" id="2e6-YS-S4U"/>
                         <outlet property="cardDetailFrontView" destination="4J3-By-pxc" id="v1D-bW-lPa"/>
+                        <outlet property="detailMoreButton" destination="Ar2-X3-D4l" id="D2H-a4-pH8"/>
                         <outlet property="frontButton" destination="WWP-Oe-lP8" id="pAu-pT-ynM"/>
                         <outlet property="mainView" destination="dkS-4s-anS" id="acg-Pu-N9a"/>
                         <outlet property="mySkillProgressView1" destination="9Kt-0D-WGW" id="cN8-qd-4NW"/>

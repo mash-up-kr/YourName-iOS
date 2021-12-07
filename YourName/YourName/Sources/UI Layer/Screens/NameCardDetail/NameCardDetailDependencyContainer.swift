@@ -29,7 +29,21 @@ final class NameCardDetailDependencyContainer {
     
     func createNameCardDetailViewController() -> NameCardDetailViewController {
         let viewController = NameCardDetailViewController.instantiate()
-        viewController.viewModel = self.createNameCardDetailViewModel()
+        let viewModel = createNameCardDetailViewModel()
+        viewController.viewModel = viewModel
+        
+        viewController.cardDetailMoreViewFactory = { cardID -> CardDetailMoreViewController in
+            let moreViewModel = CardDetailMoreViewModel(id: self.cardID,
+                                                        delegate: viewModel)
+            let moreView = CardDetailMoreView(viewModel: moreViewModel, parent: viewController)
+            let pageSheetController = PageSheetController(contentView: moreView)
+            return pageSheetController
+        }
+        
+        viewController.cardEditViewControllerFactory = { cardID -> CardInfoInputViewController in
+            let dependencyContainer = CardInfoInputDependencyContainer(cardID: cardID)
+            return dependencyContainer.createCardInfoInputViewController()
+        }
         return viewController
     }
     
@@ -38,7 +52,9 @@ final class NameCardDetailDependencyContainer {
         let clipboardService = self.createClipboardService()
         return NameCardDetailViewModel(cardID: cardID,
                                        cardRepository: cardRepository,
-                                       clipboardService: clipboardService)
+                                       myCardRepository: self.createMyCardRepository(),
+                                       clipboardService: clipboardService,
+                                       questRepository: YourNameQuestRepository())
     }
     
     private func createCardRepository() -> CardRepository {
@@ -49,4 +65,7 @@ final class NameCardDetailDependencyContainer {
         return YourNameClipboardService()
     }
     
+    private func createMyCardRepository() -> MyCardRepository {
+        return YourNameMyCardRepository()
+    }
 }

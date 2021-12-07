@@ -18,7 +18,7 @@ extension UIView {
         return views?.first as? UIView
     }
     
-    func removeGradientLayer(name: String) {
+    private func removeGradientLayer(name: String) {
         self.layer.sublayers?
             .filter { $0 is CAGradientLayer && $0.name == name }
             .forEach { $0.removeFromSuperlayer() }

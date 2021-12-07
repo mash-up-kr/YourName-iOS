@@ -14,6 +14,7 @@ extension NibLoadable where Self: UIView {
     
     func setupFromNib() {
         guard let view = loadFromNib() else { return }
+        print(view)
         self.addSubview(view)
         view.snp.makeConstraints {
             $0.edges.equalToSuperview()

@@ -24,6 +24,18 @@ final class CardInfoInputDependencyContainer {
         self.viewModel = createCardInfoInputViewModel()
     }
     
+    init(cardID: Identifier) {
+        func createCardInfoInputViewModel() -> CardInfoInputViewModel {
+            let repository = YourNameMyCardRepository()
+            let imageUploader = YourNameImageUploader()
+            return CardInfoInputViewModel(state: .edit(id: cardID),
+                                         cardRepository: YourNameCardRepository(),
+                                         myCardRepository: repository,
+                                         imageUploader: imageUploader)
+        }
+        self.viewModel = createCardInfoInputViewModel()
+    }
+    
     func createCardInfoInputViewController() -> CardInfoInputViewController {
         let viewContorller = CardInfoInputViewController.instantiate()
         viewContorller.viewModel = viewModel

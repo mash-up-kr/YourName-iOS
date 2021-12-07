@@ -13,9 +13,10 @@ struct BackCardDetailViewModel {
     let contacts: [Entity.Contact]
     let tmis: [Entity.TMI]
     let aboutMe: String?
+    let backgroundColor: ColorSource
 }
 
-final class BackCardDetailView: UIView, NibLoadable {
+final class BackCardDetailView: NibLoadableView {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -30,6 +31,7 @@ final class BackCardDetailView: UIView, NibLoadable {
         self.contactsTableView?.reloadData()
         self.tmis = viewModel.tmis
         self.tmisCollectionView?.reloadData()
+        self.contentView.setColorSource(viewModel.backgroundColor)
     }
     
     private func setupUI() {
