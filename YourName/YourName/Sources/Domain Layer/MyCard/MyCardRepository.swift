@@ -22,7 +22,7 @@ final class YourNameMyCardRepository: MyCardRepository {
     }
     
     func createMyCard(_ nameCard: Entity.NameCardCreation) -> Observable<Void> {
-        return network.request(MakeCardAPI(nameCard: nameCard)).map { _ in Void() }
+        return network.request(MakeCardAPI(nameCard: nameCard)).mapToVoid()
     }
     
     func fetchMyCards() -> Observable<[Entity.NameCard]> {

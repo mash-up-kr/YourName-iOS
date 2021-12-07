@@ -35,7 +35,10 @@ final class NameCardDetailViewModel {
     let captureFrontCard = PublishRelay<Void>()
     let activityViewController = PublishRelay<UIActivityViewController>()
     
-    init(cardID: Identifier, cardRepository: CardRepository, myCardRepository: MyCardRepository, questRepository: QuestRepository) {
+    init(cardID: Identifier,
+         cardRepository: CardRepository,
+         myCardRepository: MyCardRepository,
+         questRepository: QuestRepository) {
         self.cardID = cardID
         self.cardRepository = cardRepository
         self.myCardRepository = myCardRepository
