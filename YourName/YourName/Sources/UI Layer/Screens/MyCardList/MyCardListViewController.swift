@@ -21,8 +21,8 @@ final class MyCardListViewController: ViewController, Storyboarded {
     
     // MARK: - Properties
     
-    var cardCreationViewControllerFactory: (() -> CardCreationViewController)!
-    var cardDetailViewControllerFactory: ((Identifier) -> CardDetailViewController)!
+    var newCardCreationViewControllerFactory: (() -> CardInfoInputViewController)!
+    var cardDetailViewControllerFactory: ((Identifier) -> NameCardDetailViewController)!
     var viewModel: MyCardListViewModel!
     
     private var myCardList: [MyCardCellViewModel] = []
@@ -46,8 +46,8 @@ extension MyCardListViewController {
     private func configure(collectionView: UICollectionView) {
         collectionView.decelerationRate = .fast
         collectionView.isPagingEnabled = false
-        collectionView.registerNib(MyCardListEmptyCollectionViewCell.self)
-        collectionView.registerNib(MyCardListCollectionViewCell.self)
+        collectionView.registerWithNib(MyCardListEmptyCollectionViewCell.self)
+        collectionView.registerWithNib(MyCardListCollectionViewCell.self)
     }
     
     private func render(_ viewModel: MyCardListViewModel) {
@@ -56,7 +56,7 @@ extension MyCardListViewController {
             .bind(to: self.isLoading)
             .disposed(by: disposeBag)
   
-        viewModel.myCardList
+        viewModel.myCardViewModels
             .bind(onNext: { [weak self] myCardList in
                 guard let self = self else { return }
                 self.myCardList = myCardList
@@ -83,7 +83,7 @@ extension MyCardListViewController {
         
         self.myCardListCollectionView.rx.itemSelected
             .bind(onNext: { [weak self] indexPath in
-                self?.viewModel.tapCard(at: indexPath.row)
+                self?.viewModel.tapCard(at: indexPath.item)
             })
             .disposed(by: disposeBag)
     }
@@ -98,7 +98,7 @@ extension MyCardListViewController {
         case .cardDetail(let cardID):
             return cardDetailViewControllerFactory(cardID)
         case .cardCreation:
-            return cardCreationViewControllerFactory()
+            return newCardCreationViewControllerFactory()
         }
     }
     

@@ -18,6 +18,7 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
     
     var viewModel: CardBookDetailViewModel!
     var addFriendCardViewControllerFactory: (() -> AddFriendCardViewController)!
+    var nameCardDetailViewControllerFactory: ((Identifier) -> NameCardDetailViewController)!
     
     override func viewDidLoad() {
         self.navigationController?.navigationBar.isHidden = true
@@ -90,6 +91,7 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
                 self?.removeButton?.isHidden = isEditing == false
                 self?.bottomBarView?.isHidden = isEditing == false
                 self?.bottomRemoveButton?.isHidden = isEditing == false
+                self?.isCardEditing = isEditing
             })
             .disposed(by: self.disposeBag)
         
@@ -133,21 +135,21 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
     }
     
     private func createViewController(_ next: CardBookDetailDestination) -> UIViewController {
-        return UIViewController()
         switch next {
-        case .cardDetail(let id): return ViewController()
+        case .cardDetail(let id): return self.nameCardDetailViewControllerFactory(id)
         }
     }
     
     private func configureCollectionView() {
-        friendCardCollectionView?.registerNib(FriendCardCollectionViewCell.self)
-        friendCardCollectionView?.registerNib(FriendCardEmptyCollectionViewCell.self)
+        friendCardCollectionView?.registerWithNib(FriendCardCollectionViewCell.self)
+        friendCardCollectionView?.registerWithNib(FriendCardEmptyCollectionViewCell.self)
         friendCardCollectionView?.dataSource = self
         friendCardCollectionView?.delegate = self
     }
     
     private let disposeBag = DisposeBag()
     
+    private var isCardEditing = false
     private var cellViewModels: [FriendCardCellViewModel] = []
     
     @IBOutlet private weak var backButton: UIButton?
@@ -201,7 +203,8 @@ extension CardBookDetailViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard self.cellViewModels.isNotEmpty else { return }
-        self.viewModel.tapCheck(at: indexPath.item)
+        if isCardEditing { self.viewModel.tapCheck(at: indexPath.item) }
+        else             { self.viewModel.tapCard(at: indexPath.item)  }
     }
     
 }

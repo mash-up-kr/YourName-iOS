@@ -32,6 +32,11 @@ final class CardDetailDependencyContainer {
     }
     
     private func createCardViewModel() -> CardDetailViewModel {
-        return CardDetailViewModel(cardID: cardID)
+        let cardRepository = self.createCardRepository()
+        return CardDetailViewModel(cardID: cardID, cardRepository: cardRepository)
+    }
+    
+    private func createCardRepository() -> CardRepository {
+        return YourNameCardRepository()
     }
 }

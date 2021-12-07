@@ -12,13 +12,14 @@ import UIKit
 import RxCocoa
 import SwiftUI
 import Then
+import KakaoSDKCommon
 
 enum CardCreationDestination: Equatable {
     case imageSourceTypePicker
     case createCharacter
-    case palette
-    case settingSkill
-    case settingTMI
+    case palette(selectedColorID: Identifier? = nil)
+    case settingSkill(skills: [Skill]? = nil)
+    case settingTMI(interests: [Interest]? = nil, strongPoints: [StrongPoint]? = nil)
     case photoLibrary
 }
 
@@ -30,10 +31,15 @@ struct TextStatus: Then {
     let max: Int
 }
 
+extension CardInfoInputViewModel {
+    enum State {
+        case new
+        case edit(id: NameCardID)
+    }
+}
 
-final class CardCreationViewModel {
+final class CardInfoInputViewModel {
     
-    // State
     let isLoading = BehaviorRelay<Bool>(value: false)
     let shouldHideClear = BehaviorRelay<Bool>(value: true)
     let shouldHideProfilePlaceholder = BehaviorRelay<Bool>(value: false)
@@ -51,7 +57,7 @@ final class CardCreationViewModel {
     let name = BehaviorRelay<String>(value: .empty)
     let role = BehaviorRelay<String>(value: .empty)
     let contactInfos = BehaviorRelay<[ContactInfo]>(value: [])
-    let interestes = BehaviorRelay<[Interest]>(value: [])
+    let interests = BehaviorRelay<[Interest]>(value: [])
     let strongPoints = BehaviorRelay<[StrongPoint]>(value: [])
     
     let personality = BehaviorRelay<String>(value: .empty)
@@ -62,8 +68,15 @@ final class CardCreationViewModel {
     
     let navigation = PublishRelay<CardCreationNavigation>()
     
-    init(myCardRepsitory: MyCardRepository, imageUploader: ImageUploader) {
-        self.myCardRepository = myCardRepsitory
+    init(
+        state: State,
+        cardRepository: CardRepository?,
+        myCardRepository: MyCardRepository,
+        imageUploader: ImageUploader
+    ) {
+        self.state = state
+        self.cardRepository = cardRepository
+        self.myCardRepository = myCardRepository
         self.imageUploader = imageUploader
         
         self.transform()
@@ -73,6 +86,67 @@ final class CardCreationViewModel {
     func didLoad() {
         let defaultContactInfos = ContactType.allCases.map { ContactInfo(type: $0, value: .empty) }
         self.contactInfos.accept(defaultContactInfos)
+        
+        guard case .edit(let id) = self.state else { return }
+        
+        self.isLoading.accept(true)
+        self.cardRepository?.fetchCard(uniqueCode: id)
+            .subscribe(onNext: { [weak self] response in
+                guard let self = self              else { return }
+                guard let card = response.nameCard else { return }
+                self.setupCard(card)
+                self.isLoading.accept(false)
+            }, onError: { [weak self] error in
+                print(error.localizedDescription)
+                self?.isLoading.accept(false)
+            }).disposed(by: self.disposeBag)
+    }
+    
+    private func setupCard(_ card: Entity.NameCard) {
+        let colorID = card.bgColor?.id
+        let colorSource = ColorSource.from(card.bgColor?.value ?? [])
+        let imageSource: ImageSource? = {
+            guard let urlString = card.imgUrl      else { return nil }
+            guard let url = URL(string: urlString) else { return nil }
+            return .url(url)
+        }()
+        let name = card.name
+        let role = card.role
+        let contacts = card.contacts?.compactMap { contact in ContactInfo(type: contact.category ?? .email, value: contact.value ?? .empty) }
+        let skills = card.personalSkills?.compactMap { skill in Skill(title: skill.name, level: skill.level ?? 0) }
+        let interests = card.tmis?.filter { $0.type == "취미 / 관심사" }.compactMap { entity -> Interest? in
+            guard let id = entity.id                                  else { return nil }
+            guard let name = entity.name                              else { return nil }
+            guard let iconURL = URL(string: entity.iconURL ?? .empty) else { return nil }
+            
+            return Interest(id: id, content: name, iconURL: iconURL)
+        }
+        let strongPoints = card.tmis?.filter { $0.type == "성격" }.compactMap { entity -> StrongPoint? in
+            guard let id = entity.id                                  else { return nil }
+            guard let name = entity.name                              else { return nil }
+            guard let iconURL = URL(string: entity.iconURL ?? .empty) else { return nil }
+            
+            return StrongPoint(id: id, content: name, iconURL: iconURL)
+        }
+        let personality = card.personality
+        let aboutMe = card.introduce
+        
+        if let colorID = colorID             { self.profileYourNameColorID.accept(colorID)      }
+        if let colorSource = colorSource     { self.profileBackgroundColor.accept(colorSource)  }
+        if let imageSource = imageSource     { self.profileImageSource.accept(imageSource)      }
+        if let name = name                   { self.name.accept(name)                           }
+        if let role = role                   { self.role.accept(role)                           }
+        if let contacts = contacts           { self.contactInfos.accept(contacts)               }
+        if let skills = skills               { self.skills.accept(skills)                       }
+        if let colorID = colorID             { self.profileYourNameColorID.accept(colorID)      }
+        if let interests = interests         { self.interests.accept(interests)                 }
+        if let strongPoints = strongPoints   { self.strongPoints.accept(strongPoints)           }
+        if let personality = personality     { self.personality.accept(personality)             }
+        if let aboutMe = aboutMe             { self.aboutMe.accept(aboutMe)                     }
+        
+        self.shouldHideProfilePlaceholder.accept(imageSource != nil)
+        self.hasCompletedSkillInput.accept(skills.isEmptyOrNil == false)
+        self.hasCompletedTMIInput.accept(interests?.isNotEmpty == true || strongPoints?.isNotEmpty == true)
     }
     
     func tapProfileClear() {
@@ -86,7 +160,7 @@ final class CardCreationViewModel {
     }
     
     func tapProfileBackgroundSetting() {
-        self.navigation.accept(.show(.palette))
+        self.navigation.accept(.show(.palette(selectedColorID: self.profileYourNameColorID.value)))
     }
     
     func typeName(_ text: String) {
@@ -98,7 +172,7 @@ final class CardCreationViewModel {
     }
     
     func tapSkillSetting() {
-        self.navigation.accept(.show(.settingSkill))
+        self.navigation.accept(.show(.settingSkill(skills: skills.value)))
     }
     
     func tapContactType(at index: Int) {
@@ -131,7 +205,7 @@ final class CardCreationViewModel {
     }
     
     func tapTMISetting() {
-        self.navigation.accept(.show(.settingTMI))
+        self.navigation.accept(.show(.settingTMI(interests: self.interests.value, strongPoints: self.strongPoints.value)))
     }
     
     func typeAboutMe(_ text: String) {
@@ -159,7 +233,7 @@ final class CardCreationViewModel {
     }
     
     func tapCompletion() {
-        let tmiIDs = self.interestes.value.compactMap { $0.id } + self.strongPoints.value.compactMap { $0.id }
+        let tmiIDs = self.interests.value.compactMap { $0.id } + self.strongPoints.value.compactMap { $0.id }
         let skills = self.skills.value
             .filter { $0.title.isNotEmpty == true }
             .map { Entity.Skill(name: $0.title, level: $0.level) }
@@ -177,7 +251,7 @@ final class CardCreationViewModel {
             personality: self.personality.value,
             introduce: self.aboutMe.value,
             tmiIds: tmiIDs,
-            imageKey: self.profileImageKey.value ?? "profile/B0BBD1E8-2219-4C15-8CE5-A0A8A80C986E"
+            imageKey: self.profileImageKey.value
         )
         
         self.isLoading.accept(true)
@@ -203,7 +277,7 @@ final class CardCreationViewModel {
         let hasContacts = self.contactInfos.map { $0.isNotEmpty }
         let hasPersonality = self.personality.map { $0.isNotEmpty }
         let hasIntroduce = self.aboutMe.map { $0.isNotEmpty }
-        let hasInterests = self.interestes.map { $0.isNotEmpty }
+        let hasInterests = self.interests.map { $0.isNotEmpty }
         let hasStrongPoints = self.strongPoints.map { $0.isNotEmpty }
         let hasTMIs = Observable.combineLatest(hasInterests, hasStrongPoints).map { $0.0 || $0.1 }
         
@@ -222,11 +296,14 @@ final class CardCreationViewModel {
     }
     
     private let disposeBag = DisposeBag()
+    
+    private let state: State
+    private let cardRepository: CardRepository?
     private let myCardRepository: MyCardRepository
     private let imageUploader: ImageUploader
 }
 
-extension CardCreationViewModel: ImageSourcePickerResponder {
+extension CardInfoInputViewModel: ImageSourcePickerResponder {
     
     func selectPhoto() {
         self.navigation.accept(.show(.photoLibrary))
@@ -238,7 +315,7 @@ extension CardCreationViewModel: ImageSourcePickerResponder {
     
 }
 
-extension CardCreationViewModel: CharacterSettingResponder {
+extension CardInfoInputViewModel: CharacterSettingResponder {
     
     func characterSettingDidComplete(characterMeta: CharacterMeta, characterData: Data) {
         self.isLoading.accept(true)
@@ -255,7 +332,7 @@ extension CardCreationViewModel: CharacterSettingResponder {
     
 }
 
-extension CardCreationViewModel: SkillSettingResponder {
+extension CardInfoInputViewModel: SkillSettingResponder {
     
     func skillSettingDidComplete(skills: [Skill]) {
         self.hasCompletedSkillInput.accept(skills.isNotEmpty)
@@ -265,19 +342,19 @@ extension CardCreationViewModel: SkillSettingResponder {
     
 }
 
-extension CardCreationViewModel: TMISettingResponder {
+extension CardInfoInputViewModel: TMISettingResponder {
     
     func tmiSettingDidComplete(interests: [Interest], strongPoints: [StrongPoint]) {
         let updatedInterests = interests
         let updatedStrongPoints = strongPoints
-        self.interestes.accept(updatedInterests)
+        self.interests.accept(updatedInterests)
         self.strongPoints.accept(updatedStrongPoints)
         self.hasCompletedTMIInput.accept(updatedInterests.isNotEmpty || updatedStrongPoints.isNotEmpty)
         self.shouldDismissOverlays.accept(Void())
     }
     
 }
-extension CardCreationViewModel: PaletteResponder {
+extension CardInfoInputViewModel: PaletteResponder {
     
     func profileColorSettingDidComplete(selectedColor: YourNameColor) {
         self.profileBackgroundColor.accept(selectedColor.colorSource)

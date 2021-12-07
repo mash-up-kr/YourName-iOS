@@ -24,11 +24,19 @@ extension UIView {
             .forEach { $0.removeFromSuperlayer() }
     }
     
+    func setColorSource(_ colorSource: ColorSource) {
+        switch colorSource {
+        case .monotone(let color):
+            self.updateGradientLayer(colors: [color])
+        case .gradient(let colors):
+            self.updateGradientLayer(colors: colors)
+        }
+    }
+    
     func updateGradientLayer(hexStrings: [String], name: String = UIView.gradientKey) {
         let colors = hexStrings.compactMap { UIColor(hexString: $0) }
         self.updateGradientLayer(colors: colors)
     }
-    
     
     func updateGradientLayer(colors: [UIColor], name: String = UIView.gradientKey) {
         guard colors.isNotEmpty else { return }

@@ -20,7 +20,7 @@ extension UICollectionView {
         self.register(cellType, forCellWithReuseIdentifier: identifier)
     }
     
-    func registerNib<CollectionViewCell: UICollectionViewCell>(_ cellType: CollectionViewCell.Type) {
+    func registerWithNib<CollectionViewCell: UICollectionViewCell>(_ cellType: CollectionViewCell.Type) {
         let identifier = String(describing: cellType)
         let nib = UINib(nibName: identifier, bundle: nil)
         self.register(nib, forCellWithReuseIdentifier:  identifier)

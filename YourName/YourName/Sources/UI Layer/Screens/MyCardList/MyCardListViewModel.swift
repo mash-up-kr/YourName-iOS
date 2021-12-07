@@ -20,7 +20,7 @@ typealias MyCardCellViewModel = CardFrontView.Item
 final class MyCardListViewModel {
     
     let navigation = PublishRelay<MyCardListNavigation>()
-    let myCardList = BehaviorRelay<[MyCardCellViewModel]>(value: [])
+    let myCardViewModels = BehaviorRelay<[MyCardCellViewModel]>(value: [])
     let isLoading = BehaviorRelay<Bool>(value: false)
     
     private let myCardRepository: MyCardRepository
@@ -48,7 +48,7 @@ final class MyCardListViewModel {
                 return self.myCardCellViewModel(cards)
             }
             .bind(onNext: { [weak self] in
-                self?.myCardList.accept($0)
+                self?.myCardViewModels.accept($0)
                 self?.isLoading.accept(false)
             })
             .disposed(by: self.disposeBag)
@@ -59,7 +59,7 @@ final class MyCardListViewModel {
     }
     
     func tapCard(at index: Int) {
-        guard let selectedCard = myCardList.value[safe: 0] else { return }
+        guard let selectedCard = myCardViewModels.value[safe: index] else { return }
         let selectedCardID = selectedCard.id
         navigation.accept(.push(.cardDetail(cardID: selectedCardID)))
     }
@@ -71,7 +71,7 @@ final class MyCardListViewModel {
                   let colorSource = ColorSource.from(bgColors)
             else { return nil }
             let skills = personalSkills.map { MySkillProgressView.Item(title: $0.name, level: $0.level ?? 0) }
-            return MyCardCellViewModel(id: card.id ?? .empty,
+            return MyCardCellViewModel(id: card.uniqueCode ?? .empty,
                                        image: card.imgUrl ?? .empty,
                                        name: card.name ?? .empty,
                                        role: card.role ?? .empty,

@@ -46,7 +46,7 @@ final class TMISettingView: UIView, NibLoadable {
     
     private func setupUI() {
         self.tmiCollectionView?.registerSectionHeaderNib(TMISectionHeaderView.self)
-        self.tmiCollectionView?.registerNib(TMIContentCollectionViewCell.self)
+        self.tmiCollectionView?.registerWithNib(TMIContentCollectionViewCell.self)
         self.tmiCollectionView?.dataSource = self
         self.tmiCollectionView?.delegate = self
         

@@ -12,29 +12,10 @@ import Toast_Swift
 final class CardDetailViewController: ViewController, Storyboarded {
     
 
-    @IBOutlet weak var bubbleBottom: UIView!
-    @IBOutlet private weak var underlineView: UIView!
-    @IBOutlet private weak var frontButton: UIButton!
-    @IBOutlet private weak var backButton: UIButton!
-    @IBOutlet weak var speechBubble: UIView!
-    @IBAction func settingButton(_ sender: Any) {
-        //붙여야 되는 부분
-
-    }
-    
-    @IBOutlet weak var mySkillProgressView1: MySkillProgressView!
-    @IBOutlet weak var mySkillProgressView2: MySkillProgressView!
-    @IBOutlet weak var mySkillProgressView3: MySkillProgressView!
-    
-    @IBOutlet weak var cardDetailFrontView: UIStackView!
-    
-    @IBOutlet weak var cardDetailBackView: UIStackView!
-    
     override var hidesBottomBarWhenPushed: Bool {
         get {
             return navigationController?.topViewController == self
-        }
-        set {
+        } set {
             super.hidesBottomBarWhenPushed = newValue
         }
     }
@@ -88,6 +69,16 @@ final class CardDetailViewController: ViewController, Storyboarded {
     var viewModel: CardDetailViewModel!
     
     @IBOutlet private weak var mainView: UIView!
+    @IBOutlet private weak var bubbleBottom: UIView!
+    @IBOutlet private weak var underlineView: UIView!
+    @IBOutlet private weak var frontButton: UIButton!
+    @IBOutlet private weak var backButton: UIButton!
+    @IBOutlet private weak var cardDetailFrontView: UIStackView!
+    @IBOutlet private weak var speechBubble: UIView!
+    @IBOutlet private weak var mySkillProgressView1: MySkillProgressView!
+    @IBOutlet private weak var mySkillProgressView2: MySkillProgressView!
+    @IBOutlet private weak var mySkillProgressView3: MySkillProgressView!
+    @IBOutlet private weak var cardDetailBackView: UIStackView!
 
 }
 
