@@ -35,11 +35,18 @@ final class NameCardDetailDependencyContainer {
     
     private func createNameCardDetailViewModel() -> NameCardDetailViewModel {
         let cardRepository = self.createCardRepository()
-        return NameCardDetailViewModel(cardID: cardID, cardRepository: cardRepository)
+        let clipboardService = self.createClipboardService()
+        return NameCardDetailViewModel(cardID: cardID,
+                                       cardRepository: cardRepository,
+                                       clipboardService: clipboardService)
     }
     
     private func createCardRepository() -> CardRepository {
         return YourNameCardRepository()
+    }
+    
+    private func createClipboardService() -> ClipboardService {
+        return YourNameClipboardService()
     }
     
 }
