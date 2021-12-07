@@ -12,6 +12,10 @@ import RxCocoa
 final class NameCardDetailViewController: ViewController, Storyboarded {
     
     var viewModel: NameCardDetailViewModel!
+    override var hidesBottomBarWhenPushed: Bool {
+        get  { self.navigationController?.topViewController == self }
+        set { super.hidesBottomBarWhenPushed = newValue }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,6 +89,12 @@ final class NameCardDetailViewController: ViewController, Storyboarded {
                     self.backCardDetailView?.configure(with: viewModel)
                     if let backCardButton = self.backCardButton { self.highlight(backCardButton) }
                 }
+            })
+            .disposed(by: self.disposeBag)
+        
+        viewModel.shouldClose
+            .bind(onNext: { [weak self] in
+                self?.navigationController?.popViewController(animated: true)
             })
             .disposed(by: self.disposeBag)
     }
