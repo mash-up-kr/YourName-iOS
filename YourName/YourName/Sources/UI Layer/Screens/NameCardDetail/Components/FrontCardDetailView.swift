@@ -17,9 +17,10 @@ struct FrontCardDetailViewModel {
     let name: String?
     let role: String?
     let skills: [MySkillProgressView.Item]
+    let backgroundColor: ColorSource
 }
 
-final class FrontCardDetailView: UIView, NibLoadable {
+final class FrontCardDetailView: NibLoadableView {
     
     weak var delegate: FrontCardDetailViewDelegate?
     
@@ -41,7 +42,7 @@ final class FrontCardDetailView: UIView, NibLoadable {
         self.nameLabel?.text = viewModel.name
         self.roleLabel?.text = viewModel.role
         self.cardID = viewModel.cardID
-        
+        self.contentView.setColorSource(viewModel.backgroundColor)
         self.skillViews?.enumerated().forEach { index, view in
             guard let skill = viewModel.skills[safe: index] else { return view.isHidden = true }
             view.isHidden = false

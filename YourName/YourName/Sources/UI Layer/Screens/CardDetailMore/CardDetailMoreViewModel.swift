@@ -12,6 +12,7 @@ import RxSwift
 protocol CardDetailMoreViewDelegate: AnyObject {
     func didTapRemoveCard(id: Identifier)
     func didTapEditCard(id: Identifier)
+    func didTapSaveImage()
 }
 
 final class CardDetailMoreViewModel {
@@ -41,5 +42,11 @@ final class CardDetailMoreViewModel {
     
     func edit() {
         self.dismiss.accept(())
+        self.delegate?.didTapEditCard(id: self.cardId)
+    }
+    
+    func saveImage() {
+        self.dismiss.accept(())
+        self.delegate?.didTapSaveImage()
     }
 }

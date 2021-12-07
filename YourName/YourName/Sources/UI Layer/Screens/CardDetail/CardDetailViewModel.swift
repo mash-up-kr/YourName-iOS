@@ -69,6 +69,10 @@ extension CardDetailViewModel: CardDetailMoreViewDelegate {
         self.navigation.accept(.push(.cardEdit(cardID: id)))
     }
     
+    func didTapSaveImage() {
+        
+    }
+    
     private func removeCard(id: Identifier) {
         self.isLoading.accept(true)
         self.myCardRepository.removeMyCard(id: id)

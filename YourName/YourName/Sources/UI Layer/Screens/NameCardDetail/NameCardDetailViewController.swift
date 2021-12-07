@@ -67,6 +67,12 @@ final class NameCardDetailViewController: ViewController, Storyboarded {
                 self.navigate(navigation)
             })
             .disposed(by: self.disposeBag)
+        
+        self.captureView
+            .bind(onNext: { [weak self] in
+                self?.viewModel.saveCardImage(with: $0)
+            })
+            .disposed(by: self.disposeBag)
     }
     
     private func render(_ viewModel: NameCardDetailViewModel) {
@@ -87,17 +93,16 @@ final class NameCardDetailViewController: ViewController, Storyboarded {
                 guard let self = self else { return }
                 switch state {
                 case .front(let viewModel):
-                    self.view.layoutIfNeeded()
                     self.frontCardDetailView?.isHidden = false
                     self.backCardDetailView?.isHidden = true
+                    self.view.layoutIfNeeded()
                     self.frontCardDetailView?.configure(with: viewModel)
                     if let frontCardButton = self.frontCardButton { self.highlight(frontCardButton) }
                     
-                    
                 case .back(let viewModel):
-                    self.view.layoutIfNeeded()
                     self.frontCardDetailView?.isHidden = true
                     self.backCardDetailView?.isHidden = false
+                    self.view.layoutIfNeeded()
                     self.backCardDetailView?.configure(with: viewModel)
                     if let backCardButton = self.backCardButton { self.highlight(backCardButton) }
                 }
@@ -116,6 +121,21 @@ final class NameCardDetailViewController: ViewController, Storyboarded {
             })
             .disposed(by: self.disposeBag)
         
+        viewModel.captureBackCard
+            .compactMap { [weak self] in return self?.backCardDetailView?.subviews.first }
+            .bind(to: self.captureView)
+            .disposed(by: self.disposeBag)
+        
+        viewModel.captureFrontCard
+            .compactMap { [weak self] in return self?.frontCardDetailView?.subviews.first }
+            .bind(to: self.captureView)
+            .disposed(by: self.disposeBag)
+        
+        viewModel.activityViewController
+            .bind(onNext: { [weak self] in
+                self?.present($0, animated: true, completion: nil)
+            })
+            .disposed(by: disposeBag)
     }
     
     private func highlight(_ view: UIView) {
@@ -144,6 +164,8 @@ final class NameCardDetailViewController: ViewController, Storyboarded {
         }
     }
     
+    private let backgroundColor = PublishRelay<ColorSource>()
+    private let captureView = PublishRelay<UIView>()
     private let disposeBag = DisposeBag()
     
     @IBOutlet private weak var backButton: UIButton?

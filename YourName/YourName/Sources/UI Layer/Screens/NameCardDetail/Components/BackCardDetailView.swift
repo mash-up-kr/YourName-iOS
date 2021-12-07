@@ -12,9 +12,10 @@ struct BackCardDetailViewModel {
     let contacts: [Entity.Contact]
     let tmis: [Entity.TMI]
     let aboutMe: String?
+    let backgroundColor: ColorSource
 }
 
-final class BackCardDetailView: UIView, NibLoadable {
+final class BackCardDetailView: NibLoadableView {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -24,6 +25,7 @@ final class BackCardDetailView: UIView, NibLoadable {
     func configure(with viewModel: BackCardDetailViewModel) {
         self.personalityLabel?.text = viewModel.personality
         self.aboutMeLabel?.text = viewModel.aboutMe
+        self.contentView.setColorSource(viewModel.backgroundColor)
     }
     
     @IBOutlet private weak var contactsTableView: UITableView?

@@ -8,6 +8,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import Photos
 
 enum NameCardDetailDestination: Equatable {
     case cardDetailMore(cardID: Identifier)
@@ -29,6 +30,9 @@ final class NameCardDetailViewModel {
     let isLoading = BehaviorRelay<Bool>(value: false)
     let shouldClose = PublishRelay<Void>()
     let card = BehaviorRelay<Entity.NameCard?>(value: nil)
+    let captureBackCard = PublishRelay<Void>()
+    let captureFrontCard = PublishRelay<Void>()
+    let activityViewController = PublishRelay<UIActivityViewController>()
     
     init(cardID: Identifier, cardRepository: CardRepository, myCardRepository: MyCardRepository) {
         self.cardID = cardID
@@ -80,6 +84,7 @@ final class NameCardDetailViewModel {
     
     private func createFrontCardDetailViewModel(_ card: Entity.NameCard) -> FrontCardDetailViewModel? {
         guard let id = card.uniqueCode else { return nil }
+        guard let colorSource = self.backgroundColor.value else { return nil }
         
         let imageSource: ImageSource? = {
             guard let url = URL(string: card.imgUrl ?? .empty) else { return nil }
@@ -88,18 +93,22 @@ final class NameCardDetailViewModel {
         let name = card.name
         let role = card.role
         let skills = card.personalSkills?.map { MySkillProgressView.Item(title: $0.name, level: $0.level ?? 0) } ?? []
+        
         return FrontCardDetailViewModel(cardID: id,
                                         profileImageSource: imageSource,
                                         name: name,
                                         role: role,
-                                        skills: skills)
+                                        skills: skills,
+                                        backgroundColor: colorSource)
     }
     
     private func createBackCardDetailViewModel(_ card: Entity.NameCard) -> BackCardDetailViewModel? {
+        guard let colorSource = self.backgroundColor.value else { return nil }
         return BackCardDetailViewModel(personality: card.personality,
                                        contacts: card.contacts ?? [],
                                        tmis: card.tmis ?? [],
-                                       aboutMe: card.introduce)
+                                       aboutMe: card.introduce,
+                                       backgroundColor: colorSource)
     }
     
     private let disposeBag = DisposeBag()
@@ -133,6 +142,24 @@ extension NameCardDetailViewModel: CardDetailMoreViewDelegate {
     
     func didTapEditCard(id: Identifier) {
         #warning("카드 수정")
+    }
+    
+    func didTapSaveImage() {
+        guard let state = self.state.value else { return }
+        switch state {
+        case .back:
+            self.captureBackCard.accept(())
+        case .front:
+            self.captureFrontCard.accept(())
+        }
+    }
+    
+    func saveCardImage(with view: UIView) {
+        guard let image = YourNameSnapshotService.captureImage(view) else { return }
+
+        let vc = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+        vc.excludedActivityTypes = [.saveToCameraRoll]
+        activityViewController.accept(vc)
     }
     
     private func removeCard(id: Identifier) {

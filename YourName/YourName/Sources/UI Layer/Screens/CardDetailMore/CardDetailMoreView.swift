@@ -62,7 +62,7 @@ extension CardDetailMoreView {
         
         self.imageSaveView.rx.tapWhenRecognized
             .bind(onNext: { [weak self] in
-                print("image save button tapped")
+                self?.viewModel.saveImage()
             })
             .disposed(by: disposeBag)
         
