@@ -15,7 +15,6 @@ struct RemoveMyNameCardAPI: ServiceAPI {
     var task: NetworkingTask { .requestPlain }
     
     init(id: Identifier) {
-        print("삭제할 id", id)
         self.id = id
     }
 }

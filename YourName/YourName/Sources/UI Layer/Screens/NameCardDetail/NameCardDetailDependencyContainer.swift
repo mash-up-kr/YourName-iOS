@@ -25,16 +25,28 @@ final class NameCardDetailDependencyContainer {
     
     func createNameCardDetailViewController() -> NameCardDetailViewController {
         let viewController = NameCardDetailViewController.instantiate()
-        viewController.viewModel = createNameCardDetailViewModel()
+        let viewModel = createNameCardDetailViewModel()
+        viewController.viewModel = viewModel
+        
+        viewController.cardDetailMoreViewFactory = { cardID -> CardDetailMoreViewController in
+            let moreViewModel = CardDetailMoreViewModel(id: self.cardID,
+                                                        delegate: viewModel)
+            let moreView = CardDetailMoreView(viewModel: moreViewModel, parent: viewController)
+            let pageSheetController = PageSheetController(contentView: moreView)
+            return pageSheetController
+        }
         return viewController
     }
     
     private func createNameCardDetailViewModel() -> NameCardDetailViewModel {
         let cardRepository = self.createCardRepository()
-        return NameCardDetailViewModel(cardID: cardID, cardRepository: cardRepository)
+        return NameCardDetailViewModel(cardID: cardID, cardRepository: cardRepository, myCardRepository: createMyCardRepository())
     }
     
     private func createCardRepository() -> CardRepository {
         return YourNameCardRepository()
+    }
+    private func createMyCardRepository() -> MyCardRepository {
+        return YourNameMyCardRepository()
     }
 }

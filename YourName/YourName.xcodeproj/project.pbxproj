@@ -322,13 +322,13 @@
 		A10969B73C6F2B6D2B45B54A /* Pods-YourName-YourNameUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourName-YourNameUITests.debug.xcconfig"; path = "Target Support Files/Pods-YourName-YourNameUITests/Pods-YourName-YourNameUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A1AC0CE1DA2C5DDF40338B84 /* Pods-YourNameTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourNameTests.debug.xcconfig"; path = "Target Support Files/Pods-YourNameTests/Pods-YourNameTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A210ACB2274070580014AA1D /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
-		A223E6D627560AD900F29FCE /* NoticeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NoticeViewController.storyboard; sourceTree = "<group>"; };
-		A223E6D827560B0B00F29FCE /* NoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeViewController.swift; sourceTree = "<group>"; };
-		A223E6DC275639E100F29FCE /* ResignAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResignAPI.swift; sourceTree = "<group>"; };
 		A223E6CD2755273A00F29FCE /* CardDetailMoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailMoreView.swift; sourceTree = "<group>"; };
 		A223E6CF2755277E00F29FCE /* CardDetailMoreView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardDetailMoreView.xib; sourceTree = "<group>"; };
 		A223E6D1275534DC00F29FCE /* CardDetailMoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailMoreViewModel.swift; sourceTree = "<group>"; };
 		A223E6D3275537DD00F29FCE /* RemoveMyNameCardAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveMyNameCardAPI.swift; sourceTree = "<group>"; };
+		A223E6D627560AD900F29FCE /* NoticeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NoticeViewController.storyboard; sourceTree = "<group>"; };
+		A223E6D827560B0B00F29FCE /* NoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeViewController.swift; sourceTree = "<group>"; };
+		A223E6DC275639E100F29FCE /* ResignAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResignAPI.swift; sourceTree = "<group>"; };
 		A23920F4273666A10069E418 /* AddFriendCardViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddFriendCardViewController.storyboard; sourceTree = "<group>"; };
 		A23920F6273683070069E418 /* AddFriendCardNoResultView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddFriendCardNoResultView.xib; sourceTree = "<group>"; };
 		A23920F82736835F0069E418 /* AddFriendCardNoResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendCardNoResultView.swift; sourceTree = "<group>"; };
@@ -672,16 +672,6 @@
 			path = Notice;
 			sourceTree = "<group>";
 		};
-		A223E6CC275526F700F29FCE /* CardDetailMore */ = {
-			isa = PBXGroup;
-			children = (
-				A223E6CD2755273A00F29FCE /* CardDetailMoreView.swift */,
-				A223E6CF2755277E00F29FCE /* CardDetailMoreView.xib */,
-				A223E6D1275534DC00F29FCE /* CardDetailMoreViewModel.swift */,
-			);
-			path = CardDetailMore;
-			sourceTree = "<group>";
-		};
 		A29DA245271DCE2800B1E647 /* AboutProductionTeam */ = {
 			isa = PBXGroup;
 			children = (
@@ -1001,11 +991,6 @@
 		CE6312B526F99F6200B2E69B /* CardDetail */ = {
 			isa = PBXGroup;
 			children = (
-				A223E6CC275526F700F29FCE /* CardDetailMore */,
-				649ABC22275108A9005F50E8 /* CardDetailBackTableViewCell.swift */,
-				649ABC20275108A8005F50E8 /* CardDetailBackTableViewCell.xib */,
-				649ABC1F275108A8005F50E8 /* CardDetailBackViewController.storyboard */,
-				649ABC1C275108A8005F50E8 /* CardDetailBackViewController.swift */,
 				649ABC1B275108A7005F50E8 /* CardDetailDependencyContainer.swift */,
 				649ABC1E275108A8005F50E8 /* CardDetailViewController.storyboard */,
 				649ABC1D275108A8005F50E8 /* CardDetailViewController.swift */,
@@ -1110,6 +1095,9 @@
 		CEAE3973274005870010F8F0 /* CardDetailMore */ = {
 			isa = PBXGroup;
 			children = (
+				A223E6CD2755273A00F29FCE /* CardDetailMoreView.swift */,
+				A223E6CF2755277E00F29FCE /* CardDetailMoreView.xib */,
+				A223E6D1275534DC00F29FCE /* CardDetailMoreViewModel.swift */,
 			);
 			path = CardDetailMore;
 			sourceTree = "<group>";
@@ -1884,7 +1872,6 @@
 				CE94AB9F270ECEED005D2E80 /* MockInterestRepository.swift in Sources */,
 				CEDA4B7F274ECB000011D0CA /* StrongPointAPI.swift in Sources */,
 				A223E6CE2755273A00F29FCE /* CardDetailMoreView.swift in Sources */,
-				A23920FF2736B2FC0069E418 /* AddFriendCardResultViewModel.swift in Sources */,
 				A2BFC115273FFA12002FFF01 /* SelectCardBookViewController.swift in Sources */,
 				CE4D4E882707AE3800081A2B /* CharacterCreationDependencyContainer.swift in Sources */,
 				CE472B6A2748B6F9001A5E5F /* EntityNameSpace.swift in Sources */,
