@@ -107,7 +107,7 @@
                                             </constraints>
                                         </imageView>
                                     </subviews>
-                                    <color key="backgroundColor" name="gray1"/>
+                                    <color key="backgroundColor" name="lightGray3"/>
                                     <constraints>
                                         <constraint firstItem="raV-L4-6Aq" firstAttribute="leading" secondItem="Zih-Qm-1xE" secondAttribute="leading" constant="12" id="0nz-J5-78D"/>
                                         <constraint firstAttribute="trailing" secondItem="Uiq-MJ-M3V" secondAttribute="trailing" constant="12" id="12M-SB-SPw"/>
@@ -165,11 +165,11 @@
     </objects>
     <resources>
         <image name="icon_copy" width="20" height="20"/>
-        <namedColor name="gray1">
-            <color red="0.7686274509803922" green="0.7686274509803922" blue="0.7686274509803922" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="gray3">
             <color red="0.33725490196078434" green="0.33725490196078434" blue="0.33725490196078434" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="lightGray3">
+            <color red="0.91764705882352937" green="0.91764705882352937" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
