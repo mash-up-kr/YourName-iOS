@@ -68,8 +68,8 @@ extension CardFrontView {
         self.contentView.layer.cornerRadius = 12
     }
   
-    //TODO: viewModel생성 이후 수정필요
     private func configure(skills: [MySkillProgressView.Item]) {
+        self.skillStackView.subviews.forEach { $0.isHidden = true }
         skills.enumerated().forEach { index, skill in
             guard let skillView = skillStackView.subviews[safe: index] as? MySkillProgressView else { return }
             skillView.isHidden = false
