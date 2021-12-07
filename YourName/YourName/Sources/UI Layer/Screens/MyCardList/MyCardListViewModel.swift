@@ -7,14 +7,15 @@
 
 import RxRelay
 import RxSwift
+import UIKit
 
 enum MyCardListDestination: Equatable {
     case cardCreation
     case cardDetail(cardID: Identifier)
+    case quest
 }
 
 typealias MyCardListNavigation = Navigation<MyCardListDestination>
-
 typealias MyCardCellViewModel = CardFrontView.Item
 
 final class MyCardListViewModel {
@@ -22,11 +23,15 @@ final class MyCardListViewModel {
     let navigation = PublishRelay<MyCardListNavigation>()
     let myCardViewModels = BehaviorRelay<[MyCardCellViewModel]>(value: [])
     let isLoading = BehaviorRelay<Bool>(value: false)
+    let alertViewController = PublishRelay<AlertViewController>()
     
     private let myCardRepository: MyCardRepository
+    private let questRepository: QuestRepository
     private let disposeBag = DisposeBag()
     
-    init(myCardRepository: MyCardRepository) {
+    init(myCardRepository: MyCardRepository,
+         questRepository: QuestRepository) {
+        self.questRepository = questRepository
         self.myCardRepository = myCardRepository
     }
     
@@ -35,6 +40,37 @@ final class MyCardListViewModel {
     }
     
     // MARK: - Methods
+    
+    func checkQuest() {
+        self.questRepository.fetchAll()
+            .compactMap { quests -> AlertViewController? in
+                let index = quests.firstIndex(where: { quest in
+                    return quest.meta == .makeFirstNameCard
+                }) ?? 0
+                guard let quest = quests[safe: index] else { return nil }
+                if quest.status == .notAchieved {
+                   
+                    
+                    let controller = AlertViewController.instantiate()
+                    let confirmAction: () -> Void = { [weak self] in
+                        controller.dismiss()
+                        self?.navigation.accept(.present(MyCardListDestination.quest))
+                    }
+                    controller.configure(item: .init(title: "미츄를 만들어봐츄!",
+                                                     message: "미츄와 함께 퀘스트를 클리어하고,\n유니크 컬러를 획득하츄!",
+                                                     image: UIImage(named: "icon_onboardingMeetU")!,
+                                                     emphasisAction: .init(title: "퀘스트 확인하기",
+                                                                           action: confirmAction),
+                                                     defaultAction: .init(title: "건너뛰기",
+                                                                          action: { controller.dismiss() })))
+                    
+                    return controller
+                }
+                return nil
+            }
+            .bind(to: self.alertViewController)
+            .disposed(by: self.disposeBag)
+    }
     
     func load() {
         self.isLoading.accept(true)

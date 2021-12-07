@@ -23,6 +23,7 @@ final class MyCardListViewController: ViewController, Storyboarded {
     
     var newCardCreationViewControllerFactory: (() -> CardInfoInputViewController)!
     var cardDetailViewControllerFactory: ((Identifier) -> NameCardDetailViewController)!
+    var questViewControllerFactory: (() -> QuestViewController)!
     var viewModel: MyCardListViewModel!
     
     private var myCardList: [MyCardCellViewModel] = []
@@ -51,7 +52,9 @@ extension MyCardListViewController {
     }
     
     private func render(_ viewModel: MyCardListViewModel) {
+        self.viewModel.checkQuest()
         self.viewModel.load()
+        
         viewModel.isLoading.distinctUntilChanged()
             .bind(to: self.isLoading)
             .disposed(by: disposeBag)
@@ -65,6 +68,12 @@ extension MyCardListViewController {
                 self.pageControl.numberOfPages = myCardList.count
             })
             .disposed(by: disposeBag)
+        
+        viewModel.alertViewController
+            .bind(onNext: { [weak self] in
+                self?.present($0, animated: true, completion: nil)
+            })
+            .disposed(by: self.disposeBag)
     }
     
     private func dispatch(to viewModel: MyCardListViewModel) {
@@ -99,6 +108,8 @@ extension MyCardListViewController {
             return cardDetailViewControllerFactory(cardID)
         case .cardCreation:
             return newCardCreationViewControllerFactory()
+        case .quest:
+            return questViewControllerFactory()
         }
     }
     

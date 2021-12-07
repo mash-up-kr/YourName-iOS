@@ -22,16 +22,23 @@ final class MyCardListDependencyContainer {
             let dependencyContainer = self.createCardInfoInputDependencyContainer()
             return dependencyContainer.createCardInfoInputViewController()
         }
+        let questViewControllerFactory: () -> QuestViewController = {
+            let dependencyContainer = QuestDependencyContainer()
+            return dependencyContainer.createQuestViewController()
+        }
         viewController.viewModel = createMyCardListViewModel()
         viewController.cardDetailViewControllerFactory = cardDetailViewControllerFactory
         viewController.newCardCreationViewControllerFactory = newCardCreationViewControllerFactory
+        viewController.questViewControllerFactory = questViewControllerFactory
         let naviController = UINavigationController(rootViewController: viewController)
         return naviController
     }
     
     private func createMyCardListViewModel() -> MyCardListViewModel {
         let myCardRepository = YourNameMyCardRepository()
-        return MyCardListViewModel(myCardRepository: myCardRepository)
+        let questRepository = YourNameQuestRepository()
+        return MyCardListViewModel(myCardRepository: myCardRepository,
+                                   questRepository: questRepository)
     }
     
     // 👼 Child Dependency Container Factory
