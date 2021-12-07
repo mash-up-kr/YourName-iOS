@@ -12,6 +12,7 @@ import Photos
 
 enum NameCardDetailDestination: Equatable {
     case cardDetailMore(cardID: Identifier)
+    case cardEdit(cardID: Identifier)
 }
 
 typealias NameCardDetailNavigation = Navigation<NameCardDetailDestination>
@@ -141,7 +142,7 @@ extension NameCardDetailViewModel: CardDetailMoreViewDelegate {
     }
     
     func didTapEditCard(id: Identifier) {
-        #warning("카드 수정")
+        self.navigation.accept(.push(.cardEdit(cardID: self.cardID)))
     }
     
     func didTapSaveImage() {

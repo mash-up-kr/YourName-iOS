@@ -35,6 +35,11 @@ final class NameCardDetailDependencyContainer {
             let pageSheetController = PageSheetController(contentView: moreView)
             return pageSheetController
         }
+        
+        viewController.cardEditViewControllerFactory = { cardID -> CardInfoInputViewController in
+            let dependencyContainer = CardInfoInputDependencyContainer(cardID: cardID)
+            return dependencyContainer.createCardInfoInputViewController()
+        }
         return viewController
     }
     
