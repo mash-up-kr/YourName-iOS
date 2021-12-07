@@ -30,18 +30,26 @@ final class TMISettingViewModel {
         self.tmiSettingResponder = tmiSettingResponder
         
         self.transform()
-        self.interests.accept(interests)
-        self.strongPoints.accept(strongPoints)
+        
+        interests.forEach    { self.selectedInterests.append($0)    }
+        strongPoints.forEach { self.selectedStrongPoints.append($0) }
     }
     
     func didLoad() {
         interestRepository.fetchAll()
-            .bind(to: interests)
+            .subscribe(onNext: { [weak self] interests in
+                self?.interests.accept(interests)
+                self?.mutateInterestViewModels()
+            })
             .disposed(by: disposeBag)
         
-        strongPointRepository.fetchAll().debug()
-            .bind(to: strongPoints)
+        strongPointRepository.fetchAll()
+            .subscribe(onNext: { [weak self] strongPoints in
+                self?.strongPoints.accept(strongPoints)
+                self?.mutateStrongPointViewModels()
+            })
             .disposed(by: disposeBag)
+        
     }
     
     private func transform() {
