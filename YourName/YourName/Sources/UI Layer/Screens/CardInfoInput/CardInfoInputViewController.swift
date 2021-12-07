@@ -25,6 +25,7 @@ final class CardInfoInputViewController: ViewController, Storyboarded {
         super.viewDidLoad()
         
         self.bind()
+        self.viewModel.didLoad()
         self.setupUI()
         self.setupKeyboard()
     }
