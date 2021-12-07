@@ -140,8 +140,8 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
     }
     
     private func configureCollectionView() {
-        friendCardCollectionView?.registerNib(FriendCardCollectionViewCell.self)
-        friendCardCollectionView?.registerNib(FriendCardEmptyCollectionViewCell.self)
+        friendCardCollectionView?.registerWithNib(FriendCardCollectionViewCell.self)
+        friendCardCollectionView?.registerWithNib(FriendCardEmptyCollectionViewCell.self)
         friendCardCollectionView?.dataSource = self
         friendCardCollectionView?.delegate = self
     }
