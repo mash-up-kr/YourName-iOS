@@ -46,8 +46,8 @@ extension MyCardListViewController {
     private func configure(collectionView: UICollectionView) {
         collectionView.decelerationRate = .fast
         collectionView.isPagingEnabled = false
-        collectionView.registerNib(MyCardListEmptyCollectionViewCell.self)
-        collectionView.registerNib(MyCardListCollectionViewCell.self)
+        collectionView.registerWithNib(MyCardListEmptyCollectionViewCell.self)
+        collectionView.registerWithNib(MyCardListCollectionViewCell.self)
     }
     
     private func render(_ viewModel: MyCardListViewModel) {

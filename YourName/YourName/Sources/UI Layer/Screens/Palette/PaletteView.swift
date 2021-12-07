@@ -30,7 +30,7 @@ final class PaletteView: UIView, NibLoadable {
     }
     
     private func setupUI() {
-        self.colorsCollectionView?.registerNib(ColorSourceCollectionViewCell.self)
+        self.colorsCollectionView?.registerWithNib(ColorSourceCollectionViewCell.self)
         self.colorsCollectionView?.dataSource = self
         self.colorsCollectionView?.delegate = self
     }

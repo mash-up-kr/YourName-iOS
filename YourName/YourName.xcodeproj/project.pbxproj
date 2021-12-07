@@ -167,6 +167,10 @@
 		CE6312C526F9B05700B2E69B /* MyCardListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6312C426F9B05700B2E69B /* MyCardListViewModelTests.swift */; };
 		CE6312CF26F9B82600B2E69B /* NameCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6312CE26F9B82600B2E69B /* NameCard.swift */; };
 		CE6312D126F9BD6B00B2E69B /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6312D026F9BD6B00B2E69B /* Array+.swift */; };
+		CE6AF90E275F9A6100090BD9 /* CardDetailContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6AF90C275F9A6100090BD9 /* CardDetailContactTableViewCell.swift */; };
+		CE6AF90F275F9A6100090BD9 /* CardDetailContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6AF90D275F9A6100090BD9 /* CardDetailContactTableViewCell.xib */; };
+		CE6AF912275FA23500090BD9 /* CardDetailTMICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6AF910275FA23500090BD9 /* CardDetailTMICollectionViewCell.swift */; };
+		CE6AF913275FA23500090BD9 /* CardDetailTMICollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6AF911275FA23500090BD9 /* CardDetailTMICollectionViewCell.xib */; };
 		CE6BAB942704D0990006D26B /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6BAB932704D0990006D26B /* Storyboarded.swift */; };
 		CE6BAB962704D3C40006D26B /* CardBookDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6BAB952704D3C30006D26B /* CardBookDetailViewController.storyboard */; };
 		CE6BAB9A2704D6E30006D26B /* MyCardListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6BAB992704D6E30006D26B /* MyCardListViewController.storyboard */; };
@@ -472,6 +476,10 @@
 		CE6312C426F9B05700B2E69B /* MyCardListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardListViewModelTests.swift; sourceTree = "<group>"; };
 		CE6312CE26F9B82600B2E69B /* NameCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameCard.swift; sourceTree = "<group>"; };
 		CE6312D026F9BD6B00B2E69B /* Array+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+.swift"; sourceTree = "<group>"; };
+		CE6AF90C275F9A6100090BD9 /* CardDetailContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailContactTableViewCell.swift; sourceTree = "<group>"; };
+		CE6AF90D275F9A6100090BD9 /* CardDetailContactTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardDetailContactTableViewCell.xib; sourceTree = "<group>"; };
+		CE6AF910275FA23500090BD9 /* CardDetailTMICollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailTMICollectionViewCell.swift; sourceTree = "<group>"; };
+		CE6AF911275FA23500090BD9 /* CardDetailTMICollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardDetailTMICollectionViewCell.xib; sourceTree = "<group>"; };
 		CE6BAB932704D0990006D26B /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
 		CE6BAB952704D3C30006D26B /* CardBookDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CardBookDetailViewController.storyboard; sourceTree = "<group>"; };
 		CE6BAB992704D6E30006D26B /* MyCardListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyCardListViewController.storyboard; sourceTree = "<group>"; };
@@ -746,6 +754,10 @@
 				CE2D1C66275E8BFB00DCD2D3 /* FrontCardDetailView.xib */,
 				CE2D1C64275E898200DCD2D3 /* BackCardDetailView.swift */,
 				CE2D1C68275E8DC100DCD2D3 /* BackCardDetailView.xib */,
+				CE6AF90C275F9A6100090BD9 /* CardDetailContactTableViewCell.swift */,
+				CE6AF90D275F9A6100090BD9 /* CardDetailContactTableViewCell.xib */,
+				CE6AF910275FA23500090BD9 /* CardDetailTMICollectionViewCell.swift */,
+				CE6AF911275FA23500090BD9 /* CardDetailTMICollectionViewCell.xib */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1648,6 +1660,8 @@
 				CE4D4EB72708E9F400081A2B /* PaletteView.xib in Resources */,
 				CE6BAB9C2704D7170006D26B /* QuestViewController.storyboard in Resources */,
 				A2BFC119273FFAA5002FFF01 /* SelectCardBookViewController.storyboard in Resources */,
+				CE6AF913275FA23500090BD9 /* CardDetailTMICollectionViewCell.xib in Resources */,
+				CE6AF90F275F9A6100090BD9 /* CardDetailContactTableViewCell.xib in Resources */,
 				CE2D1C5E275E88F800DCD2D3 /* NameCardDetailViewController.storyboard in Resources */,
 				A29DA247271DCE4E00B1E647 /* AboutProductionTeamViewController.storyboard in Resources */,
 				CEB6583826EB15AC00C11F33 /* LaunchScreen.storyboard in Resources */,
@@ -1863,6 +1877,7 @@
 				A2A5C83A26FB1A3D005D2849 /* AppKey.swift in Sources */,
 				CE0415E0275EA63E00B9A565 /* NameCardDetailDependencyContainer.swift in Sources */,
 				CE8ECC0B270A635C00E5B038 /* SkillInputView.swift in Sources */,
+				CE6AF90E275F9A6100090BD9 /* CardDetailContactTableViewCell.swift in Sources */,
 				CEB6589726EC844D00C11F33 /* main.swift in Sources */,
 				A2CC656C2708877E00610C49 /* NibLoadable.swift in Sources */,
 				A2DA3B63274FDA2200E68F23 /* MyNameCardsAPI.swift in Sources */,
@@ -1903,6 +1918,7 @@
 				CE4D4EB52708E9EC00081A2B /* PaletteView.swift in Sources */,
 				CEC599D32756B0EC00405DEA /* ImageUploadAPI.swift in Sources */,
 				CE2D1C63275E897700DCD2D3 /* FrontCardDetailView.swift in Sources */,
+				CE6AF912275FA23500090BD9 /* CardDetailTMICollectionViewCell.swift in Sources */,
 				A2DA3B6D27514EE000E68F23 /* FriendCardAPI.swift in Sources */,
 				CEB84094272AF143000E527B /* CardBookListDependencyContainer.swift in Sources */,
 				CE6BABAF2704EE9C0006D26B /* UICollectionView+.swift in Sources */,

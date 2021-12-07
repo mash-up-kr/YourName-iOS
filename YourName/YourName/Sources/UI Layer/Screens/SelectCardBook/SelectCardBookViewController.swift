@@ -58,7 +58,7 @@ extension SelectCardBookViewController {
     }
     
     private func configureUI() {
-        self.cardBookCollectionView.registerNib(SelectCardBookCollectionViewCell.self)
+        self.cardBookCollectionView.registerWithNib(SelectCardBookCollectionViewCell.self)
     }
     private func render(_ viewModel: SelectCardBookViewModel) {
         viewModel.isEnabledCompleteButton
