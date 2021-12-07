@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CardDetailTMICollectionViewCell: UICollectionViewCell {
+final class CardDetailTMICollectionViewCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
