@@ -55,17 +55,18 @@ extension CardFrontView {
       
         switch item.backgroundColor {
         case .gradient(let colors):
-            self.updateGradientLayer(colors: colors)
+            self.contentView.updateGradientLayer(colors: colors)
         case .monotone(let color):
-            self.updateGradientLayer(colors: [color])
+            self.contentView.updateGradientLayer(colors: [color])
         }
-        
+
         self.configure(skills: item.skills)
     }
     
     private func configureUI() {
         self.skillStackView.subviews.forEach { $0.isHidden = true }
         self.contentView.layer.cornerRadius = 12
+        self.contentView.layer.masksToBounds = true
     }
   
     private func configure(skills: [MySkillProgressView.Item]) {

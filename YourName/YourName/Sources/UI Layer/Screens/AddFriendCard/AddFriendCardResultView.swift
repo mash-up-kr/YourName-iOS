@@ -46,10 +46,12 @@ final class AddFriendCardResultView: UIView, NibLoadable {
 
 extension AddFriendCardResultView {
     func configure(frontCardItem: FrontCardItem,
-                   backCardItem: BackCardItem,
-                   friendCardState: FriendCardState) {
+                   backCardItem: BackCardItem) {
         self.configureCardView(frontCardItem: frontCardItem,
                                backCardItem: backCardItem)
+        
+        self.cardFrontView.isHidden = false
+        self.cardBackView.isHidden = true
     }
     
     private func configureCardView(frontCardItem: FrontCardItem,
