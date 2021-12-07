@@ -67,6 +67,12 @@ final class CardBookDetailViewModel {
         shouldClose.accept(Void())
     }
     
+    func tapCard(at index: Int) {
+        guard let card = friendCards.value[safe: index] else { return }
+        guard let cardID = card.id else { return }
+        self.navigation.accept(.push(.cardDetail(id: cardID)))
+    }
+    
     func tapEdit() {
         guard self.isEmpty.value == false   else { return }
         guard self.isEditing.value == false else { return }

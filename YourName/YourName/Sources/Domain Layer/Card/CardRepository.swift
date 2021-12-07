@@ -42,7 +42,7 @@ final class YourNameCardRepository: CardRepository {
     }
     
     private func translate(fromEntity entity: Entity.NameCard) -> NameCard {
-        return NameCard(id: entity.id, name: entity.name, role: entity.role, introduce: entity.introduce, bgColors: entity.bgColor?.value, profileURL: entity.imgUrl)
+        return NameCard(id: entity.uniqueCode, name: entity.name, role: entity.role, introduce: entity.introduce, bgColors: entity.bgColor?.value, profileURL: entity.imgUrl)
     }
     
     private let network: NetworkServing

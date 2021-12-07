@@ -19,13 +19,17 @@ final class NameCardDetailDependencyContainer {
         self.cardID = cardID
     }
     
+    init(cardID: Identifier, cardBookDetailDependencyContainer: CardBookDetailDependencyContainer) {
+        self.cardID = cardID
+    }
+    
     init(cardID: Identifier, addFriendCardDependencyContainer: AddFriendCardDependencyContainer) {
         self.cardID = cardID
     }
     
     func createNameCardDetailViewController() -> NameCardDetailViewController {
         let viewController = NameCardDetailViewController.instantiate()
-        viewController.viewModel = createNameCardDetailViewModel()
+        viewController.viewModel = self.createNameCardDetailViewModel()
         return viewController
     }
     
@@ -37,4 +41,5 @@ final class NameCardDetailDependencyContainer {
     private func createCardRepository() -> CardRepository {
         return YourNameCardRepository()
     }
+    
 }
