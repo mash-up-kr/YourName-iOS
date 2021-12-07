@@ -22,14 +22,14 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view opaque="NO" contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="1200"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ev-dE-hfj">
-                    <rect key="frame" x="0.0" y="44" width="414" height="922"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="1122"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="TPk-6C-VcG">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="978"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="1036"/>
                             <subviews>
                                 <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TPE-zu-GJO">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
@@ -257,10 +257,10 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i9T-ml-j6m">
-                                    <rect key="frame" x="0.0" y="856" width="414" height="122"/>
+                                    <rect key="frame" x="0.0" y="856" width="414" height="180"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="meetu_addFriendCard" translatesAutoresizingMaskIntoConstraints="NO" id="Pfv-p9-9vs">
-                                            <rect key="frame" x="126" y="22" width="162" height="41"/>
+                                            <rect key="frame" x="126" y="103" width="162" height="41"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="162" id="9kP-Tv-LKF"/>
                                                 <constraint firstAttribute="height" constant="41" id="ZWs-dP-vLG"/>
@@ -269,8 +269,8 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="122" id="01F-4n-lzN"/>
-                                        <constraint firstItem="Pfv-p9-9vs" firstAttribute="top" secondItem="i9T-ml-j6m" secondAttribute="top" constant="22" id="KTS-N5-L1g"/>
+                                        <constraint firstAttribute="height" constant="180" id="01F-4n-lzN"/>
+                                        <constraint firstAttribute="bottom" secondItem="Pfv-p9-9vs" secondAttribute="bottom" constant="36" id="coL-3G-00t"/>
                                         <constraint firstItem="Pfv-p9-9vs" firstAttribute="centerX" secondItem="i9T-ml-j6m" secondAttribute="centerX" id="zsy-ou-FAN"/>
                                     </constraints>
                                 </view>
