@@ -167,6 +167,7 @@
 		CE6AF90F275F9A6100090BD9 /* CardDetailContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6AF90D275F9A6100090BD9 /* CardDetailContactTableViewCell.xib */; };
 		CE6AF912275FA23500090BD9 /* CardDetailTMICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6AF910275FA23500090BD9 /* CardDetailTMICollectionViewCell.swift */; };
 		CE6AF913275FA23500090BD9 /* CardDetailTMICollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6AF911275FA23500090BD9 /* CardDetailTMICollectionViewCell.xib */; };
+		CE6AF916275FDF5F00090BD9 /* ClipboardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6AF915275FDF5F00090BD9 /* ClipboardService.swift */; };
 		CE6BAB942704D0990006D26B /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6BAB932704D0990006D26B /* Storyboarded.swift */; };
 		CE6BAB962704D3C40006D26B /* CardBookDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6BAB952704D3C30006D26B /* CardBookDetailViewController.storyboard */; };
 		CE6BAB9A2704D6E30006D26B /* MyCardListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6BAB992704D6E30006D26B /* MyCardListViewController.storyboard */; };
@@ -472,6 +473,7 @@
 		CE6AF90D275F9A6100090BD9 /* CardDetailContactTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardDetailContactTableViewCell.xib; sourceTree = "<group>"; };
 		CE6AF910275FA23500090BD9 /* CardDetailTMICollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailTMICollectionViewCell.swift; sourceTree = "<group>"; };
 		CE6AF911275FA23500090BD9 /* CardDetailTMICollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardDetailTMICollectionViewCell.xib; sourceTree = "<group>"; };
+		CE6AF915275FDF5F00090BD9 /* ClipboardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardService.swift; sourceTree = "<group>"; };
 		CE6BAB932704D0990006D26B /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
 		CE6BAB952704D3C30006D26B /* CardBookDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CardBookDetailViewController.storyboard; sourceTree = "<group>"; };
 		CE6BAB992704D6E30006D26B /* MyCardListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyCardListViewController.storyboard; sourceTree = "<group>"; };
@@ -1027,6 +1029,14 @@
 			path = "Test Doubles";
 			sourceTree = "<group>";
 		};
+		CE6AF914275FDF4D00090BD9 /* Clipboard */ = {
+			isa = PBXGroup;
+			children = (
+				CE6AF915275FDF5F00090BD9 /* ClipboardService.swift */,
+			);
+			path = Clipboard;
+			sourceTree = "<group>";
+		};
 		CE6BAB922704D08D0006D26B /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -1229,6 +1239,7 @@
 		CEB6586426EB2BC100C11F33 /* Domain Layer */ = {
 			isa = PBXGroup;
 			children = (
+				CE6AF914275FDF4D00090BD9 /* Clipboard */,
 				CEC599D5275714DA00405DEA /* Images */,
 				CEC599D42756B7AE00405DEA /* Notification */,
 				A2DA3B7427516ED400E68F23 /* AddFriendCard */,
@@ -1794,6 +1805,7 @@
 				A2DA3B6B2751406E00E68F23 /* Notification.Name+.swift in Sources */,
 				CE63124026F59E6700B2E69B /* RootViewModel.swift in Sources */,
 				CEB6589526EC838000C11F33 /* HTTPClient.swift in Sources */,
+				CE6AF916275FDF5F00090BD9 /* ClipboardService.swift in Sources */,
 				64E6EF1F27517C2300082673 /* RxASAuthorizationControllerDelegateProxy.swift in Sources */,
 				CEDA4B79274E9C910011D0CA /* Set+.swift in Sources */,
 				CEB658BC26ECC90600C11F33 /* NoContent.swift in Sources */,

@@ -19,22 +19,34 @@ final class NameCardDetailDependencyContainer {
         self.cardID = cardID
     }
     
+    init(cardID: Identifier, cardBookDetailDependencyContainer: CardBookDetailDependencyContainer) {
+        self.cardID = cardID
+    }
+    
     init(cardID: Identifier, addFriendCardDependencyContainer: AddFriendCardDependencyContainer) {
         self.cardID = cardID
     }
     
     func createNameCardDetailViewController() -> NameCardDetailViewController {
         let viewController = NameCardDetailViewController.instantiate()
-        viewController.viewModel = createNameCardDetailViewModel()
+        viewController.viewModel = self.createNameCardDetailViewModel()
         return viewController
     }
     
     private func createNameCardDetailViewModel() -> NameCardDetailViewModel {
         let cardRepository = self.createCardRepository()
-        return NameCardDetailViewModel(cardID: cardID, cardRepository: cardRepository)
+        let clipboardService = self.createClipboardService()
+        return NameCardDetailViewModel(cardID: cardID,
+                                       cardRepository: cardRepository,
+                                       clipboardService: clipboardService)
     }
     
     private func createCardRepository() -> CardRepository {
         return YourNameCardRepository()
     }
+    
+    private func createClipboardService() -> ClipboardService {
+        return YourNameClipboardService()
+    }
+    
 }
