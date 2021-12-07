@@ -38,6 +38,7 @@ final class CharacterSettingView: UIView, NibLoadable {
         super.layoutSubviews()
         self.categoryItemFrameView?.addSubview(pageViewController.view)
         pageViewController.view.frame = categoryItemFrameView?.bounds ?? .zero
+        categoryItemsFrameViewHeight?.constant = UIScreen.main.bounds.height - 432
     }
     
     private func setupUI() {
@@ -162,6 +163,7 @@ final class CharacterSettingView: UIView, NibLoadable {
     @IBOutlet private var categoryLabels: [UILabel]?
     @IBOutlet private weak var selectedCategoryUnderLine: UIView?
     @IBOutlet private weak var categoryItemFrameView: UIView?
+    @IBOutlet private weak var categoryItemsFrameViewHeight: NSLayoutConstraint?
 }
 extension CharacterSettingView: PageSheetContentView {
     var title: String { "캐릭터 생성하기" }
