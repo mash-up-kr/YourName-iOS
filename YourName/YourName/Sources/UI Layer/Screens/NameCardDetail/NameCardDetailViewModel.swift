@@ -35,10 +35,11 @@ final class NameCardDetailViewModel {
     let captureFrontCard = PublishRelay<Void>()
     let activityViewController = PublishRelay<UIActivityViewController>()
     
-    init(cardID: Identifier, cardRepository: CardRepository, myCardRepository: MyCardRepository) {
+    init(cardID: Identifier, cardRepository: CardRepository, myCardRepository: MyCardRepository, questRepository: QuestRepository) {
         self.cardID = cardID
         self.cardRepository = cardRepository
         self.myCardRepository = myCardRepository
+        self.questRepository = questRepository
     }
     
     deinit {
@@ -117,6 +118,7 @@ final class NameCardDetailViewModel {
     private let cardID: Identifier
     private let cardRepository: CardRepository
     private let myCardRepository: MyCardRepository
+    private let questRepository: QuestRepository
 }
 
 // MARK: - CardDetailMoreViewDelegate
@@ -161,6 +163,11 @@ extension NameCardDetailViewModel: CardDetailMoreViewDelegate {
         let vc = UIActivityViewController(activityItems: [image], applicationActivities: nil)
         vc.excludedActivityTypes = [.saveToCameraRoll]
         activityViewController.accept(vc)
+        
+        // Quest
+        self.questRepository.updateQuest(.shareMyNameCard, to: .waitingDone)
+            .subscribe()
+            .disposed(by: self.disposeBag)
     }
     
     private func removeCard(id: Identifier) {
