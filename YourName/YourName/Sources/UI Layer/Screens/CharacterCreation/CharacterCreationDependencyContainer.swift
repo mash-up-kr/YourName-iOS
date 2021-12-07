@@ -12,14 +12,14 @@ final class CharacterCreationDependencyContainer {
     let characterSettingViewModel: CharacterSettingViewModel
     let characterItemRepository: CharacterItemRepository
     
-    init(cardCreationDependencyContainer: CardCreationDependencyContainer) {
+    init(cardCreationDependencyContainer: CardInfoInputDependencyContainer) {
         func createCharacterItemRepository() -> CharacterItemRepository {
             return YourNameCharacterItemRepository(factory: YourNameCharacterItemFactory())
         }
         
         func createCharaterSettingViewModel(
             characterItemRepository: CharacterItemRepository,
-            cardCreationViewModel: CardCreationViewModel
+            cardCreationViewModel: CardInfoInputViewModel
         ) -> CharacterSettingViewModel {
             return CharacterSettingViewModel(
                 characterItemRepository: characterItemRepository,

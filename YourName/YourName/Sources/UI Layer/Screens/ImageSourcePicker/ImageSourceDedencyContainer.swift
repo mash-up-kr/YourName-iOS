@@ -11,7 +11,7 @@ final class ImageSourceTypePickerDependencyContainer {
     
     let imageSourceResponder: ImageSourcePickerResponder
     
-    init(cardCreationDependencyContainer: CardCreationDependencyContainer) {
+    init(cardCreationDependencyContainer: CardInfoInputDependencyContainer) {
         self.imageSourceResponder = cardCreationDependencyContainer.viewModel
     }
     

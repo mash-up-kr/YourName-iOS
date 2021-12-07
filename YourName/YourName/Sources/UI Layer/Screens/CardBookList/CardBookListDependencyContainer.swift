@@ -46,4 +46,8 @@ final class CardBookListDependencyContainer {
     private func createCardDetailDependencyContainer() -> CardBookDetailDependencyContainer {
         return CardBookDetailDependencyContainer(cardBookListDependencyContainer: self)
     }
+    
+    private func createNameCardDetailDependencyContainer(cardID: Identifier) -> NameCardDetailDependencyContainer {
+        return NameCardDetailDependencyContainer(cardID: cardID, cardListDependencyContainer: self)
+    }
 }

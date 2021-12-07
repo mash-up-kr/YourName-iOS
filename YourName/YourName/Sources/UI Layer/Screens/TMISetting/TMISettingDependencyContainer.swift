@@ -11,7 +11,11 @@ final class TMISettingDependencyContainer {
     
     let tmiSettingViewModel: TMISettingViewModel
     
-    init(cardCreationDependencyContainer: CardCreationDependencyContainer) {
+    init(
+        interests: [Interest],
+        strongPoints: [StrongPoint],
+        cardCreationDependencyContainer: CardInfoInputDependencyContainer
+    ) {
         
         func createInterestRepository() -> InterestRepository {
             let interestRepository = YourNameInterestRepository()
@@ -26,9 +30,13 @@ final class TMISettingDependencyContainer {
         func createTMISettingViewModel(tmiSettingResponder: TMISettingResponder) -> TMISettingViewModel {
             let interestRepository = createInterestRepository()
             let strongPointRepository = createStrongPointRepository()
-            return TMISettingViewModel(interestRepository: interestRepository,
-                                       strongPointRepository: strongPointRepository,
-                                       tmiSettingResponder: tmiSettingResponder)
+            return TMISettingViewModel(
+                interests: interests,
+                strongPoints: strongPoints,
+                interestRepository: interestRepository,
+                strongPointRepository: strongPointRepository,
+                tmiSettingResponder: tmiSettingResponder
+            )
         }
         let cardCreationViewModel = cardCreationDependencyContainer.viewModel
         self.tmiSettingViewModel = createTMISettingViewModel(tmiSettingResponder: cardCreationViewModel)

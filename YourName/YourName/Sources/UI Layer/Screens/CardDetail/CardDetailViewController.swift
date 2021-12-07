@@ -12,7 +12,7 @@ import RxCocoa
 
 final class CardDetailViewController: ViewController, Storyboarded {
     
-    var cardEditViewFactory: ((Identifier) -> CardCreationViewController)!
+//    var cardEditViewFactory: ((Identifier) -> CardCreationViewController)!
     var cardDetailMoreViewFactory: ((Identifier) -> CardDetailMoreViewController)!
     private let disposeBag = DisposeBag()
     
@@ -38,8 +38,7 @@ final class CardDetailViewController: ViewController, Storyboarded {
     override var hidesBottomBarWhenPushed: Bool {
         get {
             return navigationController?.topViewController == self
-        }
-        set {
+        } set {
             super.hidesBottomBarWhenPushed = newValue
         }
     }
@@ -97,7 +96,17 @@ final class CardDetailViewController: ViewController, Storyboarded {
     
     var viewModel: CardDetailViewModel!
     
-    @IBOutlet private weak var mainView: UIView!
+//    @IBOutlet private weak var mainView: UIView!
+//    @IBOutlet private weak var bubbleBottom: UIView!
+//    @IBOutlet private weak var underlineView: UIView!
+//    @IBOutlet private weak var frontButton: UIButton!
+//    @IBOutlet private weak var backButton: UIButton!
+//    @IBOutlet private weak var cardDetailFrontView: UIStackView!
+//    @IBOutlet private weak var speechBubble: UIView!
+//    @IBOutlet private weak var mySkillProgressView1: MySkillProgressView!
+//    @IBOutlet private weak var mySkillProgressView2: MySkillProgressView!
+//    @IBOutlet private weak var mySkillProgressView3: MySkillProgressView!
+//    @IBOutlet private weak var cardDetailBackView: UIStackView!
 
 }
 
@@ -154,7 +163,8 @@ extension CardDetailViewController {
         case .cardDetailMore(let cardId):
             return cardDetailMoreViewFactory(cardId)
         case .cardEdit(let cardId):
-            return cardEditViewFactory(cardId)
+            return cardDetailMoreViewFactory(cardId)
+//            return cardEditViewFactory(cardId)
         }
     }
 }

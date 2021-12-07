@@ -44,21 +44,15 @@ final class CardDetailDependencyContainer {
             return pageSheetController
         }
         
-        // MARK: cardDetailMoreViewFactory
-        viewController.cardEditViewFactory = { cardID -> CardCreationViewController in
-            let viewModel = CardCreationViewModel(myCardRepsitory: self.myCardRepository, imageUploader:  YourNameImageUploader())
-            let viewController = CardCreationViewController.instantiate()
-            viewController.viewModel = viewModel
-            
-            return viewController
-        }
-        
-        
         return viewController
     }
     
     private func createCardDetailViewModel() -> CardDetailViewModel {
         return CardDetailViewModel(cardID: cardID,
                                    repository: self.myCardRepository)
+    }
+    
+    private func createCardRepository() -> CardRepository {
+        return YourNameCardRepository()
     }
 }

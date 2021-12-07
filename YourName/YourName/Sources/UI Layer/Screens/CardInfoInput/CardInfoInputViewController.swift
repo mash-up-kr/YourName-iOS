@@ -12,14 +12,14 @@ import RxSwift
 import UIKit
 
 
-final class CardCreationViewController: ViewController, Storyboarded {
+final class CardInfoInputViewController: ViewController, Storyboarded {
     
-    var viewModel: CardCreationViewModel!
+    var viewModel: CardInfoInputViewModel!
     var imageSourceTypePickerViewControllerFactory: (() -> ImageSourceTypePickerViewController)?
     var characterSettingViewControllerFactory: (() -> CharacterSettingViewController)?
-    var paletteViewControllerFactory: (() -> PaletteViewController)?
-    var tmiSettingViewControllerFactory: (() -> TMISettingViewController)?
-    var skillSettingViewControllerFactory: (() -> SkillSettingViewController)?
+    var paletteViewControllerFactory: ((Identifier?) -> PaletteViewController)?
+    var tmiSettingViewControllerFactory: (([Interest], [StrongPoint]) -> TMISettingViewController)?
+    var skillSettingViewControllerFactory: (([Skill]) -> SkillSettingViewController)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +49,7 @@ final class CardCreationViewController: ViewController, Storyboarded {
         profileImageView?.clipsToBounds = true
     }
     
-    private func dispatch(to viewModel: CardCreationViewModel) {
+    private func dispatch(to viewModel: CardInfoInputViewModel) {
         viewModel.didLoad()
         
         backButton?.rx.tap
@@ -146,7 +146,7 @@ final class CardCreationViewController: ViewController, Storyboarded {
             .disposed(by: self.disposeBag)
     }
     
-    private func render(_ viewModel: CardCreationViewModel) {
+    private func render(_ viewModel: CardInfoInputViewModel) {
         if let profilePlaceholderView = self.profilePlaceholderView {
             viewModel.shouldHideProfilePlaceholder
                 .distinctUntilChanged()
@@ -322,16 +322,22 @@ final class CardCreationViewController: ViewController, Storyboarded {
     
     private func createViewController(of destination: CardCreationDestination) -> UIViewController? {
         switch destination {
-        case .imageSourceTypePicker: return imageSourceTypePickerViewControllerFactory?()
-        case .palette: return paletteViewControllerFactory?()
-        case .createCharacter: return characterSettingViewControllerFactory?()
-        case .settingSkill: return skillSettingViewControllerFactory?()
-        case .settingTMI: return tmiSettingViewControllerFactory?()
-        case .photoLibrary: return UIImagePickerController().then {
-            $0.sourceType = .photoLibrary
-            $0.allowsEditing = true
-            $0.delegate = self
-        }
+        case .imageSourceTypePicker:
+            return imageSourceTypePickerViewControllerFactory?()
+        case .palette(let selectedColorID):
+            return paletteViewControllerFactory?(selectedColorID)
+        case .createCharacter:
+            return characterSettingViewControllerFactory?()
+        case .settingSkill(let skills):
+            return skillSettingViewControllerFactory?(skills ?? [])
+        case .settingTMI(let interests, let strongPoints):
+            return tmiSettingViewControllerFactory?(interests ?? [], strongPoints ?? [])
+        case .photoLibrary:
+            return UIImagePickerController().then {
+                $0.sourceType = .photoLibrary
+                $0.allowsEditing = true
+                $0.delegate = self
+            }
         }
     }
     
@@ -415,7 +421,7 @@ final class CardCreationViewController: ViewController, Storyboarded {
     @IBOutlet private weak var selectContactTypeButton: UIButton?
     @IBOutlet private weak var completeButton: UIButton?
 }
-extension CardCreationViewController: UIPickerViewDataSource {
+extension CardInfoInputViewController: UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -426,7 +432,7 @@ extension CardCreationViewController: UIPickerViewDataSource {
     }
     
 }
-extension CardCreationViewController: UIPickerViewDelegate {
+extension CardInfoInputViewController: UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return ContactType.allCases[safe: row]?.description
@@ -434,9 +440,9 @@ extension CardCreationViewController: UIPickerViewDelegate {
     
 }
 
-extension CardCreationViewController: UINavigationControllerDelegate {}
+extension CardInfoInputViewController: UINavigationControllerDelegate {}
 
-extension CardCreationViewController: UIImagePickerControllerDelegate {
+extension CardInfoInputViewController: UIImagePickerControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
