@@ -39,6 +39,12 @@ final class CardBookListViewController: UIViewController, Storyboarded {
     private func dispatch(to viewModel: CardBookListViewModel) {
         self.viewModel.didLoad()
         
+        NotificationCenter.default.rx.notification(.cardBookDidChange)
+            .subscribe(onNext: { [weak self] _ in
+                self?.viewModel.refreshCardBooks()
+            })
+            .disposed(by: self.disposeBag)
+        
         self.addFriendButton?.rx.tap.subscribe(onNext: { [weak self] in
             self?.viewModel.tapAddFriend()
         }).disposed(by: self.disposeBag)

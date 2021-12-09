@@ -22,6 +22,7 @@ typealias CardBookListNavigation = Navigation<CardBookListDestination>
 final class CardBookListViewModel {
     
     let navigation = PublishRelay<CardBookListNavigation>()
+    let isLoading = BehaviorRelay<Bool>(value: false)
     let cardBooks = BehaviorRelay<[CardBook]>(value: [])
     
     init(cardBookRepository: CardBookRepository) {
@@ -29,8 +30,20 @@ final class CardBookListViewModel {
     }
     
     func didLoad() {
+        self.isLoading.accept(true)
         cardBookRepository.fetchAll()
             .subscribe(onNext: { [weak self] cardBooks in
+                self?.isLoading.accept(false)
+                self?.cardBooks.accept(cardBooks)
+            })
+            .disposed(by: self.disposeBag)
+    }
+    
+    func refreshCardBooks() {
+        self.isLoading.accept(true)
+        cardBookRepository.fetchAll()
+            .subscribe(onNext: { [weak self] cardBooks in
+                self?.isLoading.accept(false)
                 self?.cardBooks.accept(cardBooks)
             })
             .disposed(by: self.disposeBag)
