@@ -3,7 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>나중에바꿔야함?!</string>
+	<string>사진첩 접근 권한을 승인하지 않으면, 사진을 사용해서 카드를 제작할 수 없어요! 사진첩 접근 권한을 꼭 승인해주세요.</string>
+    <key>NSPhotoLibraryAddUsageDescription</key>
+    <string>사진첩 접근 권한을 승인하지 않으면, 사진첩에 카드를 저장할 수 없어요! 사진첩 접근 권한을 꼭 승인해주세요.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
