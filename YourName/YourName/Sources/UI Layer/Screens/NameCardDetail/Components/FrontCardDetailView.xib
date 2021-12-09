@@ -15,6 +15,7 @@
                 <outlet property="nameLabel" destination="wem-IK-09j" id="stW-jT-qHZ"/>
                 <outlet property="profileImageView" destination="eVd-H4-r1j" id="qpF-wV-u65"/>
                 <outlet property="roleLabel" destination="xbY-A2-jaf" id="4Tp-Qx-nXI"/>
+                <outlet property="scrollView" destination="jz6-d8-dGL" id="LDl-ho-Tdj"/>
                 <outletCollection property="skillViews" destination="BJD-r3-yni" collectionClass="NSMutableArray" id="q7n-Xe-3wH"/>
                 <outletCollection property="skillViews" destination="uus-xi-4gn" collectionClass="NSMutableArray" id="dHn-XC-5AY"/>
                 <outletCollection property="skillViews" destination="kD0-hX-5po" collectionClass="NSMutableArray" id="4U1-GJ-HdZ"/>

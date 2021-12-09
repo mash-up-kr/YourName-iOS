@@ -72,7 +72,7 @@ final class NameCardDetailViewController: ViewController, Storyboarded {
         
         self.captureView
             .bind(onNext: { [weak self] in
-                self?.viewModel.saveCardImage(with: $0)
+                self?.viewModel.saveImage(view: $0)
             })
             .disposed(by: self.disposeBag)
     }
@@ -131,12 +131,12 @@ final class NameCardDetailViewController: ViewController, Storyboarded {
             .disposed(by: self.disposeBag)
         
         viewModel.captureBackCard
-            .compactMap { [weak self] in return self?.backCardDetailView?.subviews.first }
+            .compactMap { [weak self] in return self?.backCardDetailView?.scrollView }
             .bind(to: self.captureView)
             .disposed(by: self.disposeBag)
         
         viewModel.captureFrontCard
-            .compactMap { [weak self] in return self?.frontCardDetailView?.subviews.first }
+            .compactMap { [weak self] in return self?.frontCardDetailView?.scrollView }
             .bind(to: self.captureView)
             .disposed(by: self.disposeBag)
         
@@ -176,7 +176,7 @@ final class NameCardDetailViewController: ViewController, Storyboarded {
     }
     
     private let backgroundColor = PublishRelay<ColorSource>()
-    private let captureView = PublishRelay<UIView>()
+    private let captureView = PublishRelay<UIScrollView>()
     private let disposeBag = DisposeBag()
     
     @IBOutlet private weak var backButton: UIButton?

@@ -51,13 +51,21 @@ extension UIView {
             $0.startPoint = .zero
             $0.endPoint = CGPoint(x: 1, y: 1)
             $0.name = name
-            $0.frame = self.bounds
+            
+            if let scrollView = self as? UIScrollView {
+                $0.frame = CGRect(x: 0, y: 0,
+                                  width: scrollView.contentSize.width,
+                                  height: scrollView.contentSize.height)
+            } else {
+                $0.frame = self.bounds
+            }
+           
             $0.colors = gradientColors.map { $0.cgColor }
         }
         self.layer.insertSublayer(gradientLayer, at: 0)
     }
     
-    static private let gradientKey = "gradientLayerKey"
+    private static let gradientKey = "gradientLayerKey"
    
 }
 extension UIView {
