@@ -28,6 +28,7 @@ final class CardInfoInputViewController: ViewController, Storyboarded {
         self.viewModel.didLoad()
         self.setupUI()
         self.setupKeyboard()
+        self.hidePickerView()
     }
     
     override func viewDidLayoutSubviews() {

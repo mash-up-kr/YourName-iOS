@@ -296,7 +296,7 @@
                                         <constraint firstAttribute="height" constant="204" placeholder="YES" id="Crd-xD-KzP"/>
                                     </constraints>
                                     <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="string" keyPath="titleText" value="Skill.02 *"/>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="titleText" value="Skill.02"/>
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KDd-IZ-yRt">
@@ -313,7 +313,7 @@
                                         <constraint firstAttribute="height" constant="204" placeholder="YES" id="ine-xN-JyP"/>
                                     </constraints>
                                     <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="string" keyPath="titleText" value="Skill.03 *"/>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="titleText" value="Skill.03"/>
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uJ4-8G-MUX">
