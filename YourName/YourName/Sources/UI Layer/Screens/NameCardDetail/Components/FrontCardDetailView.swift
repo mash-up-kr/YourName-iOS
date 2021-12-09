@@ -42,7 +42,7 @@ final class FrontCardDetailView: NibLoadableView {
         self.nameLabel?.text = viewModel.name
         self.roleLabel?.text = viewModel.role
         self.cardID = viewModel.cardID
-        self.contentView.setColorSource(viewModel.backgroundColor)
+        self.scrollView?.setColorSource(viewModel.backgroundColor)
         self.skillViews?.enumerated().forEach { index, view in
             guard let skill = viewModel.skills[safe: index] else { return view.isHidden = true }
             view.isHidden = false
@@ -58,6 +58,7 @@ final class FrontCardDetailView: NibLoadableView {
     
     private var cardID: Identifier?
     
+    @IBOutlet private(set) weak var scrollView: UIScrollView?
     @IBOutlet private weak var profileImageView: UIImageView?
     @IBOutlet private weak var bubbleView: UIView?
     @IBOutlet private weak var cardIDLabel: UILabel?

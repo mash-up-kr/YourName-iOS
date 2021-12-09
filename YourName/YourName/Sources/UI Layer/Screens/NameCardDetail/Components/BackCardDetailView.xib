@@ -16,6 +16,7 @@
                 <outlet property="contactTableViewHeight" destination="2z2-hb-yDp" id="Qly-AC-l6W"/>
                 <outlet property="contactsTableView" destination="Van-ya-fcp" id="VYO-ex-CWa"/>
                 <outlet property="personalityLabel" destination="vOU-GT-AHB" id="8Xj-qH-Ce6"/>
+                <outlet property="scrollView" destination="1ev-dE-hfj" id="Z4D-TA-XeO"/>
                 <outlet property="tmisCollectionView" destination="ay0-EK-EJI" id="ejF-Uf-qeG"/>
                 <outlet property="tmisCollectionViewHeight" destination="PJv-W9-89t" id="pFC-Fr-Ehb"/>
             </connections>
