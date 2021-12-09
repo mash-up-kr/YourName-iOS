@@ -174,7 +174,6 @@ extension NameCardDetailViewModel: CardDetailMoreViewDelegate {
         guard let image = YourNameSnapshotService.captureToImage(view) else { return }
 
         let vc = UIActivityViewController(activityItems: [image], applicationActivities: nil)
-        vc.excludedActivityTypes = [.saveToCameraRoll]
         
         activityViewController.accept(vc)
         
