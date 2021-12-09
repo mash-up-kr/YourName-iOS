@@ -39,12 +39,18 @@ final class SkillSettingView: UIView, NibLoadable {
             view.rx.skillName?.skip(1)
                 .distinctUntilChanged()
                 .subscribe(onNext: { [weak self] in self?.viewModel.typeSkillName($0, at: index) })
-                .disposed(by: disposeBag)
+                .disposed(by: self.disposeBag)
             
             view.rx.level.skip(1)
                 .distinctUntilChanged()
                 .subscribe(onNext: { [weak self] in self?.viewModel.changeSkillLevel($0, at: index) })
-                .disposed(by: disposeBag)
+                .disposed(by: self.disposeBag)
+            
+            view.rx.tapWhenRecognized
+                .subscribe(onNext: { [weak self] _ in
+                    self?.endEditing(true)
+                })
+                .disposed(by: self.disposeBag)
         }
         
         completeButton?.rx.tap
