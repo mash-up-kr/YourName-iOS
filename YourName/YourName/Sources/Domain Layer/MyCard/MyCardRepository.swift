@@ -12,6 +12,7 @@ import UIKit
 protocol MyCardRepository {
     func createMyCard(_ nameCard: Entity.NameCardCreation) -> Observable<Void>
     func fetchMyCards() -> Observable<[Entity.NameCard]>
+    func updateMyCard(id: Identifier, nameCard: Entity.NameCardCreation) -> Observable<Void>
     func removeMyCard(id: Identifier) -> Observable<Entity.Empty>
 }
 
@@ -22,17 +23,20 @@ final class YourNameMyCardRepository: MyCardRepository {
     }
     
     func createMyCard(_ nameCard: Entity.NameCardCreation) -> Observable<Void> {
-        return network.request(MakeCardAPI(nameCard: nameCard)).mapToVoid()
+        return network.request(NewCardAPI(nameCard: nameCard)).mapToVoid()
     }
     
     func fetchMyCards() -> Observable<[Entity.NameCard]> {
-        return Environment.current.network.request(MyNameCardsAPI())
-            .compactMap { $0.list }
+        return network.request(MyNameCardsAPI()).compactMap { $0.list }
+    }
+    
+    func updateMyCard(id: Identifier, nameCard: Entity.NameCardCreation) -> Observable<Void> {
+        return network.request(UpdateCardAPI(cardID: id, nameCard: nameCard)).mapToVoid()
+    }
+    
+    func removeMyCard(id: Identifier) -> Observable<Entity.Empty> {
+        return network.request(RemoveMyNameCardAPI(id: id))
     }
     
     private let network: NetworkServing
-    
-    func removeMyCard(id: Identifier) -> Observable<Entity.Empty> {
-        return Environment.current.network.request(RemoveMyNameCardAPI(id: id))
-    }
 }

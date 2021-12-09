@@ -16,7 +16,7 @@ enum CardBookSection: Int, CaseIterable {
 }
 
 
-final class CardBookListViewController: UIViewController, Storyboarded {
+final class CardBookListViewController: ViewController, Storyboarded {
 
     var viewModel: CardBookListViewModel!
     
@@ -39,6 +39,12 @@ final class CardBookListViewController: UIViewController, Storyboarded {
     private func dispatch(to viewModel: CardBookListViewModel) {
         self.viewModel.didLoad()
         
+        NotificationCenter.default.rx.notification(.cardBookDidChange)
+            .subscribe(onNext: { [weak self] _ in
+                self?.viewModel.refreshCardBooks()
+            })
+            .disposed(by: self.disposeBag)
+        
         self.addFriendButton?.rx.tap.subscribe(onNext: { [weak self] in
             self?.viewModel.tapAddFriend()
         }).disposed(by: self.disposeBag)
@@ -54,6 +60,9 @@ final class CardBookListViewController: UIViewController, Storyboarded {
                 self?.cardBooks = cardBooks
                 self?.cardBookTableView?.reloadData()
             }).disposed(by: self.disposeBag)
+        
+        viewModel.isLoading.bind(to: self.isLoading)
+            .disposed(by: disposeBag)
         
         viewModel.navigation
             .subscribe(onNext: { [weak self] navigation in
@@ -98,15 +107,23 @@ final class CardBookListViewController: UIViewController, Storyboarded {
 extension CardBookListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cardBooks.count
+        return self.cardBooks.isEmpty ? 1 : self.cardBooks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(CardBookCoverTableViewCell.self, for: indexPath) else { return UITableViewCell() }
+        return self.cardBooks.isEmpty ? self.emptyCell(at: indexPath) : self.cardBookCell(at: indexPath)
+    }
+    
+    private func cardBookCell(at indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = self.cardBookTableView?.dequeueReusableCell(CardBookCoverTableViewCell.self, for: indexPath) else { return UITableViewCell() }
         guard let cardBook = self.cardBooks[safe: indexPath.row] else { return cell }
         
         cell.configure(with: cardBook)
         return cell
+    }
+    
+    private func emptyCell(at indexPath: IndexPath) -> UITableViewCell {
+        return self.cardBookTableView?.dequeueReusableCell(withIdentifier: "CardBookEmptyTableViewCell", for: indexPath) ?? UITableViewCell()
     }
 }
 

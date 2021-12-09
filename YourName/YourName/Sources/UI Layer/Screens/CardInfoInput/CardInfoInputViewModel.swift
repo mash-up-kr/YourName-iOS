@@ -144,6 +144,7 @@ final class CardInfoInputViewModel {
         if let personality = personality     { self.personality.accept(personality)             }
         if let aboutMe = aboutMe             { self.aboutMe.accept(aboutMe)                     }
         
+        self.shouldHideClear.accept(imageSource == nil)
         self.shouldHideProfilePlaceholder.accept(imageSource != nil)
         self.hasCompletedSkillInput.accept(skills.isEmptyOrNil == false)
         self.hasCompletedTMIInput.accept(interests?.isNotEmpty == true || strongPoints?.isNotEmpty == true)
@@ -255,8 +256,15 @@ final class CardInfoInputViewModel {
         )
         
         self.isLoading.accept(true)
-        self.myCardRepository.createMyCard(nameCard)
-            .subscribe(onNext: { [weak self] _ in
+        
+        let updateMyCard: Observable<Void> = {
+            switch self.state {
+            case .new:          return self.myCardRepository.createMyCard(nameCard)
+            case .edit(let id): return self.myCardRepository.updateMyCard(id: id, nameCard: nameCard)
+            }
+        }()
+        
+        updateMyCard.subscribe(onNext: { [weak self] _ in
                 NotificationCenter.default.post(name: .myCardsDidChange, object: nil)
                 self?.isLoading.accept(false)
                 self?.shouldClose.accept(Void())

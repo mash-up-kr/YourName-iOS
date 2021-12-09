@@ -69,7 +69,7 @@
                                             <constraint firstAttribute="width" constant="48" id="W2z-hE-nhO"/>
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" image="ic_delete"/>
+                                        <state key="normal" image="btn_more"/>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xGS-gb-soA">
                                         <rect key="frame" x="155" y="42" width="48" height="3"/>
@@ -139,7 +139,7 @@
     </scenes>
     <resources>
         <image name="arrow_left_back" width="24" height="24"/>
-        <image name="ic_delete" width="28" height="28"/>
+        <image name="btn_more" width="24" height="24"/>
         <namedColor name="black1">
             <color red="0.082352941176470587" green="0.082352941176470587" blue="0.082352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

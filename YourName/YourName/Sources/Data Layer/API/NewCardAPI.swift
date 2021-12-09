@@ -8,7 +8,7 @@
 import Foundation
 import Moya
 
-struct MakeCardAPI: ServiceAPI {
+struct NewCardAPI: ServiceAPI {
     typealias Response = Entity.Empty
     let nameCard: Entity.NameCardCreation
     
