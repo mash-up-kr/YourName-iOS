@@ -23,7 +23,10 @@ final class SkillSettingViewModel {
         self.skillSettingResponder = skillSettingResponder
         transform()
         if skills.isNotEmpty {
-            let skillViewModels = skills.map { SkillInputViewModel(title: $0.title, level: $0.level) }
+            var skillViewModels = skills.map { SkillInputViewModel(title: $0.title, level: $0.level) }
+            while skillViewModels.count < 3 {
+                skillViewModels.append(.empty)
+            }
             self.skillsForDisplay.accept(skillViewModels)
         } else {
             self.skillsForDisplay.accept([.empty, .empty, .empty])

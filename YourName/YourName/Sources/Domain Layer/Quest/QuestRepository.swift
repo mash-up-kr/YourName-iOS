@@ -45,7 +45,7 @@ final class YourNameQuestRepository: QuestRepository {
 extension Quest {
     static let dummyList = [
         Quest(meta: .makeFirstCardBook, status: .notAchieved, rewardImageURL: "https://erme.s3.ap-northeast-2.amazonaws.com/user_onboarding/Gradient1.png"),
-        Quest(meta: .shareMyNameCard, status: .done, rewardImageURL: "https://erme.s3.ap-northeast-2.amazonaws.com/user_onboarding/Gradient2.png"),
+        Quest(meta: .saveMeetuMyAlbum, status: .done, rewardImageURL: "https://erme.s3.ap-northeast-2.amazonaws.com/user_onboarding/Gradient2.png"),
         Quest(meta: .addFriendNameCard, status: .waitingDone, rewardImageURL: "https://erme.s3.ap-northeast-2.amazonaws.com/user_onboarding/Gradient3.png"),
         Quest(meta: .makeFirstCardBook, status: .notAchieved, rewardImageURL: "https://erme.s3.ap-northeast-2.amazonaws.com/user_onboarding/Gradient4.png"),
         Quest(meta: .makeThreeNameCards, status: .notAchieved, rewardImageURL: "https://erme.s3.ap-northeast-2.amazonaws.com/user_onboarding/Gradient5.png")
