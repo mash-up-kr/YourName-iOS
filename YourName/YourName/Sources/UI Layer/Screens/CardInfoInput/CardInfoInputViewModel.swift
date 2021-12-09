@@ -144,6 +144,7 @@ final class CardInfoInputViewModel {
         if let personality = personality     { self.personality.accept(personality)             }
         if let aboutMe = aboutMe             { self.aboutMe.accept(aboutMe)                     }
         
+        self.shouldHideClear.accept(imageSource == nil)
         self.shouldHideProfilePlaceholder.accept(imageSource != nil)
         self.hasCompletedSkillInput.accept(skills.isEmptyOrNil == false)
         self.hasCompletedTMIInput.accept(interests?.isNotEmpty == true || strongPoints?.isNotEmpty == true)
