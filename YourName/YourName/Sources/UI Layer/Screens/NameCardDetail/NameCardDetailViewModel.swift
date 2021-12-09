@@ -178,7 +178,7 @@ extension NameCardDetailViewModel: CardDetailMoreViewDelegate {
         activityViewController.accept(vc)
         
         // Quest
-        self.questRepository.updateQuest(.shareMyNameCard, to: .waitingDone)
+        self.questRepository.updateQuest(.saveMeetuMyAlbum, to: .waitingDone)
             .subscribe()
             .disposed(by: self.disposeBag)
     }
