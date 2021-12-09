@@ -157,10 +157,10 @@ extension AddFriendCardViewModel {
                 
                 let cardDetailAction = { [weak self] in
                     guard let self = self,
-                          let nameCardId = self.nameCard.value.id else { return }
+                          let nameCardID = self.nameCard.value.uniqueCode else { return }
                     alertController.dismiss()
                     
-                    self.navigation.accept(.push(.cardDetail(cardID: nameCardId)))
+                    self.navigation.accept(.push(.cardDetail(cardID: nameCardID)))
                 }
                 let alertItem = AlertItem(title: "친구 미츄 추가완료!",
                                            message: "친구 미츄가 성공적으로 추가되었습니다.",
