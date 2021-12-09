@@ -175,6 +175,7 @@ extension NameCardDetailViewModel: CardDetailMoreViewDelegate {
 
         let vc = UIActivityViewController(activityItems: [image], applicationActivities: nil)
         vc.excludedActivityTypes = [.saveToCameraRoll]
+        
         activityViewController.accept(vc)
         
         // Quest
