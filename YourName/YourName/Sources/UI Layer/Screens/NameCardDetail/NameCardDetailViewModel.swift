@@ -9,6 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 import Photos
+import UIKit
 
 enum NameCardDetailDestination: Equatable {
     case cardDetailMore(cardID: Identifier)
@@ -169,8 +170,8 @@ extension NameCardDetailViewModel: CardDetailMoreViewDelegate {
         }
     }
     
-    func saveCardImage(with view: UIView) {
-        guard let image = YourNameSnapshotService.captureImage(view) else { return }
+    func saveImage(view: UIScrollView) {
+        guard let image = YourNameSnapshotService.captureToImage(view) else { return }
 
         let vc = UIActivityViewController(activityItems: [image], applicationActivities: nil)
         vc.excludedActivityTypes = [.saveToCameraRoll]

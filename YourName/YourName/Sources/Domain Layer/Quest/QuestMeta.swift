@@ -13,6 +13,7 @@ enum QuestMeta: String, Decodable {
     case addFriendNameCard
     case makeFirstCardBook = "makeNewCollection"
     case makeThreeNameCards
+    case saveMeetuMyAlbum
     
     var title: String {
         switch self {
@@ -21,6 +22,7 @@ enum QuestMeta: String, Decodable {
         case .addFriendNameCard: return "친구 미츄 추가하기"
         case .makeFirstCardBook: return "새로운 도감 만들기"
         case .makeThreeNameCards: return "미츄 3개 이상 만들기"
+        case .saveMeetuMyAlbum: return "미츄 앨범에 추가하기"
         }
     }
 }

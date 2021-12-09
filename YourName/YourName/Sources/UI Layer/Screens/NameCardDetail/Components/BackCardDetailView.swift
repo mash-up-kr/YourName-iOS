@@ -31,7 +31,8 @@ final class BackCardDetailView: NibLoadableView {
         self.contactsTableView?.reloadData()
         self.tmis = viewModel.tmis
         self.tmisCollectionView?.reloadData()
-        self.contentView.setColorSource(viewModel.backgroundColor)
+        self.layoutIfNeeded()
+        self.scrollView?.setColorSource(viewModel.backgroundColor)
     }
     
     private func setupUI() {
@@ -64,6 +65,7 @@ final class BackCardDetailView: NibLoadableView {
     
     private let disposeBag = DisposeBag()
     
+    @IBOutlet private(set) weak var scrollView: UIScrollView?
     @IBOutlet private weak var contactsTableView: UITableView?
     @IBOutlet private weak var contactTableViewHeight: NSLayoutConstraint?
     @IBOutlet private weak var personalityLabel: UILabel?
