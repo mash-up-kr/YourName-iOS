@@ -124,7 +124,7 @@ final class CardBookDetailViewModel {
             return
         }
         
-        let checkedCardIDs = self.checkedCardIndice.compactMap { index in self.friendCards.value[safe: index]?.id }
+        let checkedCardIDs = self.checkedCardIndice.compactMap { index in self.friendCards.value[safe: index]?.idForDelete }
         
         self.cardRepository.remove(cardIDs: checkedCardIDs, on: cardBookID ?? "all").subscribe(onNext: { [weak self] _ in //deletedCardIDs in
                 guard let self = self           else { return }
@@ -143,6 +143,8 @@ final class CardBookDetailViewModel {
                 self.friendCardsForDisplay.accept(updatedFriendCardsForDisplay)
                 
                 self.checkedCardIndice.removeAll()
+            
+            NotificationCenter.default.post(name: .friendCardDidDelete, object: nil)
             })
             .disposed(by: self.disposeBag)
     }

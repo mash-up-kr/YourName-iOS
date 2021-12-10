@@ -16,6 +16,7 @@ struct NameCard: Equatable, Hashable {
     let introduce: String?
     let bgColors: [String]?
     let profileURL: String?
+    let idForDelete: String?
 }
 #warning("⚠️ TODO: 개발완료 후, Test Target으로 옮겨야합니다") // Booung
 extension NameCard {
@@ -25,7 +26,8 @@ extension NameCard {
             role: "디자이너",
             introduce: "Hello world",
             bgColors: ["#FFF197"],
-            profileURL: nil
+                 profileURL: nil,
+                 idForDelete: nil
         ),
         NameCard(
             id: "2",
@@ -35,7 +37,8 @@ extension NameCard {
             bgColors: ["#FFC5C5",
                        "#FFF199",
                        "#BFFFA1"],
-            profileURL: nil
+            profileURL: nil,
+            idForDelete: nil
         ),
         NameCard(
             id: "3",
@@ -46,7 +49,8 @@ extension NameCard {
                        "#CFFDBA",
                        "#B4ECFE",
                        "#FFCBFD"],
-            profileURL: nil
+            profileURL: nil,
+            idForDelete: nil
         ),
         NameCard(
             id: "4",
@@ -58,7 +62,8 @@ extension NameCard {
                        "#FFCFCF",
                        "#FFF4AB",
                        "#D9FFC8"],
-            profileURL: nil
+            profileURL: nil,
+            idForDelete: nil
         ),
         NameCard(
             id: "5",
@@ -66,7 +71,8 @@ extension NameCard {
             role: "호주 푸들 🐶",
             introduce: "호주에는 푸들이...",
             bgColors: ["#D6BFFF"],
-            profileURL: nil
+            profileURL: nil,
+            idForDelete: nil
         ),
         NameCard(
             id: "6",
@@ -74,7 +80,8 @@ extension NameCard {
             role: "라이어",
             introduce: "우하하",
             bgColors: ["#FFCBFD"],
-            profileURL: nil
+            profileURL: nil,
+            idForDelete: nil
         ),
         NameCard(
             id: "7",
@@ -83,7 +90,8 @@ extension NameCard {
             introduce: "영상은 이렇게 오려ㅛㅎ거",
             bgColors: ["#CAADFF",
                        "#B4ECFE"],
-            profileURL: nil
+            profileURL: nil,
+            idForDelete: nil
         )
     ]
 }
