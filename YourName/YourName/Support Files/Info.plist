@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>사진첩 접근 권한을 승인하지 않으면, 사진을 사용해서 카드를 제작할 수 없어요! 사진첩 접근 권한을 꼭 승인해주세요.</string>
-    <key>NSPhotoLibraryAddUsageDescription</key>
-    <string>사진첩 접근 권한을 승인하지 않으면, 사진첩에 카드를 저장할 수 없어요! 사진첩 접근 권한을 꼭 승인해주세요.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -47,6 +43,10 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>사진첩 접근 권한을 승인하지 않으면, 사진첩에 카드를 저장할 수 없어요! 사진첩 접근 권한을 꼭 승인해주세요.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>사진첩 접근 권한을 승인하지 않으면, 사진을 사용해서 카드를 제작할 수 없어요! 사진첩 접근 권한을 꼭 승인해주세요.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

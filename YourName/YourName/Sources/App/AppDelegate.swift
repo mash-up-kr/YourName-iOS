@@ -25,7 +25,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         
         kakaoSDKInit()
         FirebaseApp.configure()
-        FLEXManager.shared.showExplorer()
+//        FLEXManager.shared.showExplorer()
         return true
     }
     
