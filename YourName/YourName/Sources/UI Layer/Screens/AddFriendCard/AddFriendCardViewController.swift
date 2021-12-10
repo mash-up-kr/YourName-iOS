@@ -31,7 +31,7 @@ final class AddFriendCardViewController: ViewController, Storyboarded {
     
     
     private let disposeBag = DisposeBag()
-    private let searchId = PublishRelay<String>()
+    private let searchId = BehaviorRelay<String>(value: "")
     var viewModel: AddFriendCardViewModel!
     var cardDetailViewControllerFactory: ((Identifier) -> NameCardDetailViewController)!
     
@@ -172,6 +172,10 @@ extension AddFriendCardViewController {
             })
             .disposed(by: disposeBag)
         
+        NotificationCenter.default.addObserver(forName: .addFriendCard, object: nil, queue: nil) { [weak self] _ in
+            guard let self = self else { return }
+            self.viewModel.searchMeetu(with: self.searchId.value)
+        }
     }
     
     private func render(_ viewModel: AddFriendCardViewModel) {

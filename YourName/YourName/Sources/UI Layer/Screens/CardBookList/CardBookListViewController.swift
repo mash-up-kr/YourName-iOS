@@ -35,9 +35,12 @@ final class CardBookListViewController: ViewController, Storyboarded {
         dispatch(to: viewModel)
         render(viewModel)
         
-        NotificationCenter.default.addObserver(forName: .friendCardDidDelete, object: nil, queue: nil) { [weak self] _ in
-            self?.viewModel.didLoad()
-        }
+        Observable.merge(NotificationCenter.default.rx.notification(.addFriendCard),
+                         NotificationCenter.default.rx.notification(.friendCardDidDelete))
+            .subscribe(onNext: { [weak self] _ in
+                self?.viewModel.didLoad()
+            })
+            .disposed(by: self.disposeBag)
     }
     
     private func dispatch(to viewModel: CardBookListViewModel) {

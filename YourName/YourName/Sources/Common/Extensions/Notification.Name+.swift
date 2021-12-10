@@ -12,4 +12,5 @@ extension NSNotification.Name {
     static let myCardDidDelete =      NSNotification.Name(rawValue: "myCardDidDelete")
     static let cardBookDidChange =    NSNotification.Name(rawValue: "cardBookDidChange")
     static let friendCardDidDelete =  NSNotification.Name(rawValue: "friendCardDidDelete")
+    static let addFriendCard =        NSNotification.Name(rawValue: "addFriendCard")
 }
