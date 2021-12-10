@@ -9,22 +9,29 @@ import Foundation
 
 final class NameCardDetailDependencyContainer {
     
+    typealias CardType = NameCardDetailViewModel.CardType
+    
     let cardID: Identifier
+    let cardType: CardType
     
     init(cardID: Identifier, myCardListDependencyContainer: MyCardListDependencyContainer) {
         self.cardID = cardID
+        self.cardType = .myCard
     }
     
     init(cardID: Identifier, cardListDependencyContainer: CardBookListDependencyContainer) {
         self.cardID = cardID
+        self.cardType = .friendCard
     }
     
     init(cardID: Identifier, cardBookDetailDependencyContainer: CardBookDetailDependencyContainer) {
         self.cardID = cardID
+        self.cardType = .friendCard
     }
     
     init(cardID: Identifier, addFriendCardDependencyContainer: AddFriendCardDependencyContainer) {
         self.cardID = cardID
+        self.cardType = .friendCard
     }
     
     func createNameCardDetailViewController() -> NameCardDetailViewController {
@@ -54,7 +61,8 @@ final class NameCardDetailDependencyContainer {
                                        cardRepository: cardRepository,
                                        myCardRepository: self.createMyCardRepository(),
                                        clipboardService: clipboardService,
-                                       questRepository: YourNameQuestRepository())
+                                       questRepository: YourNameQuestRepository(),
+                                       cardType: self.cardType)
     }
     
     private func createCardRepository() -> CardRepository {

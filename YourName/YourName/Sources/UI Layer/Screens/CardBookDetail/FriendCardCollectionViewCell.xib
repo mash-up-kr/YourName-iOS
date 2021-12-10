@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="267" height="342"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eh8-ef-uUV">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eh8-ef-uUV">
                         <rect key="frame" x="29.5" y="16" width="208" height="229"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -34,7 +34,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YDG-FX-EV5">
                         <rect key="frame" x="29.5" y="253" width="208" height="24"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="부가설명은 1줄까지.." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I7S-Yn-N5n">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="부가설명은 1줄까지.." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I7S-Yn-N5n">
                                 <rect key="frame" x="4" y="4" width="200" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" name="gray2"/>
@@ -101,6 +101,7 @@
                 <outlet property="checkBoxView" destination="x8E-42-Wdq" id="ghO-8c-uYj"/>
                 <outlet property="nameLabel" destination="GuR-mE-yCN" id="ovW-8R-SvG"/>
                 <outlet property="profileImageView" destination="eh8-ef-uUV" id="hxl-Tv-BxM"/>
+                <outlet property="roleBackgroundView" destination="YDG-FX-EV5" id="g9E-vA-tjd"/>
                 <outlet property="roleLabel" destination="I7S-Yn-N5n" id="KiZ-5w-5gb"/>
             </connections>
             <point key="canvasLocation" x="-136.95652173913044" y="72.991071428571431"/>

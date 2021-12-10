@@ -31,7 +31,7 @@ final class AddFriendCardViewController: ViewController, Storyboarded {
     
     
     private let disposeBag = DisposeBag()
-    private let searchId = PublishRelay<String>()
+    private let searchId = BehaviorRelay<String>(value: "")
     var viewModel: AddFriendCardViewModel!
     var cardDetailViewControllerFactory: ((Identifier) -> NameCardDetailViewController)!
     
@@ -98,6 +98,8 @@ extension AddFriendCardViewController {
     }
     
     private func configure(_ button: UIButton, for state: FriendCardState) {
+        button.setTitle("추가하기", for: .normal)
+        
         switch state {
         case .isAdded:
             button.backgroundColor = Palette.gray1
@@ -109,6 +111,11 @@ extension AddFriendCardViewController {
             button.isHidden = false
         case .noResult:
             button.isHidden = true
+        case .isMine:
+            button.isHidden = false
+            button.isEnabled = false
+            button.setTitle("내 미츄는 도감에 등록할 수 없습니다", for: .normal)
+            button.backgroundColor = Palette.gray1
         }
     }
     
@@ -120,7 +127,7 @@ extension AddFriendCardViewController {
     private func bind() {
         
         Observable.merge(
-            self.searchTextField.rx.controlEvent([.editingDidEndOnExit])
+            self.searchTextField.rx.controlEvent([.editingDidEnd])
                 .mapToVoid(),
             self.resultView.rx.tapWhenRecognized
                 .mapToVoid(),
@@ -165,6 +172,10 @@ extension AddFriendCardViewController {
             })
             .disposed(by: disposeBag)
         
+        NotificationCenter.default.addObserver(forName: .addFriendCard, object: nil, queue: nil) { [weak self] _ in
+            guard let self = self else { return }
+            self.viewModel.searchMeetu(with: self.searchId.value)
+        }
     }
     
     private func render(_ viewModel: AddFriendCardViewModel) {
@@ -224,6 +235,16 @@ extension AddFriendCardViewController {
 
                     self.resultView.configure(frontCardItem: frontItem,
                                               backCardItem: backItem)
+                    
+                    
+                    // MARK: 내 명함인 경우
+                case .isMine(let frontItem, let backItem):
+                    self.noResultView.isHidden = true
+                    self.resultView.isHidden = false
+                    self.validationLabel.isHidden = true
+                    
+                    self.resultView.configure(frontCardItem: frontItem,
+                                              backCardItem: backItem)
                 }
             })
             .disposed(by: disposeBag)
@@ -258,7 +279,7 @@ extension AddFriendCardViewController {
         self.resultView.snp.remakeConstraints { [weak self] in
             var topOffset = 0
             switch state {
-            case .success:
+            case .success, .isMine:
                 topOffset = 20
             case .isAdded:
                 topOffset = 37
@@ -279,13 +300,13 @@ extension AddFriendCardViewController {
             var bottomInset = 0
             switch state {
             case .isAdded:
+                bottomInset = 18
+            case .success, .isMine:
                 bottomInset = 31
-            case .success:
-                bottomInset = 44
             default:
                 break
             }
-            $0.bottom.equalToSuperview().inset(bottomInset)
+            $0.bottom.equalTo(self.view.safeAreaInsets).inset(bottomInset)
             $0.height.equalTo(56)
             $0.leading.trailing.equalToSuperview().inset(24)
         }

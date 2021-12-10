@@ -130,10 +130,10 @@
                             <constraint firstItem="tuy-nF-s5N" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="ABe-VZ-q7M"/>
                             <constraint firstAttribute="bottom" secondItem="e0N-wh-vu5" secondAttribute="bottom" id="FiT-a0-PRR"/>
                             <constraint firstItem="tuy-nF-s5N" firstAttribute="top" secondItem="awy-nx-T1a" secondAttribute="bottom" id="K7N-4V-2Qh"/>
-                            <constraint firstItem="awy-nx-T1a" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="44" id="Roo-Ab-QGy"/>
                             <constraint firstItem="awy-nx-T1a" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="gqy-sK-UAt"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="tuy-nF-s5N" secondAttribute="trailing" id="gsY-oG-goX"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="awy-nx-T1a" secondAttribute="trailing" id="h8U-iZ-e2l"/>
+                            <constraint firstItem="awy-nx-T1a" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="hsO-Ez-Su5"/>
                             <constraint firstItem="dAz-wk-ajK" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="24" id="jDA-7x-Br6"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="dAz-wk-ajK" secondAttribute="trailing" constant="24" id="yCn-Fx-fFl"/>
                         </constraints>

@@ -24,6 +24,10 @@ final class NameCardDetailViewModel {
         case front(FrontCardDetailViewModel)
         case back(BackCardDetailViewModel)
     }
+    enum CardType {
+        case myCard
+        case friendCard
+    }
     
     let alertController = PublishRelay<AlertViewController>()
     let navigation = PublishRelay<NameCardDetailNavigation>()
@@ -36,17 +40,20 @@ final class NameCardDetailViewModel {
     let captureBackCard = PublishRelay<Void>()
     let captureFrontCard = PublishRelay<Void>()
     let activityViewController = PublishRelay<UIActivityViewController>()
+    let cardType = BehaviorRelay<CardType?>(value: nil)
     
     init(cardID: Identifier,
          cardRepository: CardRepository,
          myCardRepository: MyCardRepository,
          clipboardService: ClipboardService,
-         questRepository: QuestRepository) {
+         questRepository: QuestRepository,
+         cardType: CardType) {
         self.cardID = cardID
         self.cardRepository = cardRepository
         self.myCardRepository = myCardRepository
         self.questRepository = questRepository
         self.clipboardService = clipboardService
+        self.cardType.accept(cardType)
     }
     
     deinit {
@@ -80,8 +87,14 @@ final class NameCardDetailViewModel {
         self.shouldShowCopyToast.accept(Void())
     }
     
-    func tapMore() {
-        self.navigation.accept(.show(.cardDetailMore(cardID: self.cardID)))
+    func tapAccessaryButton() {
+        guard let cardType = self.cardType.value else { return }
+        switch cardType {
+        case .friendCard:
+            self.didTapRemoveCard(id: self.cardID)
+        case .myCard:
+            self.navigation.accept(.show(.cardDetailMore(cardID: self.cardID)))
+        }
     }
     
     func tapFrontCard() {
@@ -195,7 +208,14 @@ extension NameCardDetailViewModel: CardDetailMoreViewDelegate {
             }
             .mapToVoid()
             .bind(onNext: { [weak self] in
-                NotificationCenter.default.post(name: .myCardDidDelete, object: nil)
+                guard let cardType = self?.cardType.value else { return }
+                switch cardType {
+                case .myCard:
+                    NotificationCenter.default.post(name: .myCardDidDelete, object: nil)
+                case .friendCard:
+                    NotificationCenter.default.post(name: .friendCardDidDelete, object: nil)
+                }
+                
                 self?.shouldClose.accept(())
             })
             .disposed(by: self.disposeBag)

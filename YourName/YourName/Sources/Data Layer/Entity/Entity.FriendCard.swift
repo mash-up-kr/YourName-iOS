@@ -13,5 +13,6 @@ extension Entity {
         
         let nameCard: NameCard?
         let isAdded: Bool?
+        let isMine: Bool?
     }
 }

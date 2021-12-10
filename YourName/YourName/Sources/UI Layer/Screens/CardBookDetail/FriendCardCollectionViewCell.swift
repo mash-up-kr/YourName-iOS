@@ -40,6 +40,7 @@ final class FriendCardCollectionViewCell: UICollectionViewCell {
         self.borderWidth = 3
         self.checkBoxView?.clipsToBounds = true
         self.checkBoxView?.borderWidth = 3
+        self.roleBackgroundView?.alpha = 0.6
     }
     
     func configure(with viewModel: FriendCardCellViewModel) {
@@ -79,6 +80,8 @@ final class FriendCardCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var profileImageView: UIImageView?
     @IBOutlet private weak var roleLabel: UILabel?
     @IBOutlet private weak var nameLabel: UILabel?
+
+    @IBOutlet private weak var roleBackgroundView: UIView?
     @IBOutlet private weak var checkBoxView: UIImageView?
     
 }

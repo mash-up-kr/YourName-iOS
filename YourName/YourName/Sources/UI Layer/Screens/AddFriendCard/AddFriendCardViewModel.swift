@@ -25,6 +25,8 @@ final class AddFriendCardViewModel {
         case noResult
         case isAdded(frontCardItem: FrontCardItem,
                     backCardItem: BackCardItem)
+        case isMine(frontCardItem: FrontCardItem,
+                    backCardItem: BackCardItem)
     }
     
     // MARK: - Properties
@@ -38,6 +40,7 @@ final class AddFriendCardViewModel {
     
     let addFriendCardRepository: AddFriendCardRepository!
     let cardRepository: CardRepository!
+    let questRepository: QuestRepository!
     
     private let disposeBag = DisposeBag()
     private let nameCard = BehaviorRelay<(id: Identifier?, uniqueCode: String?)>(value: (id: nil, uniqueCode: nil))
@@ -45,9 +48,11 @@ final class AddFriendCardViewModel {
     // MARK: - Init
     
     init(addFriendCardRepository: AddFriendCardRepository,
-         cardRepository: CardRepository) {
+         cardRepository: CardRepository,
+         questRepository: QuestRepository) {
         self.addFriendCardRepository = addFriendCardRepository
         self.cardRepository = cardRepository
+        self.questRepository = questRepository
     }
     
     deinit {
@@ -82,14 +87,15 @@ extension AddFriendCardViewModel {
         // 결과가 있는 경우
         let cardItem = result
             .filter { $0.nameCard != nil}
-            .compactMap { [weak self] response -> (front: FrontCardItem, back: BackCardItem, isAdded: Bool)? in
+            .compactMap { [weak self] response -> (front: FrontCardItem, back: BackCardItem, isAdded: Bool, isMine: Bool)? in
                 guard let self = self,
                       let nameCard = response.nameCard,
                       let personalSkills = nameCard.personalSkills,
                       let contacts = nameCard.contacts,
                       let bgColor = nameCard.bgColor?.value,
-                      let isAdded = response.isAdded else { return nil }
-                
+                      let isAdded = response.isAdded,
+                      let isMine = response.isMine else { return nil }
+
                 self.nameCard.accept((id: nameCard.id ?? .empty,
                                       uniqueCode: nameCard.uniqueCode ?? .empty))
                 
@@ -113,26 +119,37 @@ extension AddFriendCardViewModel {
                                      personality: nameCard.personality ?? .empty,
                                      introduce: nameCard.introduce ?? .empty,
                                      backgroundColor: bgColors),
-                        isAdded)
+                        isAdded,
+                        isMine)
             }
             .share()
         
-        // 이미 추가된 경우가 아님 (성공)
+        // 내 명함이 아님 + 추가되지않은상태
         cardItem
-            .filter { !$0.isAdded }
-            .map { frontCard, backCard, _ -> FriendCardState in
+            .filter { (!$0.isAdded && !$0.isMine) }
+            .map { frontCard, backCard, _, _ -> FriendCardState in
                 return .success(frontCardItem: frontCard,
                                 backCardItem: backCard)
             }
             .bind(to: addFriendCardResult)
             .disposed(by: self.disposeBag)
         
-        // 이미 추가된 경우
+        // 내 명함이 아님 + 이미 추가된 경우
         cardItem
-            .filter { $0.isAdded }
-            .map { frontCard, backCard, _ -> FriendCardState in
+            .filter { ($0.isAdded && !$0.isMine) }
+            .map { frontCard, backCard, _, _ -> FriendCardState in
                 return .isAdded(frontCardItem: frontCard,
                                     backCardItem: backCard)
+            }
+            .bind(to: addFriendCardResult)
+            .disposed(by: disposeBag)
+        
+        // 내 명함
+        cardItem
+            .filter { $0.isMine }
+            .map { frontCard, backCard, _, _ -> FriendCardState in
+                return .isMine(frontCardItem: frontCard,
+                               backCardItem: backCard)
             }
             .bind(to: addFriendCardResult)
             .disposed(by: disposeBag)
@@ -149,6 +166,12 @@ extension AddFriendCardViewModel {
             .catchError { error in
                 print(error)
                 return .empty()
+            }
+            .flatMap { [weak self] _ -> Observable<Void> in
+                guard let self = self else { return .empty() }
+                return self.questRepository.updateQuest(.addFriendNameCard, to: .waitingDone)
+                    .asObservable()
+                    .mapToVoid()
             }
             .compactMap { [weak self] _ -> AlertViewController? in
                 guard let self = self else { return nil }
@@ -169,7 +192,8 @@ extension AddFriendCardViewModel {
                                            defaultAction: .init(title: "검색으로 돌아가기", action: { alertController.dismiss() }))
                 
                 self.toastView.accept(ToastView(text: "성공적으로 추가됐츄!"))
-                self.searchMeetu(with: uniqueCode)
+                NotificationCenter.default.post(name: .addFriendCard, object: nil)
+                
                 alertController.configure(item: alertItem)
                 return alertController
             }

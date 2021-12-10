@@ -41,9 +41,9 @@ final class NameCardDetailViewController: ViewController, Storyboarded {
             })
             .disposed(by: self.disposeBag)
         
-        self.moreButton?.rx.tap
+        self.accessoryButton?.rx.tap
             .subscribe(onNext: { [weak viewModel] in
-                viewModel?.tapMore()
+                viewModel?.tapAccessaryButton()
             })
             .disposed(by: self.disposeBag)
         
@@ -56,6 +56,25 @@ final class NameCardDetailViewController: ViewController, Storyboarded {
         self.backCardButton?.rx.tap
             .subscribe(onNext: { [weak viewModel] in
                 viewModel?.tapBackCard()
+            })
+            .disposed(by: self.disposeBag)
+        
+        self.rx.viewWillAppear
+            .flatMapFirst { [weak self] _ -> Observable<NameCardDetailViewModel.CardType?> in
+                guard let self = self else { return .empty() }
+                return self.viewModel.cardType.asObservable()
+            }
+            .compactMap { cardType -> UIImage? in
+                guard let cardType = cardType else { return nil }
+                switch cardType {
+                case .myCard:
+                    return UIImage(named: "btn_more")
+                case .friendCard:
+                    return UIImage(named: "ic_delete")
+                }
+            }
+            .bind(onNext: { [weak self] buttonImage in
+                self?.accessoryButton?.setImage(buttonImage, for: .normal)
             })
             .disposed(by: self.disposeBag)
         
@@ -180,7 +199,7 @@ final class NameCardDetailViewController: ViewController, Storyboarded {
     private let disposeBag = DisposeBag()
     
     @IBOutlet private weak var backButton: UIButton?
-    @IBOutlet private weak var moreButton: UIButton?
+    @IBOutlet private weak var accessoryButton: UIButton?
     
     @IBOutlet private weak var frontCardButton: UIButton?
     @IBOutlet private weak var backCardButton: UIButton?
