@@ -25,6 +25,8 @@ final class AddFriendCardViewModel {
         case noResult
         case isAdded(frontCardItem: FrontCardItem,
                     backCardItem: BackCardItem)
+        case isMine(frontCardItem: FrontCardItem,
+                    backCardItem: BackCardItem)
     }
     
     // MARK: - Properties
@@ -82,14 +84,15 @@ extension AddFriendCardViewModel {
         // 결과가 있는 경우
         let cardItem = result
             .filter { $0.nameCard != nil}
-            .compactMap { [weak self] response -> (front: FrontCardItem, back: BackCardItem, isAdded: Bool)? in
+            .compactMap { [weak self] response -> (front: FrontCardItem, back: BackCardItem, isAdded: Bool, isMine: Bool)? in
                 guard let self = self,
                       let nameCard = response.nameCard,
                       let personalSkills = nameCard.personalSkills,
                       let contacts = nameCard.contacts,
                       let bgColor = nameCard.bgColor?.value,
-                      let isAdded = response.isAdded else { return nil }
-                
+                      let isAdded = response.isAdded,
+                      var isMine = response.isMine else { return nil }
+                isMine = true
                 self.nameCard.accept((id: nameCard.id ?? .empty,
                                       uniqueCode: nameCard.uniqueCode ?? .empty))
                 
@@ -113,26 +116,37 @@ extension AddFriendCardViewModel {
                                      personality: nameCard.personality ?? .empty,
                                      introduce: nameCard.introduce ?? .empty,
                                      backgroundColor: bgColors),
-                        isAdded)
+                        isAdded,
+                        isMine)
             }
             .share()
         
-        // 이미 추가된 경우가 아님 (성공)
+        // 내 명함이 아님 + 추가되지않은상태
         cardItem
-            .filter { !$0.isAdded }
-            .map { frontCard, backCard, _ -> FriendCardState in
+            .filter { (!$0.isAdded && !$0.isMine) }
+            .map { frontCard, backCard, _, _ -> FriendCardState in
                 return .success(frontCardItem: frontCard,
                                 backCardItem: backCard)
             }
             .bind(to: addFriendCardResult)
             .disposed(by: self.disposeBag)
         
-        // 이미 추가된 경우
+        // 내 명함이 아님 + 이미 추가된 경우
         cardItem
-            .filter { $0.isAdded }
-            .map { frontCard, backCard, _ -> FriendCardState in
+            .filter { ($0.isAdded && !$0.isMine) }
+            .map { frontCard, backCard, _, _ -> FriendCardState in
                 return .isAdded(frontCardItem: frontCard,
                                     backCardItem: backCard)
+            }
+            .bind(to: addFriendCardResult)
+            .disposed(by: disposeBag)
+        
+        // 내 명함
+        cardItem
+            .filter { $0.isMine }
+            .map { frontCard, backCard, _, _ -> FriendCardState in
+                return .isMine(frontCardItem: frontCard,
+                               backCardItem: backCard)
             }
             .bind(to: addFriendCardResult)
             .disposed(by: disposeBag)

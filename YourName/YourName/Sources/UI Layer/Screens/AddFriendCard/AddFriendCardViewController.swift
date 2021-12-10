@@ -98,6 +98,8 @@ extension AddFriendCardViewController {
     }
     
     private func configure(_ button: UIButton, for state: FriendCardState) {
+        button.setTitle("추가하기", for: .normal)
+        
         switch state {
         case .isAdded:
             button.backgroundColor = Palette.gray1
@@ -109,6 +111,11 @@ extension AddFriendCardViewController {
             button.isHidden = false
         case .noResult:
             button.isHidden = true
+        case .isMine:
+            button.isHidden = false
+            button.isEnabled = false
+            button.setTitle("내 미츄는 도감에 등록할 수 없습니다", for: .normal)
+            button.backgroundColor = Palette.gray1
         }
     }
     
@@ -222,6 +229,16 @@ extension AddFriendCardViewController {
                     self.resultView.isHidden = false
                     self.validationLabel.isHidden = false
 
+                    self.resultView.configure(frontCardItem: frontItem,
+                                              backCardItem: backItem)
+                    
+                    
+                    // MARK: 내 명함인 경우
+                case .isMine(let frontItem, let backItem):
+                    self.noResultView.isHidden = true
+                    self.resultView.isHidden = false
+                    self.validationLabel.isHidden = true
+                    
                     self.resultView.configure(frontCardItem: frontItem,
                                               backCardItem: backItem)
                 }
