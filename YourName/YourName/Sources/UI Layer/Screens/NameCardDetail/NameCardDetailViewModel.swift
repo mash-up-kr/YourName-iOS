@@ -208,7 +208,14 @@ extension NameCardDetailViewModel: CardDetailMoreViewDelegate {
             }
             .mapToVoid()
             .bind(onNext: { [weak self] in
-                NotificationCenter.default.post(name: .myCardDidDelete, object: nil)
+                guard let cardType = self?.cardType.value else { return }
+                switch cardType {
+                case .myCard:
+                    NotificationCenter.default.post(name: .myCardDidDelete, object: nil)
+                case .friendCard:
+                    NotificationCenter.default.post(name: .friendCardDidDelete, object: nil)
+                }
+                
                 self?.shouldClose.accept(())
             })
             .disposed(by: self.disposeBag)

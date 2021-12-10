@@ -34,6 +34,10 @@ final class CardBookListViewController: ViewController, Storyboarded {
     private func bind(to viewModel: CardBookListViewModel) {
         dispatch(to: viewModel)
         render(viewModel)
+        
+        NotificationCenter.default.addObserver(forName: .friendCardDidDelete, object: nil, queue: nil) { [weak self] _ in
+            self?.viewModel.didLoad()
+        }
     }
     
     private func dispatch(to viewModel: CardBookListViewModel) {
