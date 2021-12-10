@@ -30,7 +30,8 @@ final class AddFriendCardDependencyContainer {
             return dependencyContainer.createNameCardDetailViewController()
         }
         viewController.viewModel = AddFriendCardViewModel(addFriendCardRepository: self.addFriendCardRepository,
-                                                          cardRepository: self.cardRepository)
+                                                          cardRepository: self.cardRepository,
+                                                          questRepository: YourNameQuestRepository())
         viewController.cardDetailViewControllerFactory = cardDetailVieWControllerFactory
         
         return viewController

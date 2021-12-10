@@ -40,6 +40,7 @@ final class AddFriendCardViewModel {
     
     let addFriendCardRepository: AddFriendCardRepository!
     let cardRepository: CardRepository!
+    let questRepository: QuestRepository!
     
     private let disposeBag = DisposeBag()
     private let nameCard = BehaviorRelay<(id: Identifier?, uniqueCode: String?)>(value: (id: nil, uniqueCode: nil))
@@ -47,9 +48,11 @@ final class AddFriendCardViewModel {
     // MARK: - Init
     
     init(addFriendCardRepository: AddFriendCardRepository,
-         cardRepository: CardRepository) {
+         cardRepository: CardRepository,
+         questRepository: QuestRepository) {
         self.addFriendCardRepository = addFriendCardRepository
         self.cardRepository = cardRepository
+        self.questRepository = questRepository
     }
     
     deinit {
@@ -163,6 +166,12 @@ extension AddFriendCardViewModel {
             .catchError { error in
                 print(error)
                 return .empty()
+            }
+            .flatMap { [weak self] _ -> Observable<Void> in
+                guard let self = self else { return .empty() }
+                return self.questRepository.updateQuest(.addFriendNameCard, to: .waitingDone)
+                    .asObservable()
+                    .mapToVoid()
             }
             .compactMap { [weak self] _ -> AlertViewController? in
                 guard let self = self else { return nil }
