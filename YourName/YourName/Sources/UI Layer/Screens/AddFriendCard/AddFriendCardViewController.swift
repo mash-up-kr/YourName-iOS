@@ -275,7 +275,7 @@ extension AddFriendCardViewController {
         self.resultView.snp.remakeConstraints { [weak self] in
             var topOffset = 0
             switch state {
-            case .success:
+            case .success, .isMine:
                 topOffset = 20
             case .isAdded:
                 topOffset = 37
@@ -296,13 +296,13 @@ extension AddFriendCardViewController {
             var bottomInset = 0
             switch state {
             case .isAdded:
+                bottomInset = 18
+            case .success, .isMine:
                 bottomInset = 31
-            case .success:
-                bottomInset = 44
             default:
                 break
             }
-            $0.bottom.equalToSuperview().inset(bottomInset)
+            $0.bottom.equalTo(self.view.safeAreaInsets).inset(bottomInset)
             $0.height.equalTo(56)
             $0.leading.trailing.equalToSuperview().inset(24)
         }

@@ -91,8 +91,8 @@ extension AddFriendCardViewModel {
                       let contacts = nameCard.contacts,
                       let bgColor = nameCard.bgColor?.value,
                       let isAdded = response.isAdded,
-                      var isMine = response.isMine else { return nil }
-                isMine = true
+                      let isMine = response.isMine else { return nil }
+
                 self.nameCard.accept((id: nameCard.id ?? .empty,
                                       uniqueCode: nameCard.uniqueCode ?? .empty))
                 
