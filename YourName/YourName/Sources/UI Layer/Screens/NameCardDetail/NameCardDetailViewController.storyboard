@@ -121,12 +121,12 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="accessoryButton" destination="wxe-7L-iC3" id="FKI-F5-GL4"/>
                         <outlet property="backButton" destination="Uwn-OA-qUW" id="Xbm-qK-6mY"/>
                         <outlet property="backCardButton" destination="BHy-Mw-pgn" id="RTI-Pz-h2Q"/>
                         <outlet property="backCardDetailView" destination="8mH-fq-9BH" id="4uc-gX-zB5"/>
                         <outlet property="frontCardButton" destination="vUy-OQ-jsj" id="kff-jC-YgS"/>
                         <outlet property="frontCardDetailView" destination="DYY-yz-nRL" id="7yL-9B-4Yd"/>
-                        <outlet property="moreButton" destination="wxe-7L-iC3" id="FKI-F5-GL4"/>
                         <outlet property="underlineLeading" destination="EKv-Tk-bVR" id="eXY-iu-7j4"/>
                         <outlet property="underlineTrailing" destination="G3Q-Aw-ILB" id="Ycg-mk-61Y"/>
                         <outlet property="underlineView" destination="xGS-gb-soA" id="8pB-Db-Bb1"/>
