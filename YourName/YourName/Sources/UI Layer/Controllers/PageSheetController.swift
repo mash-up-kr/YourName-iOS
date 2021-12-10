@@ -8,7 +8,6 @@
 import RxCocoa
 import RxSwift
 import UIKit
-import FLEX
 
 protocol PageSheetContentView: UIView {
     var parent: ViewController? { get set }

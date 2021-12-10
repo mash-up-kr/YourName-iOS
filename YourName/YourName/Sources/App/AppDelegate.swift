@@ -9,7 +9,7 @@ import UIKit
 import KakaoSDKCommon
 import KakaoSDKAuth
 import Firebase
-import FLEX
+//import FLEX
 
 final class AppDelegate: UIResponder, UIApplicationDelegate {
     

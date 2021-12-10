@@ -5,8 +5,6 @@
 //  Created by Booung on 2021/09/10.
 //
 
-
-import FLEX
 import RxCocoa
 import RxSwift
 import Then
@@ -64,6 +62,7 @@ class ViewController: UIViewController {
 }
 // MARK: - FLEX Tool
 #if DEBUG
+import FLEX
 extension ViewController {
     private func setupFLEX() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(activateFLEX)).then {
