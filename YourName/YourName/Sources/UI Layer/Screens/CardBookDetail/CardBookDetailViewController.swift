@@ -116,12 +116,22 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
                 
         self.viewModel.shouldShowRemoveReconfirmAlert
             .subscribe(onNext: {
-                // 디자인 개선
-               let alertController = UIAlertController(title: "정말 삭제하시겠츄?", message: "삭제한 미츄와 도감은 복구할 수 없어요.", preferredStyle: .alert)
-                let ok = UIAlertAction(title: "삭제하기", style: .default, handler: { _ in self.viewModel.tapRemoveConfirm() })
-                let cancel = UIAlertAction(title: "삭제 안할래요", style: .cancel, handler: { _ in self.viewModel.tapRemoveCancel() })
-                alertController.addAction(ok)
-                alertController.addAction(cancel)
+                let alertController = AlertViewController.instantiate()
+                let okAction = { [weak self] in
+                    guard let self = self else { return }
+                    alertController.dismiss()
+                    self.viewModel.tapRemoveConfirm()
+                }
+                let cancelAction = { [weak self] in
+                    guard let self = self else { return }
+                    alertController.dismiss()
+                    self.viewModel.tapRemoveCancel()
+                }
+                alertController.configure(item: AlertItem(title: "정말 삭제하시겠츄?",
+                                                          message: "삭제한 미츄와 도감은 복구할 수 없어요.",
+                                                          image: UIImage(named: "meetu_delete")!,
+                                                          emphasisAction: .init(title: "삭제하기", action: okAction),
+                                                          defaultAction: .init(title: "삭제안할래요", action: cancelAction)))
                 self.present(alertController, animated: true, completion: nil)
             })
             .disposed(by: self.disposeBag)
