@@ -188,7 +188,7 @@ extension NameCardDetailViewModel: CardDetailMoreViewDelegate {
 
         let vc = UIActivityViewController(activityItems: [image], applicationActivities: nil)
         
-        activityViewController.accept(vc)
+        self.activityViewController.accept(vc)
         
         // Quest
         self.questRepository.updateQuest(.saveMeetuMyAlbum, to: .waitingDone)
