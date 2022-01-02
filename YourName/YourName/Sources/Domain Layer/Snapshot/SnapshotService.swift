@@ -30,17 +30,15 @@ enum YourNameSnapshotService: SnapshotService {
         // remove from superView
         scrollView.removeFromSuperview()
         
-        // capture
-        scrollView.contentOffset = .zero
-        let captureSize = CGSize(width: scrollView.contentSize.width,
-                                 height: scrollView.contentSize.height)
-     
-        UIGraphicsBeginImageContext(captureSize)
-        scrollView.frame = CGRect(x: 0, y: 0,
-                            width: captureSize.width,
-                            height: captureSize.height)
-        scrollView.layer.render(in: UIGraphicsGetCurrentContext()!)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
+        // UIImage render
+        let renderer = UIGraphicsImageRenderer(size: scrollView.contentSize)
+        let image = renderer.image { [weak scrollView] context in
+            guard let scrollView = scrollView else { return }
+            scrollView.frame = CGRect(x: 0, y: 0,
+                                      width: scrollView.contentSize.width,
+                                      height: scrollView.contentSize.height)
+            scrollView.layer.render(in: context.cgContext)
+        }
         
         // add subview & configure scrollView
         superview?.addSubview(scrollView)
@@ -48,9 +46,7 @@ enum YourNameSnapshotService: SnapshotService {
         scrollView.snp.makeConstraints { $0.edges.equalToSuperview() }
         scrollView.frame = savedFrame
         scrollView.contentOffset = savedOffset
-        
-        // end
-        UIGraphicsEndImageContext()
+    
         return image
     }
 }
