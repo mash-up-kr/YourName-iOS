@@ -20,22 +20,41 @@ final class MySkillProgressView: UIView, NibLoadable {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupFromNib()
-        configure(skillStackView: skillStackView)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.configure(skillStackView: skillStackView)
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupFromNib()
-        configure(skillStackView: skillStackView)
     }
     
     private func configure(skillStackView: UIStackView) {
         guard let firstView = skillStackView.subviews.first,
               let endView = skillStackView.subviews.last else { return }
-        firstView.cornerRadius = (self.bounds.height * 0.26) / 2
-        endView.cornerRadius = (self.bounds.height * 0.26) / 2
-        firstView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
-        endView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner]
+        
+        let firstViewBezierPath = UIBezierPath(roundedRect: CGRect(origin: .zero, size: .init(width: (self.bounds.width / 10),
+                                                                               height: (self.bounds.height * 0.26))),
+                                byRoundingCorners: [.topLeft, .bottomLeft],
+                                cornerRadii: .init(width: (self.bounds.height * 0.26) / 2,
+                                                   height: (self.bounds.height * 0.26) / 2))
+        let endViewBezierPath = UIBezierPath(roundedRect: CGRect(origin: .zero, size: .init(width: (self.bounds.width / 10),
+                                                                                            height: (self.bounds.height * 0.26))),
+                                             byRoundingCorners: [.topRight, .bottomRight],
+                                             cornerRadii: .init(width: (self.bounds.height * 0.26) / 2,
+                                                                height: (self.bounds.height * 0.26) / 2))
+ 
+        firstView.layer.mask = setupRoundCornerLayer(path: firstViewBezierPath)
+        endView.layer.mask = self.setupRoundCornerLayer(path: endViewBezierPath)
+    }
+    
+    private func setupRoundCornerLayer(path: UIBezierPath) -> CAShapeLayer {
+        let maskedLayer = CAShapeLayer()
+        maskedLayer.path = path.cgPath
+        return maskedLayer
     }
     
     func configure(skill: MySkillProgressView.Item) {
