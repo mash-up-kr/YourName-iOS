@@ -35,9 +35,6 @@ final class AddFriendCardBackView: NibLoadableView {
     @IBOutlet private unowned var personalityView: UIStackView!
     @IBOutlet private unowned var personalityStackView: UIStackView!
     @IBOutlet private unowned var personalityViewTopConstraints: NSLayoutConstraint!
-    private let meetUImage = UIImageView().then {
-        $0.image = UIImage(named: "meetu_addFriendCard")
-    }
     
     var didTapFlipButton: ((AddFriendCardResultView.CardState) -> Void)!
     private let disposeBag = DisposeBag()
@@ -115,17 +112,6 @@ extension AddFriendCardBackView {
         self.contactStackView.layoutMargins = .init(top: 23, left: 20, bottom: 23, right: 20)
         self.personalityView.isLayoutMarginsRelativeArrangement = true
         self.personalityView.layoutMargins = .init(top: 23, left: 20, bottom: 23, right: 20)
-        
-        self.contentView.addSubviews(self.meetUImage)
-        self.layoutIfNeeded()
-        self.meetUImage.snp.makeConstraints {
-            let width = ( self.contentView.bounds.width * 162 ) / 312
-            let height = width * (41/162)
-            $0.width.equalTo(width)
-            $0.height.equalTo(height)
-            $0.bottom.equalToSuperview().inset(36)
-            $0.centerX.equalToSuperview()
-        }
     }
     
     private func bind() {

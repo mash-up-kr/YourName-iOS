@@ -35,17 +35,18 @@ final class MySkillProgressView: UIView, NibLoadable {
     private func configure(skillStackView: UIStackView) {
         guard let firstView = skillStackView.subviews.first,
               let endView = skillStackView.subviews.last else { return }
-        
-        let firstViewBezierPath = UIBezierPath(roundedRect: CGRect(origin: .zero, size: .init(width: (self.bounds.width / 10),
-                                                                               height: (self.bounds.height * 0.26))),
+        let skillViewHeight = self.bounds.height * 0.2692
+        let skillViewWidth = self.bounds.width / 10
+        let firstViewBezierPath = UIBezierPath(roundedRect: CGRect(origin: .zero, size: .init(width: skillViewWidth,
+                                                                               height: skillViewHeight)),
                                 byRoundingCorners: [.topLeft, .bottomLeft],
-                                cornerRadii: .init(width: (self.bounds.height * 0.26) / 2,
-                                                   height: (self.bounds.height * 0.26) / 2))
-        let endViewBezierPath = UIBezierPath(roundedRect: CGRect(origin: .zero, size: .init(width: (self.bounds.width / 10),
-                                                                                            height: (self.bounds.height * 0.26))),
+                                cornerRadii: .init(width: skillViewHeight / 2,
+                                                   height: skillViewHeight / 2))
+        let endViewBezierPath = UIBezierPath(roundedRect: CGRect(origin: .zero, size: .init(width: skillViewWidth,
+                                                                                            height: skillViewHeight)),
                                              byRoundingCorners: [.topRight, .bottomRight],
-                                             cornerRadii: .init(width: (self.bounds.height * 0.26) / 2,
-                                                                height: (self.bounds.height * 0.26) / 2))
+                                             cornerRadii: .init(width: skillViewHeight / 2,
+                                                                height: skillViewHeight / 2))
  
         firstView.layer.mask = setupRoundCornerLayer(path: firstViewBezierPath)
         endView.layer.mask = self.setupRoundCornerLayer(path: endViewBezierPath)
