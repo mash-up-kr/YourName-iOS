@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 
 enum AddFriendCardDestination: Equatable {
-    case cardDetail(uniqueCode: UniqueCode)
+    case cardDetail(uniqueCode: UniqueCode, cardId: Identifier)
 }
 
 typealias AddFriendCardNavigation = Navigation<AddFriendCardDestination>
@@ -181,10 +181,11 @@ extension AddFriendCardViewModel {
                 
                 let cardDetailAction = { [weak self] in
                     guard let self = self,
-                          let uniqueCode = self.nameCard.value.uniqueCode else { return }
+                          let uniqueCode = self.nameCard.value.uniqueCode,
+                          let cardId = self.nameCard.value.id else { return }
                     alertController.dismiss()
                     
-                    self.navigation.accept(.push(.cardDetail(uniqueCode: uniqueCode)))
+                    self.navigation.accept(.push(.cardDetail(uniqueCode: uniqueCode, cardId: cardId)))
                 }
                 let alertItem = AlertItem(title: "친구 미츄 추가완료!",
                                            messages: "친구 미츄가 성공적으로 추가되었습니다.",

@@ -18,7 +18,7 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
     
     var viewModel: CardBookDetailViewModel!
     var addFriendCardViewControllerFactory: (() -> AddFriendCardViewController)!
-    var nameCardDetailViewControllerFactory: ((UniqueCode) -> NameCardDetailViewController)!
+    var nameCardDetailViewControllerFactory: ((Identifier, UniqueCode) -> NameCardDetailViewController)!
     
     override func viewDidLoad() {
         self.navigationController?.navigationBar.isHidden = true
@@ -150,7 +150,7 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
     
     private func createViewController(_ next: CardBookDetailDestination) -> UIViewController {
         switch next {
-        case .cardDetail(let uniqueCode): return self.nameCardDetailViewControllerFactory(uniqueCode)
+        case .cardDetail(let cardId, let uniqueCode): return self.nameCardDetailViewControllerFactory(cardId, uniqueCode)
         }
     }
     

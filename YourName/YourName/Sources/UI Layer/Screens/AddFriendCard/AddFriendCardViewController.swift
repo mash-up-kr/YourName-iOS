@@ -33,7 +33,7 @@ final class AddFriendCardViewController: ViewController, Storyboarded {
     private let disposeBag = DisposeBag()
     private let searchText = BehaviorRelay<UniqueCode>(value: "")
     var viewModel: AddFriendCardViewModel!
-    var cardDetailViewControllerFactory: ((UniqueCode) -> NameCardDetailViewController)!
+    var cardDetailViewControllerFactory: ((UniqueCode, Identifier) -> NameCardDetailViewController)!
     
     override var hidesBottomBarWhenPushed: Bool {
         get { return navigationController?.topViewController == self }
@@ -270,8 +270,8 @@ extension AddFriendCardViewController {
     
     private func createViewController(_ next: AddFriendCardDestination) -> UIViewController {
         switch next {
-        case .cardDetail(let uniqueCode):
-            return cardDetailViewControllerFactory(uniqueCode)
+        case .cardDetail(let uniqueCode, let cardId):
+            return cardDetailViewControllerFactory(uniqueCode, cardId)
         }
     }
     

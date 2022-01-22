@@ -13,23 +13,21 @@ final class NameCardDetailDependencyContainer {
     
     private let uniqueCode: UniqueCode
     private let cardType: CardType
+    private var cardId: Identifier? = nil
     
     init(uniqueCode: UniqueCode, myCardListDependencyContainer: MyCardListDependencyContainer) {
         self.uniqueCode = uniqueCode
         self.cardType = .myCard
     }
     
-    init(uniqueCode: UniqueCode, cardListDependencyContainer: CardBookListDependencyContainer) {
+    init(cardId: Identifier, uniqueCode: UniqueCode, cardBookDetailDependencyContainer: CardBookDetailDependencyContainer) {
         self.uniqueCode = uniqueCode
+        self.cardId = cardId
         self.cardType = .friendCard
     }
     
-    init(uniqueCode: UniqueCode, cardBookDetailDependencyContainer: CardBookDetailDependencyContainer) {
-        self.uniqueCode = uniqueCode
-        self.cardType = .friendCard
-    }
-    
-    init(uniqueCode: UniqueCode, addFriendCardDependencyContainer: AddFriendCardDependencyContainer) {
+    init(cardId: Identifier, uniqueCode: UniqueCode, addFriendCardDependencyContainer: AddFriendCardDependencyContainer) {
+        self.cardId = cardId
         self.uniqueCode = uniqueCode
         self.cardType = .friendCard
     }
@@ -39,8 +37,8 @@ final class NameCardDetailDependencyContainer {
         let viewModel = createNameCardDetailViewModel()
         viewController.viewModel = viewModel
         
-        viewController.cardDetailMoreViewFactory = { cardID -> CardDetailMoreViewController in
-            let moreViewModel = CardDetailMoreViewModel(uniqueCode: self.uniqueCode,
+        viewController.cardDetailMoreViewFactory = { uniqueCode -> CardDetailMoreViewController in
+            let moreViewModel = CardDetailMoreViewModel(uniqueCode: uniqueCode,
                                                         delegate: viewModel)
             let moreView = CardDetailMoreView(viewModel: moreViewModel, parent: viewController)
             let pageSheetController = PageSheetController(contentView: moreView)
@@ -57,7 +55,9 @@ final class NameCardDetailDependencyContainer {
     private func createNameCardDetailViewModel() -> NameCardDetailViewModel {
         let cardRepository = self.createCardRepository()
         let clipboardService = self.createClipboardService()
-        return NameCardDetailViewModel(uniqueCode: uniqueCode,
+        
+        return NameCardDetailViewModel(cardId: self.cardId,
+                                       uniqueCode: uniqueCode,
                                        cardRepository: cardRepository,
                                        myCardRepository: self.createMyCardRepository(),
                                        clipboardService: clipboardService,

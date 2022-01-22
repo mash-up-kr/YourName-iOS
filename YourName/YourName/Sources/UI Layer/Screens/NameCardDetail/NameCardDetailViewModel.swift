@@ -42,12 +42,14 @@ final class NameCardDetailViewModel {
     let activityViewController = PublishRelay<UIActivityViewController>()
     let cardType = BehaviorRelay<CardType?>(value: nil)
     
-    init(uniqueCode: UniqueCode,
+    init(cardId: Identifier?,
+         uniqueCode: UniqueCode,
          cardRepository: CardRepository,
          myCardRepository: MyCardRepository,
          clipboardService: ClipboardService,
          questRepository: QuestRepository,
          cardType: CardType) {
+        self.cardId = cardId
         self.uniqueCode = uniqueCode
         self.cardRepository = cardRepository
         self.myCardRepository = myCardRepository
@@ -91,7 +93,8 @@ final class NameCardDetailViewModel {
         guard let cardType = self.cardType.value else { return }
         switch cardType {
         case .friendCard:
-            self.didTapRemoveCard(uniqueCode: self.uniqueCode)
+            guard let cardId = self.cardId else { return }
+            self.removeFriendCard(nameCardId: cardId)
         case .myCard:
             self.navigation.accept(.show(.cardDetailMore(uniqueCode: self.uniqueCode)))
         }
@@ -138,8 +141,28 @@ final class NameCardDetailViewModel {
                                        backgroundColor: colorSource)
     }
     
+    private func removeFriendCard(nameCardId: Identifier) {
+        // TODO: card book id 수정필요
+        self.isLoading.accept(true)
+        self.cardRepository.remove(cardIDs: [nameCardId], on: "all")
+            .do(onNext: { [weak self] _ in
+                self?.isLoading.accept(false)
+            })
+            .catchError { error in
+                print(error)
+                return .empty()
+            }
+            .mapToVoid()
+            .bind(onNext: { [weak self] in
+                NotificationCenter.default.post(name: .friendCardDidDelete, object: nil)
+                self?.shouldClose.accept(())
+            })
+            .disposed(by: self.disposeBag)
+    }
+    
     private let disposeBag = DisposeBag()
     
+    private let cardId: Identifier?
     private let uniqueCode: UniqueCode
     private let cardRepository: CardRepository
     private let clipboardService: ClipboardService
@@ -156,13 +179,13 @@ extension NameCardDetailViewModel: CardDetailMoreViewDelegate {
         let deleteAction = { [weak self] in
             guard let self = self else { return }
             alertController.dismiss(animated: true)
-            self.removeCard(uniqueCode: uniqueCode)
+            self.removeMyCard(uniqueCode: uniqueCode)
         }
         let deleteCancelAction = {
             alertController.dismiss(animated: true)
         }
         alertController.configure(item: AlertItem(title: "정말 삭제하시겠츄?",
-                                                  messages: "삭제한 미츄와 도감은 복구할 수 없어요.",
+                                                  messages: "삭제한 미츄는 복구할 수 없어요.",
                                                   image: UIImage(named: "meetu_delete")!,
                                                   emphasisAction: .init(title: "삭제하기", action: deleteAction),
                                                   defaultAction: .init(title: "삭제 안할래요", action: deleteCancelAction)))
@@ -196,7 +219,7 @@ extension NameCardDetailViewModel: CardDetailMoreViewDelegate {
             .disposed(by: self.disposeBag)
     }
     
-    private func removeCard(uniqueCode: UniqueCode) {
+    private func removeMyCard(uniqueCode: UniqueCode) {
         self.isLoading.accept(true)
         self.myCardRepository.removeMyCard(uniqueCode: uniqueCode)
             .do(onNext: { [weak self] _ in
@@ -208,14 +231,7 @@ extension NameCardDetailViewModel: CardDetailMoreViewDelegate {
             }
             .mapToVoid()
             .bind(onNext: { [weak self] in
-                guard let cardType = self?.cardType.value else { return }
-                switch cardType {
-                case .myCard:
-                    NotificationCenter.default.post(name: .myCardDidDelete, object: nil)
-                case .friendCard:
-                    NotificationCenter.default.post(name: .friendCardDidDelete, object: nil)
-                }
-                
+                NotificationCenter.default.post(name: .myCardDidDelete, object: nil)
                 self?.shouldClose.accept(())
             })
             .disposed(by: self.disposeBag)
