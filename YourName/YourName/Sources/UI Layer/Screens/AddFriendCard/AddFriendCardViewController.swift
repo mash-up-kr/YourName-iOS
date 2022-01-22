@@ -176,6 +176,13 @@ extension AddFriendCardViewController {
             guard let self = self else { return }
             self.viewModel.searchMeetu(with: self.searchText.value)
         }
+        
+        NotificationCenter.default.rx.notification(.friendCardDidDelete, object: nil)
+            .withLatestFrom(searchText)
+            .bind(onNext: { [weak self] uniqueCode in
+                self?.viewModel.searchMeetu(with: uniqueCode)
+            })
+            .disposed(by: self.disposeBag)
     }
     
     private func render(_ viewModel: AddFriendCardViewModel) {
