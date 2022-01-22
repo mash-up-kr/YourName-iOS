@@ -11,7 +11,7 @@ import UIKit
 
 enum MyCardListDestination: Equatable {
     case cardCreation
-    case cardDetail(cardID: Identifier)
+    case cardDetail(uniqueCode: UniqueCode)
     case quest
 }
 
@@ -57,7 +57,7 @@ final class MyCardListViewModel {
                         self?.navigation.accept(.present(MyCardListDestination.quest))
                     }
                     controller.configure(item: .init(title: "미츄를 만들어봐츄!",
-                                                     message: "미츄와 함께 퀘스트를 클리어하고,\n유니크 컬러를 획득하츄!",
+                                                     messages: "미츄와 함께 퀘스트를 클리어하고,\n유니크 컬러를 획득하츄!",
                                                      image: UIImage(named: "icon_onboardingMeetU")!,
                                                      emphasisAction: .init(title: "퀘스트 확인하기",
                                                                            action: confirmAction),
@@ -96,8 +96,7 @@ final class MyCardListViewModel {
     
     func tapCard(at index: Int) {
         guard let selectedCard = myCardViewModels.value[safe: index] else { return }
-        let selectedCardID = selectedCard.id
-        navigation.accept(.push(.cardDetail(cardID: selectedCardID)))
+        navigation.accept(.push(.cardDetail(uniqueCode: selectedCard.uniqueCode)))
     }
     
     private func myCardCellViewModel(_ cards: [Entity.NameCard]) -> [MyCardCellViewModel] {
@@ -107,7 +106,8 @@ final class MyCardListViewModel {
                   let colorSource = ColorSource.from(bgColors)
             else { return nil }
             let skills = personalSkills.map { MySkillProgressView.Item(title: $0.name, level: $0.level ?? 0) }
-            return MyCardCellViewModel(id: card.uniqueCode ?? .empty,
+            return MyCardCellViewModel(id: card.id ?? .empty,
+                                       uniqueCode: card.uniqueCode ?? .empty,
                                        image: card.imgUrl ?? .empty,
                                        name: card.name ?? .empty,
                                        role: card.role ?? .empty,

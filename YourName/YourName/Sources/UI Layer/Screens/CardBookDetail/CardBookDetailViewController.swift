@@ -18,7 +18,7 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
     
     var viewModel: CardBookDetailViewModel!
     var addFriendCardViewControllerFactory: (() -> AddFriendCardViewController)!
-    var nameCardDetailViewControllerFactory: ((Identifier) -> NameCardDetailViewController)!
+    var nameCardDetailViewControllerFactory: ((Identifier, UniqueCode) -> NameCardDetailViewController)!
     
     override func viewDidLoad() {
         self.navigationController?.navigationBar.isHidden = true
@@ -71,7 +71,7 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
             .disposed(by: self.disposeBag)
     }
     
-    private func render(_ veiwModel: CardBookDetailViewModel) {
+    private func render(_ viewModel: CardBookDetailViewModel) {
         self.viewModel.cardBookTitle.distinctUntilChanged()
             .subscribe(onNext: { [weak self] cardBookTitle in
                 self?.cardBookTitleLabel?.text = cardBookTitle
@@ -128,7 +128,7 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
                     self.viewModel.tapRemoveCancel()
                 }
                 alertController.configure(item: AlertItem(title: "정말 삭제하시겠츄?",
-                                                          message: "삭제한 미츄와 도감은 복구할 수 없어요.",
+                                                          messages: "삭제한 미츄와 도감은 복구할 수 없어요.",
                                                           image: UIImage(named: "meetu_delete")!,
                                                           emphasisAction: .init(title: "삭제하기", action: okAction),
                                                           defaultAction: .init(title: "삭제안할래요", action: cancelAction)))
@@ -150,7 +150,7 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
     
     private func createViewController(_ next: CardBookDetailDestination) -> UIViewController {
         switch next {
-        case .cardDetail(let id): return self.nameCardDetailViewControllerFactory(id)
+        case .cardDetail(let cardId, let uniqueCode): return self.nameCardDetailViewControllerFactory(cardId, uniqueCode)
         }
     }
     

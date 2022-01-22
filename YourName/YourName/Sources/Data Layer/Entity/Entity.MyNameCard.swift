@@ -18,7 +18,7 @@ extension Entity {
         let role: String?
         let personality: String?
         let introduce: String?
-        let uniqueCode: String?
+        let uniqueCode: UniqueCode?
         let imgUrl: String?
         let user: User?
         let bgColor: BackgroundColor?

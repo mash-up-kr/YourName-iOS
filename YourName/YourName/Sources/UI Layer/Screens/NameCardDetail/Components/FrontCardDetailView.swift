@@ -8,11 +8,11 @@
 import UIKit
 
 protocol FrontCardDetailViewDelegate: AnyObject {
-    func frontCardDetailView(_ frontCardDetailView: FrontCardDetailView, didTapCopy id: Identifier)
+    func frontCardDetailView(_ frontCardDetailView: FrontCardDetailView, didTapCopy uniqueCode: UniqueCode)
 }
 
 struct FrontCardDetailViewModel {
-    let cardID: String?
+    let uniqueCode: UniqueCode?
     let profileImageSource: ImageSource?
     let name: String?
     let role: String?
@@ -38,10 +38,10 @@ final class FrontCardDetailView: NibLoadableView {
     
     func configure(with viewModel: FrontCardDetailViewModel) {
         self.profileImageView?.setImageSource(viewModel.profileImageSource)
-        self.cardIDLabel?.text = "#\(viewModel.cardID ?? .empty)"
+        self.cardIDLabel?.text = "#\(viewModel.uniqueCode ?? .empty)"
         self.nameLabel?.text = viewModel.name
         self.roleLabel?.text = viewModel.role
-        self.cardID = viewModel.cardID
+        self.uniqueCode = viewModel.uniqueCode
         self.scrollView?.setColorSource(viewModel.backgroundColor)
         self.skillViews?.enumerated().forEach { index, view in
             guard let skill = viewModel.skills[safe: index] else { return view.isHidden = true }
@@ -51,12 +51,12 @@ final class FrontCardDetailView: NibLoadableView {
     }
     
     @objc private func bubbleViewDidTap() {
-        guard let cardID = self.cardID else { return }
+        guard let uniqueCode = self.uniqueCode else { return }
         
-        delegate?.frontCardDetailView(self, didTapCopy: cardID)
+        delegate?.frontCardDetailView(self, didTapCopy: uniqueCode)
     }
     
-    private var cardID: Identifier?
+    private var uniqueCode: UniqueCode?
     
     @IBOutlet private(set) weak var scrollView: UIScrollView?
     @IBOutlet private weak var profileImageView: UIImageView?

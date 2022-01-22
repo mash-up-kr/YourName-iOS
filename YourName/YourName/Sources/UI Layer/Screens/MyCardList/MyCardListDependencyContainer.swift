@@ -14,8 +14,8 @@ final class MyCardListDependencyContainer {
     
     func createMyCardListViewController() -> UIViewController {
         let viewController = MyCardListViewController.instantiate()
-        let cardDetailViewControllerFactory: (Identifier) -> NameCardDetailViewController = { cardID in
-            let dependencyContainer = self.createCardDetailDependencyContainer(cardID: cardID)
+        let cardDetailViewControllerFactory: (UniqueCode) -> NameCardDetailViewController = { uniqueCode in
+            let dependencyContainer = self.createCardDetailDependencyContainer(uniqueCode: uniqueCode)
             return dependencyContainer.createNameCardDetailViewController()
         }
         let newCardCreationViewControllerFactory: () -> CardInfoInputViewController = {
@@ -41,9 +41,8 @@ final class MyCardListDependencyContainer {
                                    questRepository: questRepository)
     }
     
-    // 👼 Child Dependency Container Factory
-    private func createCardDetailDependencyContainer(cardID: Identifier) -> NameCardDetailDependencyContainer {
-        return NameCardDetailDependencyContainer(cardID: cardID, myCardListDependencyContainer: self)
+    private func createCardDetailDependencyContainer(uniqueCode: UniqueCode) -> NameCardDetailDependencyContainer {
+        return NameCardDetailDependencyContainer(uniqueCode: uniqueCode, myCardListDependencyContainer: self)
     }
     
     private func createCardInfoInputDependencyContainer() -> CardInfoInputDependencyContainer {

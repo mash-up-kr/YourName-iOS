@@ -14,6 +14,7 @@ final class CardFrontView: NibLoadableView {
     
     struct Item {
         let id: Identifier
+        let uniqueCode: UniqueCode
         let image: String
         let name: String
         let role: String
@@ -52,7 +53,9 @@ extension CardFrontView {
         self.userProfileImage.setImageSource(.url(url))
         self.userNameLabel.text = item.name
         self.userRoleLabel.text = item.role
-      
+        
+        self.contentView.layoutIfNeeded()
+        
         switch item.backgroundColor {
         case .gradient(let colors):
             self.contentView.updateGradientLayer(colors: colors)

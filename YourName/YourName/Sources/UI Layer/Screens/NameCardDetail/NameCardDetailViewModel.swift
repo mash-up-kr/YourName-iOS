@@ -12,8 +12,8 @@ import Photos
 import UIKit
 
 enum NameCardDetailDestination: Equatable {
-    case cardDetailMore(cardID: Identifier)
-    case cardEdit(cardID: Identifier)
+    case cardDetailMore(uniqueCode: UniqueCode)
+    case cardEdit(uniqueCode: UniqueCode)
 }
 
 typealias NameCardDetailNavigation = Navigation<NameCardDetailDestination>
@@ -42,13 +42,15 @@ final class NameCardDetailViewModel {
     let activityViewController = PublishRelay<UIActivityViewController>()
     let cardType = BehaviorRelay<CardType?>(value: nil)
     
-    init(cardID: Identifier,
+    init(cardId: Identifier?,
+         uniqueCode: UniqueCode,
          cardRepository: CardRepository,
          myCardRepository: MyCardRepository,
          clipboardService: ClipboardService,
          questRepository: QuestRepository,
          cardType: CardType) {
-        self.cardID = cardID
+        self.cardId = cardId
+        self.uniqueCode = uniqueCode
         self.cardRepository = cardRepository
         self.myCardRepository = myCardRepository
         self.questRepository = questRepository
@@ -62,7 +64,7 @@ final class NameCardDetailViewModel {
     
     func didLoad() {
         self.isLoading.accept(true)
-        self.cardRepository.fetchCard(uniqueCode: self.cardID)
+        self.cardRepository.fetchCard(uniqueCode: self.uniqueCode)
             .map { $0.nameCard }
             .filterNil()
             .subscribe(onNext: { [weak self] card in
@@ -83,7 +85,7 @@ final class NameCardDetailViewModel {
     }
     
     func tapCopy() {
-        self.clipboardService.copy(self.cardID)
+        self.clipboardService.copy(self.uniqueCode)
         self.shouldShowCopyToast.accept(Void())
     }
     
@@ -91,9 +93,10 @@ final class NameCardDetailViewModel {
         guard let cardType = self.cardType.value else { return }
         switch cardType {
         case .friendCard:
-            self.didTapRemoveCard(id: self.cardID)
+            guard let cardId = self.cardId else { return }
+            self.removeFriendCard(nameCardId: cardId)
         case .myCard:
-            self.navigation.accept(.show(.cardDetailMore(cardID: self.cardID)))
+            self.navigation.accept(.show(.cardDetailMore(uniqueCode: self.uniqueCode)))
         }
     }
     
@@ -110,7 +113,7 @@ final class NameCardDetailViewModel {
     }
     
     private func createFrontCardDetailViewModel(_ card: Entity.NameCard) -> FrontCardDetailViewModel? {
-        guard let id = card.uniqueCode else { return nil }
+        guard let uniqueCode = card.uniqueCode else { return nil }
         guard let colorSource = self.backgroundColor.value else { return nil }
         
         let imageSource: ImageSource? = {
@@ -121,7 +124,7 @@ final class NameCardDetailViewModel {
         let role = card.role
         let skills = card.personalSkills?.map { MySkillProgressView.Item(title: $0.name, level: $0.level ?? 0) } ?? []
         
-        return FrontCardDetailViewModel(cardID: id,
+        return FrontCardDetailViewModel(uniqueCode: uniqueCode,
                                         profileImageSource: imageSource,
                                         name: name,
                                         role: role,
@@ -138,9 +141,29 @@ final class NameCardDetailViewModel {
                                        backgroundColor: colorSource)
     }
     
+    private func removeFriendCard(nameCardId: Identifier) {
+        // TODO: card book id 수정필요
+        self.isLoading.accept(true)
+        self.cardRepository.remove(cardIDs: [nameCardId], on: "all")
+            .do(onNext: { [weak self] _ in
+                self?.isLoading.accept(false)
+            })
+            .catchError { error in
+                print(error)
+                return .empty()
+            }
+            .mapToVoid()
+            .bind(onNext: { [weak self] in
+                NotificationCenter.default.post(name: .friendCardDidDelete, object: nil)
+                self?.shouldClose.accept(())
+            })
+            .disposed(by: self.disposeBag)
+    }
+    
     private let disposeBag = DisposeBag()
     
-    private let cardID: Identifier
+    private let cardId: Identifier?
+    private let uniqueCode: UniqueCode
     private let cardRepository: CardRepository
     private let clipboardService: ClipboardService
     private let myCardRepository: MyCardRepository
@@ -150,27 +173,27 @@ final class NameCardDetailViewModel {
 // MARK: - CardDetailMoreViewDelegate
 
 extension NameCardDetailViewModel: CardDetailMoreViewDelegate {
-    func didTapRemoveCard(id: Identifier) {
+    func didTapRemoveCard(uniqueCode: UniqueCode) {
         
         let alertController = AlertViewController.instantiate()
         let deleteAction = { [weak self] in
             guard let self = self else { return }
             alertController.dismiss(animated: true)
-            self.removeCard(id: id)
+            self.removeMyCard(uniqueCode: uniqueCode)
         }
         let deleteCancelAction = {
             alertController.dismiss(animated: true)
         }
         alertController.configure(item: AlertItem(title: "정말 삭제하시겠츄?",
-                                                  message: "삭제한 미츄와 도감은 복구할 수 없어요.",
+                                                  messages: "삭제한 미츄는 복구할 수 없어요.",
                                                   image: UIImage(named: "meetu_delete")!,
                                                   emphasisAction: .init(title: "삭제하기", action: deleteAction),
                                                   defaultAction: .init(title: "삭제 안할래요", action: deleteCancelAction)))
         self.alertController.accept(alertController)
     }
     
-    func didTapEditCard(id: Identifier) {
-        self.navigation.accept(.push(.cardEdit(cardID: self.cardID)))
+    func didTapEditCard(uniqueCode: UniqueCode) {
+        self.navigation.accept(.push(.cardEdit(uniqueCode: self.uniqueCode)))
     }
     
     func didTapSaveImage() {
@@ -196,26 +219,19 @@ extension NameCardDetailViewModel: CardDetailMoreViewDelegate {
             .disposed(by: self.disposeBag)
     }
     
-    private func removeCard(id: Identifier) {
+    private func removeMyCard(uniqueCode: UniqueCode) {
         self.isLoading.accept(true)
-        self.myCardRepository.removeMyCard(id: id)
-            .do { [weak self] in
+        self.myCardRepository.removeMyCard(uniqueCode: uniqueCode)
+            .do(onNext: { [weak self] _ in
                 self?.isLoading.accept(false)
-            }
+            })
             .catchError { error in
                 print(error)
                 return .empty()
             }
             .mapToVoid()
             .bind(onNext: { [weak self] in
-                guard let cardType = self?.cardType.value else { return }
-                switch cardType {
-                case .myCard:
-                    NotificationCenter.default.post(name: .myCardDidDelete, object: nil)
-                case .friendCard:
-                    NotificationCenter.default.post(name: .friendCardDidDelete, object: nil)
-                }
-                
+                NotificationCenter.default.post(name: .myCardDidDelete, object: nil)
                 self?.shouldClose.accept(())
             })
             .disposed(by: self.disposeBag)

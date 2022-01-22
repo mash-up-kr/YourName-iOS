@@ -22,7 +22,7 @@ final class MyCardListViewController: ViewController, Storyboarded {
     // MARK: - Properties
     
     var newCardCreationViewControllerFactory: (() -> CardInfoInputViewController)!
-    var cardDetailViewControllerFactory: ((Identifier) -> NameCardDetailViewController)!
+    var cardDetailViewControllerFactory: ((UniqueCode) -> NameCardDetailViewController)!
     var questViewControllerFactory: (() -> QuestViewController)!
     var viewModel: MyCardListViewModel!
     
@@ -104,8 +104,8 @@ extension MyCardListViewController {
     
     private func createViewController(_ next: MyCardListDestination) -> UIViewController {
         switch next {
-        case .cardDetail(let cardID):
-            return cardDetailViewControllerFactory(cardID)
+        case .cardDetail(let uniqueCode):
+            return cardDetailViewControllerFactory(uniqueCode)
         case .cardCreation:
             return newCardCreationViewControllerFactory()
         case .quest:

@@ -5,13 +5,12 @@
 //  Created by seori on 2021/11/27.
 //
 
-import Foundation
 import UIKit
 
 final class AddFriendCardDependencyContainer {
     
-    let addFriendCardRepository: AddFriendCardRepository
-    let cardRepository: CardRepository
+    private let addFriendCardRepository: AddFriendCardRepository
+    private let cardRepository: CardRepository
     
     init() {
         self.addFriendCardRepository = YourNameAddFriendCardRepository()
@@ -25,8 +24,8 @@ final class AddFriendCardDependencyContainer {
     func createAddFriendCardViewController() -> AddFriendCardViewController {
         let viewController = AddFriendCardViewController.instantiate()
         
-        let cardDetailVieWControllerFactory: (Identifier) -> NameCardDetailViewController = { cardID  in
-            let dependencyContainer = self.createNameCardDetailDependencyContainer(cardID: cardID)
+        let cardDetailVieWControllerFactory: (UniqueCode, Identifier) -> NameCardDetailViewController = { uniqueCode, nameCardId  in
+            let dependencyContainer = self.createNameCardDetailDependencyContainer(cardId: nameCardId, uniqueCode: uniqueCode)
             return dependencyContainer.createNameCardDetailViewController()
         }
         viewController.viewModel = AddFriendCardViewModel(addFriendCardRepository: self.addFriendCardRepository,
@@ -37,7 +36,7 @@ final class AddFriendCardDependencyContainer {
         return viewController
     }
     
-    private func createNameCardDetailDependencyContainer(cardID: Identifier) -> NameCardDetailDependencyContainer {
-        NameCardDetailDependencyContainer(cardID: cardID, addFriendCardDependencyContainer: self)
+    private func createNameCardDetailDependencyContainer(cardId: Identifier, uniqueCode: UniqueCode) -> NameCardDetailDependencyContainer {
+        NameCardDetailDependencyContainer(cardId: cardId, uniqueCode: uniqueCode, addFriendCardDependencyContainer: self)
     }
 }

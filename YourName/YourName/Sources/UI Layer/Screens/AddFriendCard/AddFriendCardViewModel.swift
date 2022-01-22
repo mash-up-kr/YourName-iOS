@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 
 enum AddFriendCardDestination: Equatable {
-    case cardDetail(cardID: Identifier)
+    case cardDetail(uniqueCode: UniqueCode, cardId: Identifier)
 }
 
 typealias AddFriendCardNavigation = Navigation<AddFriendCardDestination>
@@ -43,7 +43,7 @@ final class AddFriendCardViewModel {
     let questRepository: QuestRepository!
     
     private let disposeBag = DisposeBag()
-    private let nameCard = BehaviorRelay<(id: Identifier?, uniqueCode: String?)>(value: (id: nil, uniqueCode: nil))
+    private let nameCard = BehaviorRelay<(id: Identifier?, uniqueCode: UniqueCode?)>(value: (id: nil, uniqueCode: nil))
     
     // MARK: - Init
     
@@ -63,7 +63,7 @@ final class AddFriendCardViewModel {
 // MARK: - Methods
 
 extension AddFriendCardViewModel {
-    func searchMeetu(with uniqueCode: String) {
+    func searchMeetu(with uniqueCode: UniqueCode) {
         self.isLoading.accept(true)
         let result = self.cardRepository.fetchCard(uniqueCode: uniqueCode)
             .do { [weak self] _ in
@@ -110,6 +110,7 @@ extension AddFriendCardViewModel {
                                                                                  value: $0.value ?? .empty) }
                 
                 return (FrontCardItem(id: nameCard.id ?? .empty,
+                                      uniqueCode: nameCard.uniqueCode ?? .empty,
                                       image: nameCard.imgUrl ?? .empty,
                                       name: nameCard.name ?? .empty,
                                       role: nameCard.role ?? .empty,
@@ -180,13 +181,14 @@ extension AddFriendCardViewModel {
                 
                 let cardDetailAction = { [weak self] in
                     guard let self = self,
-                          let nameCardID = self.nameCard.value.uniqueCode else { return }
+                          let uniqueCode = self.nameCard.value.uniqueCode,
+                          let cardId = self.nameCard.value.id else { return }
                     alertController.dismiss()
                     
-                    self.navigation.accept(.push(.cardDetail(cardID: nameCardID)))
+                    self.navigation.accept(.push(.cardDetail(uniqueCode: uniqueCode, cardId: cardId)))
                 }
                 let alertItem = AlertItem(title: "친구 미츄 추가완료!",
-                                           message: "친구 미츄가 성공적으로 추가되었습니다.",
+                                           messages: "친구 미츄가 성공적으로 추가되었습니다.",
                                            image: UIImage(named: "meetu_addFriendCardAlert")!,
                                            emphasisAction: .init(title: "친구 미츄 상세보기", action: cardDetailAction),
                                            defaultAction: .init(title: "검색으로 돌아가기", action: { alertController.dismiss() }))

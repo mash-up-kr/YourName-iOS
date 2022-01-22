@@ -11,8 +11,8 @@ import RxCocoa
 
 final class NameCardDetailViewController: ViewController, Storyboarded {
     
-    var cardDetailMoreViewFactory: ((Identifier) -> CardDetailMoreViewController)!
-    var cardEditViewControllerFactory: ((Identifier) -> CardInfoInputViewController)!
+    var cardDetailMoreViewFactory: ((UniqueCode) -> CardDetailMoreViewController)!
+    var cardEditViewControllerFactory: ((UniqueCode) -> CardInfoInputViewController)!
     var viewModel: NameCardDetailViewModel!
     override var hidesBottomBarWhenPushed: Bool {
         get  { self.navigationController?.topViewController == self }
@@ -187,10 +187,10 @@ final class NameCardDetailViewController: ViewController, Storyboarded {
     
     private func createViewController(_ next: NameCardDetailDestination) -> UIViewController {
         switch next {
-        case .cardDetailMore(let cardID):
-            return cardDetailMoreViewFactory(cardID)
-        case .cardEdit(let cardID):
-            return cardEditViewControllerFactory(cardID)
+        case .cardDetailMore(let uniqueCode):
+            return cardDetailMoreViewFactory(uniqueCode)
+        case .cardEdit(let uniqueCode):
+            return cardEditViewControllerFactory(uniqueCode)
         }
     }
     

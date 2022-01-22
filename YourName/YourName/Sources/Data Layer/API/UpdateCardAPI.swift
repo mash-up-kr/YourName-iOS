@@ -8,10 +8,15 @@
 import Foundation
 
 struct UpdateCardAPI: ServiceAPI {
-    let cardID: Identifier
-    let nameCard: Entity.NameCardCreation
+    private let uniqueCode: UniqueCode
+    private let nameCard: Entity.NameCardCreation
     
-    var path: String { "/namecards/\(cardID)" }
+    init(uniqueCode: UniqueCode, nameCard: Entity.NameCardCreation) {
+        self.uniqueCode = uniqueCode
+        self.nameCard = nameCard
+    }
+    
+    var path: String { "/namecards/\(uniqueCode)" }
     var method: Method { .put }
     var task: NetworkingTask {
         return .requestJSONEncodable(nameCard)

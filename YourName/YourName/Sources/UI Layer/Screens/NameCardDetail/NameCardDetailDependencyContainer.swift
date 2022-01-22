@@ -11,26 +11,24 @@ final class NameCardDetailDependencyContainer {
     
     typealias CardType = NameCardDetailViewModel.CardType
     
-    let cardID: Identifier
-    let cardType: CardType
+    private let uniqueCode: UniqueCode
+    private let cardType: CardType
+    private var cardId: Identifier? = nil
     
-    init(cardID: Identifier, myCardListDependencyContainer: MyCardListDependencyContainer) {
-        self.cardID = cardID
+    init(uniqueCode: UniqueCode, myCardListDependencyContainer: MyCardListDependencyContainer) {
+        self.uniqueCode = uniqueCode
         self.cardType = .myCard
     }
     
-    init(cardID: Identifier, cardListDependencyContainer: CardBookListDependencyContainer) {
-        self.cardID = cardID
+    init(cardId: Identifier, uniqueCode: UniqueCode, cardBookDetailDependencyContainer: CardBookDetailDependencyContainer) {
+        self.uniqueCode = uniqueCode
+        self.cardId = cardId
         self.cardType = .friendCard
     }
     
-    init(cardID: Identifier, cardBookDetailDependencyContainer: CardBookDetailDependencyContainer) {
-        self.cardID = cardID
-        self.cardType = .friendCard
-    }
-    
-    init(cardID: Identifier, addFriendCardDependencyContainer: AddFriendCardDependencyContainer) {
-        self.cardID = cardID
+    init(cardId: Identifier, uniqueCode: UniqueCode, addFriendCardDependencyContainer: AddFriendCardDependencyContainer) {
+        self.cardId = cardId
+        self.uniqueCode = uniqueCode
         self.cardType = .friendCard
     }
     
@@ -39,16 +37,16 @@ final class NameCardDetailDependencyContainer {
         let viewModel = createNameCardDetailViewModel()
         viewController.viewModel = viewModel
         
-        viewController.cardDetailMoreViewFactory = { cardID -> CardDetailMoreViewController in
-            let moreViewModel = CardDetailMoreViewModel(id: self.cardID,
+        viewController.cardDetailMoreViewFactory = { uniqueCode -> CardDetailMoreViewController in
+            let moreViewModel = CardDetailMoreViewModel(uniqueCode: uniqueCode,
                                                         delegate: viewModel)
             let moreView = CardDetailMoreView(viewModel: moreViewModel, parent: viewController)
             let pageSheetController = PageSheetController(contentView: moreView)
             return pageSheetController
         }
         
-        viewController.cardEditViewControllerFactory = { cardID -> CardInfoInputViewController in
-            let dependencyContainer = CardInfoInputDependencyContainer(cardID: cardID)
+        viewController.cardEditViewControllerFactory = { uniqueCode -> CardInfoInputViewController in
+            let dependencyContainer = CardInfoInputDependencyContainer(uniqueCode: uniqueCode)
             return dependencyContainer.createCardInfoInputViewController()
         }
         return viewController
@@ -57,7 +55,9 @@ final class NameCardDetailDependencyContainer {
     private func createNameCardDetailViewModel() -> NameCardDetailViewModel {
         let cardRepository = self.createCardRepository()
         let clipboardService = self.createClipboardService()
-        return NameCardDetailViewModel(cardID: cardID,
+        
+        return NameCardDetailViewModel(cardId: self.cardId,
+                                       uniqueCode: uniqueCode,
                                        cardRepository: cardRepository,
                                        myCardRepository: self.createMyCardRepository(),
                                        clipboardService: clipboardService,

@@ -15,7 +15,7 @@ struct AlertItem {
         let action: () -> Void
     }
     let title: String
-    let message: String
+    let messages: String
     let image: UIImage
     let emphasisAction: AlertAction
     let defaultAction: AlertAction
@@ -40,7 +40,7 @@ final class AlertViewController: ViewController, Storyboarded {
     
     private func configureUI() {
         self.titleLabel.text = item?.title
-        self.messageLabel.text = item?.message
+        self.messageLabel.text = item?.messages
         self.meetUImageView.image = item?.image
         self.emphasisButton.setTitle(item?.emphasisAction.title, for: .normal)
         self.defaultButton.setTitle(item?.defaultAction.title, for: .normal)

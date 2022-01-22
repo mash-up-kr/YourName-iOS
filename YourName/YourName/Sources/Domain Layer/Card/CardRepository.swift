@@ -12,7 +12,7 @@ protocol CardRepository {
     func fetchAll() -> Observable<[NameCard]>
     func fetchCards(cardBookID: CardBookID) -> Observable<[NameCard]>
     func remove(cardIDs: [NameCardID], on cardBookID: CardBookID) -> Observable<Void>
-    func fetchCard(uniqueCode: String) -> Observable<Entity.FriendCard>
+    func fetchCard(uniqueCode: UniqueCode) -> Observable<Entity.FriendCard>
 }
 
 final class YourNameCardRepository: CardRepository {
@@ -33,7 +33,7 @@ final class YourNameCardRepository: CardRepository {
             .compactMap { [weak self] list in return list.compactMap { self?.translate(fromEntity: $0) } }
     }
     
-    func fetchCard(uniqueCode: String) -> Observable<Entity.FriendCard> {
+    func fetchCard(uniqueCode: UniqueCode) -> Observable<Entity.FriendCard> {
         return Environment.current.network.request(FriendCardAPI(uniqueCode: uniqueCode))
     }
     
@@ -42,7 +42,7 @@ final class YourNameCardRepository: CardRepository {
     }
     
     private func translate(fromEntity entity: Entity.NameCard) -> NameCard {
-        return NameCard(id: entity.uniqueCode, name: entity.name, role: entity.role, introduce: entity.introduce, bgColors: entity.bgColor?.value, profileURL: entity.imgUrl, idForDelete: entity.id)
+        return NameCard(id: entity.id, uniqueCode: entity.uniqueCode, name: entity.name, role: entity.role, introduce: entity.introduce, bgColors: entity.bgColor?.value, profileURL: entity.imgUrl, idForDelete: entity.id)
     }
     
     private let network: NetworkServing
@@ -62,7 +62,7 @@ final class MockCardRepository: CardRepository {
     func remove(cardIDs: [NameCardID], on cardBookID: CardBookID) -> Observable<Void> {
         .just(Void())
     }
-    func fetchCard(uniqueCode: String) -> Observable<Entity.FriendCard> {
+    func fetchCard(uniqueCode: UniqueCode) -> Observable<Entity.FriendCard> {
         return Environment.current.network.request(FriendCardAPI(uniqueCode: uniqueCode))
     }
 }

@@ -10,23 +10,23 @@ import RxCocoa
 import RxSwift
 
 protocol CardDetailMoreViewDelegate: AnyObject {
-    func didTapRemoveCard(id: Identifier)
-    func didTapEditCard(id: Identifier)
+    func didTapRemoveCard(uniqueCode: UniqueCode)
+    func didTapEditCard(uniqueCode: UniqueCode)
     func didTapSaveImage()
 }
 
 final class CardDetailMoreViewModel {
     
-    private let cardId: Identifier
+    private let uniqueCode: UniqueCode
     private let disposeBag = DisposeBag()
     private weak var delegate: CardDetailMoreViewDelegate?
     let dismiss = PublishRelay<Void>()
     
     // MARK: - LifeCycle
     
-    init(id: Identifier,
+    init(uniqueCode: UniqueCode,
          delegate: CardDetailMoreViewDelegate) {
-        self.cardId = id
+        self.uniqueCode = uniqueCode
         self.delegate = delegate
     }
     deinit {
@@ -37,12 +37,12 @@ final class CardDetailMoreViewModel {
     
     func delete() {
         self.dismiss.accept(())
-        self.delegate?.didTapRemoveCard(id: self.cardId)
+        self.delegate?.didTapRemoveCard(uniqueCode: self.uniqueCode)
     }
     
     func edit() {
         self.dismiss.accept(())
-        self.delegate?.didTapEditCard(id: self.cardId)
+        self.delegate?.didTapEditCard(uniqueCode: self.uniqueCode)
     }
     
     func saveImage() {
