@@ -53,7 +53,9 @@ extension CardFrontView {
         self.userProfileImage.setImageSource(.url(url))
         self.userNameLabel.text = item.name
         self.userRoleLabel.text = item.role
-      
+        
+        self.contentView.layoutIfNeeded()
+        
         switch item.backgroundColor {
         case .gradient(let colors):
             self.contentView.updateGradientLayer(colors: colors)
