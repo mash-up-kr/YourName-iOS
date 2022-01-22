@@ -5,7 +5,6 @@
 //  Created by seori on 2021/10/04.
 //
 
-import Foundation
 import UIKit
 
 final class CardBookDetailDependencyContainer {
@@ -18,8 +17,8 @@ final class CardBookDetailDependencyContainer {
         let viewController = CardBookDetailViewController.instantiate()
         let viewModel = createCardBookDetailViewModel(cardBookID: cardBookID, cardBookTitle: cardBookTitle)
         viewController.viewModel = viewModel
-        viewController.nameCardDetailViewControllerFactory = { id in
-            let dependencyContainer = self.createCardDetailDependencyContainer(cardID: id)
+        viewController.nameCardDetailViewControllerFactory = { uniqueCode in
+            let dependencyContainer = self.createCardDetailDependencyContainer(uniqueCode: uniqueCode)
             return dependencyContainer.createNameCardDetailViewController()
         }
         return viewController
@@ -37,7 +36,7 @@ final class CardBookDetailDependencyContainer {
         return YourNameCardRepository()
     }
     
-    private func createCardDetailDependencyContainer(cardID: Identifier) -> NameCardDetailDependencyContainer {
-        return NameCardDetailDependencyContainer(cardID: cardID, cardBookDetailDependencyContainer: self)
+    private func createCardDetailDependencyContainer(uniqueCode: UniqueCode) -> NameCardDetailDependencyContainer {
+        return NameCardDetailDependencyContainer(uniqueCode: uniqueCode, cardBookDetailDependencyContainer: self)
     }
 }

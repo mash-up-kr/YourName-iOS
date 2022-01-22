@@ -14,6 +14,7 @@ final class CardFrontView: NibLoadableView {
     
     struct Item {
         let id: Identifier
+        let uniqueCode: UniqueCode
         let image: String
         let name: String
         let role: String

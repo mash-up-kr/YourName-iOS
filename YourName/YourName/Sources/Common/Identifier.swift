@@ -7,4 +7,5 @@
 
 import Foundation
 
+typealias UniqueCode = String
 typealias Identifier = String

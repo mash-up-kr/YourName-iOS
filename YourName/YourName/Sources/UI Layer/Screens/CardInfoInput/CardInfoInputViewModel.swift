@@ -34,7 +34,7 @@ struct TextStatus: Then {
 extension CardInfoInputViewModel {
     enum State {
         case new
-        case edit(id: NameCardID)
+        case edit(uniqueCode: UniqueCode)
     }
 }
 
@@ -87,10 +87,10 @@ final class CardInfoInputViewModel {
         let defaultContactInfos = ContactType.allCases.map { ContactInfo(type: $0, value: .empty) }
         self.contactInfos.accept(defaultContactInfos)
         
-        guard case .edit(let id) = self.state else { return }
+        guard case .edit(let uniqueCode) = self.state else { return }
         
         self.isLoading.accept(true)
-        self.cardRepository?.fetchCard(uniqueCode: id)
+        self.cardRepository?.fetchCard(uniqueCode: uniqueCode)
             .subscribe(onNext: { [weak self] response in
                 guard let self = self              else { return }
                 guard let card = response.nameCard else { return }
@@ -260,7 +260,7 @@ final class CardInfoInputViewModel {
         let updateMyCard: Observable<Void> = {
             switch self.state {
             case .new:          return self.myCardRepository.createMyCard(nameCard)
-            case .edit(let id): return self.myCardRepository.updateMyCard(id: id, nameCard: nameCard)
+            case .edit(let uniqueCode): return self.myCardRepository.updateMyCard(uniqueCode: uniqueCode, nameCard: nameCard)
             }
         }()
         

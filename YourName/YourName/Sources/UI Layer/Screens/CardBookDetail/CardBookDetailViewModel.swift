@@ -10,7 +10,7 @@ import RxSwift
 import RxRelay
 
 enum CardBookDetailDestination: Equatable {
-    case cardDetail(id: Identifier)
+    case cardDetail(uniqueCode: UniqueCode)
 }
 
 typealias CardBookDetailNavigation = Navigation<CardBookDetailDestination>
@@ -69,8 +69,8 @@ final class CardBookDetailViewModel {
     
     func tapCard(at index: Int) {
         guard let card = friendCards.value[safe: index] else { return }
-        guard let cardID = card.id else { return }
-        self.navigation.accept(.push(.cardDetail(id: cardID)))
+        guard let uniqueCode = card.uniqueCode else { return }
+        self.navigation.accept(.push(.cardDetail(uniqueCode: uniqueCode)))
     }
     
     func tapEdit() {

@@ -31,9 +31,9 @@ final class AddFriendCardViewController: ViewController, Storyboarded {
     
     
     private let disposeBag = DisposeBag()
-    private let searchId = BehaviorRelay<String>(value: "")
+    private let searchText = BehaviorRelay<UniqueCode>(value: "")
     var viewModel: AddFriendCardViewModel!
-    var cardDetailViewControllerFactory: ((Identifier) -> NameCardDetailViewController)!
+    var cardDetailViewControllerFactory: ((UniqueCode) -> NameCardDetailViewController)!
     
     override var hidesBottomBarWhenPushed: Bool {
         get { return navigationController?.topViewController == self }
@@ -144,19 +144,19 @@ extension AddFriendCardViewController {
         self.searchTextField.rx.text
             .distinctUntilChanged()
             .compactMap { $0 }
-            .bind(onNext: { [weak self] id in
+            .bind(onNext: { [weak self] uniqueCode in
                 guard let self = self else { return }
-                self.searchId.accept(id)
+                self.searchText.accept(uniqueCode)
                 [self.noResultView, self.resultView, self.validationLabel, self.addButton].forEach { $0?.isHidden = true }
                 self.configure(self.searchTextField, for: .noResult)
             })
             .disposed(by: disposeBag)
         
         self.searchButton.rx.throttleTap
-            .withLatestFrom(searchId)
-            .bind(onNext: { [weak self] id in
+            .withLatestFrom(searchText)
+            .bind(onNext: { [weak self] uniqueCode in
                 self?.searchTextField.resignFirstResponder()
-                self?.viewModel.searchMeetu(with: id)
+                self?.viewModel.searchMeetu(with: uniqueCode)
             })
             .disposed(by: disposeBag)
         
@@ -174,7 +174,7 @@ extension AddFriendCardViewController {
         
         NotificationCenter.default.addObserver(forName: .addFriendCard, object: nil, queue: nil) { [weak self] _ in
             guard let self = self else { return }
-            self.viewModel.searchMeetu(with: self.searchId.value)
+            self.viewModel.searchMeetu(with: self.searchText.value)
         }
     }
     
@@ -270,8 +270,8 @@ extension AddFriendCardViewController {
     
     private func createViewController(_ next: AddFriendCardDestination) -> UIViewController {
         switch next {
-        case .cardDetail(let cardID):
-            return cardDetailViewControllerFactory(cardID)
+        case .cardDetail(let uniqueCode):
+            return cardDetailViewControllerFactory(uniqueCode)
         }
     }
     
