@@ -47,9 +47,15 @@ final class NetworkService: NetworkServing {
                         return self._request(api)
                     }
                     .catchError { [weak self] error in
-                        self?.refreshToken = nil
-                        print("🐛 - ", error.localizedDescription)
-                        return .error(error)
+                        return Observable.zip(UserDefaults.standard.delete(.accessToken),
+                                              UserDefaults.standard.delete(.refreshToken))
+                            .flatMap { [weak self] _ -> Observable<MeetuResponse<API.Response>>in
+                                self?.accessToken = nil
+                                self?.refreshToken = nil
+                                let appDelegate = UIApplication.shared.delegate as? AppDelegate
+                                appDelegate?.window?.rootViewController = RootDependencyContainer().createRootViewController()
+                                return .empty()
+                            }
                     }
             }
             .compactMap { $0.data }
@@ -85,11 +91,14 @@ final class NetworkService: NetworkServing {
         }
     }
     
+    deinit {
+        print(" 💀 \(String(describing: self)) deinit ")
+    }
+    
     private var accessToken: Secret?
     private var refreshToken: Secret?
     
     private let disposeBag = DisposeBag()
-    
     private let provider = MoyaProvider<MultiTarget>()
 }
 
