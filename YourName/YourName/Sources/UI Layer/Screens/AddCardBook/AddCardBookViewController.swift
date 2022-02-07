@@ -28,6 +28,7 @@ final class AddCardBookViewController: ViewController, Storyboarded {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.bind()
+        self.configure(self.cardBookNameTextField, self.cardBookDescriptionTextField)
     }
     
     private func bind() {
@@ -36,5 +37,16 @@ final class AddCardBookViewController: ViewController, Storyboarded {
                 self?.navigationController?.popViewController(animated: true)
             })
             .disposed(by: self.disposeBag)
+    }
+    
+    private func configure(_ textFields: UITextField...) {
+        textFields.forEach { textField in
+            textField.layer.cornerRadius = 10
+            textField.clipsToBounds = true
+            textField.borderWidth = 1
+            textField.borderColor = .lightGray
+            textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 14, height: textField.bounds.height))
+            textField.leftViewMode = .always
+        }
     }
 }
