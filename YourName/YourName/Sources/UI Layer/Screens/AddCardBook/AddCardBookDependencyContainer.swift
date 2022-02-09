@@ -15,7 +15,12 @@ final class AddCardBookDependencyContainer {
     
     func createAddCardBookViewController() -> UIViewController {
         let viewController = AddCardBookViewController.instantiate()
-        let viewModel = AddCardBookViewModel()
+        let colorRepository = YourNameColorRepository()
+        let cardBookRepository = YourNameCardBookRepository()
+        let viewModel = AddCardBookViewModelImp(
+            colorRepository: colorRepository,
+            cardBookRepository: cardBookRepository
+        )
         viewController.viewModel = viewModel
         
         return viewController

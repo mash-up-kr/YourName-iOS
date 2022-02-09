@@ -38,7 +38,7 @@
 		A25D432327B16938002BCD31 /* AddCardBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25D432127B16938002BCD31 /* AddCardBookViewController.swift */; };
 		A25D432627B16DCD002BCD31 /* AddCardBookViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A25D432527B16DCD002BCD31 /* AddCardBookViewController.storyboard */; };
 		A25D432827B16E6B002BCD31 /* AddCardBookDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25D432727B16E6B002BCD31 /* AddCardBookDependencyContainer.swift */; };
-		A25D432A27B16EF6002BCD31 /* AddCardBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25D432927B16EF6002BCD31 /* AddCardBookViewModel.swift */; };
+		A25D432A27B16EF6002BCD31 /* AddCardBookViewModelImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25D432927B16EF6002BCD31 /* AddCardBookViewModelImp.swift */; };
 		A28A9B12271175A80063692D /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A9B11271175A70063692D /* SettingViewModel.swift */; };
 		A28A9B14271178360063692D /* Reactive+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A9B13271178360063692D /* Reactive+.swift */; };
 		A28A9B1627117ACA0063692D /* SettingDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A9B1527117ACA0063692D /* SettingDependencyContainer.swift */; };
@@ -55,6 +55,9 @@
 		A2BFC119273FFAA5002FFF01 /* SelectCardBookViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2BFC118273FFAA5002FFF01 /* SelectCardBookViewController.storyboard */; };
 		A2BFC11B273FFD54002FFF01 /* SelectCardBookCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2BFC11A273FFD54002FFF01 /* SelectCardBookCollectionViewCell.xib */; };
 		A2BFC11D274002CA002FFF01 /* SelectCardBookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BFC11C274002CA002FFF01 /* SelectCardBookCollectionViewCell.swift */; };
+		A2CBF49D27B411A000D31CE4 /* CardBookCoverBackgroundColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CBF49B27B411A000D31CE4 /* CardBookCoverBackgroundColorCell.swift */; };
+		A2CBF49E27B411A000D31CE4 /* CardBookCoverBackgroundColorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2CBF49C27B411A000D31CE4 /* CardBookCoverBackgroundColorCell.xib */; };
+		A2CBF4A027B41A1D00D31CE4 /* AddCardBookAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CBF49F27B41A1D00D31CE4 /* AddCardBookAPI.swift */; };
 		A2CC655E27075C8900610C49 /* MyCardListEmptyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2CC655D27075C8900610C49 /* MyCardListEmptyCollectionViewCell.xib */; };
 		A2CC65622707622D00610C49 /* MyCardListEmptyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CC65612707622D00610C49 /* MyCardListEmptyCollectionViewCell.swift */; };
 		A2CC65642708229C00610C49 /* CardFrontView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2CC65632708229C00610C49 /* CardFrontView.xib */; };
@@ -353,7 +356,7 @@
 		A25D432127B16938002BCD31 /* AddCardBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardBookViewController.swift; sourceTree = "<group>"; };
 		A25D432527B16DCD002BCD31 /* AddCardBookViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddCardBookViewController.storyboard; sourceTree = "<group>"; };
 		A25D432727B16E6B002BCD31 /* AddCardBookDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardBookDependencyContainer.swift; sourceTree = "<group>"; };
-		A25D432927B16EF6002BCD31 /* AddCardBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardBookViewModel.swift; sourceTree = "<group>"; };
+		A25D432927B16EF6002BCD31 /* AddCardBookViewModelImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardBookViewModelImp.swift; sourceTree = "<group>"; };
 		A28A9B11271175A70063692D /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		A28A9B13271178360063692D /* Reactive+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+.swift"; sourceTree = "<group>"; };
 		A28A9B1527117ACA0063692D /* SettingDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDependencyContainer.swift; sourceTree = "<group>"; };
@@ -370,6 +373,9 @@
 		A2BFC118273FFAA5002FFF01 /* SelectCardBookViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectCardBookViewController.storyboard; sourceTree = "<group>"; };
 		A2BFC11A273FFD54002FFF01 /* SelectCardBookCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectCardBookCollectionViewCell.xib; sourceTree = "<group>"; };
 		A2BFC11C274002CA002FFF01 /* SelectCardBookCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCardBookCollectionViewCell.swift; sourceTree = "<group>"; };
+		A2CBF49B27B411A000D31CE4 /* CardBookCoverBackgroundColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBookCoverBackgroundColorCell.swift; sourceTree = "<group>"; };
+		A2CBF49C27B411A000D31CE4 /* CardBookCoverBackgroundColorCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardBookCoverBackgroundColorCell.xib; sourceTree = "<group>"; };
+		A2CBF49F27B41A1D00D31CE4 /* AddCardBookAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardBookAPI.swift; sourceTree = "<group>"; };
 		A2CC655D27075C8900610C49 /* MyCardListEmptyCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCardListEmptyCollectionViewCell.xib; sourceTree = "<group>"; };
 		A2CC65612707622D00610C49 /* MyCardListEmptyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardListEmptyCollectionViewCell.swift; sourceTree = "<group>"; };
 		A2CC65632708229C00610C49 /* CardFrontView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardFrontView.xib; sourceTree = "<group>"; };
@@ -698,7 +704,9 @@
 				A25D432127B16938002BCD31 /* AddCardBookViewController.swift */,
 				A25D432527B16DCD002BCD31 /* AddCardBookViewController.storyboard */,
 				A25D432727B16E6B002BCD31 /* AddCardBookDependencyContainer.swift */,
-				A25D432927B16EF6002BCD31 /* AddCardBookViewModel.swift */,
+				A25D432927B16EF6002BCD31 /* AddCardBookViewModelImp.swift */,
+				A2CBF49B27B411A000D31CE4 /* CardBookCoverBackgroundColorCell.swift */,
+				A2CBF49C27B411A000D31CE4 /* CardBookCoverBackgroundColorCell.xib */,
 			);
 			path = AddCardBook;
 			sourceTree = "<group>";
@@ -852,6 +860,7 @@
 				A223E6DC275639E100F29FCE /* ResignAPI.swift */,
 				A223E6D3275537DD00F29FCE /* RemoveMyNameCardAPI.swift */,
 				CE6AF917276290A700090BD9 /* UpdateCardAPI.swift */,
+				A2CBF49F27B41A1D00D31CE4 /* AddCardBookAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -1725,6 +1734,7 @@
 				CE6BAB962704D3C40006D26B /* CardBookDetailViewController.storyboard in Resources */,
 				CE4D4EE1270A100B00081A2B /* TMISettingView.xib in Resources */,
 				CEB84090272AF10E000E527B /* CardBookListViewController.storyboard in Resources */,
+				A2CBF49E27B411A000D31CE4 /* CardBookCoverBackgroundColorCell.xib in Resources */,
 				CE6BAB9A2704D6E30006D26B /* MyCardListViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1910,6 +1920,7 @@
 				CEC599D72757150500405DEA /* ImageUploader.swift in Sources */,
 				CEDA4B7B274EC2EF0011D0CA /* QuestTableViewCell.swift in Sources */,
 				A2CC65832708F06800610C49 /* CardBookDetailViewModel.swift in Sources */,
+				A2CBF49D27B411A000D31CE4 /* CardBookCoverBackgroundColorCell.swift in Sources */,
 				CEFA037D26EFBACE00D12AAB /* QRGenerater.swift in Sources */,
 				A2A5C83A26FB1A3D005D2849 /* AppKey.swift in Sources */,
 				CE0415E0275EA63E00B9A565 /* NameCardDetailDependencyContainer.swift in Sources */,
@@ -1924,6 +1935,7 @@
 				CE94AB9F270ECEED005D2E80 /* MockInterestRepository.swift in Sources */,
 				CEDA4B7F274ECB000011D0CA /* StrongPointAPI.swift in Sources */,
 				A223E6CE2755273A00F29FCE /* CardDetailMoreView.swift in Sources */,
+				A2CBF4A027B41A1D00D31CE4 /* AddCardBookAPI.swift in Sources */,
 				A2BFC115273FFA12002FFF01 /* SelectCardBookViewController.swift in Sources */,
 				CE4D4E882707AE3800081A2B /* CharacterCreationDependencyContainer.swift in Sources */,
 				CE472B6A2748B6F9001A5E5F /* EntityNameSpace.swift in Sources */,
@@ -2014,7 +2026,7 @@
 				A2DA3B49274A683A00E68F23 /* OAuthRepository.swift in Sources */,
 				CEDA4B8E275125C30011D0CA /* QuestDoneAPI.swift in Sources */,
 				CE4D4E9B2707BB2500081A2B /* PaletteDependencyContainer.swift in Sources */,
-				A25D432A27B16EF6002BCD31 /* AddCardBookViewModel.swift in Sources */,
+				A25D432A27B16EF6002BCD31 /* AddCardBookViewModelImp.swift in Sources */,
 				649ABC25275108A9005F50E8 /* CardDetailDependencyContainer.swift in Sources */,
 				CE94ABB2270EFCA3005D2E80 /* TMISectionHeaderView.swift in Sources */,
 				A2DA3B67274FDB5800E68F23 /* Entity.Image.swift in Sources */,
