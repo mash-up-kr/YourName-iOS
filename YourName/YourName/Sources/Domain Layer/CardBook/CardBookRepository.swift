@@ -10,9 +10,14 @@ import RxSwift
 
 protocol CardBookRepository {
     func fetchAll() -> Observable<[CardBook]>
+    func addCardBook(name: String, desc: String, bgColorId: Int) -> Observable<Void>
 }
 
 final class MockCardBookRepository: CardBookRepository {
+    
+    func addCardBook(name: String, desc: String, bgColorId: Int) -> Observable<Void> {
+        return .empty()
+    }
     
     func fetchAll() -> Observable<[CardBook]> {
         return .just(CardBook.dummy)
@@ -32,6 +37,11 @@ final class YourNameCardBookRepository: CardBookRepository {
                 guard let self = self else { return nil }
                 return (response.list ?? []).compactMap(self.translate(fromEntity:))
             }
+    }
+    
+    func addCardBook(name: String, desc: String, bgColorId: Int) -> Observable<Void> {
+        return network.request(AddCardBookAPI(name: name, desc: desc, bgColorId: bgColorId))
+            .mapToVoid()
     }
     
     private func translate(fromEntity entity: Entity.CardBook) -> CardBook {

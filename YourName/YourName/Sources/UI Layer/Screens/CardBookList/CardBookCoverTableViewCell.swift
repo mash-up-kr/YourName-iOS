@@ -12,7 +12,8 @@ final class CardBookCoverTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.coverImageContainerView?.clipsToBounds = true
+        self.coverBackgroundView?.clipsToBounds = true
+        self.coverImageview?.clipsToBounds = true
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -26,13 +27,13 @@ final class CardBookCoverTableViewCell: UITableViewCell {
         self.cardCountLabel?.text = "(\(cardBook.count ?? .zero))"
         self.descriptionLabel?.text = cardBook.description
         if let hexStrings = cardBook.backgroundColor {
-            self.updateGradientLayer(hexStrings: hexStrings)
+            self.coverBackgroundView?.updateGradientLayer(hexStrings: hexStrings)
             self.coverImageview?.image = UIImage(named: "ghost_cover")
         } else {
             self.coverImageview?.image = UIImage(named: "card_book_cover_all")
         }
     }
-    @IBOutlet private weak var coverImageContainerView: UIStackView?
+    @IBOutlet private weak var coverBackgroundView: UIView?
     @IBOutlet private weak var coverImageview: UIImageView?
     @IBOutlet private weak var titleLabel: UILabel?
     @IBOutlet private weak var cardCountLabel: UILabel?

@@ -21,6 +21,12 @@ final class CardBookListDependencyContainer {
             return dependencyContainer.createCardBookDetailViewController(cardBookID: id, cardBookTitle: title)
         }
         
+        viewController.addCardBookFactory = { [weak self] in
+            guard let self = self else { fatalError("self is nil") }
+            let dependencyContainer = self.createAddCardBookDependencyContainer()
+            return dependencyContainer.createAddCardBookViewController()
+        }
+        
         viewController.addFriendFactory = {
             let dependencyContainer = self.createAddFriendCardDependencyContainer()
             return dependencyContainer.createAddFriendCardViewController()
@@ -32,6 +38,10 @@ final class CardBookListDependencyContainer {
     
     private func createAddFriendCardDependencyContainer() -> AddFriendCardDependencyContainer {
         return AddFriendCardDependencyContainer()
+    }
+    
+    private func createAddCardBookDependencyContainer() -> AddCardBookDependencyContainer {
+        return AddCardBookDependencyContainer()
     }
     
     private func createCardBookListViewModel() -> CardBookListViewModel {

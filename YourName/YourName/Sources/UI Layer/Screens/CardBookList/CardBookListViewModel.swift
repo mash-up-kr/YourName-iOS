@@ -32,9 +32,9 @@ final class CardBookListViewModel {
     func didLoad() {
         self.isLoading.accept(true)
         cardBookRepository.fetchAll()
-            .subscribe(onNext: { [weak self] cardBooks in
+            .subscribe(onNext: { [weak self] _cardBooks in
                 self?.isLoading.accept(false)
-                self?.cardBooks.accept(cardBooks)
+                self?.cardBooks.accept(_cardBooks.reversed())
             })
             .disposed(by: self.disposeBag)
     }
