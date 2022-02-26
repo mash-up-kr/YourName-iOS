@@ -64,7 +64,7 @@
                                     <constraint firstItem="ElO-76-ICl" firstAttribute="leading" secondItem="qf8-7u-Zht" secondAttribute="leading" constant="24" id="h1K-K6-WTC"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="98" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="H2A-C3-Bd7">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="98" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="H2A-C3-Bd7">
                                 <rect key="frame" x="0.0" y="100" width="414" height="762"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
@@ -78,28 +78,31 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Oe-aZ-SGk">
                                                     <rect key="frame" x="18" y="8" width="378" height="82"/>
                                                     <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ftx-w8-dYj">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cJB-3i-vdh">
                                                             <rect key="frame" x="18" y="9" width="64" height="64"/>
-                                                            <subviews>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="card_book_cover_all" translatesAutoresizingMaskIntoConstraints="NO" id="TyB-X5-fgO">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="height" constant="64" id="PDw-qN-4Ri"/>
-                                                                        <constraint firstAttribute="width" constant="64" id="cEO-Mz-V3q"/>
-                                                                    </constraints>
-                                                                    <userDefinedRuntimeAttributes>
-                                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                            <real key="value" value="12"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                    </userDefinedRuntimeAttributes>
-                                                                </imageView>
-                                                            </subviews>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="64" id="1ra-W9-Fuw"/>
+                                                                <constraint firstAttribute="height" constant="64" id="cbP-DD-DNW"/>
+                                                            </constraints>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                     <real key="value" value="12"/>
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
-                                                        </stackView>
+                                                        </view>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="card_book_cover_all" translatesAutoresizingMaskIntoConstraints="NO" id="TyB-X5-fgO">
+                                                            <rect key="frame" x="18" y="0.0" width="64" height="82"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="64" id="PDw-qN-4Ri"/>
+                                                                <constraint firstAttribute="width" constant="64" id="cEO-Mz-V3q"/>
+                                                            </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <real key="value" value="12"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </imageView>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="p1I-yl-Yac">
                                                             <rect key="frame" x="346" y="33" width="8" height="16"/>
                                                             <constraints>
@@ -154,10 +157,13 @@
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="p1I-yl-Yac" secondAttribute="trailing" constant="24" id="5N9-Iy-l5F"/>
-                                                        <constraint firstItem="QoO-7r-uhu" firstAttribute="leading" secondItem="Ftx-w8-dYj" secondAttribute="trailing" constant="20" id="6TA-Uq-8uj"/>
-                                                        <constraint firstItem="Ftx-w8-dYj" firstAttribute="centerY" secondItem="0Oe-aZ-SGk" secondAttribute="centerY" id="SPu-Rv-XGa"/>
-                                                        <constraint firstItem="Ftx-w8-dYj" firstAttribute="leading" secondItem="0Oe-aZ-SGk" secondAttribute="leading" constant="18" id="bve-oW-btR"/>
+                                                        <constraint firstAttribute="bottom" secondItem="TyB-X5-fgO" secondAttribute="bottom" id="Kvz-K0-LTO"/>
+                                                        <constraint firstItem="TyB-X5-fgO" firstAttribute="leading" secondItem="0Oe-aZ-SGk" secondAttribute="leading" constant="18" id="afh-ml-WeG"/>
+                                                        <constraint firstItem="QoO-7r-uhu" firstAttribute="leading" secondItem="cJB-3i-vdh" secondAttribute="trailing" constant="20" id="f1C-J7-kxz"/>
+                                                        <constraint firstItem="cJB-3i-vdh" firstAttribute="leading" secondItem="0Oe-aZ-SGk" secondAttribute="leading" constant="18" id="i77-N3-ufz"/>
+                                                        <constraint firstItem="cJB-3i-vdh" firstAttribute="centerY" secondItem="0Oe-aZ-SGk" secondAttribute="centerY" id="kd3-En-OT4"/>
                                                         <constraint firstItem="p1I-yl-Yac" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="QoO-7r-uhu" secondAttribute="trailing" constant="20" id="mZR-3C-wyR"/>
+                                                        <constraint firstItem="TyB-X5-fgO" firstAttribute="centerY" secondItem="0Oe-aZ-SGk" secondAttribute="centerY" id="p3P-C4-deU"/>
                                                         <constraint firstItem="p1I-yl-Yac" firstAttribute="centerY" secondItem="0Oe-aZ-SGk" secondAttribute="centerY" id="yOu-b5-h90"/>
                                                         <constraint firstItem="QoO-7r-uhu" firstAttribute="centerY" secondItem="0Oe-aZ-SGk" secondAttribute="centerY" id="yxL-YM-KdP"/>
                                                     </constraints>
@@ -181,6 +187,7 @@
                                                 </view>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="0Oe-aZ-SGk" firstAttribute="centerY" secondItem="Ayj-m7-edf" secondAttribute="centerY" id="5qI-D6-7Zv"/>
                                                 <constraint firstItem="0Oe-aZ-SGk" firstAttribute="top" secondItem="Ayj-m7-edf" secondAttribute="top" constant="8" id="Bwo-bX-vYM"/>
                                                 <constraint firstAttribute="bottom" secondItem="0Oe-aZ-SGk" secondAttribute="bottom" constant="8" id="efs-1k-Nl2"/>
                                                 <constraint firstItem="0Oe-aZ-SGk" firstAttribute="leading" secondItem="Ayj-m7-edf" secondAttribute="leading" constant="18" id="mgq-Vd-QT9"/>
@@ -189,7 +196,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="cardCountLabel" destination="n9Y-r5-khC" id="g6e-HD-l7o"/>
-                                            <outlet property="coverImageContainerView" destination="Ftx-w8-dYj" id="Fmd-At-38u"/>
+                                            <outlet property="coverBackgroundView" destination="cJB-3i-vdh" id="dwC-ka-ZU4"/>
                                             <outlet property="coverImageview" destination="TyB-X5-fgO" id="rV4-TL-bfn"/>
                                             <outlet property="descriptionLabel" destination="QWE-mS-MXb" id="BHc-QX-e7f"/>
                                             <outlet property="titleLabel" destination="web-VC-Ofy" id="7PN-Yh-NkK"/>

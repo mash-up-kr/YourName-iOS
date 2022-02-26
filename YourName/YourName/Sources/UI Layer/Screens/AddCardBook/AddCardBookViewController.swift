@@ -17,7 +17,8 @@ protocol AddCardBookViewModel: AnyObject {
     func cellForItem(at indexPath: IndexPath) -> CardBookCoverBackgroundColorCell.Item?
     func cardBookName(text: String)
     func cardBookDesc(text: String)
-    var cardBookCoverBgColors: BehaviorRelay<[CardBookCoverBackgroundColorCell.Item]> {get }
+    var cardBookCoverBgColors: BehaviorRelay<[CardBookCoverBackgroundColorCell.Item]> { get }
+    var shouldNavigationPop: PublishRelay<Void> { get }
 }
 
 final class AddCardBookViewController: ViewController, Storyboarded {
@@ -57,11 +58,14 @@ final class AddCardBookViewController: ViewController, Storyboarded {
                 self?.viewModel.cardBookName(text: $0)
             })
             .disposed(by: self.disposeBag)
-        
+             
         self.cardBookDescriptionTextField.rx.text.orEmpty
-            .filter { $0.count < 10 }
-            .bind(onNext: { [weak self] in
-                self?.viewModel.cardBookDesc(text: $0)
+            .distinctUntilChanged()
+            .filter { $0.count >= 10 }
+            .map { String($0.prefix(10)) }
+            .bind(onNext: { [weak self] text in
+                self?.cardBookDescriptionTextField.text = text
+                self?.viewModel.cardBookDesc(text: text)
             })
             .disposed(by: self.disposeBag)
         
@@ -76,6 +80,25 @@ final class AddCardBookViewController: ViewController, Storyboarded {
                 self?.viewModel.didTapConfrim()
             })
             .disposed(by: self.disposeBag)
+        
+        
+        self.cardBookNameTextField.rx.text
+            .orEmpty
+            .filter { $0.count >= 1 }
+            .bind(onNext: { [weak self] _ in
+                self?.confirmButton.isUserInteractionEnabled = true
+                self?.confirmButton.backgroundColor = .black
+            })
+            .disposed(by: self.disposeBag)
+        
+        self.cardBookNameTextField.rx.text
+            .orEmpty
+            .filter { $0.count < 1 }
+            .bind(onNext: { [weak self] _ in
+                self?.confirmButton.isUserInteractionEnabled = false
+                self?.confirmButton.backgroundColor = Palette.gray1
+            })
+            .disposed(by: self.disposeBag)
     }
     
     private func configure(_ collectionView: UICollectionView) {
@@ -86,6 +109,12 @@ final class AddCardBookViewController: ViewController, Storyboarded {
         viewModel.cardBookCoverBgColors
             .bind(onNext: { [weak self] _ in
                 self?.cardBookCoverColorCollectionView.reloadData()
+            })
+            .disposed(by: self.disposeBag)
+        
+        viewModel.shouldNavigationPop
+            .bind(onNext: { [weak self] _ in
+                self?.navigationController?.popViewController(animated: true)
             })
             .disposed(by: self.disposeBag)
     }

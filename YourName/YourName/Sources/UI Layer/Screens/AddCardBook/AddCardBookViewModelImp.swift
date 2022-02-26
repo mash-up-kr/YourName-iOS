@@ -26,6 +26,7 @@ final class AddCardBookViewModelImp: AddCardBookViewModel {
     
     private let disposeBag = DisposeBag()
     var cardBookCoverBgColors = BehaviorRelay<[CardBookBgColorCellItem]>(value: [])
+    var shouldNavigationPop = PublishRelay<Void>()
     private let cardBookName = BehaviorRelay<String>(value: "")
     private let cardBookDesc = BehaviorRelay<String>(value: "")
     private let cardBookBgColor = BehaviorRelay<Int>(value: 0)
@@ -75,7 +76,7 @@ final class AddCardBookViewModelImp: AddCardBookViewModel {
     
     func didTapConfrim() {
         let bgColorId = self.cardBookCoverBgColors.value[safe: self.cardBookBgColor.value]?.id ?? "1"
-        
+
         self.cardBookRepository.addCardBook(
             name: self.cardBookName.value,
             desc: self.cardBookDesc.value,
@@ -86,7 +87,8 @@ final class AddCardBookViewModelImp: AddCardBookViewModel {
                 return .empty()
             }
             .bind(onNext: { [weak self] in
-                print("성공 오나료₩~")
+                self?.shouldNavigationPop.accept(())
+                NotificationCenter.default.post(name: .cardBookDidChange, object: nil)
             })
             .disposed(by: self.disposeBag)
     }
