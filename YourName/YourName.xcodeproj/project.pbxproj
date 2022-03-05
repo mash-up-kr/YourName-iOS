@@ -58,6 +58,7 @@
 		A2CBF49D27B411A000D31CE4 /* CardBookCoverBackgroundColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CBF49B27B411A000D31CE4 /* CardBookCoverBackgroundColorCell.swift */; };
 		A2CBF49E27B411A000D31CE4 /* CardBookCoverBackgroundColorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2CBF49C27B411A000D31CE4 /* CardBookCoverBackgroundColorCell.xib */; };
 		A2CBF4A027B41A1D00D31CE4 /* AddCardBookAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CBF49F27B41A1D00D31CE4 /* AddCardBookAPI.swift */; };
+		A2CBF66627D380F000D31CE4 /* SelectCardBookDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CBF66527D380F000D31CE4 /* SelectCardBookDependencyContainer.swift */; };
 		A2CC655E27075C8900610C49 /* MyCardListEmptyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2CC655D27075C8900610C49 /* MyCardListEmptyCollectionViewCell.xib */; };
 		A2CC65622707622D00610C49 /* MyCardListEmptyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CC65612707622D00610C49 /* MyCardListEmptyCollectionViewCell.swift */; };
 		A2CC65642708229C00610C49 /* CardFrontView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2CC65632708229C00610C49 /* CardFrontView.xib */; };
@@ -376,6 +377,7 @@
 		A2CBF49B27B411A000D31CE4 /* CardBookCoverBackgroundColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBookCoverBackgroundColorCell.swift; sourceTree = "<group>"; };
 		A2CBF49C27B411A000D31CE4 /* CardBookCoverBackgroundColorCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardBookCoverBackgroundColorCell.xib; sourceTree = "<group>"; };
 		A2CBF49F27B41A1D00D31CE4 /* AddCardBookAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardBookAPI.swift; sourceTree = "<group>"; };
+		A2CBF66527D380F000D31CE4 /* SelectCardBookDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCardBookDependencyContainer.swift; sourceTree = "<group>"; };
 		A2CC655D27075C8900610C49 /* MyCardListEmptyCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCardListEmptyCollectionViewCell.xib; sourceTree = "<group>"; };
 		A2CC65612707622D00610C49 /* MyCardListEmptyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardListEmptyCollectionViewCell.swift; sourceTree = "<group>"; };
 		A2CC65632708229C00610C49 /* CardFrontView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardFrontView.xib; sourceTree = "<group>"; };
@@ -728,6 +730,7 @@
 				A2BFC118273FFAA5002FFF01 /* SelectCardBookViewController.storyboard */,
 				A2BFC11A273FFD54002FFF01 /* SelectCardBookCollectionViewCell.xib */,
 				A2BFC11C274002CA002FFF01 /* SelectCardBookCollectionViewCell.swift */,
+				A2CBF66527D380F000D31CE4 /* SelectCardBookDependencyContainer.swift */,
 			);
 			path = SelectCardBook;
 			sourceTree = "<group>";
@@ -735,6 +738,7 @@
 		A2CC657D2708E90400610C49 /* AddFriendCard */ = {
 			isa = PBXGroup;
 			children = (
+				A2BFC113273FF98C002FFF01 /* SelectCardBook */,
 				A23920F4273666A10069E418 /* AddFriendCardViewController.storyboard */,
 				A2CC657E2708E93900610C49 /* AddFriendCardViewController.swift */,
 				A2B10120270AA80900CAE013 /* AddFriendCardViewModel.swift */,
@@ -1330,7 +1334,6 @@
 				CE4D4E992707BA9800081A2B /* Palette */,
 				CED16DEE26F3A5000076565F /* Quest */,
 				CE63123826F59C6B00B2E69B /* Root */,
-				A2BFC113273FF98C002FFF01 /* SelectCardBook */,
 				CED16DEF26F3A5050076565F /* Setting */,
 				CE4D4E902707B24A00081A2B /* SkillSetting */,
 				CE63125C26F626F600B2E69B /* Splash */,
@@ -1875,6 +1878,7 @@
 				CE6D1487270C952900AF4C5C /* CharacterItemFactory.swift in Sources */,
 				CEB6586F26EB2C9400C11F33 /* OAuth.swift in Sources */,
 				CE94ABB5270F2C81005D2E80 /* Skill.swift in Sources */,
+				A2CBF66627D380F000D31CE4 /* SelectCardBookDependencyContainer.swift in Sources */,
 				CEC599D127568E6800405DEA /* LocalStorage.swift in Sources */,
 				CE472B712748C0B4001A5E5F /* Entity.TMI.swift in Sources */,
 				CEB6588E26EC821300C11F33 /* Network.swift in Sources */,

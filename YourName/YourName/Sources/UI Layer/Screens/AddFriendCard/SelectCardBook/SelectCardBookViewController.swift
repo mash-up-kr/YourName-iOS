@@ -14,13 +14,13 @@ import SnapKit
 final class SelectCardBookViewController: ViewController, Storyboarded {
 
     @IBOutlet private unowned var backButton: UIButton!
-    @IBOutlet private unowned var addCardBookButton: UIButton!
     @IBOutlet private unowned var cardBookCollectionView: UICollectionView!
     @IBOutlet private unowned var completeButton: UIButton!
     
     private let disposeBag = DisposeBag()
     var viewModel: SelectCardBookViewModel!
     private let checkedIndex = BehaviorRelay<[IndexPath]>(value: [])
+    var cardDetailViewControllerFactory: ((UniqueCode, Identifier) -> NameCardDetailViewController)?
     
     override var hidesBottomBarWhenPushed: Bool {
         get { self.navigationController?.topViewController == self }
@@ -43,15 +43,8 @@ extension SelectCardBookViewController {
             })
             .disposed(by: disposeBag)
         
-        self.addCardBookButton.rx.throttleTap
-            .bind(onNext: { [weak self] in
-                self?.viewModel.didTapAddCardButton()
-            })
-            .disposed(by: disposeBag)
-        
         self.completeButton.rx.throttleTap
             .bind(onNext: { [weak self] in
-                self?.navigationController?.popViewController(animated: true)
                 self?.viewModel.didTapCompleteButton()
             })
             .disposed(by: disposeBag)
@@ -63,7 +56,7 @@ extension SelectCardBookViewController {
     private func render(_ viewModel: SelectCardBookViewModel) {
         viewModel.isEnabledCompleteButton
             .bind(onNext: { [weak self] isEnabled in
-                self?.completeButton.isEnabled = isEnabled
+                self?.completeButton.isUserInteractionEnabled = isEnabled
                 if isEnabled {
                     self?.completeButton.backgroundColor = Palette.black1
                 } else {
@@ -72,11 +65,29 @@ extension SelectCardBookViewController {
             })
             .disposed(by: disposeBag)
         
+        viewModel.reloadData
+            .bind(onNext: { [weak self] _ in
+                self?.cardBookCollectionView.reloadData()
+            })
+            .disposed(by: self.disposeBag)
+        
+        viewModel.reloadItem
+            .bind(onNext: { [weak self] indexPath in
+                self?.cardBookCollectionView.reloadItems(at: [indexPath])
+            })
+            .disposed(by: self.disposeBag)
+        
         viewModel.toastView
             .bind(onNext: { [weak self] in
                 self?.navigationController?.view.showToast($0, position: .top, completion: nil)
             })
             .disposed(by: disposeBag)
+        
+        viewModel.shouldPopViewController
+            .bind(onNext: { [weak self] in
+                self?.navigationController?.popViewController(animated: true)
+            })
+            .disposed(by: self.disposeBag)
     }
 }
 
@@ -108,6 +119,6 @@ extension SelectCardBookViewController: UICollectionViewDelegate {
 
 extension SelectCardBookViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: UIScreen.main.bounds.width, height: 77)
+        CGSize(width: UIScreen.main.bounds.width, height: 78)
     }
 }

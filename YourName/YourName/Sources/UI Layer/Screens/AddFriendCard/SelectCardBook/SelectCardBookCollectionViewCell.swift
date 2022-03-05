@@ -12,14 +12,14 @@ import RxCocoa
 final class SelectCardBookCollectionViewCell: UICollectionViewCell {
     
     struct Item {
+        let id: Identifier
         let name: String
         let count: Int
-        let backgroundColor: UIColor
+        let bgColorHexString: [String]
         var isChecked: Bool = false
     }
     
     var checkboxDidTap: (() -> Void)!
-    var item: Item!
     @IBOutlet private unowned var cardBookCount: UILabel!
     @IBOutlet private unowned var cardBookName: UILabel!
     @IBOutlet private unowned var cardbookIconView: UIView!
@@ -38,13 +38,19 @@ final class SelectCardBookCollectionViewCell: UICollectionViewCell {
         super.prepareForReuse()
         self.cardBookName.text = nil
         self.cardBookCount.text = nil
+        self.checkbox.backgroundColor = .white
+        self.cardbookIconView.updateGradientLayer(colors: [.white])
     }
     
     func configure(item: Item) {
-        self.item = item
+        if item.isChecked {
+            self.checkbox.backgroundColor = Palette.black1
+        } else {
+            self.checkbox.backgroundColor = .white
+        }
         self.cardBookCount.text = "(\(item.count))"
         self.cardBookName.text = item.name
-        self.cardbookIconView.backgroundColor = item.backgroundColor
+        self.cardbookIconView.updateGradientLayer(hexStrings: item.bgColorHexString)
     }
 }
 
@@ -52,6 +58,7 @@ extension SelectCardBookCollectionViewCell {
     private func configureUI() {
         self.checkbox.layer.borderWidth = 2
         self.checkbox.layer.borderColor = Palette.black1.cgColor
+        self.cardbookIconView.clipsToBounds = true
     }
     
     private func bind() {
@@ -59,12 +66,6 @@ extension SelectCardBookCollectionViewCell {
             .bind(onNext: { [weak self] in
                 guard let self = self else { return }
                 self.checkboxDidTap()
-                self.item.isChecked.toggle()
-                if self.item.isChecked {
-                    self.checkbox.backgroundColor = Palette.black1
-                } else {
-                    self.checkbox.backgroundColor = .white
-                }
             })
             .disposed(by: disposeBag)
     }
