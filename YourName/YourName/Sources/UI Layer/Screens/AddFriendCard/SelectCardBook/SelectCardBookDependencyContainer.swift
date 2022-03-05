@@ -21,6 +21,7 @@ final class SelectCardBookDependencyContainer {
         }
         let viewModel = SelectCardBookViewModel(cardBookRepository: YourNameCardBookRepository(),
                                                 addFriendCardRepository: YourNameAddFriendCardRepository(),
+                                                questRepository: YourNameQuestRepository(),
                                                 friendCardUniqueCode: friendCardUniqueCode)
         viewController.viewModel = viewModel
         viewController.cardDetailViewControllerFactory = cardDetailVieWControllerFactory

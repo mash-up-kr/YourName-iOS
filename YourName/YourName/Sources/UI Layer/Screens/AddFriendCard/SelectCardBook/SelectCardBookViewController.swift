@@ -45,7 +45,6 @@ extension SelectCardBookViewController {
         
         self.completeButton.rx.throttleTap
             .bind(onNext: { [weak self] in
-                self?.navigationController?.popViewController(animated: true)
                 self?.viewModel.didTapCompleteButton()
             })
             .disposed(by: disposeBag)
@@ -66,17 +65,29 @@ extension SelectCardBookViewController {
             })
             .disposed(by: disposeBag)
         
-        viewModel.items
+        viewModel.reloadData
             .bind(onNext: { [weak self] _ in
                 self?.cardBookCollectionView.reloadData()
             })
             .disposed(by: self.disposeBag)
         
+        viewModel.reloadItem
+            .bind(onNext: { [weak self] indexPath in
+                self?.cardBookCollectionView.reloadItems(at: [indexPath])
+            })
+            .disposed(by: self.disposeBag)
+        
         viewModel.toastView
             .bind(onNext: { [weak self] in
-                self?.navigationController?.topViewController?.view.showToast($0, position: .top, completion: nil)
+                self?.navigationController?.view.showToast($0, position: .top, completion: nil)
             })
             .disposed(by: disposeBag)
+        
+        viewModel.shouldPopViewController
+            .bind(onNext: { [weak self] in
+                self?.navigationController?.popViewController(animated: true)
+            })
+            .disposed(by: self.disposeBag)
     }
 }
 
@@ -94,8 +105,8 @@ extension SelectCardBookViewController: UICollectionViewDataSource {
         
         guard let item = self.viewModel.cellForItem(at: indexPath) else { return .init() }
         cell.configure(item: item)
-        cell.checkboxDidTap = { [weak self] isChecked in
-            self?.viewModel.didSelectCardBook(at: indexPath, isChecked: isChecked)
+        cell.checkboxDidTap = { [weak self] in
+            self?.viewModel.didSelectCardBook(at: indexPath)
         }
         return cell
     }
@@ -108,6 +119,6 @@ extension SelectCardBookViewController: UICollectionViewDelegate {
 
 extension SelectCardBookViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: UIScreen.main.bounds.width, height: 77)
+        CGSize(width: UIScreen.main.bounds.width, height: 78)
     }
 }
