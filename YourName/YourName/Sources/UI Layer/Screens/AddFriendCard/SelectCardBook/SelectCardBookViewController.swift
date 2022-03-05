@@ -14,7 +14,6 @@ import SnapKit
 final class SelectCardBookViewController: ViewController, Storyboarded {
 
     @IBOutlet private unowned var backButton: UIButton!
-    @IBOutlet private unowned var addCardBookButton: UIButton!
     @IBOutlet private unowned var cardBookCollectionView: UICollectionView!
     @IBOutlet private unowned var completeButton: UIButton!
     
@@ -44,12 +43,6 @@ extension SelectCardBookViewController {
             })
             .disposed(by: disposeBag)
         
-        self.addCardBookButton.rx.throttleTap
-            .bind(onNext: { [weak self] in
-                self?.viewModel.didTapAddCardButton()
-            })
-            .disposed(by: disposeBag)
-        
         self.completeButton.rx.throttleTap
             .bind(onNext: { [weak self] in
                 self?.navigationController?.popViewController(animated: true)
@@ -64,7 +57,7 @@ extension SelectCardBookViewController {
     private func render(_ viewModel: SelectCardBookViewModel) {
         viewModel.isEnabledCompleteButton
             .bind(onNext: { [weak self] isEnabled in
-                self?.completeButton.isEnabled = isEnabled
+                self?.completeButton.isUserInteractionEnabled = isEnabled
                 if isEnabled {
                     self?.completeButton.backgroundColor = Palette.black1
                 } else {
@@ -73,9 +66,15 @@ extension SelectCardBookViewController {
             })
             .disposed(by: disposeBag)
         
+        viewModel.items
+            .bind(onNext: { [weak self] _ in
+                self?.cardBookCollectionView.reloadData()
+            })
+            .disposed(by: self.disposeBag)
+        
         viewModel.toastView
             .bind(onNext: { [weak self] in
-                self?.navigationController?.view.showToast($0, position: .top, completion: nil)
+                self?.navigationController?.topViewController?.view.showToast($0, position: .top, completion: nil)
             })
             .disposed(by: disposeBag)
     }
@@ -95,8 +94,8 @@ extension SelectCardBookViewController: UICollectionViewDataSource {
         
         guard let item = self.viewModel.cellForItem(at: indexPath) else { return .init() }
         cell.configure(item: item)
-        cell.checkboxDidTap = { [weak self] in
-            self?.viewModel.didSelectCardBook(at: indexPath)
+        cell.checkboxDidTap = { [weak self] isChecked in
+            self?.viewModel.didSelectCardBook(at: indexPath, isChecked: isChecked)
         }
         return cell
     }

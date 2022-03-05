@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 
 enum AddFriendCardDestination: Equatable {
-    case selectCardBook
+    case selectCardBook(friendCardUniqueCode: UniqueCode)
 }
 
 typealias AddFriendCardNavigation = Navigation<AddFriendCardDestination>
@@ -157,45 +157,49 @@ extension AddFriendCardViewModel {
     }
     
     func didTapAddButton() {
-        self.isLoading.accept(true)
-        
+       
         guard let uniqueCode = self.nameCard.value.uniqueCode else { return }
-        self.addFriendCardRepository.addFriendCard(uniqueCode: uniqueCode)
-            .do { [weak self] _ in
-                self?.isLoading.accept(false)
-            }
-            .catchError { error in
-                print(error)
-                return .empty()
-            }
-            .flatMap { [weak self] _ -> Observable<Void> in
-                guard let self = self else { return .empty() }
-                return self.questRepository.updateQuest(.addFriendNameCard, to: .waitingDone)
-                    .asObservable()
-                    .mapToVoid()
-            }
-            .compactMap { [weak self] _ -> AlertViewController? in
-                guard let self = self else { return nil }
-                
-                let alertController = AlertViewController.instantiate()
-                
-                let cardDetailAction = {
-                    alertController.dismiss()
-                    self.navigation.accept(.push(.selectCardBook))
+        let alertController = AlertViewController.instantiate()
+        
+        let selectCardBookAction = { [weak self] in
+            guard let self = self else { return }
+            alertController.dismiss()
+            self.navigation.accept(.push(.selectCardBook(friendCardUniqueCode: uniqueCode)))
+        }
+        
+        let skipAction = { [weak self] in
+            guard let self = self else { return }
+            alertController.dismiss()
+            self.isLoading.accept(true)
+            self.addFriendCardRepository.addFriendCard(at: ["1"], uniqueCode: uniqueCode)
+                .do { [weak self] _ in
+                    self?.isLoading.accept(false)
                 }
-                let alertItem = AlertItem(title: "친구 미츄 추가완료!",
-                                           messages: "친구 미츄가 성공적으로 추가되었습니다.",
-                                           image: UIImage(named: "meetu_addFriendCardAlert")!,
-                                           emphasisAction: .init(title: "도감 선택하기", action: cardDetailAction),
-                                           defaultAction: .init(title: "건너뛰기", action: { alertController.dismiss() }))
-                
-                self.toastView.accept(ToastView(text: "성공적으로 추가됐츄!"))
-                NotificationCenter.default.post(name: .addFriendCard, object: nil)
-                
-                alertController.configure(item: alertItem)
-                return alertController
-            }
-            .bind(to: alertController)
-            .disposed(by: disposeBag)
+                .catchError { error in
+                    print(error)
+                    return .empty()
+                }
+                .flatMap { [weak self] _ -> Observable<Void> in
+                    guard let self = self else { return .empty() }
+                    return self.questRepository.updateQuest(.addFriendNameCard, to: .waitingDone)
+                        .asObservable()
+                        .mapToVoid()
+                }
+                .bind(onNext: { [weak self] in
+                    guard let self = self else { return }
+                    self.toastView.accept(ToastView(text: "성공적으로 추가됐츄!"))
+                    NotificationCenter.default.post(name: .addFriendCard, object: nil)
+                })
+                .disposed(by: self.disposeBag)
+        }
+        
+        let alertItem = AlertItem(title: "친구 미츄 추가완료!",
+                                   messages: "친구 미츄가 성공적으로 추가되었습니다.",
+                                   image: UIImage(named: "meetu_addFriendCardAlert")!,
+                                   emphasisAction: .init(title: "도감 선택하기", action: selectCardBookAction),
+                                   defaultAction: .init(title: "건너뛰기", action: skipAction))
+        alertController.configure(item: alertItem)
+        self.alertController.accept(alertController)
+    
     }
 }

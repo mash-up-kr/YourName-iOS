@@ -9,12 +9,12 @@ import Foundation
 import RxSwift
 
 protocol AddFriendCardRepository {
-    func addFriendCard(uniqueCode: UniqueCode) -> Observable<Entity.Empty>
+    func addFriendCard(at cardBooks: [Identifier], uniqueCode: UniqueCode) -> Observable<Entity.Empty>
 }
 
 final class YourNameAddFriendCardRepository: AddFriendCardRepository {
     
-    func addFriendCard(uniqueCode: UniqueCode) -> Observable<Entity.Empty> {
-        return Environment.current.network.request(AddFriendCardAPI(uniqueCode: uniqueCode))
+    func addFriendCard(at cardBooks: [Identifier] = ["1"], uniqueCode: UniqueCode) -> Observable<Entity.Empty> {
+        return Environment.current.network.request(AddFriendCardAPI(uniqueCode: uniqueCode, collectionIds: cardBooks))
     }
 }

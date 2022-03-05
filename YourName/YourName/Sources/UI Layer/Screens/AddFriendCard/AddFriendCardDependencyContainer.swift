@@ -27,8 +27,8 @@ final class AddFriendCardDependencyContainer {
                                                           cardRepository: self.cardRepository,
                                                           questRepository: YourNameQuestRepository())
    
-        viewController.selectCardBookViewControllerFactory = {
-            SelectCardBookDependencyContainer().createSelectCardBookViewController()
+        viewController.selectCardBookViewControllerFactory = { uniqueCode in
+            SelectCardBookDependencyContainer().createSelectCardBookViewController(friendCardUniqueCode: uniqueCode)
         }
         return viewController
     }

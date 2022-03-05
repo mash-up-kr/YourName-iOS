@@ -12,19 +12,18 @@ struct AddFriendCardAPI: ServiceAPI {
     typealias Response = Entity.Empty
     
     private let uniqueCode: UniqueCode
-    private let collectionId: Int
+    private let collectionIds: [Int]
     
     var path: String { "/collections/namecards/\(uniqueCode)"}
     var method: Method { .post }
     var task: NetworkingTask {
-        return .requestParameters(parameters: ["collectionIds" : [self.collectionId]],
+        return .requestParameters(parameters: ["collectionIds" : self.collectionIds],
                                   encoding: JSONEncoding.default)
     }
     
     init(uniqueCode: UniqueCode,
-         collectionId: Int = 1) {
+         collectionIds: [String]) {
         self.uniqueCode = uniqueCode
-        // 초기배포시에는 전체명함에만 추가할 수 있어 default값으로 1을 주었습니다,
-        self.collectionId = collectionId
+        self.collectionIds = collectionIds.compactMap { Int($0) }
     }
 }
