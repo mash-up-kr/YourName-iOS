@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 
 enum AddFriendCardDestination: Equatable {
-    case cardDetail(uniqueCode: UniqueCode, cardId: Identifier)
+    case selectCardBook
 }
 
 typealias AddFriendCardNavigation = Navigation<AddFriendCardDestination>
@@ -179,19 +179,15 @@ extension AddFriendCardViewModel {
                 
                 let alertController = AlertViewController.instantiate()
                 
-                let cardDetailAction = { [weak self] in
-                    guard let self = self,
-                          let uniqueCode = self.nameCard.value.uniqueCode,
-                          let cardId = self.nameCard.value.id else { return }
+                let cardDetailAction = {
                     alertController.dismiss()
-                    
-                    self.navigation.accept(.push(.cardDetail(uniqueCode: uniqueCode, cardId: cardId)))
+                    self.navigation.accept(.push(.selectCardBook))
                 }
                 let alertItem = AlertItem(title: "친구 미츄 추가완료!",
                                            messages: "친구 미츄가 성공적으로 추가되었습니다.",
                                            image: UIImage(named: "meetu_addFriendCardAlert")!,
-                                           emphasisAction: .init(title: "친구 미츄 상세보기", action: cardDetailAction),
-                                           defaultAction: .init(title: "검색으로 돌아가기", action: { alertController.dismiss() }))
+                                           emphasisAction: .init(title: "도감 선택하기", action: cardDetailAction),
+                                           defaultAction: .init(title: "건너뛰기", action: { alertController.dismiss() }))
                 
                 self.toastView.accept(ToastView(text: "성공적으로 추가됐츄!"))
                 NotificationCenter.default.post(name: .addFriendCard, object: nil)

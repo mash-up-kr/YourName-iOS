@@ -11,6 +11,7 @@ import RxRelay
 
 enum SelectCardBookDestination: Equatable {
     case addCardBook
+    case cardDetail(uniqueCode: UniqueCode, cardId: Identifier)
 }
 
 typealias SelectCardBookNavigation = Navigation<SelectCardBookDestination>
@@ -32,7 +33,12 @@ final class SelectCardBookViewModel {
     ,.init(name: "도감명", count: 24, backgroundColor: Palette.pink)]
     
     let navigation = PublishRelay<SelectCardBookNavigation>()
+    private let cardBookRepository: CardBookRepository
     
+    init(cardBookRepository: CardBookRepository) {
+        self.cardBookRepository = cardBookRepository
+    }
+ 
     func didTapAddCardButton() {
         self.navigation.accept(.push(.addCardBook))
     }

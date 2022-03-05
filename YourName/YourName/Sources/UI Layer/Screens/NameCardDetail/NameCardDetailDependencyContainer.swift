@@ -26,7 +26,7 @@ final class NameCardDetailDependencyContainer {
         self.cardType = .friendCard
     }
     
-    init(cardId: Identifier, uniqueCode: UniqueCode, addFriendCardDependencyContainer: AddFriendCardDependencyContainer) {
+    init(cardId: Identifier, uniqueCode: UniqueCode) {
         self.cardId = cardId
         self.uniqueCode = uniqueCode
         self.cardType = .friendCard

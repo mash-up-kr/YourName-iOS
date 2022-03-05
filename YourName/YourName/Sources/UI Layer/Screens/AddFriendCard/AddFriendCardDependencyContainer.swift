@@ -23,20 +23,14 @@ final class AddFriendCardDependencyContainer {
     
     func createAddFriendCardViewController() -> AddFriendCardViewController {
         let viewController = AddFriendCardViewController.instantiate()
-        
-        let cardDetailVieWControllerFactory: (UniqueCode, Identifier) -> NameCardDetailViewController = { uniqueCode, nameCardId  in
-            let dependencyContainer = self.createNameCardDetailDependencyContainer(cardId: nameCardId, uniqueCode: uniqueCode)
-            return dependencyContainer.createNameCardDetailViewController()
-        }
         viewController.viewModel = AddFriendCardViewModel(addFriendCardRepository: self.addFriendCardRepository,
                                                           cardRepository: self.cardRepository,
                                                           questRepository: YourNameQuestRepository())
-        viewController.cardDetailViewControllerFactory = cardDetailVieWControllerFactory
-        
+   
+        viewController.selectCardBookViewControllerFactory = {
+            SelectCardBookDependencyContainer().createSelectCardBookViewController()
+        }
         return viewController
     }
     
-    private func createNameCardDetailDependencyContainer(cardId: Identifier, uniqueCode: UniqueCode) -> NameCardDetailDependencyContainer {
-        NameCardDetailDependencyContainer(cardId: cardId, uniqueCode: uniqueCode, addFriendCardDependencyContainer: self)
-    }
 }
