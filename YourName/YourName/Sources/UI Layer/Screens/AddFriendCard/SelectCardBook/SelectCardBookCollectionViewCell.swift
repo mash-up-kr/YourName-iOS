@@ -20,7 +20,7 @@ final class SelectCardBookCollectionViewCell: UICollectionViewCell {
     }
     
     var checkboxDidTap: ((Bool) -> Void)!
-    var item: Item!
+    private var isChecked: Bool = false
     @IBOutlet private unowned var cardBookCount: UILabel!
     @IBOutlet private unowned var cardBookName: UILabel!
     @IBOutlet private unowned var cardbookIconView: UIView!
@@ -39,10 +39,13 @@ final class SelectCardBookCollectionViewCell: UICollectionViewCell {
         super.prepareForReuse()
         self.cardBookName.text = nil
         self.cardBookCount.text = nil
+        self.checkbox.backgroundColor = .white
+        self.isChecked = false
+        self.cardbookIconView.updateGradientLayer(colors: [.white])
     }
     
     func configure(item: Item) {
-        self.item = item
+        self.isChecked = item.isChecked
         self.cardBookCount.text = "(\(item.count))"
         self.cardBookName.text = item.name
         self.cardbookIconView.updateGradientLayer(hexStrings: item.bgColorHexString)
@@ -60,9 +63,9 @@ extension SelectCardBookCollectionViewCell {
         self.checkbox.rx.tapWhenRecognized
             .bind(onNext: { [weak self] in
                 guard let self = self else { return }
-                self.item.isChecked.toggle()
-                self.checkboxDidTap(self.item.isChecked)
-                if self.item.isChecked {
+                self.isChecked.toggle()
+                self.checkboxDidTap(self.isChecked)
+                if self.isChecked {
                     self.checkbox.backgroundColor = Palette.black1
                 } else {
                     self.checkbox.backgroundColor = .white

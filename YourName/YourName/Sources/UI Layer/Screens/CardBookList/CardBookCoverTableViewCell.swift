@@ -16,12 +16,15 @@ final class CardBookCoverTableViewCell: UITableViewCell {
         self.coverImageview?.clipsToBounds = true
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        coverBackgroundView?.updateGradientLayer(colors: [.white])
+        coverImageview?.image = nil
+        titleLabel?.text = nil
+        cardCountLabel?.text = nil
+        descriptionLabel?.text = nil
     }
-
+    
     func configure(with cardBook: CardBook) {
         self.titleLabel?.text = cardBook.title
         self.cardCountLabel?.text = "(\(cardBook.count ?? .zero))"

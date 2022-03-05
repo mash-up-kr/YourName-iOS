@@ -38,7 +38,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="k7z-cf-Elm">
-                                <rect key="frame" x="0.0" y="103" width="414" height="759"/>
+                                <rect key="frame" x="0.0" y="103" width="414" height="715"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="n2n-c0-zHU">
                                     <size key="itemSize" width="413" height="71"/>
@@ -99,7 +99,7 @@
                             <constraint firstItem="GVn-WT-382" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="24" id="YKA-0y-R7n"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="GVn-WT-382" secondAttribute="trailing" constant="24" id="ZCA-2b-9d9"/>
                             <constraint firstAttribute="bottom" secondItem="qkC-Ja-ZMM" secondAttribute="bottom" id="Zej-Ya-AsZ"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="k7z-cf-Elm" secondAttribute="bottom" id="dsr-nH-coo"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="k7z-cf-Elm" secondAttribute="bottom" constant="44" id="dsr-nH-coo"/>
                             <constraint firstItem="k7z-cf-Elm" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="h87-WP-s1F"/>
                             <constraint firstItem="k7z-cf-Elm" firstAttribute="top" secondItem="bM1-qa-yRT" secondAttribute="bottom" constant="6" id="p9S-SF-80S"/>
                             <constraint firstItem="t22-Vi-u6r" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="rRf-qX-cNY"/>
