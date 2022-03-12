@@ -19,6 +19,7 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
     var viewModel: CardBookDetailViewModel!
     var addFriendCardViewControllerFactory: (() -> AddFriendCardViewController)!
     var nameCardDetailViewControllerFactory: ((Identifier, UniqueCode) -> NameCardDetailViewController)!
+    var optionViewControllerFactory: ((CardBookID) -> CardBookDetailOptionViewController)!
     
     override func viewDidLoad() {
         self.navigationController?.navigationBar.isHidden = true
@@ -54,7 +55,7 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
         
         self.moreButton?.rx.tap
             .subscribe(onNext: { [weak self] in
-                self?.viewModel.tapEdit()
+                self?.viewModel.tapMore()
             })
             .disposed(by: self.disposeBag)
         
@@ -151,6 +152,8 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
     private func createViewController(_ next: CardBookDetailDestination) -> UIViewController {
         switch next {
         case .cardDetail(let cardId, let uniqueCode): return self.nameCardDetailViewControllerFactory(cardId, uniqueCode)
+        case .cardBookOption(let cardBookID):
+            return self.optionViewControllerFactory(cardBookID)
         }
     }
     
@@ -176,7 +179,7 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
 
 }
 
-// TODO: rx datasource로 추후 교체예정
+
 extension CardBookDetailViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

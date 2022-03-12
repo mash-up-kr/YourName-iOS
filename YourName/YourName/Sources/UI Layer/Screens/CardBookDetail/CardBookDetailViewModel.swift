@@ -11,6 +11,7 @@ import RxRelay
 
 enum CardBookDetailDestination: Equatable {
     case cardDetail(cardId: Identifier, uniqueCode: UniqueCode)
+    case cardBookOption(cardBookID: CardBookID)
 }
 
 typealias CardBookDetailNavigation = Navigation<CardBookDetailDestination>
@@ -60,6 +61,11 @@ final class CardBookDetailViewModel {
     }
     
     func tapMore() {
+        guard self.isEmpty.value == false   else { return }
+        guard self.isEditing.value == false else { return }
+        guard let cardBookID = self.cardBookID else { return }  // option선택은 전체도감이 아닌 경우에만 해당하므로, optional binding으로 early exit해도 문제가 없다.
+        
+        self.navigation.accept(.show(.cardBookOption(cardBookID: cardBookID)))
         
     }
     
@@ -75,12 +81,11 @@ final class CardBookDetailViewModel {
     }
     
     func tapEdit() {
-        guard self.isEmpty.value == false   else { return }
-        guard self.isEditing.value == false else { return }
-        
-        self.isEditing.accept(true)
-        let updatedFriendCardsForDisplay = self.friendCardsForDisplay.value.map { $0.with { $0.isEditing = true } }
-        self.friendCardsForDisplay.accept(updatedFriendCardsForDisplay)
+       
+        // 삭제 ui가 됨.
+//        self.isEditing.accept(true)
+//        let updatedFriendCardsForDisplay = self.friendCardsForDisplay.value.map { $0.with { $0.isEditing = true } }
+//        self.friendCardsForDisplay.accept(updatedFriendCardsForDisplay)
     }
     
     func tapCheck(id: NameCardID) {

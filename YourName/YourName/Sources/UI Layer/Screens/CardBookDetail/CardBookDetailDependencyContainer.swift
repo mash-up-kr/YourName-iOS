@@ -13,6 +13,8 @@ final class CardBookDetailDependencyContainer {
         
     }
     
+    deinit { print("\(String(describing: self)) deinit") }
+    
     func createCardBookDetailViewController(cardBookID: CardBookID?, cardBookTitle: String?) -> UIViewController {
         let viewController = CardBookDetailViewController.instantiate()
         let viewModel = createCardBookDetailViewModel(cardBookID: cardBookID, cardBookTitle: cardBookTitle)
@@ -20,6 +22,11 @@ final class CardBookDetailDependencyContainer {
         viewController.nameCardDetailViewControllerFactory = { cardId, uniqueCode in
             let dependencyContainer = self.createCardDetailDependencyContainer(cardId: cardId, uniqueCode: uniqueCode)
             return dependencyContainer.createNameCardDetailViewController()
+        }
+        
+        viewController.optionViewControllerFactory = { [weak self] cardBookID -> CardBookDetailOptionViewController in
+            guard let self = self else { return .init(contentView: .init(frame: .zero)) }
+            return self.createCardOptionViewController(cardBookID: cardBookID, cardBookTitle: cardBookTitle, parent: viewController)
         }
         return viewController
     }
@@ -30,6 +37,13 @@ final class CardBookDetailDependencyContainer {
         return CardBookDetailViewModel(cardBookID: cardBookID,
                                        cardBookTitle: cardBookTitle,
                                        cardRepository: cardRepository)
+    }
+    
+    private func createCardOptionViewController(cardBookID: CardBookID, cardBookTitle: String?, parent: ViewController) -> CardBookDetailOptionViewController {
+        let viewModel = CardBookDetailOptionViewModelImp(cardBookID: cardBookID)
+        let contentView = CardBookDetailOptionView(viewModel: viewModel, cardBookTitle: cardBookTitle ,parent: parent)
+        let pageViewController = CardBookDetailOptionViewController(contentView: contentView)
+        return pageViewController
     }
     
     private func createCardRepository() -> CardRepository {

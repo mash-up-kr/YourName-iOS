@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CardBookDetailOptionView" customModule="MEETU" customModuleProvider="target">
+            <connections>
+                <outlet property="broughtFriendView" destination="kb7-ZX-Sjx" id="ql3-4S-TtP"/>
+                <outlet property="cardBookDeleteLabel" destination="JZk-Uh-dFv" id="ydS-vM-5ep"/>
+                <outlet property="cardBookStackView" destination="9Ls-mc-KLQ" id="Kfj-Mk-1M9"/>
+                <outlet property="deleteCardBookView" destination="GsP-Y0-RGY" id="LHN-Xf-Cqq"/>
+                <outlet property="deleteFriendView" destination="1TF-bf-WiO" id="lUM-yD-q1n"/>
+                <outlet property="editCardBookView" destination="4Pv-gj-WZk" id="HFE-Pt-msa"/>
+                <outlet property="friendStackView" destination="43s-ef-niJ" id="Vje-pM-oBg"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="ai2-bJ-TLT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="390"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="43s-ef-niJ">
+                    <rect key="frame" x="16" y="44" width="382" height="113"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kb7-ZX-Sjx">
+                            <rect key="frame" x="0.0" y="0.0" width="382" height="56"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="전체에서 친구 미츄 데려오기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u09-Kc-MG4">
+                                    <rect key="frame" x="16" y="20" width="178.5" height="16"/>
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                    <color key="textColor" name="black1"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_add_member" translatesAutoresizingMaskIntoConstraints="NO" id="mqT-hk-NcE">
+                                    <rect key="frame" x="338" y="16" width="24" height="24"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="24" id="49L-ko-S1Z"/>
+                                        <constraint firstAttribute="height" constant="24" id="vpC-G7-3dk"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" name="lightGray2"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="mqT-hk-NcE" secondAttribute="trailing" constant="20" id="6g6-gX-l3g"/>
+                                <constraint firstAttribute="height" constant="56" id="9i6-cV-OuX"/>
+                                <constraint firstItem="u09-Kc-MG4" firstAttribute="leading" secondItem="kb7-ZX-Sjx" secondAttribute="leading" constant="16" id="GtF-IJ-aFj"/>
+                                <constraint firstItem="mqT-hk-NcE" firstAttribute="centerY" secondItem="kb7-ZX-Sjx" secondAttribute="centerY" id="lyz-Ct-xgd"/>
+                                <constraint firstAttribute="bottom" secondItem="u09-Kc-MG4" secondAttribute="bottom" constant="20" id="pX4-Dg-f29"/>
+                                <constraint firstItem="u09-Kc-MG4" firstAttribute="top" secondItem="kb7-ZX-Sjx" secondAttribute="top" constant="20" id="tE3-fy-yzr"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1TF-bf-WiO">
+                            <rect key="frame" x="0.0" y="57" width="382" height="56"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="친구 미츄 삭제하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MMU-Nh-3bb">
+                                    <rect key="frame" x="16" y="20" width="119" height="16"/>
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_delete_member" translatesAutoresizingMaskIntoConstraints="NO" id="7iW-dq-Ygd">
+                                    <rect key="frame" x="338" y="16" width="24" height="24"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="24" id="7HG-3g-egy"/>
+                                        <constraint firstAttribute="height" constant="24" id="YhJ-gv-E5e"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" name="lightGray2"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="7iW-dq-Ygd" secondAttribute="trailing" constant="20" id="0AF-fX-Bai"/>
+                                <constraint firstItem="7iW-dq-Ygd" firstAttribute="centerY" secondItem="1TF-bf-WiO" secondAttribute="centerY" id="7mg-02-Myp"/>
+                                <constraint firstAttribute="bottom" secondItem="MMU-Nh-3bb" secondAttribute="bottom" constant="20" id="JGQ-f5-s27"/>
+                                <constraint firstAttribute="height" constant="56" id="N62-nS-EqR"/>
+                                <constraint firstItem="MMU-Nh-3bb" firstAttribute="leading" secondItem="1TF-bf-WiO" secondAttribute="leading" constant="16" id="rJe-hg-gM1"/>
+                                <constraint firstItem="MMU-Nh-3bb" firstAttribute="top" secondItem="1TF-bf-WiO" secondAttribute="top" constant="20" id="sAA-BS-wBb"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                </stackView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="9Ls-mc-KLQ">
+                    <rect key="frame" x="16" y="173" width="382" height="113"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Pv-gj-WZk">
+                            <rect key="frame" x="0.0" y="0.0" width="382" height="56"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="도감 정보 편집하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XdA-1q-d9V">
+                                    <rect key="frame" x="16" y="20" width="119" height="16"/>
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_edit" translatesAutoresizingMaskIntoConstraints="NO" id="qEl-FC-Qdl">
+                                    <rect key="frame" x="338" y="16" width="24" height="24"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="24" id="6XM-AX-RgK"/>
+                                        <constraint firstAttribute="height" constant="24" id="fxq-1X-yCV"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" name="lightGray2"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="qEl-FC-Qdl" secondAttribute="trailing" constant="20" id="3pg-lI-3yD"/>
+                                <constraint firstItem="qEl-FC-Qdl" firstAttribute="centerY" secondItem="4Pv-gj-WZk" secondAttribute="centerY" id="Fhr-3V-K7G"/>
+                                <constraint firstAttribute="height" constant="56" id="Io0-q9-SZ5"/>
+                                <constraint firstAttribute="bottom" secondItem="XdA-1q-d9V" secondAttribute="bottom" constant="20" id="Xat-r1-HqZ"/>
+                                <constraint firstItem="XdA-1q-d9V" firstAttribute="top" secondItem="4Pv-gj-WZk" secondAttribute="top" constant="20" id="cbB-3v-ZU0"/>
+                                <constraint firstItem="XdA-1q-d9V" firstAttribute="leading" secondItem="4Pv-gj-WZk" secondAttribute="leading" constant="16" id="gMq-gI-Eli"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GsP-Y0-RGY">
+                            <rect key="frame" x="0.0" y="57" width="382" height="56"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="도감명 도감 삭제하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JZk-Uh-dFv">
+                                    <rect key="frame" x="16" y="20" width="133" height="16"/>
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_delete" translatesAutoresizingMaskIntoConstraints="NO" id="Rmo-tU-Qfp">
+                                    <rect key="frame" x="338" y="16" width="24" height="24"/>
+                                    <color key="tintColor" name="gray2"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="24" id="Qt1-aZ-qeZ"/>
+                                        <constraint firstAttribute="width" constant="24" id="Ttm-KD-e7w"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" name="lightGray2"/>
+                            <constraints>
+                                <constraint firstItem="JZk-Uh-dFv" firstAttribute="leading" secondItem="GsP-Y0-RGY" secondAttribute="leading" constant="16" id="1U3-0p-e82"/>
+                                <constraint firstAttribute="bottom" secondItem="JZk-Uh-dFv" secondAttribute="bottom" constant="20" id="67s-y4-aUb"/>
+                                <constraint firstItem="Rmo-tU-Qfp" firstAttribute="centerY" secondItem="GsP-Y0-RGY" secondAttribute="centerY" id="axi-kT-kFO"/>
+                                <constraint firstAttribute="height" constant="56" id="dO9-Hv-V1I"/>
+                                <constraint firstItem="JZk-Uh-dFv" firstAttribute="top" secondItem="GsP-Y0-RGY" secondAttribute="top" constant="20" id="hvI-bv-fCh"/>
+                                <constraint firstAttribute="trailing" secondItem="Rmo-tU-Qfp" secondAttribute="trailing" constant="20" id="tp1-ZP-bQi"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="ix7-ft-Hy0"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="43s-ef-niJ" firstAttribute="top" secondItem="ix7-ft-Hy0" secondAttribute="top" id="18V-n7-cyV"/>
+                <constraint firstItem="9Ls-mc-KLQ" firstAttribute="leading" secondItem="ix7-ft-Hy0" secondAttribute="leading" constant="16" id="AGG-Ya-ZXD"/>
+                <constraint firstItem="ix7-ft-Hy0" firstAttribute="bottom" secondItem="9Ls-mc-KLQ" secondAttribute="bottom" constant="104" id="FYY-Dw-QBY"/>
+                <constraint firstItem="9Ls-mc-KLQ" firstAttribute="top" secondItem="43s-ef-niJ" secondAttribute="bottom" constant="16" id="YV9-GJ-8dD"/>
+                <constraint firstItem="ix7-ft-Hy0" firstAttribute="trailing" secondItem="9Ls-mc-KLQ" secondAttribute="trailing" constant="16" id="fg6-uI-lry"/>
+                <constraint firstItem="43s-ef-niJ" firstAttribute="leading" secondItem="ix7-ft-Hy0" secondAttribute="leading" constant="16" id="mCt-qZ-hIA"/>
+                <constraint firstItem="ix7-ft-Hy0" firstAttribute="trailing" secondItem="43s-ef-niJ" secondAttribute="trailing" constant="16" id="ubc-nm-XSw"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-71.014492753623188" y="120.20089285714285"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic_add_member" width="24" height="24"/>
+        <image name="ic_delete" width="28" height="28"/>
+        <image name="ic_delete_member" width="24" height="24"/>
+        <image name="ic_edit" width="28" height="28"/>
+        <namedColor name="black1">
+            <color red="0.082352941176470587" green="0.082352941176470587" blue="0.082352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="gray2">
+            <color red="0.51764705882352946" green="0.51764705882352946" blue="0.51764705882352946" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="lightGray2">
+            <color red="0.95686274509803926" green="0.95686274509803926" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
