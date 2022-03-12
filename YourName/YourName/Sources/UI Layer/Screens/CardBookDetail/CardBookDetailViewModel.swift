@@ -28,15 +28,18 @@ final class CardBookDetailViewModel {
     let isAllCardBook = BehaviorRelay<Bool>(value: false)
     let shouldClose = PublishRelay<Void>()
     let selectedIDs = BehaviorRelay<Set<String>>(value: [])
+    let alert = PublishRelay<AlertViewController>()
     
     init(
         cardBookID: CardBookID?,
         cardBookTitle: String?,
-        cardRepository: CardRepository
+        cardRepository: CardRepository,
+        cardBookRepository: CardBookRepository
     ) {
         self.cardBookID = cardBookID
         self._cardBookTitle = cardBookTitle ?? .empty
         self.cardRepository = cardRepository
+        self.cardBookRepository = cardBookRepository
         
         self.isAllCardBook.accept(cardBookID == nil)
         self.cardBookTitle.accept(self._cardBookTitle)
@@ -61,7 +64,6 @@ final class CardBookDetailViewModel {
     }
     
     func tapMore() {
-        guard self.isEmpty.value == false   else { return }
         guard self.isEditing.value == false else { return }
         guard let cardBookID = self.cardBookID else { return }  // option선택은 전체도감이 아닌 경우에만 해당하므로, optional binding으로 early exit해도 문제가 없다.
         
@@ -188,4 +190,39 @@ final class CardBookDetailViewModel {
     private let cardBookID: CardBookID?
     private let _cardBookTitle: String
     private let cardRepository: CardRepository
+    private let cardBookRepository: CardBookRepository
+}
+
+
+// MARK: - CardBookDetailOptionViewModelDelegate
+
+extension CardBookDetailViewModel: CardBookDetailOptionViewModelDelegate {
+    func didTapDeleteCardBook(id: CardBookID) {
+        let alertController = AlertViewController.instantiate()
+        let alertItem =
+            AlertItem(
+                title: "정말 삭제하시겠츄?",
+                messages: "삭제한 미츄와 도감은 복구할 수 없어요.",
+                image: UIImage(named: "meetu_delete")!,
+                emphasisAction: .init(title: "삭제하기", action: {
+                    alertController.dismiss(completion: { [weak self] in
+                        guard let self = self else { return }
+                        self.cardBookRepository.deleteCardBook(cardBookID: id)
+                            .catchError { error in
+                                print(error)
+                                return .empty()
+                            }
+                            .bind(onNext: { _ in
+                                NotificationCenter.default.post(name: .cardBookDidChange, object: nil)
+                                self.shouldClose.accept(())
+                            })
+                            .disposed(by: self.disposeBag)
+                    })
+                }),
+                defaultAction: .init(title: "삭제 안할래요", action: {
+                    alertController.dismiss()
+                }))
+        alertController.configure(item: alertItem)
+        self.alert.accept(alertController)
+    }
 }

@@ -6,14 +6,24 @@
 //
 
 import Foundation
+import RxRelay
 
-final class CardBookDetailOptionViewModelImp: CardBookDetailOptionViewModel {
+protocol CardBookDetailOptionViewModelDelegate: AnyObject {
+    func didTapDeleteCardBook(id: CardBookID)
+}
+
+final class CardBookDetailOptionViewModel {
     
     private let cardBookID: CardBookID
-    init(cardBookID: CardBookID) {
-       
+    private weak var delegate: CardBookDetailOptionViewModelDelegate?
+    let shouldDismiss: PublishRelay<Void>
+    
+    init(cardBookID: CardBookID,
+         delegate: CardBookDetailOptionViewModelDelegate
+    ) {
+        self.delegate = delegate
         self.cardBookID = cardBookID
-        print("\(String(describing: self)) init")
+        self.shouldDismiss = .init()
     }
     
     
@@ -30,6 +40,7 @@ final class CardBookDetailOptionViewModelImp: CardBookDetailOptionViewModel {
     }
     
     func didTapDeleteCardBook() {
-        print(#function)
+        self.shouldDismiss.accept(())
+        self.delegate?.didTapDeleteCardBook(id: self.cardBookID)
     }
 }

@@ -39,16 +39,6 @@ final class CardBookListViewModel {
             .disposed(by: self.disposeBag)
     }
     
-    func refreshCardBooks() {
-        self.isLoading.accept(true)
-        cardBookRepository.fetchAll()
-            .subscribe(onNext: { [weak self] cardBooks in
-                self?.isLoading.accept(false)
-                self?.cardBooks.accept(cardBooks)
-            })
-            .disposed(by: self.disposeBag)
-    }
-    
     func tapAddFriend() {
         navigation.accept(.push(.addFriend))
     }

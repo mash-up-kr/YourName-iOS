@@ -79,6 +79,7 @@
 		A2CC823C27DC89BC00B02530 /* CardBookDetailOptionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2CC823B27DC89BC00B02530 /* CardBookDetailOptionView.xib */; };
 		A2CC823E27DC89E300B02530 /* CardBookDetailOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CC823D27DC89E300B02530 /* CardBookDetailOptionView.swift */; };
 		A2CC824027DC8C2F00B02530 /* CardBookDetailOptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CC823F27DC8C2F00B02530 /* CardBookDetailOptionViewModel.swift */; };
+		A2CC824227DCAFA400B02530 /* DeleteCardBookAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CC824127DCAFA400B02530 /* DeleteCardBookAPI.swift */; };
 		A2D875DF26EE295C00ED5949 /* OAuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D875DE26EE295C00ED5949 /* OAuthResponse.swift */; };
 		A2DA3B3D274A1A2500E68F23 /* Entity.Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B3C274A1A2500E68F23 /* Entity.Login.swift */; };
 		A2DA3B43274A536700E68F23 /* Entity.UserOnboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B42274A536700E68F23 /* Entity.UserOnboarding.swift */; };
@@ -401,6 +402,7 @@
 		A2CC823B27DC89BC00B02530 /* CardBookDetailOptionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardBookDetailOptionView.xib; sourceTree = "<group>"; };
 		A2CC823D27DC89E300B02530 /* CardBookDetailOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBookDetailOptionView.swift; sourceTree = "<group>"; };
 		A2CC823F27DC8C2F00B02530 /* CardBookDetailOptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBookDetailOptionViewModel.swift; sourceTree = "<group>"; };
+		A2CC824127DCAFA400B02530 /* DeleteCardBookAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteCardBookAPI.swift; sourceTree = "<group>"; };
 		A2D875DE26EE295C00ED5949 /* OAuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthResponse.swift; sourceTree = "<group>"; };
 		A2DA3B3C274A1A2500E68F23 /* Entity.Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.Login.swift; sourceTree = "<group>"; };
 		A2DA3B42274A536700E68F23 /* Entity.UserOnboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.UserOnboarding.swift; sourceTree = "<group>"; };
@@ -881,6 +883,7 @@
 				A223E6D3275537DD00F29FCE /* RemoveMyNameCardAPI.swift */,
 				CE6AF917276290A700090BD9 /* UpdateCardAPI.swift */,
 				A2CBF49F27B41A1D00D31CE4 /* AddCardBookAPI.swift */,
+				A2CC824127DCAFA400B02530 /* DeleteCardBookAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -2026,6 +2029,7 @@
 				CE94AB9D270ECED4005D2E80 /* InterestRepository.swift in Sources */,
 				CE94AB97270ECB8E005D2E80 /* StrongPointRepository.swift in Sources */,
 				CE2D1C55275924F800DCD2D3 /* FriendCardsAPI.swift in Sources */,
+				A2CC824227DCAFA400B02530 /* DeleteCardBookAPI.swift in Sources */,
 				A239210B2737ED1B0069E418 /* AlertViewController.swift in Sources */,
 				CEC5998E27551B3B00405DEA /* RefreshAuthenticationAPI.swift in Sources */,
 				CEDA4B7D274EC4900011D0CA /* QuestDepencyContainer.swift in Sources */,

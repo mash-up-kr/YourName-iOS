@@ -101,10 +101,10 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
             .disposed(by: self.disposeBag)
         
         
-        Observable.combineLatest(self.viewModel.isEditing, self.viewModel.isEmpty)
-            .subscribe(onNext: { [weak self] isEditing, isEmpty in
-                self?.moreButton?.isHidden = isEmpty || isEditing
-                self?.removeButton?.isHidden = isEmpty || !isEditing
+        self.viewModel.isEditing
+            .subscribe(onNext: { [weak self] isEditing in
+                self?.moreButton?.isHidden = isEditing
+                self?.removeButton?.isHidden = !isEditing
             })
             .disposed(by: self.disposeBag)
         
@@ -140,6 +140,12 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
         self.viewModel.shouldClose
             .subscribe(onNext: { [weak self] in
                 self?.navigationController?.popViewController(animated: true)
+            })
+            .disposed(by: self.disposeBag)
+        
+        viewModel.alert
+            .bind(onNext: { [weak self] in
+                self?.present($0, animated: true)
             })
             .disposed(by: self.disposeBag)
     }

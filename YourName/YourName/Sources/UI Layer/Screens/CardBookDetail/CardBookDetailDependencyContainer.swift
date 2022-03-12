@@ -36,11 +36,12 @@ final class CardBookDetailDependencyContainer {
         let cardRepository = createCardRepository()
         return CardBookDetailViewModel(cardBookID: cardBookID,
                                        cardBookTitle: cardBookTitle,
-                                       cardRepository: cardRepository)
+                                       cardRepository: cardRepository,
+                                       cardBookRepository: YourNameCardBookRepository())
     }
     
-    private func createCardOptionViewController(cardBookID: CardBookID, cardBookTitle: String?, parent: ViewController) -> CardBookDetailOptionViewController {
-        let viewModel = CardBookDetailOptionViewModelImp(cardBookID: cardBookID)
+    private func createCardOptionViewController(cardBookID: CardBookID, cardBookTitle: String?, parent: CardBookDetailViewController) -> CardBookDetailOptionViewController {
+        let viewModel = CardBookDetailOptionViewModel(cardBookID: cardBookID, delegate: parent.viewModel)
         let contentView = CardBookDetailOptionView(viewModel: viewModel, cardBookTitle: cardBookTitle ,parent: parent)
         let pageViewController = CardBookDetailOptionViewController(contentView: contentView)
         return pageViewController

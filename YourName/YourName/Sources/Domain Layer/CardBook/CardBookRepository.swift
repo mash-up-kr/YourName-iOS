@@ -11,9 +11,15 @@ import RxSwift
 protocol CardBookRepository {
     func fetchAll() -> Observable<[CardBook]>
     func addCardBook(name: String, desc: String, bgColorId: Int) -> Observable<Void>
+    
+    func deleteCardBook(cardBookID: CardBookID) -> Observable<Void>
 }
 
 final class MockCardBookRepository: CardBookRepository {
+    func deleteCardBook(cardBookID: CardBookID) -> Observable<Void> {
+        return .empty()
+    }
+    
     
     func addCardBook(name: String, desc: String, bgColorId: Int) -> Observable<Void> {
         return .empty()
@@ -29,6 +35,11 @@ final class YourNameCardBookRepository: CardBookRepository {
     
     init(network: NetworkServing = Environment.current.network) {
         self.network = network
+    }
+    
+    func deleteCardBook(cardBookID: CardBookID) -> Observable<Void> {
+        return network.request(DeleteCardBookAPI(cardBookID: cardBookID))
+            .mapToVoid()
     }
     
     func fetchAll() -> Observable<[CardBook]> {

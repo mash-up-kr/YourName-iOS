@@ -11,13 +11,6 @@ import RxCocoa
 
 typealias CardBookDetailOptionViewController = PageSheetController<CardBookDetailOptionView>
 
-protocol CardBookDetailOptionViewModel: AnyObject {
-    func didTapBroughtFriend()
-    func didTapDeleteFriend()
-    func didTapEditCardBook()
-    func didTapDeleteCardBook()
-}
-
 final class CardBookDetailOptionView: UIView, PageSheetContentView, NibLoadable {
     var parent: ViewController?
     var title: String { "" }
@@ -32,7 +25,7 @@ final class CardBookDetailOptionView: UIView, PageSheetContentView, NibLoadable 
     @IBOutlet private unowned var deleteCardBookView: UIView!
     
     private let disposeBag: DisposeBag = .init()
-    private weak var viewModel: CardBookDetailOptionViewModel?
+    private var viewModel: CardBookDetailOptionViewModel!
     private var cardBookTitle: String?
     
     override init(frame: CGRect) {
@@ -67,6 +60,10 @@ final class CardBookDetailOptionView: UIView, PageSheetContentView, NibLoadable 
 
 extension CardBookDetailOptionView {
     private func bind() {
+        
+        self.render(viewModel: self.viewModel)
+        self.dispatch(viewModel: self.viewModel)
+        
         self.broughtFriendView.rx.tapWhenRecognized
             .bind(onNext: { [weak viewModel] in
                 viewModel?.didTapBroughtFriend()
@@ -87,7 +84,7 @@ extension CardBookDetailOptionView {
         
         self.deleteCardBookView.rx.tapWhenRecognized
             .bind(onNext: { [weak viewModel] in
-                viewModel?.didTapDeleteFriend()
+                viewModel?.didTapDeleteCardBook()
             })
             .disposed(by: self.disposeBag)
     }
@@ -98,5 +95,14 @@ extension CardBookDetailOptionView {
             stackView?.clipsToBounds = true
         }
         self.cardBookDeleteLabel.text = "\(self.cardBookTitle ?? "") 도감 삭제하기"
+    }
+    
+    private func render(viewModel: CardBookDetailOptionViewModel) { }
+    private func dispatch(viewModel: CardBookDetailOptionViewModel) {
+        viewModel.shouldDismiss
+            .bind(onNext: { [weak self] in
+                self?.parent?.dismiss(animated: true)
+            })
+            .disposed(by: self.disposeBag)
     }
 }
