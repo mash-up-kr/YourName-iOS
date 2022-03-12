@@ -34,6 +34,17 @@ final class TMIContentCollectionViewCell: UICollectionViewCell {
         self.iconImageView?.setImageSource(viewModel.imageSource)
     }
     
+    static func dynamicCellSize(with viewModel: TMIContentCellViewModel, height: CGFloat = 40) -> CGSize {
+        guard let cell = UINib(nibName: String(describing: self), bundle: nil).instantiate(withOwner: nil, options: nil).first as? TMIContentCollectionViewCell else { return .zero }
+        cell.configure(with: viewModel)
+        
+        let targetSize = CGSize(width: UIView.layoutFittingCompressedSize.width, height: height)
+        let size = cell.contentView.systemLayoutSizeFitting(targetSize,
+                                                            withHorizontalFittingPriority: .fittingSizeLevel,
+                                                            verticalFittingPriority: .required)
+        return size
+    }
+    
     @IBOutlet private weak var iconImageView: UIImageView?
     @IBOutlet private weak var contentLabel: UILabel?
 }
