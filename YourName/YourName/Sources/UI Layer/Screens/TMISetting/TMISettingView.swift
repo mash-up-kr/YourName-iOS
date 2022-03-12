@@ -49,10 +49,9 @@ final class TMISettingView: UIView, NibLoadable {
         self.tmiCollectionView?.registerWithNib(TMIContentCollectionViewCell.self)
         self.tmiCollectionView?.dataSource = self
         self.tmiCollectionView?.delegate = self
-        
-        if let collectionViewLayout = tmiCollectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
-            collectionViewLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-        }
+        let leftAlignLayout = LeftAlignCollectionViewLayout()
+        self.tmiCollectionView?.collectionViewLayout = leftAlignLayout
+        leftAlignLayout.delegate = self
     }
     
     private func bind(to viewModel: TMISettingViewModel) {
@@ -166,18 +165,35 @@ extension TMISettingView: UICollectionViewDelegate {
     }
 }
 
-extension TMISettingView: UICollectionViewDelegateFlowLayout {
+extension TMISettingView: LeftAlignCollectionViewLayoutDelegate {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        guard let section = TMISection(rawValue: indexPath.section) else { return .zero }
+        
+        switch section {
+        case .interest:
+            guard let interest = interestes[safe: indexPath.item] else { return .zero }
+            return TMIContentCollectionViewCell.dynamicCellSize(with: interest)
+        case .personality:
+            guard let personality = personalities[safe: indexPath.item] else { return .zero }
+            return TMIContentCollectionViewCell.dynamicCellSize(with: personality)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        CGSize(width: collectionView.bounds.width, height: 50)
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 20, left: 24, bottom: 80, right: 24)
+        return UIEdgeInsets(top: 20, left: 24, bottom: 80, right: 21)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 8
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, lineSpacingForSectionAt section: Int) -> CGFloat {
+        return 14
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 3
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, interitemSpacingForSectionAt section: Int) -> CGFloat {
+        return 14
     }
     
 }

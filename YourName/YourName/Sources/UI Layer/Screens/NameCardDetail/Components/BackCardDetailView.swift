@@ -49,9 +49,9 @@ final class BackCardDetailView: NibLoadableView {
         self.tmisCollectionView?.registerWithNib(CardDetailTMICollectionViewCell.self)
         self.tmisCollectionView?.delegate = self
         self.tmisCollectionView?.dataSource = self
-        if let collectionViewLayout = self.tmisCollectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
-            collectionViewLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-        }
+        let leftAlignLayout = LeftAlignCollectionViewLayout()
+        leftAlignLayout.delegate = self
+        self.tmisCollectionView?.collectionViewLayout = leftAlignLayout
         
         self.tmisCollectionView?.rx.contentSize
             .subscribe(onNext: { [weak self] contentSize in
@@ -103,18 +103,49 @@ extension BackCardDetailView: UICollectionViewDataSource {
     }
     
 }
-extension BackCardDetailView: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+extension BackCardDetailView: UICollectionViewDelegate {
+}
+
+extension BackCardDetailView: LeftAlignCollectionViewLayoutDelegate {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        referenceSizeForHeaderInSection section: Int
+    ) -> CGSize {
         return .zero
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        insetForSectionAt section: Int
+    ) -> UIEdgeInsets {
+        return .zero
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        lineSpacingForSectionAt section: Int
+    ) -> CGFloat {
         return 8
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        interitemSpacingForSectionAt section: Int
+    ) -> CGFloat {
         return 3
     }
     
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
+        guard let tmi = self.tmis[safe: indexPath.item] else { return .zero }
+        return CardDetailTMICollectionViewCell.dynamicCellSize(tmi)
+    }
 }
