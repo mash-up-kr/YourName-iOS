@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CardBookMoreView" customModule="MEETU" customModuleProvider="target">
+            <connections>
+                <outlet property="addMemberView" destination="Lc6-rC-ZFr" id="nyh-nn-AX9"/>
+                <outlet property="cardBookDeleteLabel" destination="H0x-Ak-s7V" id="UJP-fp-33g"/>
+                <outlet property="cardBookDeleteView" destination="Oe6-Do-cCA" id="NFy-Bx-UDQ"/>
+                <outlet property="cardBookEditView" destination="oz5-9K-iZv" id="uqv-75-x0F"/>
+                <outlet property="deleteMemberView" destination="imE-wr-d9c" id="WWO-e5-kgK"/>
+                <outlet property="editStackView" destination="HYd-n8-suH" id="Tid-rS-eU1"/>
+                <outlet property="memeberStackView" destination="hid-6J-4Qm" id="e8k-XB-mw0"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="SMg-pG-GmA">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="344"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="hid-6J-4Qm">
+                    <rect key="frame" x="16" y="8" width="382" height="113"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lc6-rC-ZFr">
+                            <rect key="frame" x="0.0" y="0.0" width="382" height="56"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="전체에서 친구 미츄 데려오기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gyi-6s-XFV">
+                                    <rect key="frame" x="16" y="18.5" width="178.5" height="19.5"/>
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                    <color key="textColor" name="black1"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_add_member" translatesAutoresizingMaskIntoConstraints="NO" id="BIQ-R1-yMz">
+                                    <rect key="frame" x="334" y="14" width="28" height="28"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="28" id="kUb-fo-xIt"/>
+                                        <constraint firstAttribute="height" constant="28" id="vmy-oD-ygU"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" name="lightGray2"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="BIQ-R1-yMz" secondAttribute="trailing" constant="20" id="9tu-gs-jCP"/>
+                                <constraint firstItem="BIQ-R1-yMz" firstAttribute="centerY" secondItem="Lc6-rC-ZFr" secondAttribute="centerY" id="IZW-fi-3xy"/>
+                                <constraint firstItem="Gyi-6s-XFV" firstAttribute="centerY" secondItem="Lc6-rC-ZFr" secondAttribute="centerY" id="XVE-Wi-PPS"/>
+                                <constraint firstAttribute="height" constant="56" id="bx4-c7-PGu"/>
+                                <constraint firstItem="Gyi-6s-XFV" firstAttribute="leading" secondItem="Lc6-rC-ZFr" secondAttribute="leading" constant="16" id="qeZ-f1-cqi"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="imE-wr-d9c">
+                            <rect key="frame" x="0.0" y="57" width="382" height="56"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="친구 미츄 삭제하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jTn-zD-F2q">
+                                    <rect key="frame" x="16" y="18.5" width="119" height="19.5"/>
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                    <color key="textColor" name="black1"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_delete_member" translatesAutoresizingMaskIntoConstraints="NO" id="lt6-Z1-sut">
+                                    <rect key="frame" x="334" y="14" width="28" height="28"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="28" id="7iY-JB-OGa"/>
+                                        <constraint firstAttribute="width" constant="28" id="duF-2A-KSw"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" name="lightGray2"/>
+                            <constraints>
+                                <constraint firstItem="lt6-Z1-sut" firstAttribute="centerY" secondItem="imE-wr-d9c" secondAttribute="centerY" id="7Dh-IK-iSo"/>
+                                <constraint firstItem="jTn-zD-F2q" firstAttribute="centerY" secondItem="imE-wr-d9c" secondAttribute="centerY" id="QtQ-iK-Swo"/>
+                                <constraint firstAttribute="trailing" secondItem="lt6-Z1-sut" secondAttribute="trailing" constant="20" id="beW-HZ-mOF"/>
+                                <constraint firstItem="jTn-zD-F2q" firstAttribute="leading" secondItem="imE-wr-d9c" secondAttribute="leading" constant="16" id="dkz-03-oSc"/>
+                                <constraint firstAttribute="height" constant="56" id="zEA-Kb-dEy"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                </stackView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="HYd-n8-suH">
+                    <rect key="frame" x="16" y="137" width="382" height="113"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oz5-9K-iZv">
+                            <rect key="frame" x="0.0" y="0.0" width="382" height="56"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="도감 정보 편집하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uSn-bl-uqJ">
+                                    <rect key="frame" x="16" y="18.5" width="119" height="19.5"/>
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                    <color key="textColor" name="black1"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_edit" translatesAutoresizingMaskIntoConstraints="NO" id="dE6-MK-Ecq">
+                                    <rect key="frame" x="334" y="14" width="28" height="28"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="28" id="TZd-Qp-qrq"/>
+                                        <constraint firstAttribute="height" constant="28" id="ahf-mZ-13g"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" name="lightGray2"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="dE6-MK-Ecq" secondAttribute="trailing" constant="20" id="0rm-BD-Q0U"/>
+                                <constraint firstItem="dE6-MK-Ecq" firstAttribute="centerY" secondItem="oz5-9K-iZv" secondAttribute="centerY" id="AFs-OL-9HK"/>
+                                <constraint firstItem="uSn-bl-uqJ" firstAttribute="centerY" secondItem="oz5-9K-iZv" secondAttribute="centerY" id="S8y-Qh-Bfi"/>
+                                <constraint firstAttribute="height" constant="56" id="VkW-ZS-oRZ"/>
+                                <constraint firstItem="uSn-bl-uqJ" firstAttribute="leading" secondItem="oz5-9K-iZv" secondAttribute="leading" constant="16" id="wr4-T5-zpx"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oe6-Do-cCA">
+                            <rect key="frame" x="0.0" y="57" width="382" height="56"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="매시업ㅂ도감 삭제하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H0x-Ak-s7V">
+                                    <rect key="frame" x="16" y="18.5" width="294" height="19.5"/>
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                    <color key="textColor" name="black1"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_delete-1" translatesAutoresizingMaskIntoConstraints="NO" id="6sR-Fe-IoE">
+                                    <rect key="frame" x="334" y="14" width="28" height="28"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="28" id="jhX-e1-K3y"/>
+                                        <constraint firstAttribute="width" constant="28" id="xEV-rT-VVC"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" name="lightGray2"/>
+                            <constraints>
+                                <constraint firstItem="H0x-Ak-s7V" firstAttribute="centerY" secondItem="Oe6-Do-cCA" secondAttribute="centerY" id="5Vb-ru-3TR"/>
+                                <constraint firstItem="6sR-Fe-IoE" firstAttribute="leading" secondItem="H0x-Ak-s7V" secondAttribute="trailing" constant="24" id="Woo-7V-IGP"/>
+                                <constraint firstItem="H0x-Ak-s7V" firstAttribute="leading" secondItem="Oe6-Do-cCA" secondAttribute="leading" constant="16" id="iZC-wn-nem"/>
+                                <constraint firstAttribute="height" constant="56" id="kMP-ae-dRR"/>
+                                <constraint firstItem="6sR-Fe-IoE" firstAttribute="centerY" secondItem="Oe6-Do-cCA" secondAttribute="centerY" id="rXh-iL-CJT"/>
+                                <constraint firstAttribute="trailing" secondItem="6sR-Fe-IoE" secondAttribute="trailing" constant="20" id="wI8-zn-sHW"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="xeW-KA-7Yu"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="hid-6J-4Qm" firstAttribute="top" secondItem="SMg-pG-GmA" secondAttribute="top" constant="8" id="4m9-wA-VD8"/>
+                <constraint firstItem="HYd-n8-suH" firstAttribute="leading" secondItem="xeW-KA-7Yu" secondAttribute="leading" constant="16" id="744-K2-qNO"/>
+                <constraint firstItem="xeW-KA-7Yu" firstAttribute="trailing" secondItem="hid-6J-4Qm" secondAttribute="trailing" constant="16" id="G2y-XR-2Uf"/>
+                <constraint firstItem="HYd-n8-suH" firstAttribute="top" secondItem="hid-6J-4Qm" secondAttribute="bottom" constant="16" id="Hd6-Vo-5c6"/>
+                <constraint firstItem="xeW-KA-7Yu" firstAttribute="bottom" secondItem="HYd-n8-suH" secondAttribute="bottom" constant="94" id="K4G-t7-asy"/>
+                <constraint firstItem="xeW-KA-7Yu" firstAttribute="trailing" secondItem="HYd-n8-suH" secondAttribute="trailing" constant="16" id="fj9-lC-hS1"/>
+                <constraint firstItem="hid-6J-4Qm" firstAttribute="leading" secondItem="xeW-KA-7Yu" secondAttribute="leading" constant="16" id="k3I-gE-aes"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-314" y="85"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic_add_member" width="24" height="24"/>
+        <image name="ic_delete-1" width="28" height="28"/>
+        <image name="ic_delete_member" width="24" height="24"/>
+        <image name="ic_edit" width="28" height="28"/>
+        <namedColor name="black1">
+            <color red="0.082352941176470587" green="0.082352941176470587" blue="0.082352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="lightGray2">
+            <color red="0.95686274509803926" green="0.95686274509803926" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

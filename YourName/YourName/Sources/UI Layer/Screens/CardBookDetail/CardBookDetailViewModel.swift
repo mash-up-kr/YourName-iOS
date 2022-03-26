@@ -11,6 +11,7 @@ import RxRelay
 
 enum CardBookDetailDestination: Equatable {
     case cardDetail(cardId: Identifier, uniqueCode: UniqueCode)
+    case cardBookMore(cardBookId: CardBookID, cardBookName: String)
 }
 
 typealias CardBookDetailNavigation = Navigation<CardBookDetailDestination>
@@ -60,7 +61,7 @@ final class CardBookDetailViewModel {
     }
     
     func tapMore() {
-        
+        self.navigation.accept(.show(.cardBookMore(cardBookId: self.cardBookID ?? "", cardBookName: self._cardBookTitle)))
     }
     
     func tapBack() {
@@ -102,16 +103,6 @@ final class CardBookDetailViewModel {
         self.friendCardsForDisplay.accept(updatedFriendCardsForDisplay)
     }
     
-    func tapCheck(id: NameCardID) {
-//        var cellViewModels = self.friendCardsForDisplay.value
-//        guard let selectedIndex = cellViewModels.firstIndex(where: { $0.id == id }) else { return }
-//        guard var cellViewModel = cellViewModels[safe: selectedIndex]               else { return }
-//
-//        cellViewModel.isChecked.toggle()
-//        cellViewModels[selectedIndex] = cellViewModel
-//        self.friendCardsForDisplay.accept(cellViewModels)
-    }
-    
     private func tapCheck(at index: Int) {
         guard self.isEditing.value else { return }
         guard var selectedCardForDisplay = self.friendCardsForDisplay.value[safe: index] else { return }
@@ -148,7 +139,7 @@ final class CardBookDetailViewModel {
         self.shouldShowRemoveReconfirmAlert.accept(alert)
     }
     
-    func tapRemoveConfirm() {
+    private func tapRemoveConfirm() {
         guard self.isEditing.value             else { return }
         
         guard self.checkedCardIndice.value.isNotEmpty else {
@@ -183,7 +174,7 @@ final class CardBookDetailViewModel {
             .disposed(by: self.disposeBag)
     }
     
-    func tapRemoveCancel() {
+    private func tapRemoveCancel() {
         self.isEditing.accept(false)
         self.checkedCardIndice.accept(.init())
         let updatedFriendCardsForDisplay = self.friendCardsForDisplay.value.map {

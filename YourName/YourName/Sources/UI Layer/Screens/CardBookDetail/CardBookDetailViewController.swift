@@ -17,6 +17,7 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
     }
     
     var viewModel: CardBookDetailViewModel!
+    var cardBookMoreViewControllerFactory: ((CardBookID, String) -> CardBookMoreViewController)!
     var addFriendCardViewControllerFactory: (() -> AddFriendCardViewController)!
     var nameCardDetailViewControllerFactory: ((Identifier, UniqueCode) -> NameCardDetailViewController)!
     
@@ -52,11 +53,11 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
             })
             .disposed(by: self.disposeBag)
         
-//        self.moreButton?.rx.tap
-//            .subscribe(onNext: { [weak self] in
-//                self?.viewModel.tapEdit()
-//            })
-//            .disposed(by: self.disposeBag)
+        self.moreButton?.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.viewModel.tapMore()
+            })
+            .disposed(by: self.disposeBag)
         
         self.removeButton?.rx.tap
             .subscribe(onNext: { [weak self] in
@@ -171,6 +172,8 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
     private func createViewController(_ next: CardBookDetailDestination) -> UIViewController {
         switch next {
         case .cardDetail(let cardId, let uniqueCode): return self.nameCardDetailViewControllerFactory(cardId, uniqueCode)
+        case .cardBookMore(let cardBookId, let cardBookName):
+            return self.cardBookMoreViewControllerFactory(cardBookId, cardBookName)
         }
     }
     
