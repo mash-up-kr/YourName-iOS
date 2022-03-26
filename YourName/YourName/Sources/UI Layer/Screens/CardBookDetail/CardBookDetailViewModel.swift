@@ -12,11 +12,17 @@ import RxRelay
 enum CardBookDetailDestination: Equatable {
     case cardDetail(cardId: Identifier, uniqueCode: UniqueCode)
     case cardBookMore(cardBookName: String, cardIsEmpty: Bool)
+    case allCardBook(cardBookId: CardBookID)
 }
 
 typealias CardBookDetailNavigation = Navigation<CardBookDetailDestination>
 
 final class CardBookDetailViewModel {
+    
+    enum State {
+        case migrate(cardBookId: CardBookID)
+        case normal
+    }
     
     let navigation = PublishRelay<CardBookDetailNavigation>()
     let shouldShowRemoveReconfirmAlert = PublishRelay<AlertItem>()
@@ -28,16 +34,19 @@ final class CardBookDetailViewModel {
     let isAllCardBook = BehaviorRelay<Bool>(value: false)
     let shouldClose = PublishRelay<Void>()
     let selectedIDs = BehaviorRelay<Set<String>>(value: [])
+    let state = BehaviorRelay<State>(value: .normal)
     
     init(
         cardBookID: CardBookID?,
         cardBookTitle: String?,
-        cardRepository: CardRepository
+        cardRepository: CardRepository,
+        state: State = .normal
     ) {
         self.cardBookID = cardBookID
         self._cardBookTitle = cardBookTitle ?? .empty
         self.cardRepository = cardRepository
         
+        self.state.accept(state)
         self.isAllCardBook.accept(cardBookID == nil)
         self.cardBookTitle.accept(self._cardBookTitle)
     }
@@ -50,12 +59,19 @@ final class CardBookDetailViewModel {
             else { return self.cardRepository.fetchAll() }
         }()
         friendCards
-            .subscribe(onNext: { [weak self] cards in
+            .withLatestFrom(self.state) { (cards: $0, migrate: $1)}
+            .subscribe(onNext: { [weak self] cards, migrate in
             guard let self = self else { return }
             self.cardBookTitle.accept("\(self._cardBookTitle) (\(cards.count))")
             self.friendCards.accept(cards)
             self.friendCardsForDisplay.accept(cards.compactMap(self.transform(card:)))
             self.isLoading.accept(false)
+                
+                switch migrate {
+                case .migrate:
+                    self.tapRemoveButton()
+                default: break
+                }
         })
         .disposed(by: self.disposeBag)
     }
@@ -78,10 +94,6 @@ final class CardBookDetailViewModel {
         guard let cardId = card.id else { return }
         guard let uniqueCode = card.uniqueCode else { return }
         self.navigation.accept(.push(.cardDetail(cardId: cardId, uniqueCode: uniqueCode)))
-    }
-    
-    func tapEdit() {
-        
     }
     
     func tapRemoveButton() {
@@ -114,6 +126,30 @@ final class CardBookDetailViewModel {
 
         let updatedFriendCardsForDisplay = self.friendCardsForDisplay.value.with { $0[index] = selectedCardForDisplay }
         self.friendCardsForDisplay.accept(updatedFriendCardsForDisplay)
+    }
+    
+    func tapBottomButton() {
+        switch self.state.value {
+        case .migrate(let cardBookId):
+            self.migrateMeetU(at: cardBookId)
+        case .normal:
+            self.tapRemove()
+        }
+    }
+    
+    func migrateMeetU(at cardBookId: CardBookID) {
+        let cardIds = self.checkedCardIndice.value.compactMap { index in self.friendCards.value[safe: index]?.id }
+        self.cardRepository.migrateCards(at: cardBookId, cards: cardIds)
+            .catchError({ error in
+                print(error)
+                return .empty()
+            })
+            .bind(onNext: { [weak self] in
+                self?.shouldClose.accept(())
+                NotificationCenter.default.post(name: .cardBookDidChange, object: nil)
+                NotificationCenter.default.post(name: .cardBookDetailDidChange, object: nil)
+            })
+            .disposed(by: self.disposeBag)
     }
     
     func tapRemove() {
@@ -211,7 +247,7 @@ final class CardBookDetailViewModel {
 
 extension CardBookDetailViewModel: CardBookMoreViewListener {
     func didTapAddMember() {
-        print(#function)
+        self.navigation.accept(.push(.allCardBook(cardBookId: self.cardBookID ?? "")))
     }
     
     func didTapDeleteMember() {

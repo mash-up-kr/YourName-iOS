@@ -20,6 +20,7 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
     var cardBookMoreViewControllerFactory: ((String, Bool) -> CardBookMoreViewController)!
     var addFriendCardViewControllerFactory: (() -> AddFriendCardViewController)!
     var nameCardDetailViewControllerFactory: ((Identifier, UniqueCode) -> NameCardDetailViewController)!
+    var allCardBookDetailViewControllerFactory: ((CardBookID) -> CardBookDetailViewController)!
     
     override func viewDidLoad() {
         self.navigationController?.navigationBar.isHidden = true
@@ -32,7 +33,18 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
         dispatch(to: viewModel)
         render(viewModel)
         
-        NotificationCenter.default.addObserver(forName: .friendCardDidDelete, object: nil, queue: nil) { [weak self] _ in
+        NotificationCenter.default.addObserver(
+            forName: .friendCardDidDelete,
+            object: nil,
+            queue: nil
+        ) { [weak self] _ in
+            self?.viewModel.didLoad()
+        }
+        NotificationCenter.default.addObserver(
+            forName: .cardBookDetailDidChange,
+            object: nil,
+            queue: nil
+        ) { [weak self] _ in
             self?.viewModel.didLoad()
         }
     }
@@ -67,7 +79,7 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
         
         self.bottomRemoveButton?.rx.tap
             .subscribe(onNext: { [weak self] in
-                self?.viewModel.tapRemove()
+                self?.viewModel.tapBottomButton()
             })
             .disposed(by: self.disposeBag)
     }
@@ -90,24 +102,6 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
             })
             .disposed(by: self.disposeBag)
         
-//        self.viewModel.isEditing.distinctUntilChanged()
-//            .subscribe(onNext: { [weak self] isEditing in
-//                self?.moreButton?.isHidden = isEditing
-//                self?.removeButton?.isHidden = isEditing == false
-//                self?.bottomBarView?.isHidden = isEditing == false
-//                self?.bottomRemoveButton?.isHidden = isEditing == false
-//                self?.isCardEditing = isEditing
-//            })
-//            .disposed(by: self.disposeBag)
-        
-        
-//        self.viewModel.isEditing
-//            .subscribe(onNext: { [weak self] isEditing in
-//                self?.moreButton?.isHidden = isEditing
-//                self?.removeButton?.isHidden = !isEditing
-//            })
-//            .disposed(by: self.disposeBag)
-        
         self.viewModel.isEditing
             .withLatestFrom(self.viewModel.isAllCardBook) { ($0, $1) }
             .bind(onNext: { [weak self] isEditing, isAllCardBook in
@@ -122,10 +116,16 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
         
         self.viewModel.isAllCardBook
             .filter { $0 }
-            .subscribe(onNext: { [weak self] _ in
-                self?.moreButton?.isHidden = true
-                self?.removeButton?.isHidden = false
-                self?.removeButton?.setImage(UIImage(named: "ic_delete"), for: .normal)
+            .withLatestFrom(viewModel.state) { ($0, $1) }
+            .subscribe(onNext: { [weak self] _, migrate in
+                switch migrate {
+                case .migrate:
+                    self?.moreButton?.isHidden = true
+                    self?.removeButton?.isHidden = true
+                case .normal:
+                    self?.moreButton?.isHidden = true
+                    self?.removeButton?.isHidden = false
+                }
             })
             .disposed(by: self.disposeBag)
         
@@ -134,7 +134,6 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
             .bind(onNext: { [weak self] _ in
                 self?.moreButton?.isHidden = false
                 self?.removeButton?.isHidden = true
-                self?.moreButton?.setImage(UIImage(named: "btn_more") , for: .normal)
             })
             .disposed(by: self.disposeBag)
                 
@@ -167,6 +166,17 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
                 self?.bottomRemoveButton?.backgroundColor = Palette.black1
             })
             .disposed(by: self.disposeBag)
+        
+        self.viewModel.state
+            .bind(onNext: { [weak self] state in
+                switch state {
+                case .migrate:
+                    self?.bottomRemoveButton?.setTitle("데려오기", for: .normal)
+                case .normal:
+                    self?.bottomRemoveButton?.setTitle("삭제하기", for: .normal)
+                }
+            })
+            .disposed(by: self.disposeBag)
 
     }
     
@@ -177,9 +187,12 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
     
     private func createViewController(_ next: CardBookDetailDestination) -> UIViewController {
         switch next {
-        case .cardDetail(let cardId, let uniqueCode): return self.nameCardDetailViewControllerFactory(cardId, uniqueCode)
+        case .cardDetail(let cardId, let uniqueCode):
+            return self.nameCardDetailViewControllerFactory(cardId, uniqueCode)
         case .cardBookMore(let cardBookName, let isCardEmpty):
             return self.cardBookMoreViewControllerFactory(cardBookName, isCardEmpty)
+        case .allCardBook(let cardBookId):
+            return self.allCardBookDetailViewControllerFactory(cardBookId)
         }
     }
     

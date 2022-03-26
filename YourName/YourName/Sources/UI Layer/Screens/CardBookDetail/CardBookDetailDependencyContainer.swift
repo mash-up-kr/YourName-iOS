@@ -13,10 +13,11 @@ final class CardBookDetailDependencyContainer {
         
     }
     
-    func createCardBookDetailViewController(cardBookID: CardBookID?, cardBookTitle: String?) -> UIViewController {
+    func createCardBookDetailViewController(cardBookID: CardBookID?, cardBookTitle: String?, state: CardBookDetailViewModel.State = .normal) -> CardBookDetailViewController {
         let viewController = CardBookDetailViewController.instantiate()
-        let viewModel = createCardBookDetailViewModel(cardBookID: cardBookID, cardBookTitle: cardBookTitle)
+        let viewModel = createCardBookDetailViewModel(cardBookID: cardBookID, cardBookTitle: cardBookTitle, state: state)
         viewController.viewModel = viewModel
+        
         viewController.nameCardDetailViewControllerFactory = { cardId, uniqueCode in
             let dependencyContainer = self.createCardDetailDependencyContainer(cardId: cardId, uniqueCode: uniqueCode)
             return dependencyContainer.createNameCardDetailViewController()
@@ -33,15 +34,21 @@ final class CardBookDetailDependencyContainer {
             )
             return PageSheetController(contentView: contentView)
         }
+        viewController.allCardBookDetailViewControllerFactory = { [weak self] cardBookId in
+            guard let self = self else { fatalError() }
+            return self.createCardBookDetailViewController(cardBookID: nil, cardBookTitle: "전체도감", state: .migrate(cardBookId: cardBookId))
+        }
         return viewController
     }
     
     private func createCardBookDetailViewModel(cardBookID: CardBookID?,
-                                               cardBookTitle: String?) -> CardBookDetailViewModel {
+                                               cardBookTitle: String?,
+                                               state: CardBookDetailViewModel.State) -> CardBookDetailViewModel {
         let cardRepository = createCardRepository()
         return CardBookDetailViewModel(cardBookID: cardBookID,
                                        cardBookTitle: cardBookTitle,
-                                       cardRepository: cardRepository)
+                                       cardRepository: cardRepository,
+                                       state: state)
     }
     
     private func createCardRepository() -> CardRepository {

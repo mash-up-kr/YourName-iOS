@@ -45,6 +45,7 @@
 		A298D8A927EF4262008FA334 /* CardBookMoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A298D8A827EF4262008FA334 /* CardBookMoreView.swift */; };
 		A298D8AD27EF4275008FA334 /* CardBookMoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A298D8AC27EF4275008FA334 /* CardBookMoreViewModel.swift */; };
 		A298D8AF27EF467F008FA334 /* CardBookMoreView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A298D8AE27EF467F008FA334 /* CardBookMoreView.xib */; };
+		A298D8B127EF73EA008FA334 /* MigrateCardsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A298D8B027EF73EA008FA334 /* MigrateCardsAPI.swift */; };
 		A29DA247271DCE4E00B1E647 /* AboutProductionTeamViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A29DA246271DCE4E00B1E647 /* AboutProductionTeamViewController.storyboard */; };
 		A29DA249271DCF3100B1E647 /* AboutProductionTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29DA248271DCF3100B1E647 /* AboutProductionTeamViewController.swift */; };
 		A2A5C83826FB17D0005D2849 /* KakaoAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A5C83726FB17D0005D2849 /* KakaoAuth.swift */; };
@@ -368,6 +369,7 @@
 		A298D8A827EF4262008FA334 /* CardBookMoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBookMoreView.swift; sourceTree = "<group>"; };
 		A298D8AC27EF4275008FA334 /* CardBookMoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBookMoreViewModel.swift; sourceTree = "<group>"; };
 		A298D8AE27EF467F008FA334 /* CardBookMoreView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardBookMoreView.xib; sourceTree = "<group>"; };
+		A298D8B027EF73EA008FA334 /* MigrateCardsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MigrateCardsAPI.swift; sourceTree = "<group>"; };
 		A29DA246271DCE4E00B1E647 /* AboutProductionTeamViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AboutProductionTeamViewController.storyboard; sourceTree = "<group>"; };
 		A29DA248271DCF3100B1E647 /* AboutProductionTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutProductionTeamViewController.swift; sourceTree = "<group>"; };
 		A2A5C83726FB17D0005D2849 /* KakaoAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoAuth.swift; sourceTree = "<group>"; };
@@ -891,6 +893,7 @@
 				A223E6D3275537DD00F29FCE /* RemoveMyNameCardAPI.swift */,
 				CE6AF917276290A700090BD9 /* UpdateCardAPI.swift */,
 				A2CBF49F27B41A1D00D31CE4 /* AddCardBookAPI.swift */,
+				A298D8B027EF73EA008FA334 /* MigrateCardsAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -2078,6 +2081,7 @@
 				A2DA3B65274FDA4700E68F23 /* Entity.MyNameCard.swift in Sources */,
 				CEDA4B9627513BDA0011D0CA /* MockQuestRepository.swift in Sources */,
 				CED16DF526F3A5480076565F /* QuestViewController.swift in Sources */,
+				A298D8B127EF73EA008FA334 /* MigrateCardsAPI.swift in Sources */,
 				A2DA3B45274A5BE000E68F23 /* LogoutAPI.swift in Sources */,
 				A2B10121270AA80900CAE013 /* AddFriendCardViewModel.swift in Sources */,
 				CE2D1C5C275E88CA00DCD2D3 /* NameCardDetailViewModel.swift in Sources */,
