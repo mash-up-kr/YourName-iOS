@@ -17,7 +17,7 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
     }
     
     var viewModel: CardBookDetailViewModel!
-    var cardBookMoreViewControllerFactory: ((CardBookID, String) -> CardBookMoreViewController)!
+    var cardBookMoreViewControllerFactory: ((String, Bool) -> CardBookMoreViewController)!
     var addFriendCardViewControllerFactory: (() -> AddFriendCardViewController)!
     var nameCardDetailViewControllerFactory: ((Identifier, UniqueCode) -> NameCardDetailViewController)!
     
@@ -172,8 +172,8 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
     private func createViewController(_ next: CardBookDetailDestination) -> UIViewController {
         switch next {
         case .cardDetail(let cardId, let uniqueCode): return self.nameCardDetailViewControllerFactory(cardId, uniqueCode)
-        case .cardBookMore(let cardBookId, let cardBookName):
-            return self.cardBookMoreViewControllerFactory(cardBookId, cardBookName)
+        case .cardBookMore(let cardBookName, let isCardEmpty):
+            return self.cardBookMoreViewControllerFactory(cardBookName, isCardEmpty)
         }
     }
     

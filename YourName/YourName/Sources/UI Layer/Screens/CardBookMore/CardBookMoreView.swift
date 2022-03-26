@@ -24,17 +24,14 @@ final class CardBookMoreView: UIView, NibLoadable {
     var parent: ViewController?
     private var viewModel: CardBookMoreViewModel!
     private let disposeBag = DisposeBag()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setupFromNib()
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        self.setupFromNib()
-        
-        self.bind()
-        self.configureUI()
+        fatalError("do not init from coder")
     }
     
     convenience init(viewModel: CardBookMoreViewModel,
@@ -42,7 +39,8 @@ final class CardBookMoreView: UIView, NibLoadable {
         self.init(frame: .zero)
         self.viewModel = viewModel
         self.parent = parent
-        self.bind()
+        self.render(self.viewModel)
+        self.dispatch(to: self.viewModel)
         self.configureUI()
     }
     deinit {
@@ -57,8 +55,52 @@ extension CardBookMoreView {
         editStackView.clipsToBounds = true
         memeberStackView.clipsToBounds = true
     }
-    func bind() {
+    func render(_ viewModel: CardBookMoreViewModel) {
+        viewModel.isCardEmpty
+            .filter { $0 }
+            .bind(onNext: { [weak self] _ in
+                self?.deleteMemberView.isHidden = true
+            })
+            .disposed(by: self.disposeBag)
         
+        viewModel.cardBookName
+            .bind(onNext: { [weak self] cardBookName in
+                self?.cardBookDeleteLabel.text = "\(cardBookName) 도감 삭제하기"
+            })
+            .disposed(by: self.disposeBag)
+        
+        viewModel.dismiss
+            .bind(onNext: { [weak self] in
+                self?.parent?.dismiss(animated: true, completion: nil)
+            })
+            .disposed(by: self.disposeBag)
+    }
+    func dispatch(to viewModel: CardBookMoreViewModel) {
+
+        self.addMemberView.rx.tapWhenRecognized
+            .bind(onNext: { _ in
+                viewModel.didTapAddMember()
+            })
+            .disposed(by: self.disposeBag)
+        
+        self.deleteMemberView.rx.tapWhenRecognized
+            .bind(onNext: { _ in
+                viewModel.didTapDeleteMember()
+            })
+            .disposed(by: self.disposeBag)
+        
+        self.cardBookEditView.rx.tapWhenRecognized
+            .bind(onNext: { _ in
+                
+                viewModel.didTapEditCardBook()
+            })
+            .disposed(by: self.disposeBag)
+        
+        self.cardBookDeleteView.rx.tapWhenRecognized
+            .bind(onNext: { _ in
+                viewModel.didTapDeleteCardBook()
+            })
+            .disposed(by: self.disposeBag)
     }
 }
 

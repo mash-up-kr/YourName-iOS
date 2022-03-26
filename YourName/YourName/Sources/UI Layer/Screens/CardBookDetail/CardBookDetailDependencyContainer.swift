@@ -21,9 +21,16 @@ final class CardBookDetailDependencyContainer {
             let dependencyContainer = self.createCardDetailDependencyContainer(cardId: cardId, uniqueCode: uniqueCode)
             return dependencyContainer.createNameCardDetailViewController()
         }
-        viewController.cardBookMoreViewControllerFactory = { cardBookId, cardBookName in
-            let viewModel = CardBookMoreViewModel()
-            let contentView = CardBookMoreView(viewModel: viewModel, parent: viewController)
+        viewController.cardBookMoreViewControllerFactory = { cardBookName, isCardEmpty in
+            let viewModel = CardBookMoreViewModel(
+                cardBookName: cardBookName,
+                isCardEmpty: isCardEmpty,
+                delegate: viewModel
+            )
+            let contentView = CardBookMoreView(
+                viewModel: viewModel,
+                parent: viewController
+            )
             return PageSheetController(contentView: contentView)
         }
         return viewController

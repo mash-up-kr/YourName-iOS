@@ -11,7 +11,7 @@ import RxRelay
 
 enum CardBookDetailDestination: Equatable {
     case cardDetail(cardId: Identifier, uniqueCode: UniqueCode)
-    case cardBookMore(cardBookId: CardBookID, cardBookName: String)
+    case cardBookMore(cardBookName: String, cardIsEmpty: Bool)
 }
 
 typealias CardBookDetailNavigation = Navigation<CardBookDetailDestination>
@@ -61,7 +61,7 @@ final class CardBookDetailViewModel {
     }
     
     func tapMore() {
-        self.navigation.accept(.show(.cardBookMore(cardBookId: self.cardBookID ?? "", cardBookName: self._cardBookTitle)))
+        self.navigation.accept(.show(.cardBookMore(cardBookName: self._cardBookTitle, cardIsEmpty: self.friendCards.value.isEmpty)))
     }
     
     func tapBack() {
@@ -207,4 +207,23 @@ final class CardBookDetailViewModel {
     private let cardBookID: CardBookID?
     private let _cardBookTitle: String
     private let cardRepository: CardRepository
+}
+
+
+extension CardBookDetailViewModel: CardBookMoreViewListener {
+    func didTapAddMember() {
+        print(#function)
+    }
+    
+    func didTapDeleteMember() {
+        print(#function)
+    }
+    
+    func didTapEditCardBook() {
+        print(#function)
+    }
+    
+    func didTapDeleteCardBook() {
+        print(#function)
+    }
 }
