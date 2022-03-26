@@ -19,7 +19,7 @@ final class CardBookMoreViewModel {
     let cardBookName: BehaviorRelay<String>
     let isCardEmpty: BehaviorRelay<Bool>
     let dismiss: PublishRelay<Void>
-    weak var deletate: CardBookMoreViewListener?
+    unowned var deletate: CardBookMoreViewListener!
     
     init(
         cardBookName: String,
@@ -42,19 +42,19 @@ final class CardBookMoreViewModel {
     
     func didTapAddMember() {
         self.dismiss.accept(())
-        self.deletate?.didTapAddMember()
+        self.deletate.didTapAddMember()
     }
     
     func didTapDeleteMember() {
         self.dismiss.accept(())
-        self.deletate?.didTapDeleteMember()
+        self.deletate.didTapDeleteMember()
     }
     func didTapEditCardBook() {
         self.dismiss.accept(())
-        self.deletate?.didTapEditCardBook()
+        self.deletate.didTapEditCardBook()
     }
     func didTapDeleteCardBook() {
         self.dismiss.accept(())
-        self.deletate?.didTapDeleteCardBook()
+        self.deletate.didTapDeleteCardBook()
     }
 }
