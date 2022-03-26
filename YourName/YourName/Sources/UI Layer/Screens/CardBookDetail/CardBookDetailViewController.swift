@@ -52,23 +52,23 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
             })
             .disposed(by: self.disposeBag)
         
-        self.moreButton?.rx.tap
-            .subscribe(onNext: { [weak self] in
-                self?.viewModel.tapEdit()
-            })
-            .disposed(by: self.disposeBag)
+//        self.moreButton?.rx.tap
+//            .subscribe(onNext: { [weak self] in
+//                self?.viewModel.tapEdit()
+//            })
+//            .disposed(by: self.disposeBag)
         
         self.removeButton?.rx.tap
             .subscribe(onNext: { [weak self] in
-                self?.viewModel.tapRemove()
+                self?.viewModel.tapRemoveButton()
             })
             .disposed(by: self.disposeBag)
         
-        self.bottomRemoveButton?.rx.tap
-            .subscribe(onNext: { [weak self] in
-                self?.viewModel.tapRemove()
-            })
-            .disposed(by: self.disposeBag)
+//        self.bottomRemoveButton?.rx.tap
+//            .subscribe(onNext: { [weak self] in
+//                self?.viewModel.tapRemove()
+//            })
+//            .disposed(by: self.disposeBag)
     }
     
     private func render(_ viewModel: CardBookDetailViewModel) {
@@ -89,28 +89,45 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
             })
             .disposed(by: self.disposeBag)
         
-        self.viewModel.isEditing.distinctUntilChanged()
-            .subscribe(onNext: { [weak self] isEditing in
-                self?.moreButton?.isHidden = isEditing
-                self?.removeButton?.isHidden = isEditing == false
-                self?.bottomBarView?.isHidden = isEditing == false
-                self?.bottomRemoveButton?.isHidden = isEditing == false
-                self?.isCardEditing = isEditing
+//        self.viewModel.isEditing.distinctUntilChanged()
+//            .subscribe(onNext: { [weak self] isEditing in
+//                self?.moreButton?.isHidden = isEditing
+//                self?.removeButton?.isHidden = isEditing == false
+//                self?.bottomBarView?.isHidden = isEditing == false
+//                self?.bottomRemoveButton?.isHidden = isEditing == false
+//                self?.isCardEditing = isEditing
+//            })
+//            .disposed(by: self.disposeBag)
+        
+        
+//        self.viewModel.isEditing
+//            .subscribe(onNext: { [weak self] isEditing in
+//                self?.moreButton?.isHidden = isEditing
+//                self?.removeButton?.isHidden = !isEditing
+//            })
+//            .disposed(by: self.disposeBag)
+        
+        self.viewModel.isEditing
+            .bind(onNext: { [weak self] isEditing in
+                self?.bottomRemoveButton?.isHidden = !isEditing
             })
             .disposed(by: self.disposeBag)
         
-        
-        Observable.combineLatest(self.viewModel.isEditing, self.viewModel.isEmpty)
-            .subscribe(onNext: { [weak self] isEditing, isEmpty in
-                self?.moreButton?.isHidden = isEmpty || isEditing
-                self?.removeButton?.isHidden = isEmpty || !isEditing
+        self.viewModel.isAllCardBook
+            .filter { $0 }
+            .subscribe(onNext: { [weak self] _ in
+                self?.moreButton?.isHidden = true
+                self?.removeButton?.isHidden = false
+                self?.removeButton?.setImage(UIImage(named: "ic_delete"), for: .normal)
             })
             .disposed(by: self.disposeBag)
         
-        self.viewModel.isAllCardBook.distinctUntilChanged()
-            .map { $0 ? UIImage(named: "ic_delete") : UIImage(named: "btn_more") }
-            .subscribe(onNext: { [weak self] icon in
-                self?.moreButton?.setImage(icon, for: .normal)
+        self.viewModel.isAllCardBook
+            .filter { !$0 }
+            .bind(onNext: { [weak self] _ in
+                self?.moreButton?.isHidden = false
+                self?.removeButton?.isHidden = true
+                self?.moreButton?.setImage(UIImage(named: "btn_more") , for: .normal)
             })
             .disposed(by: self.disposeBag)
                 
@@ -141,6 +158,7 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
                 self?.navigationController?.popViewController(animated: true)
             })
             .disposed(by: self.disposeBag)
+
     }
     
     private func navigate(_ navigation: CardBookDetailNavigation) {
@@ -217,8 +235,7 @@ extension CardBookDetailViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard self.cellViewModels.isNotEmpty else { return }
-        if isCardEditing { self.viewModel.tapCheck(at: indexPath.item) }
-        else             { self.viewModel.tapCard(at: indexPath.item)  }
+        self.viewModel.tapCard(at: indexPath.item)
     }
     
 }

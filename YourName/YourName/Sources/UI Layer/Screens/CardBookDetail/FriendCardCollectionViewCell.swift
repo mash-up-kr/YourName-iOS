@@ -17,7 +17,7 @@ struct FriendCardCellViewModel: Equatable, Then {
     let name: String?
     let role: String?
     let bgColor: ColorSource?
-    let profileURL: URL?
+    let profileImageUrl: URL?
     var isEditing: Bool
     var isChecked: Bool
 }
@@ -49,7 +49,7 @@ final class FriendCardCollectionViewCell: UICollectionViewCell {
         self.roleLabel?.text = viewModel.role
         self.checkBoxView?.isHidden = viewModel.isEditing == false
         self.checkBoxView?.backgroundColor = viewModel.isChecked ? .black : .white
-        if let url = viewModel.profileURL {
+        if let url = viewModel.profileImageUrl {
             self.profileImageView?.setImageSource(.url(url))
         }
         if let colorSource = viewModel.bgColor {

@@ -19,11 +19,11 @@ final class CardBookDetailViewModel {
     
     let navigation = PublishRelay<CardBookDetailNavigation>()
     let shouldShowRemoveReconfirmAlert = PublishRelay<Void>()
+    let askStopEditingAlert = PublishRelay<AlertItem>()
     let cardBookTitle = BehaviorRelay<String>(value: .empty)
     let friendCardsForDisplay = BehaviorRelay<[FriendCardCellViewModel]>(value: [])
     let isLoading = BehaviorRelay<Bool>(value: false)
     let isEditing = BehaviorRelay<Bool>(value: false)
-    let isEmpty = BehaviorRelay<Bool>(value: true)
     let isAllCardBook = BehaviorRelay<Bool>(value: false)
     let shouldClose = PublishRelay<Void>()
     let selectedIDs = BehaviorRelay<Set<String>>(value: [])
@@ -48,13 +48,13 @@ final class CardBookDetailViewModel {
             if let cardBookID = self.cardBookID { return self.cardRepository.fetchCards(cardBookID: cardBookID) }
             else { return self.cardRepository.fetchAll() }
         }()
-        friendCards.subscribe(onNext: { [weak self] cards in
+        friendCards
+            .subscribe(onNext: { [weak self] cards in
             guard let self = self else { return }
-            self.cardBookTitle.accept("\(self._cardBookTitle)(\(cards.count))")
+            self.cardBookTitle.accept("\(self._cardBookTitle) (\(cards.count))")
             self.friendCards.accept(cards)
             self.friendCardsForDisplay.accept(cards.compactMap(self.transform(card:)))
             self.isLoading.accept(false)
-            self.isEmpty.accept(cards.isEmpty)
         })
         .disposed(by: self.disposeBag)
     }
@@ -68,6 +68,11 @@ final class CardBookDetailViewModel {
     }
     
     func tapCard(at index: Int) {
+        if self.isEditing.value { self.tapCheck(at: index) }
+        else { self.navigateToCardDetail(at: index) }
+    }
+    
+    private func navigateToCardDetail(at index: Int) {
         guard let card = friendCards.value[safe: index] else { return }
         guard let cardId = card.id else { return }
         guard let uniqueCode = card.uniqueCode else { return }
@@ -75,44 +80,59 @@ final class CardBookDetailViewModel {
     }
     
     func tapEdit() {
-        guard self.isEmpty.value == false   else { return }
-        guard self.isEditing.value == false else { return }
         
-        self.isEditing.accept(true)
-        let updatedFriendCardsForDisplay = self.friendCardsForDisplay.value.map { $0.with { $0.isEditing = true } }
+    }
+    
+    func tapRemoveButton() {
+        guard self.friendCards.value.isEmpty == false else { return }
+        if self.checkedCardIndice.isEmpty && !self.isEditing.value {
+            self.setUpCards(isEditing: true)
+        } else {
+            self.checkedCardIndice.removeAll()
+            self.setUpCards(isEditing: false)
+        }
+    }
+    
+    private func setUpCards(isEditing: Bool) {
+        self.isEditing.accept(isEditing)
+        let updatedFriendCardsForDisplay = self.friendCardsForDisplay.value.map { $0.with {
+            $0.isEditing = isEditing
+            $0.isChecked = false
+        } }
         self.friendCardsForDisplay.accept(updatedFriendCardsForDisplay)
     }
     
     func tapCheck(id: NameCardID) {
-        var cellViewModels = self.friendCardsForDisplay.value
-        guard let selectedIndex = cellViewModels.firstIndex(where: { $0.id == id }) else { return }
-        guard var cellViewModel = cellViewModels[safe: selectedIndex]               else { return }
-        
-        cellViewModel.isChecked.toggle()
-        cellViewModels[selectedIndex] = cellViewModel
-        self.friendCardsForDisplay.accept(cellViewModels)
+//        var cellViewModels = self.friendCardsForDisplay.value
+//        guard let selectedIndex = cellViewModels.firstIndex(where: { $0.id == id }) else { return }
+//        guard var cellViewModel = cellViewModels[safe: selectedIndex]               else { return }
+//
+//        cellViewModel.isChecked.toggle()
+//        cellViewModels[selectedIndex] = cellViewModel
+//        self.friendCardsForDisplay.accept(cellViewModels)
     }
     
-    func tapCheck(at index: Int) {
+    private func tapCheck(at index: Int) {
         guard self.isEditing.value else { return }
         guard var selectedCardForDisplay = self.friendCardsForDisplay.value[safe: index] else { return }
-        
+
         self.checkedCardIndice.toggle(index)
         selectedCardForDisplay.isChecked.toggle()
-        
+
         let updatedFriendCardsForDisplay = self.friendCardsForDisplay.value.with { $0[index] = selectedCardForDisplay }
         self.friendCardsForDisplay.accept(updatedFriendCardsForDisplay)
     }
     
     func tapRemove() {
-        guard self.isEmpty.value == false, self.checkedCardIndice.isNotEmpty else {
-            let updatedFriendCardsForDisplay = self.friendCardsForDisplay.value.map { $0.with { $0.isEditing = false } }
-            self.friendCardsForDisplay.accept(updatedFriendCardsForDisplay)
-            self.isEditing.accept(false)
-            return
-        }
-        
-        self.shouldShowRemoveReconfirmAlert.accept(Void())
+//        guard self.friendCards.value.isEmpty == false,
+//              self.checkedCardIndice.isNotEmpty else {
+//            let updatedFriendCardsForDisplay = self.friendCardsForDisplay.value.map { $0.with { $0.isEditing = false } }
+//            self.friendCardsForDisplay.accept(updatedFriendCardsForDisplay)
+//            self.isEditing.accept(false)
+//            return
+//        }
+//
+//        self.shouldShowRemoveReconfirmAlert.accept(Void())
     }
     
     func tapRemoveConfirm() {
@@ -170,7 +190,7 @@ final class CardBookDetailViewModel {
             name: card.name,
             role: card.role,
             bgColor: colors.count > 1 ? .gradient(colors) : .monotone(colors.first ?? .gray),
-            profileURL: URL(string: card.profileURL ?? .empty),
+            profileImageUrl: URL(string: card.profileURL ?? .empty),
             isEditing: false,
             isChecked: false
         )
