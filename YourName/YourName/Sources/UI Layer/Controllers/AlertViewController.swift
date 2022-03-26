@@ -46,11 +46,17 @@ final class AlertViewController: ViewController, Storyboarded {
         self.defaultButton.setTitle(item?.defaultAction.title, for: .normal)
         
         self.emphasisButton.rx.throttleTap
-            .bind(onNext: { [weak self] in self?.item?.emphasisAction.action() })
+            .bind(onNext: { [weak self] in
+                self?.item?.emphasisAction.action()
+                self?.dismiss()
+            })
             .disposed(by: disposeBag)
         
         self.defaultButton.rx.throttleTap
-            .bind(onNext: { [weak self] in self?.item?.defaultAction.action() })
+            .bind(onNext: { [weak self] in
+                self?.item?.defaultAction.action()
+                self?.dismiss()
+            })
             .disposed(by: disposeBag)
     }
     

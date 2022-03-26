@@ -18,7 +18,7 @@ typealias CardBookDetailNavigation = Navigation<CardBookDetailDestination>
 final class CardBookDetailViewModel {
     
     let navigation = PublishRelay<CardBookDetailNavigation>()
-    let shouldShowRemoveReconfirmAlert = PublishRelay<Void>()
+    let shouldShowRemoveReconfirmAlert = PublishRelay<AlertItem>()
     let askStopEditingAlert = PublishRelay<AlertItem>()
     let cardBookTitle = BehaviorRelay<String>(value: .empty)
     let friendCardsForDisplay = BehaviorRelay<[FriendCardCellViewModel]>(value: [])
@@ -85,10 +85,10 @@ final class CardBookDetailViewModel {
     
     func tapRemoveButton() {
         guard self.friendCards.value.isEmpty == false else { return }
-        if self.checkedCardIndice.isEmpty && !self.isEditing.value {
+        if self.checkedCardIndice.value.isEmpty && !self.isEditing.value {
             self.setUpCards(isEditing: true)
         } else {
-            self.checkedCardIndice.removeAll()
+            self.checkedCardIndice.accept(.init())
             self.setUpCards(isEditing: false)
         }
     }
@@ -116,7 +116,9 @@ final class CardBookDetailViewModel {
         guard self.isEditing.value else { return }
         guard var selectedCardForDisplay = self.friendCardsForDisplay.value[safe: index] else { return }
 
-        self.checkedCardIndice.toggle(index)
+        var item = self.checkedCardIndice.value
+        item.toggle(index)
+        self.checkedCardIndice.accept(item)
         selectedCardForDisplay.isChecked.toggle()
 
         let updatedFriendCardsForDisplay = self.friendCardsForDisplay.value.with { $0[index] = selectedCardForDisplay }
@@ -124,28 +126,39 @@ final class CardBookDetailViewModel {
     }
     
     func tapRemove() {
-//        guard self.friendCards.value.isEmpty == false,
-//              self.checkedCardIndice.isNotEmpty else {
-//            let updatedFriendCardsForDisplay = self.friendCardsForDisplay.value.map { $0.with { $0.isEditing = false } }
-//            self.friendCardsForDisplay.accept(updatedFriendCardsForDisplay)
-//            self.isEditing.accept(false)
-//            return
-//        }
-//
-//        self.shouldShowRemoveReconfirmAlert.accept(Void())
+        guard self.friendCards.value.isEmpty == false,
+              self.checkedCardIndice.value.isNotEmpty else {
+                  self.setUpCards(isEditing: false)
+            return
+        }
+        let okAction = { [weak self] in
+            guard let self = self else { return }
+            self.tapRemoveConfirm()
+        }
+        let cancelAction = { [weak self] in
+            guard let self = self else { return }
+            self.tapRemoveCancel()
+        }
+        let alert = AlertItem(title: "정말 삭제하시겠츄?",
+                              messages: "삭제한 미츄와 도감은 복구할 수 없어요.",
+                              image: UIImage(named: "meetu_delete")!,
+                              emphasisAction: .init(title: "삭제하기", action: okAction),
+                              defaultAction: .init(title: "삭제안할래요", action: cancelAction))
+        
+        self.shouldShowRemoveReconfirmAlert.accept(alert)
     }
     
     func tapRemoveConfirm() {
         guard self.isEditing.value             else { return }
         
-        guard self.checkedCardIndice.isNotEmpty else {
+        guard self.checkedCardIndice.value.isNotEmpty else {
             self.isEditing.accept(false)
             let updatedFriendCardsForDisplay = self.friendCardsForDisplay.value.map { $0.with { $0.isEditing = false } }
             self.friendCardsForDisplay.accept(updatedFriendCardsForDisplay)
             return
         }
         
-        let checkedCardIDs = self.checkedCardIndice.compactMap { index in self.friendCards.value[safe: index]?.idForDelete }
+        let checkedCardIDs = self.checkedCardIndice.value.compactMap { index in self.friendCards.value[safe: index]?.idForDelete }
         
         self.cardRepository.remove(cardIDs: checkedCardIDs, on: cardBookID ?? "all").subscribe(onNext: { [weak self] _ in //deletedCardIDs in
                 guard let self = self           else { return }
@@ -163,7 +176,7 @@ final class CardBookDetailViewModel {
                 let updatedFriendCardsForDisplay = updatedCards.compactMap(self.transform(card:)).map { $0.with { $0.isEditing = false } }
                 self.friendCardsForDisplay.accept(updatedFriendCardsForDisplay)
                 
-                self.checkedCardIndice.removeAll()
+            self.checkedCardIndice.accept(.init())
             
             NotificationCenter.default.post(name: .friendCardDidDelete, object: nil)
             })
@@ -172,7 +185,7 @@ final class CardBookDetailViewModel {
     
     func tapRemoveCancel() {
         self.isEditing.accept(false)
-        self.checkedCardIndice.removeAll()
+        self.checkedCardIndice.accept(.init())
         let updatedFriendCardsForDisplay = self.friendCardsForDisplay.value.map {
             $0.with {
                 $0.isEditing = false
@@ -197,7 +210,7 @@ final class CardBookDetailViewModel {
     }
     
     private let friendCards = BehaviorRelay<[NameCard]>(value: [])
-    private var checkedCardIndice = Set<Int>()
+    let checkedCardIndice = BehaviorRelay<Set<Int>>(value: .init())
     private let disposeBag = DisposeBag()
     
     private let cardBookID: CardBookID?

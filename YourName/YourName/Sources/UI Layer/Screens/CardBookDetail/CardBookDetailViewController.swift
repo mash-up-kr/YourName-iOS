@@ -64,11 +64,11 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
             })
             .disposed(by: self.disposeBag)
         
-//        self.bottomRemoveButton?.rx.tap
-//            .subscribe(onNext: { [weak self] in
-//                self?.viewModel.tapRemove()
-//            })
-//            .disposed(by: self.disposeBag)
+        self.bottomRemoveButton?.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.viewModel.tapRemove()
+            })
+            .disposed(by: self.disposeBag)
     }
     
     private func render(_ viewModel: CardBookDetailViewModel) {
@@ -132,23 +132,9 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
             .disposed(by: self.disposeBag)
                 
         self.viewModel.shouldShowRemoveReconfirmAlert
-            .subscribe(onNext: {
+            .subscribe(onNext: { alertItem in
                 let alertController = AlertViewController.instantiate()
-                let okAction = { [weak self] in
-                    guard let self = self else { return }
-                    alertController.dismiss()
-                    self.viewModel.tapRemoveConfirm()
-                }
-                let cancelAction = { [weak self] in
-                    guard let self = self else { return }
-                    alertController.dismiss()
-                    self.viewModel.tapRemoveCancel()
-                }
-                alertController.configure(item: AlertItem(title: "정말 삭제하시겠츄?",
-                                                          messages: "삭제한 미츄와 도감은 복구할 수 없어요.",
-                                                          image: UIImage(named: "meetu_delete")!,
-                                                          emphasisAction: .init(title: "삭제하기", action: okAction),
-                                                          defaultAction: .init(title: "삭제안할래요", action: cancelAction)))
+                alertController.configure(item: alertItem)
                 self.present(alertController, animated: true, completion: nil)
             })
             .disposed(by: self.disposeBag)
@@ -156,6 +142,22 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
         self.viewModel.shouldClose
             .subscribe(onNext: { [weak self] in
                 self?.navigationController?.popViewController(animated: true)
+            })
+            .disposed(by: self.disposeBag)
+        
+        self.viewModel.checkedCardIndice
+            .filter { $0.isEmpty }
+            .bind(onNext: { [weak self] _ in
+                self?.bottomRemoveButton?.isUserInteractionEnabled = false
+                self?.bottomRemoveButton?.backgroundColor = Palette.gray1
+            })
+            .disposed(by: self.disposeBag)
+        
+        self.viewModel.checkedCardIndice
+            .filter { !$0.isEmpty }
+            .bind(onNext: { [weak self] _ in
+                self?.bottomRemoveButton?.isUserInteractionEnabled = true
+                self?.bottomRemoveButton?.backgroundColor = Palette.black1
             })
             .disposed(by: self.disposeBag)
 
