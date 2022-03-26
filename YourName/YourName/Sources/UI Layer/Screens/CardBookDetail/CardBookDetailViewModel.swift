@@ -86,7 +86,7 @@ final class CardBookDetailViewModel {
     
     func tapRemoveButton() {
         guard self.friendCards.value.isEmpty == false else { return }
-        if self.checkedCardIndice.value.isEmpty && !self.isEditing.value {
+        if self.checkedCardIndice.value.isEmpty {
             self.setUpCards(isEditing: true)
         } else {
             self.checkedCardIndice.accept(.init())
@@ -150,7 +150,6 @@ final class CardBookDetailViewModel {
         }
         
         let checkedCardIDs = self.checkedCardIndice.value.compactMap { index in self.friendCards.value[safe: index]?.idForDelete }
-        
         self.cardRepository.remove(cardIDs: checkedCardIDs, on: cardBookID ?? "all").subscribe(onNext: { [weak self] _ in //deletedCardIDs in
                 guard let self = self           else { return }
                 guard checkedCardIDs.isNotEmpty else { return }
@@ -216,7 +215,7 @@ extension CardBookDetailViewModel: CardBookMoreViewListener {
     }
     
     func didTapDeleteMember() {
-        print(#function)
+        self.tapRemoveButton()
     }
     
     func didTapEditCardBook() {
@@ -224,6 +223,19 @@ extension CardBookDetailViewModel: CardBookMoreViewListener {
     }
     
     func didTapDeleteCardBook() {
-        print(#function)
+        let okAction = { [weak self] in
+            guard let self = self else { return }
+            // 삭제 api연결필요.
+        }
+        let cancelAction = { [weak self] in
+            guard let self = self else { return }
+            self.tapRemoveCancel()
+        }
+        let alert = AlertItem(title: "정말 삭제하시겠츄?",
+                              messages: "삭제한 미츄와 도감은 복구할 수 없어요.",
+                              image: UIImage(named: "meetu_delete")!,
+                              emphasisAction: .init(title: "삭제하기", action: okAction),
+                              defaultAction: .init(title: "삭제안할래요", action: cancelAction))
+        self.shouldShowRemoveReconfirmAlert.accept(alert)
     }
 }

@@ -47,7 +47,7 @@ final class CardBookMoreViewModel {
     
     func didTapDeleteMember() {
         self.dismiss.accept(())
-        self.deletate?.didTapDeleteCardBook()
+        self.deletate?.didTapDeleteMember()
     }
     func didTapEditCardBook() {
         self.dismiss.accept(())

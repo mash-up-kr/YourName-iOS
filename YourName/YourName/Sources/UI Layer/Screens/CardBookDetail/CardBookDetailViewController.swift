@@ -109,7 +109,13 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
 //            .disposed(by: self.disposeBag)
         
         self.viewModel.isEditing
-            .bind(onNext: { [weak self] isEditing in
+            .withLatestFrom(self.viewModel.isAllCardBook) { ($0, $1) }
+            .bind(onNext: { [weak self] isEditing, isAllCardBook in
+                if isAllCardBook {
+                    self?.removeButton?.isHidden = isEditing
+                } else {
+                    self?.moreButton?.isHidden = isEditing
+                }
                 self?.bottomRemoveButton?.isHidden = !isEditing
             })
             .disposed(by: self.disposeBag)
