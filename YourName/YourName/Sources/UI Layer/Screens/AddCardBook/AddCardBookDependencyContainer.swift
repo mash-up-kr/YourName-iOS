@@ -9,17 +9,25 @@ import Foundation
 import UIKit
 
 final class AddCardBookDependencyContainer {
-    init() {
-        
+    
+    enum Mode {
+        case create
+        case edit(cardBookId: CardBookID)
     }
     
-    func createAddCardBookViewController() -> UIViewController {
+    private let mode: Mode
+    init(mode: Mode = .create) {
+        self.mode = mode
+    }
+    
+    func createAddCardBookViewController() -> AddCardBookViewController {
         let viewController = AddCardBookViewController.instantiate()
         let colorRepository = YourNameColorRepository()
         let cardBookRepository = YourNameCardBookRepository()
         let viewModel = AddCardBookViewModelImp(
             colorRepository: colorRepository,
-            cardBookRepository: cardBookRepository
+            cardBookRepository: cardBookRepository,
+            mode: self.mode
         )
         viewController.viewModel = viewModel
         

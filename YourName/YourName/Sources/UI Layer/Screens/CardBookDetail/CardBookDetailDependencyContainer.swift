@@ -38,6 +38,11 @@ final class CardBookDetailDependencyContainer {
             guard let self = self else { fatalError() }
             return self.createCardBookDetailViewController(cardBookID: nil, cardBookTitle: "전체도감", state: .migrate(cardBookId: cardBookId))
         }
+        
+        viewController.editCardBookViewControllerFactory = { [weak self] cardBookId in
+            guard let self = self else { fatalError() }
+            return self.createEditCardBookDependencyContainer(cardBookId: cardBookId).createAddCardBookViewController()
+        }
         return viewController
     }
     
@@ -56,6 +61,14 @@ final class CardBookDetailDependencyContainer {
     }
     
     private func createCardDetailDependencyContainer(cardId: Identifier, uniqueCode: UniqueCode) -> NameCardDetailDependencyContainer {
-        return NameCardDetailDependencyContainer(cardId: cardId, uniqueCode: uniqueCode, cardBookDetailDependencyContainer: self)
+        return NameCardDetailDependencyContainer(
+            cardId: cardId,
+            uniqueCode: uniqueCode,
+            cardBookDetailDependencyContainer: self
+        )
+    }
+    
+    private func createEditCardBookDependencyContainer(cardBookId: CardBookID) -> AddCardBookDependencyContainer {
+        return AddCardBookDependencyContainer(mode: .edit(cardBookId: cardBookId))
     }
 }

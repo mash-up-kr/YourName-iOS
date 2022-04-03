@@ -13,6 +13,7 @@ enum CardBookDetailDestination: Equatable {
     case cardDetail(cardId: Identifier, uniqueCode: UniqueCode)
     case cardBookMore(cardBookName: String, cardIsEmpty: Bool)
     case allCardBook(cardBookId: CardBookID)
+    case editCardBook(cardBookId: CardBookID)
 }
 
 typealias CardBookDetailNavigation = Navigation<CardBookDetailDestination>
@@ -255,7 +256,8 @@ extension CardBookDetailViewModel: CardBookMoreViewListener {
     }
     
     func didTapEditCardBook() {
-        print(#function)
+        guard let cardBookId = self.cardBookID else { return }
+        self.navigation.accept(.push(.editCardBook(cardBookId: cardBookId)))
     }
     
     func didTapDeleteCardBook() {

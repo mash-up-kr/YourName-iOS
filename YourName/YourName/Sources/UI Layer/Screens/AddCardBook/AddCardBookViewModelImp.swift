@@ -12,16 +12,20 @@ import RxRelay
 final class AddCardBookViewModelImp: AddCardBookViewModel {
     
     typealias CardBookBgColorCellItem = CardBookCoverBackgroundColorCell.Item
+    typealias Mode = AddCardBookDependencyContainer.Mode
     
-    private let colorRepository: ColorRepository!
-    private let cardBookRepository: CardBookRepository!
+    private let colorRepository: ColorRepository
+    private let cardBookRepository: CardBookRepository
+    private var mode: Mode
     
     init(
         colorRepository: ColorRepository,
-         cardBookRepository: CardBookRepository
+        cardBookRepository: CardBookRepository,
+        mode: Mode
     ) {
         self.colorRepository = colorRepository
         self.cardBookRepository = cardBookRepository
+        self.mode = mode
     }
     
     private let disposeBag = DisposeBag()
