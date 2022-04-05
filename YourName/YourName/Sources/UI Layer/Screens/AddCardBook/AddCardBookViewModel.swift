@@ -21,6 +21,7 @@ final class AddCardBookViewModel: CreateCardBookViewModelType {
     var cardBookName = BehaviorRelay<String>(value: "")
     var cardBookDesc = BehaviorRelay<String>(value: "")
     var cardBookBgColor = BehaviorRelay<Int>(value: 0)
+    var confirmButtonEnabled = PublishRelay<Bool>()
     
     init(
         colorRepository: ColorRepository,
@@ -28,6 +29,11 @@ final class AddCardBookViewModel: CreateCardBookViewModelType {
     ) {
         self.colorRepository = colorRepository
         self.cardBookRepository = cardBookRepository
+        self.fetchColors()
+    }
+    
+    func fetch() {
+        self.fetchColors()
     }
     
     func didTapConfrim() {
@@ -48,4 +54,5 @@ final class AddCardBookViewModel: CreateCardBookViewModelType {
             })
             .disposed(by: self.disposeBag)
     }
+    
 }

@@ -84,6 +84,8 @@
 		A2D875DF26EE295C00ED5949 /* OAuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D875DE26EE295C00ED5949 /* OAuthResponse.swift */; };
 		A2D9DE8D27FC97D50074E412 /* EidtCardBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D9DE8C27FC97D50074E412 /* EidtCardBookViewModel.swift */; };
 		A2D9DE8F27FC99860074E412 /* CreateCardBookViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D9DE8E27FC99860074E412 /* CreateCardBookViewModelType.swift */; };
+		A2D9DE9127FC9CE30074E412 /* CardBookAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D9DE9027FC9CE30074E412 /* CardBookAPI.swift */; };
+		A2D9DE9327FCAB940074E412 /* EditCardBookAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D9DE9227FCAB940074E412 /* EditCardBookAPI.swift */; };
 		A2DA3B3D274A1A2500E68F23 /* Entity.Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B3C274A1A2500E68F23 /* Entity.Login.swift */; };
 		A2DA3B43274A536700E68F23 /* Entity.UserOnboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B42274A536700E68F23 /* Entity.UserOnboarding.swift */; };
 		A2DA3B45274A5BE000E68F23 /* LogoutAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B44274A5BE000E68F23 /* LogoutAPI.swift */; };
@@ -410,6 +412,8 @@
 		A2D875DE26EE295C00ED5949 /* OAuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthResponse.swift; sourceTree = "<group>"; };
 		A2D9DE8C27FC97D50074E412 /* EidtCardBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EidtCardBookViewModel.swift; sourceTree = "<group>"; };
 		A2D9DE8E27FC99860074E412 /* CreateCardBookViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCardBookViewModelType.swift; sourceTree = "<group>"; };
+		A2D9DE9027FC9CE30074E412 /* CardBookAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBookAPI.swift; sourceTree = "<group>"; };
+		A2D9DE9227FCAB940074E412 /* EditCardBookAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardBookAPI.swift; sourceTree = "<group>"; };
 		A2DA3B3C274A1A2500E68F23 /* Entity.Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.Login.swift; sourceTree = "<group>"; };
 		A2DA3B42274A536700E68F23 /* Entity.UserOnboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.UserOnboarding.swift; sourceTree = "<group>"; };
 		A2DA3B44274A5BE000E68F23 /* LogoutAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutAPI.swift; sourceTree = "<group>"; };
@@ -900,6 +904,8 @@
 				CE6AF917276290A700090BD9 /* UpdateCardAPI.swift */,
 				A2CBF49F27B41A1D00D31CE4 /* AddCardBookAPI.swift */,
 				A298D8B027EF73EA008FA334 /* MigrateCardsAPI.swift */,
+				A2D9DE9027FC9CE30074E412 /* CardBookAPI.swift */,
+				A2D9DE9227FCAB940074E412 /* EditCardBookAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -1995,6 +2001,7 @@
 				A2BFC117273FFA81002FFF01 /* SelectCardBookViewModel.swift in Sources */,
 				A2DA3B7627516F2F00E68F23 /* AddFriendCardRepository.swift in Sources */,
 				CE4D4EBD2709022800081A2B /* ImageSourceDedencyContainer.swift in Sources */,
+				A2D9DE9327FCAB940074E412 /* EditCardBookAPI.swift in Sources */,
 				A23920F92736835F0069E418 /* AddFriendCardNoResultView.swift in Sources */,
 				CE2EC99327073453006B9852 /* CardInfoInputViewModel.swift in Sources */,
 				A2CC656A27084BF300610C49 /* CALayer+.swift in Sources */,
@@ -2021,6 +2028,7 @@
 				CEF8C55326EDF8D5009BA9C2 /* UIView+.swift in Sources */,
 				A2CC657A2708DAEA00610C49 /* FriendCardEmptyCollectionViewCell.swift in Sources */,
 				CED16DE926F39F700076565F /* HomeTab.swift in Sources */,
+				A2D9DE9127FC9CE30074E412 /* CardBookAPI.swift in Sources */,
 				CE2BB2C92707560800936148 /* Palette.swift in Sources */,
 				CE63124926F5A30200B2E69B /* Navigation.swift in Sources */,
 				CEB6587726EB2CFE00C11F33 /* HomeViewModel.swift in Sources */,

@@ -59,7 +59,7 @@ final class AddCardBookViewController: ViewController, Storyboarded {
         
         self.cardBookCoverColorCollectionView.rx.itemSelected
             .bind(onNext: { [weak self] in
-                self?.viewModel.bgIsSelected(at: $0)
+                self?.viewModel.bgIsSelected(at: $0.item)
             })
             .disposed(by: self.disposeBag)
         
@@ -105,9 +105,39 @@ final class AddCardBookViewController: ViewController, Storyboarded {
                 self?.navigationController?.popViewController(animated: true)
             })
             .disposed(by: self.disposeBag)
+        
+        viewModel.cardBookName
+            .bind(onNext: { [weak self] in
+                self?.cardBookNameTextField.text = $0
+            })
+            .disposed(by: self.disposeBag)
+        
+        viewModel.cardBookDesc
+            .bind(onNext: { [weak self] in
+                self?.cardBookDescriptionTextField.text = $0
+            })
+            .disposed(by: self.disposeBag)
+        
+        viewModel.confirmButtonEnabled
+            .filter { $0 }
+            .bind(onNext: { [ weak self] _ in
+                self?.confirmButton.isUserInteractionEnabled = true
+                self?.confirmButton.backgroundColor = .black
+            })
+            .disposed(by: self.disposeBag)
+        
+        viewModel.confirmButtonEnabled
+            .filter { !$0 }
+            .bind(onNext: { [weak self] _ in
+                self?.confirmButton.isUserInteractionEnabled = false
+                self?.confirmButton.backgroundColor = Palette.gray1
+            })
+            .disposed(by: self.disposeBag)
+        
+        viewModel.fetch()
+        viewModel.bind()
     }
     private func dispatch(to viewModel: CreateCardBookViewModelType) {
-        viewModel.fetchColors()
     }
     
     private func configure(_ textFields: UITextField...) {
