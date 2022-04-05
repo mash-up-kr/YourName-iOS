@@ -9,18 +9,6 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-protocol AddCardBookViewModel: AnyObject {
-    func fetchColors()
-    func bgIsSelected(at indexPath: IndexPath)
-    func didTapConfrim()
-    func numberOfItemsInSection() -> Int
-    func cellForItem(at indexPath: IndexPath) -> CardBookCoverBackgroundColorCell.Item?
-    func cardBookName(text: String)
-    func cardBookDesc(text: String)
-    var cardBookCoverBgColors: BehaviorRelay<[CardBookCoverBackgroundColorCell.Item]> { get }
-    var shouldNavigationPop: PublishRelay<Void> { get }
-}
-
 final class AddCardBookViewController: ViewController, Storyboarded {
     
     @IBOutlet private weak var confirmButton: UIButton!
@@ -29,7 +17,7 @@ final class AddCardBookViewController: ViewController, Storyboarded {
     @IBOutlet private weak var cardBookNameTextField: UITextField!
     @IBOutlet private weak var backButton: UIButton!
     
-    var viewModel: AddCardBookViewModel!
+    var viewModel: CreateCardBookViewModelType!
     private let disposeBag = DisposeBag()
     
     override var hidesBottomBarWhenPushed: Bool {
@@ -105,7 +93,7 @@ final class AddCardBookViewController: ViewController, Storyboarded {
         collectionView.registerWithNib(CardBookCoverBackgroundColorCell.self)
     }
     
-    private func render(_ viewModel: AddCardBookViewModel) {
+    private func render(_ viewModel: CreateCardBookViewModelType) {
         viewModel.cardBookCoverBgColors
             .bind(onNext: { [weak self] _ in
                 self?.cardBookCoverColorCollectionView.reloadData()
@@ -118,7 +106,7 @@ final class AddCardBookViewController: ViewController, Storyboarded {
             })
             .disposed(by: self.disposeBag)
     }
-    private func dispatch(to viewModel: AddCardBookViewModel) {
+    private func dispatch(to viewModel: CreateCardBookViewModelType) {
         viewModel.fetchColors()
     }
     

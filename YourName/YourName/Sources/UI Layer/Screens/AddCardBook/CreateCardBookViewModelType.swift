@@ -1,39 +1,34 @@
 //
-//  AddCardBookViewModelImp.swift
+//  CreateCardBookViewModelType.swift
 //  MEETU
 //
-//  Created by Seori on 2022/02/08.
+//  Created by Seori on 2022/04/06.
 //
 
 import Foundation
 import RxSwift
 import RxRelay
 
-final class AddCardBookViewModelImp: AddCardBookViewModel {
+protocol CreateCardBookViewModelType: AnyObject {
+    var colorRepository: ColorRepository { get }
+    var cardBookRepository: CardBookRepository { get }
+    var disposeBag: DisposeBag { get }
+    func fetchColors()
+    func bgIsSelected(at indexPath: IndexPath)
+    func didTapConfrim()
+    func numberOfItemsInSection() -> Int
+    func cellForItem(at indexPath: IndexPath) -> CardBookCoverBackgroundColorCell.Item?
+    func cardBookName(text: String)
+    func cardBookDesc(text: String)
+    var cardBookCoverBgColors: BehaviorRelay<[CardBookCoverBackgroundColorCell.Item]> { get }
+    var shouldNavigationPop: PublishRelay<Void> { get }
+    var cardBookName: BehaviorRelay<String> { get }
+    var cardBookDesc: BehaviorRelay<String> { get }
+    var cardBookBgColor: BehaviorRelay<Int> { get }
+}
+extension CreateCardBookViewModelType {
     
     typealias CardBookBgColorCellItem = CardBookCoverBackgroundColorCell.Item
-    typealias Mode = AddCardBookDependencyContainer.Mode
-    
-    private let colorRepository: ColorRepository
-    private let cardBookRepository: CardBookRepository
-    private var mode: Mode
-    
-    init(
-        colorRepository: ColorRepository,
-        cardBookRepository: CardBookRepository,
-        mode: Mode
-    ) {
-        self.colorRepository = colorRepository
-        self.cardBookRepository = cardBookRepository
-        self.mode = mode
-    }
-    
-    private let disposeBag = DisposeBag()
-    var cardBookCoverBgColors = BehaviorRelay<[CardBookBgColorCellItem]>(value: [])
-    var shouldNavigationPop = PublishRelay<Void>()
-    private let cardBookName = BehaviorRelay<String>(value: "")
-    private let cardBookDesc = BehaviorRelay<String>(value: "")
-    private let cardBookBgColor = BehaviorRelay<Int>(value: 0)
     
     func fetchColors() {
         self.colorRepository.fetchAll()
@@ -76,25 +71,6 @@ final class AddCardBookViewModelImp: AddCardBookViewModel {
             return _colorItem
         }
         self.cardBookCoverBgColors.accept(items)
-    }
-    
-    func didTapConfrim() {
-        let bgColorId = self.cardBookCoverBgColors.value[safe: self.cardBookBgColor.value]?.id ?? "1"
-
-        self.cardBookRepository.addCardBook(
-            name: self.cardBookName.value,
-            desc: self.cardBookDesc.value,
-            bgColorId: Int(bgColorId) ?? 1
-            )
-            .catchError { error in
-                print(error)
-                return .empty()
-            }
-            .bind(onNext: { [weak self] in
-                self?.shouldNavigationPop.accept(())
-                NotificationCenter.default.post(name: .cardBookDidChange, object: nil)
-            })
-            .disposed(by: self.disposeBag)
     }
     
     func cardBookDesc(text: String) {

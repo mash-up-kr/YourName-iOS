@@ -38,7 +38,7 @@
 		A25D432327B16938002BCD31 /* AddCardBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25D432127B16938002BCD31 /* AddCardBookViewController.swift */; };
 		A25D432627B16DCD002BCD31 /* AddCardBookViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A25D432527B16DCD002BCD31 /* AddCardBookViewController.storyboard */; };
 		A25D432827B16E6B002BCD31 /* AddCardBookDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25D432727B16E6B002BCD31 /* AddCardBookDependencyContainer.swift */; };
-		A25D432A27B16EF6002BCD31 /* AddCardBookViewModelImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25D432927B16EF6002BCD31 /* AddCardBookViewModelImp.swift */; };
+		A25D432A27B16EF6002BCD31 /* AddCardBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25D432927B16EF6002BCD31 /* AddCardBookViewModel.swift */; };
 		A28A9B12271175A80063692D /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A9B11271175A70063692D /* SettingViewModel.swift */; };
 		A28A9B14271178360063692D /* Reactive+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A9B13271178360063692D /* Reactive+.swift */; };
 		A28A9B1627117ACA0063692D /* SettingDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A9B1527117ACA0063692D /* SettingDependencyContainer.swift */; };
@@ -82,6 +82,8 @@
 		A2CC65862708F17A00610C49 /* CardBookRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CC65852708F17A00610C49 /* CardBookRepository.swift */; };
 		A2CC824527DCB6DB00B02530 /* LeftAlignCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CC824427DCB6DB00B02530 /* LeftAlignCollectionViewLayout.swift */; };
 		A2D875DF26EE295C00ED5949 /* OAuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D875DE26EE295C00ED5949 /* OAuthResponse.swift */; };
+		A2D9DE8D27FC97D50074E412 /* EidtCardBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D9DE8C27FC97D50074E412 /* EidtCardBookViewModel.swift */; };
+		A2D9DE8F27FC99860074E412 /* CreateCardBookViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D9DE8E27FC99860074E412 /* CreateCardBookViewModelType.swift */; };
 		A2DA3B3D274A1A2500E68F23 /* Entity.Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B3C274A1A2500E68F23 /* Entity.Login.swift */; };
 		A2DA3B43274A536700E68F23 /* Entity.UserOnboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B42274A536700E68F23 /* Entity.UserOnboarding.swift */; };
 		A2DA3B45274A5BE000E68F23 /* LogoutAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B44274A5BE000E68F23 /* LogoutAPI.swift */; };
@@ -362,7 +364,7 @@
 		A25D432127B16938002BCD31 /* AddCardBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardBookViewController.swift; sourceTree = "<group>"; };
 		A25D432527B16DCD002BCD31 /* AddCardBookViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddCardBookViewController.storyboard; sourceTree = "<group>"; };
 		A25D432727B16E6B002BCD31 /* AddCardBookDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardBookDependencyContainer.swift; sourceTree = "<group>"; };
-		A25D432927B16EF6002BCD31 /* AddCardBookViewModelImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardBookViewModelImp.swift; sourceTree = "<group>"; };
+		A25D432927B16EF6002BCD31 /* AddCardBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardBookViewModel.swift; sourceTree = "<group>"; };
 		A28A9B11271175A70063692D /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		A28A9B13271178360063692D /* Reactive+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+.swift"; sourceTree = "<group>"; };
 		A28A9B1527117ACA0063692D /* SettingDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDependencyContainer.swift; sourceTree = "<group>"; };
@@ -406,6 +408,8 @@
 		A2CC65852708F17A00610C49 /* CardBookRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBookRepository.swift; sourceTree = "<group>"; };
 		A2CC824427DCB6DB00B02530 /* LeftAlignCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftAlignCollectionViewLayout.swift; sourceTree = "<group>"; };
 		A2D875DE26EE295C00ED5949 /* OAuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthResponse.swift; sourceTree = "<group>"; };
+		A2D9DE8C27FC97D50074E412 /* EidtCardBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EidtCardBookViewModel.swift; sourceTree = "<group>"; };
+		A2D9DE8E27FC99860074E412 /* CreateCardBookViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCardBookViewModelType.swift; sourceTree = "<group>"; };
 		A2DA3B3C274A1A2500E68F23 /* Entity.Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.Login.swift; sourceTree = "<group>"; };
 		A2DA3B42274A536700E68F23 /* Entity.UserOnboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.UserOnboarding.swift; sourceTree = "<group>"; };
 		A2DA3B44274A5BE000E68F23 /* LogoutAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutAPI.swift; sourceTree = "<group>"; };
@@ -716,9 +720,11 @@
 				A25D432127B16938002BCD31 /* AddCardBookViewController.swift */,
 				A25D432527B16DCD002BCD31 /* AddCardBookViewController.storyboard */,
 				A25D432727B16E6B002BCD31 /* AddCardBookDependencyContainer.swift */,
-				A25D432927B16EF6002BCD31 /* AddCardBookViewModelImp.swift */,
+				A25D432927B16EF6002BCD31 /* AddCardBookViewModel.swift */,
 				A2CBF49B27B411A000D31CE4 /* CardBookCoverBackgroundColorCell.swift */,
 				A2CBF49C27B411A000D31CE4 /* CardBookCoverBackgroundColorCell.xib */,
+				A2D9DE8C27FC97D50074E412 /* EidtCardBookViewModel.swift */,
+				A2D9DE8E27FC99860074E412 /* CreateCardBookViewModelType.swift */,
 			);
 			path = AddCardBook;
 			sourceTree = "<group>";
@@ -2004,6 +2010,7 @@
 				A2DA3B43274A536700E68F23 /* Entity.UserOnboarding.swift in Sources */,
 				CE4D4ECE2709ECDF00081A2B /* ColorSourceRepository.swift in Sources */,
 				CE472B6D2748B76B001A5E5F /* Entity.User.swift in Sources */,
+				A2D9DE8D27FC97D50074E412 /* EidtCardBookViewModel.swift in Sources */,
 				CE4D4EB52708E9EC00081A2B /* PaletteView.swift in Sources */,
 				CEC599D32756B0EC00405DEA /* ImageUploadAPI.swift in Sources */,
 				CE2D1C63275E897700DCD2D3 /* FrontCardDetailView.swift in Sources */,
@@ -2065,7 +2072,7 @@
 				A2DA3B49274A683A00E68F23 /* OAuthRepository.swift in Sources */,
 				CEDA4B8E275125C30011D0CA /* QuestDoneAPI.swift in Sources */,
 				CE4D4E9B2707BB2500081A2B /* PaletteDependencyContainer.swift in Sources */,
-				A25D432A27B16EF6002BCD31 /* AddCardBookViewModelImp.swift in Sources */,
+				A25D432A27B16EF6002BCD31 /* AddCardBookViewModel.swift in Sources */,
 				649ABC25275108A9005F50E8 /* CardDetailDependencyContainer.swift in Sources */,
 				CE94ABB2270EFCA3005D2E80 /* TMISectionHeaderView.swift in Sources */,
 				A2DA3B67274FDB5800E68F23 /* Entity.Image.swift in Sources */,
@@ -2077,6 +2084,7 @@
 				CEDA4B94275138350011D0CA /* QuestWaitingDoneAPI.swift in Sources */,
 				CED16DF926F3A55D0076565F /* MyCardListViewController.swift in Sources */,
 				CE4D4EAF2708780A00081A2B /* PageSheetController.swift in Sources */,
+				A2D9DE8F27FC99860074E412 /* CreateCardBookViewModelType.swift in Sources */,
 				A23920FD273695B30069E418 /* AddFriendCardResultView.swift in Sources */,
 				A2DA3B65274FDA4700E68F23 /* Entity.MyNameCard.swift in Sources */,
 				CEDA4B9627513BDA0011D0CA /* MockQuestRepository.swift in Sources */,

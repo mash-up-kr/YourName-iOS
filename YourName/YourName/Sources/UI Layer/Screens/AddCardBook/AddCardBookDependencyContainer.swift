@@ -22,15 +22,27 @@ final class AddCardBookDependencyContainer {
     
     func createAddCardBookViewController() -> AddCardBookViewController {
         let viewController = AddCardBookViewController.instantiate()
-        let colorRepository = YourNameColorRepository()
-        let cardBookRepository = YourNameCardBookRepository()
-        let viewModel = AddCardBookViewModelImp(
-            colorRepository: colorRepository,
-            cardBookRepository: cardBookRepository,
-            mode: self.mode
-        )
+        let viewModel = self.createViewModel(with: self.mode)
         viewController.viewModel = viewModel
         
         return viewController
+    }
+    
+    private func createViewModel(with mode: Mode) -> CreateCardBookViewModelType {
+        let colorRepository = YourNameColorRepository()
+        let cardBookRepository = YourNameCardBookRepository()
+        switch mode {
+        case .create:
+            return AddCardBookViewModel(
+                colorRepository: colorRepository,
+                cardBookRepository: cardBookRepository
+            )
+        case .edit(let cardBookID):
+            return EditCardBookViewModel(
+                colorRepository: colorRepository,
+                cardBookRepository: cardBookRepository,
+                cardBookID: cardBookID
+            )
+        }
     }
 }
