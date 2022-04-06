@@ -58,7 +58,7 @@ final class EditCardBookViewModel: CreateCardBookViewModelType {
         }
         .bind(onNext: { [weak self] in
             self?.shouldNavigationPop.accept(())
-            NotificationCenter.default.post(name: .cardBookDetailDidChange, object: nil)
+//            NotificationCenter.default.post(name: .cardBookDetailDidChange, object: nil)
             NotificationCenter.default.post(name: .cardBookDidChange, object: nil)
         })
         .disposed(by: self.disposeBag)

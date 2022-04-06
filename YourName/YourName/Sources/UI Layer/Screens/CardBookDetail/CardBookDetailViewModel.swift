@@ -36,24 +36,44 @@ final class CardBookDetailViewModel {
     let shouldClose = PublishRelay<Void>()
     let selectedIDs = BehaviorRelay<Set<String>>(value: [])
     let state = BehaviorRelay<State>(value: .normal)
+    private let fetchCardInfoTrigger = PublishRelay<Void>()
     
+    private let cardBookRepository: CardBookRepository
     init(
         cardBookID: CardBookID?,
         cardBookTitle: String?,
         cardRepository: CardRepository,
+        cardBookrepository: CardBookRepository,
         state: State = .normal
     ) {
         self.cardBookID = cardBookID
-        self._cardBookTitle = cardBookTitle ?? .empty
         self.cardRepository = cardRepository
+        self.cardBookRepository = cardBookrepository
         
         self.state.accept(state)
         self.isAllCardBook.accept(cardBookID == nil)
-        self.cardBookTitle.accept(self._cardBookTitle)
+        if let _cardBookTitle = cardBookTitle {
+            self.cardBookTitle.accept(_cardBookTitle)
+        }
     }
     
     func didLoad() {
         self.isLoading.accept(true)
+        self.fetchCards()
+        self.bind()
+        self.fetchCardBookInfo()
+    }
+    
+    func fetchCardBookInfo() {
+        if self.cardBookID != nil {
+            self.fetchCardInfoTrigger.accept(())
+        } else {
+            // 전체도감
+            self.cardBookTitle.accept("\(self.cardBookTitle.value)")
+        }
+    }
+    
+    func fetchCards() {
         let friendCards: Observable<[NameCard]> = { [weak self] in
             guard let self = self else { return .empty() }
             if let cardBookID = self.cardBookID { return self.cardRepository.fetchCards(cardBookID: cardBookID) }
@@ -63,7 +83,7 @@ final class CardBookDetailViewModel {
             .withLatestFrom(self.state) { (cards: $0, migrate: $1)}
             .subscribe(onNext: { [weak self] cards, migrate in
             guard let self = self else { return }
-            self.cardBookTitle.accept("\(self._cardBookTitle) (\(cards.count))")
+            self.cardBookCounts = cards.count
             self.friendCards.accept(cards)
             self.friendCardsForDisplay.accept(cards.compactMap(self.transform(card:)))
             self.isLoading.accept(false)
@@ -78,7 +98,7 @@ final class CardBookDetailViewModel {
     }
     
     func tapMore() {
-        self.navigation.accept(.show(.cardBookMore(cardBookName: self._cardBookTitle, cardIsEmpty: self.friendCards.value.isEmpty)))
+        self.navigation.accept(.show(.cardBookMore(cardBookName: self.cardBookTitle.value, cardIsEmpty: self.friendCards.value.isEmpty)))
     }
     
     func tapBack() {
@@ -236,12 +256,34 @@ final class CardBookDetailViewModel {
         )
     }
     
+    private func bind() {
+        self.fetchCardInfoTrigger
+            .compactMap { [weak self] in
+                return self?.cardBookID
+            }
+            .flatMapLatest { [weak self] id -> Observable<String> in
+                guard let self = self else { return .empty() }
+                return self.cardBookRepository
+                    .fetchCardBook(id: id)
+                    .compactMap { $0.name }
+            }
+            .catchError { error in
+                print(error)
+                return .empty()
+            }
+            .map { [weak self] name in
+                return "\(name) (\(self?.cardBookCounts ?? 0))"
+            }
+            .bind(to: self.cardBookTitle)
+            .disposed(by: self.disposeBag)
+    }
+    
     private let friendCards = BehaviorRelay<[NameCard]>(value: [])
     let checkedCardIndice = BehaviorRelay<Set<Int>>(value: .init())
+    private var cardBookCounts: Int = 0
     private let disposeBag = DisposeBag()
     
     private let cardBookID: CardBookID?
-    private let _cardBookTitle: String
     private let cardRepository: CardRepository
 }
 

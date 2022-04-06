@@ -39,14 +39,21 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
             object: nil,
             queue: nil
         ) { [weak self] _ in
-            self?.viewModel.didLoad()
+            self?.viewModel.fetchCards()
         }
         NotificationCenter.default.addObserver(
             forName: .cardBookDetailDidChange,
             object: nil,
             queue: nil
         ) { [weak self] _ in
-            self?.viewModel.didLoad()
+            self?.viewModel.fetchCards()
+        }
+        NotificationCenter.default.addObserver(
+            forName: .cardBookDidChange,
+            object: nil,
+            queue: nil
+        ) { [weak self] _ in
+            self?.viewModel.fetchCardBookInfo()
         }
     }
     

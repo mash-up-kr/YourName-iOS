@@ -13,6 +13,7 @@ protocol CardBookRepository {
     func addCardBook(name: String, desc: String, bgColorId: Int) -> Observable<Void>
     func fetchCardBook(id: CardBookID) -> Observable<Entity.CardBook>
     func editCardBook(cardBookID: CardBookID, name: String, desc: String, bgColorId: Int) -> Observable<Void>
+    func deleteCardBook(id: CardBookID) -> Observable<Entity.Empty>
 }
 
 final class MockCardBookRepository: CardBookRepository {
@@ -28,6 +29,9 @@ final class MockCardBookRepository: CardBookRepository {
         return .empty()
     }
     func editCardBook(cardBookID: CardBookID, name: String, desc: String, bgColorId: Int) -> Observable<Void> {
+        return .empty()
+    }
+    func deleteCardBook(id: CardBookID) -> Observable<Entity.Empty> {
         return .empty()
     }
 }
@@ -64,6 +68,10 @@ final class YourNameCardBookRepository: CardBookRepository {
             bgColorID: bgColorId
         ))
         .mapToVoid()
+    }
+    
+    func deleteCardBook(id: CardBookID) -> Observable<Entity.Empty> {
+        return network.request(<#T##api: ServiceAPI##ServiceAPI#>)
     }
     private func translate(fromEntity entity: Entity.CardBook) -> CardBook {
         return CardBook(

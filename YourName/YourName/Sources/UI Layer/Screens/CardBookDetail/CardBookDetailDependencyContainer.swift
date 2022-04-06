@@ -53,6 +53,7 @@ final class CardBookDetailDependencyContainer {
         return CardBookDetailViewModel(cardBookID: cardBookID,
                                        cardBookTitle: cardBookTitle,
                                        cardRepository: cardRepository,
+                                       cardBookrepository: YourNameCardBookRepository(),
                                        state: state)
     }
     
