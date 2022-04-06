@@ -36,6 +36,7 @@ final class CardBookDetailViewModel {
     let shouldClose = PublishRelay<Void>()
     let selectedIDs = BehaviorRelay<Set<String>>(value: [])
     let state = BehaviorRelay<State>(value: .normal)
+    let shouldPopViewController = PublishRelay<Void>()
     private let fetchCardInfoTrigger = PublishRelay<Void>()
     
     private let cardBookRepository: CardBookRepository
@@ -304,8 +305,14 @@ extension CardBookDetailViewModel: CardBookMoreViewListener {
     
     func didTapDeleteCardBook() {
         let okAction = { [weak self] in
-            guard let self = self else { return }
-            // 삭제 api연결필요.
+            guard let self = self,
+                  let cardBookID = self.cardBookID else { return }
+            self.cardBookRepository.deleteCardBook(id: cardBookID)
+                .bind(onNext: { [weak self] in
+                    NotificationCenter.default.post(name: .cardBookDidChange, object: nil)
+                    self?.shouldPopViewController.accept(())
+                })
+                .disposed(by: self.disposeBag)
         }
         let cancelAction = { [weak self] in
             guard let self = self else { return }

@@ -185,6 +185,12 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
                 }
             })
             .disposed(by: self.disposeBag)
+        
+        viewModel.shouldPopViewController
+            .bind(onNext: { [weak self] in
+                self?.navigationController?.popViewController(animated: true)
+            })
+            .disposed(by: self.disposeBag)
 
     }
     

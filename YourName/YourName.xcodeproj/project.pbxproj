@@ -86,6 +86,7 @@
 		A2D9DE8F27FC99860074E412 /* CreateCardBookViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D9DE8E27FC99860074E412 /* CreateCardBookViewModelType.swift */; };
 		A2D9DE9127FC9CE30074E412 /* CardBookAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D9DE9027FC9CE30074E412 /* CardBookAPI.swift */; };
 		A2D9DE9327FCAB940074E412 /* EditCardBookAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D9DE9227FCAB940074E412 /* EditCardBookAPI.swift */; };
+		A2D9DE9527FDB8690074E412 /* DeleteCardBookAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D9DE9427FDB8690074E412 /* DeleteCardBookAPI.swift */; };
 		A2DA3B3D274A1A2500E68F23 /* Entity.Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B3C274A1A2500E68F23 /* Entity.Login.swift */; };
 		A2DA3B43274A536700E68F23 /* Entity.UserOnboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B42274A536700E68F23 /* Entity.UserOnboarding.swift */; };
 		A2DA3B45274A5BE000E68F23 /* LogoutAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DA3B44274A5BE000E68F23 /* LogoutAPI.swift */; };
@@ -414,6 +415,7 @@
 		A2D9DE8E27FC99860074E412 /* CreateCardBookViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCardBookViewModelType.swift; sourceTree = "<group>"; };
 		A2D9DE9027FC9CE30074E412 /* CardBookAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBookAPI.swift; sourceTree = "<group>"; };
 		A2D9DE9227FCAB940074E412 /* EditCardBookAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardBookAPI.swift; sourceTree = "<group>"; };
+		A2D9DE9427FDB8690074E412 /* DeleteCardBookAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteCardBookAPI.swift; sourceTree = "<group>"; };
 		A2DA3B3C274A1A2500E68F23 /* Entity.Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.Login.swift; sourceTree = "<group>"; };
 		A2DA3B42274A536700E68F23 /* Entity.UserOnboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.UserOnboarding.swift; sourceTree = "<group>"; };
 		A2DA3B44274A5BE000E68F23 /* LogoutAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutAPI.swift; sourceTree = "<group>"; };
@@ -906,6 +908,7 @@
 				A298D8B027EF73EA008FA334 /* MigrateCardsAPI.swift */,
 				A2D9DE9027FC9CE30074E412 /* CardBookAPI.swift */,
 				A2D9DE9227FCAB940074E412 /* EditCardBookAPI.swift */,
+				A2D9DE9427FDB8690074E412 /* DeleteCardBookAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -2059,6 +2062,7 @@
 				A239210B2737ED1B0069E418 /* AlertViewController.swift in Sources */,
 				CEC5998E27551B3B00405DEA /* RefreshAuthenticationAPI.swift in Sources */,
 				CEDA4B7D274EC4900011D0CA /* QuestDepencyContainer.swift in Sources */,
+				A2D9DE9527FDB8690074E412 /* DeleteCardBookAPI.swift in Sources */,
 				CEB6588726EC817A00C11F33 /* HTTP.swift in Sources */,
 				A29DA249271DCF3100B1E647 /* AboutProductionTeamViewController.swift in Sources */,
 				CE94ABA6270ED4B7005D2E80 /* TMIContentCollectionViewCell.swift in Sources */,
