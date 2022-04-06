@@ -11,6 +11,9 @@ import RxSwift
 protocol CardBookRepository {
     func fetchAll() -> Observable<[CardBook]>
     func addCardBook(name: String, desc: String, bgColorId: Int) -> Observable<Void>
+    func fetchCardBook(id: CardBookID) -> Observable<Entity.CardBook>
+    func editCardBook(cardBookID: CardBookID, name: String, desc: String, bgColorId: Int) -> Observable<Void>
+    func deleteCardBook(id: CardBookID) -> Observable<Void>
 }
 
 final class MockCardBookRepository: CardBookRepository {
@@ -21,6 +24,15 @@ final class MockCardBookRepository: CardBookRepository {
     
     func fetchAll() -> Observable<[CardBook]> {
         return .just(CardBook.dummy)
+    }
+    func fetchCardBook(id: CardBookID) -> Observable<Entity.CardBook> {
+        return .empty()
+    }
+    func editCardBook(cardBookID: CardBookID, name: String, desc: String, bgColorId: Int) -> Observable<Void> {
+        return .empty()
+    }
+    func deleteCardBook(id: CardBookID) -> Observable<Void> {
+        return .empty()
     }
 }
 
@@ -44,6 +56,23 @@ final class YourNameCardBookRepository: CardBookRepository {
             .mapToVoid()
     }
     
+    func fetchCardBook(id: CardBookID) -> Observable<Entity.CardBook> {
+        return network.request(CardBookAPI(cardBookID: id))
+    }
+    
+    func editCardBook(cardBookID: CardBookID, name: String, desc: String, bgColorId: Int) -> Observable<Void> {
+        return network.request(EditCardBookAPI(
+            cardBookID: cardBookID,
+            name: name,
+            desc: desc,
+            bgColorID: bgColorId
+        ))
+        .mapToVoid()
+    }
+    
+    func deleteCardBook(id: CardBookID) -> Observable<Void> {
+        return network.request(DeleteCardBookAPI(cardBookID: id)).mapToVoid()
+    }
     private func translate(fromEntity entity: Entity.CardBook) -> CardBook {
         return CardBook(
             id: entity.id,

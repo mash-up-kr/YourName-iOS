@@ -9,18 +9,6 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-protocol AddCardBookViewModel: AnyObject {
-    func fetchColors()
-    func bgIsSelected(at indexPath: IndexPath)
-    func didTapConfrim()
-    func numberOfItemsInSection() -> Int
-    func cellForItem(at indexPath: IndexPath) -> CardBookCoverBackgroundColorCell.Item?
-    func cardBookName(text: String)
-    func cardBookDesc(text: String)
-    var cardBookCoverBgColors: BehaviorRelay<[CardBookCoverBackgroundColorCell.Item]> { get }
-    var shouldNavigationPop: PublishRelay<Void> { get }
-}
-
 final class AddCardBookViewController: ViewController, Storyboarded {
     
     @IBOutlet private weak var confirmButton: UIButton!
@@ -29,7 +17,7 @@ final class AddCardBookViewController: ViewController, Storyboarded {
     @IBOutlet private weak var cardBookNameTextField: UITextField!
     @IBOutlet private weak var backButton: UIButton!
     
-    var viewModel: AddCardBookViewModel!
+    var viewModel: CreateCardBookViewModelType!
     private let disposeBag = DisposeBag()
     
     override var hidesBottomBarWhenPushed: Bool {
@@ -71,7 +59,7 @@ final class AddCardBookViewController: ViewController, Storyboarded {
         
         self.cardBookCoverColorCollectionView.rx.itemSelected
             .bind(onNext: { [weak self] in
-                self?.viewModel.bgIsSelected(at: $0)
+                self?.viewModel.bgIsSelected(at: $0.item)
             })
             .disposed(by: self.disposeBag)
         
@@ -105,7 +93,7 @@ final class AddCardBookViewController: ViewController, Storyboarded {
         collectionView.registerWithNib(CardBookCoverBackgroundColorCell.self)
     }
     
-    private func render(_ viewModel: AddCardBookViewModel) {
+    private func render(_ viewModel: CreateCardBookViewModelType) {
         viewModel.cardBookCoverBgColors
             .bind(onNext: { [weak self] _ in
                 self?.cardBookCoverColorCollectionView.reloadData()
@@ -117,9 +105,39 @@ final class AddCardBookViewController: ViewController, Storyboarded {
                 self?.navigationController?.popViewController(animated: true)
             })
             .disposed(by: self.disposeBag)
+        
+        viewModel.cardBookName
+            .bind(onNext: { [weak self] in
+                self?.cardBookNameTextField.text = $0
+            })
+            .disposed(by: self.disposeBag)
+        
+        viewModel.cardBookDesc
+            .bind(onNext: { [weak self] in
+                self?.cardBookDescriptionTextField.text = $0
+            })
+            .disposed(by: self.disposeBag)
+        
+        viewModel.confirmButtonEnabled
+            .filter { $0 }
+            .bind(onNext: { [ weak self] _ in
+                self?.confirmButton.isUserInteractionEnabled = true
+                self?.confirmButton.backgroundColor = .black
+            })
+            .disposed(by: self.disposeBag)
+        
+        viewModel.confirmButtonEnabled
+            .filter { !$0 }
+            .bind(onNext: { [weak self] _ in
+                self?.confirmButton.isUserInteractionEnabled = false
+                self?.confirmButton.backgroundColor = Palette.gray1
+            })
+            .disposed(by: self.disposeBag)
+        
+        viewModel.fetch()
+        viewModel.bind()
     }
-    private func dispatch(to viewModel: AddCardBookViewModel) {
-        viewModel.fetchColors()
+    private func dispatch(to viewModel: CreateCardBookViewModelType) {
     }
     
     private func configure(_ textFields: UITextField...) {

@@ -48,7 +48,7 @@ final class CardBookListViewController: ViewController, Storyboarded {
         
         NotificationCenter.default.rx.notification(.cardBookDidChange)
             .subscribe(onNext: { [weak self] _ in
-                self?.viewModel.refreshCardBooks()
+                self?.viewModel.didLoad()
             })
             .disposed(by: self.disposeBag)
         

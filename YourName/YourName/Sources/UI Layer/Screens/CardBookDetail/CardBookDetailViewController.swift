@@ -17,8 +17,11 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
     }
     
     var viewModel: CardBookDetailViewModel!
+    var cardBookMoreViewControllerFactory: ((String, Bool) -> CardBookMoreViewController)!
     var addFriendCardViewControllerFactory: (() -> AddFriendCardViewController)!
     var nameCardDetailViewControllerFactory: ((Identifier, UniqueCode) -> NameCardDetailViewController)!
+    var allCardBookDetailViewControllerFactory: ((CardBookID) -> CardBookDetailViewController)!
+    var editCardBookViewControllerFactory: ((CardBookID) -> AddCardBookViewController)!
     
     override func viewDidLoad() {
         self.navigationController?.navigationBar.isHidden = true
@@ -31,8 +34,26 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
         dispatch(to: viewModel)
         render(viewModel)
         
-        NotificationCenter.default.addObserver(forName: .friendCardDidDelete, object: nil, queue: nil) { [weak self] _ in
-            self?.viewModel.didLoad()
+        NotificationCenter.default.addObserver(
+            forName: .friendCardDidDelete,
+            object: nil,
+            queue: nil
+        ) { [weak self] _ in
+            self?.viewModel.fetchCards()
+        }
+        NotificationCenter.default.addObserver(
+            forName: .cardBookDetailDidChange,
+            object: nil,
+            queue: nil
+        ) { [weak self] _ in
+            self?.viewModel.fetchCards()
+        }
+        NotificationCenter.default.addObserver(
+            forName: .cardBookDidChange,
+            object: nil,
+            queue: nil
+        ) { [weak self] _ in
+            self?.viewModel.fetchCardBookInfo()
         }
     }
     
@@ -54,19 +75,19 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
         
         self.moreButton?.rx.tap
             .subscribe(onNext: { [weak self] in
-                self?.viewModel.tapEdit()
+                self?.viewModel.tapMore()
             })
             .disposed(by: self.disposeBag)
         
         self.removeButton?.rx.tap
             .subscribe(onNext: { [weak self] in
-                self?.viewModel.tapRemove()
+                self?.viewModel.tapRemoveButton()
             })
             .disposed(by: self.disposeBag)
         
         self.bottomRemoveButton?.rx.tap
             .subscribe(onNext: { [weak self] in
-                self?.viewModel.tapRemove()
+                self?.viewModel.tapBottomButton()
             })
             .disposed(by: self.disposeBag)
     }
@@ -89,49 +110,45 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
             })
             .disposed(by: self.disposeBag)
         
-        self.viewModel.isEditing.distinctUntilChanged()
-            .subscribe(onNext: { [weak self] isEditing in
-                self?.moreButton?.isHidden = isEditing
-                self?.removeButton?.isHidden = isEditing == false
-                self?.bottomBarView?.isHidden = isEditing == false
-                self?.bottomRemoveButton?.isHidden = isEditing == false
-                self?.isCardEditing = isEditing
+        self.viewModel.isEditing
+            .withLatestFrom(self.viewModel.isAllCardBook) { ($0, $1) }
+            .bind(onNext: { [weak self] isEditing, isAllCardBook in
+                if isAllCardBook {
+                    self?.removeButton?.isHidden = isEditing
+                } else {
+                    self?.moreButton?.isHidden = isEditing
+                }
+                self?.bottomRemoveButton?.isHidden = !isEditing
             })
             .disposed(by: self.disposeBag)
         
-        
-        Observable.combineLatest(self.viewModel.isEditing, self.viewModel.isEmpty)
-            .subscribe(onNext: { [weak self] isEditing, isEmpty in
-                self?.moreButton?.isHidden = isEmpty || isEditing
-                self?.removeButton?.isHidden = isEmpty || !isEditing
+        self.viewModel.isAllCardBook
+            .filter { $0 }
+            .withLatestFrom(viewModel.state) { ($0, $1) }
+            .subscribe(onNext: { [weak self] _, migrate in
+                switch migrate {
+                case .migrate:
+                    self?.moreButton?.isHidden = true
+                    self?.removeButton?.isHidden = true
+                case .normal:
+                    self?.moreButton?.isHidden = true
+                    self?.removeButton?.isHidden = false
+                }
             })
             .disposed(by: self.disposeBag)
         
-        self.viewModel.isAllCardBook.distinctUntilChanged()
-            .map { $0 ? UIImage(named: "ic_delete") : UIImage(named: "btn_more") }
-            .subscribe(onNext: { [weak self] icon in
-                self?.moreButton?.setImage(icon, for: .normal)
+        self.viewModel.isAllCardBook
+            .filter { !$0 }
+            .bind(onNext: { [weak self] _ in
+                self?.moreButton?.isHidden = false
+                self?.removeButton?.isHidden = true
             })
             .disposed(by: self.disposeBag)
                 
         self.viewModel.shouldShowRemoveReconfirmAlert
-            .subscribe(onNext: {
+            .subscribe(onNext: { alertItem in
                 let alertController = AlertViewController.instantiate()
-                let okAction = { [weak self] in
-                    guard let self = self else { return }
-                    alertController.dismiss()
-                    self.viewModel.tapRemoveConfirm()
-                }
-                let cancelAction = { [weak self] in
-                    guard let self = self else { return }
-                    alertController.dismiss()
-                    self.viewModel.tapRemoveCancel()
-                }
-                alertController.configure(item: AlertItem(title: "정말 삭제하시겠츄?",
-                                                          messages: "삭제한 미츄와 도감은 복구할 수 없어요.",
-                                                          image: UIImage(named: "meetu_delete")!,
-                                                          emphasisAction: .init(title: "삭제하기", action: okAction),
-                                                          defaultAction: .init(title: "삭제안할래요", action: cancelAction)))
+                alertController.configure(item: alertItem)
                 self.present(alertController, animated: true, completion: nil)
             })
             .disposed(by: self.disposeBag)
@@ -141,6 +158,40 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
                 self?.navigationController?.popViewController(animated: true)
             })
             .disposed(by: self.disposeBag)
+        
+        self.viewModel.checkedCardIndice
+            .filter { $0.isEmpty }
+            .bind(onNext: { [weak self] _ in
+                self?.bottomRemoveButton?.isUserInteractionEnabled = false
+                self?.bottomRemoveButton?.backgroundColor = Palette.gray1
+            })
+            .disposed(by: self.disposeBag)
+        
+        self.viewModel.checkedCardIndice
+            .filter { !$0.isEmpty }
+            .bind(onNext: { [weak self] _ in
+                self?.bottomRemoveButton?.isUserInteractionEnabled = true
+                self?.bottomRemoveButton?.backgroundColor = Palette.black1
+            })
+            .disposed(by: self.disposeBag)
+        
+        self.viewModel.state
+            .bind(onNext: { [weak self] state in
+                switch state {
+                case .migrate:
+                    self?.bottomRemoveButton?.setTitle("데려오기", for: .normal)
+                case .normal:
+                    self?.bottomRemoveButton?.setTitle("삭제하기", for: .normal)
+                }
+            })
+            .disposed(by: self.disposeBag)
+        
+        viewModel.shouldPopViewController
+            .bind(onNext: { [weak self] in
+                self?.navigationController?.popViewController(animated: true)
+            })
+            .disposed(by: self.disposeBag)
+
     }
     
     private func navigate(_ navigation: CardBookDetailNavigation) {
@@ -150,7 +201,14 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
     
     private func createViewController(_ next: CardBookDetailDestination) -> UIViewController {
         switch next {
-        case .cardDetail(let cardId, let uniqueCode): return self.nameCardDetailViewControllerFactory(cardId, uniqueCode)
+        case .cardDetail(let cardId, let uniqueCode):
+            return self.nameCardDetailViewControllerFactory(cardId, uniqueCode)
+        case .cardBookMore(let cardBookName, let isCardEmpty):
+            return self.cardBookMoreViewControllerFactory(cardBookName, isCardEmpty)
+        case .allCardBook(let cardBookId):
+            return self.allCardBookDetailViewControllerFactory(cardBookId)
+        case .editCardBook(let cardBookId):
+            return self.editCardBookViewControllerFactory(cardBookId)
         }
     }
     
@@ -217,8 +275,7 @@ extension CardBookDetailViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard self.cellViewModels.isNotEmpty else { return }
-        if isCardEditing { self.viewModel.tapCheck(at: indexPath.item) }
-        else             { self.viewModel.tapCard(at: indexPath.item)  }
+        self.viewModel.tapCard(at: indexPath.item)
     }
     
 }
