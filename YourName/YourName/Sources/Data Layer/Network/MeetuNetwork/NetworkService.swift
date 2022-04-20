@@ -19,7 +19,7 @@ final class NetworkService: NetworkServing {
     
     var headers: [String: String] {
         guard let accessToken = self.accessToken else { return [:] }
-        print("access \(accessToken)")
+        print("access Token 👉 \(accessToken)")
         return ["authorization": "Bearer \(accessToken)"]
     }
     
