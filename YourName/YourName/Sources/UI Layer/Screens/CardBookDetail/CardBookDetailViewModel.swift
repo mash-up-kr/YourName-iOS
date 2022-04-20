@@ -38,6 +38,7 @@ final class CardBookDetailViewModel {
     let state = BehaviorRelay<State>(value: .normal)
     let shouldPopViewController = PublishRelay<Void>()
     private let fetchCardInfoTrigger = PublishRelay<Void>()
+    private var cardBookName: String = ""
     
     private let cardBookRepository: CardBookRepository
     init(
@@ -55,6 +56,7 @@ final class CardBookDetailViewModel {
         self.isAllCardBook.accept(cardBookID == nil)
         if let _cardBookTitle = cardBookTitle {
             self.cardBookTitle.accept(_cardBookTitle)
+            self.cardBookName = _cardBookTitle
         }
     }
     
@@ -99,7 +101,7 @@ final class CardBookDetailViewModel {
     }
     
     func tapMore() {
-        self.navigation.accept(.show(.cardBookMore(cardBookName: self.cardBookTitle.value, cardIsEmpty: self.friendCards.value.isEmpty)))
+        self.navigation.accept(.show(.cardBookMore(cardBookName: self.cardBookName, cardIsEmpty: self.friendCards.value.isEmpty)))
     }
     
     func tapBack() {
@@ -309,7 +311,7 @@ extension CardBookDetailViewModel: CardBookMoreViewListener {
                   let cardBookID = self.cardBookID else { return }
             self.cardBookRepository.deleteCardBook(id: cardBookID)
                 .bind(onNext: { [weak self] in
-                    NotificationCenter.default.post(name: .cardBookDidChange, object: nil)
+                    NotificationCenter.default.post(name: .cardBookListDidChange, object: nil)
                     self?.shouldPopViewController.accept(())
                 })
                 .disposed(by: self.disposeBag)

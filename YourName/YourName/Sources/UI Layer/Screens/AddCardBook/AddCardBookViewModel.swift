@@ -50,7 +50,7 @@ final class AddCardBookViewModel: CreateCardBookViewModelType {
             }
             .bind(onNext: { [weak self] in
                 self?.shouldNavigationPop.accept(())
-                NotificationCenter.default.post(name: .cardBookDidChange, object: nil)
+                NotificationCenter.default.post(name: .cardBookListDidChange, object: nil)
             })
             .disposed(by: self.disposeBag)
     }
