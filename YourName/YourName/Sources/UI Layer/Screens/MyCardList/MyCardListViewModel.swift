@@ -25,6 +25,8 @@ final class MyCardListViewModel {
     let isLoading = BehaviorRelay<Bool>(value: false)
     let alertViewController = PublishRelay<AlertViewController>()
     
+    private let fetchAll = PublishRelay<Void>()
+    private let fetchLoad = PublishRelay<Void>()
     private let myCardRepository: MyCardRepository
     private let questRepository: QuestRepository
     private let disposeBag = DisposeBag()
@@ -33,10 +35,25 @@ final class MyCardListViewModel {
          questRepository: QuestRepository) {
         self.questRepository = questRepository
         self.myCardRepository = myCardRepository
+        self.bind()
     }
     
     deinit {
         print("💀 \(String(describing: self))")
+    }
+    
+    private func bind() {
+        self.fetchAll
+            .bind(onNext: { [weak self] in
+                self?.checkQuest()
+            })
+            .disposed(by: self.disposeBag)
+        
+        self.fetchLoad
+            .bind(onNext: { [weak self] in
+                self?.load()
+            })
+            .disposed(by: self.disposeBag)
     }
     
     // MARK: - Methods
@@ -68,6 +85,11 @@ final class MyCardListViewModel {
                 }
                 return nil
             }
+            .catchError { [weak self] error in
+                self?.isLoading.accept(false)
+                throw error
+            }
+            .catchErrorToAlert(self.alertViewController, retryHandler: self.fetchAll)
             .bind(to: self.alertViewController)
             .disposed(by: self.disposeBag)
     }
@@ -77,8 +99,9 @@ final class MyCardListViewModel {
         self.myCardRepository.fetchMyCards()
             .catchError { [weak self] error in
                 self?.isLoading.accept(false)
-                return .empty()
+                throw error
             }
+            .catchErrorToAlert(self.alertViewController, retryHandler: self.fetchLoad)
             .compactMap { [weak self] cards -> [MyCardCellViewModel]? in
                 guard let self = self else { return nil }
                 return self.myCardCellViewModel(cards)

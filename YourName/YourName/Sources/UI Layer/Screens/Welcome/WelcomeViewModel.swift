@@ -52,10 +52,10 @@ final class WelcomeViewModel {
             .bind(onNext: { [weak self] authentication in
                 guard let self = self else { return }
                 self.localStorage.write(.accessToken, value: authentication.accessToken)
-                    .subscribe(onNext: { _ in })
+                    .subscribe()
                     .disposed(by: self.disposeBag)
                 self.localStorage.write(.refreshToken, value: authentication.refreshToken)
-                    .subscribe(onNext: { _ in })
+                    .subscribe()
                     .disposed(by: self.disposeBag)
                 self.delegate.signIn(accessToken: authentication.accessToken, refreshToken: authentication.refreshToken)
             })

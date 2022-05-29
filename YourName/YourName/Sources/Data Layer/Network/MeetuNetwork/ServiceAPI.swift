@@ -18,7 +18,11 @@ protocol ServiceAPI: TargetType {
 extension ServiceAPI {
     
     var baseURL: URL { URL(string: "https://meetyou.co.kr")! }
-    var headers: [String : String]? { Environment.current.network.headers }
+    var headers: [String : String]? {
+        print("Environment.current.network.headers", Environment.current.network.headers)
+        return Environment.current.network.headers
+        
+    }
     var task: Moya.Task { task }
     var sampleData: Data { Data() }
 }

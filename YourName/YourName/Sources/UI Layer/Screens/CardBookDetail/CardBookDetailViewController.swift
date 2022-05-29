@@ -34,27 +34,16 @@ final class CardBookDetailViewController: ViewController, Storyboarded {
         dispatch(to: viewModel)
         render(viewModel)
         
-        NotificationCenter.default.addObserver(
-            forName: .friendCardDidDelete,
-            object: nil,
-            queue: nil
-        ) { [weak self] _ in
+        Observable.merge(
+            NotificationCenter.default.rx.notification(.friendCardDidDelete),
+            NotificationCenter.default.rx.notification(.cardBookDetailDidChange),
+            NotificationCenter.default.rx.notification(.cardBookDidChange)
+        )
+        .bind(onNext: { [weak self] _ in
             self?.viewModel.fetchCards()
-        }
-        NotificationCenter.default.addObserver(
-            forName: .cardBookDetailDidChange,
-            object: nil,
-            queue: nil
-        ) { [weak self] _ in
-            self?.viewModel.fetchCards()
-        }
-        NotificationCenter.default.addObserver(
-            forName: .cardBookDidChange,
-            object: nil,
-            queue: nil
-        ) { [weak self] _ in
             self?.viewModel.fetchCardBookInfo()
-        }
+        })
+        .disposed(by: self.disposeBag)
     }
     
     private func dispatch(to viewModel: CardBookDetailViewModel) {

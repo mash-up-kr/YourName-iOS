@@ -9,7 +9,11 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-struct AlertItem {
+struct AlertItem: Equatable {
+    static func == (lhs: AlertItem, rhs: AlertItem) -> Bool {
+        (lhs.title == rhs.title && lhs.messages == rhs.messages && lhs.image == rhs.image)
+    }
+    
     struct AlertAction {
         let title: String
         let action: () -> Void

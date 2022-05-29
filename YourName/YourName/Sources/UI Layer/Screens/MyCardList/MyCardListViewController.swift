@@ -52,8 +52,15 @@ extension MyCardListViewController {
     }
     
     private func render(_ viewModel: MyCardListViewModel) {
+        viewModel.alertViewController
+            .bind(onNext: { [weak self] in
+                self?.present($0, animated: true, completion: nil)
+            })
+            .disposed(by: self.disposeBag)
+        
         self.viewModel.checkQuest()
         self.viewModel.load()
+      
         
         viewModel.isLoading.distinctUntilChanged()
             .bind(to: self.isLoading)
@@ -69,11 +76,6 @@ extension MyCardListViewController {
             })
             .disposed(by: disposeBag)
         
-        viewModel.alertViewController
-            .bind(onNext: { [weak self] in
-                self?.present($0, animated: true, completion: nil)
-            })
-            .disposed(by: self.disposeBag)
     }
     
     private func dispatch(to viewModel: MyCardListViewModel) {

@@ -29,34 +29,49 @@ final class NetworkService: NetworkServing {
         return self._request(api)
             .catchError { [weak self] error -> Observable<MeetuResponse<API.Response>> in
                 guard let self = self else { throw error }
-                
-                return self.refreshAuthentication()
-                    .do { [weak self] authentication in
-                        guard let self = self else { return }
-                        guard let accessToken = authentication.accessToken else { return }
-                        let authentication = Authentication(accessToken: accessToken,
-                                                            refreshToken: self.refreshToken,
-                                                            user: nil,
-                                                            userOnboarding: nil)
-                        self.accessToken = accessToken
-                        self.authenticationRepository?.write(authentication: authentication)
-                            .subscribe(onNext: { })
-                            .disposed(by: self.disposeBag)
-                    }.flatMap { [weak self] _ -> Observable<MeetuResponse<API.Response>> in
-                        guard let self = self else { return .empty() }
-                        return self._request(api)
-                    }
-                    .catchError { [weak self] error in
-                        return Observable.zip(UserDefaults.standard.delete(.accessToken),
-                                              UserDefaults.standard.delete(.refreshToken))
-                            .flatMap { [weak self] _ -> Observable<MeetuResponse<API.Response>>in
-                                self?.accessToken = nil
-                                self?.refreshToken = nil
-                                let appDelegate = UIApplication.shared.delegate as? AppDelegate
-                                appDelegate?.window?.rootViewController = RootDependencyContainer().createRootViewController()
-                                return .empty()
+                if let meetUError = error as? NetworkError {
+                    if meetUError == .accessTokenInvalidate {
+                        print("💬 access token 만료시 에러처리")
+                        return self.refreshAuthentication()
+                            .do { [weak self] authentication in
+                                guard let self = self else { return }
+                                print("💬 기존 accesstoken", self.accessToken)
+                    
+                                guard let accessToken = authentication.accessToken else { return }
+                                let authentication = Authentication(accessToken: accessToken,
+                                                                    refreshToken: self.refreshToken,
+                                                                    user: nil,
+                                                                    userOnboarding: nil)
+                                self.accessToken = accessToken
+                                print("💬 바꾼 accesstoken", accessToken)
+                                print("💬 바꾼 authentication", authentication)
+                                self.authenticationRepository?.write(authentication: authentication)
+                                    .debug("💬 authentication write")
+                                    .subscribe(onNext: { _ in
+                                        print("💬 user defaults에 저장완료", accessToken)
+                                    })
+                                    .disposed(by: self.disposeBag)
                             }
-                    }
+                            .flatMap { [weak self] _ -> Observable<MeetuResponse<API.Response>> in
+                                guard let self = self else { return .empty() }
+                                return self._request(api)
+                            }
+                            .catchError { [weak self] error in
+                                // refresh token까지 만료된 상황 -> 로그아웃시킨다
+                                print("💬 refresh까지 만료되어버렸다......")
+                                return Observable.zip(UserDefaults.standard.delete(.accessToken),
+                                                      UserDefaults.standard.delete(.refreshToken))
+                                    .flatMap { [weak self] _ -> Observable<MeetuResponse<API.Response>>in
+                                        print("💬 로그아웃을 시킨다.")
+                                        self?.accessToken = nil
+                                        self?.refreshToken = nil
+                                        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+                                        appDelegate?.window?.rootViewController = RootDependencyContainer().createRootViewController()
+                                        return .empty()
+                                    }
+                            }
+                    } else { throw error }
+                } else { throw error }
             }
             .compactMap { $0.data }
     }
@@ -74,18 +89,19 @@ final class NetworkService: NetworkServing {
             .map(MeetuResponse<API.Response>.self)
             .map { response -> MeetuResponse<API.Response> in
                 guard let statusCode = response.statusCode else { throw NetworkError.unknown(-1, response.message) }
+                print(statusCode, "💬 status code")
                 guard statusCode != 401                    else { throw NetworkError.accessTokenInvalidate }
                 guard statusCode < 400                     else { throw NetworkError.unknown(statusCode, response.message) }
-                
                 return response
             }
     }
     
     private func refreshAuthentication() -> Observable<Authentication> {
         guard let refreshToken = self.refreshToken else { return .error(NetworkError.hasNotRefreshToken) }
-        
+        print("access가 만료되어서 refresh로 access다시 시도💬 중")
         let refreshAPI = RefreshAuthenticationAPI(refreshToken: refreshToken)
         return self._request(refreshAPI).compactMap { response -> Authentication? in
+            print("access가 만료되어서 refresh로 access다시 시도💬",response)
             guard response.statusCode != 401 else { throw NetworkError.denyAuthentication }
             return response.data
         }
@@ -102,15 +118,7 @@ final class NetworkService: NetworkServing {
     private let provider = MoyaProvider<MultiTarget>()
 }
 
-private extension Secret {
-    
-    static let dummyAccessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUsIm5pY2tOYW1lIjoi7J207Jew7KSRIiwiaWF0IjoxNjM3ODM5MjQxLCJleHAiOjE2Mzg0MzkyNDF9.629okopRQ14ek0oX-2-phAJ03nfZEEpKCKWRjxiv9yA"
-    
-    static let dummyRefreshToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjExLCJ1c2VySWRlbnRpZmllciI6IjIwMDg1OTY5NjciLCJpYXQiOjE2MzgyMDAzNjEsImV4cCI6MTY0MDc5MjM2MX0.HqdUBL_9y5wZY3g0AmXJuX4jRPIa4Q6lDMHba2ixWho"
-}
-
-
-enum NetworkError: Error {
+enum NetworkError: Error, Equatable {
     case hasNotRefreshToken
     case accessTokenInvalidate
     case denyAuthentication

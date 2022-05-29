@@ -13,6 +13,7 @@ final class MyCardListDependencyContainer {
     }
     
     func createMyCardListViewController() -> UIViewController {
+        let viewModel = self.createMyCardListViewModel()
         let viewController = MyCardListViewController.instantiate()
         let cardDetailViewControllerFactory: (UniqueCode) -> NameCardDetailViewController = { uniqueCode in
             let dependencyContainer = self.createCardDetailDependencyContainer(uniqueCode: uniqueCode)
@@ -26,7 +27,7 @@ final class MyCardListDependencyContainer {
             let dependencyContainer = QuestDependencyContainer()
             return dependencyContainer.createQuestViewController()
         }
-        viewController.viewModel = createMyCardListViewModel()
+        viewController.viewModel = viewModel
         viewController.cardDetailViewControllerFactory = cardDetailViewControllerFactory
         viewController.newCardCreationViewControllerFactory = newCardCreationViewControllerFactory
         viewController.questViewControllerFactory = questViewControllerFactory
