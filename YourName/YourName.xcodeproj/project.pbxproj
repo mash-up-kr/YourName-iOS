@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -39,9 +39,17 @@
 		A25D432627B16DCD002BCD31 /* AddCardBookViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A25D432527B16DCD002BCD31 /* AddCardBookViewController.storyboard */; };
 		A25D432827B16E6B002BCD31 /* AddCardBookDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25D432727B16E6B002BCD31 /* AddCardBookDependencyContainer.swift */; };
 		A25D432A27B16EF6002BCD31 /* AddCardBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25D432927B16EF6002BCD31 /* AddCardBookViewModel.swift */; };
-		A28A9B12271175A80063692D /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A9B11271175A70063692D /* SettingViewModel.swift */; };
-		A28A9B14271178360063692D /* Reactive+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A9B13271178360063692D /* Reactive+.swift */; };
-		A28A9B1627117ACA0063692D /* SettingDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28A9B1527117ACA0063692D /* SettingDependencyContainer.swift */; };
+		A28421F9284398DB006A19C4 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = A28421F8284398DB006A19C4 /* RxRelay */; };
+		A28421FD284398DB006A19C4 /* RxTest in Frameworks */ = {isa = PBXBuildFile; productRef = A28421FC284398DB006A19C4 /* RxTest */; };
+		A28422002843998B006A19C4 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = A28421FF2843998B006A19C4 /* RxBlocking */; };
+		A28422022843998B006A19C4 /* RxBlocking-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = A28422012843998B006A19C4 /* RxBlocking-Dynamic */; };
+		A28422042843998B006A19C4 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = A28422032843998B006A19C4 /* RxCocoa */; };
+		A28422062843998B006A19C4 /* RxCocoa-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = A28422052843998B006A19C4 /* RxCocoa-Dynamic */; };
+		A284220A2843998B006A19C4 /* RxRelay-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = A28422092843998B006A19C4 /* RxRelay-Dynamic */; };
+		A284220C2843998B006A19C4 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A284220B2843998B006A19C4 /* RxSwift */; };
+		A284220E2843998B006A19C4 /* RxSwift-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = A284220D2843998B006A19C4 /* RxSwift-Dynamic */; };
+		A28422102843998B006A19C4 /* RxTest in Frameworks */ = {isa = PBXBuildFile; productRef = A284220F2843998B006A19C4 /* RxTest */; };
+		A28422122843998B006A19C4 /* RxTest-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = A28422112843998B006A19C4 /* RxTest-Dynamic */; };
 		A298D8A927EF4262008FA334 /* CardBookMoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A298D8A827EF4262008FA334 /* CardBookMoreView.swift */; };
 		A298D8AD27EF4275008FA334 /* CardBookMoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A298D8AC27EF4275008FA334 /* CardBookMoreViewModel.swift */; };
 		A298D8AF27EF467F008FA334 /* CardBookMoreView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A298D8AE27EF467F008FA334 /* CardBookMoreView.xib */; };
@@ -52,7 +60,6 @@
 		A2A5C83A26FB1A3D005D2849 /* AppKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A5C83926FB1A3D005D2849 /* AppKey.swift */; };
 		A2B1011F270AA1C000CAE013 /* CardBookDetailDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B1011E270AA1C000CAE013 /* CardBookDetailDependencyContainer.swift */; };
 		A2B10121270AA80900CAE013 /* AddFriendCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B10120270AA80900CAE013 /* AddFriendCardViewModel.swift */; };
-		A2B10127270AD44C00CAE013 /* ObservableType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B10126270AD44C00CAE013 /* ObservableType+.swift */; };
 		A2B10176270F424800CAE013 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B10175270F424800CAE013 /* AlertController.swift */; };
 		A2BFC115273FFA12002FFF01 /* SelectCardBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BFC114273FFA12002FFF01 /* SelectCardBookViewController.swift */; };
 		A2BFC117273FFA81002FFF01 /* SelectCardBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BFC116273FFA81002FFF01 /* SelectCardBookViewModel.swift */; };
@@ -67,7 +74,6 @@
 		A2CC65622707622D00610C49 /* MyCardListEmptyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CC65612707622D00610C49 /* MyCardListEmptyCollectionViewCell.swift */; };
 		A2CC65642708229C00610C49 /* CardFrontView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2CC65632708229C00610C49 /* CardFrontView.xib */; };
 		A2CC656827082EAB00610C49 /* CardFrontView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CC656727082EAB00610C49 /* CardFrontView.swift */; };
-		A2CC656A27084BF300610C49 /* CALayer+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CC656927084BF300610C49 /* CALayer+.swift */; };
 		A2CC656C2708877E00610C49 /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CC656B2708877E00610C49 /* NibLoadable.swift */; };
 		A2CC656E27088E9C00610C49 /* MyCardListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CC656D27088E9C00610C49 /* MyCardListCollectionViewCell.swift */; };
 		A2CC657027088ED100610C49 /* MyCardListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2CC656F27088ED100610C49 /* MyCardListCollectionViewCell.xib */; };
@@ -107,7 +113,6 @@
 		CA4C8C92664A824E257F141A /* Pods_MEETU.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8A3FD6198F5C172E1258363 /* Pods_MEETU.framework */; };
 		CE0415E0275EA63E00B9A565 /* NameCardDetailDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0415DF275EA63E00B9A565 /* NameCardDetailDependencyContainer.swift */; };
 		CE2BB2C727074F4600936148 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE2BB2C627074F4600936148 /* Colors.xcassets */; };
-		CE2BB2C92707560800936148 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2BB2C82707560800936148 /* Palette.swift */; };
 		CE2D1C4E275890CE00DCD2D3 /* Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2D1C4D275890CE00DCD2D3 /* Identifier.swift */; };
 		CE2D1C532758F56F00DCD2D3 /* AllFriendCardAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2D1C522758F56F00DCD2D3 /* AllFriendCardAPI.swift */; };
 		CE2D1C55275924F800DCD2D3 /* FriendCardsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2D1C54275924F800DCD2D3 /* FriendCardsAPI.swift */; };
@@ -140,7 +145,6 @@
 		CE4D4E8A2707AEDD00081A2B /* CharacterItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E892707AEDD00081A2B /* CharacterItem.swift */; };
 		CE4D4E8C2707AF0500081A2B /* CharacterItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E8B2707AF0500081A2B /* CharacterItemRepository.swift */; };
 		CE4D4E8E2707AF6E00081A2B /* FakeCharacterItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E8D2707AF6E00081A2B /* FakeCharacterItemRepository.swift */; };
-		CE4D4E982707B35100081A2B /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E972707B35100081A2B /* UIImageView+.swift */; };
 		CE4D4E9B2707BB2500081A2B /* PaletteDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E9A2707BB2500081A2B /* PaletteDependencyContainer.swift */; };
 		CE4D4EA02707BB8400081A2B /* SkillSettingDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4E9F2707BB8400081A2B /* SkillSettingDependencyContainer.swift */; };
 		CE4D4EA22707BBBA00081A2B /* TMISettingDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4EA12707BBBA00081A2B /* TMISettingDependencyContainer.swift */; };
@@ -163,14 +167,11 @@
 		CE4D4EDD270A0F9900081A2B /* TMISettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4EDC270A0F9900081A2B /* TMISettingView.swift */; };
 		CE4D4EDF270A0FCF00081A2B /* TMISettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4EDE270A0FCF00081A2B /* TMISettingViewModel.swift */; };
 		CE4D4EE1270A100B00081A2B /* TMISettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE4D4EE0270A100B00081A2B /* TMISettingView.xib */; };
-		CE4D4EE3270A1AF800081A2B /* Optional+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D4EE2270A1AF800081A2B /* Optional+.swift */; };
 		CE63123A26F59C7800B2E69B /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63123926F59C7800B2E69B /* RootViewController.swift */; };
 		CE63124026F59E6700B2E69B /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63123F26F59E6700B2E69B /* RootViewModel.swift */; };
-		CE63124926F5A30200B2E69B /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63124826F5A30200B2E69B /* Navigation.swift */; };
 		CE63124C26F5DDC000B2E69B /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63124B26F5DDC000B2E69B /* WelcomeViewController.swift */; };
 		CE63125026F5DE6800B2E69B /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63124F26F5DE6800B2E69B /* WelcomeViewModel.swift */; };
 		CE63125226F5E19700B2E69B /* AccessTokenRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63125126F5E19700B2E69B /* AccessTokenRepository.swift */; };
-		CE63125526F5E25200B2E69B /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63125426F5E25200B2E69B /* String+.swift */; };
 		CE63125E26F6270B00B2E69B /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63125D26F6270B00B2E69B /* SplashViewController.swift */; };
 		CE63126026F6281800B2E69B /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63125F26F6281800B2E69B /* SplashViewModel.swift */; };
 		CE63129E26F8618000B2E69B /* AuthenticationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE63129D26F8618000B2E69B /* AuthenticationDelegate.swift */; };
@@ -184,7 +185,6 @@
 		CE6312C026F9AB4A00B2E69B /* MyCardListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6312BF26F9AB4A00B2E69B /* MyCardListViewModel.swift */; };
 		CE6312C526F9B05700B2E69B /* MyCardListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6312C426F9B05700B2E69B /* MyCardListViewModelTests.swift */; };
 		CE6312CF26F9B82600B2E69B /* NameCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6312CE26F9B82600B2E69B /* NameCard.swift */; };
-		CE6312D126F9BD6B00B2E69B /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6312D026F9BD6B00B2E69B /* Array+.swift */; };
 		CE6AF90E275F9A6100090BD9 /* CardDetailContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6AF90C275F9A6100090BD9 /* CardDetailContactTableViewCell.swift */; };
 		CE6AF90F275F9A6100090BD9 /* CardDetailContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6AF90D275F9A6100090BD9 /* CardDetailContactTableViewCell.xib */; };
 		CE6AF912275FA23500090BD9 /* CardDetailTMICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6AF910275FA23500090BD9 /* CardDetailTMICollectionViewCell.swift */; };
@@ -197,13 +197,9 @@
 		CE6BAB9C2704D7170006D26B /* QuestViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6BAB9B2704D7160006D26B /* QuestViewController.storyboard */; };
 		CE6BAB9E2704D7610006D26B /* WelcomeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6BAB9D2704D7610006D26B /* WelcomeViewController.storyboard */; };
 		CE6BABA02704D7BF0006D26B /* SplashViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6BAB9F2704D7BF0006D26B /* SplashViewController.storyboard */; };
-		CE6BABA22704D9520006D26B /* SettingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6BABA12704D9520006D26B /* SettingViewController.storyboard */; };
 		CE6BABA52704DAFB0006D26B /* CardInfoInputViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6BABA42704DAFB0006D26B /* CardInfoInputViewController.storyboard */; };
 		CE6BABA72704DB0A0006D26B /* CardInfoInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6BABA62704DB0A0006D26B /* CardInfoInputViewController.swift */; };
 		CE6BABA92704DB2A0006D26B /* CardInfoInputDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6BABA82704DB2A0006D26B /* CardInfoInputDependencyContainer.swift */; };
-		CE6BABAB2704E2480006D26B /* UIVIewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6BABAA2704E2480006D26B /* UIVIewController+.swift */; };
-		CE6BABAD2704ED700006D26B /* UITableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6BABAC2704ED700006D26B /* UITableView+.swift */; };
-		CE6BABAF2704EE9C0006D26B /* UICollectionView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6BABAE2704EE9C0006D26B /* UICollectionView+.swift */; };
 		CE6D1480270AF04500AF4C5C /* TipInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6D147E270AF04400AF4C5C /* TipInfoView.swift */; };
 		CE6D1481270AF04500AF4C5C /* TipInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6D147F270AF04400AF4C5C /* TipInfoView.xib */; };
 		CE6D1483270C927E00AF4C5C /* CharacterMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6D1482270C927E00AF4C5C /* CharacterMeta.swift */; };
@@ -211,8 +207,6 @@
 		CE6D1487270C952900AF4C5C /* CharacterItemFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6D1486270C952900AF4C5C /* CharacterItemFactory.swift */; };
 		CE74D356270A8B1200BF36C9 /* CharacterSettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE74D355270A8B1200BF36C9 /* CharacterSettingView.xib */; };
 		CE74D358270A8B3200BF36C9 /* CharacterSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74D357270A8B3200BF36C9 /* CharacterSettingView.swift */; };
-		CE8500F9273FA5C3002341DC /* UIScrollView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8500F8273FA5C3002341DC /* UIScrollView+Rx.swift */; };
-		CE8500FB273FAE41002341DC /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8500FA273FAE41002341DC /* UIColor+.swift */; };
 		CE8ECC0B270A635C00E5B038 /* SkillInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8ECC0A270A635C00E5B038 /* SkillInputView.swift */; };
 		CE8ECC0D270A63D900E5B038 /* SkillInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8ECC0C270A63D900E5B038 /* SkillInputView.xib */; };
 		CE94AB97270ECB8E005D2E80 /* StrongPointRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94AB96270ECB8E005D2E80 /* StrongPointRepository.swift */; };
@@ -226,8 +220,6 @@
 		CE94ABB2270EFCA3005D2E80 /* TMISectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94ABB0270EFCA3005D2E80 /* TMISectionHeaderView.swift */; };
 		CE94ABB3270EFCA3005D2E80 /* TMISectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE94ABB1270EFCA3005D2E80 /* TMISectionHeaderView.xib */; };
 		CE94ABB5270F2C81005D2E80 /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94ABB4270F2C81005D2E80 /* Skill.swift */; };
-		CE94ABB8270F4104005D2E80 /* ImageSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94ABB7270F4104005D2E80 /* ImageSource.swift */; };
-		CE94ABBA270F4114005D2E80 /* ColorSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94ABB9270F4114005D2E80 /* ColorSource.swift */; };
 		CEA4D2D7270C9B1D008189FE /* CharacterEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4D2D6270C9B1D008189FE /* CharacterEntity.swift */; };
 		CEA4D2D9270CA54A008189FE /* ColorRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA4D2D8270CA54A008189FE /* ColorRepository.swift */; };
 		CEA4D2DB270CB39F008189FE /* ItemForDisplay.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEA4D2DA270CB39F008189FE /* ItemForDisplay.xcassets */; };
@@ -239,7 +231,6 @@
 		CEAE3972274002F90010F8F0 /* CardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAE3971274002F90010F8F0 /* CardRepository.swift */; };
 		CEAE397527405D3C0010F8F0 /* CardBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAE397427405D3C0010F8F0 /* CardBook.swift */; };
 		CEB6582C26EB15A600C11F33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6582B26EB15A600C11F33 /* AppDelegate.swift */; };
-		CEB6583026EB15A600C11F33 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6582F26EB15A600C11F33 /* ViewController.swift */; };
 		CEB6583526EB15AC00C11F33 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEB6583426EB15AC00C11F33 /* Images.xcassets */; };
 		CEB6583826EB15AC00C11F33 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEB6583626EB15AC00C11F33 /* LaunchScreen.storyboard */; };
 		CEB6586826EB2C3700C11F33 /* SchemeNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6586726EB2C3700C11F33 /* SchemeNavigator.swift */; };
@@ -261,7 +252,6 @@
 		CEB6589326EC834900C11F33 /* Foundation+Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6589226EC834900C11F33 /* Foundation+Decoder.swift */; };
 		CEB6589526EC838000C11F33 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6589426EC838000C11F33 /* HTTPClient.swift */; };
 		CEB6589726EC844D00C11F33 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6589626EC844D00C11F33 /* main.swift */; };
-		CEB6589C26EC988F00C11F33 /* ObserverType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB6589B26EC988F00C11F33 /* ObserverType+.swift */; };
 		CEB658AB26EC9A3B00C11F33 /* MockError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB658A226EC9A3B00C11F33 /* MockError.swift */; };
 		CEB658AC26EC9A3B00C11F33 /* MockNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB658A326EC9A3B00C11F33 /* MockNetwork.swift */; };
 		CEB658AD26EC9A3B00C11F33 /* MockDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB658A426EC9A3B00C11F33 /* MockDataLoader.swift */; };
@@ -288,12 +278,10 @@
 		CEC599DD27578FAB00405DEA /* Entity.CardBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC599DC27578FAB00405DEA /* Entity.CardBook.swift */; };
 		CED16DE926F39F700076565F /* HomeTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED16DE826F39F700076565F /* HomeTab.swift */; };
 		CED16DF526F3A5480076565F /* QuestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED16DF426F3A5480076565F /* QuestViewController.swift */; };
-		CED16DF726F3A5540076565F /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED16DF626F3A5540076565F /* SettingViewController.swift */; };
 		CED16DF926F3A55D0076565F /* MyCardListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED16DF826F3A55D0076565F /* MyCardListViewController.swift */; };
 		CED16DFB26F3A5690076565F /* CardBookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED16DFA26F3A5690076565F /* CardBookDetailViewController.swift */; };
 		CEDA4B75274E85C80011D0CA /* Meetu+Moya.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDA4B74274E85C80011D0CA /* Meetu+Moya.swift */; };
 		CEDA4B77274E87A20011D0CA /* InterestesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDA4B76274E87A20011D0CA /* InterestesAPI.swift */; };
-		CEDA4B79274E9C910011D0CA /* Set+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDA4B78274E9C910011D0CA /* Set+.swift */; };
 		CEDA4B7B274EC2EF0011D0CA /* QuestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDA4B7A274EC2EE0011D0CA /* QuestTableViewCell.swift */; };
 		CEDA4B7D274EC4900011D0CA /* QuestDepencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDA4B7C274EC4900011D0CA /* QuestDepencyContainer.swift */; };
 		CEDA4B7F274ECB000011D0CA /* StrongPointAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDA4B7E274ECB000011D0CA /* StrongPointAPI.swift */; };
@@ -308,8 +296,6 @@
 		CEDA4B92275132E20011D0CA /* QuestMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDA4B91275132E20011D0CA /* QuestMeta.swift */; };
 		CEDA4B94275138350011D0CA /* QuestWaitingDoneAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDA4B93275138350011D0CA /* QuestWaitingDoneAPI.swift */; };
 		CEDA4B9627513BDA0011D0CA /* MockQuestRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDA4B9527513BDA0011D0CA /* MockQuestRepository.swift */; };
-		CEF8C55326EDF8D5009BA9C2 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF8C55226EDF8D5009BA9C2 /* UIView+.swift */; };
-		CEF8C55726EDFB6F009BA9C2 /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF8C55626EDFB6F009BA9C2 /* UIStackView+.swift */; };
 		CEFA037A26EFB76D00D12AAB /* SnapshotService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFA037926EFB76D00D12AAB /* SnapshotService.swift */; };
 		CEFA037D26EFBACE00D12AAB /* QRGenerater.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFA037C26EFBACE00D12AAB /* QRGenerater.swift */; };
 /* End PBXBuildFile section */
@@ -368,9 +354,8 @@
 		A25D432527B16DCD002BCD31 /* AddCardBookViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddCardBookViewController.storyboard; sourceTree = "<group>"; };
 		A25D432727B16E6B002BCD31 /* AddCardBookDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardBookDependencyContainer.swift; sourceTree = "<group>"; };
 		A25D432927B16EF6002BCD31 /* AddCardBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardBookViewModel.swift; sourceTree = "<group>"; };
-		A28A9B11271175A70063692D /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
-		A28A9B13271178360063692D /* Reactive+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+.swift"; sourceTree = "<group>"; };
-		A28A9B1527117ACA0063692D /* SettingDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDependencyContainer.swift; sourceTree = "<group>"; };
+		A28421F428439610006A19C4 /* Settings */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Settings; path = "../../../Documents/YourName-iOS/YourName/Settings"; sourceTree = "<group>"; };
+		A284221328439E43006A19C4 /* Platform */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Platform; path = "../../../Documents/YourName-iOS/YourName/Platform"; sourceTree = "<group>"; };
 		A298D8A827EF4262008FA334 /* CardBookMoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBookMoreView.swift; sourceTree = "<group>"; };
 		A298D8AC27EF4275008FA334 /* CardBookMoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBookMoreViewModel.swift; sourceTree = "<group>"; };
 		A298D8AE27EF467F008FA334 /* CardBookMoreView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardBookMoreView.xib; sourceTree = "<group>"; };
@@ -381,7 +366,6 @@
 		A2A5C83926FB1A3D005D2849 /* AppKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppKey.swift; sourceTree = "<group>"; };
 		A2B1011E270AA1C000CAE013 /* CardBookDetailDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBookDetailDependencyContainer.swift; sourceTree = "<group>"; };
 		A2B10120270AA80900CAE013 /* AddFriendCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendCardViewModel.swift; sourceTree = "<group>"; };
-		A2B10126270AD44C00CAE013 /* ObservableType+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+.swift"; sourceTree = "<group>"; };
 		A2B10175270F424800CAE013 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		A2BFC114273FFA12002FFF01 /* SelectCardBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCardBookViewController.swift; sourceTree = "<group>"; };
 		A2BFC116273FFA81002FFF01 /* SelectCardBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCardBookViewModel.swift; sourceTree = "<group>"; };
@@ -396,7 +380,6 @@
 		A2CC65612707622D00610C49 /* MyCardListEmptyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardListEmptyCollectionViewCell.swift; sourceTree = "<group>"; };
 		A2CC65632708229C00610C49 /* CardFrontView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardFrontView.xib; sourceTree = "<group>"; };
 		A2CC656727082EAB00610C49 /* CardFrontView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFrontView.swift; sourceTree = "<group>"; };
-		A2CC656927084BF300610C49 /* CALayer+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+.swift"; sourceTree = "<group>"; };
 		A2CC656B2708877E00610C49 /* NibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
 		A2CC656D27088E9C00610C49 /* MyCardListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardListCollectionViewCell.swift; sourceTree = "<group>"; };
 		A2CC656F27088ED100610C49 /* MyCardListCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCardListCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -436,7 +419,6 @@
 		A3E561B79C6998E82DB447DF /* Pods-YourName-YourNameTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourName-YourNameTests.debug.xcconfig"; path = "Target Support Files/Pods-YourName-YourNameTests/Pods-YourName-YourNameTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CE0415DF275EA63E00B9A565 /* NameCardDetailDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameCardDetailDependencyContainer.swift; sourceTree = "<group>"; };
 		CE2BB2C627074F4600936148 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
-		CE2BB2C82707560800936148 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		CE2D1C4D275890CE00DCD2D3 /* Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifier.swift; sourceTree = "<group>"; };
 		CE2D1C522758F56F00DCD2D3 /* AllFriendCardAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllFriendCardAPI.swift; sourceTree = "<group>"; };
 		CE2D1C54275924F800DCD2D3 /* FriendCardsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCardsAPI.swift; sourceTree = "<group>"; };
@@ -469,7 +451,6 @@
 		CE4D4E892707AEDD00081A2B /* CharacterItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterItem.swift; sourceTree = "<group>"; };
 		CE4D4E8B2707AF0500081A2B /* CharacterItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterItemRepository.swift; sourceTree = "<group>"; };
 		CE4D4E8D2707AF6E00081A2B /* FakeCharacterItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeCharacterItemRepository.swift; sourceTree = "<group>"; };
-		CE4D4E972707B35100081A2B /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
 		CE4D4E9A2707BB2500081A2B /* PaletteDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteDependencyContainer.swift; sourceTree = "<group>"; };
 		CE4D4E9F2707BB8400081A2B /* SkillSettingDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillSettingDependencyContainer.swift; sourceTree = "<group>"; };
 		CE4D4EA12707BBBA00081A2B /* TMISettingDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMISettingDependencyContainer.swift; sourceTree = "<group>"; };
@@ -492,14 +473,11 @@
 		CE4D4EDC270A0F9900081A2B /* TMISettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMISettingView.swift; sourceTree = "<group>"; };
 		CE4D4EDE270A0FCF00081A2B /* TMISettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMISettingViewModel.swift; sourceTree = "<group>"; };
 		CE4D4EE0270A100B00081A2B /* TMISettingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TMISettingView.xib; sourceTree = "<group>"; };
-		CE4D4EE2270A1AF800081A2B /* Optional+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+.swift"; sourceTree = "<group>"; };
 		CE63123926F59C7800B2E69B /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		CE63123F26F59E6700B2E69B /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
-		CE63124826F5A30200B2E69B /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
 		CE63124B26F5DDC000B2E69B /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		CE63124F26F5DE6800B2E69B /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
 		CE63125126F5E19700B2E69B /* AccessTokenRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenRepository.swift; sourceTree = "<group>"; };
-		CE63125426F5E25200B2E69B /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		CE63125D26F6270B00B2E69B /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		CE63125F26F6281800B2E69B /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 		CE63129D26F8618000B2E69B /* AuthenticationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationDelegate.swift; sourceTree = "<group>"; };
@@ -513,7 +491,6 @@
 		CE6312BF26F9AB4A00B2E69B /* MyCardListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardListViewModel.swift; sourceTree = "<group>"; };
 		CE6312C426F9B05700B2E69B /* MyCardListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardListViewModelTests.swift; sourceTree = "<group>"; };
 		CE6312CE26F9B82600B2E69B /* NameCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameCard.swift; sourceTree = "<group>"; };
-		CE6312D026F9BD6B00B2E69B /* Array+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+.swift"; sourceTree = "<group>"; };
 		CE6AF90C275F9A6100090BD9 /* CardDetailContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailContactTableViewCell.swift; sourceTree = "<group>"; };
 		CE6AF90D275F9A6100090BD9 /* CardDetailContactTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardDetailContactTableViewCell.xib; sourceTree = "<group>"; };
 		CE6AF910275FA23500090BD9 /* CardDetailTMICollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailTMICollectionViewCell.swift; sourceTree = "<group>"; };
@@ -526,13 +503,9 @@
 		CE6BAB9B2704D7160006D26B /* QuestViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QuestViewController.storyboard; sourceTree = "<group>"; };
 		CE6BAB9D2704D7610006D26B /* WelcomeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WelcomeViewController.storyboard; sourceTree = "<group>"; };
 		CE6BAB9F2704D7BF0006D26B /* SplashViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SplashViewController.storyboard; sourceTree = "<group>"; };
-		CE6BABA12704D9520006D26B /* SettingViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingViewController.storyboard; sourceTree = "<group>"; };
 		CE6BABA42704DAFB0006D26B /* CardInfoInputViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CardInfoInputViewController.storyboard; sourceTree = "<group>"; };
 		CE6BABA62704DB0A0006D26B /* CardInfoInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfoInputViewController.swift; sourceTree = "<group>"; };
 		CE6BABA82704DB2A0006D26B /* CardInfoInputDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfoInputDependencyContainer.swift; sourceTree = "<group>"; };
-		CE6BABAA2704E2480006D26B /* UIVIewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIewController+.swift"; sourceTree = "<group>"; };
-		CE6BABAC2704ED700006D26B /* UITableView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+.swift"; sourceTree = "<group>"; };
-		CE6BABAE2704EE9C0006D26B /* UICollectionView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+.swift"; sourceTree = "<group>"; };
 		CE6D147E270AF04400AF4C5C /* TipInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipInfoView.swift; sourceTree = "<group>"; };
 		CE6D147F270AF04400AF4C5C /* TipInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TipInfoView.xib; sourceTree = "<group>"; };
 		CE6D1482270C927E00AF4C5C /* CharacterMeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterMeta.swift; sourceTree = "<group>"; };
@@ -540,8 +513,6 @@
 		CE6D1486270C952900AF4C5C /* CharacterItemFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterItemFactory.swift; sourceTree = "<group>"; };
 		CE74D355270A8B1200BF36C9 /* CharacterSettingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterSettingView.xib; sourceTree = "<group>"; };
 		CE74D357270A8B3200BF36C9 /* CharacterSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSettingView.swift; sourceTree = "<group>"; };
-		CE8500F8273FA5C3002341DC /* UIScrollView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Rx.swift"; sourceTree = "<group>"; };
-		CE8500FA273FAE41002341DC /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		CE8ECC0A270A635C00E5B038 /* SkillInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillInputView.swift; sourceTree = "<group>"; };
 		CE8ECC0C270A63D900E5B038 /* SkillInputView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SkillInputView.xib; sourceTree = "<group>"; };
 		CE94AB96270ECB8E005D2E80 /* StrongPointRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrongPointRepository.swift; sourceTree = "<group>"; };
@@ -555,8 +526,6 @@
 		CE94ABB0270EFCA3005D2E80 /* TMISectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMISectionHeaderView.swift; sourceTree = "<group>"; };
 		CE94ABB1270EFCA3005D2E80 /* TMISectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TMISectionHeaderView.xib; sourceTree = "<group>"; };
 		CE94ABB4270F2C81005D2E80 /* Skill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
-		CE94ABB7270F4104005D2E80 /* ImageSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSource.swift; sourceTree = "<group>"; };
-		CE94ABB9270F4114005D2E80 /* ColorSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSource.swift; sourceTree = "<group>"; };
 		CEA4D2D6270C9B1D008189FE /* CharacterEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterEntity.swift; sourceTree = "<group>"; };
 		CEA4D2D8270CA54A008189FE /* ColorRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorRepository.swift; sourceTree = "<group>"; };
 		CEA4D2DA270CB39F008189FE /* ItemForDisplay.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ItemForDisplay.xcassets; sourceTree = "<group>"; };
@@ -569,7 +538,6 @@
 		CEAE397427405D3C0010F8F0 /* CardBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBook.swift; sourceTree = "<group>"; };
 		CEB6582826EB15A600C11F33 /* MEETU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MEETU.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB6582B26EB15A600C11F33 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CEB6582F26EB15A600C11F33 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CEB6583426EB15AC00C11F33 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CEB6583726EB15AC00C11F33 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CEB6583926EB15AC00C11F33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -594,7 +562,6 @@
 		CEB6589226EC834900C11F33 /* Foundation+Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Foundation+Decoder.swift"; sourceTree = "<group>"; };
 		CEB6589426EC838000C11F33 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		CEB6589626EC844D00C11F33 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		CEB6589B26EC988F00C11F33 /* ObserverType+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObserverType+.swift"; sourceTree = "<group>"; };
 		CEB658A226EC9A3B00C11F33 /* MockError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockError.swift; sourceTree = "<group>"; };
 		CEB658A326EC9A3B00C11F33 /* MockNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockNetwork.swift; sourceTree = "<group>"; };
 		CEB658A426EC9A3B00C11F33 /* MockDataLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockDataLoader.swift; sourceTree = "<group>"; };
@@ -621,12 +588,10 @@
 		CEC599DC27578FAB00405DEA /* Entity.CardBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.CardBook.swift; sourceTree = "<group>"; };
 		CED16DE826F39F700076565F /* HomeTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTab.swift; sourceTree = "<group>"; };
 		CED16DF426F3A5480076565F /* QuestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestViewController.swift; sourceTree = "<group>"; };
-		CED16DF626F3A5540076565F /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		CED16DF826F3A55D0076565F /* MyCardListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardListViewController.swift; sourceTree = "<group>"; };
 		CED16DFA26F3A5690076565F /* CardBookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBookDetailViewController.swift; sourceTree = "<group>"; };
 		CEDA4B74274E85C80011D0CA /* Meetu+Moya.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Meetu+Moya.swift"; sourceTree = "<group>"; };
 		CEDA4B76274E87A20011D0CA /* InterestesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestesAPI.swift; sourceTree = "<group>"; };
-		CEDA4B78274E9C910011D0CA /* Set+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Set+.swift"; sourceTree = "<group>"; };
 		CEDA4B7A274EC2EE0011D0CA /* QuestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestTableViewCell.swift; sourceTree = "<group>"; };
 		CEDA4B7C274EC4900011D0CA /* QuestDepencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestDepencyContainer.swift; sourceTree = "<group>"; };
 		CEDA4B7E274ECB000011D0CA /* StrongPointAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrongPointAPI.swift; sourceTree = "<group>"; };
@@ -641,8 +606,6 @@
 		CEDA4B91275132E20011D0CA /* QuestMeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestMeta.swift; sourceTree = "<group>"; };
 		CEDA4B93275138350011D0CA /* QuestWaitingDoneAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestWaitingDoneAPI.swift; sourceTree = "<group>"; };
 		CEDA4B9527513BDA0011D0CA /* MockQuestRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockQuestRepository.swift; sourceTree = "<group>"; };
-		CEF8C55226EDF8D5009BA9C2 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
-		CEF8C55626EDFB6F009BA9C2 /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 		CEFA037926EFB76D00D12AAB /* SnapshotService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotService.swift; sourceTree = "<group>"; };
 		CEFA037C26EFBACE00D12AAB /* QRGenerater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRGenerater.swift; sourceTree = "<group>"; };
 		D8A3FD6198F5C172E1258363 /* Pods_MEETU.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MEETU.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -655,8 +618,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A284220E2843998B006A19C4 /* RxSwift-Dynamic in Frameworks */,
+				A28422042843998B006A19C4 /* RxCocoa in Frameworks */,
 				451C17BFCC5F982A982C554D /* Pods_MEETU.framework in Frameworks */,
+				A28421F9284398DB006A19C4 /* RxRelay in Frameworks */,
+				A28421FD284398DB006A19C4 /* RxTest in Frameworks */,
+				A284220C2843998B006A19C4 /* RxSwift in Frameworks */,
+				A28422062843998B006A19C4 /* RxCocoa-Dynamic in Frameworks */,
 				CA4C8C92664A824E257F141A /* Pods_MEETU.framework in Frameworks */,
+				A28422122843998B006A19C4 /* RxTest-Dynamic in Frameworks */,
+				A28422102843998B006A19C4 /* RxTest in Frameworks */,
+				A284220A2843998B006A19C4 /* RxRelay-Dynamic in Frameworks */,
+				A28422002843998B006A19C4 /* RxBlocking in Frameworks */,
+				A28422022843998B006A19C4 /* RxBlocking-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1206,6 +1180,8 @@
 		CEB6581F26EB15A600C11F33 = {
 			isa = PBXGroup;
 			children = (
+				A284221328439E43006A19C4 /* Platform */,
+				A28421F428439610006A19C4 /* Settings */,
 				64E6EF20275205F300082673 /* MEETU.entitlements */,
 				CEB6582A26EB15A600C11F33 /* YourName */,
 				CEB6584126EB15AD00C11F33 /* YourNameTests */,
@@ -1295,7 +1271,6 @@
 		CEB6586026EB29B000C11F33 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				CE2BB2C82707560800936148 /* Palette.swift */,
 				CEF8C55526EDF8F7009BA9C2 /* Extensions */,
 				CE6BAB922704D08D0006D26B /* Protocols */,
 				CE2D1C4D275890CE00DCD2D3 /* Identifier.swift */,
@@ -1307,12 +1282,9 @@
 			isa = PBXGroup;
 			children = (
 				A2CC824327DCB6CA00B02530 /* Layouts */,
-				CE63124826F5A30200B2E69B /* Navigation.swift */,
 				CE4D4EB32708E7AF00081A2B /* Controllers */,
 				CEB6586926EB2C5F00C11F33 /* Screens */,
 				CE4D4EA9270820F900081A2B /* Views */,
-				CE94ABB7270F4104005D2E80 /* ImageSource.swift */,
-				CE94ABB9270F4114005D2E80 /* ColorSource.swift */,
 			);
 			path = "UI Layer";
 			sourceTree = "<group>";
@@ -1473,10 +1445,6 @@
 		CEB6589A26EC987800C11F33 /* Rx */ = {
 			isa = PBXGroup;
 			children = (
-				CEB6589B26EC988F00C11F33 /* ObserverType+.swift */,
-				A28A9B13271178360063692D /* Reactive+.swift */,
-				A2B10126270AD44C00CAE013 /* ObservableType+.swift */,
-				CE8500F8273FA5C3002341DC /* UIScrollView+Rx.swift */,
 			);
 			path = Rx;
 			sourceTree = "<group>";
@@ -1593,10 +1561,6 @@
 			children = (
 				A223E6D527560ACB00F29FCE /* Notice */,
 				A29DA245271DCE2800B1E647 /* AboutProductionTeam */,
-				A28A9B1527117ACA0063692D /* SettingDependencyContainer.swift */,
-				CE6BABA12704D9520006D26B /* SettingViewController.storyboard */,
-				CED16DF626F3A5540076565F /* SettingViewController.swift */,
-				A28A9B11271175A70063692D /* SettingViewModel.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -1615,19 +1579,6 @@
 		CEF8C55526EDF8F7009BA9C2 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				CE6312D026F9BD6B00B2E69B /* Array+.swift */,
-				A2CC656927084BF300610C49 /* CALayer+.swift */,
-				CE4D4EE2270A1AF800081A2B /* Optional+.swift */,
-				CEDA4B78274E9C910011D0CA /* Set+.swift */,
-				CE63125426F5E25200B2E69B /* String+.swift */,
-				CE6BABAE2704EE9C0006D26B /* UICollectionView+.swift */,
-				CE8500FA273FAE41002341DC /* UIColor+.swift */,
-				CE4D4E972707B35100081A2B /* UIImageView+.swift */,
-				CEF8C55626EDFB6F009BA9C2 /* UIStackView+.swift */,
-				CE6BABAC2704ED700006D26B /* UITableView+.swift */,
-				CEF8C55226EDF8D5009BA9C2 /* UIView+.swift */,
-				CE6BABAA2704E2480006D26B /* UIVIewController+.swift */,
-				CEB6582F26EB15A600C11F33 /* ViewController.swift */,
 				CEB6589A26EC987800C11F33 /* Rx */,
 				A2DA3B6A2751406E00E68F23 /* Notification.Name+.swift */,
 			);
@@ -1668,6 +1619,19 @@
 			dependencies = (
 			);
 			name = MEETU;
+			packageProductDependencies = (
+				A28421F8284398DB006A19C4 /* RxRelay */,
+				A28421FC284398DB006A19C4 /* RxTest */,
+				A28421FF2843998B006A19C4 /* RxBlocking */,
+				A28422012843998B006A19C4 /* RxBlocking-Dynamic */,
+				A28422032843998B006A19C4 /* RxCocoa */,
+				A28422052843998B006A19C4 /* RxCocoa-Dynamic */,
+				A28422092843998B006A19C4 /* RxRelay-Dynamic */,
+				A284220B2843998B006A19C4 /* RxSwift */,
+				A284220D2843998B006A19C4 /* RxSwift-Dynamic */,
+				A284220F2843998B006A19C4 /* RxTest */,
+				A28422112843998B006A19C4 /* RxTest-Dynamic */,
+			);
 			productName = YourName;
 			productReference = CEB6582826EB15A600C11F33 /* MEETU.app */;
 			productType = "com.apple.product-type.application";
@@ -1719,6 +1683,10 @@
 				Base,
 			);
 			mainGroup = CEB6581F26EB15A600C11F33;
+			packageReferences = (
+				A28421F5284398DB006A19C4 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				A28421FE2843998B006A19C4 /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
 			productRefGroup = CEB6582926EB15A600C11F33 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1738,7 +1706,6 @@
 				A223E6D727560AD900F29FCE /* NoticeViewController.storyboard in Resources */,
 				CE4D4E842707A91900081A2B /* Items.xcassets in Resources */,
 				A239210D2737FA9B0069E418 /* AlertViewController.storyboard in Resources */,
-				CE6BABA22704D9520006D26B /* SettingViewController.storyboard in Resources */,
 				CE6D1481270AF04500AF4C5C /* TipInfoView.xib in Resources */,
 				CE6BABA52704DAFB0006D26B /* CardInfoInputViewController.storyboard in Resources */,
 				A2CC65782708DAD900610C49 /* FriendCardCollectionViewCell.xib in Resources */,
@@ -1892,32 +1859,26 @@
 				CE472B7C2748D575001A5E5F /* MeetuResponse.swift in Sources */,
 				CEDA4B83274ECC4E0011D0CA /* Entity.Quest.swift in Sources */,
 				CE4D4EC52709044D00081A2B /* ImageSourceTypePickerView.swift in Sources */,
-				CEF8C55726EDFB6F009BA9C2 /* UIStackView+.swift in Sources */,
 				CEB84096272AF389000E527B /* CardBookCoverTableViewCell.swift in Sources */,
 				CE4D4EA02707BB8400081A2B /* SkillSettingDependencyContainer.swift in Sources */,
-				CE63125526F5E25200B2E69B /* String+.swift in Sources */,
 				CE4D4EA22707BBBA00081A2B /* TMISettingDependencyContainer.swift in Sources */,
-				CE6BABAD2704ED700006D26B /* UITableView+.swift in Sources */,
 				649ABC2E275108A9005F50E8 /* CardDetailViewModel.swift in Sources */,
 				A2DA3B6B2751406E00E68F23 /* Notification.Name+.swift in Sources */,
 				CE63124026F59E6700B2E69B /* RootViewModel.swift in Sources */,
 				CEB6589526EC838000C11F33 /* HTTPClient.swift in Sources */,
 				CE6AF916275FDF5F00090BD9 /* ClipboardService.swift in Sources */,
 				64E6EF1F27517C2300082673 /* RxASAuthorizationControllerDelegateProxy.swift in Sources */,
-				CEDA4B79274E9C910011D0CA /* Set+.swift in Sources */,
 				CEB658BC26ECC90600C11F33 /* NoContent.swift in Sources */,
 				CE6D1485270C94F900AF4C5C /* ItemCategory.swift in Sources */,
 				CE2D1C572759252300DCD2D3 /* DeleteCardsAPI.swift in Sources */,
 				CEAE3972274002F90010F8F0 /* CardRepository.swift in Sources */,
 				CEA4D2EC270D34C3008189FE /* DisplayCharacterItemsViewModel.swift in Sources */,
-				A28A9B12271175A80063692D /* SettingViewModel.swift in Sources */,
 				CE6BABA72704DB0A0006D26B /* CardInfoInputViewController.swift in Sources */,
 				CEDA4B8C275123210011D0CA /* QuestUseCase.swift in Sources */,
 				CEB6588226EC811E00C11F33 /* DataLoading.swift in Sources */,
 				A23921072737B9220069E418 /* ContactView.swift in Sources */,
 				A223E6D4275537DD00F29FCE /* RemoveMyNameCardAPI.swift in Sources */,
 				CE4D4EDB270A0D2000081A2B /* SkillSettingViewModel.swift in Sources */,
-				CE94ABB8270F4104005D2E80 /* ImageSource.swift in Sources */,
 				CEA4D2D9270CA54A008189FE /* ColorRepository.swift in Sources */,
 				CE63124C26F5DDC000B2E69B /* WelcomeViewController.swift in Sources */,
 				CE63125026F5DE6800B2E69B /* WelcomeViewModel.swift in Sources */,
@@ -1929,11 +1890,9 @@
 				CEC599D127568E6800405DEA /* LocalStorage.swift in Sources */,
 				CE472B712748C0B4001A5E5F /* Entity.TMI.swift in Sources */,
 				CEB6588E26EC821300C11F33 /* Network.swift in Sources */,
-				CED16DF726F3A5540076565F /* SettingViewController.swift in Sources */,
 				CE6AF918276290A700090BD9 /* UpdateCardAPI.swift in Sources */,
 				CE6312CF26F9B82600B2E69B /* NameCard.swift in Sources */,
 				CEAE397527405D3C0010F8F0 /* CardBook.swift in Sources */,
-				CEB6583026EB15A600C11F33 /* ViewController.swift in Sources */,
 				CE2D1C4E275890CE00DCD2D3 /* Identifier.swift in Sources */,
 				CE472B812748DAF0001A5E5F /* NewCardAPI.swift in Sources */,
 				CE6312A926F8CB2F00B2E69B /* SignedOutDependencyContainer.swift in Sources */,
@@ -1948,7 +1907,6 @@
 				CEC599DD27578FAB00405DEA /* Entity.CardBook.swift in Sources */,
 				CE63123A26F59C7800B2E69B /* RootViewController.swift in Sources */,
 				CE6312AA26F8CB2F00B2E69B /* RootDependencyContainer.swift in Sources */,
-				A2B10127270AD44C00CAE013 /* ObservableType+.swift in Sources */,
 				CEDA4B75274E85C80011D0CA /* Meetu+Moya.swift in Sources */,
 				CE4D4EC3270902FC00081A2B /* ImageSourcePickerViewModel.swift in Sources */,
 				CE94ABA3270ECF2E005D2E80 /* Interest.swift in Sources */,
@@ -1957,11 +1915,9 @@
 				CE6312A826F8CB2F00B2E69B /* SignedInDependencyContainer.swift in Sources */,
 				A2CC657F2708E93900610C49 /* AddFriendCardViewController.swift in Sources */,
 				CE63125226F5E19700B2E69B /* AccessTokenRepository.swift in Sources */,
-				CE4D4E982707B35100081A2B /* UIImageView+.swift in Sources */,
 				A2B10176270F424800CAE013 /* AlertController.swift in Sources */,
 				CEB6589326EC834900C11F33 /* Foundation+Decoder.swift in Sources */,
 				CE4D4ED22709F47400081A2B /* YourNameColor.swift in Sources */,
-				CE4D4EE3270A1AF800081A2B /* Optional+.swift in Sources */,
 				A298D8A927EF4262008FA334 /* CardBookMoreView.swift in Sources */,
 				CEB8408E272AF104000E527B /* CardBookListViewModel.swift in Sources */,
 				A2CC824527DCB6DB00B02530 /* LeftAlignCollectionViewLayout.swift in Sources */,
@@ -1969,7 +1925,6 @@
 				CEB6587926EC806F00C11F33 /* Connectable.swift in Sources */,
 				A223E6DD275639E100F29FCE /* ResignAPI.swift in Sources */,
 				CE6D1480270AF04500AF4C5C /* TipInfoView.swift in Sources */,
-				A28A9B14271178360063692D /* Reactive+.swift in Sources */,
 				CEC599D72757150500405DEA /* ImageUploader.swift in Sources */,
 				CEDA4B7B274EC2EF0011D0CA /* QuestTableViewCell.swift in Sources */,
 				A2CC65832708F06800610C49 /* CardBookDetailViewModel.swift in Sources */,
@@ -1996,8 +1951,6 @@
 				A2DA3B47274A611B00E68F23 /* AuthenticationRepository.swift in Sources */,
 				CEA4D2EE270D35A2008189FE /* DisplayCharacterItemsDependencyContainer.swift in Sources */,
 				CE472B682748B67F001A5E5F /* Entity.BackgroundColor.swift in Sources */,
-				CE94ABBA270F4114005D2E80 /* ColorSource.swift in Sources */,
-				CE8500FB273FAE41002341DC /* UIColor+.swift in Sources */,
 				CE63126026F6281800B2E69B /* SplashViewModel.swift in Sources */,
 				CE4D4E862707AE1700081A2B /* CharacterSettingViewModel.swift in Sources */,
 				CE4D4E8A2707AEDD00081A2B /* CharacterItem.swift in Sources */,
@@ -2007,7 +1960,6 @@
 				A2D9DE9327FCAB940074E412 /* EditCardBookAPI.swift in Sources */,
 				A23920F92736835F0069E418 /* AddFriendCardNoResultView.swift in Sources */,
 				CE2EC99327073453006B9852 /* CardInfoInputViewModel.swift in Sources */,
-				A2CC656A27084BF300610C49 /* CALayer+.swift in Sources */,
 				CE6D1483270C927E00AF4C5C /* CharacterMeta.swift in Sources */,
 				CEB6587226EB2CAB00C11F33 /* Networking.swift in Sources */,
 				CEDA4B81274ECBAE0011D0CA /* QuestsAPI.swift in Sources */,
@@ -2027,13 +1979,9 @@
 				CE6AF912275FA23500090BD9 /* CardDetailTMICollectionViewCell.swift in Sources */,
 				A2DA3B6D27514EE000E68F23 /* FriendCardAPI.swift in Sources */,
 				CEB84094272AF143000E527B /* CardBookListDependencyContainer.swift in Sources */,
-				CE6BABAF2704EE9C0006D26B /* UICollectionView+.swift in Sources */,
-				CEF8C55326EDF8D5009BA9C2 /* UIView+.swift in Sources */,
 				A2CC657A2708DAEA00610C49 /* FriendCardEmptyCollectionViewCell.swift in Sources */,
 				CED16DE926F39F700076565F /* HomeTab.swift in Sources */,
 				A2D9DE9127FC9CE30074E412 /* CardBookAPI.swift in Sources */,
-				CE2BB2C92707560800936148 /* Palette.swift in Sources */,
-				CE63124926F5A30200B2E69B /* Navigation.swift in Sources */,
 				CEB6587726EB2CFE00C11F33 /* HomeViewModel.swift in Sources */,
 				A2DA3B782751745D00E68F23 /* AddFriendCardDependencyContainer.swift in Sources */,
 				A223E6D927560B0B00F29FCE /* NoticeViewController.swift in Sources */,
@@ -2051,9 +1999,7 @@
 				CEC599DB27578EC700405DEA /* CardBooksAPI.swift in Sources */,
 				A2DA3B8E2753984900E68F23 /* LoginAPI.swift in Sources */,
 				CE6312BC26F9A04800B2E69B /* MyCardListDependencyContainer.swift in Sources */,
-				CEB6589C26EC988F00C11F33 /* ObserverType+.swift in Sources */,
 				CED16DFB26F3A5690076565F /* CardBookDetailViewController.swift in Sources */,
-				CE6312D126F9BD6B00B2E69B /* Array+.swift in Sources */,
 				A2CC656827082EAB00610C49 /* CardFrontView.swift in Sources */,
 				CEB6588426EC814C00C11F33 /* API.swift in Sources */,
 				CE94AB9D270ECED4005D2E80 /* InterestRepository.swift in Sources */,
@@ -2069,7 +2015,6 @@
 				CEDA4B86274ECECC0011D0CA /* QuestRepository.swift in Sources */,
 				A2A5C83826FB17D0005D2849 /* KakaoAuth.swift in Sources */,
 				CE4D4EDD270A0F9900081A2B /* TMISettingView.swift in Sources */,
-				CE6BABAB2704E2480006D26B /* UIVIewController+.swift in Sources */,
 				A2CC65862708F17A00610C49 /* CardBookRepository.swift in Sources */,
 				A25D432327B16938002BCD31 /* AddCardBookViewController.swift in Sources */,
 				CEB6586826EB2C3700C11F33 /* SchemeNavigator.swift in Sources */,
@@ -2089,7 +2034,6 @@
 				CE94ABB2270EFCA3005D2E80 /* TMISectionHeaderView.swift in Sources */,
 				A2DA3B67274FDB5800E68F23 /* Entity.Image.swift in Sources */,
 				A2CC65772708DAD900610C49 /* FriendCardCollectionViewCell.swift in Sources */,
-				CE8500F9273FA5C3002341DC /* UIScrollView+Rx.swift in Sources */,
 				CE63129E26F8618000B2E69B /* AuthenticationDelegate.swift in Sources */,
 				CE63125E26F6270B00B2E69B /* SplashViewController.swift in Sources */,
 				CE472B7E2748D5A1001A5E5F /* NetworkService.swift in Sources */,
@@ -2112,7 +2056,6 @@
 				CEA4D2E4270CD24A008189FE /* DisplayCharacterItemCollectionViewCell.swift in Sources */,
 				CEDA4B77274E87A20011D0CA /* InterestesAPI.swift in Sources */,
 				A2DA3B6F27514F4D00E68F23 /* Entity.FriendCard.swift in Sources */,
-				A28A9B1627117ACA0063692D /* SettingDependencyContainer.swift in Sources */,
 				A223E6D2275534DC00F29FCE /* CardDetailMoreViewModel.swift in Sources */,
 				CEB6588026EC80F500C11F33 /* Foundation+Network.swift in Sources */,
 				A2B1011F270AA1C000CAE013 /* CardBookDetailDependencyContainer.swift in Sources */,
@@ -2216,7 +2159,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -2271,7 +2214,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -2404,6 +2347,83 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A28421F5284398DB006A19C4 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		A28421FE2843998B006A19C4 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 6.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A28421F8284398DB006A19C4 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A28421F5284398DB006A19C4 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		A28421FC284398DB006A19C4 /* RxTest */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A28421F5284398DB006A19C4 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxTest;
+		};
+		A28421FF2843998B006A19C4 /* RxBlocking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A28421FE2843998B006A19C4 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxBlocking;
+		};
+		A28422012843998B006A19C4 /* RxBlocking-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A28421FE2843998B006A19C4 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = "RxBlocking-Dynamic";
+		};
+		A28422032843998B006A19C4 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A28421FE2843998B006A19C4 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		A28422052843998B006A19C4 /* RxCocoa-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A28421FE2843998B006A19C4 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = "RxCocoa-Dynamic";
+		};
+		A28422092843998B006A19C4 /* RxRelay-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A28421FE2843998B006A19C4 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = "RxRelay-Dynamic";
+		};
+		A284220B2843998B006A19C4 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A28421FE2843998B006A19C4 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		A284220D2843998B006A19C4 /* RxSwift-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A28421FE2843998B006A19C4 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = "RxSwift-Dynamic";
+		};
+		A284220F2843998B006A19C4 /* RxTest */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A28421FE2843998B006A19C4 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxTest;
+		};
+		A28422112843998B006A19C4 /* RxTest-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A28421FE2843998B006A19C4 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = "RxTest-Dynamic";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CEB6582026EB15A600C11F33 /* Project object */;
 }

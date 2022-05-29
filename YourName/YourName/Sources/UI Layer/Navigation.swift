@@ -7,28 +7,28 @@
 
 import Foundation
 
-enum NavigationAction: Equatable {
+public enum NavigationAction: Equatable {
     case present(animated: Bool = true)
     case push
     case show(withDimmed: Bool = false)
 }
 
-struct Navigation<Destination: Equatable>: Equatable {
+public struct Navigation<Destination: Equatable>: Equatable {
     let action: NavigationAction
     let destination: Destination
 }
 
 extension Navigation {
     
-    static func present(_ destination: Destination, animated: Bool = true) -> Self {
+    public static func present(_ destination: Destination, animated: Bool = true) -> Self {
         return Navigation(action: .present(animated: animated), destination: destination)
     }
     
-    static func push(_ destination: Destination) -> Self {
+    public static func push(_ destination: Destination) -> Self {
         return Navigation(action: .push, destination: destination)
     }
     
-    static func show(_ destination: Destination, withDimmed dimmed: Bool = true) -> Self {
+    public static func show(_ destination: Destination, withDimmed dimmed: Bool = true) -> Self {
         return Navigation(action: .show(withDimmed: dimmed), destination: destination)
     }
 }
