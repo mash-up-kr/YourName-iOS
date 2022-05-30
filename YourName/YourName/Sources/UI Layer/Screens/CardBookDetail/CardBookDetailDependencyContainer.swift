@@ -18,8 +18,8 @@ final class CardBookDetailDependencyContainer {
         let viewModel = createCardBookDetailViewModel(cardBookID: cardBookID, cardBookTitle: cardBookTitle, state: state)
         viewController.viewModel = viewModel
         
-        viewController.nameCardDetailViewControllerFactory = { cardId, uniqueCode in
-            let dependencyContainer = self.createCardDetailDependencyContainer(cardId: cardId, uniqueCode: uniqueCode)
+        viewController.nameCardDetailViewControllerFactory = { cardBookID, cardId, uniqueCode in
+            let dependencyContainer = self.createCardDetailDependencyContainer(cardBookID: cardBookID, cardId: cardId, uniqueCode: uniqueCode)
             return dependencyContainer.createNameCardDetailViewController()
         }
         viewController.cardBookMoreViewControllerFactory = { cardBookName, isCardEmpty in
@@ -61,11 +61,12 @@ final class CardBookDetailDependencyContainer {
         return YourNameCardRepository()
     }
     
-    private func createCardDetailDependencyContainer(cardId: Identifier, uniqueCode: UniqueCode) -> NameCardDetailDependencyContainer {
+    private func createCardDetailDependencyContainer(cardBookID: CardBookID?, cardId: Identifier, uniqueCode: UniqueCode) -> NameCardDetailDependencyContainer {
         return NameCardDetailDependencyContainer(
             cardId: cardId,
             uniqueCode: uniqueCode,
-            cardBookDetailDependencyContainer: self
+            cardBookDetailDependencyContainer: self,
+            cardBookID: cardBookID
         )
     }
     

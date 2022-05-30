@@ -20,7 +20,6 @@ final class SelectCardBookViewController: ViewController, Storyboarded {
     private let disposeBag = DisposeBag()
     var viewModel: SelectCardBookViewModel!
     private let checkedIndex = BehaviorRelay<[IndexPath]>(value: [])
-    var cardDetailViewControllerFactory: ((UniqueCode, Identifier) -> NameCardDetailViewController)?
     
     override var hidesBottomBarWhenPushed: Bool {
         get { self.navigationController?.topViewController == self }

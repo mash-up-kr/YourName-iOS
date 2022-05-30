@@ -41,14 +41,17 @@ final class NameCardDetailViewModel {
     let captureFrontCard = PublishRelay<Void>()
     let activityViewController = PublishRelay<UIActivityViewController>()
     let cardType = BehaviorRelay<CardType?>(value: nil)
-    
+    private let cardBookID: String
     init(cardId: Identifier?,
          uniqueCode: UniqueCode,
          cardRepository: CardRepository,
          myCardRepository: MyCardRepository,
          clipboardService: ClipboardService,
          questRepository: QuestRepository,
-         cardType: CardType) {
+         cardType: CardType,
+         cardBookID: String
+    ) {
+        self.cardBookID = cardBookID
         self.cardId = cardId
         self.uniqueCode = uniqueCode
         self.cardRepository = cardRepository
@@ -94,7 +97,22 @@ final class NameCardDetailViewModel {
         switch cardType {
         case .friendCard:
             guard let cardId = self.cardId else { return }
-            self.removeFriendCard(nameCardId: cardId)
+            let alertController = AlertViewController.instantiate()
+            let deleteAction = { [weak self] in
+                guard let self = self else { return }
+                alertController.dismiss(animated: true)
+                self.removeFriendCard(nameCardId: cardId)
+            }
+            let deleteCancelAction = {
+                alertController.dismiss(animated: true)
+            }
+            alertController.configure(item: AlertItem(title: "정말 삭제하시겠츄?",
+                                                      messages: "삭제한 미츄는 복구할 수 없어요.",
+                                                      image: UIImage(named: "meetu_delete")!,
+                                                      emphasisAction: .init(title: "삭제하기", action: deleteAction),
+                                                      defaultAction: .init(title: "삭제 안할래요", action: deleteCancelAction)))
+            self.alertController.accept(alertController)
+            
         case .myCard:
             self.navigation.accept(.show(.cardDetailMore(uniqueCode: self.uniqueCode)))
         }
@@ -142,9 +160,9 @@ final class NameCardDetailViewModel {
     }
     
     private func removeFriendCard(nameCardId: Identifier) {
-        // TODO: card book id 수정필요
+        
         self.isLoading.accept(true)
-        self.cardRepository.remove(cardIDs: [nameCardId], on: "all")
+        self.cardRepository.remove(cardIDs: [nameCardId], on: self.cardBookID)
             .do(onNext: { [weak self] _ in
                 self?.isLoading.accept(false)
             })

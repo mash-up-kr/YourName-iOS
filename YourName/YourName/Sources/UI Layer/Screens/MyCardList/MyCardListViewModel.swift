@@ -87,9 +87,9 @@ final class MyCardListViewModel {
             }
             .catchError { [weak self] error in
                 self?.isLoading.accept(false)
-                throw error
+                return .empty()
             }
-            .catchErrorToAlert(self.alertViewController, retryHandler: self.fetchAll)
+//            .catchErrorToAlert(self.alertViewController, retryHandler: self.fetchAll)
             .bind(to: self.alertViewController)
             .disposed(by: self.disposeBag)
     }
@@ -99,9 +99,9 @@ final class MyCardListViewModel {
         self.myCardRepository.fetchMyCards()
             .catchError { [weak self] error in
                 self?.isLoading.accept(false)
-                throw error
+                return .empty()
             }
-            .catchErrorToAlert(self.alertViewController, retryHandler: self.fetchLoad)
+//            .catchErrorToAlert(self.alertViewController, retryHandler: self.fetchLoad)
             .compactMap { [weak self] cards -> [MyCardCellViewModel]? in
                 guard let self = self else { return nil }
                 return self.myCardCellViewModel(cards)

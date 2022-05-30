@@ -7,6 +7,7 @@
 
 import Foundation
 
+// TODO: 고칠게 너무 많다~ ㅎㅅㅎ 과거의 무지했던 나..
 final class NameCardDetailDependencyContainer {
     
     typealias CardType = NameCardDetailViewModel.CardType
@@ -14,21 +15,18 @@ final class NameCardDetailDependencyContainer {
     private let uniqueCode: UniqueCode
     private let cardType: CardType
     private var cardId: Identifier? = nil
+    private var cardBookID: CardBookID?
     
     init(uniqueCode: UniqueCode, myCardListDependencyContainer: MyCardListDependencyContainer) {
         self.uniqueCode = uniqueCode
         self.cardType = .myCard
     }
     
-    init(cardId: Identifier, uniqueCode: UniqueCode, cardBookDetailDependencyContainer: CardBookDetailDependencyContainer) {
+    // card book detail에서 진입
+    init(cardId: Identifier, uniqueCode: UniqueCode, cardBookDetailDependencyContainer: CardBookDetailDependencyContainer, cardBookID: CardBookID?) {
         self.uniqueCode = uniqueCode
         self.cardId = cardId
-        self.cardType = .friendCard
-    }
-    
-    init(cardId: Identifier, uniqueCode: UniqueCode) {
-        self.cardId = cardId
-        self.uniqueCode = uniqueCode
+        self.cardBookID = cardBookID
         self.cardType = .friendCard
     }
     
@@ -62,7 +60,8 @@ final class NameCardDetailDependencyContainer {
                                        myCardRepository: self.createMyCardRepository(),
                                        clipboardService: clipboardService,
                                        questRepository: YourNameQuestRepository(),
-                                       cardType: self.cardType)
+                                       cardType: self.cardType,
+                                       cardBookID: self.cardBookID ?? "all")
     }
     
     private func createCardRepository() -> CardRepository {
